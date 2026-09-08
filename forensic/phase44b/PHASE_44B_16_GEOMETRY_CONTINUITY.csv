@@ -1,0 +1,4 @@
+stream_offset,reason,last_primitive,next_primitive,vertices_before,vertices_after,state_changes,boundary_status,confidence
+1648208,STATE_SIGNATURE_CHANGE,TRIANGLE_STRIP,TRIANGLE_STRIP,2680,1980,"PRIM/TEX0/target-state signature changed",CANDIDATE,MEDIUM
+1784144,PRIM_CHANGE,TRIANGLE_STRIP,TRIANGLE_LIST,1980,2730,"effective topology changed",CANDIDATE,MEDIUM
+2006496,STATE_SIGNATURE_CHANGE,TRIANGLE_LIST,TRIANGLE_STRIP,2730,1788,"PRIM/TEX0/target-state signature changed",CANDIDATE,MEDIUM

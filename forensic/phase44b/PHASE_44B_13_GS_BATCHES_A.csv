@@ -1,0 +1,2 @@
+dump,vsync,batch_id,primitive_type,vertex_count,primitive_count,xyzf2,xyz2,uvst,tex0,classification,confidence
+190004,0,UNKNOWN,UNKNOWN,49959,UNKNOWN,49957,2,0,378,"geometry submissions; actual batches unresolved",MEDIUM

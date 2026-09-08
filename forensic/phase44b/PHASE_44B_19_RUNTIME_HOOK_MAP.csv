@@ -1,0 +1,9 @@
+link,available_without_rebuild,source_build_required,custom_instrumentation_required,minimum_hook_or_data,status
+Section0/resource ID -> handler,NO,YES,YES,"breakpoint/log at Section0 dispatcher and 0x001303E0/0x00131390",MISSING
+handler -> EE buffer,NO,YES,YES,"log A0-A3/stack and generated buffer range at handler return",MISSING
+EE PC,PARTIAL debugger exists,YES,YES,"EE execution trace or breakpoint callback",NOT_AVAILABLE_NOW
+DMA1 MADR/QWC/CHCR,PARTIAL live register read only,YES,YES,"DMA channel 1 completion/start hook",NOT_AVAILABLE_NOW
+VIF1 packet/destination,NO,YES,YES,"VIF1 transfer/unpack hook",MISSING
+GIF packet offset/tag,PARTIAL GSDump downstream only,YES,YES,"GIF path-3 transfer callback with source address/offset",MISSING
+GS packet position,PARTIAL GSDump stream offset only,YES,YES,"record runtime transfer sequence number/offset",MISSING
+full causal chain,NO,YES,YES,"synchronized event ID across all above hooks",BLOCKED

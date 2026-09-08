@@ -1,0 +1,12 @@
+item,value,status
+source_root,D:\Juegos\Playstation\Playstation 2\_forensic\PCSX2_SOURCE,ACQUIRED
+git_revision,236f67a82fd8a37b1e5c128228403fb7b89b3cd8,CONFIRMED
+source_worktree,clean,CONFIRMED
+cmake,not found,REQUIRED
+ninja,not found,REQUIRED
+clang-cl,not found,REQUIRED
+cl,not found,REQUIRED
+msbuild,not found,REQUIRED
+build_executed,no,NO
+installed_pcsx2_changed,no,NO
+production_changed,no,NO

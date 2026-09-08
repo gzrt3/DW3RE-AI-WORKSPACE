@@ -1,0 +1,13 @@
+dump,compressed_filename,decompressed_bytes,record_type,path,count,payload_bytes,notes
+190004,"Dynasty Warriors 3 - Xtreme Legends_SLUS-20617_20260905190004.gs.zst",17678776,transfer,3,12905,12136768,"confirmed container record count"
+190004,"Dynasty Warriors 3 - Xtreme Legends_SLUS-20617_20260905190004.gs.zst",17678776,vsync,,4,0,"confirmed; fields 1,0,1,0"
+190004,"Dynasty Warriors 3 - Xtreme Legends_SLUS-20617_20260905190004.gs.zst",17678776,gs_private_register_snapshot,,4,32768,"4 x 8192 bytes"
+190004,"Dynasty Warriors 3 - Xtreme Legends_SLUS-20617_20260905190004.gs.zst",17678776,readfifo2,,0,0,"not observed"
+190004,"Dynasty Warriors 3 - Xtreme Legends_SLUS-20617_20260905190004.gs.zst",17678776,gif_tag_candidate,,25342,,"heuristic bounded parse; 299 boundary cases"
+190004,"Dynasty Warriors 3 - Xtreme Legends_SLUS-20617_20260905190004.gs.zst",17678776,gif_pre_candidate,,12640,,"heuristic PRE=1 count"
+190008,"Dynasty Warriors 3 - Xtreme Legends_SLUS-20617_20260905190008.gs.zst",19874122,transfer,3,15788,14314816,"confirmed container record count"
+190008,"Dynasty Warriors 3 - Xtreme Legends_SLUS-20617_20260905190008.gs.zst",19874122,vsync,,4,0,"confirmed; fields 1,0,1,0"
+190008,"Dynasty Warriors 3 - Xtreme Legends_SLUS-20617_20260905190008.gs.zst",19874122,gs_private_register_snapshot,,4,32768,"4 x 8192 bytes"
+190008,"Dynasty Warriors 3 - Xtreme Legends_SLUS-20617_20260905190008.gs.zst",19874122,readfifo2,,0,0,"not observed"
+190008,"Dynasty Warriors 3 - Xtreme Legends_SLUS-20617_20260905190008.gs.zst",19874122,gif_tag_candidate,,30756,,"heuristic bounded parse; 368 boundary cases"
+190008,"Dynasty Warriors 3 - Xtreme Legends_SLUS-20617_20260905190008.gs.zst",19874122,gif_pre_candidate,,15256,,"heuristic PRE=1 count"

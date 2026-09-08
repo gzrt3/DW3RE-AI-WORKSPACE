@@ -1,0 +1,7 @@
+stage,status,observation
+EE PC,PARTIAL,Source exposes CPU/event execution context but no conditional 0x0033/0x0030 runtime log was produced.
+DMA1,FEASIBLE_DESIGN,Dmac.cpp dispatch and VIF1 chain expose candidate MADR/QWC points.
+VIF1,FEASIBLE_DESIGN,VIF1transfer exposes payload pointer/count/TTE.
+GIF,FEASIBLE_DESIGN,GIFchain/GIFdma expose chain and GS packet transfer.
+GS,FEASIBLE_DESIGN,GSgifTransfer exposes downstream transfer buffer/size.
+Resource1670,UNKNOWN,No PCSX2 hook can name the game resource without an EE-side address/argument correlation.

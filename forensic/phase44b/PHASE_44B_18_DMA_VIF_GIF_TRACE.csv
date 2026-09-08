@@ -1,0 +1,2 @@
+frame,ee_pc,dma_channel,source,destination,qwc,vif_opcode,gif_offset,gif_tag,prim,first_xyzf2,last_xyzf2,status
+UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,BLOCKED_NO_RUNTIME_TRACE

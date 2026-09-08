@@ -1,0 +1,11 @@
+#include "dw3re_section0_geometry.h"
+#include <cstdint>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <vector>
+static uint32_t u32(const uint8_t*p){return uint32_t(p[0])|uint32_t(p[1])<<8|uint32_t(p[2])<<16|uint32_t(p[3])<<24;}
+static uint16_t u16(const uint8_t*p){return uint16_t(p[0])|uint16_t(p[1])<<8;}
+int main(int argc,char**argv){const char*path=argc>1?argv[1]:"Musou/DW3_native_spike/original/linkdata.bns";const char*outPath=argc>2?argv[2]:"artifacts/DW3_DW4H_FORENSICS/PHASE_42_2_MULTI_ASSET_GEOMETRY.csv";struct S{int id;uint32_t sector,size;};S ss[]={{1622,129400,70092},{1626,129478,73196},{1630,129556,35744},{1670,130248,72060}};std::ofstream csv(outPath);csv<<"resource,part,part_offset,part_size,commands,op_0027,op_002e,op_002f,op_0030,op_0033,op_003c,submitted,strips,triangles,bounds,pipeline,class\n";bool any=false;
+ for(auto s:ss){std::ifstream f(path,std::ios::binary);f.seekg(uint64_t(s.sector)*2048);std::vector<uint8_t>b(s.size);f.read((char*)b.data(),b.size());dw3re::Section0Asset a;if(!dw3re::DecodeSection0(b,a)){std::cerr<<"RID="<<s.id<<" FAIL "<<a.error<<"\n";return 2;}std::cout<<"RID="<<s.id<<" PARTS="<<a.partCount<<"\n";for(size_t i=0;i<a.parts.size();++i){auto&p=a.parts[i];uint32_t c[6]{};const uint8_t*base=b.data()+0x1c+p.offset;for(uint32_t o=0;o+1<p.size;o+=32){auto op=u16(base+o);if(op==0x27)c[0]++;else if(op==0x2e)c[1]++;else if(op==0x2f)c[2]++;else if(op==0x30)c[3]++;else if(op==0x33)c[4]++;else if(op==0x3c)c[5]++;}std::string pipe=c[4]?"0x0033":(c[3]?"0x0030":"none");std::string cls=p.renderable?"GEOMETRY":(c[5]?"SOCKET_ONLY":(c[0]||c[1]||c[2]||c[3]||c[4]?"OTHER":"EMPTY"));csv<<s.id<<','<<i<<",0x"<<std::hex<<p.offset<<std::dec<<','<<p.size<<','<<p.commandCount<<','<<c[0]<<','<<c[1]<<','<<c[2]<<','<<c[3]<<','<<c[4]<<','<<c[5]<<','<<p.vertices.size()<<','<<p.stripOffsets.size()<<','<<p.indices.size()/3<<",["<<p.bounds.minX<<';'<<p.bounds.minY<<';'<<p.bounds.minZ<<" -> "<<p.bounds.maxX<<';'<<p.bounds.maxY<<';'<<p.bounds.maxZ<<"],"<<pipe<<','<<cls<<'\n';any|=p.renderable;std::cout<<"  PART="<<i<<" CLASS="<<cls<<" V="<<p.vertices.size()<<" S="<<p.stripOffsets.size()<<" T="<<p.indices.size()/3<<"\n";}}
+if(!csv.good()){std::cerr<<"CSV_WRITE=FAIL\n";return 3;}std::cout<<"CSV="<<outPath<<"\n";return any?0:4;}

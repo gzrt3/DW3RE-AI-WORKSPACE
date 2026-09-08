@@ -1,0 +1,2 @@
+status,reason
+BLOCKED,Source hook locations are identified, but no runtime GIF trace was generated.

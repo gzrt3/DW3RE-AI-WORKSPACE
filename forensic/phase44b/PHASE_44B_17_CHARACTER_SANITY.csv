@@ -1,0 +1,6 @@
+candidate,vertices,primitives,known_single_part_vertices,scale_ratio_vs_1670_part12,spatial_extent,plausible_interpretations,character_identity,confidence
+190004_CANDIDATE_0001,2680,2678,22,121.8,UNKNOWN,"multiple parts/characters/stage/effects all remain possible",UNKNOWN,[LOW]
+190004_CANDIDATE_0002,1980,659,22,90.0,UNKNOWN,"aggregate geometry or unrelated scene traffic remains possible",UNKNOWN,[LOW]
+190004_CANDIDATE_0003,2730,2728,22,124.1,UNKNOWN,"multiple parts/characters/stage/effects all remain possible",UNKNOWN,[LOW]
+190008_CANDIDATE_0001,2680,2678,22,121.8,UNKNOWN,"repeatable aggregate-scale geometry",UNKNOWN,[LOW]
+190008_CANDIDATE_0002,2730,2728,22,124.1,UNKNOWN,"repeatable aggregate-scale geometry",UNKNOWN,[LOW]

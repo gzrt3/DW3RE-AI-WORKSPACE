@@ -1,0 +1,8 @@
+item,observed_value,evidence_type,relation,status,confidence
+native_handler,0x001303E0,static ELF forensic artifact,handler for 0x0033,CONFIRMED,[HIGH CONFIDENCE]
+part12_opcode,0x0033 at known Part12 command,static Section0 artifact,command reaches documented handler in static model,CONFIRMED,[HIGH CONFIDENCE]
+handler_input_pointer,UNKNOWN,not present in current artifacts,required for runtime bridge,UNKNOWN,[UNKNOWN]
+output_buffer,UNKNOWN,not present in current artifacts,required for DMA/GIF bridge,UNKNOWN,[UNKNOWN]
+DMA_or_GIF_instance,UNKNOWN,no runtime trace,required for GS correlation,UNKNOWN,[UNKNOWN]
+GS_candidate_offset,UNKNOWN,GSDump only,downstream offset lacks upstream identity,UNKNOWN,[UNKNOWN]
+runtime_execution_correlation,UNKNOWN,no controlled runtime session,not established,UNKNOWN,[UNKNOWN]

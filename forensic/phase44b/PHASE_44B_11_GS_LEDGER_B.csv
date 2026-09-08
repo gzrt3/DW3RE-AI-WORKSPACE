@@ -1,0 +1,2 @@
+dump,vsync_index,record_range,stream_bytes,gif_tags,pre_tags,ad_writes,prim_ops,xyzf2_ops,xyz2_ops,uvst_ops,tex0_ops,parser_errors
+190008,0,"not_run",unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,unknown,not_run_after_priority_gate

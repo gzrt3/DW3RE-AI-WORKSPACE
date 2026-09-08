@@ -1,0 +1,7 @@
+signature,dump,vsync,candidate_vertices,candidate_primitives,primitive_type,TEX0,FRAME,stability,classification
+large_strip_A,190004,0,2680,2678,TRIANGLE_STRIP,0x4000000000000000,UNKNOWN,similar_count_and_type,MEDIUM
+large_strip_A,190008,0,2680,2678,TRIANGLE_STRIP,0x4000000000000000,UNKNOWN,similar_count_and_type,LOW
+large_strip_B,190004,0,2730,2728,TRIANGLE_STRIP,0x4000000000000000,UNKNOWN,similar_count_and_type,MEDIUM
+large_strip_B,190008,0,2730,2728,TRIANGLE_STRIP,0x4000000000000000,UNKNOWN,similar_count_and_type,LOW
+large_list,190004,0,1980,659,TRIANGLE_LIST,0x4000000000000000,UNKNOWN,observed_only_A,LOW
+large_list,190008,0,1980,659,TRIANGLE_LIST,0x4000000000000000,UNKNOWN,observed_only_A,LOW

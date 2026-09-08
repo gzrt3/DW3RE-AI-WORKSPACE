@@ -1,0 +1,2 @@
+dump,vsync,batch_id,gif_start_offset,gif_end_offset,primitive_type,vertex_count,primitive_count,xyz_min,xyz_max,tex0,frame,zbuf,classification,confidence
+190004,0,UNKNOWN,0,3034048,UNKNOWN,49959,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,"large geometry stream; batch boundaries unresolved",MEDIUM

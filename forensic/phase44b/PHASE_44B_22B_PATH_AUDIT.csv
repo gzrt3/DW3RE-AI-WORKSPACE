@@ -1,0 +1,12 @@
+item,value,status
+clean_physical_root,D:\\PCSX2_FORENSIC_DEPS,YES
+pcsx2_build_root,D:\\PCSX2_FORENSIC_BUILD_02,YES
+vcpkg_root,D:\\PCSX2_FORENSIC_DEPS\\vcpkg,YES
+vcpkg_install_root,D:\\PCSX2_FORENSIC_DEPS\\vcpkg\\installed,YES
+vcpkg_buildtrees_root,D:\\PCSX2_FORENSIC_DEPS\\vcpkg\\buildtrees,YES
+vcpkg_packages_root,D:\\PCSX2_FORENSIC_DEPS\\vcpkg\\packages,YES
+vcpkg_downloads_root,D:\\PCSX2_FORENSIC_DEPS\\downloads,YES
+temporary_X_drive,absent,YES
+stale_X_paths_in_clean_configure,none_observed,YES
+old_spaced_dependency_root,used_only_as_initial_download/cache source,PARTIAL
+source_path,D:\\Juegos\\Playstation\\Playstation 2\\_forensic\\PCSX2_SOURCE,contains_spaces_but_unchanged

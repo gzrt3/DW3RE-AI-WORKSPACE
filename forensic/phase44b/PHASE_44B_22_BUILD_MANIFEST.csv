@@ -1,0 +1,14 @@
+item,value,status
+source_root,D:\\Juegos\\Playstation\\Playstation 2\\_forensic\\PCSX2_SOURCE,UNCHANGED
+source_revision,236f67a82fd8a37b1e5c128228403fb7b89b3cd8,CONFIRMED
+dependency_root,D:\\Juegos\\Playstation\\Playstation 2\\_forensic\\PCSX2_DEPS,ISOLATED_PARTIAL
+generator,Visual Studio 17 2022 x64,AVAILABLE
+compiler,MSVC 19.44.35228.0,AVAILABLE
+windows_sdk,10.0.26100.0,AVAILABLE
+cmake,3.31.6-msvc6,AVAILABLE
+ninja,1.12.1 system-bundled; vcpkg used 1.13.2 internally,AVAILABLE
+configure,PARTIAL,Stopped at JPEG then dependency bootstrap path failure
+baseline_build,BLOCKED,Not executed
+executable,NONE,Not created
+forensic_hooks,NO,Confirmed
+production_changes,0,Confirmed

@@ -1,0 +1,2 @@
+status,reason
+BLOCKED,No instrumented PCSX2 runtime was built or executed; no EE events are claimed.

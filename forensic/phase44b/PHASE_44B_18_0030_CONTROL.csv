@@ -1,0 +1,7 @@
+item,observed_value,evidence_type,relation,status,confidence
+native_handler,0x00131390,static ELF forensic artifact,handler for 0x0030,CONFIRMED,[HIGH CONFIDENCE]
+known_0030_path,1670 Part3 / opcode 0x0030,static Section0/native artifact,control path documented,CONFIRMED,[HIGH CONFIDENCE]
+handler_input_pointer,UNKNOWN,not present in current artifacts,required for runtime bridge,UNKNOWN,[UNKNOWN]
+output_buffer,UNKNOWN,not present in current artifacts,required for DMA/GIF bridge,UNKNOWN,[UNKNOWN]
+path_distinction_at_GS,UNKNOWN,GSDump has no upstream path identity,0030 vs 0033 not separable downstream,UNKNOWN,[UNKNOWN]
+runtime_execution_correlation,UNKNOWN,no controlled runtime session,not established,UNKNOWN,[UNKNOWN]

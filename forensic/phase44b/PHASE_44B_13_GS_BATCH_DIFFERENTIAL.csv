@@ -1,0 +1,8 @@
+metric,190004,190008,difference_or_result,status
+actual_primitive_count,UNKNOWN,UNKNOWN,"assembly gate not passed",UNKNOWN
+actual_batch_count,UNKNOWN,UNKNOWN,"heuristic grouping rejected",UNKNOWN
+vertex_submissions_vsync0,49959,UNKNOWN,"190004 only",PARTIAL
+PRIM_register_observations,51070,UNKNOWN,"state observations, not draws",PARTIAL
+character_geometry,UNKNOWN,UNKNOWN,"no upstream identity",UNKNOWN
+Section5_selection,UNKNOWN,UNKNOWN,"not represented in GSDump",UNKNOWN
+0033_attribution,UNKNOWN,UNKNOWN,"not represented in GSDump",UNKNOWN

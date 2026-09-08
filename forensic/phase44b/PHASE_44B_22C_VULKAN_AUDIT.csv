@@ -1,0 +1,7 @@
+item,value,status
+standalone_vulkan_sdk,not found in C:\\VulkanSDK or C:\\Program Files\\VulkanSDK,NO
+vulkan_headers,D:\\PCSX2_FORENSIC_DEPS\\vcpkg\\installed\\x64-windows\\include,FOUND_VCPKG
+shaderc_headers,D:\\PCSX2_FORENSIC_DEPS\\vcpkg\\installed\\x64-windows\\include\\shaderc,FOUND_VCPKG
+shaderc_library,D:\\PCSX2_FORENSIC_DEPS\\vcpkg\\installed\\x64-windows\\lib\\shaderc.lib,FOUND_STATIC
+vulkan_loader,system/runtime availability not tested,UNKNOWN
+configure_vulkan,USE_VULKAN=ON and CMake generation succeeded,PASS
