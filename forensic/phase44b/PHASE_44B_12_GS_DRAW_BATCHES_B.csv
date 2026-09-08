@@ -1,0 +1,2 @@
+dump,vsync,batch_id,gif_start_offset,gif_end_offset,prim,primitive_type,vertex_count,xyz_count,uv_count,rgbaq_count,tex0_state,frame_state,zbuf_state,scissor_state,xyoffset_state,classification,confidence
+190008,0,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,"not processed in this partial phase",UNKNOWN

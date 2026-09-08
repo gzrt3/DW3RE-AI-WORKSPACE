@@ -1,0 +1,17 @@
+dependency,required_for,found,version,architecture,classification,action
+Qt6 Core Gui Widgets,CMake/build/runtime,YES,6.10.1,MSVC2022 x64,REQUIRED,Available
+Qt6 CoreTools GuiTools WidgetsTools LinguistTools,CMake/build,YES,6.10.1,MSVC2022 x64,REQUIRED,Available
+Qt6 SVG,Build/runtime,YES,6.10.1,MSVC2022 x64,REQUIRED,Available
+KDDockWidgets-qt6,CMake/build/runtime,NO_DEV,2.3.0 required,Expected Qt6 MSVC2022 x64,REQUIRED_MISSING,Resolve separately
+Git/Threads,CMake/build,YES,Local,Host/Windows,REQUIRED,Available
+PNG JPEG ZLIB Zstd LZ4 WebP,CMake/build/runtime,YES,Required versions satisfied,x64-windows,REQUIRED,Available in forensic vcpkg
+SDL3,CMake/build/runtime,YES,>=3.2.6,x64-windows,REQUIRED,Available
+FreeType,CMake/build/runtime,YES,>=2.10,x64-windows,REQUIRED,Available
+plutovg/plutosvg,CMake/build,YES,Required versions satisfied,x64-windows,REQUIRED,Available
+ryml,CMake/build,YES,0.16.0,x64-windows,REQUIRED,Available with documented include patch
+FFmpeg,CMake/build/runtime,YES,>=7.1,x64-windows,REQUIRED,Available
+DirectX-Headers,CMake/build,YES,>=1.618.1,x64-windows,REQUIRED,Available
+Shaderc,CMake/build,YES,Local,x64-windows,REQUIRED,Available
+Vulkan headers,Build,YES,Bundled target,x64,REQUIRED,Available; non-fatal include warning
+MSVC/Windows SDK,CMake/build,YES,19.44 / 10.0.26100.0,x64,REQUIRED,Available
+Vtune,Optional,NO,UNKNOWN,N/A,OPTIONAL,No action

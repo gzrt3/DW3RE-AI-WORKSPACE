@@ -1,0 +1,11 @@
+capability,local_evidence,status,limitation,confidence
+EE_PC,"PCSX2 1.6 debugger configuration exists; no captured runtime session",UNKNOWN,"no synchronized EE execution trace",[UNKNOWN]
+EE_memory_reads,"Pine capture script can read live memory only",PARTIAL,"not historical/resource-correlated",[LOW]
+DMA_channel_1,"DMA registers are addressable in capture script",PARTIAL,"no transfer history or Resource1670 linkage",[LOW]
+VIF1_packets,"Trace source exists but EE.VIFcodes disabled",BLOCKED,"no runtime VIF packet capture",[CONFIRMED]
+GIF_packets,"GSDump exposes path-3 payloads",PARTIAL,"no EE/DMA provenance",[CONFIRMED]
+GS_offsets,"GSDump stream offsets are available",CONFIRMED,"downstream only",[CONFIRMED]
+GS_registers,"GSDump contains GS state and transfers",CONFIRMED,"downstream only",[CONFIRMED]
+breakpoints_watchpoints,"debugger section exists but no runtime trace artifact",UNKNOWN,"not demonstrated in current installation",[UNKNOWN]
+PCSX2_trace_logs,"PCSX2_ui.ini trace categories are disabled",BLOCKED,"no usable historical trace",[CONFIRMED]
+minimum_missing,"synchronized runtime hook joining Section0/resource ID -> handler -> DMA/GIF -> GS offset",BLOCKED,"requires emulator instrumentation or live controlled trace",[CONFIRMED]

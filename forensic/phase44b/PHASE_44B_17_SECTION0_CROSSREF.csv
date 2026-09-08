@@ -1,0 +1,5 @@
+section0_asset,known_section0_geometry,known_topology,known_submitted_vertices,gs_candidate_scale,structural_match,reason,confidence
+1622_Zhao_Yun_Parts7_8,14 vertices / 10 triangles,documented Section0 topology,14,1980-2730 vertices,UNKNOWN,"GS candidates are aggregate-scale; coordinate spaces and object boundaries differ",[UNKNOWN]
+1626_Guan_Yu_Part6,14 vertices / 12 triangles,documented Section0 topology,14,1980-2730 vertices,UNKNOWN,"no direct sequence/texture/resource identity in GSDump",[UNKNOWN]
+1630_Zhang_Fei_Part4,14 vertices / 12 triangles,documented Section0 topology,14,1980-2730 vertices,UNKNOWN,"no direct sequence/texture/resource identity in GSDump",[UNKNOWN]
+1670_Lu_Bu_Part12,22 vertices / 18 triangles,documented Section0 topology,22,1980-2730 vertices,UNKNOWN,"GS candidate may aggregate many parts or unrelated scene traffic",[UNKNOWN]

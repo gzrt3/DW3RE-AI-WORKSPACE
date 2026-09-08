@@ -1,0 +1,2 @@
+dump,vsync,batch_id,primitive_type,vertex_count,primitive_count,xyzf2,xyz2,uvst,tex0,classification,confidence
+190008,0,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,"not processed after failed assembly gate",UNKNOWN

@@ -1,0 +1,5 @@
+evidence,location,observation,relation_to_gs_candidates,classification,confidence
+0033_static_handler,prior ELF forensic artifacts,"native handler 0x001303E0 documented",possible downstream architecture only,[LIKELY_SHARED_ARCHITECTURE],[LOW]
+0033_section0_opcode,prior Section0 artifacts,"0x0033 occurs in known Section0 command streams",no runtime link to dump offsets,[UNKNOWN],[UNKNOWN]
+0033_runtime_execution,not present in GSDump,"no execution trace/call instance/DMA provenance",cannot correlate,[UNKNOWN],[UNKNOWN]
+0033_to_gif_to_gs,required missing observation,"Section0→handler→buffer→GIF→candidate chain absent",not established,[UNKNOWN],[UNKNOWN]

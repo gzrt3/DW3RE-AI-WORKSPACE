@@ -1,0 +1,5 @@
+evidence,location,observation,can_distinguish_path_from_gs_dump,result,confidence
+0030_static_handler,prior ELF forensic artifacts,"native handler 0x00131390 documented",no,[UNKNOWN],[LOW]
+0030_section0_opcode,prior Section0 artifacts,"0x0030 occurs in known Section0 command streams",no,[UNKNOWN],[UNKNOWN]
+runtime_path_trace,not present in GSDump,"no EE call/DMA/VIF/VU1 provenance",no,[UNKNOWN],[UNKNOWN]
+cross_path_geometry_signature,available GS candidates,"same GS-side representation can be produced by multiple paths",no,[UNKNOWN],[UNKNOWN]

@@ -1,0 +1,14 @@
+item,value,status
+dependency_root,D:\\Juegos\\Playstation\\Playstation 2\\_forensic\\PCSX2_DEPS,ISOLATED
+package_manager,vcpkg bootstrap checkout,ISOLATED
+vcpkg_root_revision,latest shallow checkout at bootstrap time,RECORDED
+target_triplet,x64-windows,CONFIRMED
+PNG,1.6.58,INSTALLED
+ZLIB,1.3.2,INSTALLED
+FFmpeg,9.0.1,INSTALLED
+DirectX-Headers,1.619.5,INSTALLED
+glslang,16.4.0,INSTALLED
+HarfBuzz,14.4.0,FAILED
+global_installation_changed,no,CONFIRMED
+installed_pcsx2_changed,no,CONFIRMED
+production_changed,no,CONFIRMED

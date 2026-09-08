@@ -1,0 +1,2 @@
+dump,vsync,vertex_sequence,stream_offset,register,x,y,z,f,active_prim,tex0,rgbaq,primitive_id,batch_id,classification,confidence
+190004,0,UNKNOWN,UNKNOWN,XYZF2,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,"vertex submission decoded; primitive assembly blocked",MEDIUM

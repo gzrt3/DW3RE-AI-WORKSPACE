@@ -1,0 +1,11 @@
+item,value,status
+header,D:\\PCSX2_FORENSIC_DEPS\\vcpkg\\installed\\x64-windows\\include\\shaderc\\shaderc.h,FOUND
+static_library,D:\\PCSX2_FORENSIC_DEPS\\vcpkg\\installed\\x64-windows\\lib\\shaderc.lib,FOUND
+debug_static_library,D:\\PCSX2_FORENSIC_DEPS\\vcpkg\\installed\\x64-windows\\debug\\lib\\shaderc.lib,FOUND
+shared_library,shaderc_shared,NOT_FOUND
+cmake_config,not required by current FindShaderc module,UNKNOWN
+version,2026.2,FOUND
+module_expectation,shaderc/shaderc.h plus shaderc_shared(.1),CONFIRMED
+existing_layout_sufficient,no,NO
+resolution,allow shaderc static library as configure-time discovery,CMAKE_ONLY
+runtime_note,current Vulkan code dynamically loads shaderc_shared; not runtime-validated,UNKNOWN
