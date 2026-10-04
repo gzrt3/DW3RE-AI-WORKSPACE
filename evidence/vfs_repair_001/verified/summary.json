@@ -1,0 +1,59 @@
+{
+  "scope": "SYNTHETIC_EXTRACTED_FILE_CONTRACT_ONLY",
+  "source": {
+    "<workspace>\\src\\vfs\\vfs_hook.cpp": "9c391f8a5ae50471dfa2bfa834dd0cade63b09ce60cd768867fbc3e7af55e043",
+    "<workspace>\\include\\fate\\vfs\\vfs_hook.hpp": "c02fa1dd3e8d53878714e8a91ebe2f10c0c3c45a4a39109080f1958dc993267e",
+    "<workspace>\\tests\\integration\\vfs_hook_contract.cpp": "c53a0fbf0ac03db5be45ed296333cd64916547692eb7f1a1d1d592baeadcc688",
+    "<workspace>\\tools\\verify_vfs_hook.py": "b90ab99f85559da9dbdf292b03206b63607e7623f7667e77ff632b38e1ee9e1f"
+  },
+  "configurations": {
+    "Debug": {
+      "tests": {
+        "xl_is_not_base": 0,
+        "distinct_archive_identity": 0,
+        "no_invented_idx_bin": 0,
+        "missing_asset": 0,
+        "exact_and_offset_read": 0,
+        "before_first_extent": 0,
+        "after_extent": 0,
+        "cross_extent": 0,
+        "unbacked_final_sector": 0,
+        "count_overflow": 0,
+        "offset_overflow": 0,
+        "shrunk_file": 0,
+        "removed_file": 0,
+        "reinitialize_clears_previous_mount": 0,
+        "zero_sectors": 0
+      },
+      "build_exit": 0,
+      "executable_sha256": "df4b3a34419a5508b6b5c6df441e3e886139862092304f3e3e05749b5bc45c28",
+      "passed": 15,
+      "total": 15
+    },
+    "Release": {
+      "tests": {
+        "xl_is_not_base": 0,
+        "distinct_archive_identity": 0,
+        "no_invented_idx_bin": 0,
+        "missing_asset": 0,
+        "exact_and_offset_read": 0,
+        "before_first_extent": 0,
+        "after_extent": 0,
+        "cross_extent": 0,
+        "unbacked_final_sector": 0,
+        "count_overflow": 0,
+        "offset_overflow": 0,
+        "shrunk_file": 0,
+        "removed_file": 0,
+        "reinitialize_clears_previous_mount": 0,
+        "zero_sectors": 0
+      },
+      "build_exit": 0,
+      "executable_sha256": "3bdd442c1065bd79427e66188a884db5326af945f06157ace349af08b786efb6",
+      "passed": 15,
+      "total": 15
+    }
+  },
+  "configure_exit": 0,
+  "status": "PASS"
+}

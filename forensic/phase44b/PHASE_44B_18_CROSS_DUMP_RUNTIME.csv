@@ -1,5 +1,0 @@
-runtime_sequence,190004,190008,comparison,status
-Resource1670_part12_runtime_event,UNKNOWN,UNKNOWN,"no ResourceID-tagged runtime event",UNKNOWN
-0033_handler_execution,UNKNOWN,UNKNOWN,"static handler only; no execution trace",UNKNOWN
-DMA_GIF_chain,UNKNOWN,UNKNOWN,"no DMA/VIF/GIF provenance",UNKNOWN
-GS_geometry_signature,"2680/2678 and 2730/2728","2680/2678 and 2730/2728","structural repeat only; not runtime identity",PARTIAL

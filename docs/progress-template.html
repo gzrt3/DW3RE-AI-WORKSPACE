@@ -1,0 +1,61 @@
+<div id="dw3-project-progress">
+  <style>
+    #dw3-project-progress { max-width: 760px; }
+    #dw3-project-progress .progress-section { margin: 20px 0; }
+    #dw3-project-progress .progress-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+    #dw3-project-progress .phase-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+    #dw3-project-progress .coverage-list { display: grid; gap: 8px; padding-left: 20px; }
+  </style>
+  <h2>Dynasty Warriors 3 Complete Remastered</h2>
+  <div class="viz-row"><span class="viz-badge">En desarrollo</span><span class="text-small text-muted">Actualizado: {{UPDATED}}</span></div>
+  <div class="progress-section">
+    <div class="progress-heading"><span>Entrega final verificada</span><span class="tabular-nums">{{FINAL_DONE}} / 8 criterios</span></div>
+    <div class="progress" role="progressbar" aria-label="Criterios de entrega final verificados" aria-valuenow="{{FINAL_DONE}}" aria-valuemin="0" aria-valuemax="8"><div class="progress-bar" style="width:{{FINAL_WIDTH}}%"></div></div>
+    <div class="text-small text-muted">Porcentaje del trabajo total: todavía no estimable</div>
+  </div>
+  <div class="progress-section">
+    <div class="progress-heading"><span>Fases prioritarias</span><span class="tabular-nums">{{PHASE_DONE}} / 4 verificadas</span></div>
+    <div class="progress" role="progressbar" aria-label="Fases prioritarias verificadas" aria-valuenow="{{PHASE_DONE}}" aria-valuemin="0" aria-valuemax="4"><div class="progress-bar" style="width:{{PHASE_WIDTH}}%"></div></div>
+    <div class="phase-actions" aria-label="Detalle por fase">
+      <button class="btn" type="button" data-phase="0" aria-pressed="{{SELECT_0}}">{{PHASE_0}}</button>
+      <button class="btn" type="button" data-phase="1" aria-pressed="{{SELECT_1}}">{{PHASE_1}}</button>
+      <button class="btn" type="button" data-phase="2" aria-pressed="{{SELECT_2}}">{{PHASE_2}}</button>
+      <button class="btn" type="button" data-phase="3" aria-pressed="{{SELECT_3}}">{{PHASE_3}}</button>
+    </div>
+    <div id="dw3-phase-detail" aria-live="polite">{{CURRENT}}</div>
+  </div>
+  <details>
+    <summary>Qué falta para acreditar la entrega completa</summary>
+    <ul class="coverage-list">
+      {{COVERAGE}}
+    </ul>
+  </details>
+  <script type="application/json" id="dw3-progress-data">{{DATA}}</script>
+  <script>
+    (() => {
+      const root = document.getElementById('dw3-project-progress');
+      const data = JSON.parse(root.querySelector('#dw3-progress-data').textContent);
+      const detail = root.querySelector('#dw3-phase-detail');
+      const buttons = Array.from(root.querySelectorAll('[data-phase]'));
+      function selectPhase(selected) {
+        if (!Number.isInteger(selected) || selected < 0 || selected >= buttons.length) return;
+        buttons.forEach((item, index) => item.setAttribute('aria-pressed', String(index === selected)));
+        detail.textContent = data.phases[selected].detail;
+      }
+      selectPhase(window.openai?.widgetState?.privateContent?.phase);
+      window.addEventListener('openai:set_globals', event => {
+        selectPhase(event.detail?.globals?.widgetState?.privateContent?.phase);
+      });
+      for (const button of buttons) {
+        button.addEventListener('click', () => {
+          const selected = Number(button.dataset.phase);
+          selectPhase(selected);
+          window.openai?.setWidgetState?.({
+            modelContent: { selectedPhase: data.phases[selected].id },
+            privateContent: { phase: selected }
+          }).catch(() => {});
+        });
+      }
+    })();
+  </script>
+</div>

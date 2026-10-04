@@ -1,0 +1,2839 @@
+#include <stdexcept>
+#include "ps2_runtime_macros.h"
+#include "ps2_runtime.h"
+#include <ps2_recompiled_functions.h>
+#include <ps2_recompiled_stubs.h>
+
+#include "ps2_syscalls.h"
+#include "ps2_stubs.h"
+
+#ifdef PS2_FUNCTION_LOG_TRACKER
+#include "ps2_log.h"
+#endif
+
+// Function: FUN_0019b910
+// Address: 0x19b910 - 0x29b9f0
+#ifdef PS2_FUNCTION_LOG_TRACKER
+#endif
+
+
+void FUN_0019b910_part367(uint8_t* rdram, R5900Context* ctx, PS2Runtime *runtime) {
+    switch (ctx->pc) {
+        case 0x24e470u: goto label_24e470;
+        case 0x24e474u: goto label_24e474;
+        case 0x24e478u: goto label_24e478;
+        case 0x24e47cu: goto label_24e47c;
+        case 0x24e480u: goto label_24e480;
+        case 0x24e484u: goto label_24e484;
+        case 0x24e488u: goto label_24e488;
+        case 0x24e48cu: goto label_24e48c;
+        case 0x24e490u: goto label_24e490;
+        case 0x24e494u: goto label_24e494;
+        case 0x24e498u: goto label_24e498;
+        case 0x24e49cu: goto label_24e49c;
+        case 0x24e4a0u: goto label_24e4a0;
+        case 0x24e4a4u: goto label_24e4a4;
+        case 0x24e4a8u: goto label_24e4a8;
+        case 0x24e4acu: goto label_24e4ac;
+        case 0x24e4b0u: goto label_24e4b0;
+        case 0x24e4b4u: goto label_24e4b4;
+        case 0x24e4b8u: goto label_24e4b8;
+        case 0x24e4bcu: goto label_24e4bc;
+        case 0x24e4c0u: goto label_24e4c0;
+        case 0x24e4c4u: goto label_24e4c4;
+        case 0x24e4c8u: goto label_24e4c8;
+        case 0x24e4ccu: goto label_24e4cc;
+        case 0x24e4d0u: goto label_24e4d0;
+        case 0x24e4d4u: goto label_24e4d4;
+        case 0x24e4d8u: goto label_24e4d8;
+        case 0x24e4dcu: goto label_24e4dc;
+        case 0x24e4e0u: goto label_24e4e0;
+        case 0x24e4e4u: goto label_24e4e4;
+        case 0x24e4e8u: goto label_24e4e8;
+        case 0x24e4ecu: goto label_24e4ec;
+        case 0x24e4f0u: goto label_24e4f0;
+        case 0x24e4f4u: goto label_24e4f4;
+        case 0x24e4f8u: goto label_24e4f8;
+        case 0x24e4fcu: goto label_24e4fc;
+        case 0x24e500u: goto label_24e500;
+        case 0x24e504u: goto label_24e504;
+        case 0x24e508u: goto label_24e508;
+        case 0x24e50cu: goto label_24e50c;
+        case 0x24e510u: goto label_24e510;
+        case 0x24e514u: goto label_24e514;
+        case 0x24e518u: goto label_24e518;
+        case 0x24e51cu: goto label_24e51c;
+        case 0x24e520u: goto label_24e520;
+        case 0x24e524u: goto label_24e524;
+        case 0x24e528u: goto label_24e528;
+        case 0x24e52cu: goto label_24e52c;
+        case 0x24e530u: goto label_24e530;
+        case 0x24e534u: goto label_24e534;
+        case 0x24e538u: goto label_24e538;
+        case 0x24e53cu: goto label_24e53c;
+        case 0x24e540u: goto label_24e540;
+        case 0x24e544u: goto label_24e544;
+        case 0x24e548u: goto label_24e548;
+        case 0x24e54cu: goto label_24e54c;
+        case 0x24e550u: goto label_24e550;
+        case 0x24e554u: goto label_24e554;
+        case 0x24e558u: goto label_24e558;
+        case 0x24e55cu: goto label_24e55c;
+        case 0x24e560u: goto label_24e560;
+        case 0x24e564u: goto label_24e564;
+        case 0x24e568u: goto label_24e568;
+        case 0x24e56cu: goto label_24e56c;
+        case 0x24e570u: goto label_24e570;
+        case 0x24e574u: goto label_24e574;
+        case 0x24e578u: goto label_24e578;
+        case 0x24e57cu: goto label_24e57c;
+        case 0x24e580u: goto label_24e580;
+        case 0x24e584u: goto label_24e584;
+        case 0x24e588u: goto label_24e588;
+        case 0x24e58cu: goto label_24e58c;
+        case 0x24e590u: goto label_24e590;
+        case 0x24e594u: goto label_24e594;
+        case 0x24e598u: goto label_24e598;
+        case 0x24e59cu: goto label_24e59c;
+        case 0x24e5a0u: goto label_24e5a0;
+        case 0x24e5a4u: goto label_24e5a4;
+        case 0x24e5a8u: goto label_24e5a8;
+        case 0x24e5acu: goto label_24e5ac;
+        case 0x24e5b0u: goto label_24e5b0;
+        case 0x24e5b4u: goto label_24e5b4;
+        case 0x24e5b8u: goto label_24e5b8;
+        case 0x24e5bcu: goto label_24e5bc;
+        case 0x24e5c0u: goto label_24e5c0;
+        case 0x24e5c4u: goto label_24e5c4;
+        case 0x24e5c8u: goto label_24e5c8;
+        case 0x24e5ccu: goto label_24e5cc;
+        case 0x24e5d0u: goto label_24e5d0;
+        case 0x24e5d4u: goto label_24e5d4;
+        case 0x24e5d8u: goto label_24e5d8;
+        case 0x24e5dcu: goto label_24e5dc;
+        case 0x24e5e0u: goto label_24e5e0;
+        case 0x24e5e4u: goto label_24e5e4;
+        case 0x24e5e8u: goto label_24e5e8;
+        case 0x24e5ecu: goto label_24e5ec;
+        case 0x24e5f0u: goto label_24e5f0;
+        case 0x24e5f4u: goto label_24e5f4;
+        case 0x24e5f8u: goto label_24e5f8;
+        case 0x24e5fcu: goto label_24e5fc;
+        case 0x24e600u: goto label_24e600;
+        case 0x24e604u: goto label_24e604;
+        case 0x24e608u: goto label_24e608;
+        case 0x24e60cu: goto label_24e60c;
+        case 0x24e610u: goto label_24e610;
+        case 0x24e614u: goto label_24e614;
+        case 0x24e618u: goto label_24e618;
+        case 0x24e61cu: goto label_24e61c;
+        case 0x24e620u: goto label_24e620;
+        case 0x24e624u: goto label_24e624;
+        case 0x24e628u: goto label_24e628;
+        case 0x24e62cu: goto label_24e62c;
+        case 0x24e630u: goto label_24e630;
+        case 0x24e634u: goto label_24e634;
+        case 0x24e638u: goto label_24e638;
+        case 0x24e63cu: goto label_24e63c;
+        case 0x24e640u: goto label_24e640;
+        case 0x24e644u: goto label_24e644;
+        case 0x24e648u: goto label_24e648;
+        case 0x24e64cu: goto label_24e64c;
+        case 0x24e650u: goto label_24e650;
+        case 0x24e654u: goto label_24e654;
+        case 0x24e658u: goto label_24e658;
+        case 0x24e65cu: goto label_24e65c;
+        case 0x24e660u: goto label_24e660;
+        case 0x24e664u: goto label_24e664;
+        case 0x24e668u: goto label_24e668;
+        case 0x24e66cu: goto label_24e66c;
+        case 0x24e670u: goto label_24e670;
+        case 0x24e674u: goto label_24e674;
+        case 0x24e678u: goto label_24e678;
+        case 0x24e67cu: goto label_24e67c;
+        case 0x24e680u: goto label_24e680;
+        case 0x24e684u: goto label_24e684;
+        case 0x24e688u: goto label_24e688;
+        case 0x24e68cu: goto label_24e68c;
+        case 0x24e690u: goto label_24e690;
+        case 0x24e694u: goto label_24e694;
+        case 0x24e698u: goto label_24e698;
+        case 0x24e69cu: goto label_24e69c;
+        case 0x24e6a0u: goto label_24e6a0;
+        case 0x24e6a4u: goto label_24e6a4;
+        case 0x24e6a8u: goto label_24e6a8;
+        case 0x24e6acu: goto label_24e6ac;
+        case 0x24e6b0u: goto label_24e6b0;
+        case 0x24e6b4u: goto label_24e6b4;
+        case 0x24e6b8u: goto label_24e6b8;
+        case 0x24e6bcu: goto label_24e6bc;
+        case 0x24e6c0u: goto label_24e6c0;
+        case 0x24e6c4u: goto label_24e6c4;
+        case 0x24e6c8u: goto label_24e6c8;
+        case 0x24e6ccu: goto label_24e6cc;
+        case 0x24e6d0u: goto label_24e6d0;
+        case 0x24e6d4u: goto label_24e6d4;
+        case 0x24e6d8u: goto label_24e6d8;
+        case 0x24e6dcu: goto label_24e6dc;
+        case 0x24e6e0u: goto label_24e6e0;
+        case 0x24e6e4u: goto label_24e6e4;
+        case 0x24e6e8u: goto label_24e6e8;
+        case 0x24e6ecu: goto label_24e6ec;
+        case 0x24e6f0u: goto label_24e6f0;
+        case 0x24e6f4u: goto label_24e6f4;
+        case 0x24e6f8u: goto label_24e6f8;
+        case 0x24e6fcu: goto label_24e6fc;
+        case 0x24e700u: goto label_24e700;
+        case 0x24e704u: goto label_24e704;
+        case 0x24e708u: goto label_24e708;
+        case 0x24e70cu: goto label_24e70c;
+        case 0x24e710u: goto label_24e710;
+        case 0x24e714u: goto label_24e714;
+        case 0x24e718u: goto label_24e718;
+        case 0x24e71cu: goto label_24e71c;
+        case 0x24e720u: goto label_24e720;
+        case 0x24e724u: goto label_24e724;
+        case 0x24e728u: goto label_24e728;
+        case 0x24e72cu: goto label_24e72c;
+        case 0x24e730u: goto label_24e730;
+        case 0x24e734u: goto label_24e734;
+        case 0x24e738u: goto label_24e738;
+        case 0x24e73cu: goto label_24e73c;
+        case 0x24e740u: goto label_24e740;
+        case 0x24e744u: goto label_24e744;
+        case 0x24e748u: goto label_24e748;
+        case 0x24e74cu: goto label_24e74c;
+        case 0x24e750u: goto label_24e750;
+        case 0x24e754u: goto label_24e754;
+        case 0x24e758u: goto label_24e758;
+        case 0x24e75cu: goto label_24e75c;
+        case 0x24e760u: goto label_24e760;
+        case 0x24e764u: goto label_24e764;
+        case 0x24e768u: goto label_24e768;
+        case 0x24e76cu: goto label_24e76c;
+        case 0x24e770u: goto label_24e770;
+        case 0x24e774u: goto label_24e774;
+        case 0x24e778u: goto label_24e778;
+        case 0x24e77cu: goto label_24e77c;
+        case 0x24e780u: goto label_24e780;
+        case 0x24e784u: goto label_24e784;
+        case 0x24e788u: goto label_24e788;
+        case 0x24e78cu: goto label_24e78c;
+        case 0x24e790u: goto label_24e790;
+        case 0x24e794u: goto label_24e794;
+        case 0x24e798u: goto label_24e798;
+        case 0x24e79cu: goto label_24e79c;
+        case 0x24e7a0u: goto label_24e7a0;
+        case 0x24e7a4u: goto label_24e7a4;
+        case 0x24e7a8u: goto label_24e7a8;
+        case 0x24e7acu: goto label_24e7ac;
+        case 0x24e7b0u: goto label_24e7b0;
+        case 0x24e7b4u: goto label_24e7b4;
+        case 0x24e7b8u: goto label_24e7b8;
+        case 0x24e7bcu: goto label_24e7bc;
+        case 0x24e7c0u: goto label_24e7c0;
+        case 0x24e7c4u: goto label_24e7c4;
+        case 0x24e7c8u: goto label_24e7c8;
+        case 0x24e7ccu: goto label_24e7cc;
+        case 0x24e7d0u: goto label_24e7d0;
+        case 0x24e7d4u: goto label_24e7d4;
+        case 0x24e7d8u: goto label_24e7d8;
+        case 0x24e7dcu: goto label_24e7dc;
+        case 0x24e7e0u: goto label_24e7e0;
+        case 0x24e7e4u: goto label_24e7e4;
+        case 0x24e7e8u: goto label_24e7e8;
+        case 0x24e7ecu: goto label_24e7ec;
+        case 0x24e7f0u: goto label_24e7f0;
+        case 0x24e7f4u: goto label_24e7f4;
+        case 0x24e7f8u: goto label_24e7f8;
+        case 0x24e7fcu: goto label_24e7fc;
+        case 0x24e800u: goto label_24e800;
+        case 0x24e804u: goto label_24e804;
+        case 0x24e808u: goto label_24e808;
+        case 0x24e80cu: goto label_24e80c;
+        case 0x24e810u: goto label_24e810;
+        case 0x24e814u: goto label_24e814;
+        case 0x24e818u: goto label_24e818;
+        case 0x24e81cu: goto label_24e81c;
+        case 0x24e820u: goto label_24e820;
+        case 0x24e824u: goto label_24e824;
+        case 0x24e828u: goto label_24e828;
+        case 0x24e82cu: goto label_24e82c;
+        case 0x24e830u: goto label_24e830;
+        case 0x24e834u: goto label_24e834;
+        case 0x24e838u: goto label_24e838;
+        case 0x24e83cu: goto label_24e83c;
+        case 0x24e840u: goto label_24e840;
+        case 0x24e844u: goto label_24e844;
+        case 0x24e848u: goto label_24e848;
+        case 0x24e84cu: goto label_24e84c;
+        case 0x24e850u: goto label_24e850;
+        case 0x24e854u: goto label_24e854;
+        case 0x24e858u: goto label_24e858;
+        case 0x24e85cu: goto label_24e85c;
+        case 0x24e860u: goto label_24e860;
+        case 0x24e864u: goto label_24e864;
+        case 0x24e868u: goto label_24e868;
+        case 0x24e86cu: goto label_24e86c;
+        case 0x24e870u: goto label_24e870;
+        case 0x24e874u: goto label_24e874;
+        case 0x24e878u: goto label_24e878;
+        case 0x24e87cu: goto label_24e87c;
+        case 0x24e880u: goto label_24e880;
+        case 0x24e884u: goto label_24e884;
+        case 0x24e888u: goto label_24e888;
+        case 0x24e88cu: goto label_24e88c;
+        case 0x24e890u: goto label_24e890;
+        case 0x24e894u: goto label_24e894;
+        case 0x24e898u: goto label_24e898;
+        case 0x24e89cu: goto label_24e89c;
+        case 0x24e8a0u: goto label_24e8a0;
+        case 0x24e8a4u: goto label_24e8a4;
+        case 0x24e8a8u: goto label_24e8a8;
+        case 0x24e8acu: goto label_24e8ac;
+        case 0x24e8b0u: goto label_24e8b0;
+        case 0x24e8b4u: goto label_24e8b4;
+        case 0x24e8b8u: goto label_24e8b8;
+        case 0x24e8bcu: goto label_24e8bc;
+        case 0x24e8c0u: goto label_24e8c0;
+        case 0x24e8c4u: goto label_24e8c4;
+        case 0x24e8c8u: goto label_24e8c8;
+        case 0x24e8ccu: goto label_24e8cc;
+        case 0x24e8d0u: goto label_24e8d0;
+        case 0x24e8d4u: goto label_24e8d4;
+        case 0x24e8d8u: goto label_24e8d8;
+        case 0x24e8dcu: goto label_24e8dc;
+        case 0x24e8e0u: goto label_24e8e0;
+        case 0x24e8e4u: goto label_24e8e4;
+        case 0x24e8e8u: goto label_24e8e8;
+        case 0x24e8ecu: goto label_24e8ec;
+        case 0x24e8f0u: goto label_24e8f0;
+        case 0x24e8f4u: goto label_24e8f4;
+        case 0x24e8f8u: goto label_24e8f8;
+        case 0x24e8fcu: goto label_24e8fc;
+        case 0x24e900u: goto label_24e900;
+        case 0x24e904u: goto label_24e904;
+        case 0x24e908u: goto label_24e908;
+        case 0x24e90cu: goto label_24e90c;
+        case 0x24e910u: goto label_24e910;
+        case 0x24e914u: goto label_24e914;
+        case 0x24e918u: goto label_24e918;
+        case 0x24e91cu: goto label_24e91c;
+        case 0x24e920u: goto label_24e920;
+        case 0x24e924u: goto label_24e924;
+        case 0x24e928u: goto label_24e928;
+        case 0x24e92cu: goto label_24e92c;
+        case 0x24e930u: goto label_24e930;
+        case 0x24e934u: goto label_24e934;
+        case 0x24e938u: goto label_24e938;
+        case 0x24e93cu: goto label_24e93c;
+        case 0x24e940u: goto label_24e940;
+        case 0x24e944u: goto label_24e944;
+        case 0x24e948u: goto label_24e948;
+        case 0x24e94cu: goto label_24e94c;
+        case 0x24e950u: goto label_24e950;
+        case 0x24e954u: goto label_24e954;
+        case 0x24e958u: goto label_24e958;
+        case 0x24e95cu: goto label_24e95c;
+        case 0x24e960u: goto label_24e960;
+        case 0x24e964u: goto label_24e964;
+        case 0x24e968u: goto label_24e968;
+        case 0x24e96cu: goto label_24e96c;
+        case 0x24e970u: goto label_24e970;
+        case 0x24e974u: goto label_24e974;
+        case 0x24e978u: goto label_24e978;
+        case 0x24e97cu: goto label_24e97c;
+        case 0x24e980u: goto label_24e980;
+        case 0x24e984u: goto label_24e984;
+        case 0x24e988u: goto label_24e988;
+        case 0x24e98cu: goto label_24e98c;
+        case 0x24e990u: goto label_24e990;
+        case 0x24e994u: goto label_24e994;
+        case 0x24e998u: goto label_24e998;
+        case 0x24e99cu: goto label_24e99c;
+        case 0x24e9a0u: goto label_24e9a0;
+        case 0x24e9a4u: goto label_24e9a4;
+        case 0x24e9a8u: goto label_24e9a8;
+        case 0x24e9acu: goto label_24e9ac;
+        case 0x24e9b0u: goto label_24e9b0;
+        case 0x24e9b4u: goto label_24e9b4;
+        case 0x24e9b8u: goto label_24e9b8;
+        case 0x24e9bcu: goto label_24e9bc;
+        case 0x24e9c0u: goto label_24e9c0;
+        case 0x24e9c4u: goto label_24e9c4;
+        case 0x24e9c8u: goto label_24e9c8;
+        case 0x24e9ccu: goto label_24e9cc;
+        case 0x24e9d0u: goto label_24e9d0;
+        case 0x24e9d4u: goto label_24e9d4;
+        case 0x24e9d8u: goto label_24e9d8;
+        case 0x24e9dcu: goto label_24e9dc;
+        case 0x24e9e0u: goto label_24e9e0;
+        case 0x24e9e4u: goto label_24e9e4;
+        case 0x24e9e8u: goto label_24e9e8;
+        case 0x24e9ecu: goto label_24e9ec;
+        case 0x24e9f0u: goto label_24e9f0;
+        case 0x24e9f4u: goto label_24e9f4;
+        case 0x24e9f8u: goto label_24e9f8;
+        case 0x24e9fcu: goto label_24e9fc;
+        case 0x24ea00u: goto label_24ea00;
+        case 0x24ea04u: goto label_24ea04;
+        case 0x24ea08u: goto label_24ea08;
+        case 0x24ea0cu: goto label_24ea0c;
+        case 0x24ea10u: goto label_24ea10;
+        case 0x24ea14u: goto label_24ea14;
+        case 0x24ea18u: goto label_24ea18;
+        case 0x24ea1cu: goto label_24ea1c;
+        case 0x24ea20u: goto label_24ea20;
+        case 0x24ea24u: goto label_24ea24;
+        case 0x24ea28u: goto label_24ea28;
+        case 0x24ea2cu: goto label_24ea2c;
+        case 0x24ea30u: goto label_24ea30;
+        case 0x24ea34u: goto label_24ea34;
+        case 0x24ea38u: goto label_24ea38;
+        case 0x24ea3cu: goto label_24ea3c;
+        case 0x24ea40u: goto label_24ea40;
+        case 0x24ea44u: goto label_24ea44;
+        case 0x24ea48u: goto label_24ea48;
+        case 0x24ea4cu: goto label_24ea4c;
+        case 0x24ea50u: goto label_24ea50;
+        case 0x24ea54u: goto label_24ea54;
+        case 0x24ea58u: goto label_24ea58;
+        case 0x24ea5cu: goto label_24ea5c;
+        case 0x24ea60u: goto label_24ea60;
+        case 0x24ea64u: goto label_24ea64;
+        case 0x24ea68u: goto label_24ea68;
+        case 0x24ea6cu: goto label_24ea6c;
+        case 0x24ea70u: goto label_24ea70;
+        case 0x24ea74u: goto label_24ea74;
+        case 0x24ea78u: goto label_24ea78;
+        case 0x24ea7cu: goto label_24ea7c;
+        case 0x24ea80u: goto label_24ea80;
+        case 0x24ea84u: goto label_24ea84;
+        case 0x24ea88u: goto label_24ea88;
+        case 0x24ea8cu: goto label_24ea8c;
+        case 0x24ea90u: goto label_24ea90;
+        case 0x24ea94u: goto label_24ea94;
+        case 0x24ea98u: goto label_24ea98;
+        case 0x24ea9cu: goto label_24ea9c;
+        case 0x24eaa0u: goto label_24eaa0;
+        case 0x24eaa4u: goto label_24eaa4;
+        case 0x24eaa8u: goto label_24eaa8;
+        case 0x24eaacu: goto label_24eaac;
+        case 0x24eab0u: goto label_24eab0;
+        case 0x24eab4u: goto label_24eab4;
+        case 0x24eab8u: goto label_24eab8;
+        case 0x24eabcu: goto label_24eabc;
+        case 0x24eac0u: goto label_24eac0;
+        case 0x24eac4u: goto label_24eac4;
+        case 0x24eac8u: goto label_24eac8;
+        case 0x24eaccu: goto label_24eacc;
+        case 0x24ead0u: goto label_24ead0;
+        case 0x24ead4u: goto label_24ead4;
+        case 0x24ead8u: goto label_24ead8;
+        case 0x24eadcu: goto label_24eadc;
+        case 0x24eae0u: goto label_24eae0;
+        case 0x24eae4u: goto label_24eae4;
+        case 0x24eae8u: goto label_24eae8;
+        case 0x24eaecu: goto label_24eaec;
+        case 0x24eaf0u: goto label_24eaf0;
+        case 0x24eaf4u: goto label_24eaf4;
+        case 0x24eaf8u: goto label_24eaf8;
+        case 0x24eafcu: goto label_24eafc;
+        case 0x24eb00u: goto label_24eb00;
+        case 0x24eb04u: goto label_24eb04;
+        case 0x24eb08u: goto label_24eb08;
+        case 0x24eb0cu: goto label_24eb0c;
+        case 0x24eb10u: goto label_24eb10;
+        case 0x24eb14u: goto label_24eb14;
+        case 0x24eb18u: goto label_24eb18;
+        case 0x24eb1cu: goto label_24eb1c;
+        case 0x24eb20u: goto label_24eb20;
+        case 0x24eb24u: goto label_24eb24;
+        case 0x24eb28u: goto label_24eb28;
+        case 0x24eb2cu: goto label_24eb2c;
+        case 0x24eb30u: goto label_24eb30;
+        case 0x24eb34u: goto label_24eb34;
+        case 0x24eb38u: goto label_24eb38;
+        case 0x24eb3cu: goto label_24eb3c;
+        case 0x24eb40u: goto label_24eb40;
+        case 0x24eb44u: goto label_24eb44;
+        case 0x24eb48u: goto label_24eb48;
+        case 0x24eb4cu: goto label_24eb4c;
+        case 0x24eb50u: goto label_24eb50;
+        case 0x24eb54u: goto label_24eb54;
+        case 0x24eb58u: goto label_24eb58;
+        case 0x24eb5cu: goto label_24eb5c;
+        case 0x24eb60u: goto label_24eb60;
+        case 0x24eb64u: goto label_24eb64;
+        case 0x24eb68u: goto label_24eb68;
+        case 0x24eb6cu: goto label_24eb6c;
+        case 0x24eb70u: goto label_24eb70;
+        case 0x24eb74u: goto label_24eb74;
+        case 0x24eb78u: goto label_24eb78;
+        case 0x24eb7cu: goto label_24eb7c;
+        case 0x24eb80u: goto label_24eb80;
+        case 0x24eb84u: goto label_24eb84;
+        case 0x24eb88u: goto label_24eb88;
+        case 0x24eb8cu: goto label_24eb8c;
+        case 0x24eb90u: goto label_24eb90;
+        case 0x24eb94u: goto label_24eb94;
+        case 0x24eb98u: goto label_24eb98;
+        case 0x24eb9cu: goto label_24eb9c;
+        case 0x24eba0u: goto label_24eba0;
+        case 0x24eba4u: goto label_24eba4;
+        case 0x24eba8u: goto label_24eba8;
+        case 0x24ebacu: goto label_24ebac;
+        case 0x24ebb0u: goto label_24ebb0;
+        case 0x24ebb4u: goto label_24ebb4;
+        case 0x24ebb8u: goto label_24ebb8;
+        case 0x24ebbcu: goto label_24ebbc;
+        case 0x24ebc0u: goto label_24ebc0;
+        case 0x24ebc4u: goto label_24ebc4;
+        case 0x24ebc8u: goto label_24ebc8;
+        case 0x24ebccu: goto label_24ebcc;
+        case 0x24ebd0u: goto label_24ebd0;
+        case 0x24ebd4u: goto label_24ebd4;
+        case 0x24ebd8u: goto label_24ebd8;
+        case 0x24ebdcu: goto label_24ebdc;
+        case 0x24ebe0u: goto label_24ebe0;
+        case 0x24ebe4u: goto label_24ebe4;
+        case 0x24ebe8u: goto label_24ebe8;
+        case 0x24ebecu: goto label_24ebec;
+        case 0x24ebf0u: goto label_24ebf0;
+        case 0x24ebf4u: goto label_24ebf4;
+        case 0x24ebf8u: goto label_24ebf8;
+        case 0x24ebfcu: goto label_24ebfc;
+        case 0x24ec00u: goto label_24ec00;
+        case 0x24ec04u: goto label_24ec04;
+        case 0x24ec08u: goto label_24ec08;
+        case 0x24ec0cu: goto label_24ec0c;
+        case 0x24ec10u: goto label_24ec10;
+        case 0x24ec14u: goto label_24ec14;
+        case 0x24ec18u: goto label_24ec18;
+        case 0x24ec1cu: goto label_24ec1c;
+        case 0x24ec20u: goto label_24ec20;
+        case 0x24ec24u: goto label_24ec24;
+        case 0x24ec28u: goto label_24ec28;
+        case 0x24ec2cu: goto label_24ec2c;
+        case 0x24ec30u: goto label_24ec30;
+        case 0x24ec34u: goto label_24ec34;
+        case 0x24ec38u: goto label_24ec38;
+        case 0x24ec3cu: goto label_24ec3c;
+        default: return;
+    }
+
+label_24e470:
+    // 0x24e470: 0x0  nop
+    ctx->pc = 0x24e470u;
+    // NOP
+label_24e474:
+    // 0x24e474: 0xc1880000  ll          $t0, 0x0($t4)
+    ctx->pc = 0x24e474u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e478:
+    // 0x24e478: 0x0  nop
+    ctx->pc = 0x24e478u;
+    // NOP
+label_24e47c:
+    // 0x24e47c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x24e47cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_24e480:
+    // 0x24e480: 0x42640000  .word       0x42640000                   # INVALID     $s3, $a0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e480u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x13 at 0x24E480 raw=0x42640000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e484:
+    // 0x24e484: 0x41880000  .word       0x41880000                   # INVALID     $t4, $t0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e484u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xC at 0x24E484 raw=0x41880000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e488:
+    // 0x24e488: 0x40000000  mfc0        $zero, Index
+    ctx->pc = 0x24e488u;
+    SET_GPR_S32(ctx, 0, (int32_t)ctx->cop0_index);
+label_24e48c:
+    // 0x24e48c: 0x41400000  .word       0x41400000                   # INVALID     $t2, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e48cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xA at 0x24E48C raw=0x41400000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e490:
+    // 0x24e490: 0x0  nop
+    ctx->pc = 0x24e490u;
+    // NOP
+label_24e494:
+    // 0x24e494: 0x41800000  .word       0x41800000                   # INVALID     $t4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e494u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xC at 0x24E494 raw=0x41800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e498:
+    // 0x24e498: 0x0  nop
+    ctx->pc = 0x24e498u;
+    // NOP
+label_24e49c:
+    // 0x24e49c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x24e49cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_24e4a0:
+    // 0x24e4a0: 0x42680000  .word       0x42680000                   # INVALID     $s3, $t0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e4a0u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x13 at 0x24E4A0 raw=0x42680000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e4a4:
+    // 0x24e4a4: 0x41800000  .word       0x41800000                   # INVALID     $t4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e4a4u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xC at 0x24E4A4 raw=0x41800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e4a8:
+    // 0x24e4a8: 0x40000000  mfc0        $zero, Index
+    ctx->pc = 0x24e4a8u;
+    SET_GPR_S32(ctx, 0, (int32_t)ctx->cop0_index);
+label_24e4ac:
+    // 0x24e4ac: 0x41400000  .word       0x41400000                   # INVALID     $t2, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e4acu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xA at 0x24E4AC raw=0x41400000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e4b0:
+    // 0x24e4b0: 0x0  nop
+    ctx->pc = 0x24e4b0u;
+    // NOP
+label_24e4b4:
+    // 0x24e4b4: 0x0  nop
+    ctx->pc = 0x24e4b4u;
+    // NOP
+label_24e4b8:
+    // 0x24e4b8: 0x0  nop
+    ctx->pc = 0x24e4b8u;
+    // NOP
+label_24e4bc:
+    // 0x24e4bc: 0x0  nop
+    ctx->pc = 0x24e4bcu;
+    // NOP
+label_24e4c0:
+    // 0x24e4c0: 0x0  nop
+    ctx->pc = 0x24e4c0u;
+    // NOP
+label_24e4c4:
+    // 0x24e4c4: 0x0  nop
+    ctx->pc = 0x24e4c4u;
+    // NOP
+label_24e4c8:
+    // 0x24e4c8: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e4c8u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e4cc:
+    // 0x24e4cc: 0xc1800000  ll          $zero, 0x0($t4)
+    ctx->pc = 0x24e4ccu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e4d0:
+    // 0x24e4d0: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24e4d0u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e4d4:
+    // 0x24e4d4: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e4d4u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E4D4 raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e4d8:
+    // 0x24e4d8: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e4d8u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E4D8 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e4dc:
+    // 0x24e4dc: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e4dcu;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E4DC raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e4e0:
+    // 0x24e4e0: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e4e0u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e4e4:
+    // 0x24e4e4: 0xc1800000  ll          $zero, 0x0($t4)
+    ctx->pc = 0x24e4e4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e4e8:
+    // 0x24e4e8: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24e4e8u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e4ec:
+    // 0x24e4ec: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e4ecu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E4EC raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e4f0:
+    // 0x24e4f0: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e4f0u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E4F0 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e4f4:
+    // 0x24e4f4: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e4f4u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E4F4 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e4f8:
+    // 0x24e4f8: 0xc0800000  ll          $zero, 0x0($a0)
+    ctx->pc = 0x24e4f8u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e4fc:
+    // 0x24e4fc: 0xc1b80000  ll          $t8, 0x0($t5)
+    ctx->pc = 0x24e4fcu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 24, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e500:
+    // 0x24e500: 0xc1100000  ll          $s0, 0x0($t0)
+    ctx->pc = 0x24e500u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e504:
+    // 0x24e504: 0x42840000  .word       0x42840000                   # INVALID     $s4, $a0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e504u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E504 raw=0x42840000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e508:
+    // 0x24e508: 0x42100000  .word       0x42100000                   # INVALID     $s0, $s0, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e508u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E508 raw=0x42100000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e50c:
+    // 0x24e50c: 0x41600000  .word       0x41600000                   # INVALID     $t3, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e50cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xB at 0x24E50C raw=0x41600000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e510:
+    // 0x24e510: 0xc0800000  ll          $zero, 0x0($a0)
+    ctx->pc = 0x24e510u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e514:
+    // 0x24e514: 0xc1900000  ll          $s0, 0x0($t4)
+    ctx->pc = 0x24e514u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e518:
+    // 0x24e518: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e518u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e51c:
+    // 0x24e51c: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e51cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E51C raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e520:
+    // 0x24e520: 0x42340000  .word       0x42340000                   # INVALID     $s1, $s4, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e520u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x11 at 0x24E520 raw=0x42340000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e524:
+    // 0x24e524: 0x41d80000  .word       0x41D80000                   # INVALID     $t6, $t8, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e524u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xE at 0x24E524 raw=0x41D80000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e528:
+    // 0x24e528: 0xc1e80000  ll          $t0, 0x0($t7)
+    ctx->pc = 0x24e528u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 15), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e52c:
+    // 0x24e52c: 0xc1500000  ll          $s0, 0x0($t2)
+    ctx->pc = 0x24e52cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 10), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e530:
+    // 0x24e530: 0xc2e00000  ll          $zero, 0x0($s7)
+    ctx->pc = 0x24e530u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 23), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e534:
+    // 0x24e534: 0x42cc0000  .word       0x42CC0000                   # INVALID     $s6, $t4, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e534u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x16 at 0x24E534 raw=0x42CC0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e538:
+    // 0x24e538: 0x42a60000  .word       0x42A60000                   # INVALID     $s5, $a2, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e538u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x15 at 0x24E538 raw=0x42A60000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e53c:
+    // 0x24e53c: 0x43250000  .word       0x43250000                   # INVALID     $t9, $a1, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e53cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x19 at 0x24E53C raw=0x43250000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e540:
+    // 0x24e540: 0xc0a00000  ll          $zero, 0x0($a1)
+    ctx->pc = 0x24e540u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 5), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e544:
+    // 0x24e544: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e544u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e548:
+    // 0x24e548: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24e548u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e54c:
+    // 0x24e54c: 0x420c0000  .word       0x420C0000                   # INVALID     $s0, $t4, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e54cu;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E54C raw=0x420C0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e550:
+    // 0x24e550: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e550u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E550 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e554:
+    // 0x24e554: 0x42480000  .word       0x42480000                   # INVALID     $s2, $t0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e554u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x12 at 0x24E554 raw=0x42480000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e558:
+    // 0x24e558: 0x42e9c7ae  .word       0x42E9C7AE                   # INVALID     $s7, $t1, -0x3852 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e558u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x17 at 0x24E558 raw=0x42E9C7AE"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e55c:
+    // 0x24e55c: 0x30005  .word       0x00030005                   # INVALID     $zero, $v1, 0x5 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e55cu;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x5 at 0x24E55C raw=0x00030005"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e560:
+    // 0x24e560: 0x20000  sll         $zero, $v0, 0
+    ctx->pc = 0x24e560u;
+    
+label_24e564:
+    // 0x24e564: 0xfc00b3  tltu        $a3, $gp, 2
+    ctx->pc = 0x24e564u;
+    if (GPR_U64(ctx, 7) < GPR_U64(ctx, 28)) { runtime->handleTrap(rdram, ctx); }
+label_24e568:
+    // 0x24e568: 0x720072  tlt         $v1, $s2, 1
+    ctx->pc = 0x24e568u;
+    if (GPR_S64(ctx, 3) < GPR_S64(ctx, 18)) { runtime->handleTrap(rdram, ctx); }
+label_24e56c:
+    // 0x24e56c: 0x1240124  .word       0x01240124                   # and         $zero, $t1, $a0 # 00000100 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e56cu;
+    SET_GPR_U64(ctx, 0, GPR_U64(ctx, 9) & GPR_U64(ctx, 4));
+label_24e570:
+    // 0x24e570: 0xc2d0c2d  jal         func_B430B4
+label_24e574:
+    if (ctx->pc == 0x24E574u) {
+        ctx->pc = 0x24E574u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x24E570u;
+        // 0x24e574: 0xc2d0c2d  jal         func_B430B4 (Delay Slot)
+        // JAL 0xB430B4 - Handled by branch logic
+        ctx->in_delay_slot = false;
+        ctx->pc = 0x24E578u;
+        goto label_24e578;
+    }
+    ctx->pc = 0x24E570u;
+    SET_GPR_U32(ctx, 31, 0x24E578u);
+    ctx->pc = 0x24E574u;
+    ctx->in_delay_slot = true;
+    ctx->branch_pc = 0x24E570u;
+    // 0x24e574: 0xc2d0c2d  jal         func_B430B4 (Delay Slot)
+    // JAL 0xB430B4 - Handled by branch logic
+    ctx->in_delay_slot = false;
+    ctx->pc = 0xB430B4u;
+    if (!runtime->dispatchGuestBranch(rdram, ctx, 0xB430B4u, 0x24E570u, 0x24E578u, PS2Runtime::GuestBranchKind::DirectCall, "JAL")) {
+        return;
+    }
+    ctx->pc = 0x24E578u;
+label_24e578:
+    // 0x24e578: 0xc2d  .word       0x00000C2D                   # daddu       $at, $zero, $zero # 00000400 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e578u;
+    SET_GPR_U64(ctx, 1, (uint64_t)GPR_U64(ctx, 0) + (uint64_t)GPR_U64(ctx, 0));
+label_24e57c:
+    // 0x24e57c: 0x10000  sll         $zero, $at, 0
+    ctx->pc = 0x24e57cu;
+    
+label_24e580:
+    // 0x24e580: 0x41f00000  .word       0x41F00000                   # INVALID     $t7, $s0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e580u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xF at 0x24E580 raw=0x41F00000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e584:
+    // 0x24e584: 0x42080000  .word       0x42080000                   # INVALID     $s0, $t0, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e584u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E584 raw=0x42080000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e588:
+    // 0x24e588: 0x0  nop
+    ctx->pc = 0x24e588u;
+    // NOP
+label_24e58c:
+    // 0x24e58c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x24e58cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_24e590:
+    // 0x24e590: 0x42f00000  .word       0x42F00000                   # INVALID     $s7, $s0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e590u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x17 at 0x24E590 raw=0x42F00000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e594:
+    // 0x24e594: 0x42080000  .word       0x42080000                   # INVALID     $s0, $t0, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e594u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E594 raw=0x42080000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e598:
+    // 0x24e598: 0x40c00000  ctc0        $zero, Index
+    ctx->pc = 0x24e598u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x6 at 0x24E598 raw=0x40C00000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e59c:
+    // 0x24e59c: 0x41000000  bc0f        . + 4 + (0x0 << 2)
+label_24e5a0:
+    if (ctx->pc == 0x24E5A0u) {
+        ctx->pc = 0x24E5A4u;
+        goto label_24e5a4;
+    }
+    ctx->pc = 0x24E59Cu;
+    {
+        const bool branch_taken_0x24e59c = (false);
+        if (branch_taken_0x24e59c) {
+            ctx->pc = 0x24E5A0u;
+            goto label_24e5a0;
+        }
+    }
+    ctx->pc = 0x24E5A4u;
+label_24e5a4:
+    // 0x24e5a4: 0xc1a00000  ll          $zero, 0x0($t5)
+    ctx->pc = 0x24e5a4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e5a8:
+    // 0x24e5a8: 0x0  nop
+    ctx->pc = 0x24e5a8u;
+    // NOP
+label_24e5ac:
+    // 0x24e5ac: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x24e5acu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_24e5b0:
+    // 0x24e5b0: 0x42a00000  .word       0x42A00000                   # INVALID     $s5, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e5b0u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x15 at 0x24E5B0 raw=0x42A00000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e5b4:
+    // 0x24e5b4: 0x41a00000  .word       0x41A00000                   # INVALID     $t5, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e5b4u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xD at 0x24E5B4 raw=0x41A00000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e5b8:
+    // 0x24e5b8: 0x40800000  mtc0        $zero, Index
+    ctx->pc = 0x24e5b8u;
+    ctx->cop0_index = GPR_U32(ctx, 0) & 0x3F;
+label_24e5bc:
+    // 0x24e5bc: 0x40c00000  ctc0        $zero, Index
+    ctx->pc = 0x24e5bcu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x6 at 0x24E5BC raw=0x40C00000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e5c0:
+    // 0x24e5c0: 0x0  nop
+    ctx->pc = 0x24e5c0u;
+    // NOP
+label_24e5c4:
+    // 0x24e5c4: 0x0  nop
+    ctx->pc = 0x24e5c4u;
+    // NOP
+label_24e5c8:
+    // 0x24e5c8: 0x0  nop
+    ctx->pc = 0x24e5c8u;
+    // NOP
+label_24e5cc:
+    // 0x24e5cc: 0x0  nop
+    ctx->pc = 0x24e5ccu;
+    // NOP
+label_24e5d0:
+    // 0x24e5d0: 0x0  nop
+    ctx->pc = 0x24e5d0u;
+    // NOP
+label_24e5d4:
+    // 0x24e5d4: 0x0  nop
+    ctx->pc = 0x24e5d4u;
+    // NOP
+label_24e5d8:
+    // 0x24e5d8: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e5d8u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e5dc:
+    // 0x24e5dc: 0xc1800000  ll          $zero, 0x0($t4)
+    ctx->pc = 0x24e5dcu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e5e0:
+    // 0x24e5e0: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24e5e0u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e5e4:
+    // 0x24e5e4: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e5e4u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E5E4 raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e5e8:
+    // 0x24e5e8: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e5e8u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E5E8 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e5ec:
+    // 0x24e5ec: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e5ecu;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E5EC raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e5f0:
+    // 0x24e5f0: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e5f0u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e5f4:
+    // 0x24e5f4: 0xc1800000  ll          $zero, 0x0($t4)
+    ctx->pc = 0x24e5f4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e5f8:
+    // 0x24e5f8: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24e5f8u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e5fc:
+    // 0x24e5fc: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e5fcu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E5FC raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e600:
+    // 0x24e600: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e600u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E600 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e604:
+    // 0x24e604: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e604u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E604 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e608:
+    // 0x24e608: 0xc0800000  ll          $zero, 0x0($a0)
+    ctx->pc = 0x24e608u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e60c:
+    // 0x24e60c: 0xc1b80000  ll          $t8, 0x0($t5)
+    ctx->pc = 0x24e60cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 24, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e610:
+    // 0x24e610: 0xc1100000  ll          $s0, 0x0($t0)
+    ctx->pc = 0x24e610u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e614:
+    // 0x24e614: 0x42840000  .word       0x42840000                   # INVALID     $s4, $a0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e614u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E614 raw=0x42840000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e618:
+    // 0x24e618: 0x42100000  .word       0x42100000                   # INVALID     $s0, $s0, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e618u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E618 raw=0x42100000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e61c:
+    // 0x24e61c: 0x41600000  .word       0x41600000                   # INVALID     $t3, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e61cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xB at 0x24E61C raw=0x41600000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e620:
+    // 0x24e620: 0xc0800000  ll          $zero, 0x0($a0)
+    ctx->pc = 0x24e620u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e624:
+    // 0x24e624: 0xc1900000  ll          $s0, 0x0($t4)
+    ctx->pc = 0x24e624u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e628:
+    // 0x24e628: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e628u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e62c:
+    // 0x24e62c: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e62cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E62C raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e630:
+    // 0x24e630: 0x42340000  .word       0x42340000                   # INVALID     $s1, $s4, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e630u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x11 at 0x24E630 raw=0x42340000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e634:
+    // 0x24e634: 0x41d80000  .word       0x41D80000                   # INVALID     $t6, $t8, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e634u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xE at 0x24E634 raw=0x41D80000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e638:
+    // 0x24e638: 0xc1e80000  ll          $t0, 0x0($t7)
+    ctx->pc = 0x24e638u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 15), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e63c:
+    // 0x24e63c: 0xc1500000  ll          $s0, 0x0($t2)
+    ctx->pc = 0x24e63cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 10), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e640:
+    // 0x24e640: 0xc2e00000  ll          $zero, 0x0($s7)
+    ctx->pc = 0x24e640u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 23), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e644:
+    // 0x24e644: 0x42cc0000  .word       0x42CC0000                   # INVALID     $s6, $t4, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e644u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x16 at 0x24E644 raw=0x42CC0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e648:
+    // 0x24e648: 0x42a60000  .word       0x42A60000                   # INVALID     $s5, $a2, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e648u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x15 at 0x24E648 raw=0x42A60000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e64c:
+    // 0x24e64c: 0x43250000  .word       0x43250000                   # INVALID     $t9, $a1, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e64cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x19 at 0x24E64C raw=0x43250000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e650:
+    // 0x24e650: 0xc0a00000  ll          $zero, 0x0($a1)
+    ctx->pc = 0x24e650u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 5), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e654:
+    // 0x24e654: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e654u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e658:
+    // 0x24e658: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24e658u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e65c:
+    // 0x24e65c: 0x420c0000  .word       0x420C0000                   # INVALID     $s0, $t4, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e65cu;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E65C raw=0x420C0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e660:
+    // 0x24e660: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e660u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E660 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e664:
+    // 0x24e664: 0x42480000  .word       0x42480000                   # INVALID     $s2, $t0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e664u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x12 at 0x24E664 raw=0x42480000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e668:
+    // 0x24e668: 0x42e9c7ae  .word       0x42E9C7AE                   # INVALID     $s7, $t1, -0x3852 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e668u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x17 at 0x24E668 raw=0x42E9C7AE"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e66c:
+    // 0x24e66c: 0x40005  .word       0x00040005                   # INVALID     $zero, $a0, 0x5 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e66cu;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x5 at 0x24E66C raw=0x00040005"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e670:
+    // 0x24e670: 0xa0011  .word       0x000A0011                   # mthi        $zero # 000A0000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e670u;
+    ctx->hi = GPR_U64(ctx, 0);
+label_24e674:
+    // 0x24e674: 0xfd00b4  teq         $a3, $sp, 2
+    ctx->pc = 0x24e674u;
+    if (GPR_U64(ctx, 7) == GPR_U64(ctx, 29)) { runtime->handleTrap(rdram, ctx); }
+label_24e678:
+    // 0x24e678: 0x6c006c  .word       0x006C006C                   # dadd        $zero, $v1, $t4 # 00000040 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e678u;
+    { int64_t a = (int64_t)GPR_S64(ctx, 3); int64_t b = (int64_t)GPR_S64(ctx, 12); int64_t r = a + b; if (((a ^ b) >= 0) && ((a ^ r) < 0)) runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW); else SET_GPR_S64(ctx, 0, r); }
+label_24e67c:
+    // 0x24e67c: 0x1250125  .word       0x01250125                   # or          $zero, $t1, $a1 # 00000100 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e67cu;
+    SET_GPR_U64(ctx, 0, GPR_U64(ctx, 9) | GPR_U64(ctx, 5));
+label_24e680:
+    // 0x24e680: 0xc2d0c2d  jal         func_B430B4
+label_24e684:
+    if (ctx->pc == 0x24E684u) {
+        ctx->pc = 0x24E684u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x24E680u;
+        // 0x24e684: 0xc2d0c2d  jal         func_B430B4 (Delay Slot)
+        // JAL 0xB430B4 - Handled by branch logic
+        ctx->in_delay_slot = false;
+        ctx->pc = 0x24E688u;
+        goto label_24e688;
+    }
+    ctx->pc = 0x24E680u;
+    SET_GPR_U32(ctx, 31, 0x24E688u);
+    ctx->pc = 0x24E684u;
+    ctx->in_delay_slot = true;
+    ctx->branch_pc = 0x24E680u;
+    // 0x24e684: 0xc2d0c2d  jal         func_B430B4 (Delay Slot)
+    // JAL 0xB430B4 - Handled by branch logic
+    ctx->in_delay_slot = false;
+    ctx->pc = 0xB430B4u;
+    if (!runtime->dispatchGuestBranch(rdram, ctx, 0xB430B4u, 0x24E680u, 0x24E688u, PS2Runtime::GuestBranchKind::DirectCall, "JAL")) {
+        return;
+    }
+    ctx->pc = 0x24E688u;
+label_24e688:
+    // 0x24e688: 0xb5  .word       0x000000B5                   # INVALID     $zero, $zero, 0xB5 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e688u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x35 at 0x24E688 raw=0x000000B5"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e68c:
+    // 0x24e68c: 0x10000  sll         $zero, $at, 0
+    ctx->pc = 0x24e68cu;
+    
+label_24e690:
+    // 0x24e690: 0x0  nop
+    ctx->pc = 0x24e690u;
+    // NOP
+label_24e694:
+    // 0x24e694: 0x41a00000  .word       0x41A00000                   # INVALID     $t5, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e694u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xD at 0x24E694 raw=0x41A00000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e698:
+    // 0x24e698: 0x0  nop
+    ctx->pc = 0x24e698u;
+    // NOP
+label_24e69c:
+    // 0x24e69c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x24e69cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_24e6a0:
+    // 0x24e6a0: 0x42860000  .word       0x42860000                   # INVALID     $s4, $a2, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e6a0u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E6A0 raw=0x42860000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e6a4:
+    // 0x24e6a4: 0x41a00000  .word       0x41A00000                   # INVALID     $t5, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e6a4u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xD at 0x24E6A4 raw=0x41A00000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e6a8:
+    // 0x24e6a8: 0x40800000  mtc0        $zero, Index
+    ctx->pc = 0x24e6a8u;
+    ctx->cop0_index = GPR_U32(ctx, 0) & 0x3F;
+label_24e6ac:
+    // 0x24e6ac: 0x41200000  .word       0x41200000                   # INVALID     $t1, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e6acu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x9 at 0x24E6AC raw=0x41200000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e6b0:
+    // 0x24e6b0: 0x0  nop
+    ctx->pc = 0x24e6b0u;
+    // NOP
+label_24e6b4:
+    // 0x24e6b4: 0xc1900000  ll          $s0, 0x0($t4)
+    ctx->pc = 0x24e6b4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e6b8:
+    // 0x24e6b8: 0x0  nop
+    ctx->pc = 0x24e6b8u;
+    // NOP
+label_24e6bc:
+    // 0x24e6bc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x24e6bcu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_24e6c0:
+    // 0x24e6c0: 0x42480000  .word       0x42480000                   # INVALID     $s2, $t0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e6c0u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x12 at 0x24E6C0 raw=0x42480000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e6c4:
+    // 0x24e6c4: 0x41900000  .word       0x41900000                   # INVALID     $t4, $s0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e6c4u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xC at 0x24E6C4 raw=0x41900000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e6c8:
+    // 0x24e6c8: 0x40c00000  ctc0        $zero, Index
+    ctx->pc = 0x24e6c8u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x6 at 0x24E6C8 raw=0x40C00000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e6cc:
+    // 0x24e6cc: 0x41200000  .word       0x41200000                   # INVALID     $t1, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e6ccu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x9 at 0x24E6CC raw=0x41200000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e6d0:
+    // 0x24e6d0: 0x0  nop
+    ctx->pc = 0x24e6d0u;
+    // NOP
+label_24e6d4:
+    // 0x24e6d4: 0x0  nop
+    ctx->pc = 0x24e6d4u;
+    // NOP
+label_24e6d8:
+    // 0x24e6d8: 0x0  nop
+    ctx->pc = 0x24e6d8u;
+    // NOP
+label_24e6dc:
+    // 0x24e6dc: 0x0  nop
+    ctx->pc = 0x24e6dcu;
+    // NOP
+label_24e6e0:
+    // 0x24e6e0: 0x0  nop
+    ctx->pc = 0x24e6e0u;
+    // NOP
+label_24e6e4:
+    // 0x24e6e4: 0x0  nop
+    ctx->pc = 0x24e6e4u;
+    // NOP
+label_24e6e8:
+    // 0x24e6e8: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e6e8u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e6ec:
+    // 0x24e6ec: 0xc1800000  ll          $zero, 0x0($t4)
+    ctx->pc = 0x24e6ecu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e6f0:
+    // 0x24e6f0: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24e6f0u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e6f4:
+    // 0x24e6f4: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e6f4u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E6F4 raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e6f8:
+    // 0x24e6f8: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e6f8u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E6F8 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e6fc:
+    // 0x24e6fc: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e6fcu;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E6FC raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e700:
+    // 0x24e700: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e700u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e704:
+    // 0x24e704: 0xc1800000  ll          $zero, 0x0($t4)
+    ctx->pc = 0x24e704u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e708:
+    // 0x24e708: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24e708u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e70c:
+    // 0x24e70c: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e70cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E70C raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e710:
+    // 0x24e710: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e710u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E710 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e714:
+    // 0x24e714: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e714u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E714 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e718:
+    // 0x24e718: 0xc0800000  ll          $zero, 0x0($a0)
+    ctx->pc = 0x24e718u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e71c:
+    // 0x24e71c: 0xc1b80000  ll          $t8, 0x0($t5)
+    ctx->pc = 0x24e71cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 24, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e720:
+    // 0x24e720: 0xc1100000  ll          $s0, 0x0($t0)
+    ctx->pc = 0x24e720u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e724:
+    // 0x24e724: 0x42840000  .word       0x42840000                   # INVALID     $s4, $a0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e724u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E724 raw=0x42840000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e728:
+    // 0x24e728: 0x42100000  .word       0x42100000                   # INVALID     $s0, $s0, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e728u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E728 raw=0x42100000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e72c:
+    // 0x24e72c: 0x41600000  .word       0x41600000                   # INVALID     $t3, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e72cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xB at 0x24E72C raw=0x41600000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e730:
+    // 0x24e730: 0xc0800000  ll          $zero, 0x0($a0)
+    ctx->pc = 0x24e730u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e734:
+    // 0x24e734: 0xc1900000  ll          $s0, 0x0($t4)
+    ctx->pc = 0x24e734u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e738:
+    // 0x24e738: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e738u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e73c:
+    // 0x24e73c: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e73cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E73C raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e740:
+    // 0x24e740: 0x42340000  .word       0x42340000                   # INVALID     $s1, $s4, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e740u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x11 at 0x24E740 raw=0x42340000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e744:
+    // 0x24e744: 0x41d80000  .word       0x41D80000                   # INVALID     $t6, $t8, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e744u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xE at 0x24E744 raw=0x41D80000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e748:
+    // 0x24e748: 0xc1e80000  ll          $t0, 0x0($t7)
+    ctx->pc = 0x24e748u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 15), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e74c:
+    // 0x24e74c: 0xc1500000  ll          $s0, 0x0($t2)
+    ctx->pc = 0x24e74cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 10), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e750:
+    // 0x24e750: 0xc2e00000  ll          $zero, 0x0($s7)
+    ctx->pc = 0x24e750u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 23), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e754:
+    // 0x24e754: 0x42cc0000  .word       0x42CC0000                   # INVALID     $s6, $t4, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e754u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x16 at 0x24E754 raw=0x42CC0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e758:
+    // 0x24e758: 0x42a60000  .word       0x42A60000                   # INVALID     $s5, $a2, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e758u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x15 at 0x24E758 raw=0x42A60000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e75c:
+    // 0x24e75c: 0x43250000  .word       0x43250000                   # INVALID     $t9, $a1, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e75cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x19 at 0x24E75C raw=0x43250000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e760:
+    // 0x24e760: 0xc0a00000  ll          $zero, 0x0($a1)
+    ctx->pc = 0x24e760u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 5), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e764:
+    // 0x24e764: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e764u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e768:
+    // 0x24e768: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24e768u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e76c:
+    // 0x24e76c: 0x420c0000  .word       0x420C0000                   # INVALID     $s0, $t4, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e76cu;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E76C raw=0x420C0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e770:
+    // 0x24e770: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e770u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E770 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e774:
+    // 0x24e774: 0x42480000  .word       0x42480000                   # INVALID     $s2, $t0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e774u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x12 at 0x24E774 raw=0x42480000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e778:
+    // 0x24e778: 0x42eeeb85  .word       0x42EEEB85                   # INVALID     $s7, $t6, -0x147B # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e778u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x17 at 0x24E778 raw=0x42EEEB85"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e77c:
+    // 0x24e77c: 0x50005  .word       0x00050005                   # INVALID     $zero, $a1, 0x5 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e77cu;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x5 at 0x24E77C raw=0x00050005"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e780:
+    // 0x24e780: 0xa0011  .word       0x000A0011                   # mthi        $zero # 000A0000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e780u;
+    ctx->hi = GPR_U64(ctx, 0);
+label_24e784:
+    // 0x24e784: 0xfe00b6  tne         $a3, $fp, 2
+    ctx->pc = 0x24e784u;
+    if (GPR_U64(ctx, 7) != GPR_U64(ctx, 30)) { runtime->handleTrap(rdram, ctx); }
+label_24e788:
+    // 0x24e788: 0x6d006d  .word       0x006D006D                   # daddu       $zero, $v1, $t5 # 00000040 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e788u;
+    SET_GPR_U64(ctx, 0, (uint64_t)GPR_U64(ctx, 3) + (uint64_t)GPR_U64(ctx, 13));
+label_24e78c:
+    // 0x24e78c: 0x1260126  .word       0x01260126                   # xor         $zero, $t1, $a2 # 00000100 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e78cu;
+    SET_GPR_U64(ctx, 0, GPR_U64(ctx, 9) ^ GPR_U64(ctx, 6));
+label_24e790:
+    // 0x24e790: 0xc2d0c2d  jal         func_B430B4
+label_24e794:
+    if (ctx->pc == 0x24E794u) {
+        ctx->pc = 0x24E794u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x24E790u;
+        // 0x24e794: 0xc2d0c2d  jal         func_B430B4 (Delay Slot)
+        // JAL 0xB430B4 - Handled by branch logic
+        ctx->in_delay_slot = false;
+        ctx->pc = 0x24E798u;
+        goto label_24e798;
+    }
+    ctx->pc = 0x24E790u;
+    SET_GPR_U32(ctx, 31, 0x24E798u);
+    ctx->pc = 0x24E794u;
+    ctx->in_delay_slot = true;
+    ctx->branch_pc = 0x24E790u;
+    // 0x24e794: 0xc2d0c2d  jal         func_B430B4 (Delay Slot)
+    // JAL 0xB430B4 - Handled by branch logic
+    ctx->in_delay_slot = false;
+    ctx->pc = 0xB430B4u;
+    if (!runtime->dispatchGuestBranch(rdram, ctx, 0xB430B4u, 0x24E790u, 0x24E798u, PS2Runtime::GuestBranchKind::DirectCall, "JAL")) {
+        return;
+    }
+    ctx->pc = 0x24E798u;
+label_24e798:
+    // 0x24e798: 0xb7  .word       0x000000B7                   # INVALID     $zero, $zero, 0xB7 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e798u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x37 at 0x24E798 raw=0x000000B7"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e79c:
+    // 0x24e79c: 0x10000  sll         $zero, $at, 0
+    ctx->pc = 0x24e79cu;
+    
+label_24e7a0:
+    // 0x24e7a0: 0x0  nop
+    ctx->pc = 0x24e7a0u;
+    // NOP
+label_24e7a4:
+    // 0x24e7a4: 0x0  nop
+    ctx->pc = 0x24e7a4u;
+    // NOP
+label_24e7a8:
+    // 0x24e7a8: 0x0  nop
+    ctx->pc = 0x24e7a8u;
+    // NOP
+label_24e7ac:
+    // 0x24e7ac: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x24e7acu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_24e7b0:
+    // 0x24e7b0: 0x0  nop
+    ctx->pc = 0x24e7b0u;
+    // NOP
+label_24e7b4:
+    // 0x24e7b4: 0x0  nop
+    ctx->pc = 0x24e7b4u;
+    // NOP
+label_24e7b8:
+    // 0x24e7b8: 0x40000000  mfc0        $zero, Index
+    ctx->pc = 0x24e7b8u;
+    SET_GPR_S32(ctx, 0, (int32_t)ctx->cop0_index);
+label_24e7bc:
+    // 0x24e7bc: 0x41400000  .word       0x41400000                   # INVALID     $t2, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e7bcu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xA at 0x24E7BC raw=0x41400000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e7c0:
+    // 0x24e7c0: 0x0  nop
+    ctx->pc = 0x24e7c0u;
+    // NOP
+label_24e7c4:
+    // 0x24e7c4: 0x0  nop
+    ctx->pc = 0x24e7c4u;
+    // NOP
+label_24e7c8:
+    // 0x24e7c8: 0x0  nop
+    ctx->pc = 0x24e7c8u;
+    // NOP
+label_24e7cc:
+    // 0x24e7cc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x24e7ccu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_24e7d0:
+    // 0x24e7d0: 0x0  nop
+    ctx->pc = 0x24e7d0u;
+    // NOP
+label_24e7d4:
+    // 0x24e7d4: 0x0  nop
+    ctx->pc = 0x24e7d4u;
+    // NOP
+label_24e7d8:
+    // 0x24e7d8: 0x40000000  mfc0        $zero, Index
+    ctx->pc = 0x24e7d8u;
+    SET_GPR_S32(ctx, 0, (int32_t)ctx->cop0_index);
+label_24e7dc:
+    // 0x24e7dc: 0x41400000  .word       0x41400000                   # INVALID     $t2, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e7dcu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xA at 0x24E7DC raw=0x41400000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e7e0:
+    // 0x24e7e0: 0x0  nop
+    ctx->pc = 0x24e7e0u;
+    // NOP
+label_24e7e4:
+    // 0x24e7e4: 0x0  nop
+    ctx->pc = 0x24e7e4u;
+    // NOP
+label_24e7e8:
+    // 0x24e7e8: 0x0  nop
+    ctx->pc = 0x24e7e8u;
+    // NOP
+label_24e7ec:
+    // 0x24e7ec: 0x0  nop
+    ctx->pc = 0x24e7ecu;
+    // NOP
+label_24e7f0:
+    // 0x24e7f0: 0x0  nop
+    ctx->pc = 0x24e7f0u;
+    // NOP
+label_24e7f4:
+    // 0x24e7f4: 0x0  nop
+    ctx->pc = 0x24e7f4u;
+    // NOP
+label_24e7f8:
+    // 0x24e7f8: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e7f8u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e7fc:
+    // 0x24e7fc: 0xc1800000  ll          $zero, 0x0($t4)
+    ctx->pc = 0x24e7fcu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e800:
+    // 0x24e800: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24e800u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e804:
+    // 0x24e804: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e804u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E804 raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e808:
+    // 0x24e808: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e808u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E808 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e80c:
+    // 0x24e80c: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e80cu;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E80C raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e810:
+    // 0x24e810: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e810u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e814:
+    // 0x24e814: 0xc1800000  ll          $zero, 0x0($t4)
+    ctx->pc = 0x24e814u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e818:
+    // 0x24e818: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24e818u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e81c:
+    // 0x24e81c: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e81cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E81C raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e820:
+    // 0x24e820: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e820u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E820 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e824:
+    // 0x24e824: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e824u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E824 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e828:
+    // 0x24e828: 0xc0800000  ll          $zero, 0x0($a0)
+    ctx->pc = 0x24e828u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e82c:
+    // 0x24e82c: 0xc1b80000  ll          $t8, 0x0($t5)
+    ctx->pc = 0x24e82cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 24, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e830:
+    // 0x24e830: 0xc1100000  ll          $s0, 0x0($t0)
+    ctx->pc = 0x24e830u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e834:
+    // 0x24e834: 0x42840000  .word       0x42840000                   # INVALID     $s4, $a0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e834u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E834 raw=0x42840000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e838:
+    // 0x24e838: 0x42100000  .word       0x42100000                   # INVALID     $s0, $s0, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e838u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E838 raw=0x42100000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e83c:
+    // 0x24e83c: 0x41600000  .word       0x41600000                   # INVALID     $t3, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e83cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xB at 0x24E83C raw=0x41600000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e840:
+    // 0x24e840: 0xc0800000  ll          $zero, 0x0($a0)
+    ctx->pc = 0x24e840u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e844:
+    // 0x24e844: 0xc1900000  ll          $s0, 0x0($t4)
+    ctx->pc = 0x24e844u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e848:
+    // 0x24e848: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e848u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e84c:
+    // 0x24e84c: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e84cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E84C raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e850:
+    // 0x24e850: 0x42340000  .word       0x42340000                   # INVALID     $s1, $s4, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e850u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x11 at 0x24E850 raw=0x42340000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e854:
+    // 0x24e854: 0x41d80000  .word       0x41D80000                   # INVALID     $t6, $t8, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e854u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xE at 0x24E854 raw=0x41D80000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e858:
+    // 0x24e858: 0xc1e80000  ll          $t0, 0x0($t7)
+    ctx->pc = 0x24e858u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 15), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e85c:
+    // 0x24e85c: 0xc1500000  ll          $s0, 0x0($t2)
+    ctx->pc = 0x24e85cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 10), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e860:
+    // 0x24e860: 0xc2e00000  ll          $zero, 0x0($s7)
+    ctx->pc = 0x24e860u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 23), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e864:
+    // 0x24e864: 0x42cc0000  .word       0x42CC0000                   # INVALID     $s6, $t4, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e864u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x16 at 0x24E864 raw=0x42CC0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e868:
+    // 0x24e868: 0x42a60000  .word       0x42A60000                   # INVALID     $s5, $a2, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e868u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x15 at 0x24E868 raw=0x42A60000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e86c:
+    // 0x24e86c: 0x43250000  .word       0x43250000                   # INVALID     $t9, $a1, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e86cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x19 at 0x24E86C raw=0x43250000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e870:
+    // 0x24e870: 0xc0a00000  ll          $zero, 0x0($a1)
+    ctx->pc = 0x24e870u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 5), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e874:
+    // 0x24e874: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e874u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e878:
+    // 0x24e878: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24e878u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e87c:
+    // 0x24e87c: 0x420c0000  .word       0x420C0000                   # INVALID     $s0, $t4, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e87cu;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E87C raw=0x420C0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e880:
+    // 0x24e880: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e880u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E880 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e884:
+    // 0x24e884: 0x42480000  .word       0x42480000                   # INVALID     $s2, $t0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e884u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x12 at 0x24E884 raw=0x42480000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e888:
+    // 0x24e888: 0x42e9c7ae  .word       0x42E9C7AE                   # INVALID     $s7, $t1, -0x3852 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e888u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x17 at 0x24E888 raw=0x42E9C7AE"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e88c:
+    // 0x24e88c: 0x60005  .word       0x00060005                   # INVALID     $zero, $a2, 0x5 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e88cu;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x5 at 0x24E88C raw=0x00060005"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e890:
+    // 0x24e890: 0xa0011  .word       0x000A0011                   # mthi        $zero # 000A0000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e890u;
+    ctx->hi = GPR_U64(ctx, 0);
+label_24e894:
+    // 0x24e894: 0xff00b8  .word       0x00FF00B8                   # dsll        $zero, $ra, 2 # 00E00000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e894u;
+    SET_GPR_U64(ctx, 0, GPR_U64(ctx, 31) << 2);
+label_24e898:
+    // 0x24e898: 0x6e006e  .word       0x006E006E                   # dsub        $zero, $v1, $t6 # 00000040 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e898u;
+    { int64_t a = (int64_t)GPR_S64(ctx, 3); int64_t b = (int64_t)GPR_S64(ctx, 14); int64_t r = a - b; if (((a ^ b) < 0) && ((a ^ r) < 0)) runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW); else SET_GPR_S64(ctx, 0, r); }
+label_24e89c:
+    // 0x24e89c: 0x1270127  .word       0x01270127                   # nor         $zero, $t1, $a3 # 00000100 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e89cu;
+    SET_GPR_U64(ctx, 0, ~(GPR_U64(ctx, 9) | GPR_U64(ctx, 7)));
+label_24e8a0:
+    // 0x24e8a0: 0xc2d0c2d  jal         func_B430B4
+label_24e8a4:
+    if (ctx->pc == 0x24E8A4u) {
+        ctx->pc = 0x24E8A4u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x24E8A0u;
+        // 0x24e8a4: 0xc2d0c2d  jal         func_B430B4 (Delay Slot)
+        // JAL 0xB430B4 - Handled by branch logic
+        ctx->in_delay_slot = false;
+        ctx->pc = 0x24E8A8u;
+        goto label_24e8a8;
+    }
+    ctx->pc = 0x24E8A0u;
+    SET_GPR_U32(ctx, 31, 0x24E8A8u);
+    ctx->pc = 0x24E8A4u;
+    ctx->in_delay_slot = true;
+    ctx->branch_pc = 0x24E8A0u;
+    // 0x24e8a4: 0xc2d0c2d  jal         func_B430B4 (Delay Slot)
+    // JAL 0xB430B4 - Handled by branch logic
+    ctx->in_delay_slot = false;
+    ctx->pc = 0xB430B4u;
+    if (!runtime->dispatchGuestBranch(rdram, ctx, 0xB430B4u, 0x24E8A0u, 0x24E8A8u, PS2Runtime::GuestBranchKind::DirectCall, "JAL")) {
+        return;
+    }
+    ctx->pc = 0x24E8A8u;
+label_24e8a8:
+    // 0x24e8a8: 0xb9  .word       0x000000B9                   # INVALID     $zero, $zero, 0xB9 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e8a8u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x39 at 0x24E8A8 raw=0x000000B9"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e8ac:
+    // 0x24e8ac: 0x10000  sll         $zero, $at, 0
+    ctx->pc = 0x24e8acu;
+    
+label_24e8b0:
+    // 0x24e8b0: 0x0  nop
+    ctx->pc = 0x24e8b0u;
+    // NOP
+label_24e8b4:
+    // 0x24e8b4: 0x0  nop
+    ctx->pc = 0x24e8b4u;
+    // NOP
+label_24e8b8:
+    // 0x24e8b8: 0x0  nop
+    ctx->pc = 0x24e8b8u;
+    // NOP
+label_24e8bc:
+    // 0x24e8bc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x24e8bcu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_24e8c0:
+    // 0x24e8c0: 0x0  nop
+    ctx->pc = 0x24e8c0u;
+    // NOP
+label_24e8c4:
+    // 0x24e8c4: 0x0  nop
+    ctx->pc = 0x24e8c4u;
+    // NOP
+label_24e8c8:
+    // 0x24e8c8: 0x40000000  mfc0        $zero, Index
+    ctx->pc = 0x24e8c8u;
+    SET_GPR_S32(ctx, 0, (int32_t)ctx->cop0_index);
+label_24e8cc:
+    // 0x24e8cc: 0x41400000  .word       0x41400000                   # INVALID     $t2, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e8ccu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xA at 0x24E8CC raw=0x41400000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e8d0:
+    // 0x24e8d0: 0x0  nop
+    ctx->pc = 0x24e8d0u;
+    // NOP
+label_24e8d4:
+    // 0x24e8d4: 0x0  nop
+    ctx->pc = 0x24e8d4u;
+    // NOP
+label_24e8d8:
+    // 0x24e8d8: 0x0  nop
+    ctx->pc = 0x24e8d8u;
+    // NOP
+label_24e8dc:
+    // 0x24e8dc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x24e8dcu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_24e8e0:
+    // 0x24e8e0: 0x0  nop
+    ctx->pc = 0x24e8e0u;
+    // NOP
+label_24e8e4:
+    // 0x24e8e4: 0x0  nop
+    ctx->pc = 0x24e8e4u;
+    // NOP
+label_24e8e8:
+    // 0x24e8e8: 0x40000000  mfc0        $zero, Index
+    ctx->pc = 0x24e8e8u;
+    SET_GPR_S32(ctx, 0, (int32_t)ctx->cop0_index);
+label_24e8ec:
+    // 0x24e8ec: 0x41400000  .word       0x41400000                   # INVALID     $t2, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e8ecu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xA at 0x24E8EC raw=0x41400000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e8f0:
+    // 0x24e8f0: 0x0  nop
+    ctx->pc = 0x24e8f0u;
+    // NOP
+label_24e8f4:
+    // 0x24e8f4: 0x0  nop
+    ctx->pc = 0x24e8f4u;
+    // NOP
+label_24e8f8:
+    // 0x24e8f8: 0x0  nop
+    ctx->pc = 0x24e8f8u;
+    // NOP
+label_24e8fc:
+    // 0x24e8fc: 0x0  nop
+    ctx->pc = 0x24e8fcu;
+    // NOP
+label_24e900:
+    // 0x24e900: 0x0  nop
+    ctx->pc = 0x24e900u;
+    // NOP
+label_24e904:
+    // 0x24e904: 0x0  nop
+    ctx->pc = 0x24e904u;
+    // NOP
+label_24e908:
+    // 0x24e908: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e908u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e90c:
+    // 0x24e90c: 0xc1800000  ll          $zero, 0x0($t4)
+    ctx->pc = 0x24e90cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e910:
+    // 0x24e910: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24e910u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e914:
+    // 0x24e914: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e914u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E914 raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e918:
+    // 0x24e918: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e918u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E918 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e91c:
+    // 0x24e91c: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e91cu;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E91C raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e920:
+    // 0x24e920: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e920u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e924:
+    // 0x24e924: 0xc1800000  ll          $zero, 0x0($t4)
+    ctx->pc = 0x24e924u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e928:
+    // 0x24e928: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24e928u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e92c:
+    // 0x24e92c: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e92cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E92C raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e930:
+    // 0x24e930: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e930u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E930 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e934:
+    // 0x24e934: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e934u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E934 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e938:
+    // 0x24e938: 0xc0800000  ll          $zero, 0x0($a0)
+    ctx->pc = 0x24e938u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e93c:
+    // 0x24e93c: 0xc1b80000  ll          $t8, 0x0($t5)
+    ctx->pc = 0x24e93cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 24, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e940:
+    // 0x24e940: 0xc1100000  ll          $s0, 0x0($t0)
+    ctx->pc = 0x24e940u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e944:
+    // 0x24e944: 0x42840000  .word       0x42840000                   # INVALID     $s4, $a0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e944u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E944 raw=0x42840000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e948:
+    // 0x24e948: 0x42100000  .word       0x42100000                   # INVALID     $s0, $s0, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e948u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E948 raw=0x42100000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e94c:
+    // 0x24e94c: 0x41600000  .word       0x41600000                   # INVALID     $t3, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e94cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xB at 0x24E94C raw=0x41600000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e950:
+    // 0x24e950: 0xc0800000  ll          $zero, 0x0($a0)
+    ctx->pc = 0x24e950u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e954:
+    // 0x24e954: 0xc1900000  ll          $s0, 0x0($t4)
+    ctx->pc = 0x24e954u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e958:
+    // 0x24e958: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e958u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e95c:
+    // 0x24e95c: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e95cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24E95C raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e960:
+    // 0x24e960: 0x42340000  .word       0x42340000                   # INVALID     $s1, $s4, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e960u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x11 at 0x24E960 raw=0x42340000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e964:
+    // 0x24e964: 0x41d80000  .word       0x41D80000                   # INVALID     $t6, $t8, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e964u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xE at 0x24E964 raw=0x41D80000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e968:
+    // 0x24e968: 0xc1e80000  ll          $t0, 0x0($t7)
+    ctx->pc = 0x24e968u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 15), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e96c:
+    // 0x24e96c: 0xc1500000  ll          $s0, 0x0($t2)
+    ctx->pc = 0x24e96cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 10), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e970:
+    // 0x24e970: 0xc2e00000  ll          $zero, 0x0($s7)
+    ctx->pc = 0x24e970u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 23), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e974:
+    // 0x24e974: 0x42cc0000  .word       0x42CC0000                   # INVALID     $s6, $t4, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e974u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x16 at 0x24E974 raw=0x42CC0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e978:
+    // 0x24e978: 0x42a60000  .word       0x42A60000                   # INVALID     $s5, $a2, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e978u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x15 at 0x24E978 raw=0x42A60000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e97c:
+    // 0x24e97c: 0x43250000  .word       0x43250000                   # INVALID     $t9, $a1, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e97cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x19 at 0x24E97C raw=0x43250000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e980:
+    // 0x24e980: 0xc0a00000  ll          $zero, 0x0($a1)
+    ctx->pc = 0x24e980u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 5), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e984:
+    // 0x24e984: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24e984u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e988:
+    // 0x24e988: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24e988u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24e98c:
+    // 0x24e98c: 0x420c0000  .word       0x420C0000                   # INVALID     $s0, $t4, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e98cu;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E98C raw=0x420C0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e990:
+    // 0x24e990: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24e990u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24E990 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e994:
+    // 0x24e994: 0x42480000  .word       0x42480000                   # INVALID     $s2, $t0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e994u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x12 at 0x24E994 raw=0x42480000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e998:
+    // 0x24e998: 0x42e9c7ae  .word       0x42E9C7AE                   # INVALID     $s7, $t1, -0x3852 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e998u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x17 at 0x24E998 raw=0x42E9C7AE"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e99c:
+    // 0x24e99c: 0x70005  .word       0x00070005                   # INVALID     $zero, $a3, 0x5 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e99cu;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x5 at 0x24E99C raw=0x00070005"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e9a0:
+    // 0x24e9a0: 0x20000  sll         $zero, $v0, 0
+    ctx->pc = 0x24e9a0u;
+    
+label_24e9a4:
+    // 0x24e9a4: 0x10000d8  .word       0x010000D8                   # mult        $zero, $t0, $zero # 000000C0 <InstrIdType: R5900_SPECIAL>
+    ctx->pc = 0x24e9a4u;
+    { int64_t result = (int64_t)GPR_S32(ctx, 8) * (int64_t)GPR_S32(ctx, 0); ctx->lo = (uint64_t)(int64_t)(int32_t)result; ctx->hi = (uint64_t)(int64_t)(int32_t)(result >> 32); }
+label_24e9a8:
+    // 0x24e9a8: 0x730073  tltu        $v1, $s3, 1
+    ctx->pc = 0x24e9a8u;
+    if (GPR_U64(ctx, 3) < GPR_U64(ctx, 19)) { runtime->handleTrap(rdram, ctx); }
+label_24e9ac:
+    // 0x24e9ac: 0x1390139  .word       0x01390139                   # INVALID     $t1, $t9, 0x139 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e9acu;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x39 at 0x24E9AC raw=0x01390139"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e9b0:
+    // 0x24e9b0: 0xc2d0c2d  jal         func_B430B4
+label_24e9b4:
+    if (ctx->pc == 0x24E9B4u) {
+        ctx->pc = 0x24E9B4u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x24E9B0u;
+        // 0x24e9b4: 0xc2d0c2d  jal         func_B430B4 (Delay Slot)
+        // JAL 0xB430B4 - Handled by branch logic
+        ctx->in_delay_slot = false;
+        ctx->pc = 0x24E9B8u;
+        goto label_24e9b8;
+    }
+    ctx->pc = 0x24E9B0u;
+    SET_GPR_U32(ctx, 31, 0x24E9B8u);
+    ctx->pc = 0x24E9B4u;
+    ctx->in_delay_slot = true;
+    ctx->branch_pc = 0x24E9B0u;
+    // 0x24e9b4: 0xc2d0c2d  jal         func_B430B4 (Delay Slot)
+    // JAL 0xB430B4 - Handled by branch logic
+    ctx->in_delay_slot = false;
+    ctx->pc = 0xB430B4u;
+    if (!runtime->dispatchGuestBranch(rdram, ctx, 0xB430B4u, 0x24E9B0u, 0x24E9B8u, PS2Runtime::GuestBranchKind::DirectCall, "JAL")) {
+        return;
+    }
+    ctx->pc = 0x24E9B8u;
+label_24e9b8:
+    // 0x24e9b8: 0xc2d  .word       0x00000C2D                   # daddu       $at, $zero, $zero # 00000400 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24e9b8u;
+    SET_GPR_U64(ctx, 1, (uint64_t)GPR_U64(ctx, 0) + (uint64_t)GPR_U64(ctx, 0));
+label_24e9bc:
+    // 0x24e9bc: 0x10000  sll         $zero, $at, 0
+    ctx->pc = 0x24e9bcu;
+    
+label_24e9c0:
+    // 0x24e9c0: 0x0  nop
+    ctx->pc = 0x24e9c0u;
+    // NOP
+label_24e9c4:
+    // 0x24e9c4: 0x0  nop
+    ctx->pc = 0x24e9c4u;
+    // NOP
+label_24e9c8:
+    // 0x24e9c8: 0x0  nop
+    ctx->pc = 0x24e9c8u;
+    // NOP
+label_24e9cc:
+    // 0x24e9cc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x24e9ccu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_24e9d0:
+    // 0x24e9d0: 0x0  nop
+    ctx->pc = 0x24e9d0u;
+    // NOP
+label_24e9d4:
+    // 0x24e9d4: 0x0  nop
+    ctx->pc = 0x24e9d4u;
+    // NOP
+label_24e9d8:
+    // 0x24e9d8: 0x40000000  mfc0        $zero, Index
+    ctx->pc = 0x24e9d8u;
+    SET_GPR_S32(ctx, 0, (int32_t)ctx->cop0_index);
+label_24e9dc:
+    // 0x24e9dc: 0x41400000  .word       0x41400000                   # INVALID     $t2, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e9dcu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xA at 0x24E9DC raw=0x41400000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24e9e0:
+    // 0x24e9e0: 0x0  nop
+    ctx->pc = 0x24e9e0u;
+    // NOP
+label_24e9e4:
+    // 0x24e9e4: 0x0  nop
+    ctx->pc = 0x24e9e4u;
+    // NOP
+label_24e9e8:
+    // 0x24e9e8: 0x0  nop
+    ctx->pc = 0x24e9e8u;
+    // NOP
+label_24e9ec:
+    // 0x24e9ec: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x24e9ecu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_24e9f0:
+    // 0x24e9f0: 0x0  nop
+    ctx->pc = 0x24e9f0u;
+    // NOP
+label_24e9f4:
+    // 0x24e9f4: 0x0  nop
+    ctx->pc = 0x24e9f4u;
+    // NOP
+label_24e9f8:
+    // 0x24e9f8: 0x40000000  mfc0        $zero, Index
+    ctx->pc = 0x24e9f8u;
+    SET_GPR_S32(ctx, 0, (int32_t)ctx->cop0_index);
+label_24e9fc:
+    // 0x24e9fc: 0x41400000  .word       0x41400000                   # INVALID     $t2, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24e9fcu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xA at 0x24E9FC raw=0x41400000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ea00:
+    // 0x24ea00: 0x0  nop
+    ctx->pc = 0x24ea00u;
+    // NOP
+label_24ea04:
+    // 0x24ea04: 0x0  nop
+    ctx->pc = 0x24ea04u;
+    // NOP
+label_24ea08:
+    // 0x24ea08: 0x0  nop
+    ctx->pc = 0x24ea08u;
+    // NOP
+label_24ea0c:
+    // 0x24ea0c: 0x0  nop
+    ctx->pc = 0x24ea0cu;
+    // NOP
+label_24ea10:
+    // 0x24ea10: 0x0  nop
+    ctx->pc = 0x24ea10u;
+    // NOP
+label_24ea14:
+    // 0x24ea14: 0x0  nop
+    ctx->pc = 0x24ea14u;
+    // NOP
+label_24ea18:
+    // 0x24ea18: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24ea18u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea1c:
+    // 0x24ea1c: 0xc1800000  ll          $zero, 0x0($t4)
+    ctx->pc = 0x24ea1cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea20:
+    // 0x24ea20: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24ea20u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea24:
+    // 0x24ea24: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24ea24u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24EA24 raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ea28:
+    // 0x24ea28: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24ea28u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24EA28 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ea2c:
+    // 0x24ea2c: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24ea2cu;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24EA2C raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ea30:
+    // 0x24ea30: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24ea30u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea34:
+    // 0x24ea34: 0xc1800000  ll          $zero, 0x0($t4)
+    ctx->pc = 0x24ea34u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea38:
+    // 0x24ea38: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24ea38u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea3c:
+    // 0x24ea3c: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24ea3cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24EA3C raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ea40:
+    // 0x24ea40: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24ea40u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24EA40 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ea44:
+    // 0x24ea44: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24ea44u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24EA44 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ea48:
+    // 0x24ea48: 0xc0800000  ll          $zero, 0x0($a0)
+    ctx->pc = 0x24ea48u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea4c:
+    // 0x24ea4c: 0xc1b80000  ll          $t8, 0x0($t5)
+    ctx->pc = 0x24ea4cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 24, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea50:
+    // 0x24ea50: 0xc1100000  ll          $s0, 0x0($t0)
+    ctx->pc = 0x24ea50u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea54:
+    // 0x24ea54: 0x42840000  .word       0x42840000                   # INVALID     $s4, $a0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24ea54u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24EA54 raw=0x42840000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ea58:
+    // 0x24ea58: 0x42100000  .word       0x42100000                   # INVALID     $s0, $s0, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24ea58u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24EA58 raw=0x42100000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ea5c:
+    // 0x24ea5c: 0x41600000  .word       0x41600000                   # INVALID     $t3, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24ea5cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xB at 0x24EA5C raw=0x41600000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ea60:
+    // 0x24ea60: 0xc0800000  ll          $zero, 0x0($a0)
+    ctx->pc = 0x24ea60u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea64:
+    // 0x24ea64: 0xc1900000  ll          $s0, 0x0($t4)
+    ctx->pc = 0x24ea64u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea68:
+    // 0x24ea68: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24ea68u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea6c:
+    // 0x24ea6c: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24ea6cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24EA6C raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ea70:
+    // 0x24ea70: 0x42340000  .word       0x42340000                   # INVALID     $s1, $s4, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24ea70u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x11 at 0x24EA70 raw=0x42340000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ea74:
+    // 0x24ea74: 0x41d80000  .word       0x41D80000                   # INVALID     $t6, $t8, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24ea74u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xE at 0x24EA74 raw=0x41D80000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ea78:
+    // 0x24ea78: 0xc1e80000  ll          $t0, 0x0($t7)
+    ctx->pc = 0x24ea78u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 15), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea7c:
+    // 0x24ea7c: 0xc1500000  ll          $s0, 0x0($t2)
+    ctx->pc = 0x24ea7cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 10), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea80:
+    // 0x24ea80: 0xc2e00000  ll          $zero, 0x0($s7)
+    ctx->pc = 0x24ea80u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 23), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea84:
+    // 0x24ea84: 0x42cc0000  .word       0x42CC0000                   # INVALID     $s6, $t4, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24ea84u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x16 at 0x24EA84 raw=0x42CC0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ea88:
+    // 0x24ea88: 0x42a60000  .word       0x42A60000                   # INVALID     $s5, $a2, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24ea88u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x15 at 0x24EA88 raw=0x42A60000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ea8c:
+    // 0x24ea8c: 0x43250000  .word       0x43250000                   # INVALID     $t9, $a1, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24ea8cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x19 at 0x24EA8C raw=0x43250000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ea90:
+    // 0x24ea90: 0xc0a00000  ll          $zero, 0x0($a1)
+    ctx->pc = 0x24ea90u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 5), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea94:
+    // 0x24ea94: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24ea94u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea98:
+    // 0x24ea98: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24ea98u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ea9c:
+    // 0x24ea9c: 0x420c0000  .word       0x420C0000                   # INVALID     $s0, $t4, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24ea9cu;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24EA9C raw=0x420C0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eaa0:
+    // 0x24eaa0: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24eaa0u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24EAA0 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eaa4:
+    // 0x24eaa4: 0x42480000  .word       0x42480000                   # INVALID     $s2, $t0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24eaa4u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x12 at 0x24EAA4 raw=0x42480000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eaa8:
+    // 0x24eaa8: 0x42e9c7ae  .word       0x42E9C7AE                   # INVALID     $s7, $t1, -0x3852 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24eaa8u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x17 at 0x24EAA8 raw=0x42E9C7AE"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eaac:
+    // 0x24eaac: 0x80005  .word       0x00080005                   # INVALID     $zero, $t0, 0x5 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24eaacu;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x5 at 0x24EAAC raw=0x00080005"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eab0:
+    // 0x24eab0: 0x20000  sll         $zero, $v0, 0
+    ctx->pc = 0x24eab0u;
+    
+label_24eab4:
+    // 0x24eab4: 0x10100d9  .word       0x010100D9                   # multu       $t0, $at # 000000C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24eab4u;
+    { uint64_t result = (uint64_t)GPR_U32(ctx, 8) * (uint64_t)GPR_U32(ctx, 1); ctx->lo = (uint64_t)(int64_t)(int32_t)result; ctx->hi = (uint64_t)(int64_t)(int32_t)(result >> 32); }
+label_24eab8:
+    // 0x24eab8: 0x740074  teq         $v1, $s4, 1
+    ctx->pc = 0x24eab8u;
+    if (GPR_U64(ctx, 3) == GPR_U64(ctx, 20)) { runtime->handleTrap(rdram, ctx); }
+label_24eabc:
+    // 0x24eabc: 0x13a013a  .word       0x013A013A                   # dsrl        $zero, $k0, 4 # 01200000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24eabcu;
+    SET_GPR_U64(ctx, 0, GPR_U64(ctx, 26) >> 4);
+label_24eac0:
+    // 0x24eac0: 0xc2d0c2d  jal         func_B430B4
+label_24eac4:
+    if (ctx->pc == 0x24EAC4u) {
+        ctx->pc = 0x24EAC4u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x24EAC0u;
+        // 0x24eac4: 0xc2d0c2d  jal         func_B430B4 (Delay Slot)
+        // JAL 0xB430B4 - Handled by branch logic
+        ctx->in_delay_slot = false;
+        ctx->pc = 0x24EAC8u;
+        goto label_24eac8;
+    }
+    ctx->pc = 0x24EAC0u;
+    SET_GPR_U32(ctx, 31, 0x24EAC8u);
+    ctx->pc = 0x24EAC4u;
+    ctx->in_delay_slot = true;
+    ctx->branch_pc = 0x24EAC0u;
+    // 0x24eac4: 0xc2d0c2d  jal         func_B430B4 (Delay Slot)
+    // JAL 0xB430B4 - Handled by branch logic
+    ctx->in_delay_slot = false;
+    ctx->pc = 0xB430B4u;
+    if (!runtime->dispatchGuestBranch(rdram, ctx, 0xB430B4u, 0x24EAC0u, 0x24EAC8u, PS2Runtime::GuestBranchKind::DirectCall, "JAL")) {
+        return;
+    }
+    ctx->pc = 0x24EAC8u;
+label_24eac8:
+    // 0x24eac8: 0xc2d  .word       0x00000C2D                   # daddu       $at, $zero, $zero # 00000400 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24eac8u;
+    SET_GPR_U64(ctx, 1, (uint64_t)GPR_U64(ctx, 0) + (uint64_t)GPR_U64(ctx, 0));
+label_24eacc:
+    // 0x24eacc: 0x10000  sll         $zero, $at, 0
+    ctx->pc = 0x24eaccu;
+    
+label_24ead0:
+    // 0x24ead0: 0x0  nop
+    ctx->pc = 0x24ead0u;
+    // NOP
+label_24ead4:
+    // 0x24ead4: 0x0  nop
+    ctx->pc = 0x24ead4u;
+    // NOP
+label_24ead8:
+    // 0x24ead8: 0x0  nop
+    ctx->pc = 0x24ead8u;
+    // NOP
+label_24eadc:
+    // 0x24eadc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x24eadcu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_24eae0:
+    // 0x24eae0: 0x0  nop
+    ctx->pc = 0x24eae0u;
+    // NOP
+label_24eae4:
+    // 0x24eae4: 0x0  nop
+    ctx->pc = 0x24eae4u;
+    // NOP
+label_24eae8:
+    // 0x24eae8: 0x40000000  mfc0        $zero, Index
+    ctx->pc = 0x24eae8u;
+    SET_GPR_S32(ctx, 0, (int32_t)ctx->cop0_index);
+label_24eaec:
+    // 0x24eaec: 0x41400000  .word       0x41400000                   # INVALID     $t2, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24eaecu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xA at 0x24EAEC raw=0x41400000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eaf0:
+    // 0x24eaf0: 0x0  nop
+    ctx->pc = 0x24eaf0u;
+    // NOP
+label_24eaf4:
+    // 0x24eaf4: 0x0  nop
+    ctx->pc = 0x24eaf4u;
+    // NOP
+label_24eaf8:
+    // 0x24eaf8: 0x0  nop
+    ctx->pc = 0x24eaf8u;
+    // NOP
+label_24eafc:
+    // 0x24eafc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x24eafcu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_24eb00:
+    // 0x24eb00: 0x0  nop
+    ctx->pc = 0x24eb00u;
+    // NOP
+label_24eb04:
+    // 0x24eb04: 0x0  nop
+    ctx->pc = 0x24eb04u;
+    // NOP
+label_24eb08:
+    // 0x24eb08: 0x40000000  mfc0        $zero, Index
+    ctx->pc = 0x24eb08u;
+    SET_GPR_S32(ctx, 0, (int32_t)ctx->cop0_index);
+label_24eb0c:
+    // 0x24eb0c: 0x41400000  .word       0x41400000                   # INVALID     $t2, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24eb0cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xA at 0x24EB0C raw=0x41400000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eb10:
+    // 0x24eb10: 0x0  nop
+    ctx->pc = 0x24eb10u;
+    // NOP
+label_24eb14:
+    // 0x24eb14: 0x0  nop
+    ctx->pc = 0x24eb14u;
+    // NOP
+label_24eb18:
+    // 0x24eb18: 0x0  nop
+    ctx->pc = 0x24eb18u;
+    // NOP
+label_24eb1c:
+    // 0x24eb1c: 0x0  nop
+    ctx->pc = 0x24eb1cu;
+    // NOP
+label_24eb20:
+    // 0x24eb20: 0x0  nop
+    ctx->pc = 0x24eb20u;
+    // NOP
+label_24eb24:
+    // 0x24eb24: 0x0  nop
+    ctx->pc = 0x24eb24u;
+    // NOP
+label_24eb28:
+    // 0x24eb28: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24eb28u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eb2c:
+    // 0x24eb2c: 0xc1800000  ll          $zero, 0x0($t4)
+    ctx->pc = 0x24eb2cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eb30:
+    // 0x24eb30: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24eb30u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eb34:
+    // 0x24eb34: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24eb34u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24EB34 raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eb38:
+    // 0x24eb38: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24eb38u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24EB38 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eb3c:
+    // 0x24eb3c: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24eb3cu;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24EB3C raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eb40:
+    // 0x24eb40: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24eb40u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eb44:
+    // 0x24eb44: 0xc1800000  ll          $zero, 0x0($t4)
+    ctx->pc = 0x24eb44u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eb48:
+    // 0x24eb48: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24eb48u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eb4c:
+    // 0x24eb4c: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24eb4cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24EB4C raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eb50:
+    // 0x24eb50: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24eb50u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24EB50 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eb54:
+    // 0x24eb54: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24eb54u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24EB54 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eb58:
+    // 0x24eb58: 0xc0800000  ll          $zero, 0x0($a0)
+    ctx->pc = 0x24eb58u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eb5c:
+    // 0x24eb5c: 0xc1b80000  ll          $t8, 0x0($t5)
+    ctx->pc = 0x24eb5cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 24, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eb60:
+    // 0x24eb60: 0xc1100000  ll          $s0, 0x0($t0)
+    ctx->pc = 0x24eb60u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eb64:
+    // 0x24eb64: 0x42840000  .word       0x42840000                   # INVALID     $s4, $a0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24eb64u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24EB64 raw=0x42840000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eb68:
+    // 0x24eb68: 0x42100000  .word       0x42100000                   # INVALID     $s0, $s0, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24eb68u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24EB68 raw=0x42100000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eb6c:
+    // 0x24eb6c: 0x41600000  .word       0x41600000                   # INVALID     $t3, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24eb6cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xB at 0x24EB6C raw=0x41600000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eb70:
+    // 0x24eb70: 0xc0800000  ll          $zero, 0x0($a0)
+    ctx->pc = 0x24eb70u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eb74:
+    // 0x24eb74: 0xc1900000  ll          $s0, 0x0($t4)
+    ctx->pc = 0x24eb74u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eb78:
+    // 0x24eb78: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24eb78u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eb7c:
+    // 0x24eb7c: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24eb7cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x24EB7C raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eb80:
+    // 0x24eb80: 0x42340000  .word       0x42340000                   # INVALID     $s1, $s4, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24eb80u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x11 at 0x24EB80 raw=0x42340000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eb84:
+    // 0x24eb84: 0x41d80000  .word       0x41D80000                   # INVALID     $t6, $t8, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24eb84u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xE at 0x24EB84 raw=0x41D80000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eb88:
+    // 0x24eb88: 0xc1e80000  ll          $t0, 0x0($t7)
+    ctx->pc = 0x24eb88u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 15), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eb8c:
+    // 0x24eb8c: 0xc1500000  ll          $s0, 0x0($t2)
+    ctx->pc = 0x24eb8cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 10), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eb90:
+    // 0x24eb90: 0xc2e00000  ll          $zero, 0x0($s7)
+    ctx->pc = 0x24eb90u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 23), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eb94:
+    // 0x24eb94: 0x42cc0000  .word       0x42CC0000                   # INVALID     $s6, $t4, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24eb94u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x16 at 0x24EB94 raw=0x42CC0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eb98:
+    // 0x24eb98: 0x42a60000  .word       0x42A60000                   # INVALID     $s5, $a2, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24eb98u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x15 at 0x24EB98 raw=0x42A60000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eb9c:
+    // 0x24eb9c: 0x43250000  .word       0x43250000                   # INVALID     $t9, $a1, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24eb9cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x19 at 0x24EB9C raw=0x43250000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24eba0:
+    // 0x24eba0: 0xc0a00000  ll          $zero, 0x0($a1)
+    ctx->pc = 0x24eba0u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 5), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eba4:
+    // 0x24eba4: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24eba4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24eba8:
+    // 0x24eba8: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x24eba8u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ebac:
+    // 0x24ebac: 0x420c0000  .word       0x420C0000                   # INVALID     $s0, $t4, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24ebacu;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24EBAC raw=0x420C0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ebb0:
+    // 0x24ebb0: 0x42000000  .word       0x42000000                   # INVALID     $s0, $zero, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x24ebb0u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x24EBB0 raw=0x42000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ebb4:
+    // 0x24ebb4: 0x42480000  .word       0x42480000                   # INVALID     $s2, $t0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24ebb4u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x12 at 0x24EBB4 raw=0x42480000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ebb8:
+    // 0x24ebb8: 0x42de0000  .word       0x42DE0000                   # INVALID     $s6, $fp, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24ebb8u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x16 at 0x24EBB8 raw=0x42DE0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ebbc:
+    // 0x24ebbc: 0x90005  .word       0x00090005                   # INVALID     $zero, $t1, 0x5 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24ebbcu;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x5 at 0x24EBBC raw=0x00090005"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ebc0:
+    // 0x24ebc0: 0x20000  sll         $zero, $v0, 0
+    ctx->pc = 0x24ebc0u;
+    
+label_24ebc4:
+    // 0x24ebc4: 0x10200da  .word       0x010200DA                   # div         $zero, $t0, $v0 # 000000C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24ebc4u;
+    { int32_t divisor = GPR_S32(ctx, 2);    int32_t dividend = GPR_S32(ctx, 8);    if (divisor != 0) {        if (divisor == -1 && dividend == INT32_MIN) {            ctx->lo = (uint64_t)(int64_t)INT32_MIN; ctx->hi = 0;        } else {            ctx->lo = (uint64_t)(int64_t)(dividend / divisor);            ctx->hi = (uint64_t)(int64_t)(dividend % divisor);        }    } else {        ctx->lo = (dividend < 0) ? 1ull : 0xFFFFFFFFFFFFFFFFull; ctx->hi = (uint64_t)(int64_t)dividend;    } }
+label_24ebc8:
+    // 0x24ebc8: 0x750075  .word       0x00750075                   # INVALID     $v1, $s5, 0x75 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24ebc8u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x35 at 0x24EBC8 raw=0x00750075"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ebcc:
+    // 0x24ebcc: 0x13b013b  .word       0x013B013B                   # dsra        $zero, $k1, 4 # 01200000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24ebccu;
+    SET_GPR_S64(ctx, 0, GPR_S64(ctx, 27) >> 4);
+label_24ebd0:
+    // 0x24ebd0: 0xc2d0c2d  jal         func_B430B4
+label_24ebd4:
+    if (ctx->pc == 0x24EBD4u) {
+        ctx->pc = 0x24EBD4u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x24EBD0u;
+        // 0x24ebd4: 0xc2d0c2d  jal         func_B430B4 (Delay Slot)
+        // JAL 0xB430B4 - Handled by branch logic
+        ctx->in_delay_slot = false;
+        ctx->pc = 0x24EBD8u;
+        goto label_24ebd8;
+    }
+    ctx->pc = 0x24EBD0u;
+    SET_GPR_U32(ctx, 31, 0x24EBD8u);
+    ctx->pc = 0x24EBD4u;
+    ctx->in_delay_slot = true;
+    ctx->branch_pc = 0x24EBD0u;
+    // 0x24ebd4: 0xc2d0c2d  jal         func_B430B4 (Delay Slot)
+    // JAL 0xB430B4 - Handled by branch logic
+    ctx->in_delay_slot = false;
+    ctx->pc = 0xB430B4u;
+    if (!runtime->dispatchGuestBranch(rdram, ctx, 0xB430B4u, 0x24EBD0u, 0x24EBD8u, PS2Runtime::GuestBranchKind::DirectCall, "JAL")) {
+        return;
+    }
+    ctx->pc = 0x24EBD8u;
+label_24ebd8:
+    // 0x24ebd8: 0xc2d  .word       0x00000C2D                   # daddu       $at, $zero, $zero # 00000400 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x24ebd8u;
+    SET_GPR_U64(ctx, 1, (uint64_t)GPR_U64(ctx, 0) + (uint64_t)GPR_U64(ctx, 0));
+label_24ebdc:
+    // 0x24ebdc: 0x10000  sll         $zero, $at, 0
+    ctx->pc = 0x24ebdcu;
+    
+label_24ebe0:
+    // 0x24ebe0: 0x0  nop
+    ctx->pc = 0x24ebe0u;
+    // NOP
+label_24ebe4:
+    // 0x24ebe4: 0x0  nop
+    ctx->pc = 0x24ebe4u;
+    // NOP
+label_24ebe8:
+    // 0x24ebe8: 0x0  nop
+    ctx->pc = 0x24ebe8u;
+    // NOP
+label_24ebec:
+    // 0x24ebec: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x24ebecu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_24ebf0:
+    // 0x24ebf0: 0x0  nop
+    ctx->pc = 0x24ebf0u;
+    // NOP
+label_24ebf4:
+    // 0x24ebf4: 0x0  nop
+    ctx->pc = 0x24ebf4u;
+    // NOP
+label_24ebf8:
+    // 0x24ebf8: 0x40000000  mfc0        $zero, Index
+    ctx->pc = 0x24ebf8u;
+    SET_GPR_S32(ctx, 0, (int32_t)ctx->cop0_index);
+label_24ebfc:
+    // 0x24ebfc: 0x41400000  .word       0x41400000                   # INVALID     $t2, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24ebfcu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xA at 0x24EBFC raw=0x41400000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ec00:
+    // 0x24ec00: 0x0  nop
+    ctx->pc = 0x24ec00u;
+    // NOP
+label_24ec04:
+    // 0x24ec04: 0x0  nop
+    ctx->pc = 0x24ec04u;
+    // NOP
+label_24ec08:
+    // 0x24ec08: 0x0  nop
+    ctx->pc = 0x24ec08u;
+    // NOP
+label_24ec0c:
+    // 0x24ec0c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x24ec0cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_24ec10:
+    // 0x24ec10: 0x0  nop
+    ctx->pc = 0x24ec10u;
+    // NOP
+label_24ec14:
+    // 0x24ec14: 0x0  nop
+    ctx->pc = 0x24ec14u;
+    // NOP
+label_24ec18:
+    // 0x24ec18: 0x40000000  mfc0        $zero, Index
+    ctx->pc = 0x24ec18u;
+    SET_GPR_S32(ctx, 0, (int32_t)ctx->cop0_index);
+label_24ec1c:
+    // 0x24ec1c: 0x41400000  .word       0x41400000                   # INVALID     $t2, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x24ec1cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xA at 0x24EC1C raw=0x41400000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_24ec20:
+    // 0x24ec20: 0x0  nop
+    ctx->pc = 0x24ec20u;
+    // NOP
+label_24ec24:
+    // 0x24ec24: 0x0  nop
+    ctx->pc = 0x24ec24u;
+    // NOP
+label_24ec28:
+    // 0x24ec28: 0x0  nop
+    ctx->pc = 0x24ec28u;
+    // NOP
+label_24ec2c:
+    // 0x24ec2c: 0x0  nop
+    ctx->pc = 0x24ec2cu;
+    // NOP
+label_24ec30:
+    // 0x24ec30: 0x0  nop
+    ctx->pc = 0x24ec30u;
+    // NOP
+label_24ec34:
+    // 0x24ec34: 0x0  nop
+    ctx->pc = 0x24ec34u;
+    // NOP
+label_24ec38:
+    // 0x24ec38: 0xc1600000  ll          $zero, 0x0($t3)
+    ctx->pc = 0x24ec38u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_24ec3c:
+    // 0x24ec3c: 0xc1800000  ll          $zero, 0x0($t4)
+    ctx->pc = 0x24ec3cu;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+    ctx->pc = 0x24ec40u;
+    return;
+}

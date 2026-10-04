@@ -1,0 +1,30 @@
+{
+  "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+  "epilogues": [
+    {
+      "owner": "src\\recomp\\FUN_001abd50_0x1abd50.cpp",
+      "owner_sha256": "ed39f24823e54c5359300b252153342816bdb53a0f96cbfa443fef55bfb7bd93",
+      "annotations_verified": 10,
+      "entry": "0x1abd78",
+      "words": [
+        "0xdfbf0000",
+        "0x102d",
+        "0x3e00008",
+        "0x27bd0010"
+      ]
+    },
+    {
+      "owner": "src\\recomp\\FUN_001a8898_0x1a8898.cpp",
+      "owner_sha256": "dee9315b24bf547d8dd10d24b3f63111322b51e9d0bc4a1c9b2d5e9f41e98413",
+      "annotations_verified": 9,
+      "entry": "0x1a88bc",
+      "words": [
+        "0xdfbf0000",
+        "0x102d",
+        "0x3e00008",
+        "0x27bd0010"
+      ]
+    }
+  ],
+  "scope": "Two original four-word epilogues after memset; no full parity claim"
+}

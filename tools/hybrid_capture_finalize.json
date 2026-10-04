@@ -1,0 +1,43 @@
+{
+  "id": "retail-preparation-master-validation-v1",
+  "tasks": [
+    {
+      "id": "reuse_verified_reviews", "kind": "inventory",
+      "files": [
+        {"path": "artifacts/hybrid_campaign_20261003/capture_points_primary.json", "sha256": "c91ff432e5e74f9181d88c1ee92fc10772de0bd2e972259e48d95a2943479b61"},
+        {"path": "artifacts/hybrid_campaign_20261003/capture_points_independent_review.json", "sha256": "9ed7dca3ac178cf65b938efa309ccf5ec27db18feaa75c7c81a6efccffbb91c1"},
+        {"path": "C:/DW3/sources/dumps/dw3xl_ps2/SLUS_206.17", "sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731"}
+      ]
+    },
+    {
+      "id": "debugger_step_master_validation", "kind": "debugger_contract", "depends": ["reuse_verified_reviews"],
+      "sources": [{"path": "artifacts/retail_capture_20261003/inspection/pcsx2-qt_Debugger_DebuggerWindow.cpp", "sha256": "8baa206abd4c751b429e3791cc708cbdd7254e2573070cb6deee510a9de6a7cf", "lines": [446,491]}]
+    },
+    {
+      "id": "capture_contract", "kind": "capture_plan", "depends": ["debugger_step_master_validation"],
+      "sources": [{"path": "docs/host_barrier_20261003.md", "sha256": "e6cf0a67d453de42051e54862d916c339401c4f1bcbc39dfb337fc604e0a5764", "lines": [120,146]}],
+      "plan": {
+        "kind": "CAPTURE_REQUIREMENTS_NOT_OBSERVED_STATE",
+        "pcsx2_version": "2.8.2.0",
+        "exe": "D:/Juegos/Playstation/Playstation 2/PS2 Tools/PCXS2 V2.3/pcsx2-qt.exe",
+        "elf": "C:/DW3/sources/dumps/dw3xl_ps2/SLUS_206.17",
+        "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+        "A": {"pc":"0x00100008","hit":1,"before":"LUI"},
+        "B": {"pc":"0x00100018","hit":2,"after_delay_slot":"0x00100030"},
+        "trace": {"first_pc":"0x00100008","last_pc":"0x00100030","instructions":11},
+        "registers_required": ["r0..r31 low64/high64","PC","HI","LO","HI1","LO1","SA","COP0 Status/Cause/EPC","SP/GP/RA","branch/delay if exposed"],
+        "missing_fields": "explicit null plus reason; never zero substitute",
+        "memory_ranges_half_open": [["0x00100000","0x00100100"],["0x002d0580","0x002d05c0"],["0x0007ff80","0x00080080"]],
+        "stack": "retail SP +/- 0x80 after documented valid EE RAM translation",
+        "preferred_full_ee_ram": ["0x00000000","0x02000000"],
+        "step_warning": "Step Into executes the branch and its delay slot together before pausing at target. Missing intermediate state remains absent.",
+        "primary_provider":"azure", "independent_reviewer_provider":"ollama",
+        "retail_capture_available":false,
+        "output_root":"artifacts/retail_capture_20261003/raw",
+        "comparison_tool":"tools/retail_compare.py",
+        "next_action":"Validate isolated debugger capture/export setup, then capture real A/B/trace. Do not execute retail before that preflight."
+      }
+    },
+    {"id":"retail_evidence_gate","kind":"retail_gate","depends":["capture_contract"]}
+  ]
+}

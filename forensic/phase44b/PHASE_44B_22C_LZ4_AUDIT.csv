@@ -1,9 +1,0 @@
-item,value,status
-header,D:\\PCSX2_FORENSIC_DEPS\\vcpkg\\installed\\x64-windows\\include\\lz4.h,FOUND
-release_library,D:\\PCSX2_FORENSIC_DEPS\\vcpkg\\installed\\x64-windows\\lib\\lz4.lib,FOUND
-debug_library,D:\\PCSX2_FORENSIC_DEPS\\vcpkg\\installed\\x64-windows\\debug\\lib\\lz4d.lib,FOUND
-cmake_config,D:\\PCSX2_FORENSIC_DEPS\\vcpkg\\installed\\x64-windows\\share\\lz4\\lz4Config.cmake,FOUND
-version,1.10.0,FOUND
-module_expectation,lz4.h plus lz4d/lz4 libraries,CONFIRMED
-existing_layout_sufficient,no,NO
-resolution,per-config imported locations in isolated CMake module,CMAKE_ONLY

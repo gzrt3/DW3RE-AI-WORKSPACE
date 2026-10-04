@@ -1,177 +1,62 @@
-## PS2Recomp: PlayStation 2 Static Recompiler (Experimental)
+# Dynasty Warriors 3 Complete Remastered
 
-[![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/JQ8mawxUEf)
+Work in progress: a Windows x64 static recompilation and native runtime project for Dynasty Warriors 3 and Dynasty Warriors 3 Xtreme Legends.
 
-Also check our [WIKI](https://github.com/ran-j/PS2Recomp/wiki)
+**This is a development workspace, not a playable remaster.** No title screen or complete battle has been demonstrated. All eight final acceptance criteria remain open. Successful builds and focused contracts do not establish equivalence with the original games.
 
+## Current state
 
-This project statically recompiles PS2 ELF binaries into C++ and provides a runtime to execute the generated code.
+- The native executable loads the identified XL ELF and executes translated EE code with an owned runtime.
+- SetupHeap arguments and return agree with recorded reference checkpoints in Debug and Release; other state differences remain open.
+- The original IOP reboot request now reaches the selected module startup and original EESYNC callback, followed by the new EE handshake.
+- A verified catalog restores 7,636 existing resume aliases and 589 original return tails. Existing reviewed overrides take precedence.
+- Release098 passes both original reset epilogues and stops at missing continuation `0x001B0308`. A clean dependency/host rebuild reproduces that stop with original input integrity MATCH; see `docs/CURRENT_STATUS.md`.
+- Combined data/VFS components exist, but combined gameplay, graphics, sound, input, saves and full content coverage remain unverified.
 
-### Modules
+The implementation and acceptance criteria are in [the project plan](docs/COMPLETE_REMASTERED_PLAN.md). Historical entries are retained and may describe superseded states.
 
-* `ps2xAnalyzer`: scans ELF/functions and writes TOML config (`stubs`, `skip`, instruction patches).
-* `ps2xRecomp`: reads TOML + ELF, decodes R5900 instructions, and generates C++ output.
-* `ps2xRuntime`: hosts memory, function registration, syscall dispatch, and hardware stubs.
-* `ps2xIOP`: portable, instance-owned IOP HLE services, game profiles, and the C plugin ABI.
+## Repository contents
 
-### Features
+| Path | Purpose |
+| --- | --- |
+| `src/`, `include/` | Native host, translated EE corpus and reviewed repairs |
+| `tools/PS2Recomp/` | Modified runtime/IOP/recompiler source, with upstream license |
+| `tools/` | Trace comparison, provenance, data extraction and bounded probes |
+| `tests/` | Synthetic contracts and tooling regression tests |
+| `scripts/build_native.ps1` | Build dependencies and host without machine-specific paths |
+| `docs/`, `research/`, `evidence/` | Plan, compact research context and selected verification reports |
 
-* Translates MIPS R5900 instructions to C++ code
-* PS2-specific MMI and VU0 macro support.
-* Single-file or multi-file output.
-* Configurable stubs, skips, and instruction patches.
-* Instruction-driven syscall handling.
+Build trees, Python environments, cloud credentials/budget journals, ISO images, BIOS files, extracted game assets, memory dumps, savestates and personal saves are kept outside Git. Generated C++ is retained as source; Git compresses it during transfer and storage.
 
-### How It Works
-PS2Recomp works by:
+## Build on Windows
 
-* Parsing a PS2 ELF file to extract functions, symbols, and relocations
-* Decoding the MIPS R5900 instructions in each function
-* Translating those instructions to equivalent C++ code
-* Generating a runtime that can execute the recompiled code
+Install Visual Studio 2022 with Desktop development with C++, CMake 3.25 or newer, Git and Python 3.12 or newer. From PowerShell at the repository root:
 
-The translated code is very literal, with each MIPS instruction mapping to a C++ operation. For example, `addiu $r4, $r4, 0x20` becomes `ctx->r4 = ADD32(ctx->r4, 0X20);`.
-
-### Current Behavior
-
-* `stubs` entries generate wrappers that call known runtime syscall/stub handlers by name.
-* `stubs` also supports address bindings with `handler@0xADDRESS` for stripped games (for example `sceCdRead@0x00123456`).
-* Address bindings also support generic return handlers for triage: `ret0`, `ret1`, `reta0`.
-* Recompiler now tries relocation-symbol auto-binding at callsites (`J/JAL`) before raw address dispatch; when relocation symbol is known (for example `sceCdRead`), it can call runtime handlers without manual address mapping.
-* Recompiler discovers additional internal static entry targets and emits `entry_...` wrappers for those addresses.
-* For unresolved static `J/JAL` sites, generated code falls back to `runtime->lookupFunction(0x...)`.
-* `skip` entries are not recompiled and generate explicit `ps2_stubs::TODO_NAMED(...)` wrappers.
-* Recompiled `SYSCALL` now calls `runtime->handleSyscall(...)` with the encoded syscall immediate.
-* Runtime syscall dispatch tries encoded syscall ID first, then falls back to `$v1`.
-
-### Requirements
-
-* CMake 3.20+
-* C++20 compiler (currently tested mainly with MSVC)
-* SSE4/AVX host support for some vector paths
-
-### Build
-
-```bash
-git clone --recurse-submodules https://github.com/ran-j/PS2Recomp.git
-cd PS2Recomp
-
-cmake -S . -B out/build
-cmake --build out/build --config Debug
+```powershell
+./scripts/build_native.ps1 -Configuration Release -Parallel 4
 ```
 
-### Usage
+The script obtains SDL2 at the named release and builds the vendored runtime separately. Its CMake configuration obtains the declared raylib and FFmpeg dependencies. A network connection is needed on the first build. `-BuildRoot D:/DW3-build` places intermediate files on another drive. `-SDL2Source <path>` reuses a local SDL source tree.
 
-Preferred workflow for retail or stripped games:
+Output: `out/native/game/bin/Release/fate_game.exe`. The executable is currently a boot diagnostic with native dependencies, not a packaged final game. The existing development build and clean-checkout validation are distinguished in [build notes](docs/PUBLICATION.md).
 
-1. Open the ELF in Ghidra.
-2. Run `ps2xRecomp/tools/ghidra/ExportPS2Functions.java`.
-3. Use the exported TOML and CSV map.
-4. Recompile with the exported TOML:
+## Local input data and verification
 
-```bash
-./ps2_recomp config.toml
+Supply the original identified game dumps and the original IOP modules locally. `tools/prepare_combined_data.py --help`, `tools/extract_iop_modules.py --help` and `tools/native_boot_probe.py --help` describe their inputs. Original files are never downloaded by this repository.
+
+The native reboot profile in `include/fate/native_iop_manifest.hpp` identifies the required original modules by SHA-256. A missing or mismatched module must fail explicitly. Extracted assets and BIOS-derived bytes are intentionally absent from Git.
+
+Tooling checks that do not require retail data:
+
+```powershell
+python -m unittest discover -s tests -p test_resume_catalog.py -v
+python -m unittest discover -s tests -p test_native_boot_probe.py -v
 ```
 
-Fallback workflow for quick local experiments or ELFs with debug symbol :
+For a bounded local run, provide `--exe`, `--dump-root`, `--elf`, `--iop-root`, a new `--output` directory and a timeout to `tools/native_boot_probe.py`. Logs preserve input identities and failures. A timeout or process exit is not a verified boot.
 
-```bash
-./ps2_analyzer your_game.elf config.toml
-```
+## Modding and contributions
 
-Use this only when you do not have a Ghidra project yet. The native analyzer is faster to start, but it is less accurate on stripped retail games and more likely to miss internal callable entry points.
+Prefer verified translated behavior. Keep variant identity for DW3 and XL assets, preserve register widths and delay slots, and add focused regressions for measured errors. Do not replace unresolved instructions or hardware behavior with successful dummy returns. Read `AGENTS.md` and the current plan before changing runtime code.
 
-See the [Ghidra Workflow](ps2xAnalyzer/Readme.md#3-ghidra-integration-for-retail-and-stripped-games-preferred) for the recommended path.
-
-Then build generated output and link with `ps2xRuntime`.
-
-### Configuration
-
-Main fields in `config.toml`:
-
-* `general.input`: source ELF path.
-* `general.ghidra_output`: recommended function map CSV exported from Ghidra.
-* `general.output`: generated C++ output folder.
-* `general.single_file_output`: one combined cpp or one file per function.
-* `general.low_memory_mode`: reduce peak output-generation memory by avoiding retained disassembly strings and forcing serial output generation. Generated instruction comments are still emitted; disassembly text is produced while writing each output file instead of being kept in memory.
-* `general.output_worker_threads`: number of output-generation workers (clamped to nproc * 2). A positive value uses exactly that many workers. `0` uses `nproc - 1` when at least two hardware threads are available, otherwise serial output generation. `1` forces serial output generation.
-* `general.patch_syscalls`: apply configured patches to `SYSCALL` instructions (`false` recommended).
-* `general.patch_cop0`: apply configured patches to COP0 instructions.
-* `general.patch_cache`: apply configured patches to CACHE instructions.
-* `general.stubs`: names to force as stubs. Also accepts `handler@0xADDRESS` to bind a stripped function address directly to a runtime syscall/stub handler. Includes generic handlers `ret0`, `ret1`, `reta0`.
-* `general.skip`: names to force as skipped wrappers.
-* `patches.instructions`: raw instruction replacements by address.
-
-Address binding for stripped ELFs:
-
-* Use `handler@0xADDRESS` inside `general.stubs` to map a stripped function start directly to a runtime handler.
-* Example: `sceCdRead@0x00123456` binds function start `0x00123456` to `ps2_stubs::sceCdRead(...)`.
-* Generic temporary handlers are available: `ret0@0xADDR`, `ret1@0xADDR`, `reta0@0xADDR`.
-* Before manual binding, prefer recompilation from a Ghidra-exported TOML/CSV first. The extra boundaries and synthetic entry points are usually more important than manual early triage.
-* The address must be the function start in that exact ELF build.
-* Addresses are not portable across different games/regions/builds.
-* The handler name must exist in runtime call lists (`PS2_SYSCALL_LIST` or `PS2_STUB_LIST`).
-
-Example:
-
-```toml
-# stripped function binding by address:
-stubs = ["sceCdRead@0x00123456", "SifLoadModule@0x00127890"]
-# temporary return handlers:
-stubs = ["ret0@0x001D9410", "ret1@0x001D5BC8", "reta0@0x0024B7C0"]
-# mixed example:
-stubs = ["printf", "sceCdRead@0x00123456", "SifLoadModule@0x00127890"] 
-```
-
-### Runtime
-
-To execute the recompiled code.
-
-`ps2xRuntime` currently provides:
-
-* Guest memory model and function dispatch table.
-* Some syscall dispatcher with common kernel IDs.
-* Basic GS/VU/file/system stubs.
-* Foundation to expand and port your game.
-* `ps2xIOP` profile selection and optional `.dll`/`.so` discovery for game-specific IOP HLE.
-
-See [IOP HLE profiles and plugins](ps2xIOP/README.md) for the service boundary and external plugin workflow.
-
-### Game Override Hooks
-
-Game overrides are runtime-side, build-scoped patch modules.
-
-A game override is C++ code that runs during `loadELF` and can replace EE function bindings by address for one specific game build. IOP RPC/DMA behavior belongs in a `ps2xIOP` profile instead. This is separate from recompilation output and separate from global runtime stubs/syscalls.
-
-API:
-
-* Header: `ps2xRuntime/include/game_overrides.h`
-* Register macro: `PS2_REGISTER_GAME_OVERRIDE(name, elfName, entry, crc32, applyFn)`
-* Direct bind helper: `ps2_game_overrides::bindAddressHandler(runtime, addr, "handler")`
-
-Use Game Override modules when:
-
-* You need per-game/per-build routing or patches without polluting global behavior.
-* You need to bind many addresses, or install custom replacement logic for a specific title.
-
-#### Recommended Iteration Loop
-
-1. Run with minimal config and no aggressive skipping.
-2. Fix hard blockers first (`function not found`, syscall TODO, critical IO stubs).
-3. Use temporary return stubs only to classify call importance.
-4. Promote temporary fixes to real implementations.
-5. Move per-game hacks into game overrides keyed by ELF metadata.
-6. Re-test from cold boot after each batch.
-
-### Limitations
-
-* Graphics Synthesizer and other hardware components need external implementation
-* VU1 microcode is not complete.
-* Hardware emulation is partial and many paths are stubbed.
-
-###  Acknowledgments
-
-* Inspired by N64Recomp
-* Uses ELFIO for ELF parsing
-* Uses toml11 for TOML parsing
-* Uses fmt for string formatting
+The existing GPLv3 license is preserved. Vendored components retain their own notices. Dynasty Warriors and its game content belong to their respective owners; game data is not included here.

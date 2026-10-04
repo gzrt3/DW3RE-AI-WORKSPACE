@@ -1,0 +1,2644 @@
+#include <stdexcept>
+#include "ps2_runtime_macros.h"
+#include "ps2_runtime.h"
+#include <ps2_recompiled_functions.h>
+#include <ps2_recompiled_stubs.h>
+
+#include "ps2_syscalls.h"
+#include "ps2_stubs.h"
+
+#ifdef PS2_FUNCTION_LOG_TRACKER
+#include "ps2_log.h"
+#endif
+
+// Function: entry_00254d38
+// Address: 0x254d38 - 0x27d478
+#ifdef PS2_FUNCTION_LOG_TRACKER
+#endif
+
+
+void entry_00254d38_part76(uint8_t* rdram, R5900Context* ctx, PS2Runtime *runtime) {
+    switch (ctx->pc) {
+        case 0x279728u: goto label_279728;
+        case 0x27972cu: goto label_27972c;
+        case 0x279730u: goto label_279730;
+        case 0x279734u: goto label_279734;
+        case 0x279738u: goto label_279738;
+        case 0x27973cu: goto label_27973c;
+        case 0x279740u: goto label_279740;
+        case 0x279744u: goto label_279744;
+        case 0x279748u: goto label_279748;
+        case 0x27974cu: goto label_27974c;
+        case 0x279750u: goto label_279750;
+        case 0x279754u: goto label_279754;
+        case 0x279758u: goto label_279758;
+        case 0x27975cu: goto label_27975c;
+        case 0x279760u: goto label_279760;
+        case 0x279764u: goto label_279764;
+        case 0x279768u: goto label_279768;
+        case 0x27976cu: goto label_27976c;
+        case 0x279770u: goto label_279770;
+        case 0x279774u: goto label_279774;
+        case 0x279778u: goto label_279778;
+        case 0x27977cu: goto label_27977c;
+        case 0x279780u: goto label_279780;
+        case 0x279784u: goto label_279784;
+        case 0x279788u: goto label_279788;
+        case 0x27978cu: goto label_27978c;
+        case 0x279790u: goto label_279790;
+        case 0x279794u: goto label_279794;
+        case 0x279798u: goto label_279798;
+        case 0x27979cu: goto label_27979c;
+        case 0x2797a0u: goto label_2797a0;
+        case 0x2797a4u: goto label_2797a4;
+        case 0x2797a8u: goto label_2797a8;
+        case 0x2797acu: goto label_2797ac;
+        case 0x2797b0u: goto label_2797b0;
+        case 0x2797b4u: goto label_2797b4;
+        case 0x2797b8u: goto label_2797b8;
+        case 0x2797bcu: goto label_2797bc;
+        case 0x2797c0u: goto label_2797c0;
+        case 0x2797c4u: goto label_2797c4;
+        case 0x2797c8u: goto label_2797c8;
+        case 0x2797ccu: goto label_2797cc;
+        case 0x2797d0u: goto label_2797d0;
+        case 0x2797d4u: goto label_2797d4;
+        case 0x2797d8u: goto label_2797d8;
+        case 0x2797dcu: goto label_2797dc;
+        case 0x2797e0u: goto label_2797e0;
+        case 0x2797e4u: goto label_2797e4;
+        case 0x2797e8u: goto label_2797e8;
+        case 0x2797ecu: goto label_2797ec;
+        case 0x2797f0u: goto label_2797f0;
+        case 0x2797f4u: goto label_2797f4;
+        case 0x2797f8u: goto label_2797f8;
+        case 0x2797fcu: goto label_2797fc;
+        case 0x279800u: goto label_279800;
+        case 0x279804u: goto label_279804;
+        case 0x279808u: goto label_279808;
+        case 0x27980cu: goto label_27980c;
+        case 0x279810u: goto label_279810;
+        case 0x279814u: goto label_279814;
+        case 0x279818u: goto label_279818;
+        case 0x27981cu: goto label_27981c;
+        case 0x279820u: goto label_279820;
+        case 0x279824u: goto label_279824;
+        case 0x279828u: goto label_279828;
+        case 0x27982cu: goto label_27982c;
+        case 0x279830u: goto label_279830;
+        case 0x279834u: goto label_279834;
+        case 0x279838u: goto label_279838;
+        case 0x27983cu: goto label_27983c;
+        case 0x279840u: goto label_279840;
+        case 0x279844u: goto label_279844;
+        case 0x279848u: goto label_279848;
+        case 0x27984cu: goto label_27984c;
+        case 0x279850u: goto label_279850;
+        case 0x279854u: goto label_279854;
+        case 0x279858u: goto label_279858;
+        case 0x27985cu: goto label_27985c;
+        case 0x279860u: goto label_279860;
+        case 0x279864u: goto label_279864;
+        case 0x279868u: goto label_279868;
+        case 0x27986cu: goto label_27986c;
+        case 0x279870u: goto label_279870;
+        case 0x279874u: goto label_279874;
+        case 0x279878u: goto label_279878;
+        case 0x27987cu: goto label_27987c;
+        case 0x279880u: goto label_279880;
+        case 0x279884u: goto label_279884;
+        case 0x279888u: goto label_279888;
+        case 0x27988cu: goto label_27988c;
+        case 0x279890u: goto label_279890;
+        case 0x279894u: goto label_279894;
+        case 0x279898u: goto label_279898;
+        case 0x27989cu: goto label_27989c;
+        case 0x2798a0u: goto label_2798a0;
+        case 0x2798a4u: goto label_2798a4;
+        case 0x2798a8u: goto label_2798a8;
+        case 0x2798acu: goto label_2798ac;
+        case 0x2798b0u: goto label_2798b0;
+        case 0x2798b4u: goto label_2798b4;
+        case 0x2798b8u: goto label_2798b8;
+        case 0x2798bcu: goto label_2798bc;
+        case 0x2798c0u: goto label_2798c0;
+        case 0x2798c4u: goto label_2798c4;
+        case 0x2798c8u: goto label_2798c8;
+        case 0x2798ccu: goto label_2798cc;
+        case 0x2798d0u: goto label_2798d0;
+        case 0x2798d4u: goto label_2798d4;
+        case 0x2798d8u: goto label_2798d8;
+        case 0x2798dcu: goto label_2798dc;
+        case 0x2798e0u: goto label_2798e0;
+        case 0x2798e4u: goto label_2798e4;
+        case 0x2798e8u: goto label_2798e8;
+        case 0x2798ecu: goto label_2798ec;
+        case 0x2798f0u: goto label_2798f0;
+        case 0x2798f4u: goto label_2798f4;
+        case 0x2798f8u: goto label_2798f8;
+        case 0x2798fcu: goto label_2798fc;
+        case 0x279900u: goto label_279900;
+        case 0x279904u: goto label_279904;
+        case 0x279908u: goto label_279908;
+        case 0x27990cu: goto label_27990c;
+        case 0x279910u: goto label_279910;
+        case 0x279914u: goto label_279914;
+        case 0x279918u: goto label_279918;
+        case 0x27991cu: goto label_27991c;
+        case 0x279920u: goto label_279920;
+        case 0x279924u: goto label_279924;
+        case 0x279928u: goto label_279928;
+        case 0x27992cu: goto label_27992c;
+        case 0x279930u: goto label_279930;
+        case 0x279934u: goto label_279934;
+        case 0x279938u: goto label_279938;
+        case 0x27993cu: goto label_27993c;
+        case 0x279940u: goto label_279940;
+        case 0x279944u: goto label_279944;
+        case 0x279948u: goto label_279948;
+        case 0x27994cu: goto label_27994c;
+        case 0x279950u: goto label_279950;
+        case 0x279954u: goto label_279954;
+        case 0x279958u: goto label_279958;
+        case 0x27995cu: goto label_27995c;
+        case 0x279960u: goto label_279960;
+        case 0x279964u: goto label_279964;
+        case 0x279968u: goto label_279968;
+        case 0x27996cu: goto label_27996c;
+        case 0x279970u: goto label_279970;
+        case 0x279974u: goto label_279974;
+        case 0x279978u: goto label_279978;
+        case 0x27997cu: goto label_27997c;
+        case 0x279980u: goto label_279980;
+        case 0x279984u: goto label_279984;
+        case 0x279988u: goto label_279988;
+        case 0x27998cu: goto label_27998c;
+        case 0x279990u: goto label_279990;
+        case 0x279994u: goto label_279994;
+        case 0x279998u: goto label_279998;
+        case 0x27999cu: goto label_27999c;
+        case 0x2799a0u: goto label_2799a0;
+        case 0x2799a4u: goto label_2799a4;
+        case 0x2799a8u: goto label_2799a8;
+        case 0x2799acu: goto label_2799ac;
+        case 0x2799b0u: goto label_2799b0;
+        case 0x2799b4u: goto label_2799b4;
+        case 0x2799b8u: goto label_2799b8;
+        case 0x2799bcu: goto label_2799bc;
+        case 0x2799c0u: goto label_2799c0;
+        case 0x2799c4u: goto label_2799c4;
+        case 0x2799c8u: goto label_2799c8;
+        case 0x2799ccu: goto label_2799cc;
+        case 0x2799d0u: goto label_2799d0;
+        case 0x2799d4u: goto label_2799d4;
+        case 0x2799d8u: goto label_2799d8;
+        case 0x2799dcu: goto label_2799dc;
+        case 0x2799e0u: goto label_2799e0;
+        case 0x2799e4u: goto label_2799e4;
+        case 0x2799e8u: goto label_2799e8;
+        case 0x2799ecu: goto label_2799ec;
+        case 0x2799f0u: goto label_2799f0;
+        case 0x2799f4u: goto label_2799f4;
+        case 0x2799f8u: goto label_2799f8;
+        case 0x2799fcu: goto label_2799fc;
+        case 0x279a00u: goto label_279a00;
+        case 0x279a04u: goto label_279a04;
+        case 0x279a08u: goto label_279a08;
+        case 0x279a0cu: goto label_279a0c;
+        case 0x279a10u: goto label_279a10;
+        case 0x279a14u: goto label_279a14;
+        case 0x279a18u: goto label_279a18;
+        case 0x279a1cu: goto label_279a1c;
+        case 0x279a20u: goto label_279a20;
+        case 0x279a24u: goto label_279a24;
+        case 0x279a28u: goto label_279a28;
+        case 0x279a2cu: goto label_279a2c;
+        case 0x279a30u: goto label_279a30;
+        case 0x279a34u: goto label_279a34;
+        case 0x279a38u: goto label_279a38;
+        case 0x279a3cu: goto label_279a3c;
+        case 0x279a40u: goto label_279a40;
+        case 0x279a44u: goto label_279a44;
+        case 0x279a48u: goto label_279a48;
+        case 0x279a4cu: goto label_279a4c;
+        case 0x279a50u: goto label_279a50;
+        case 0x279a54u: goto label_279a54;
+        case 0x279a58u: goto label_279a58;
+        case 0x279a5cu: goto label_279a5c;
+        case 0x279a60u: goto label_279a60;
+        case 0x279a64u: goto label_279a64;
+        case 0x279a68u: goto label_279a68;
+        case 0x279a6cu: goto label_279a6c;
+        case 0x279a70u: goto label_279a70;
+        case 0x279a74u: goto label_279a74;
+        case 0x279a78u: goto label_279a78;
+        case 0x279a7cu: goto label_279a7c;
+        case 0x279a80u: goto label_279a80;
+        case 0x279a84u: goto label_279a84;
+        case 0x279a88u: goto label_279a88;
+        case 0x279a8cu: goto label_279a8c;
+        case 0x279a90u: goto label_279a90;
+        case 0x279a94u: goto label_279a94;
+        case 0x279a98u: goto label_279a98;
+        case 0x279a9cu: goto label_279a9c;
+        case 0x279aa0u: goto label_279aa0;
+        case 0x279aa4u: goto label_279aa4;
+        case 0x279aa8u: goto label_279aa8;
+        case 0x279aacu: goto label_279aac;
+        case 0x279ab0u: goto label_279ab0;
+        case 0x279ab4u: goto label_279ab4;
+        case 0x279ab8u: goto label_279ab8;
+        case 0x279abcu: goto label_279abc;
+        case 0x279ac0u: goto label_279ac0;
+        case 0x279ac4u: goto label_279ac4;
+        case 0x279ac8u: goto label_279ac8;
+        case 0x279accu: goto label_279acc;
+        case 0x279ad0u: goto label_279ad0;
+        case 0x279ad4u: goto label_279ad4;
+        case 0x279ad8u: goto label_279ad8;
+        case 0x279adcu: goto label_279adc;
+        case 0x279ae0u: goto label_279ae0;
+        case 0x279ae4u: goto label_279ae4;
+        case 0x279ae8u: goto label_279ae8;
+        case 0x279aecu: goto label_279aec;
+        case 0x279af0u: goto label_279af0;
+        case 0x279af4u: goto label_279af4;
+        case 0x279af8u: goto label_279af8;
+        case 0x279afcu: goto label_279afc;
+        case 0x279b00u: goto label_279b00;
+        case 0x279b04u: goto label_279b04;
+        case 0x279b08u: goto label_279b08;
+        case 0x279b0cu: goto label_279b0c;
+        case 0x279b10u: goto label_279b10;
+        case 0x279b14u: goto label_279b14;
+        case 0x279b18u: goto label_279b18;
+        case 0x279b1cu: goto label_279b1c;
+        case 0x279b20u: goto label_279b20;
+        case 0x279b24u: goto label_279b24;
+        case 0x279b28u: goto label_279b28;
+        case 0x279b2cu: goto label_279b2c;
+        case 0x279b30u: goto label_279b30;
+        case 0x279b34u: goto label_279b34;
+        case 0x279b38u: goto label_279b38;
+        case 0x279b3cu: goto label_279b3c;
+        case 0x279b40u: goto label_279b40;
+        case 0x279b44u: goto label_279b44;
+        case 0x279b48u: goto label_279b48;
+        case 0x279b4cu: goto label_279b4c;
+        case 0x279b50u: goto label_279b50;
+        case 0x279b54u: goto label_279b54;
+        case 0x279b58u: goto label_279b58;
+        case 0x279b5cu: goto label_279b5c;
+        case 0x279b60u: goto label_279b60;
+        case 0x279b64u: goto label_279b64;
+        case 0x279b68u: goto label_279b68;
+        case 0x279b6cu: goto label_279b6c;
+        case 0x279b70u: goto label_279b70;
+        case 0x279b74u: goto label_279b74;
+        case 0x279b78u: goto label_279b78;
+        case 0x279b7cu: goto label_279b7c;
+        case 0x279b80u: goto label_279b80;
+        case 0x279b84u: goto label_279b84;
+        case 0x279b88u: goto label_279b88;
+        case 0x279b8cu: goto label_279b8c;
+        case 0x279b90u: goto label_279b90;
+        case 0x279b94u: goto label_279b94;
+        case 0x279b98u: goto label_279b98;
+        case 0x279b9cu: goto label_279b9c;
+        case 0x279ba0u: goto label_279ba0;
+        case 0x279ba4u: goto label_279ba4;
+        case 0x279ba8u: goto label_279ba8;
+        case 0x279bacu: goto label_279bac;
+        case 0x279bb0u: goto label_279bb0;
+        case 0x279bb4u: goto label_279bb4;
+        case 0x279bb8u: goto label_279bb8;
+        case 0x279bbcu: goto label_279bbc;
+        case 0x279bc0u: goto label_279bc0;
+        case 0x279bc4u: goto label_279bc4;
+        case 0x279bc8u: goto label_279bc8;
+        case 0x279bccu: goto label_279bcc;
+        case 0x279bd0u: goto label_279bd0;
+        case 0x279bd4u: goto label_279bd4;
+        case 0x279bd8u: goto label_279bd8;
+        case 0x279bdcu: goto label_279bdc;
+        case 0x279be0u: goto label_279be0;
+        case 0x279be4u: goto label_279be4;
+        case 0x279be8u: goto label_279be8;
+        case 0x279becu: goto label_279bec;
+        case 0x279bf0u: goto label_279bf0;
+        case 0x279bf4u: goto label_279bf4;
+        case 0x279bf8u: goto label_279bf8;
+        case 0x279bfcu: goto label_279bfc;
+        case 0x279c00u: goto label_279c00;
+        case 0x279c04u: goto label_279c04;
+        case 0x279c08u: goto label_279c08;
+        case 0x279c0cu: goto label_279c0c;
+        case 0x279c10u: goto label_279c10;
+        case 0x279c14u: goto label_279c14;
+        case 0x279c18u: goto label_279c18;
+        case 0x279c1cu: goto label_279c1c;
+        case 0x279c20u: goto label_279c20;
+        case 0x279c24u: goto label_279c24;
+        case 0x279c28u: goto label_279c28;
+        case 0x279c2cu: goto label_279c2c;
+        case 0x279c30u: goto label_279c30;
+        case 0x279c34u: goto label_279c34;
+        case 0x279c38u: goto label_279c38;
+        case 0x279c3cu: goto label_279c3c;
+        case 0x279c40u: goto label_279c40;
+        case 0x279c44u: goto label_279c44;
+        case 0x279c48u: goto label_279c48;
+        case 0x279c4cu: goto label_279c4c;
+        case 0x279c50u: goto label_279c50;
+        case 0x279c54u: goto label_279c54;
+        case 0x279c58u: goto label_279c58;
+        case 0x279c5cu: goto label_279c5c;
+        case 0x279c60u: goto label_279c60;
+        case 0x279c64u: goto label_279c64;
+        case 0x279c68u: goto label_279c68;
+        case 0x279c6cu: goto label_279c6c;
+        case 0x279c70u: goto label_279c70;
+        case 0x279c74u: goto label_279c74;
+        case 0x279c78u: goto label_279c78;
+        case 0x279c7cu: goto label_279c7c;
+        case 0x279c80u: goto label_279c80;
+        case 0x279c84u: goto label_279c84;
+        case 0x279c88u: goto label_279c88;
+        case 0x279c8cu: goto label_279c8c;
+        case 0x279c90u: goto label_279c90;
+        case 0x279c94u: goto label_279c94;
+        case 0x279c98u: goto label_279c98;
+        case 0x279c9cu: goto label_279c9c;
+        case 0x279ca0u: goto label_279ca0;
+        case 0x279ca4u: goto label_279ca4;
+        case 0x279ca8u: goto label_279ca8;
+        case 0x279cacu: goto label_279cac;
+        case 0x279cb0u: goto label_279cb0;
+        case 0x279cb4u: goto label_279cb4;
+        case 0x279cb8u: goto label_279cb8;
+        case 0x279cbcu: goto label_279cbc;
+        case 0x279cc0u: goto label_279cc0;
+        case 0x279cc4u: goto label_279cc4;
+        case 0x279cc8u: goto label_279cc8;
+        case 0x279cccu: goto label_279ccc;
+        case 0x279cd0u: goto label_279cd0;
+        case 0x279cd4u: goto label_279cd4;
+        case 0x279cd8u: goto label_279cd8;
+        case 0x279cdcu: goto label_279cdc;
+        case 0x279ce0u: goto label_279ce0;
+        case 0x279ce4u: goto label_279ce4;
+        case 0x279ce8u: goto label_279ce8;
+        case 0x279cecu: goto label_279cec;
+        case 0x279cf0u: goto label_279cf0;
+        case 0x279cf4u: goto label_279cf4;
+        case 0x279cf8u: goto label_279cf8;
+        case 0x279cfcu: goto label_279cfc;
+        case 0x279d00u: goto label_279d00;
+        case 0x279d04u: goto label_279d04;
+        case 0x279d08u: goto label_279d08;
+        case 0x279d0cu: goto label_279d0c;
+        case 0x279d10u: goto label_279d10;
+        case 0x279d14u: goto label_279d14;
+        case 0x279d18u: goto label_279d18;
+        case 0x279d1cu: goto label_279d1c;
+        case 0x279d20u: goto label_279d20;
+        case 0x279d24u: goto label_279d24;
+        case 0x279d28u: goto label_279d28;
+        case 0x279d2cu: goto label_279d2c;
+        case 0x279d30u: goto label_279d30;
+        case 0x279d34u: goto label_279d34;
+        case 0x279d38u: goto label_279d38;
+        case 0x279d3cu: goto label_279d3c;
+        case 0x279d40u: goto label_279d40;
+        case 0x279d44u: goto label_279d44;
+        case 0x279d48u: goto label_279d48;
+        case 0x279d4cu: goto label_279d4c;
+        case 0x279d50u: goto label_279d50;
+        case 0x279d54u: goto label_279d54;
+        case 0x279d58u: goto label_279d58;
+        case 0x279d5cu: goto label_279d5c;
+        case 0x279d60u: goto label_279d60;
+        case 0x279d64u: goto label_279d64;
+        case 0x279d68u: goto label_279d68;
+        case 0x279d6cu: goto label_279d6c;
+        case 0x279d70u: goto label_279d70;
+        case 0x279d74u: goto label_279d74;
+        case 0x279d78u: goto label_279d78;
+        case 0x279d7cu: goto label_279d7c;
+        case 0x279d80u: goto label_279d80;
+        case 0x279d84u: goto label_279d84;
+        case 0x279d88u: goto label_279d88;
+        case 0x279d8cu: goto label_279d8c;
+        case 0x279d90u: goto label_279d90;
+        case 0x279d94u: goto label_279d94;
+        case 0x279d98u: goto label_279d98;
+        case 0x279d9cu: goto label_279d9c;
+        case 0x279da0u: goto label_279da0;
+        case 0x279da4u: goto label_279da4;
+        case 0x279da8u: goto label_279da8;
+        case 0x279dacu: goto label_279dac;
+        case 0x279db0u: goto label_279db0;
+        case 0x279db4u: goto label_279db4;
+        case 0x279db8u: goto label_279db8;
+        case 0x279dbcu: goto label_279dbc;
+        case 0x279dc0u: goto label_279dc0;
+        case 0x279dc4u: goto label_279dc4;
+        case 0x279dc8u: goto label_279dc8;
+        case 0x279dccu: goto label_279dcc;
+        case 0x279dd0u: goto label_279dd0;
+        case 0x279dd4u: goto label_279dd4;
+        case 0x279dd8u: goto label_279dd8;
+        case 0x279ddcu: goto label_279ddc;
+        case 0x279de0u: goto label_279de0;
+        case 0x279de4u: goto label_279de4;
+        case 0x279de8u: goto label_279de8;
+        case 0x279decu: goto label_279dec;
+        case 0x279df0u: goto label_279df0;
+        case 0x279df4u: goto label_279df4;
+        case 0x279df8u: goto label_279df8;
+        case 0x279dfcu: goto label_279dfc;
+        case 0x279e00u: goto label_279e00;
+        case 0x279e04u: goto label_279e04;
+        case 0x279e08u: goto label_279e08;
+        case 0x279e0cu: goto label_279e0c;
+        case 0x279e10u: goto label_279e10;
+        case 0x279e14u: goto label_279e14;
+        case 0x279e18u: goto label_279e18;
+        case 0x279e1cu: goto label_279e1c;
+        case 0x279e20u: goto label_279e20;
+        case 0x279e24u: goto label_279e24;
+        case 0x279e28u: goto label_279e28;
+        case 0x279e2cu: goto label_279e2c;
+        case 0x279e30u: goto label_279e30;
+        case 0x279e34u: goto label_279e34;
+        case 0x279e38u: goto label_279e38;
+        case 0x279e3cu: goto label_279e3c;
+        case 0x279e40u: goto label_279e40;
+        case 0x279e44u: goto label_279e44;
+        case 0x279e48u: goto label_279e48;
+        case 0x279e4cu: goto label_279e4c;
+        case 0x279e50u: goto label_279e50;
+        case 0x279e54u: goto label_279e54;
+        case 0x279e58u: goto label_279e58;
+        case 0x279e5cu: goto label_279e5c;
+        case 0x279e60u: goto label_279e60;
+        case 0x279e64u: goto label_279e64;
+        case 0x279e68u: goto label_279e68;
+        case 0x279e6cu: goto label_279e6c;
+        case 0x279e70u: goto label_279e70;
+        case 0x279e74u: goto label_279e74;
+        case 0x279e78u: goto label_279e78;
+        case 0x279e7cu: goto label_279e7c;
+        case 0x279e80u: goto label_279e80;
+        case 0x279e84u: goto label_279e84;
+        case 0x279e88u: goto label_279e88;
+        case 0x279e8cu: goto label_279e8c;
+        case 0x279e90u: goto label_279e90;
+        case 0x279e94u: goto label_279e94;
+        case 0x279e98u: goto label_279e98;
+        case 0x279e9cu: goto label_279e9c;
+        case 0x279ea0u: goto label_279ea0;
+        case 0x279ea4u: goto label_279ea4;
+        case 0x279ea8u: goto label_279ea8;
+        case 0x279eacu: goto label_279eac;
+        case 0x279eb0u: goto label_279eb0;
+        case 0x279eb4u: goto label_279eb4;
+        case 0x279eb8u: goto label_279eb8;
+        case 0x279ebcu: goto label_279ebc;
+        case 0x279ec0u: goto label_279ec0;
+        case 0x279ec4u: goto label_279ec4;
+        case 0x279ec8u: goto label_279ec8;
+        case 0x279eccu: goto label_279ecc;
+        case 0x279ed0u: goto label_279ed0;
+        case 0x279ed4u: goto label_279ed4;
+        case 0x279ed8u: goto label_279ed8;
+        case 0x279edcu: goto label_279edc;
+        case 0x279ee0u: goto label_279ee0;
+        case 0x279ee4u: goto label_279ee4;
+        case 0x279ee8u: goto label_279ee8;
+        case 0x279eecu: goto label_279eec;
+        case 0x279ef0u: goto label_279ef0;
+        case 0x279ef4u: goto label_279ef4;
+        default: return;
+    }
+
+label_279728:
+    // 0x279728: 0x0  nop
+    ctx->pc = 0x279728u;
+    // NOP
+label_27972c:
+    // 0x27972c: 0x0  nop
+    ctx->pc = 0x27972cu;
+    // NOP
+label_279730:
+    // 0x279730: 0x10832  tlt         $zero, $at, 32
+    ctx->pc = 0x279730u;
+    if (GPR_S64(ctx, 0) < GPR_S64(ctx, 1)) { runtime->handleTrap(rdram, ctx); }
+label_279734:
+    // 0x279734: 0x82a0  .word       0x000082A0                   # add         $s0, $zero, $zero # 00000280 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279734u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 16, (int32_t)result);     } }
+label_279738:
+    // 0x279738: 0x0  nop
+    ctx->pc = 0x279738u;
+    // NOP
+label_27973c:
+    // 0x27973c: 0x0  nop
+    ctx->pc = 0x27973cu;
+    // NOP
+label_279740:
+    // 0x279740: 0x10843  sra         $at, $at, 1
+    ctx->pc = 0x279740u;
+    SET_GPR_S32(ctx, 1, SRA32(GPR_S32(ctx, 1), 1));
+label_279744:
+    // 0x279744: 0x8d00  sll         $s1, $zero, 20
+    ctx->pc = 0x279744u;
+    SET_GPR_S32(ctx, 17, (int32_t)SLL32(GPR_U32(ctx, 0), 20));
+label_279748:
+    // 0x279748: 0x0  nop
+    ctx->pc = 0x279748u;
+    // NOP
+label_27974c:
+    // 0x27974c: 0x0  nop
+    ctx->pc = 0x27974cu;
+    // NOP
+label_279750:
+    // 0x279750: 0x10855  .word       0x00010855                   # INVALID     $zero, $at, 0x855 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279750u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x15 at 0x279750 raw=0x00010855"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279754:
+    // 0x279754: 0x3c20  .word       0x00003C20                   # add         $a3, $zero, $zero # 00000400 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279754u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 7, (int32_t)result);     } }
+label_279758:
+    // 0x279758: 0x0  nop
+    ctx->pc = 0x279758u;
+    // NOP
+label_27975c:
+    // 0x27975c: 0x0  nop
+    ctx->pc = 0x27975cu;
+    // NOP
+label_279760:
+    // 0x279760: 0x1085d  .word       0x0001085D                   # dmultu      $zero, $at # 00000840 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279760u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x1D at 0x279760 raw=0x0001085D"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279764:
+    // 0x279764: 0x4440  sll         $t0, $zero, 17
+    ctx->pc = 0x279764u;
+    SET_GPR_S32(ctx, 8, (int32_t)SLL32(GPR_U32(ctx, 0), 17));
+label_279768:
+    // 0x279768: 0x0  nop
+    ctx->pc = 0x279768u;
+    // NOP
+label_27976c:
+    // 0x27976c: 0x0  nop
+    ctx->pc = 0x27976cu;
+    // NOP
+label_279770:
+    // 0x279770: 0x10866  .word       0x00010866                   # xor         $at, $zero, $at # 00000040 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279770u;
+    SET_GPR_U64(ctx, 1, GPR_U64(ctx, 0) ^ GPR_U64(ctx, 1));
+label_279774:
+    // 0x279774: 0x45c0  sll         $t0, $zero, 23
+    ctx->pc = 0x279774u;
+    SET_GPR_S32(ctx, 8, (int32_t)SLL32(GPR_U32(ctx, 0), 23));
+label_279778:
+    // 0x279778: 0x0  nop
+    ctx->pc = 0x279778u;
+    // NOP
+label_27977c:
+    // 0x27977c: 0x0  nop
+    ctx->pc = 0x27977cu;
+    // NOP
+label_279780:
+    // 0x279780: 0x1086f  .word       0x0001086F                   # dsubu       $at, $zero, $at # 00000040 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279780u;
+    SET_GPR_U64(ctx, 1, GPR_U64(ctx, 0) - GPR_U64(ctx, 1));
+label_279784:
+    // 0x279784: 0x2870  tge         $zero, $zero, 161
+    ctx->pc = 0x279784u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279788:
+    // 0x279788: 0x0  nop
+    ctx->pc = 0x279788u;
+    // NOP
+label_27978c:
+    // 0x27978c: 0x0  nop
+    ctx->pc = 0x27978cu;
+    // NOP
+label_279790:
+    // 0x279790: 0x10875  .word       0x00010875                   # INVALID     $zero, $at, 0x875 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279790u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x35 at 0x279790 raw=0x00010875"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279794:
+    // 0x279794: 0x5650  .word       0x00005650                   # mfhi        $t2 # 00000640 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279794u;
+    SET_GPR_U64(ctx, 10, ctx->hi);
+label_279798:
+    // 0x279798: 0x0  nop
+    ctx->pc = 0x279798u;
+    // NOP
+label_27979c:
+    // 0x27979c: 0x0  nop
+    ctx->pc = 0x27979cu;
+    // NOP
+label_2797a0:
+    // 0x2797a0: 0x10880  sll         $at, $at, 2
+    ctx->pc = 0x2797a0u;
+    SET_GPR_S32(ctx, 1, (int32_t)SLL32(GPR_U32(ctx, 1), 2));
+label_2797a4:
+    // 0x2797a4: 0x37a0  .word       0x000037A0                   # add         $a2, $zero, $zero # 00000780 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2797a4u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 6, (int32_t)result);     } }
+label_2797a8:
+    // 0x2797a8: 0x0  nop
+    ctx->pc = 0x2797a8u;
+    // NOP
+label_2797ac:
+    // 0x2797ac: 0x0  nop
+    ctx->pc = 0x2797acu;
+    // NOP
+label_2797b0:
+    // 0x2797b0: 0x10887  .word       0x00010887                   # srav        $at, $at, $zero # 00000080 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2797b0u;
+    SET_GPR_S32(ctx, 1, SRA32(GPR_S32(ctx, 1), GPR_U32(ctx, 0) & 0x1F));
+label_2797b4:
+    // 0x2797b4: 0x5f50  .word       0x00005F50                   # mfhi        $t3 # 00000740 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2797b4u;
+    SET_GPR_U64(ctx, 11, ctx->hi);
+label_2797b8:
+    // 0x2797b8: 0x0  nop
+    ctx->pc = 0x2797b8u;
+    // NOP
+label_2797bc:
+    // 0x2797bc: 0x0  nop
+    ctx->pc = 0x2797bcu;
+    // NOP
+label_2797c0:
+    // 0x2797c0: 0x10893  .word       0x00010893                   # mtlo        $zero # 00010880 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2797c0u;
+    ctx->lo = GPR_U64(ctx, 0);
+label_2797c4:
+    // 0x2797c4: 0x8a00  sll         $s1, $zero, 8
+    ctx->pc = 0x2797c4u;
+    SET_GPR_S32(ctx, 17, (int32_t)SLL32(GPR_U32(ctx, 0), 8));
+label_2797c8:
+    // 0x2797c8: 0x0  nop
+    ctx->pc = 0x2797c8u;
+    // NOP
+label_2797cc:
+    // 0x2797cc: 0x0  nop
+    ctx->pc = 0x2797ccu;
+    // NOP
+label_2797d0:
+    // 0x2797d0: 0x108a5  .word       0x000108A5                   # or          $at, $zero, $at # 00000080 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2797d0u;
+    SET_GPR_U64(ctx, 1, GPR_U64(ctx, 0) | GPR_U64(ctx, 1));
+label_2797d4:
+    // 0x2797d4: 0x4330  tge         $zero, $zero, 268
+    ctx->pc = 0x2797d4u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_2797d8:
+    // 0x2797d8: 0x0  nop
+    ctx->pc = 0x2797d8u;
+    // NOP
+label_2797dc:
+    // 0x2797dc: 0x0  nop
+    ctx->pc = 0x2797dcu;
+    // NOP
+label_2797e0:
+    // 0x2797e0: 0x108ae  .word       0x000108AE                   # dsub        $at, $zero, $at # 00000080 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2797e0u;
+    { int64_t a = (int64_t)GPR_S64(ctx, 0); int64_t b = (int64_t)GPR_S64(ctx, 1); int64_t r = a - b; if (((a ^ b) < 0) && ((a ^ r) < 0)) runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW); else SET_GPR_S64(ctx, 1, r); }
+label_2797e4:
+    // 0x2797e4: 0x5bf0  tge         $zero, $zero, 367
+    ctx->pc = 0x2797e4u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_2797e8:
+    // 0x2797e8: 0x0  nop
+    ctx->pc = 0x2797e8u;
+    // NOP
+label_2797ec:
+    // 0x2797ec: 0x0  nop
+    ctx->pc = 0x2797ecu;
+    // NOP
+label_2797f0:
+    // 0x2797f0: 0x108ba  dsrl        $at, $at, 2
+    ctx->pc = 0x2797f0u;
+    SET_GPR_U64(ctx, 1, GPR_U64(ctx, 1) >> 2);
+label_2797f4:
+    // 0x2797f4: 0x4ef0  tge         $zero, $zero, 315
+    ctx->pc = 0x2797f4u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_2797f8:
+    // 0x2797f8: 0x0  nop
+    ctx->pc = 0x2797f8u;
+    // NOP
+label_2797fc:
+    // 0x2797fc: 0x0  nop
+    ctx->pc = 0x2797fcu;
+    // NOP
+label_279800:
+    // 0x279800: 0x108c4  .word       0x000108C4                   # sllv        $at, $at, $zero # 000000C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279800u;
+    SET_GPR_S32(ctx, 1, (int32_t)SLL32(GPR_U32(ctx, 1), GPR_U32(ctx, 0) & 0x1F));
+label_279804:
+    // 0x279804: 0x5740  sll         $t2, $zero, 29
+    ctx->pc = 0x279804u;
+    SET_GPR_S32(ctx, 10, (int32_t)SLL32(GPR_U32(ctx, 0), 29));
+label_279808:
+    // 0x279808: 0x0  nop
+    ctx->pc = 0x279808u;
+    // NOP
+label_27980c:
+    // 0x27980c: 0x0  nop
+    ctx->pc = 0x27980cu;
+    // NOP
+label_279810:
+    // 0x279810: 0x108cf  .word       0x000108CF                   # sync # 00010800 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279810u;
+    // SYNC instruction - memory barrier
+// In recompiled code, we don't need explicit memory barriers
+label_279814:
+    // 0x279814: 0x50d0  .word       0x000050D0                   # mfhi        $t2 # 000000C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279814u;
+    SET_GPR_U64(ctx, 10, ctx->hi);
+label_279818:
+    // 0x279818: 0x0  nop
+    ctx->pc = 0x279818u;
+    // NOP
+label_27981c:
+    // 0x27981c: 0x0  nop
+    ctx->pc = 0x27981cu;
+    // NOP
+label_279820:
+    // 0x279820: 0x108da  .word       0x000108DA                   # div         $at, $zero, $at # 000000C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279820u;
+    { int32_t divisor = GPR_S32(ctx, 1);    int32_t dividend = GPR_S32(ctx, 0);    if (divisor != 0) {        if (divisor == -1 && dividend == INT32_MIN) {            ctx->lo = (uint64_t)(int64_t)INT32_MIN; ctx->hi = 0;        } else {            ctx->lo = (uint64_t)(int64_t)(dividend / divisor);            ctx->hi = (uint64_t)(int64_t)(dividend % divisor);        }    } else {        ctx->lo = (dividend < 0) ? 1ull : 0xFFFFFFFFFFFFFFFFull; ctx->hi = (uint64_t)(int64_t)dividend;    } }
+label_279824:
+    // 0x279824: 0x89f0  tge         $zero, $zero, 551
+    ctx->pc = 0x279824u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279828:
+    // 0x279828: 0x0  nop
+    ctx->pc = 0x279828u;
+    // NOP
+label_27982c:
+    // 0x27982c: 0x0  nop
+    ctx->pc = 0x27982cu;
+    // NOP
+label_279830:
+    // 0x279830: 0x108ec  .word       0x000108EC                   # dadd        $at, $zero, $at # 000000C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279830u;
+    { int64_t a = (int64_t)GPR_S64(ctx, 0); int64_t b = (int64_t)GPR_S64(ctx, 1); int64_t r = a + b; if (((a ^ b) >= 0) && ((a ^ r) < 0)) runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW); else SET_GPR_S64(ctx, 1, r); }
+label_279834:
+    // 0x279834: 0x93f0  tge         $zero, $zero, 591
+    ctx->pc = 0x279834u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279838:
+    // 0x279838: 0x0  nop
+    ctx->pc = 0x279838u;
+    // NOP
+label_27983c:
+    // 0x27983c: 0x0  nop
+    ctx->pc = 0x27983cu;
+    // NOP
+label_279840:
+    // 0x279840: 0x108ff  dsra32      $at, $at, 3
+    ctx->pc = 0x279840u;
+    SET_GPR_S64(ctx, 1, GPR_S64(ctx, 1) >> (32 + 3));
+label_279844:
+    // 0x279844: 0x8060  .word       0x00008060                   # add         $s0, $zero, $zero # 00000040 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279844u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 16, (int32_t)result);     } }
+label_279848:
+    // 0x279848: 0x0  nop
+    ctx->pc = 0x279848u;
+    // NOP
+label_27984c:
+    // 0x27984c: 0x0  nop
+    ctx->pc = 0x27984cu;
+    // NOP
+label_279850:
+    // 0x279850: 0x10910  .word       0x00010910                   # mfhi        $at # 00010100 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279850u;
+    SET_GPR_U64(ctx, 1, ctx->hi);
+label_279854:
+    // 0x279854: 0x6530  tge         $zero, $zero, 404
+    ctx->pc = 0x279854u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279858:
+    // 0x279858: 0x0  nop
+    ctx->pc = 0x279858u;
+    // NOP
+label_27985c:
+    // 0x27985c: 0x0  nop
+    ctx->pc = 0x27985cu;
+    // NOP
+label_279860:
+    // 0x279860: 0x1091d  .word       0x0001091D                   # dmultu      $zero, $at # 00000900 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279860u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x1D at 0x279860 raw=0x0001091D"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279864:
+    // 0x279864: 0xb0b0  tge         $zero, $zero, 706
+    ctx->pc = 0x279864u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279868:
+    // 0x279868: 0x0  nop
+    ctx->pc = 0x279868u;
+    // NOP
+label_27986c:
+    // 0x27986c: 0x0  nop
+    ctx->pc = 0x27986cu;
+    // NOP
+label_279870:
+    // 0x279870: 0x10934  teq         $zero, $at, 36
+    ctx->pc = 0x279870u;
+    if (GPR_U64(ctx, 0) == GPR_U64(ctx, 1)) { runtime->handleTrap(rdram, ctx); }
+label_279874:
+    // 0x279874: 0xb850  .word       0x0000B850                   # mfhi        $s7 # 00000040 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279874u;
+    SET_GPR_U64(ctx, 23, ctx->hi);
+label_279878:
+    // 0x279878: 0x0  nop
+    ctx->pc = 0x279878u;
+    // NOP
+label_27987c:
+    // 0x27987c: 0x0  nop
+    ctx->pc = 0x27987cu;
+    // NOP
+label_279880:
+    // 0x279880: 0x1094c  .word       0x0001094C                   # syscall     37 # 00010000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279880u;
+    ctx->pc = 0x279884u;
+runtime->handleSyscall(rdram, ctx, 0x425u);
+label_279884:
+    // 0x279884: 0x7ba0  .word       0x00007BA0                   # add         $t7, $zero, $zero # 00000380 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279884u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 15, (int32_t)result);     } }
+label_279888:
+    // 0x279888: 0x0  nop
+    ctx->pc = 0x279888u;
+    // NOP
+label_27988c:
+    // 0x27988c: 0x0  nop
+    ctx->pc = 0x27988cu;
+    // NOP
+label_279890:
+    // 0x279890: 0x1095c  .word       0x0001095C                   # dmult       $zero, $at # 00000940 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279890u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x1C at 0x279890 raw=0x0001095C"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279894:
+    // 0x279894: 0x72e0  .word       0x000072E0                   # add         $t6, $zero, $zero # 000002C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279894u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 14, (int32_t)result);     } }
+label_279898:
+    // 0x279898: 0x0  nop
+    ctx->pc = 0x279898u;
+    // NOP
+label_27989c:
+    // 0x27989c: 0x0  nop
+    ctx->pc = 0x27989cu;
+    // NOP
+label_2798a0:
+    // 0x2798a0: 0x1096b  .word       0x0001096B                   # sltu        $at, $zero, $at # 00000140 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2798a0u;
+    SET_GPR_U64(ctx, 1, ((uint64_t)GPR_U64(ctx, 0) < (uint64_t)GPR_U64(ctx, 1)) ? 1 : 0);
+label_2798a4:
+    // 0x2798a4: 0x7cc0  sll         $t7, $zero, 19
+    ctx->pc = 0x2798a4u;
+    SET_GPR_S32(ctx, 15, (int32_t)SLL32(GPR_U32(ctx, 0), 19));
+label_2798a8:
+    // 0x2798a8: 0x0  nop
+    ctx->pc = 0x2798a8u;
+    // NOP
+label_2798ac:
+    // 0x2798ac: 0x0  nop
+    ctx->pc = 0x2798acu;
+    // NOP
+label_2798b0:
+    // 0x2798b0: 0x1097b  dsra        $at, $at, 5
+    ctx->pc = 0x2798b0u;
+    SET_GPR_S64(ctx, 1, GPR_S64(ctx, 1) >> 5);
+label_2798b4:
+    // 0x2798b4: 0x8ff0  tge         $zero, $zero, 575
+    ctx->pc = 0x2798b4u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_2798b8:
+    // 0x2798b8: 0x0  nop
+    ctx->pc = 0x2798b8u;
+    // NOP
+label_2798bc:
+    // 0x2798bc: 0x0  nop
+    ctx->pc = 0x2798bcu;
+    // NOP
+label_2798c0:
+    // 0x2798c0: 0x1098d  break       1, 38
+    ctx->pc = 0x2798c0u;
+    runtime->handleBreak(rdram, ctx);
+label_2798c4:
+    // 0x2798c4: 0x8fc0  sll         $s1, $zero, 31
+    ctx->pc = 0x2798c4u;
+    SET_GPR_S32(ctx, 17, (int32_t)SLL32(GPR_U32(ctx, 0), 31));
+label_2798c8:
+    // 0x2798c8: 0x0  nop
+    ctx->pc = 0x2798c8u;
+    // NOP
+label_2798cc:
+    // 0x2798cc: 0x0  nop
+    ctx->pc = 0x2798ccu;
+    // NOP
+label_2798d0:
+    // 0x2798d0: 0x1099f  .word       0x0001099F                   # ddivu       $at, $zero, $at # 00000180 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2798d0u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x1F at 0x2798D0 raw=0x0001099F"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2798d4:
+    // 0x2798d4: 0x5370  tge         $zero, $zero, 333
+    ctx->pc = 0x2798d4u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_2798d8:
+    // 0x2798d8: 0x0  nop
+    ctx->pc = 0x2798d8u;
+    // NOP
+label_2798dc:
+    // 0x2798dc: 0x0  nop
+    ctx->pc = 0x2798dcu;
+    // NOP
+label_2798e0:
+    // 0x2798e0: 0x109aa  .word       0x000109AA                   # slt         $at, $zero, $at # 00000180 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2798e0u;
+    SET_GPR_U64(ctx, 1, ((int64_t)GPR_S64(ctx, 0) < (int64_t)GPR_S64(ctx, 1)) ? 1 : 0);
+label_2798e4:
+    // 0x2798e4: 0x73f0  tge         $zero, $zero, 463
+    ctx->pc = 0x2798e4u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_2798e8:
+    // 0x2798e8: 0x0  nop
+    ctx->pc = 0x2798e8u;
+    // NOP
+label_2798ec:
+    // 0x2798ec: 0x0  nop
+    ctx->pc = 0x2798ecu;
+    // NOP
+label_2798f0:
+    // 0x2798f0: 0x109b9  .word       0x000109B9                   # INVALID     $zero, $at, 0x9B9 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2798f0u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x39 at 0x2798F0 raw=0x000109B9"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2798f4:
+    // 0x2798f4: 0x72a0  .word       0x000072A0                   # add         $t6, $zero, $zero # 00000280 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2798f4u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 14, (int32_t)result);     } }
+label_2798f8:
+    // 0x2798f8: 0x0  nop
+    ctx->pc = 0x2798f8u;
+    // NOP
+label_2798fc:
+    // 0x2798fc: 0x0  nop
+    ctx->pc = 0x2798fcu;
+    // NOP
+label_279900:
+    // 0x279900: 0x109c8  .word       0x000109C8                   # jr          $zero # 000109C0 <InstrIdType: CPU_SPECIAL>
+label_279904:
+    if (ctx->pc == 0x279904u) {
+        ctx->pc = 0x279904u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x279900u;
+        // 0x279904: 0x8970  tge         $zero, $zero, 549 (Delay Slot)
+        if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+        ctx->in_delay_slot = false;
+        ctx->pc = 0x279908u;
+        goto label_279908;
+    }
+    ctx->pc = 0x279900u;
+    {
+        const uint32_t jumpTarget = GPR_U32(ctx, 0);
+        ctx->pc = 0x279904u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x279900u;
+        // 0x279904: 0x8970  tge         $zero, $zero, 549 (Delay Slot)
+        if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+        ctx->in_delay_slot = false;
+        ctx->pc = jumpTarget;
+        if (!runtime->dispatchGuestBranch(rdram, ctx, jumpTarget, 0x279900u, 0x0u, PS2Runtime::GuestBranchKind::IndirectJump, "JR")) {
+            return;
+        }
+    }
+    ctx->pc = 0x279908u;
+label_279908:
+    // 0x279908: 0x0  nop
+    ctx->pc = 0x279908u;
+    // NOP
+label_27990c:
+    // 0x27990c: 0x0  nop
+    ctx->pc = 0x27990cu;
+    // NOP
+label_279910:
+    // 0x279910: 0x109da  .word       0x000109DA                   # div         $at, $zero, $at # 000001C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279910u;
+    { int32_t divisor = GPR_S32(ctx, 1);    int32_t dividend = GPR_S32(ctx, 0);    if (divisor != 0) {        if (divisor == -1 && dividend == INT32_MIN) {            ctx->lo = (uint64_t)(int64_t)INT32_MIN; ctx->hi = 0;        } else {            ctx->lo = (uint64_t)(int64_t)(dividend / divisor);            ctx->hi = (uint64_t)(int64_t)(dividend % divisor);        }    } else {        ctx->lo = (dividend < 0) ? 1ull : 0xFFFFFFFFFFFFFFFFull; ctx->hi = (uint64_t)(int64_t)dividend;    } }
+label_279914:
+    // 0x279914: 0x8710  .word       0x00008710                   # mfhi        $s0 # 00000700 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279914u;
+    SET_GPR_U64(ctx, 16, ctx->hi);
+label_279918:
+    // 0x279918: 0x0  nop
+    ctx->pc = 0x279918u;
+    // NOP
+label_27991c:
+    // 0x27991c: 0x0  nop
+    ctx->pc = 0x27991cu;
+    // NOP
+label_279920:
+    // 0x279920: 0x109eb  .word       0x000109EB                   # sltu        $at, $zero, $at # 000001C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279920u;
+    SET_GPR_U64(ctx, 1, ((uint64_t)GPR_U64(ctx, 0) < (uint64_t)GPR_U64(ctx, 1)) ? 1 : 0);
+label_279924:
+    // 0x279924: 0x48d0  .word       0x000048D0                   # mfhi        $t1 # 000000C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279924u;
+    SET_GPR_U64(ctx, 9, ctx->hi);
+label_279928:
+    // 0x279928: 0x0  nop
+    ctx->pc = 0x279928u;
+    // NOP
+label_27992c:
+    // 0x27992c: 0x0  nop
+    ctx->pc = 0x27992cu;
+    // NOP
+label_279930:
+    // 0x279930: 0x109f5  .word       0x000109F5                   # INVALID     $zero, $at, 0x9F5 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279930u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x35 at 0x279930 raw=0x000109F5"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279934:
+    // 0x279934: 0xb890  .word       0x0000B890                   # mfhi        $s7 # 00000080 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279934u;
+    SET_GPR_U64(ctx, 23, ctx->hi);
+label_279938:
+    // 0x279938: 0x0  nop
+    ctx->pc = 0x279938u;
+    // NOP
+label_27993c:
+    // 0x27993c: 0x0  nop
+    ctx->pc = 0x27993cu;
+    // NOP
+label_279940:
+    // 0x279940: 0x10a0d  break       1, 40
+    ctx->pc = 0x279940u;
+    runtime->handleBreak(rdram, ctx);
+label_279944:
+    // 0x279944: 0x6c40  sll         $t5, $zero, 17
+    ctx->pc = 0x279944u;
+    SET_GPR_S32(ctx, 13, (int32_t)SLL32(GPR_U32(ctx, 0), 17));
+label_279948:
+    // 0x279948: 0x0  nop
+    ctx->pc = 0x279948u;
+    // NOP
+label_27994c:
+    // 0x27994c: 0x0  nop
+    ctx->pc = 0x27994cu;
+    // NOP
+label_279950:
+    // 0x279950: 0x10a1b  .word       0x00010A1B                   # divu        $at, $zero, $at # 00000200 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279950u;
+    { uint32_t divisor = GPR_U32(ctx, 1); if (divisor != 0) { ctx->lo = (uint64_t)(int64_t)(int32_t)(GPR_U32(ctx, 0) / divisor); ctx->hi = (uint64_t)(int64_t)(int32_t)(GPR_U32(ctx, 0) % divisor); } else { ctx->lo = 0xFFFFFFFFFFFFFFFFull; ctx->hi = (uint64_t)(int64_t)(int32_t)GPR_U32(ctx,0); } }
+label_279954:
+    // 0x279954: 0x82f0  tge         $zero, $zero, 523
+    ctx->pc = 0x279954u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279958:
+    // 0x279958: 0x0  nop
+    ctx->pc = 0x279958u;
+    // NOP
+label_27995c:
+    // 0x27995c: 0x0  nop
+    ctx->pc = 0x27995cu;
+    // NOP
+label_279960:
+    // 0x279960: 0x10a2c  .word       0x00010A2C                   # dadd        $at, $zero, $at # 00000200 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279960u;
+    { int64_t a = (int64_t)GPR_S64(ctx, 0); int64_t b = (int64_t)GPR_S64(ctx, 1); int64_t r = a + b; if (((a ^ b) >= 0) && ((a ^ r) < 0)) runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW); else SET_GPR_S64(ctx, 1, r); }
+label_279964:
+    // 0x279964: 0x9c80  sll         $s3, $zero, 18
+    ctx->pc = 0x279964u;
+    SET_GPR_S32(ctx, 19, (int32_t)SLL32(GPR_U32(ctx, 0), 18));
+label_279968:
+    // 0x279968: 0x0  nop
+    ctx->pc = 0x279968u;
+    // NOP
+label_27996c:
+    // 0x27996c: 0x0  nop
+    ctx->pc = 0x27996cu;
+    // NOP
+label_279970:
+    // 0x279970: 0x10a40  sll         $at, $at, 9
+    ctx->pc = 0x279970u;
+    SET_GPR_S32(ctx, 1, (int32_t)SLL32(GPR_U32(ctx, 1), 9));
+label_279974:
+    // 0x279974: 0x4500  sll         $t0, $zero, 20
+    ctx->pc = 0x279974u;
+    SET_GPR_S32(ctx, 8, (int32_t)SLL32(GPR_U32(ctx, 0), 20));
+label_279978:
+    // 0x279978: 0x0  nop
+    ctx->pc = 0x279978u;
+    // NOP
+label_27997c:
+    // 0x27997c: 0x0  nop
+    ctx->pc = 0x27997cu;
+    // NOP
+label_279980:
+    // 0x279980: 0x10a49  .word       0x00010A49                   # jalr        $at, $zero # 00010240 <InstrIdType: CPU_SPECIAL>
+label_279984:
+    if (ctx->pc == 0x279984u) {
+        ctx->pc = 0x279984u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x279980u;
+        // 0x279984: 0x40e0  .word       0x000040E0                   # add         $t0, $zero, $zero # 000000C0 <InstrIdType: CPU_SPECIAL> (Delay Slot)
+        {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 8, (int32_t)result);     } }
+        ctx->in_delay_slot = false;
+        ctx->pc = 0x279988u;
+        goto label_279988;
+    }
+    ctx->pc = 0x279980u;
+    {
+        const uint32_t jumpTarget = GPR_U32(ctx, 0);
+        SET_GPR_U32(ctx, 1, 0x279988u);
+        ctx->pc = 0x279984u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x279980u;
+        // 0x279984: 0x40e0  .word       0x000040E0                   # add         $t0, $zero, $zero # 000000C0 <InstrIdType: CPU_SPECIAL> (Delay Slot)
+        {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 8, (int32_t)result);     } }
+        ctx->in_delay_slot = false;
+        ctx->pc = jumpTarget;
+        if (!runtime->dispatchGuestBranch(rdram, ctx, jumpTarget, 0x279980u, 0x279988u, PS2Runtime::GuestBranchKind::IndirectCall, "JALR")) {
+            return;
+        }
+    }
+    ctx->pc = 0x279988u;
+label_279988:
+    // 0x279988: 0x0  nop
+    ctx->pc = 0x279988u;
+    // NOP
+label_27998c:
+    // 0x27998c: 0x0  nop
+    ctx->pc = 0x27998cu;
+    // NOP
+label_279990:
+    // 0x279990: 0x10a52  .word       0x00010A52                   # mflo        $at # 00010240 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279990u;
+    SET_GPR_U64(ctx, 1, ctx->lo);
+label_279994:
+    // 0x279994: 0x75d0  .word       0x000075D0                   # mfhi        $t6 # 000005C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279994u;
+    SET_GPR_U64(ctx, 14, ctx->hi);
+label_279998:
+    // 0x279998: 0x0  nop
+    ctx->pc = 0x279998u;
+    // NOP
+label_27999c:
+    // 0x27999c: 0x0  nop
+    ctx->pc = 0x27999cu;
+    // NOP
+label_2799a0:
+    // 0x2799a0: 0x10a61  .word       0x00010A61                   # addu        $at, $zero, $at # 00000240 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2799a0u;
+    SET_GPR_S32(ctx, 1, (int32_t)ADD32(GPR_U32(ctx, 0), GPR_U32(ctx, 1)));
+label_2799a4:
+    // 0x2799a4: 0x74b0  tge         $zero, $zero, 466
+    ctx->pc = 0x2799a4u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_2799a8:
+    // 0x2799a8: 0x0  nop
+    ctx->pc = 0x2799a8u;
+    // NOP
+label_2799ac:
+    // 0x2799ac: 0x0  nop
+    ctx->pc = 0x2799acu;
+    // NOP
+label_2799b0:
+    // 0x2799b0: 0x10a70  tge         $zero, $at, 41
+    ctx->pc = 0x2799b0u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 1)) { runtime->handleTrap(rdram, ctx); }
+label_2799b4:
+    // 0x2799b4: 0x4470  tge         $zero, $zero, 273
+    ctx->pc = 0x2799b4u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_2799b8:
+    // 0x2799b8: 0x0  nop
+    ctx->pc = 0x2799b8u;
+    // NOP
+label_2799bc:
+    // 0x2799bc: 0x0  nop
+    ctx->pc = 0x2799bcu;
+    // NOP
+label_2799c0:
+    // 0x2799c0: 0x10a79  .word       0x00010A79                   # INVALID     $zero, $at, 0xA79 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2799c0u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x39 at 0x2799C0 raw=0x00010A79"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2799c4:
+    // 0x2799c4: 0x5e10  .word       0x00005E10                   # mfhi        $t3 # 00000600 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2799c4u;
+    SET_GPR_U64(ctx, 11, ctx->hi);
+label_2799c8:
+    // 0x2799c8: 0x0  nop
+    ctx->pc = 0x2799c8u;
+    // NOP
+label_2799cc:
+    // 0x2799cc: 0x0  nop
+    ctx->pc = 0x2799ccu;
+    // NOP
+label_2799d0:
+    // 0x2799d0: 0x10a85  .word       0x00010A85                   # INVALID     $zero, $at, 0xA85 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2799d0u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x5 at 0x2799D0 raw=0x00010A85"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2799d4:
+    // 0x2799d4: 0x4970  tge         $zero, $zero, 293
+    ctx->pc = 0x2799d4u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_2799d8:
+    // 0x2799d8: 0x0  nop
+    ctx->pc = 0x2799d8u;
+    // NOP
+label_2799dc:
+    // 0x2799dc: 0x0  nop
+    ctx->pc = 0x2799dcu;
+    // NOP
+label_2799e0:
+    // 0x2799e0: 0x10a8f  .word       0x00010A8F                   # sync # 00010800 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2799e0u;
+    // SYNC instruction - memory barrier
+// In recompiled code, we don't need explicit memory barriers
+label_2799e4:
+    // 0x2799e4: 0x93e0  .word       0x000093E0                   # add         $s2, $zero, $zero # 000003C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2799e4u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 18, (int32_t)result);     } }
+label_2799e8:
+    // 0x2799e8: 0x0  nop
+    ctx->pc = 0x2799e8u;
+    // NOP
+label_2799ec:
+    // 0x2799ec: 0x0  nop
+    ctx->pc = 0x2799ecu;
+    // NOP
+label_2799f0:
+    // 0x2799f0: 0x10aa2  .word       0x00010AA2                   # neg         $at, $at # 00000280 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2799f0u;
+    { uint32_t tmp; bool ov; SUB32_OV(GPR_U32(ctx, 0), GPR_U32(ctx, 1), tmp, ov); if (ov) runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW); else SET_GPR_S32(ctx, 1, (int32_t)tmp); }
+label_2799f4:
+    // 0x2799f4: 0x5d50  .word       0x00005D50                   # mfhi        $t3 # 00000540 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2799f4u;
+    SET_GPR_U64(ctx, 11, ctx->hi);
+label_2799f8:
+    // 0x2799f8: 0x0  nop
+    ctx->pc = 0x2799f8u;
+    // NOP
+label_2799fc:
+    // 0x2799fc: 0x0  nop
+    ctx->pc = 0x2799fcu;
+    // NOP
+label_279a00:
+    // 0x279a00: 0x10aae  .word       0x00010AAE                   # dsub        $at, $zero, $at # 00000280 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279a00u;
+    { int64_t a = (int64_t)GPR_S64(ctx, 0); int64_t b = (int64_t)GPR_S64(ctx, 1); int64_t r = a - b; if (((a ^ b) < 0) && ((a ^ r) < 0)) runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW); else SET_GPR_S64(ctx, 1, r); }
+label_279a04:
+    // 0x279a04: 0x7260  .word       0x00007260                   # add         $t6, $zero, $zero # 00000240 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279a04u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 14, (int32_t)result);     } }
+label_279a08:
+    // 0x279a08: 0x0  nop
+    ctx->pc = 0x279a08u;
+    // NOP
+label_279a0c:
+    // 0x279a0c: 0x0  nop
+    ctx->pc = 0x279a0cu;
+    // NOP
+label_279a10:
+    // 0x279a10: 0x10abd  .word       0x00010ABD                   # INVALID     $zero, $at, 0xABD # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279a10u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x3D at 0x279A10 raw=0x00010ABD"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279a14:
+    // 0x279a14: 0x6eb0  tge         $zero, $zero, 442
+    ctx->pc = 0x279a14u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279a18:
+    // 0x279a18: 0x0  nop
+    ctx->pc = 0x279a18u;
+    // NOP
+label_279a1c:
+    // 0x279a1c: 0x0  nop
+    ctx->pc = 0x279a1cu;
+    // NOP
+label_279a20:
+    // 0x279a20: 0x10acb  .word       0x00010ACB                   # movn        $at, $zero, $at # 000002C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279a20u;
+    if (GPR_U64(ctx, 1) != 0) SET_GPR_VEC(ctx, 1, GPR_VEC(ctx, 0));
+label_279a24:
+    // 0x279a24: 0x5710  .word       0x00005710                   # mfhi        $t2 # 00000700 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279a24u;
+    SET_GPR_U64(ctx, 10, ctx->hi);
+label_279a28:
+    // 0x279a28: 0x0  nop
+    ctx->pc = 0x279a28u;
+    // NOP
+label_279a2c:
+    // 0x279a2c: 0x0  nop
+    ctx->pc = 0x279a2cu;
+    // NOP
+label_279a30:
+    // 0x279a30: 0x10ad6  .word       0x00010AD6                   # dsrlv       $at, $at, $zero # 000002C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279a30u;
+    SET_GPR_U64(ctx, 1, GPR_U64(ctx, 1) >> (GPR_U32(ctx, 0) & 0x3F));
+label_279a34:
+    // 0x279a34: 0x4200  sll         $t0, $zero, 8
+    ctx->pc = 0x279a34u;
+    SET_GPR_S32(ctx, 8, (int32_t)SLL32(GPR_U32(ctx, 0), 8));
+label_279a38:
+    // 0x279a38: 0x0  nop
+    ctx->pc = 0x279a38u;
+    // NOP
+label_279a3c:
+    // 0x279a3c: 0x0  nop
+    ctx->pc = 0x279a3cu;
+    // NOP
+label_279a40:
+    // 0x279a40: 0x10adf  .word       0x00010ADF                   # ddivu       $at, $zero, $at # 000002C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279a40u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x1F at 0x279A40 raw=0x00010ADF"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279a44:
+    // 0x279a44: 0x4200  sll         $t0, $zero, 8
+    ctx->pc = 0x279a44u;
+    SET_GPR_S32(ctx, 8, (int32_t)SLL32(GPR_U32(ctx, 0), 8));
+label_279a48:
+    // 0x279a48: 0x0  nop
+    ctx->pc = 0x279a48u;
+    // NOP
+label_279a4c:
+    // 0x279a4c: 0x0  nop
+    ctx->pc = 0x279a4cu;
+    // NOP
+label_279a50:
+    // 0x279a50: 0x10ae8  .word       0x00010AE8                   # mfsa        $at # 000102C0 <InstrIdType: R5900_SPECIAL>
+    ctx->pc = 0x279a50u;
+    SET_GPR_U32(ctx, 1, ctx->sa);
+label_279a54:
+    // 0x279a54: 0x3c40  sll         $a3, $zero, 17
+    ctx->pc = 0x279a54u;
+    SET_GPR_S32(ctx, 7, (int32_t)SLL32(GPR_U32(ctx, 0), 17));
+label_279a58:
+    // 0x279a58: 0x0  nop
+    ctx->pc = 0x279a58u;
+    // NOP
+label_279a5c:
+    // 0x279a5c: 0x0  nop
+    ctx->pc = 0x279a5cu;
+    // NOP
+label_279a60:
+    // 0x279a60: 0x10af0  tge         $zero, $at, 43
+    ctx->pc = 0x279a60u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 1)) { runtime->handleTrap(rdram, ctx); }
+label_279a64:
+    // 0x279a64: 0x4480  sll         $t0, $zero, 18
+    ctx->pc = 0x279a64u;
+    SET_GPR_S32(ctx, 8, (int32_t)SLL32(GPR_U32(ctx, 0), 18));
+label_279a68:
+    // 0x279a68: 0x0  nop
+    ctx->pc = 0x279a68u;
+    // NOP
+label_279a6c:
+    // 0x279a6c: 0x0  nop
+    ctx->pc = 0x279a6cu;
+    // NOP
+label_279a70:
+    // 0x279a70: 0x10af9  .word       0x00010AF9                   # INVALID     $zero, $at, 0xAF9 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279a70u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x39 at 0x279A70 raw=0x00010AF9"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279a74:
+    // 0x279a74: 0x4ac0  sll         $t1, $zero, 11
+    ctx->pc = 0x279a74u;
+    SET_GPR_S32(ctx, 9, (int32_t)SLL32(GPR_U32(ctx, 0), 11));
+label_279a78:
+    // 0x279a78: 0x0  nop
+    ctx->pc = 0x279a78u;
+    // NOP
+label_279a7c:
+    // 0x279a7c: 0x0  nop
+    ctx->pc = 0x279a7cu;
+    // NOP
+label_279a80:
+    // 0x279a80: 0x10b03  sra         $at, $at, 12
+    ctx->pc = 0x279a80u;
+    SET_GPR_S32(ctx, 1, SRA32(GPR_S32(ctx, 1), 12));
+label_279a84:
+    // 0x279a84: 0x5c30  tge         $zero, $zero, 368
+    ctx->pc = 0x279a84u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279a88:
+    // 0x279a88: 0x0  nop
+    ctx->pc = 0x279a88u;
+    // NOP
+label_279a8c:
+    // 0x279a8c: 0x0  nop
+    ctx->pc = 0x279a8cu;
+    // NOP
+label_279a90:
+    // 0x279a90: 0x10b0f  .word       0x00010B0F                   # sync # 00010800 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279a90u;
+    // SYNC instruction - memory barrier
+// In recompiled code, we don't need explicit memory barriers
+label_279a94:
+    // 0x279a94: 0x8c30  tge         $zero, $zero, 560
+    ctx->pc = 0x279a94u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279a98:
+    // 0x279a98: 0x0  nop
+    ctx->pc = 0x279a98u;
+    // NOP
+label_279a9c:
+    // 0x279a9c: 0x0  nop
+    ctx->pc = 0x279a9cu;
+    // NOP
+label_279aa0:
+    // 0x279aa0: 0x10b21  .word       0x00010B21                   # addu        $at, $zero, $at # 00000300 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279aa0u;
+    SET_GPR_S32(ctx, 1, (int32_t)ADD32(GPR_U32(ctx, 0), GPR_U32(ctx, 1)));
+label_279aa4:
+    // 0x279aa4: 0x82b0  tge         $zero, $zero, 522
+    ctx->pc = 0x279aa4u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279aa8:
+    // 0x279aa8: 0x0  nop
+    ctx->pc = 0x279aa8u;
+    // NOP
+label_279aac:
+    // 0x279aac: 0x0  nop
+    ctx->pc = 0x279aacu;
+    // NOP
+label_279ab0:
+    // 0x279ab0: 0x10b32  tlt         $zero, $at, 44
+    ctx->pc = 0x279ab0u;
+    if (GPR_S64(ctx, 0) < GPR_S64(ctx, 1)) { runtime->handleTrap(rdram, ctx); }
+label_279ab4:
+    // 0x279ab4: 0x98e0  .word       0x000098E0                   # add         $s3, $zero, $zero # 000000C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ab4u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 19, (int32_t)result);     } }
+label_279ab8:
+    // 0x279ab8: 0x0  nop
+    ctx->pc = 0x279ab8u;
+    // NOP
+label_279abc:
+    // 0x279abc: 0x0  nop
+    ctx->pc = 0x279abcu;
+    // NOP
+label_279ac0:
+    // 0x279ac0: 0x10b46  .word       0x00010B46                   # srlv        $at, $at, $zero # 00000340 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ac0u;
+    SET_GPR_S32(ctx, 1, (int32_t)SRL32(GPR_U32(ctx, 1), GPR_U32(ctx, 0) & 0x1F));
+label_279ac4:
+    // 0x279ac4: 0x9390  .word       0x00009390                   # mfhi        $s2 # 00000380 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ac4u;
+    SET_GPR_U64(ctx, 18, ctx->hi);
+label_279ac8:
+    // 0x279ac8: 0x0  nop
+    ctx->pc = 0x279ac8u;
+    // NOP
+label_279acc:
+    // 0x279acc: 0x0  nop
+    ctx->pc = 0x279accu;
+    // NOP
+label_279ad0:
+    // 0x279ad0: 0x10b59  .word       0x00010B59                   # multu       $zero, $at # 00000B40 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ad0u;
+    { uint64_t result = (uint64_t)GPR_U32(ctx, 0) * (uint64_t)GPR_U32(ctx, 1); ctx->lo = (uint64_t)(int64_t)(int32_t)result; ctx->hi = (uint64_t)(int64_t)(int32_t)(result >> 32); SET_GPR_S32(ctx, 1, (int32_t)result); }
+label_279ad4:
+    // 0x279ad4: 0x5850  .word       0x00005850                   # mfhi        $t3 # 00000040 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ad4u;
+    SET_GPR_U64(ctx, 11, ctx->hi);
+label_279ad8:
+    // 0x279ad8: 0x0  nop
+    ctx->pc = 0x279ad8u;
+    // NOP
+label_279adc:
+    // 0x279adc: 0x0  nop
+    ctx->pc = 0x279adcu;
+    // NOP
+label_279ae0:
+    // 0x279ae0: 0x10b65  .word       0x00010B65                   # or          $at, $zero, $at # 00000340 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ae0u;
+    SET_GPR_U64(ctx, 1, GPR_U64(ctx, 0) | GPR_U64(ctx, 1));
+label_279ae4:
+    // 0x279ae4: 0x5790  .word       0x00005790                   # mfhi        $t2 # 00000780 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ae4u;
+    SET_GPR_U64(ctx, 10, ctx->hi);
+label_279ae8:
+    // 0x279ae8: 0x0  nop
+    ctx->pc = 0x279ae8u;
+    // NOP
+label_279aec:
+    // 0x279aec: 0x0  nop
+    ctx->pc = 0x279aecu;
+    // NOP
+label_279af0:
+    // 0x279af0: 0x10b70  tge         $zero, $at, 45
+    ctx->pc = 0x279af0u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 1)) { runtime->handleTrap(rdram, ctx); }
+label_279af4:
+    // 0x279af4: 0x6530  tge         $zero, $zero, 404
+    ctx->pc = 0x279af4u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279af8:
+    // 0x279af8: 0x0  nop
+    ctx->pc = 0x279af8u;
+    // NOP
+label_279afc:
+    // 0x279afc: 0x0  nop
+    ctx->pc = 0x279afcu;
+    // NOP
+label_279b00:
+    // 0x279b00: 0x10b7d  .word       0x00010B7D                   # INVALID     $zero, $at, 0xB7D # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279b00u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x3D at 0x279B00 raw=0x00010B7D"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279b04:
+    // 0x279b04: 0x29b0  tge         $zero, $zero, 166
+    ctx->pc = 0x279b04u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279b08:
+    // 0x279b08: 0x0  nop
+    ctx->pc = 0x279b08u;
+    // NOP
+label_279b0c:
+    // 0x279b0c: 0x0  nop
+    ctx->pc = 0x279b0cu;
+    // NOP
+label_279b10:
+    // 0x279b10: 0x10b83  sra         $at, $at, 14
+    ctx->pc = 0x279b10u;
+    SET_GPR_S32(ctx, 1, SRA32(GPR_S32(ctx, 1), 14));
+label_279b14:
+    // 0x279b14: 0x4200  sll         $t0, $zero, 8
+    ctx->pc = 0x279b14u;
+    SET_GPR_S32(ctx, 8, (int32_t)SLL32(GPR_U32(ctx, 0), 8));
+label_279b18:
+    // 0x279b18: 0x0  nop
+    ctx->pc = 0x279b18u;
+    // NOP
+label_279b1c:
+    // 0x279b1c: 0x0  nop
+    ctx->pc = 0x279b1cu;
+    // NOP
+label_279b20:
+    // 0x279b20: 0x10b8c  .word       0x00010B8C                   # syscall     46 # 00010000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279b20u;
+    ctx->pc = 0x279B24u;
+runtime->handleSyscall(rdram, ctx, 0x42Eu);
+label_279b24:
+    // 0x279b24: 0x91a0  .word       0x000091A0                   # add         $s2, $zero, $zero # 00000180 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279b24u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 18, (int32_t)result);     } }
+label_279b28:
+    // 0x279b28: 0x0  nop
+    ctx->pc = 0x279b28u;
+    // NOP
+label_279b2c:
+    // 0x279b2c: 0x0  nop
+    ctx->pc = 0x279b2cu;
+    // NOP
+label_279b30:
+    // 0x279b30: 0x10b9f  .word       0x00010B9F                   # ddivu       $at, $zero, $at # 00000380 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279b30u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x1F at 0x279B30 raw=0x00010B9F"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279b34:
+    // 0x279b34: 0x8990  .word       0x00008990                   # mfhi        $s1 # 00000180 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279b34u;
+    SET_GPR_U64(ctx, 17, ctx->hi);
+label_279b38:
+    // 0x279b38: 0x0  nop
+    ctx->pc = 0x279b38u;
+    // NOP
+label_279b3c:
+    // 0x279b3c: 0x0  nop
+    ctx->pc = 0x279b3cu;
+    // NOP
+label_279b40:
+    // 0x279b40: 0x10bb1  tgeu        $zero, $at, 46
+    ctx->pc = 0x279b40u;
+    if (GPR_U64(ctx, 0) >= GPR_U64(ctx, 1)) { runtime->handleTrap(rdram, ctx); }
+label_279b44:
+    // 0x279b44: 0x6ba0  .word       0x00006BA0                   # add         $t5, $zero, $zero # 00000380 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279b44u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 13, (int32_t)result);     } }
+label_279b48:
+    // 0x279b48: 0x0  nop
+    ctx->pc = 0x279b48u;
+    // NOP
+label_279b4c:
+    // 0x279b4c: 0x0  nop
+    ctx->pc = 0x279b4cu;
+    // NOP
+label_279b50:
+    // 0x279b50: 0x10bbf  dsra32      $at, $at, 14
+    ctx->pc = 0x279b50u;
+    SET_GPR_S64(ctx, 1, GPR_S64(ctx, 1) >> (32 + 14));
+label_279b54:
+    // 0x279b54: 0x75b0  tge         $zero, $zero, 470
+    ctx->pc = 0x279b54u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279b58:
+    // 0x279b58: 0x0  nop
+    ctx->pc = 0x279b58u;
+    // NOP
+label_279b5c:
+    // 0x279b5c: 0x0  nop
+    ctx->pc = 0x279b5cu;
+    // NOP
+label_279b60:
+    // 0x279b60: 0x10bce  .word       0x00010BCE                   # INVALID     $zero, $at, 0xBCE # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279b60u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0xE at 0x279B60 raw=0x00010BCE"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279b64:
+    // 0x279b64: 0x4540  sll         $t0, $zero, 21
+    ctx->pc = 0x279b64u;
+    SET_GPR_S32(ctx, 8, (int32_t)SLL32(GPR_U32(ctx, 0), 21));
+label_279b68:
+    // 0x279b68: 0x0  nop
+    ctx->pc = 0x279b68u;
+    // NOP
+label_279b6c:
+    // 0x279b6c: 0x0  nop
+    ctx->pc = 0x279b6cu;
+    // NOP
+label_279b70:
+    // 0x279b70: 0x10bd7  .word       0x00010BD7                   # dsrav       $at, $at, $zero # 000003C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279b70u;
+    SET_GPR_S64(ctx, 1, GPR_S64(ctx, 1) >> (GPR_U32(ctx, 0) & 0x3F));
+label_279b74:
+    // 0x279b74: 0x5b70  tge         $zero, $zero, 365
+    ctx->pc = 0x279b74u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279b78:
+    // 0x279b78: 0x0  nop
+    ctx->pc = 0x279b78u;
+    // NOP
+label_279b7c:
+    // 0x279b7c: 0x0  nop
+    ctx->pc = 0x279b7cu;
+    // NOP
+label_279b80:
+    // 0x279b80: 0x10be3  .word       0x00010BE3                   # negu        $at, $at # 000003C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279b80u;
+    SET_GPR_S32(ctx, 1, (int32_t)SUB32(GPR_U32(ctx, 0), GPR_U32(ctx, 1)));
+label_279b84:
+    // 0x279b84: 0x5080  sll         $t2, $zero, 2
+    ctx->pc = 0x279b84u;
+    SET_GPR_S32(ctx, 10, (int32_t)SLL32(GPR_U32(ctx, 0), 2));
+label_279b88:
+    // 0x279b88: 0x0  nop
+    ctx->pc = 0x279b88u;
+    // NOP
+label_279b8c:
+    // 0x279b8c: 0x0  nop
+    ctx->pc = 0x279b8cu;
+    // NOP
+label_279b90:
+    // 0x279b90: 0x10bee  .word       0x00010BEE                   # dsub        $at, $zero, $at # 000003C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279b90u;
+    { int64_t a = (int64_t)GPR_S64(ctx, 0); int64_t b = (int64_t)GPR_S64(ctx, 1); int64_t r = a - b; if (((a ^ b) < 0) && ((a ^ r) < 0)) runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW); else SET_GPR_S64(ctx, 1, r); }
+label_279b94:
+    // 0x279b94: 0x44e0  .word       0x000044E0                   # add         $t0, $zero, $zero # 000004C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279b94u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 8, (int32_t)result);     } }
+label_279b98:
+    // 0x279b98: 0x0  nop
+    ctx->pc = 0x279b98u;
+    // NOP
+label_279b9c:
+    // 0x279b9c: 0x0  nop
+    ctx->pc = 0x279b9cu;
+    // NOP
+label_279ba0:
+    // 0x279ba0: 0x10bf7  .word       0x00010BF7                   # INVALID     $zero, $at, 0xBF7 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ba0u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x37 at 0x279BA0 raw=0x00010BF7"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279ba4:
+    // 0x279ba4: 0x4cc0  sll         $t1, $zero, 19
+    ctx->pc = 0x279ba4u;
+    SET_GPR_S32(ctx, 9, (int32_t)SLL32(GPR_U32(ctx, 0), 19));
+label_279ba8:
+    // 0x279ba8: 0x0  nop
+    ctx->pc = 0x279ba8u;
+    // NOP
+label_279bac:
+    // 0x279bac: 0x0  nop
+    ctx->pc = 0x279bacu;
+    // NOP
+label_279bb0:
+    // 0x279bb0: 0x10c01  .word       0x00010C01                   # INVALID     $zero, $at, 0xC01 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279bb0u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x1 at 0x279BB0 raw=0x00010C01"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279bb4:
+    // 0x279bb4: 0x5250  .word       0x00005250                   # mfhi        $t2 # 00000240 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279bb4u;
+    SET_GPR_U64(ctx, 10, ctx->hi);
+label_279bb8:
+    // 0x279bb8: 0x0  nop
+    ctx->pc = 0x279bb8u;
+    // NOP
+label_279bbc:
+    // 0x279bbc: 0x0  nop
+    ctx->pc = 0x279bbcu;
+    // NOP
+label_279bc0:
+    // 0x279bc0: 0x10c0c  .word       0x00010C0C                   # syscall     48 # 00010000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279bc0u;
+    ctx->pc = 0x279BC4u;
+runtime->handleSyscall(rdram, ctx, 0x430u);
+label_279bc4:
+    // 0x279bc4: 0x4d10  .word       0x00004D10                   # mfhi        $t1 # 00000500 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279bc4u;
+    SET_GPR_U64(ctx, 9, ctx->hi);
+label_279bc8:
+    // 0x279bc8: 0x0  nop
+    ctx->pc = 0x279bc8u;
+    // NOP
+label_279bcc:
+    // 0x279bcc: 0x0  nop
+    ctx->pc = 0x279bccu;
+    // NOP
+label_279bd0:
+    // 0x279bd0: 0x10c16  .word       0x00010C16                   # dsrlv       $at, $at, $zero # 00000400 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279bd0u;
+    SET_GPR_U64(ctx, 1, GPR_U64(ctx, 1) >> (GPR_U32(ctx, 0) & 0x3F));
+label_279bd4:
+    // 0x279bd4: 0x4950  .word       0x00004950                   # mfhi        $t1 # 00000140 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279bd4u;
+    SET_GPR_U64(ctx, 9, ctx->hi);
+label_279bd8:
+    // 0x279bd8: 0x0  nop
+    ctx->pc = 0x279bd8u;
+    // NOP
+label_279bdc:
+    // 0x279bdc: 0x0  nop
+    ctx->pc = 0x279bdcu;
+    // NOP
+label_279be0:
+    // 0x279be0: 0x10c20  .word       0x00010C20                   # add         $at, $zero, $at # 00000400 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279be0u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 1);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 1, (int32_t)result);     } }
+label_279be4:
+    // 0x279be4: 0x36d0  .word       0x000036D0                   # mfhi        $a2 # 000006C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279be4u;
+    SET_GPR_U64(ctx, 6, ctx->hi);
+label_279be8:
+    // 0x279be8: 0x0  nop
+    ctx->pc = 0x279be8u;
+    // NOP
+label_279bec:
+    // 0x279bec: 0x0  nop
+    ctx->pc = 0x279becu;
+    // NOP
+label_279bf0:
+    // 0x279bf0: 0x10c27  .word       0x00010C27                   # nor         $at, $zero, $at # 00000400 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279bf0u;
+    SET_GPR_U64(ctx, 1, ~(GPR_U64(ctx, 0) | GPR_U64(ctx, 1)));
+label_279bf4:
+    // 0x279bf4: 0x3a80  sll         $a3, $zero, 10
+    ctx->pc = 0x279bf4u;
+    SET_GPR_S32(ctx, 7, (int32_t)SLL32(GPR_U32(ctx, 0), 10));
+label_279bf8:
+    // 0x279bf8: 0x0  nop
+    ctx->pc = 0x279bf8u;
+    // NOP
+label_279bfc:
+    // 0x279bfc: 0x0  nop
+    ctx->pc = 0x279bfcu;
+    // NOP
+label_279c00:
+    // 0x279c00: 0x10c2f  .word       0x00010C2F                   # dsubu       $at, $zero, $at # 00000400 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279c00u;
+    SET_GPR_U64(ctx, 1, GPR_U64(ctx, 0) - GPR_U64(ctx, 1));
+label_279c04:
+    // 0x279c04: 0x58d0  .word       0x000058D0                   # mfhi        $t3 # 000000C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279c04u;
+    SET_GPR_U64(ctx, 11, ctx->hi);
+label_279c08:
+    // 0x279c08: 0x0  nop
+    ctx->pc = 0x279c08u;
+    // NOP
+label_279c0c:
+    // 0x279c0c: 0x0  nop
+    ctx->pc = 0x279c0cu;
+    // NOP
+label_279c10:
+    // 0x279c10: 0x10c3b  dsra        $at, $at, 16
+    ctx->pc = 0x279c10u;
+    SET_GPR_S64(ctx, 1, GPR_S64(ctx, 1) >> 16);
+label_279c14:
+    // 0x279c14: 0x77f0  tge         $zero, $zero, 479
+    ctx->pc = 0x279c14u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279c18:
+    // 0x279c18: 0x0  nop
+    ctx->pc = 0x279c18u;
+    // NOP
+label_279c1c:
+    // 0x279c1c: 0x0  nop
+    ctx->pc = 0x279c1cu;
+    // NOP
+label_279c20:
+    // 0x279c20: 0x10c4a  .word       0x00010C4A                   # movz        $at, $zero, $at # 00000440 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279c20u;
+    if (GPR_U64(ctx, 1) == 0) SET_GPR_VEC(ctx, 1, GPR_VEC(ctx, 0));
+label_279c24:
+    // 0x279c24: 0x5e40  sll         $t3, $zero, 25
+    ctx->pc = 0x279c24u;
+    SET_GPR_S32(ctx, 11, (int32_t)SLL32(GPR_U32(ctx, 0), 25));
+label_279c28:
+    // 0x279c28: 0x0  nop
+    ctx->pc = 0x279c28u;
+    // NOP
+label_279c2c:
+    // 0x279c2c: 0x0  nop
+    ctx->pc = 0x279c2cu;
+    // NOP
+label_279c30:
+    // 0x279c30: 0x10c56  .word       0x00010C56                   # dsrlv       $at, $at, $zero # 00000440 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279c30u;
+    SET_GPR_U64(ctx, 1, GPR_U64(ctx, 1) >> (GPR_U32(ctx, 0) & 0x3F));
+label_279c34:
+    // 0x279c34: 0xa6b0  tge         $zero, $zero, 666
+    ctx->pc = 0x279c34u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279c38:
+    // 0x279c38: 0x0  nop
+    ctx->pc = 0x279c38u;
+    // NOP
+label_279c3c:
+    // 0x279c3c: 0x0  nop
+    ctx->pc = 0x279c3cu;
+    // NOP
+label_279c40:
+    // 0x279c40: 0x10c6b  .word       0x00010C6B                   # sltu        $at, $zero, $at # 00000440 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279c40u;
+    SET_GPR_U64(ctx, 1, ((uint64_t)GPR_U64(ctx, 0) < (uint64_t)GPR_U64(ctx, 1)) ? 1 : 0);
+label_279c44:
+    // 0x279c44: 0x9b60  .word       0x00009B60                   # add         $s3, $zero, $zero # 00000340 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279c44u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 19, (int32_t)result);     } }
+label_279c48:
+    // 0x279c48: 0x0  nop
+    ctx->pc = 0x279c48u;
+    // NOP
+label_279c4c:
+    // 0x279c4c: 0x0  nop
+    ctx->pc = 0x279c4cu;
+    // NOP
+label_279c50:
+    // 0x279c50: 0x10c7f  dsra32      $at, $at, 17
+    ctx->pc = 0x279c50u;
+    SET_GPR_S64(ctx, 1, GPR_S64(ctx, 1) >> (32 + 17));
+label_279c54:
+    // 0x279c54: 0x95d0  .word       0x000095D0                   # mfhi        $s2 # 000005C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279c54u;
+    SET_GPR_U64(ctx, 18, ctx->hi);
+label_279c58:
+    // 0x279c58: 0x0  nop
+    ctx->pc = 0x279c58u;
+    // NOP
+label_279c5c:
+    // 0x279c5c: 0x0  nop
+    ctx->pc = 0x279c5cu;
+    // NOP
+label_279c60:
+    // 0x279c60: 0x10c92  .word       0x00010C92                   # mflo        $at # 00010480 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279c60u;
+    SET_GPR_U64(ctx, 1, ctx->lo);
+label_279c64:
+    // 0x279c64: 0x6a40  sll         $t5, $zero, 9
+    ctx->pc = 0x279c64u;
+    SET_GPR_S32(ctx, 13, (int32_t)SLL32(GPR_U32(ctx, 0), 9));
+label_279c68:
+    // 0x279c68: 0x0  nop
+    ctx->pc = 0x279c68u;
+    // NOP
+label_279c6c:
+    // 0x279c6c: 0x0  nop
+    ctx->pc = 0x279c6cu;
+    // NOP
+label_279c70:
+    // 0x279c70: 0x10ca0  .word       0x00010CA0                   # add         $at, $zero, $at # 00000480 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279c70u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 1);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 1, (int32_t)result);     } }
+label_279c74:
+    // 0x279c74: 0x7550  .word       0x00007550                   # mfhi        $t6 # 00000540 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279c74u;
+    SET_GPR_U64(ctx, 14, ctx->hi);
+label_279c78:
+    // 0x279c78: 0x0  nop
+    ctx->pc = 0x279c78u;
+    // NOP
+label_279c7c:
+    // 0x279c7c: 0x0  nop
+    ctx->pc = 0x279c7cu;
+    // NOP
+label_279c80:
+    // 0x279c80: 0x10caf  .word       0x00010CAF                   # dsubu       $at, $zero, $at # 00000480 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279c80u;
+    SET_GPR_U64(ctx, 1, GPR_U64(ctx, 0) - GPR_U64(ctx, 1));
+label_279c84:
+    // 0x279c84: 0x8040  sll         $s0, $zero, 1
+    ctx->pc = 0x279c84u;
+    SET_GPR_S32(ctx, 16, (int32_t)SLL32(GPR_U32(ctx, 0), 1));
+label_279c88:
+    // 0x279c88: 0x0  nop
+    ctx->pc = 0x279c88u;
+    // NOP
+label_279c8c:
+    // 0x279c8c: 0x0  nop
+    ctx->pc = 0x279c8cu;
+    // NOP
+label_279c90:
+    // 0x279c90: 0x10cc0  sll         $at, $at, 19
+    ctx->pc = 0x279c90u;
+    SET_GPR_S32(ctx, 1, (int32_t)SLL32(GPR_U32(ctx, 1), 19));
+label_279c94:
+    // 0x279c94: 0x2f30  tge         $zero, $zero, 188
+    ctx->pc = 0x279c94u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279c98:
+    // 0x279c98: 0x0  nop
+    ctx->pc = 0x279c98u;
+    // NOP
+label_279c9c:
+    // 0x279c9c: 0x0  nop
+    ctx->pc = 0x279c9cu;
+    // NOP
+label_279ca0:
+    // 0x279ca0: 0x10cc6  .word       0x00010CC6                   # srlv        $at, $at, $zero # 000004C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ca0u;
+    SET_GPR_S32(ctx, 1, (int32_t)SRL32(GPR_U32(ctx, 1), GPR_U32(ctx, 0) & 0x1F));
+label_279ca4:
+    // 0x279ca4: 0x3f90  .word       0x00003F90                   # mfhi        $a3 # 00000780 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ca4u;
+    SET_GPR_U64(ctx, 7, ctx->hi);
+label_279ca8:
+    // 0x279ca8: 0x0  nop
+    ctx->pc = 0x279ca8u;
+    // NOP
+label_279cac:
+    // 0x279cac: 0x0  nop
+    ctx->pc = 0x279cacu;
+    // NOP
+label_279cb0:
+    // 0x279cb0: 0x10cce  .word       0x00010CCE                   # INVALID     $zero, $at, 0xCCE # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279cb0u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0xE at 0x279CB0 raw=0x00010CCE"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279cb4:
+    // 0x279cb4: 0x85f0  tge         $zero, $zero, 535
+    ctx->pc = 0x279cb4u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279cb8:
+    // 0x279cb8: 0x0  nop
+    ctx->pc = 0x279cb8u;
+    // NOP
+label_279cbc:
+    // 0x279cbc: 0x0  nop
+    ctx->pc = 0x279cbcu;
+    // NOP
+label_279cc0:
+    // 0x279cc0: 0x10cdf  .word       0x00010CDF                   # ddivu       $at, $zero, $at # 000004C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279cc0u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x1F at 0x279CC0 raw=0x00010CDF"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279cc4:
+    // 0x279cc4: 0x77f0  tge         $zero, $zero, 479
+    ctx->pc = 0x279cc4u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279cc8:
+    // 0x279cc8: 0x0  nop
+    ctx->pc = 0x279cc8u;
+    // NOP
+label_279ccc:
+    // 0x279ccc: 0x0  nop
+    ctx->pc = 0x279cccu;
+    // NOP
+label_279cd0:
+    // 0x279cd0: 0x10cee  .word       0x00010CEE                   # dsub        $at, $zero, $at # 000004C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279cd0u;
+    { int64_t a = (int64_t)GPR_S64(ctx, 0); int64_t b = (int64_t)GPR_S64(ctx, 1); int64_t r = a - b; if (((a ^ b) < 0) && ((a ^ r) < 0)) runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW); else SET_GPR_S64(ctx, 1, r); }
+label_279cd4:
+    // 0x279cd4: 0x5560  .word       0x00005560                   # add         $t2, $zero, $zero # 00000540 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279cd4u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 10, (int32_t)result);     } }
+label_279cd8:
+    // 0x279cd8: 0x0  nop
+    ctx->pc = 0x279cd8u;
+    // NOP
+label_279cdc:
+    // 0x279cdc: 0x0  nop
+    ctx->pc = 0x279cdcu;
+    // NOP
+label_279ce0:
+    // 0x279ce0: 0x10cf9  .word       0x00010CF9                   # INVALID     $zero, $at, 0xCF9 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ce0u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x39 at 0x279CE0 raw=0x00010CF9"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279ce4:
+    // 0x279ce4: 0x64f0  tge         $zero, $zero, 403
+    ctx->pc = 0x279ce4u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279ce8:
+    // 0x279ce8: 0x0  nop
+    ctx->pc = 0x279ce8u;
+    // NOP
+label_279cec:
+    // 0x279cec: 0x0  nop
+    ctx->pc = 0x279cecu;
+    // NOP
+label_279cf0:
+    // 0x279cf0: 0x10d06  .word       0x00010D06                   # srlv        $at, $at, $zero # 00000500 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279cf0u;
+    SET_GPR_S32(ctx, 1, (int32_t)SRL32(GPR_U32(ctx, 1), GPR_U32(ctx, 0) & 0x1F));
+label_279cf4:
+    // 0x279cf4: 0x4830  tge         $zero, $zero, 288
+    ctx->pc = 0x279cf4u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279cf8:
+    // 0x279cf8: 0x0  nop
+    ctx->pc = 0x279cf8u;
+    // NOP
+label_279cfc:
+    // 0x279cfc: 0x0  nop
+    ctx->pc = 0x279cfcu;
+    // NOP
+label_279d00:
+    // 0x279d00: 0x10d10  .word       0x00010D10                   # mfhi        $at # 00010500 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279d00u;
+    SET_GPR_U64(ctx, 1, ctx->hi);
+label_279d04:
+    // 0x279d04: 0x70e0  .word       0x000070E0                   # add         $t6, $zero, $zero # 000000C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279d04u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 14, (int32_t)result);     } }
+label_279d08:
+    // 0x279d08: 0x0  nop
+    ctx->pc = 0x279d08u;
+    // NOP
+label_279d0c:
+    // 0x279d0c: 0x0  nop
+    ctx->pc = 0x279d0cu;
+    // NOP
+label_279d10:
+    // 0x279d10: 0x10d1f  .word       0x00010D1F                   # ddivu       $at, $zero, $at # 00000500 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279d10u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x1F at 0x279D10 raw=0x00010D1F"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279d14:
+    // 0x279d14: 0x43c0  sll         $t0, $zero, 15
+    ctx->pc = 0x279d14u;
+    SET_GPR_S32(ctx, 8, (int32_t)SLL32(GPR_U32(ctx, 0), 15));
+label_279d18:
+    // 0x279d18: 0x0  nop
+    ctx->pc = 0x279d18u;
+    // NOP
+label_279d1c:
+    // 0x279d1c: 0x0  nop
+    ctx->pc = 0x279d1cu;
+    // NOP
+label_279d20:
+    // 0x279d20: 0x10d28  .word       0x00010D28                   # mfsa        $at # 00010500 <InstrIdType: R5900_SPECIAL>
+    ctx->pc = 0x279d20u;
+    SET_GPR_U32(ctx, 1, ctx->sa);
+label_279d24:
+    // 0x279d24: 0x4270  tge         $zero, $zero, 265
+    ctx->pc = 0x279d24u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279d28:
+    // 0x279d28: 0x0  nop
+    ctx->pc = 0x279d28u;
+    // NOP
+label_279d2c:
+    // 0x279d2c: 0x0  nop
+    ctx->pc = 0x279d2cu;
+    // NOP
+label_279d30:
+    // 0x279d30: 0x10d31  tgeu        $zero, $at, 52
+    ctx->pc = 0x279d30u;
+    if (GPR_U64(ctx, 0) >= GPR_U64(ctx, 1)) { runtime->handleTrap(rdram, ctx); }
+label_279d34:
+    // 0x279d34: 0x5cb0  tge         $zero, $zero, 370
+    ctx->pc = 0x279d34u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279d38:
+    // 0x279d38: 0x0  nop
+    ctx->pc = 0x279d38u;
+    // NOP
+label_279d3c:
+    // 0x279d3c: 0x0  nop
+    ctx->pc = 0x279d3cu;
+    // NOP
+label_279d40:
+    // 0x279d40: 0x10d3d  .word       0x00010D3D                   # INVALID     $zero, $at, 0xD3D # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279d40u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x3D at 0x279D40 raw=0x00010D3D"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279d44:
+    // 0x279d44: 0x5a20  .word       0x00005A20                   # add         $t3, $zero, $zero # 00000200 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279d44u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 11, (int32_t)result);     } }
+label_279d48:
+    // 0x279d48: 0x0  nop
+    ctx->pc = 0x279d48u;
+    // NOP
+label_279d4c:
+    // 0x279d4c: 0x0  nop
+    ctx->pc = 0x279d4cu;
+    // NOP
+label_279d50:
+    // 0x279d50: 0x10d49  .word       0x00010D49                   # jalr        $at, $zero # 00010540 <InstrIdType: CPU_SPECIAL>
+label_279d54:
+    if (ctx->pc == 0x279D54u) {
+        ctx->pc = 0x279D54u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x279D50u;
+        // 0x279d54: 0x5b00  sll         $t3, $zero, 12 (Delay Slot)
+        SET_GPR_S32(ctx, 11, (int32_t)SLL32(GPR_U32(ctx, 0), 12));
+        ctx->in_delay_slot = false;
+        ctx->pc = 0x279D58u;
+        goto label_279d58;
+    }
+    ctx->pc = 0x279D50u;
+    {
+        const uint32_t jumpTarget = GPR_U32(ctx, 0);
+        SET_GPR_U32(ctx, 1, 0x279D58u);
+        ctx->pc = 0x279D54u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x279D50u;
+        // 0x279d54: 0x5b00  sll         $t3, $zero, 12 (Delay Slot)
+        SET_GPR_S32(ctx, 11, (int32_t)SLL32(GPR_U32(ctx, 0), 12));
+        ctx->in_delay_slot = false;
+        ctx->pc = jumpTarget;
+        if (!runtime->dispatchGuestBranch(rdram, ctx, jumpTarget, 0x279D50u, 0x279D58u, PS2Runtime::GuestBranchKind::IndirectCall, "JALR")) {
+            return;
+        }
+    }
+    ctx->pc = 0x279D58u;
+label_279d58:
+    // 0x279d58: 0x0  nop
+    ctx->pc = 0x279d58u;
+    // NOP
+label_279d5c:
+    // 0x279d5c: 0x0  nop
+    ctx->pc = 0x279d5cu;
+    // NOP
+label_279d60:
+    // 0x279d60: 0x10d55  .word       0x00010D55                   # INVALID     $zero, $at, 0xD55 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279d60u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x15 at 0x279D60 raw=0x00010D55"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279d64:
+    // 0x279d64: 0x80e0  .word       0x000080E0                   # add         $s0, $zero, $zero # 000000C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279d64u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 16, (int32_t)result);     } }
+label_279d68:
+    // 0x279d68: 0x0  nop
+    ctx->pc = 0x279d68u;
+    // NOP
+label_279d6c:
+    // 0x279d6c: 0x0  nop
+    ctx->pc = 0x279d6cu;
+    // NOP
+label_279d70:
+    // 0x279d70: 0x10d66  .word       0x00010D66                   # xor         $at, $zero, $at # 00000540 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279d70u;
+    SET_GPR_U64(ctx, 1, GPR_U64(ctx, 0) ^ GPR_U64(ctx, 1));
+label_279d74:
+    // 0x279d74: 0x55a0  .word       0x000055A0                   # add         $t2, $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279d74u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 10, (int32_t)result);     } }
+label_279d78:
+    // 0x279d78: 0x0  nop
+    ctx->pc = 0x279d78u;
+    // NOP
+label_279d7c:
+    // 0x279d7c: 0x0  nop
+    ctx->pc = 0x279d7cu;
+    // NOP
+label_279d80:
+    // 0x279d80: 0x10d71  tgeu        $zero, $at, 53
+    ctx->pc = 0x279d80u;
+    if (GPR_U64(ctx, 0) >= GPR_U64(ctx, 1)) { runtime->handleTrap(rdram, ctx); }
+label_279d84:
+    // 0x279d84: 0x7650  .word       0x00007650                   # mfhi        $t6 # 00000640 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279d84u;
+    SET_GPR_U64(ctx, 14, ctx->hi);
+label_279d88:
+    // 0x279d88: 0x0  nop
+    ctx->pc = 0x279d88u;
+    // NOP
+label_279d8c:
+    // 0x279d8c: 0x0  nop
+    ctx->pc = 0x279d8cu;
+    // NOP
+label_279d90:
+    // 0x279d90: 0x10d80  sll         $at, $at, 22
+    ctx->pc = 0x279d90u;
+    SET_GPR_S32(ctx, 1, (int32_t)SLL32(GPR_U32(ctx, 1), 22));
+label_279d94:
+    // 0x279d94: 0x5690  .word       0x00005690                   # mfhi        $t2 # 00000680 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279d94u;
+    SET_GPR_U64(ctx, 10, ctx->hi);
+label_279d98:
+    // 0x279d98: 0x0  nop
+    ctx->pc = 0x279d98u;
+    // NOP
+label_279d9c:
+    // 0x279d9c: 0x0  nop
+    ctx->pc = 0x279d9cu;
+    // NOP
+label_279da0:
+    // 0x279da0: 0x10d8b  .word       0x00010D8B                   # movn        $at, $zero, $at # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279da0u;
+    if (GPR_U64(ctx, 1) != 0) SET_GPR_VEC(ctx, 1, GPR_VEC(ctx, 0));
+label_279da4:
+    // 0x279da4: 0x6e50  .word       0x00006E50                   # mfhi        $t5 # 00000640 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279da4u;
+    SET_GPR_U64(ctx, 13, ctx->hi);
+label_279da8:
+    // 0x279da8: 0x0  nop
+    ctx->pc = 0x279da8u;
+    // NOP
+label_279dac:
+    // 0x279dac: 0x0  nop
+    ctx->pc = 0x279dacu;
+    // NOP
+label_279db0:
+    // 0x279db0: 0x10d99  .word       0x00010D99                   # multu       $zero, $at # 00000D80 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279db0u;
+    { uint64_t result = (uint64_t)GPR_U32(ctx, 0) * (uint64_t)GPR_U32(ctx, 1); ctx->lo = (uint64_t)(int64_t)(int32_t)result; ctx->hi = (uint64_t)(int64_t)(int32_t)(result >> 32); SET_GPR_S32(ctx, 1, (int32_t)result); }
+label_279db4:
+    // 0x279db4: 0x6da0  .word       0x00006DA0                   # add         $t5, $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279db4u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 13, (int32_t)result);     } }
+label_279db8:
+    // 0x279db8: 0x0  nop
+    ctx->pc = 0x279db8u;
+    // NOP
+label_279dbc:
+    // 0x279dbc: 0x0  nop
+    ctx->pc = 0x279dbcu;
+    // NOP
+label_279dc0:
+    // 0x279dc0: 0x10da7  .word       0x00010DA7                   # nor         $at, $zero, $at # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279dc0u;
+    SET_GPR_U64(ctx, 1, ~(GPR_U64(ctx, 0) | GPR_U64(ctx, 1)));
+label_279dc4:
+    // 0x279dc4: 0x63c0  sll         $t4, $zero, 15
+    ctx->pc = 0x279dc4u;
+    SET_GPR_S32(ctx, 12, (int32_t)SLL32(GPR_U32(ctx, 0), 15));
+label_279dc8:
+    // 0x279dc8: 0x0  nop
+    ctx->pc = 0x279dc8u;
+    // NOP
+label_279dcc:
+    // 0x279dcc: 0x0  nop
+    ctx->pc = 0x279dccu;
+    // NOP
+label_279dd0:
+    // 0x279dd0: 0x10db4  teq         $zero, $at, 54
+    ctx->pc = 0x279dd0u;
+    if (GPR_U64(ctx, 0) == GPR_U64(ctx, 1)) { runtime->handleTrap(rdram, ctx); }
+label_279dd4:
+    // 0x279dd4: 0x3ea0  .word       0x00003EA0                   # add         $a3, $zero, $zero # 00000680 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279dd4u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 7, (int32_t)result);     } }
+label_279dd8:
+    // 0x279dd8: 0x0  nop
+    ctx->pc = 0x279dd8u;
+    // NOP
+label_279ddc:
+    // 0x279ddc: 0x0  nop
+    ctx->pc = 0x279ddcu;
+    // NOP
+label_279de0:
+    // 0x279de0: 0x10dbc  dsll32      $at, $at, 22
+    ctx->pc = 0x279de0u;
+    SET_GPR_U64(ctx, 1, GPR_U64(ctx, 1) << (32 + 22));
+label_279de4:
+    // 0x279de4: 0x89e0  .word       0x000089E0                   # add         $s1, $zero, $zero # 000001C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279de4u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 17, (int32_t)result);     } }
+label_279de8:
+    // 0x279de8: 0x0  nop
+    ctx->pc = 0x279de8u;
+    // NOP
+label_279dec:
+    // 0x279dec: 0x0  nop
+    ctx->pc = 0x279decu;
+    // NOP
+label_279df0:
+    // 0x279df0: 0x10dce  .word       0x00010DCE                   # INVALID     $zero, $at, 0xDCE # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279df0u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0xE at 0x279DF0 raw=0x00010DCE"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279df4:
+    // 0x279df4: 0xafe0  .word       0x0000AFE0                   # add         $s5, $zero, $zero # 000007C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279df4u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 21, (int32_t)result);     } }
+label_279df8:
+    // 0x279df8: 0x0  nop
+    ctx->pc = 0x279df8u;
+    // NOP
+label_279dfc:
+    // 0x279dfc: 0x0  nop
+    ctx->pc = 0x279dfcu;
+    // NOP
+label_279e00:
+    // 0x279e00: 0x10de4  .word       0x00010DE4                   # and         $at, $zero, $at # 000005C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279e00u;
+    SET_GPR_U64(ctx, 1, GPR_U64(ctx, 0) & GPR_U64(ctx, 1));
+label_279e04:
+    // 0x279e04: 0x9460  .word       0x00009460                   # add         $s2, $zero, $zero # 00000440 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279e04u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 18, (int32_t)result);     } }
+label_279e08:
+    // 0x279e08: 0x0  nop
+    ctx->pc = 0x279e08u;
+    // NOP
+label_279e0c:
+    // 0x279e0c: 0x0  nop
+    ctx->pc = 0x279e0cu;
+    // NOP
+label_279e10:
+    // 0x279e10: 0x10df7  .word       0x00010DF7                   # INVALID     $zero, $at, 0xDF7 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279e10u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x37 at 0x279E10 raw=0x00010DF7"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279e14:
+    // 0x279e14: 0x5760  .word       0x00005760                   # add         $t2, $zero, $zero # 00000740 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279e14u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 10, (int32_t)result);     } }
+label_279e18:
+    // 0x279e18: 0x0  nop
+    ctx->pc = 0x279e18u;
+    // NOP
+label_279e1c:
+    // 0x279e1c: 0x0  nop
+    ctx->pc = 0x279e1cu;
+    // NOP
+label_279e20:
+    // 0x279e20: 0x10e02  srl         $at, $at, 24
+    ctx->pc = 0x279e20u;
+    SET_GPR_S32(ctx, 1, (int32_t)SRL32(GPR_U32(ctx, 1), 24));
+label_279e24:
+    // 0x279e24: 0x3350  .word       0x00003350                   # mfhi        $a2 # 00000340 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279e24u;
+    SET_GPR_U64(ctx, 6, ctx->hi);
+label_279e28:
+    // 0x279e28: 0x0  nop
+    ctx->pc = 0x279e28u;
+    // NOP
+label_279e2c:
+    // 0x279e2c: 0x0  nop
+    ctx->pc = 0x279e2cu;
+    // NOP
+label_279e30:
+    // 0x279e30: 0x10e09  .word       0x00010E09                   # jalr        $at, $zero # 00010600 <InstrIdType: CPU_SPECIAL>
+label_279e34:
+    if (ctx->pc == 0x279E34u) {
+        ctx->pc = 0x279E34u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x279E30u;
+        // 0x279e34: 0x73e0  .word       0x000073E0                   # add         $t6, $zero, $zero # 000003C0 <InstrIdType: CPU_SPECIAL> (Delay Slot)
+        {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 14, (int32_t)result);     } }
+        ctx->in_delay_slot = false;
+        ctx->pc = 0x279E38u;
+        goto label_279e38;
+    }
+    ctx->pc = 0x279E30u;
+    {
+        const uint32_t jumpTarget = GPR_U32(ctx, 0);
+        SET_GPR_U32(ctx, 1, 0x279E38u);
+        ctx->pc = 0x279E34u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x279E30u;
+        // 0x279e34: 0x73e0  .word       0x000073E0                   # add         $t6, $zero, $zero # 000003C0 <InstrIdType: CPU_SPECIAL> (Delay Slot)
+        {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 14, (int32_t)result);     } }
+        ctx->in_delay_slot = false;
+        ctx->pc = jumpTarget;
+        if (!runtime->dispatchGuestBranch(rdram, ctx, jumpTarget, 0x279E30u, 0x279E38u, PS2Runtime::GuestBranchKind::IndirectCall, "JALR")) {
+            return;
+        }
+    }
+    ctx->pc = 0x279E38u;
+label_279e38:
+    // 0x279e38: 0x0  nop
+    ctx->pc = 0x279e38u;
+    // NOP
+label_279e3c:
+    // 0x279e3c: 0x0  nop
+    ctx->pc = 0x279e3cu;
+    // NOP
+label_279e40:
+    // 0x279e40: 0x10e18  .word       0x00010E18                   # mult        $at, $zero, $at # 00000600 <InstrIdType: R5900_SPECIAL>
+    ctx->pc = 0x279e40u;
+    { int64_t result = (int64_t)GPR_S32(ctx, 0) * (int64_t)GPR_S32(ctx, 1); ctx->lo = (uint64_t)(int64_t)(int32_t)result; ctx->hi = (uint64_t)(int64_t)(int32_t)(result >> 32); SET_GPR_S32(ctx, 1, (int32_t)result); }
+label_279e44:
+    // 0x279e44: 0x5e60  .word       0x00005E60                   # add         $t3, $zero, $zero # 00000640 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279e44u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 11, (int32_t)result);     } }
+label_279e48:
+    // 0x279e48: 0x0  nop
+    ctx->pc = 0x279e48u;
+    // NOP
+label_279e4c:
+    // 0x279e4c: 0x0  nop
+    ctx->pc = 0x279e4cu;
+    // NOP
+label_279e50:
+    // 0x279e50: 0x10e24  .word       0x00010E24                   # and         $at, $zero, $at # 00000600 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279e50u;
+    SET_GPR_U64(ctx, 1, GPR_U64(ctx, 0) & GPR_U64(ctx, 1));
+label_279e54:
+    // 0x279e54: 0x4710  .word       0x00004710                   # mfhi        $t0 # 00000700 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279e54u;
+    SET_GPR_U64(ctx, 8, ctx->hi);
+label_279e58:
+    // 0x279e58: 0x0  nop
+    ctx->pc = 0x279e58u;
+    // NOP
+label_279e5c:
+    // 0x279e5c: 0x0  nop
+    ctx->pc = 0x279e5cu;
+    // NOP
+label_279e60:
+    // 0x279e60: 0x10e2d  .word       0x00010E2D                   # daddu       $at, $zero, $at # 00000600 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279e60u;
+    SET_GPR_U64(ctx, 1, (uint64_t)GPR_U64(ctx, 0) + (uint64_t)GPR_U64(ctx, 1));
+label_279e64:
+    // 0x279e64: 0x92c0  sll         $s2, $zero, 11
+    ctx->pc = 0x279e64u;
+    SET_GPR_S32(ctx, 18, (int32_t)SLL32(GPR_U32(ctx, 0), 11));
+label_279e68:
+    // 0x279e68: 0x0  nop
+    ctx->pc = 0x279e68u;
+    // NOP
+label_279e6c:
+    // 0x279e6c: 0x0  nop
+    ctx->pc = 0x279e6cu;
+    // NOP
+label_279e70:
+    // 0x279e70: 0x10e40  sll         $at, $at, 25
+    ctx->pc = 0x279e70u;
+    SET_GPR_S32(ctx, 1, (int32_t)SLL32(GPR_U32(ctx, 1), 25));
+label_279e74:
+    // 0x279e74: 0x5300  sll         $t2, $zero, 12
+    ctx->pc = 0x279e74u;
+    SET_GPR_S32(ctx, 10, (int32_t)SLL32(GPR_U32(ctx, 0), 12));
+label_279e78:
+    // 0x279e78: 0x0  nop
+    ctx->pc = 0x279e78u;
+    // NOP
+label_279e7c:
+    // 0x279e7c: 0x0  nop
+    ctx->pc = 0x279e7cu;
+    // NOP
+label_279e80:
+    // 0x279e80: 0x10e4b  .word       0x00010E4B                   # movn        $at, $zero, $at # 00000640 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279e80u;
+    if (GPR_U64(ctx, 1) != 0) SET_GPR_VEC(ctx, 1, GPR_VEC(ctx, 0));
+label_279e84:
+    // 0x279e84: 0x4dd0  .word       0x00004DD0                   # mfhi        $t1 # 000005C0 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279e84u;
+    SET_GPR_U64(ctx, 9, ctx->hi);
+label_279e88:
+    // 0x279e88: 0x0  nop
+    ctx->pc = 0x279e88u;
+    // NOP
+label_279e8c:
+    // 0x279e8c: 0x0  nop
+    ctx->pc = 0x279e8cu;
+    // NOP
+label_279e90:
+    // 0x279e90: 0x10e55  .word       0x00010E55                   # INVALID     $zero, $at, 0xE55 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279e90u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x15 at 0x279E90 raw=0x00010E55"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279e94:
+    // 0x279e94: 0x6690  .word       0x00006690                   # mfhi        $t4 # 00000680 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279e94u;
+    SET_GPR_U64(ctx, 12, ctx->hi);
+label_279e98:
+    // 0x279e98: 0x0  nop
+    ctx->pc = 0x279e98u;
+    // NOP
+label_279e9c:
+    // 0x279e9c: 0x0  nop
+    ctx->pc = 0x279e9cu;
+    // NOP
+label_279ea0:
+    // 0x279ea0: 0x10e62  .word       0x00010E62                   # neg         $at, $at # 00000640 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ea0u;
+    { uint32_t tmp; bool ov; SUB32_OV(GPR_U32(ctx, 0), GPR_U32(ctx, 1), tmp, ov); if (ov) runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW); else SET_GPR_S32(ctx, 1, (int32_t)tmp); }
+label_279ea4:
+    // 0x279ea4: 0x5710  .word       0x00005710                   # mfhi        $t2 # 00000700 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ea4u;
+    SET_GPR_U64(ctx, 10, ctx->hi);
+label_279ea8:
+    // 0x279ea8: 0x0  nop
+    ctx->pc = 0x279ea8u;
+    // NOP
+label_279eac:
+    // 0x279eac: 0x0  nop
+    ctx->pc = 0x279eacu;
+    // NOP
+label_279eb0:
+    // 0x279eb0: 0x10e6d  .word       0x00010E6D                   # daddu       $at, $zero, $at # 00000640 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279eb0u;
+    SET_GPR_U64(ctx, 1, (uint64_t)GPR_U64(ctx, 0) + (uint64_t)GPR_U64(ctx, 1));
+label_279eb4:
+    // 0x279eb4: 0x6280  sll         $t4, $zero, 10
+    ctx->pc = 0x279eb4u;
+    SET_GPR_S32(ctx, 12, (int32_t)SLL32(GPR_U32(ctx, 0), 10));
+label_279eb8:
+    // 0x279eb8: 0x0  nop
+    ctx->pc = 0x279eb8u;
+    // NOP
+label_279ebc:
+    // 0x279ebc: 0x0  nop
+    ctx->pc = 0x279ebcu;
+    // NOP
+label_279ec0:
+    // 0x279ec0: 0x10e7a  dsrl        $at, $at, 25
+    ctx->pc = 0x279ec0u;
+    SET_GPR_U64(ctx, 1, GPR_U64(ctx, 1) >> 25);
+label_279ec4:
+    // 0x279ec4: 0x5f60  .word       0x00005F60                   # add         $t3, $zero, $zero # 00000740 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ec4u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 11, (int32_t)result);     } }
+label_279ec8:
+    // 0x279ec8: 0x0  nop
+    ctx->pc = 0x279ec8u;
+    // NOP
+label_279ecc:
+    // 0x279ecc: 0x0  nop
+    ctx->pc = 0x279eccu;
+    // NOP
+label_279ed0:
+    // 0x279ed0: 0x10e86  .word       0x00010E86                   # srlv        $at, $at, $zero # 00000680 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ed0u;
+    SET_GPR_S32(ctx, 1, (int32_t)SRL32(GPR_U32(ctx, 1), GPR_U32(ctx, 0) & 0x1F));
+label_279ed4:
+    // 0x279ed4: 0xc230  tge         $zero, $zero, 776
+    ctx->pc = 0x279ed4u;
+    if (GPR_S64(ctx, 0) >= GPR_S64(ctx, 0)) { runtime->handleTrap(rdram, ctx); }
+label_279ed8:
+    // 0x279ed8: 0x0  nop
+    ctx->pc = 0x279ed8u;
+    // NOP
+label_279edc:
+    // 0x279edc: 0x0  nop
+    ctx->pc = 0x279edcu;
+    // NOP
+label_279ee0:
+    // 0x279ee0: 0x10e9f  .word       0x00010E9F                   # ddivu       $at, $zero, $at # 00000680 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ee0u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x1F at 0x279EE0 raw=0x00010E9F"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_279ee4:
+    // 0x279ee4: 0x8990  .word       0x00008990                   # mfhi        $s1 # 00000180 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x279ee4u;
+    SET_GPR_U64(ctx, 17, ctx->hi);
+label_279ee8:
+    // 0x279ee8: 0x0  nop
+    ctx->pc = 0x279ee8u;
+    // NOP
+label_279eec:
+    // 0x279eec: 0x0  nop
+    ctx->pc = 0x279eecu;
+    // NOP
+label_279ef0:
+    // 0x279ef0: 0x10eb1  tgeu        $zero, $at, 58
+    ctx->pc = 0x279ef0u;
+    if (GPR_U64(ctx, 0) >= GPR_U64(ctx, 1)) { runtime->handleTrap(rdram, ctx); }
+label_279ef4:
+    // 0x279ef4: 0x2fc0  sll         $a1, $zero, 31
+    ctx->pc = 0x279ef4u;
+    SET_GPR_S32(ctx, 5, (int32_t)SLL32(GPR_U32(ctx, 0), 31));
+    ctx->pc = 0x279ef8u;
+    return;
+}

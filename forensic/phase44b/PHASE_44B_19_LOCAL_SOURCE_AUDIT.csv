@@ -1,6 +1,0 @@
-searched_scope,match,usable_pcsx2_source,notes,status
-workspace,ps2recomp_src/PS2Recomp-main/ps2xRuntime/src/lib/Kernel/Stubs/GS.cpp,NO,"runtime stubs, not PCSX2 source",NOT_USABLE
-workspace,ps2recomp_src/PS2Recomp-main/ps2xRuntime/src/lib/Kernel/Stubs/DMA.cpp,NO,"runtime stubs, not PCSX2 source",NOT_USABLE
-workspace,reo_src/...,NO,"debug scripts/assets only; no PCSX2 GS implementation",NOT_USABLE
-PCSX2_1.6.0_installation,binaries/dlls/configuration only,NO,"installed binaries; no source checkout",CONFIRMED
-PCSX2_V2_3_installation,binaries/dlls/translations only,NO,"installed binaries; no source checkout",CONFIRMED

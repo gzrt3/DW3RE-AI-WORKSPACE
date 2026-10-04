@@ -1,0 +1,2231 @@
+{
+  "utc": "2026-10-04T23:36:11.435831+00:00",
+  "runs": [
+    {
+      "release": 93,
+      "result": {
+        "command": [
+          "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\fate_game.exe",
+          "<originals>\\sources\\dumps\\dw3xl_ps2",
+          "<originals>\\sources\\dumps\\dw3xl_ps2\\SLUS_206.17"
+        ],
+        "cwd": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_093\\run",
+        "started_utc": "2026-10-04T23:10:45.441397+00:00",
+        "timeout_seconds": 10.0,
+        "status": "PROCESS_FAILED",
+        "pid": 25628,
+        "exit_code": 4294967295,
+        "timed_out": false,
+        "termination_requested": false,
+        "scope": "Process observation only; no boot, rendering, or parity claim.",
+        "finished_utc": "2026-10-04T23:10:45.910973+00:00",
+        "duration_seconds": 0.46957979999569943,
+        "logs": {
+          "stdout.bin": {
+            "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_093\\stdout.bin",
+            "size_bytes": 2870,
+            "sha256": "7629f44acf9ae033e6cf36c26642ba8532a3325ec8c72b39d6f39fa67b017794"
+          },
+          "stderr.bin": {
+            "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_093\\stderr.bin",
+            "size_bytes": 7590,
+            "sha256": "6e34ca5521c2665b7b0a79cc6484af9f1f7739bb715f23d1b575508a23c58aff"
+          }
+        },
+        "schema_version": 1,
+        "launch_sha256": "329cb96b2a104fb98cc3c335277502bd3982bffaa5748ddc94b42794964cc452",
+        "inputs_after": [
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\fate_game.exe",
+            "size_bytes": 1079968256,
+            "sha256": "42db59dbca45d2ab080759fc6365ec3dad62d42826b9990bfbc812fe94632bfc"
+          },
+          {
+            "path": "<originals>\\sources\\dumps\\dw3xl_ps2\\SLUS_206.17",
+            "size_bytes": 1905272,
+            "sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avcodec-61.dll",
+            "size_bytes": 18477056,
+            "sha256": "b8acfed8d1103fa0ca02208978471526251d41fa9874517751ab30a52601f3a7"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avdevice-61.dll",
+            "size_bytes": 931328,
+            "sha256": "5fe10665a04a1ab379f8ac27f40f6b0d896dda6b22a3599ab3115ad73893ea10"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avfilter-10.dll",
+            "size_bytes": 7047680,
+            "sha256": "a4d54278ce76e8fb6aa34b40a06bf2bca6b581cba059f2eca54593ab1430959b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avformat-61.dll",
+            "size_bytes": 4228096,
+            "sha256": "aa8b5921966070236da75bef4ef6c49b0b607951e1f00a59a6b0d42fb93626d5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avutil-59.dll",
+            "size_bytes": 2211328,
+            "sha256": "e2d999efc3fe848ae2944aa7f2983c36336fab3a3565d3e05c47a35b3e51a448"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlicommon.dll",
+            "size_bytes": 237056,
+            "sha256": "f0e8adfa650100adeaa0ab87e400b9b9129bc2dd5f8dbbf5cf35c262b41b90cf"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlidec.dll",
+            "size_bytes": 144896,
+            "sha256": "725574a176cebd7ca6c67402d57b85cdb4ed92e53392314bb3c7ff8e9a5a219e"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlienc.dll",
+            "size_bytes": 3454976,
+            "sha256": "17461073f27ca26133e0fda9ec3808fef77258c113eb9be6dbfccd58ff0a0d41"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\freetype.dll",
+            "size_bytes": 796672,
+            "sha256": "85f8c4c7a5a40d9b07b8ae9e1c62fab9d31140129e1614aa46e339af32d18dab"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\harfbuzz.dll",
+            "size_bytes": 1252864,
+            "sha256": "862c7e060900d2ef6a5e9b49a3fd98b9aff804a6f86d4274ebc59df9ffe89136"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\Iex-3_3.dll",
+            "size_bytes": 396288,
+            "sha256": "6512bf5a3f48cbb4ba0342ec5db4bbfadda8fab25d0bd237e9ed5a5a3fa57be4"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\IlmThread-3_3.dll",
+            "size_bytes": 207872,
+            "sha256": "e292b48f9d713bbed01eb541f24b8b141aaa71aa97f8bbbbefb69106f7a1c50a"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\Imath-3_1.dll",
+            "size_bytes": 583680,
+            "sha256": "fc6bcba9bc556618426d8c5153a004848047ecb0cfb0ebd8a1a437499dc63af7"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl.dll",
+            "size_bytes": 2909184,
+            "sha256": "30ca8b2bd211f5602702c37c1443971e9ef23921f9bd750e547b9078e9abe730"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl_cms.dll",
+            "size_bytes": 306688,
+            "sha256": "39f04faf9e753bb325402a3504a95bcd1fb669da037eefb67b68b2a13ef027dd"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl_threads.dll",
+            "size_bytes": 139264,
+            "sha256": "b1c3bddeedc3b4a0e741e8f8712bf24bb6f1c60e21589be86e18b444f951890b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libsharpyuv.dll",
+            "size_bytes": 142848,
+            "sha256": "3132d7c897cd6d3980779b762a4e4876ed5062dfc4bbe64297ba5b9ac5d4e4c2"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebp.dll",
+            "size_bytes": 488448,
+            "sha256": "45614a8a22d37e9211f1a4508107366f8f7f795f06423fba014ad1e18c003f4d"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpdecoder.dll",
+            "size_bytes": 257536,
+            "sha256": "336f395f5c36734ac1ae5c13d53c74c9eb4ba6275720b526efef4dbd6f706aa1"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpdemux.dll",
+            "size_bytes": 115200,
+            "sha256": "3347b67b866fe56453bfe6af1d9632f88f04a36cb4d4a6deb64cf564a7e10b26"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpmux.dll",
+            "size_bytes": 183296,
+            "sha256": "c3e3102481939a606afe4f7cf21556f90721e9341cb2c3184f75cd64901a44b5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXR-3_3.dll",
+            "size_bytes": 1297920,
+            "sha256": "6ae1caaa727e5567ca17a8d2b11a6d785bf7d657e4cbcb5f66fad469fc33ca6d"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXRCore-3_3.dll",
+            "size_bytes": 2429952,
+            "sha256": "c03e93fedcbf4ff9ddd1848af85d484062bb7ffb11a26789ecf2708ce4859149"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXRUtil-3_3.dll",
+            "size_bytes": 376320,
+            "sha256": "8ea337b977ec93927c14e5b24f26063c3fe7e0634349bfcd80230efc3e2634b5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\SDL2.dll",
+            "size_bytes": 1807360,
+            "sha256": "9b8563455c87aafedbe57b2bec4ab5406d5d6b46120d9d978d17fb69a16664d1"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\swresample-5.dll",
+            "size_bytes": 807936,
+            "sha256": "5bbfe1435877ad21bd78fdfc7749c417505b5cf32cb21566570a5938d926a2ae"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\swscale-8.dll",
+            "size_bytes": 1547776,
+            "sha256": "fb5761990f7d0fd69f34e8d3838336618a44298aaa707a233c0d09569f5eb67b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\zlib1.dll",
+            "size_bytes": 223744,
+            "sha256": "4c69bd559e636b9ddf7710c4b869ee239ab6fd9d789f6726a7abc228e6c4cbab"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\CDVDFSV.IRX",
+            "size_bytes": 40661,
+            "sha256": "02cd6102a92074f7bcab557e66eec51a3cd52a32742863109c89ac6037818ccc"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\CDVDMAN.IRX",
+            "size_bytes": 72389,
+            "sha256": "a79d31b188b9738d9eeecee2b31f3cc8acd3af424fda7ba2c794de5b81d7eb8d"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\DMACMAN.IRX",
+            "size_bytes": 14069,
+            "sha256": "b0c35cb83cc61385cc86b1665b7a65e49dda71588feffc3ba70575267f1cc559"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EECONF.IRX",
+            "size_bytes": 3905,
+            "sha256": "40ef1a2ecff470829a3d9aee9237c597b783ee27ced876893e0980559a9a5fb7"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EESYNC.IRX",
+            "size_bytes": 1545,
+            "sha256": "d22329d916442790f5626f0ece082452bbc11d15c2ccbb13e90d5cf4d9f44ddb"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EXCEPMAN.IRX",
+            "size_bytes": 3033,
+            "sha256": "5c608046da492f3621a42828f49c3aadb0ee3247289af60766d34b4461ed26ed"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\FILEIO.IRX",
+            "size_bytes": 20629,
+            "sha256": "e0c0ecc0f4869e1bc364cba7dac46add8a97f5d33a1e995a9132c7c1fb8165f9"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\HEAPLIB.IRX",
+            "size_bytes": 3313,
+            "sha256": "fef6731f6c8d10ac7ed1785502c071c4ecb6b416cdd3f53104aeed48e543ddd2"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\IGREETING.IRX",
+            "size_bytes": 4185,
+            "sha256": "318a20420bf85f22eda86d0aa666e62f71153bec358a1b155702a7035419da6a"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\INTRMANI.IRX",
+            "size_bytes": 7729,
+            "sha256": "779e22c247261fa6b72b92bdfae0783da146294e683f89e0e41c71f47234669e"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\INTRMANP.IRX",
+            "size_bytes": 6657,
+            "sha256": "95bd617db528cda0cc375babd301776b3b9558920380fc99b1adf5cacdba83da"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\IOMAN.IRX",
+            "size_bytes": 12545,
+            "sha256": "4539b1716fbb2fdb65590d8e445e99101791897049712a73f08797aec26b59f1"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\LOADCORE.IRX",
+            "size_bytes": 9849,
+            "sha256": "51c9e79f4529d3590643a46ce63d73433b377a38ccc9fd0fad59a25b463d3bd3"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\LOADFILE.IRX",
+            "size_bytes": 11617,
+            "sha256": "53738d5ad16f42472a698d0937393fe6e53af0ad643101f4d7b0e0e6b52858f0"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\MODLOAD.IRX",
+            "size_bytes": 17997,
+            "sha256": "4a9027499d8fe06ced66d0ab66a9e930b30943c17fd2b5ae5f0bf76abf8360a7"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\REBOOT.IRX",
+            "size_bytes": 1985,
+            "sha256": "2b6cfb7a6f8251629d39480349c739fb105fab97b3cae1ff7d984bf5134eb8b4"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\ROMDRV.IRX",
+            "size_bytes": 3881,
+            "sha256": "753d9d4767d5a4ca7c891624f569cda47c3b591c23c62a0742ea5b0fa8375846"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SECRMAN.IRX",
+            "size_bytes": 17633,
+            "sha256": "97b4628862efda71163320ac96394bbacde725399d720db0ca20c6993cb2cb27"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFCMD.IRX",
+            "size_bytes": 10105,
+            "sha256": "cbea6f65e4f38b2c212ebdbacfed21451a1cb46b8c1286ff3e2ef7408956af8a"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFINIT.IRX",
+            "size_bytes": 1041,
+            "sha256": "a7558548ad86e0c2835d05bcf6a112b4cbf4cfe1177e56c1997e83bc1c8bce6c"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFMAN.IRX",
+            "size_bytes": 5937,
+            "sha256": "999a2aeeb1fca70a4b89ee13a4db5cd8fbb15f503d8a9d336b184e57d70c6dcd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SSBUSC.IRX",
+            "size_bytes": 1897,
+            "sha256": "ffd736dd649714451ca94dd60b956cbf3495a2d8943a8bb5f1a59bafe6f992d9"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\STDIO.IRX",
+            "size_bytes": 3377,
+            "sha256": "f24ecef688f1af0d659aad5472a9056db843005b06b176899a4fe76c74fd69fd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SYSCLIB.IRX",
+            "size_bytes": 10205,
+            "sha256": "e57edb4df3c50d58d4af7c5e2a502b072783a8feb43c00d277db5a1733374fce"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SYSMEM.IRX",
+            "size_bytes": 4625,
+            "sha256": "1b03e6ffd2042c2545cf1a78ab937b6b57ccda037783e7ad52467bb9f5556054"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\THREADMAN.IRX",
+            "size_bytes": 39421,
+            "sha256": "61bef97ca94a8cbd96ffd442fbbd84c10fdef95dfe5e4ae5b23674bb810f9092"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\TIMEMANI.IRX",
+            "size_bytes": 6069,
+            "sha256": "1825b7fb1517f340b9e5dddf7c52d3a911e58055a00aa9472a4e18a195c1dbfd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\TIMEMANP.IRX",
+            "size_bytes": 3033,
+            "sha256": "9624ffa50f75e11502212dea14b6433353f24c209523b8067576b34690e64bcd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\VBLANK.IRX",
+            "size_bytes": 3465,
+            "sha256": "5181693327dfd6ee0be8e2331a287109098e26253a4788a5d121f1fd73f1e4ce"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\dw3xl\\CDVDFSV.IRX",
+            "size_bytes": 40661,
+            "sha256": "02cd6102a92074f7bcab557e66eec51a3cd52a32742863109c89ac6037818ccc"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\dw3xl\\module_manifest.json",
+            "size_bytes": 360,
+            "sha256": "2b54a4e83bb2cf290c065b393da722dcf9f667905d17fa6e8183aa3ec66e892f"
+          }
+        ],
+        "changed_inputs": [],
+        "input_integrity": "MATCH",
+        "game_parity": "NOT_ASSESSED",
+        "boot_verified": false
+      },
+      "stop": "0x1a4ca4",
+      "identity": {
+        "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_093\\result.json",
+        "sha256": "1d8f6dd21f699610e7b4ff8402234629ca3ed9b38bb85bfcf184c120a44253a4",
+        "bytes": 13848
+      }
+    },
+    {
+      "release": 94,
+      "result": {
+        "command": [
+          "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\fate_game.exe",
+          "<originals>\\sources\\dumps\\dw3xl_ps2",
+          "<originals>\\sources\\dumps\\dw3xl_ps2\\SLUS_206.17"
+        ],
+        "cwd": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_094\\run",
+        "started_utc": "2026-10-04T23:14:16.057062+00:00",
+        "timeout_seconds": 10.0,
+        "status": "PROCESS_FAILED",
+        "pid": 13960,
+        "exit_code": 4294967295,
+        "timed_out": false,
+        "termination_requested": false,
+        "scope": "Process observation only; no boot, rendering, or parity claim.",
+        "finished_utc": "2026-10-04T23:14:16.545507+00:00",
+        "duration_seconds": 0.48844970000209287,
+        "logs": {
+          "stdout.bin": {
+            "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_094\\stdout.bin",
+            "size_bytes": 2870,
+            "sha256": "5b0ce4ca022dea7fe1ca6ca6c8d8aea53d81a41eeaf53f0810c3e0ab7ed98f3c"
+          },
+          "stderr.bin": {
+            "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_094\\stderr.bin",
+            "size_bytes": 8468,
+            "sha256": "7df0677621da90bdf3bd2c28f0f23a797023893e35a4efe039c6f652b8f7e86d"
+          }
+        },
+        "schema_version": 1,
+        "launch_sha256": "4c0bd8d502762b930daab3ee70e8858cb71b7d6debd5ae6c1451fcf6676fd4ef",
+        "inputs_after": [
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\fate_game.exe",
+            "size_bytes": 1079968768,
+            "sha256": "171e4ad970f3aaa8dc18db9ebdcf591ffc14275f08aff9e77dc795a2544fc0d5"
+          },
+          {
+            "path": "<originals>\\sources\\dumps\\dw3xl_ps2\\SLUS_206.17",
+            "size_bytes": 1905272,
+            "sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avcodec-61.dll",
+            "size_bytes": 18477056,
+            "sha256": "b8acfed8d1103fa0ca02208978471526251d41fa9874517751ab30a52601f3a7"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avdevice-61.dll",
+            "size_bytes": 931328,
+            "sha256": "5fe10665a04a1ab379f8ac27f40f6b0d896dda6b22a3599ab3115ad73893ea10"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avfilter-10.dll",
+            "size_bytes": 7047680,
+            "sha256": "a4d54278ce76e8fb6aa34b40a06bf2bca6b581cba059f2eca54593ab1430959b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avformat-61.dll",
+            "size_bytes": 4228096,
+            "sha256": "aa8b5921966070236da75bef4ef6c49b0b607951e1f00a59a6b0d42fb93626d5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avutil-59.dll",
+            "size_bytes": 2211328,
+            "sha256": "e2d999efc3fe848ae2944aa7f2983c36336fab3a3565d3e05c47a35b3e51a448"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlicommon.dll",
+            "size_bytes": 237056,
+            "sha256": "f0e8adfa650100adeaa0ab87e400b9b9129bc2dd5f8dbbf5cf35c262b41b90cf"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlidec.dll",
+            "size_bytes": 144896,
+            "sha256": "725574a176cebd7ca6c67402d57b85cdb4ed92e53392314bb3c7ff8e9a5a219e"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlienc.dll",
+            "size_bytes": 3454976,
+            "sha256": "17461073f27ca26133e0fda9ec3808fef77258c113eb9be6dbfccd58ff0a0d41"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\freetype.dll",
+            "size_bytes": 796672,
+            "sha256": "85f8c4c7a5a40d9b07b8ae9e1c62fab9d31140129e1614aa46e339af32d18dab"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\harfbuzz.dll",
+            "size_bytes": 1252864,
+            "sha256": "862c7e060900d2ef6a5e9b49a3fd98b9aff804a6f86d4274ebc59df9ffe89136"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\Iex-3_3.dll",
+            "size_bytes": 396288,
+            "sha256": "6512bf5a3f48cbb4ba0342ec5db4bbfadda8fab25d0bd237e9ed5a5a3fa57be4"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\IlmThread-3_3.dll",
+            "size_bytes": 207872,
+            "sha256": "e292b48f9d713bbed01eb541f24b8b141aaa71aa97f8bbbbefb69106f7a1c50a"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\Imath-3_1.dll",
+            "size_bytes": 583680,
+            "sha256": "fc6bcba9bc556618426d8c5153a004848047ecb0cfb0ebd8a1a437499dc63af7"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl.dll",
+            "size_bytes": 2909184,
+            "sha256": "30ca8b2bd211f5602702c37c1443971e9ef23921f9bd750e547b9078e9abe730"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl_cms.dll",
+            "size_bytes": 306688,
+            "sha256": "39f04faf9e753bb325402a3504a95bcd1fb669da037eefb67b68b2a13ef027dd"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl_threads.dll",
+            "size_bytes": 139264,
+            "sha256": "b1c3bddeedc3b4a0e741e8f8712bf24bb6f1c60e21589be86e18b444f951890b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libsharpyuv.dll",
+            "size_bytes": 142848,
+            "sha256": "3132d7c897cd6d3980779b762a4e4876ed5062dfc4bbe64297ba5b9ac5d4e4c2"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebp.dll",
+            "size_bytes": 488448,
+            "sha256": "45614a8a22d37e9211f1a4508107366f8f7f795f06423fba014ad1e18c003f4d"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpdecoder.dll",
+            "size_bytes": 257536,
+            "sha256": "336f395f5c36734ac1ae5c13d53c74c9eb4ba6275720b526efef4dbd6f706aa1"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpdemux.dll",
+            "size_bytes": 115200,
+            "sha256": "3347b67b866fe56453bfe6af1d9632f88f04a36cb4d4a6deb64cf564a7e10b26"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpmux.dll",
+            "size_bytes": 183296,
+            "sha256": "c3e3102481939a606afe4f7cf21556f90721e9341cb2c3184f75cd64901a44b5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXR-3_3.dll",
+            "size_bytes": 1297920,
+            "sha256": "6ae1caaa727e5567ca17a8d2b11a6d785bf7d657e4cbcb5f66fad469fc33ca6d"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXRCore-3_3.dll",
+            "size_bytes": 2429952,
+            "sha256": "c03e93fedcbf4ff9ddd1848af85d484062bb7ffb11a26789ecf2708ce4859149"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXRUtil-3_3.dll",
+            "size_bytes": 376320,
+            "sha256": "8ea337b977ec93927c14e5b24f26063c3fe7e0634349bfcd80230efc3e2634b5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\SDL2.dll",
+            "size_bytes": 1807360,
+            "sha256": "9b8563455c87aafedbe57b2bec4ab5406d5d6b46120d9d978d17fb69a16664d1"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\swresample-5.dll",
+            "size_bytes": 807936,
+            "sha256": "5bbfe1435877ad21bd78fdfc7749c417505b5cf32cb21566570a5938d926a2ae"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\swscale-8.dll",
+            "size_bytes": 1547776,
+            "sha256": "fb5761990f7d0fd69f34e8d3838336618a44298aaa707a233c0d09569f5eb67b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\zlib1.dll",
+            "size_bytes": 223744,
+            "sha256": "4c69bd559e636b9ddf7710c4b869ee239ab6fd9d789f6726a7abc228e6c4cbab"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\CDVDFSV.IRX",
+            "size_bytes": 40661,
+            "sha256": "02cd6102a92074f7bcab557e66eec51a3cd52a32742863109c89ac6037818ccc"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\CDVDMAN.IRX",
+            "size_bytes": 72389,
+            "sha256": "a79d31b188b9738d9eeecee2b31f3cc8acd3af424fda7ba2c794de5b81d7eb8d"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\DMACMAN.IRX",
+            "size_bytes": 14069,
+            "sha256": "b0c35cb83cc61385cc86b1665b7a65e49dda71588feffc3ba70575267f1cc559"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EECONF.IRX",
+            "size_bytes": 3905,
+            "sha256": "40ef1a2ecff470829a3d9aee9237c597b783ee27ced876893e0980559a9a5fb7"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EESYNC.IRX",
+            "size_bytes": 1545,
+            "sha256": "d22329d916442790f5626f0ece082452bbc11d15c2ccbb13e90d5cf4d9f44ddb"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EXCEPMAN.IRX",
+            "size_bytes": 3033,
+            "sha256": "5c608046da492f3621a42828f49c3aadb0ee3247289af60766d34b4461ed26ed"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\FILEIO.IRX",
+            "size_bytes": 20629,
+            "sha256": "e0c0ecc0f4869e1bc364cba7dac46add8a97f5d33a1e995a9132c7c1fb8165f9"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\HEAPLIB.IRX",
+            "size_bytes": 3313,
+            "sha256": "fef6731f6c8d10ac7ed1785502c071c4ecb6b416cdd3f53104aeed48e543ddd2"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\IGREETING.IRX",
+            "size_bytes": 4185,
+            "sha256": "318a20420bf85f22eda86d0aa666e62f71153bec358a1b155702a7035419da6a"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\INTRMANI.IRX",
+            "size_bytes": 7729,
+            "sha256": "779e22c247261fa6b72b92bdfae0783da146294e683f89e0e41c71f47234669e"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\INTRMANP.IRX",
+            "size_bytes": 6657,
+            "sha256": "95bd617db528cda0cc375babd301776b3b9558920380fc99b1adf5cacdba83da"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\IOMAN.IRX",
+            "size_bytes": 12545,
+            "sha256": "4539b1716fbb2fdb65590d8e445e99101791897049712a73f08797aec26b59f1"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\LOADCORE.IRX",
+            "size_bytes": 9849,
+            "sha256": "51c9e79f4529d3590643a46ce63d73433b377a38ccc9fd0fad59a25b463d3bd3"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\LOADFILE.IRX",
+            "size_bytes": 11617,
+            "sha256": "53738d5ad16f42472a698d0937393fe6e53af0ad643101f4d7b0e0e6b52858f0"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\MODLOAD.IRX",
+            "size_bytes": 17997,
+            "sha256": "4a9027499d8fe06ced66d0ab66a9e930b30943c17fd2b5ae5f0bf76abf8360a7"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\REBOOT.IRX",
+            "size_bytes": 1985,
+            "sha256": "2b6cfb7a6f8251629d39480349c739fb105fab97b3cae1ff7d984bf5134eb8b4"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\ROMDRV.IRX",
+            "size_bytes": 3881,
+            "sha256": "753d9d4767d5a4ca7c891624f569cda47c3b591c23c62a0742ea5b0fa8375846"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SECRMAN.IRX",
+            "size_bytes": 17633,
+            "sha256": "97b4628862efda71163320ac96394bbacde725399d720db0ca20c6993cb2cb27"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFCMD.IRX",
+            "size_bytes": 10105,
+            "sha256": "cbea6f65e4f38b2c212ebdbacfed21451a1cb46b8c1286ff3e2ef7408956af8a"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFINIT.IRX",
+            "size_bytes": 1041,
+            "sha256": "a7558548ad86e0c2835d05bcf6a112b4cbf4cfe1177e56c1997e83bc1c8bce6c"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFMAN.IRX",
+            "size_bytes": 5937,
+            "sha256": "999a2aeeb1fca70a4b89ee13a4db5cd8fbb15f503d8a9d336b184e57d70c6dcd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SSBUSC.IRX",
+            "size_bytes": 1897,
+            "sha256": "ffd736dd649714451ca94dd60b956cbf3495a2d8943a8bb5f1a59bafe6f992d9"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\STDIO.IRX",
+            "size_bytes": 3377,
+            "sha256": "f24ecef688f1af0d659aad5472a9056db843005b06b176899a4fe76c74fd69fd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SYSCLIB.IRX",
+            "size_bytes": 10205,
+            "sha256": "e57edb4df3c50d58d4af7c5e2a502b072783a8feb43c00d277db5a1733374fce"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SYSMEM.IRX",
+            "size_bytes": 4625,
+            "sha256": "1b03e6ffd2042c2545cf1a78ab937b6b57ccda037783e7ad52467bb9f5556054"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\THREADMAN.IRX",
+            "size_bytes": 39421,
+            "sha256": "61bef97ca94a8cbd96ffd442fbbd84c10fdef95dfe5e4ae5b23674bb810f9092"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\TIMEMANI.IRX",
+            "size_bytes": 6069,
+            "sha256": "1825b7fb1517f340b9e5dddf7c52d3a911e58055a00aa9472a4e18a195c1dbfd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\TIMEMANP.IRX",
+            "size_bytes": 3033,
+            "sha256": "9624ffa50f75e11502212dea14b6433353f24c209523b8067576b34690e64bcd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\VBLANK.IRX",
+            "size_bytes": 3465,
+            "sha256": "5181693327dfd6ee0be8e2331a287109098e26253a4788a5d121f1fd73f1e4ce"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\dw3xl\\CDVDFSV.IRX",
+            "size_bytes": 40661,
+            "sha256": "02cd6102a92074f7bcab557e66eec51a3cd52a32742863109c89ac6037818ccc"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\dw3xl\\module_manifest.json",
+            "size_bytes": 360,
+            "sha256": "2b54a4e83bb2cf290c065b393da722dcf9f667905d17fa6e8183aa3ec66e892f"
+          }
+        ],
+        "changed_inputs": [],
+        "input_integrity": "MATCH",
+        "game_parity": "NOT_ASSESSED",
+        "boot_verified": false
+      },
+      "stop": "0x17ff20",
+      "identity": {
+        "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_094\\result.json",
+        "sha256": "7f379e7b6820becadeb798b9502589922d44d6841166e7bd6b8fd59b552a5409",
+        "bytes": 13848
+      }
+    },
+    {
+      "release": 95,
+      "result": {
+        "command": [
+          "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\fate_game.exe",
+          "<originals>\\sources\\dumps\\dw3xl_ps2",
+          "<originals>\\sources\\dumps\\dw3xl_ps2\\SLUS_206.17"
+        ],
+        "cwd": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_095\\run",
+        "started_utc": "2026-10-04T23:18:19.463735+00:00",
+        "timeout_seconds": 10.0,
+        "status": "PROCESS_FAILED",
+        "pid": 24828,
+        "exit_code": 4294967295,
+        "timed_out": false,
+        "termination_requested": false,
+        "scope": "Process observation only; no boot, rendering, or parity claim.",
+        "finished_utc": "2026-10-04T23:18:19.924745+00:00",
+        "duration_seconds": 0.46101289999933215,
+        "logs": {
+          "stdout.bin": {
+            "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_095\\stdout.bin",
+            "size_bytes": 2928,
+            "sha256": "683fdd8b1060b58451361fd424ec3d4d0a0211214e86d71633dca54f136cdf3d"
+          },
+          "stderr.bin": {
+            "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_095\\stderr.bin",
+            "size_bytes": 8480,
+            "sha256": "6c30844c015a4e478ffb91d3a58a5a80475e8f367941a004aa81721421567cd2"
+          }
+        },
+        "schema_version": 1,
+        "launch_sha256": "d806c19a79eee155da1275e1d72c38f4485424535e6162e5c9c8d1a2be224d81",
+        "inputs_after": [
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\fate_game.exe",
+            "size_bytes": 1080107520,
+            "sha256": "b164729b86e3128845fa9eda979d7c36740bec9655430d35987f1f686f2b8cd6"
+          },
+          {
+            "path": "<originals>\\sources\\dumps\\dw3xl_ps2\\SLUS_206.17",
+            "size_bytes": 1905272,
+            "sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avcodec-61.dll",
+            "size_bytes": 18477056,
+            "sha256": "b8acfed8d1103fa0ca02208978471526251d41fa9874517751ab30a52601f3a7"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avdevice-61.dll",
+            "size_bytes": 931328,
+            "sha256": "5fe10665a04a1ab379f8ac27f40f6b0d896dda6b22a3599ab3115ad73893ea10"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avfilter-10.dll",
+            "size_bytes": 7047680,
+            "sha256": "a4d54278ce76e8fb6aa34b40a06bf2bca6b581cba059f2eca54593ab1430959b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avformat-61.dll",
+            "size_bytes": 4228096,
+            "sha256": "aa8b5921966070236da75bef4ef6c49b0b607951e1f00a59a6b0d42fb93626d5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avutil-59.dll",
+            "size_bytes": 2211328,
+            "sha256": "e2d999efc3fe848ae2944aa7f2983c36336fab3a3565d3e05c47a35b3e51a448"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlicommon.dll",
+            "size_bytes": 237056,
+            "sha256": "f0e8adfa650100adeaa0ab87e400b9b9129bc2dd5f8dbbf5cf35c262b41b90cf"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlidec.dll",
+            "size_bytes": 144896,
+            "sha256": "725574a176cebd7ca6c67402d57b85cdb4ed92e53392314bb3c7ff8e9a5a219e"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlienc.dll",
+            "size_bytes": 3454976,
+            "sha256": "17461073f27ca26133e0fda9ec3808fef77258c113eb9be6dbfccd58ff0a0d41"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\freetype.dll",
+            "size_bytes": 796672,
+            "sha256": "85f8c4c7a5a40d9b07b8ae9e1c62fab9d31140129e1614aa46e339af32d18dab"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\harfbuzz.dll",
+            "size_bytes": 1252864,
+            "sha256": "862c7e060900d2ef6a5e9b49a3fd98b9aff804a6f86d4274ebc59df9ffe89136"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\Iex-3_3.dll",
+            "size_bytes": 396288,
+            "sha256": "6512bf5a3f48cbb4ba0342ec5db4bbfadda8fab25d0bd237e9ed5a5a3fa57be4"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\IlmThread-3_3.dll",
+            "size_bytes": 207872,
+            "sha256": "e292b48f9d713bbed01eb541f24b8b141aaa71aa97f8bbbbefb69106f7a1c50a"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\Imath-3_1.dll",
+            "size_bytes": 583680,
+            "sha256": "fc6bcba9bc556618426d8c5153a004848047ecb0cfb0ebd8a1a437499dc63af7"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl.dll",
+            "size_bytes": 2909184,
+            "sha256": "30ca8b2bd211f5602702c37c1443971e9ef23921f9bd750e547b9078e9abe730"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl_cms.dll",
+            "size_bytes": 306688,
+            "sha256": "39f04faf9e753bb325402a3504a95bcd1fb669da037eefb67b68b2a13ef027dd"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl_threads.dll",
+            "size_bytes": 139264,
+            "sha256": "b1c3bddeedc3b4a0e741e8f8712bf24bb6f1c60e21589be86e18b444f951890b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libsharpyuv.dll",
+            "size_bytes": 142848,
+            "sha256": "3132d7c897cd6d3980779b762a4e4876ed5062dfc4bbe64297ba5b9ac5d4e4c2"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebp.dll",
+            "size_bytes": 488448,
+            "sha256": "45614a8a22d37e9211f1a4508107366f8f7f795f06423fba014ad1e18c003f4d"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpdecoder.dll",
+            "size_bytes": 257536,
+            "sha256": "336f395f5c36734ac1ae5c13d53c74c9eb4ba6275720b526efef4dbd6f706aa1"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpdemux.dll",
+            "size_bytes": 115200,
+            "sha256": "3347b67b866fe56453bfe6af1d9632f88f04a36cb4d4a6deb64cf564a7e10b26"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpmux.dll",
+            "size_bytes": 183296,
+            "sha256": "c3e3102481939a606afe4f7cf21556f90721e9341cb2c3184f75cd64901a44b5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXR-3_3.dll",
+            "size_bytes": 1297920,
+            "sha256": "6ae1caaa727e5567ca17a8d2b11a6d785bf7d657e4cbcb5f66fad469fc33ca6d"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXRCore-3_3.dll",
+            "size_bytes": 2429952,
+            "sha256": "c03e93fedcbf4ff9ddd1848af85d484062bb7ffb11a26789ecf2708ce4859149"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXRUtil-3_3.dll",
+            "size_bytes": 376320,
+            "sha256": "8ea337b977ec93927c14e5b24f26063c3fe7e0634349bfcd80230efc3e2634b5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\SDL2.dll",
+            "size_bytes": 1807360,
+            "sha256": "9b8563455c87aafedbe57b2bec4ab5406d5d6b46120d9d978d17fb69a16664d1"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\swresample-5.dll",
+            "size_bytes": 807936,
+            "sha256": "5bbfe1435877ad21bd78fdfc7749c417505b5cf32cb21566570a5938d926a2ae"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\swscale-8.dll",
+            "size_bytes": 1547776,
+            "sha256": "fb5761990f7d0fd69f34e8d3838336618a44298aaa707a233c0d09569f5eb67b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\zlib1.dll",
+            "size_bytes": 223744,
+            "sha256": "4c69bd559e636b9ddf7710c4b869ee239ab6fd9d789f6726a7abc228e6c4cbab"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\CDVDFSV.IRX",
+            "size_bytes": 40661,
+            "sha256": "02cd6102a92074f7bcab557e66eec51a3cd52a32742863109c89ac6037818ccc"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\CDVDMAN.IRX",
+            "size_bytes": 72389,
+            "sha256": "a79d31b188b9738d9eeecee2b31f3cc8acd3af424fda7ba2c794de5b81d7eb8d"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\DMACMAN.IRX",
+            "size_bytes": 14069,
+            "sha256": "b0c35cb83cc61385cc86b1665b7a65e49dda71588feffc3ba70575267f1cc559"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EECONF.IRX",
+            "size_bytes": 3905,
+            "sha256": "40ef1a2ecff470829a3d9aee9237c597b783ee27ced876893e0980559a9a5fb7"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EESYNC.IRX",
+            "size_bytes": 1545,
+            "sha256": "d22329d916442790f5626f0ece082452bbc11d15c2ccbb13e90d5cf4d9f44ddb"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EXCEPMAN.IRX",
+            "size_bytes": 3033,
+            "sha256": "5c608046da492f3621a42828f49c3aadb0ee3247289af60766d34b4461ed26ed"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\FILEIO.IRX",
+            "size_bytes": 20629,
+            "sha256": "e0c0ecc0f4869e1bc364cba7dac46add8a97f5d33a1e995a9132c7c1fb8165f9"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\HEAPLIB.IRX",
+            "size_bytes": 3313,
+            "sha256": "fef6731f6c8d10ac7ed1785502c071c4ecb6b416cdd3f53104aeed48e543ddd2"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\IGREETING.IRX",
+            "size_bytes": 4185,
+            "sha256": "318a20420bf85f22eda86d0aa666e62f71153bec358a1b155702a7035419da6a"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\INTRMANI.IRX",
+            "size_bytes": 7729,
+            "sha256": "779e22c247261fa6b72b92bdfae0783da146294e683f89e0e41c71f47234669e"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\INTRMANP.IRX",
+            "size_bytes": 6657,
+            "sha256": "95bd617db528cda0cc375babd301776b3b9558920380fc99b1adf5cacdba83da"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\IOMAN.IRX",
+            "size_bytes": 12545,
+            "sha256": "4539b1716fbb2fdb65590d8e445e99101791897049712a73f08797aec26b59f1"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\LOADCORE.IRX",
+            "size_bytes": 9849,
+            "sha256": "51c9e79f4529d3590643a46ce63d73433b377a38ccc9fd0fad59a25b463d3bd3"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\LOADFILE.IRX",
+            "size_bytes": 11617,
+            "sha256": "53738d5ad16f42472a698d0937393fe6e53af0ad643101f4d7b0e0e6b52858f0"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\MODLOAD.IRX",
+            "size_bytes": 17997,
+            "sha256": "4a9027499d8fe06ced66d0ab66a9e930b30943c17fd2b5ae5f0bf76abf8360a7"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\REBOOT.IRX",
+            "size_bytes": 1985,
+            "sha256": "2b6cfb7a6f8251629d39480349c739fb105fab97b3cae1ff7d984bf5134eb8b4"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\ROMDRV.IRX",
+            "size_bytes": 3881,
+            "sha256": "753d9d4767d5a4ca7c891624f569cda47c3b591c23c62a0742ea5b0fa8375846"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SECRMAN.IRX",
+            "size_bytes": 17633,
+            "sha256": "97b4628862efda71163320ac96394bbacde725399d720db0ca20c6993cb2cb27"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFCMD.IRX",
+            "size_bytes": 10105,
+            "sha256": "cbea6f65e4f38b2c212ebdbacfed21451a1cb46b8c1286ff3e2ef7408956af8a"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFINIT.IRX",
+            "size_bytes": 1041,
+            "sha256": "a7558548ad86e0c2835d05bcf6a112b4cbf4cfe1177e56c1997e83bc1c8bce6c"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFMAN.IRX",
+            "size_bytes": 5937,
+            "sha256": "999a2aeeb1fca70a4b89ee13a4db5cd8fbb15f503d8a9d336b184e57d70c6dcd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SSBUSC.IRX",
+            "size_bytes": 1897,
+            "sha256": "ffd736dd649714451ca94dd60b956cbf3495a2d8943a8bb5f1a59bafe6f992d9"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\STDIO.IRX",
+            "size_bytes": 3377,
+            "sha256": "f24ecef688f1af0d659aad5472a9056db843005b06b176899a4fe76c74fd69fd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SYSCLIB.IRX",
+            "size_bytes": 10205,
+            "sha256": "e57edb4df3c50d58d4af7c5e2a502b072783a8feb43c00d277db5a1733374fce"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SYSMEM.IRX",
+            "size_bytes": 4625,
+            "sha256": "1b03e6ffd2042c2545cf1a78ab937b6b57ccda037783e7ad52467bb9f5556054"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\THREADMAN.IRX",
+            "size_bytes": 39421,
+            "sha256": "61bef97ca94a8cbd96ffd442fbbd84c10fdef95dfe5e4ae5b23674bb810f9092"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\TIMEMANI.IRX",
+            "size_bytes": 6069,
+            "sha256": "1825b7fb1517f340b9e5dddf7c52d3a911e58055a00aa9472a4e18a195c1dbfd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\TIMEMANP.IRX",
+            "size_bytes": 3033,
+            "sha256": "9624ffa50f75e11502212dea14b6433353f24c209523b8067576b34690e64bcd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\VBLANK.IRX",
+            "size_bytes": 3465,
+            "sha256": "5181693327dfd6ee0be8e2331a287109098e26253a4788a5d121f1fd73f1e4ce"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\dw3xl\\CDVDFSV.IRX",
+            "size_bytes": 40661,
+            "sha256": "02cd6102a92074f7bcab557e66eec51a3cd52a32742863109c89ac6037818ccc"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\dw3xl\\module_manifest.json",
+            "size_bytes": 360,
+            "sha256": "2b54a4e83bb2cf290c065b393da722dcf9f667905d17fa6e8183aa3ec66e892f"
+          }
+        ],
+        "changed_inputs": [],
+        "input_integrity": "MATCH",
+        "game_parity": "NOT_ASSESSED",
+        "boot_verified": false
+      },
+      "stop": "0x23a768",
+      "identity": {
+        "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_095\\result.json",
+        "sha256": "9df875b4725096cc938989bd1ce4b90229b912af22dbe836f1ad39e1d8f851f6",
+        "bytes": 13848
+      }
+    },
+    {
+      "release": 96,
+      "result": {
+        "command": [
+          "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\fate_game.exe",
+          "<originals>\\sources\\dumps\\dw3xl_ps2",
+          "<originals>\\sources\\dumps\\dw3xl_ps2\\SLUS_206.17"
+        ],
+        "cwd": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_096\\run",
+        "started_utc": "2026-10-04T23:22:12.143026+00:00",
+        "timeout_seconds": 10.0,
+        "status": "PROCESS_FAILED",
+        "pid": 26856,
+        "exit_code": 4294967295,
+        "timed_out": false,
+        "termination_requested": false,
+        "scope": "Process observation only; no boot, rendering, or parity claim.",
+        "finished_utc": "2026-10-04T23:22:12.612368+00:00",
+        "duration_seconds": 0.46934009999677073,
+        "logs": {
+          "stdout.bin": {
+            "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_096\\stdout.bin",
+            "size_bytes": 2928,
+            "sha256": "98a915bf72dedefc20bcaa778269466640f0b10afb9e6702173aef87ffcd1617"
+          },
+          "stderr.bin": {
+            "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_096\\stderr.bin",
+            "size_bytes": 8478,
+            "sha256": "d866cf39535d6d2f09bc79e1e6ec706504b798f9fd4a7f76491dcda5384c20c1"
+          }
+        },
+        "schema_version": 1,
+        "launch_sha256": "8375173b92dc8a4053348da55b903067d21dacf1a9f545b1ba5e1839c27aa6c5",
+        "inputs_after": [
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\fate_game.exe",
+            "size_bytes": 1080115200,
+            "sha256": "0f59199b840fd1199cceb09945d6c57a4009145b6897b4ebed2cd6df80a9f2b2"
+          },
+          {
+            "path": "<originals>\\sources\\dumps\\dw3xl_ps2\\SLUS_206.17",
+            "size_bytes": 1905272,
+            "sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avcodec-61.dll",
+            "size_bytes": 18477056,
+            "sha256": "b8acfed8d1103fa0ca02208978471526251d41fa9874517751ab30a52601f3a7"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avdevice-61.dll",
+            "size_bytes": 931328,
+            "sha256": "5fe10665a04a1ab379f8ac27f40f6b0d896dda6b22a3599ab3115ad73893ea10"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avfilter-10.dll",
+            "size_bytes": 7047680,
+            "sha256": "a4d54278ce76e8fb6aa34b40a06bf2bca6b581cba059f2eca54593ab1430959b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avformat-61.dll",
+            "size_bytes": 4228096,
+            "sha256": "aa8b5921966070236da75bef4ef6c49b0b607951e1f00a59a6b0d42fb93626d5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avutil-59.dll",
+            "size_bytes": 2211328,
+            "sha256": "e2d999efc3fe848ae2944aa7f2983c36336fab3a3565d3e05c47a35b3e51a448"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlicommon.dll",
+            "size_bytes": 237056,
+            "sha256": "f0e8adfa650100adeaa0ab87e400b9b9129bc2dd5f8dbbf5cf35c262b41b90cf"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlidec.dll",
+            "size_bytes": 144896,
+            "sha256": "725574a176cebd7ca6c67402d57b85cdb4ed92e53392314bb3c7ff8e9a5a219e"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlienc.dll",
+            "size_bytes": 3454976,
+            "sha256": "17461073f27ca26133e0fda9ec3808fef77258c113eb9be6dbfccd58ff0a0d41"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\freetype.dll",
+            "size_bytes": 796672,
+            "sha256": "85f8c4c7a5a40d9b07b8ae9e1c62fab9d31140129e1614aa46e339af32d18dab"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\harfbuzz.dll",
+            "size_bytes": 1252864,
+            "sha256": "862c7e060900d2ef6a5e9b49a3fd98b9aff804a6f86d4274ebc59df9ffe89136"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\Iex-3_3.dll",
+            "size_bytes": 396288,
+            "sha256": "6512bf5a3f48cbb4ba0342ec5db4bbfadda8fab25d0bd237e9ed5a5a3fa57be4"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\IlmThread-3_3.dll",
+            "size_bytes": 207872,
+            "sha256": "e292b48f9d713bbed01eb541f24b8b141aaa71aa97f8bbbbefb69106f7a1c50a"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\Imath-3_1.dll",
+            "size_bytes": 583680,
+            "sha256": "fc6bcba9bc556618426d8c5153a004848047ecb0cfb0ebd8a1a437499dc63af7"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl.dll",
+            "size_bytes": 2909184,
+            "sha256": "30ca8b2bd211f5602702c37c1443971e9ef23921f9bd750e547b9078e9abe730"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl_cms.dll",
+            "size_bytes": 306688,
+            "sha256": "39f04faf9e753bb325402a3504a95bcd1fb669da037eefb67b68b2a13ef027dd"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl_threads.dll",
+            "size_bytes": 139264,
+            "sha256": "b1c3bddeedc3b4a0e741e8f8712bf24bb6f1c60e21589be86e18b444f951890b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libsharpyuv.dll",
+            "size_bytes": 142848,
+            "sha256": "3132d7c897cd6d3980779b762a4e4876ed5062dfc4bbe64297ba5b9ac5d4e4c2"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebp.dll",
+            "size_bytes": 488448,
+            "sha256": "45614a8a22d37e9211f1a4508107366f8f7f795f06423fba014ad1e18c003f4d"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpdecoder.dll",
+            "size_bytes": 257536,
+            "sha256": "336f395f5c36734ac1ae5c13d53c74c9eb4ba6275720b526efef4dbd6f706aa1"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpdemux.dll",
+            "size_bytes": 115200,
+            "sha256": "3347b67b866fe56453bfe6af1d9632f88f04a36cb4d4a6deb64cf564a7e10b26"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpmux.dll",
+            "size_bytes": 183296,
+            "sha256": "c3e3102481939a606afe4f7cf21556f90721e9341cb2c3184f75cd64901a44b5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXR-3_3.dll",
+            "size_bytes": 1297920,
+            "sha256": "6ae1caaa727e5567ca17a8d2b11a6d785bf7d657e4cbcb5f66fad469fc33ca6d"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXRCore-3_3.dll",
+            "size_bytes": 2429952,
+            "sha256": "c03e93fedcbf4ff9ddd1848af85d484062bb7ffb11a26789ecf2708ce4859149"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXRUtil-3_3.dll",
+            "size_bytes": 376320,
+            "sha256": "8ea337b977ec93927c14e5b24f26063c3fe7e0634349bfcd80230efc3e2634b5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\SDL2.dll",
+            "size_bytes": 1807360,
+            "sha256": "9b8563455c87aafedbe57b2bec4ab5406d5d6b46120d9d978d17fb69a16664d1"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\swresample-5.dll",
+            "size_bytes": 807936,
+            "sha256": "5bbfe1435877ad21bd78fdfc7749c417505b5cf32cb21566570a5938d926a2ae"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\swscale-8.dll",
+            "size_bytes": 1547776,
+            "sha256": "fb5761990f7d0fd69f34e8d3838336618a44298aaa707a233c0d09569f5eb67b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\zlib1.dll",
+            "size_bytes": 223744,
+            "sha256": "4c69bd559e636b9ddf7710c4b869ee239ab6fd9d789f6726a7abc228e6c4cbab"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\CDVDFSV.IRX",
+            "size_bytes": 40661,
+            "sha256": "02cd6102a92074f7bcab557e66eec51a3cd52a32742863109c89ac6037818ccc"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\CDVDMAN.IRX",
+            "size_bytes": 72389,
+            "sha256": "a79d31b188b9738d9eeecee2b31f3cc8acd3af424fda7ba2c794de5b81d7eb8d"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\DMACMAN.IRX",
+            "size_bytes": 14069,
+            "sha256": "b0c35cb83cc61385cc86b1665b7a65e49dda71588feffc3ba70575267f1cc559"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EECONF.IRX",
+            "size_bytes": 3905,
+            "sha256": "40ef1a2ecff470829a3d9aee9237c597b783ee27ced876893e0980559a9a5fb7"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EESYNC.IRX",
+            "size_bytes": 1545,
+            "sha256": "d22329d916442790f5626f0ece082452bbc11d15c2ccbb13e90d5cf4d9f44ddb"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EXCEPMAN.IRX",
+            "size_bytes": 3033,
+            "sha256": "5c608046da492f3621a42828f49c3aadb0ee3247289af60766d34b4461ed26ed"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\FILEIO.IRX",
+            "size_bytes": 20629,
+            "sha256": "e0c0ecc0f4869e1bc364cba7dac46add8a97f5d33a1e995a9132c7c1fb8165f9"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\HEAPLIB.IRX",
+            "size_bytes": 3313,
+            "sha256": "fef6731f6c8d10ac7ed1785502c071c4ecb6b416cdd3f53104aeed48e543ddd2"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\IGREETING.IRX",
+            "size_bytes": 4185,
+            "sha256": "318a20420bf85f22eda86d0aa666e62f71153bec358a1b155702a7035419da6a"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\INTRMANI.IRX",
+            "size_bytes": 7729,
+            "sha256": "779e22c247261fa6b72b92bdfae0783da146294e683f89e0e41c71f47234669e"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\INTRMANP.IRX",
+            "size_bytes": 6657,
+            "sha256": "95bd617db528cda0cc375babd301776b3b9558920380fc99b1adf5cacdba83da"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\IOMAN.IRX",
+            "size_bytes": 12545,
+            "sha256": "4539b1716fbb2fdb65590d8e445e99101791897049712a73f08797aec26b59f1"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\LOADCORE.IRX",
+            "size_bytes": 9849,
+            "sha256": "51c9e79f4529d3590643a46ce63d73433b377a38ccc9fd0fad59a25b463d3bd3"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\LOADFILE.IRX",
+            "size_bytes": 11617,
+            "sha256": "53738d5ad16f42472a698d0937393fe6e53af0ad643101f4d7b0e0e6b52858f0"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\MODLOAD.IRX",
+            "size_bytes": 17997,
+            "sha256": "4a9027499d8fe06ced66d0ab66a9e930b30943c17fd2b5ae5f0bf76abf8360a7"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\REBOOT.IRX",
+            "size_bytes": 1985,
+            "sha256": "2b6cfb7a6f8251629d39480349c739fb105fab97b3cae1ff7d984bf5134eb8b4"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\ROMDRV.IRX",
+            "size_bytes": 3881,
+            "sha256": "753d9d4767d5a4ca7c891624f569cda47c3b591c23c62a0742ea5b0fa8375846"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SECRMAN.IRX",
+            "size_bytes": 17633,
+            "sha256": "97b4628862efda71163320ac96394bbacde725399d720db0ca20c6993cb2cb27"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFCMD.IRX",
+            "size_bytes": 10105,
+            "sha256": "cbea6f65e4f38b2c212ebdbacfed21451a1cb46b8c1286ff3e2ef7408956af8a"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFINIT.IRX",
+            "size_bytes": 1041,
+            "sha256": "a7558548ad86e0c2835d05bcf6a112b4cbf4cfe1177e56c1997e83bc1c8bce6c"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFMAN.IRX",
+            "size_bytes": 5937,
+            "sha256": "999a2aeeb1fca70a4b89ee13a4db5cd8fbb15f503d8a9d336b184e57d70c6dcd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SSBUSC.IRX",
+            "size_bytes": 1897,
+            "sha256": "ffd736dd649714451ca94dd60b956cbf3495a2d8943a8bb5f1a59bafe6f992d9"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\STDIO.IRX",
+            "size_bytes": 3377,
+            "sha256": "f24ecef688f1af0d659aad5472a9056db843005b06b176899a4fe76c74fd69fd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SYSCLIB.IRX",
+            "size_bytes": 10205,
+            "sha256": "e57edb4df3c50d58d4af7c5e2a502b072783a8feb43c00d277db5a1733374fce"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SYSMEM.IRX",
+            "size_bytes": 4625,
+            "sha256": "1b03e6ffd2042c2545cf1a78ab937b6b57ccda037783e7ad52467bb9f5556054"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\THREADMAN.IRX",
+            "size_bytes": 39421,
+            "sha256": "61bef97ca94a8cbd96ffd442fbbd84c10fdef95dfe5e4ae5b23674bb810f9092"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\TIMEMANI.IRX",
+            "size_bytes": 6069,
+            "sha256": "1825b7fb1517f340b9e5dddf7c52d3a911e58055a00aa9472a4e18a195c1dbfd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\TIMEMANP.IRX",
+            "size_bytes": 3033,
+            "sha256": "9624ffa50f75e11502212dea14b6433353f24c209523b8067576b34690e64bcd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\VBLANK.IRX",
+            "size_bytes": 3465,
+            "sha256": "5181693327dfd6ee0be8e2331a287109098e26253a4788a5d121f1fd73f1e4ce"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\dw3xl\\CDVDFSV.IRX",
+            "size_bytes": 40661,
+            "sha256": "02cd6102a92074f7bcab557e66eec51a3cd52a32742863109c89ac6037818ccc"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\dw3xl\\module_manifest.json",
+            "size_bytes": 360,
+            "sha256": "2b54a4e83bb2cf290c065b393da722dcf9f667905d17fa6e8183aa3ec66e892f"
+          }
+        ],
+        "changed_inputs": [],
+        "input_integrity": "MATCH",
+        "game_parity": "NOT_ASSESSED",
+        "boot_verified": false
+      },
+      "stop": "0x1abd78",
+      "identity": {
+        "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_096\\result.json",
+        "sha256": "9d03da12044425aeb43feed228c633913549d430b762c8bf3af5ba7164aa4d0a",
+        "bytes": 13848
+      }
+    },
+    {
+      "release": 97,
+      "result": {
+        "command": [
+          "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\fate_game.exe",
+          "<originals>\\sources\\dumps\\dw3xl_ps2",
+          "<originals>\\sources\\dumps\\dw3xl_ps2\\SLUS_206.17"
+        ],
+        "cwd": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_097\\run",
+        "started_utc": "2026-10-04T23:24:56.953775+00:00",
+        "timeout_seconds": 10.0,
+        "status": "PROCESS_FAILED",
+        "pid": 25448,
+        "exit_code": 4294967295,
+        "timed_out": false,
+        "termination_requested": false,
+        "scope": "Process observation only; no boot, rendering, or parity claim.",
+        "finished_utc": "2026-10-04T23:24:57.424847+00:00",
+        "duration_seconds": 0.4710739000001922,
+        "logs": {
+          "stdout.bin": {
+            "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_097\\stdout.bin",
+            "size_bytes": 2928,
+            "sha256": "d57ba931f6edd408b877c93edc40b2cf22206c368afbf4773310d570b4b99952"
+          },
+          "stderr.bin": {
+            "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_097\\stderr.bin",
+            "size_bytes": 8478,
+            "sha256": "702854c57d17ec9608851293f68c8aae1e0a63ab68419b26a1da7b4922e77554"
+          }
+        },
+        "schema_version": 1,
+        "launch_sha256": "e113da735f67ed823586da9e059ab2c8b681f04a205c46542f9108d89e596031",
+        "inputs_after": [
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\fate_game.exe",
+            "size_bytes": 1080116736,
+            "sha256": "e3cac00e89e7333ae8497e8f5f64bdb9cbdbd56d413e8b7c06708450f7685e2d"
+          },
+          {
+            "path": "<originals>\\sources\\dumps\\dw3xl_ps2\\SLUS_206.17",
+            "size_bytes": 1905272,
+            "sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avcodec-61.dll",
+            "size_bytes": 18477056,
+            "sha256": "b8acfed8d1103fa0ca02208978471526251d41fa9874517751ab30a52601f3a7"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avdevice-61.dll",
+            "size_bytes": 931328,
+            "sha256": "5fe10665a04a1ab379f8ac27f40f6b0d896dda6b22a3599ab3115ad73893ea10"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avfilter-10.dll",
+            "size_bytes": 7047680,
+            "sha256": "a4d54278ce76e8fb6aa34b40a06bf2bca6b581cba059f2eca54593ab1430959b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avformat-61.dll",
+            "size_bytes": 4228096,
+            "sha256": "aa8b5921966070236da75bef4ef6c49b0b607951e1f00a59a6b0d42fb93626d5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avutil-59.dll",
+            "size_bytes": 2211328,
+            "sha256": "e2d999efc3fe848ae2944aa7f2983c36336fab3a3565d3e05c47a35b3e51a448"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlicommon.dll",
+            "size_bytes": 237056,
+            "sha256": "f0e8adfa650100adeaa0ab87e400b9b9129bc2dd5f8dbbf5cf35c262b41b90cf"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlidec.dll",
+            "size_bytes": 144896,
+            "sha256": "725574a176cebd7ca6c67402d57b85cdb4ed92e53392314bb3c7ff8e9a5a219e"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlienc.dll",
+            "size_bytes": 3454976,
+            "sha256": "17461073f27ca26133e0fda9ec3808fef77258c113eb9be6dbfccd58ff0a0d41"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\freetype.dll",
+            "size_bytes": 796672,
+            "sha256": "85f8c4c7a5a40d9b07b8ae9e1c62fab9d31140129e1614aa46e339af32d18dab"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\harfbuzz.dll",
+            "size_bytes": 1252864,
+            "sha256": "862c7e060900d2ef6a5e9b49a3fd98b9aff804a6f86d4274ebc59df9ffe89136"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\Iex-3_3.dll",
+            "size_bytes": 396288,
+            "sha256": "6512bf5a3f48cbb4ba0342ec5db4bbfadda8fab25d0bd237e9ed5a5a3fa57be4"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\IlmThread-3_3.dll",
+            "size_bytes": 207872,
+            "sha256": "e292b48f9d713bbed01eb541f24b8b141aaa71aa97f8bbbbefb69106f7a1c50a"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\Imath-3_1.dll",
+            "size_bytes": 583680,
+            "sha256": "fc6bcba9bc556618426d8c5153a004848047ecb0cfb0ebd8a1a437499dc63af7"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl.dll",
+            "size_bytes": 2909184,
+            "sha256": "30ca8b2bd211f5602702c37c1443971e9ef23921f9bd750e547b9078e9abe730"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl_cms.dll",
+            "size_bytes": 306688,
+            "sha256": "39f04faf9e753bb325402a3504a95bcd1fb669da037eefb67b68b2a13ef027dd"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl_threads.dll",
+            "size_bytes": 139264,
+            "sha256": "b1c3bddeedc3b4a0e741e8f8712bf24bb6f1c60e21589be86e18b444f951890b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libsharpyuv.dll",
+            "size_bytes": 142848,
+            "sha256": "3132d7c897cd6d3980779b762a4e4876ed5062dfc4bbe64297ba5b9ac5d4e4c2"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebp.dll",
+            "size_bytes": 488448,
+            "sha256": "45614a8a22d37e9211f1a4508107366f8f7f795f06423fba014ad1e18c003f4d"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpdecoder.dll",
+            "size_bytes": 257536,
+            "sha256": "336f395f5c36734ac1ae5c13d53c74c9eb4ba6275720b526efef4dbd6f706aa1"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpdemux.dll",
+            "size_bytes": 115200,
+            "sha256": "3347b67b866fe56453bfe6af1d9632f88f04a36cb4d4a6deb64cf564a7e10b26"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpmux.dll",
+            "size_bytes": 183296,
+            "sha256": "c3e3102481939a606afe4f7cf21556f90721e9341cb2c3184f75cd64901a44b5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXR-3_3.dll",
+            "size_bytes": 1297920,
+            "sha256": "6ae1caaa727e5567ca17a8d2b11a6d785bf7d657e4cbcb5f66fad469fc33ca6d"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXRCore-3_3.dll",
+            "size_bytes": 2429952,
+            "sha256": "c03e93fedcbf4ff9ddd1848af85d484062bb7ffb11a26789ecf2708ce4859149"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXRUtil-3_3.dll",
+            "size_bytes": 376320,
+            "sha256": "8ea337b977ec93927c14e5b24f26063c3fe7e0634349bfcd80230efc3e2634b5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\SDL2.dll",
+            "size_bytes": 1807360,
+            "sha256": "9b8563455c87aafedbe57b2bec4ab5406d5d6b46120d9d978d17fb69a16664d1"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\swresample-5.dll",
+            "size_bytes": 807936,
+            "sha256": "5bbfe1435877ad21bd78fdfc7749c417505b5cf32cb21566570a5938d926a2ae"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\swscale-8.dll",
+            "size_bytes": 1547776,
+            "sha256": "fb5761990f7d0fd69f34e8d3838336618a44298aaa707a233c0d09569f5eb67b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\zlib1.dll",
+            "size_bytes": 223744,
+            "sha256": "4c69bd559e636b9ddf7710c4b869ee239ab6fd9d789f6726a7abc228e6c4cbab"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\CDVDFSV.IRX",
+            "size_bytes": 40661,
+            "sha256": "02cd6102a92074f7bcab557e66eec51a3cd52a32742863109c89ac6037818ccc"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\CDVDMAN.IRX",
+            "size_bytes": 72389,
+            "sha256": "a79d31b188b9738d9eeecee2b31f3cc8acd3af424fda7ba2c794de5b81d7eb8d"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\DMACMAN.IRX",
+            "size_bytes": 14069,
+            "sha256": "b0c35cb83cc61385cc86b1665b7a65e49dda71588feffc3ba70575267f1cc559"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EECONF.IRX",
+            "size_bytes": 3905,
+            "sha256": "40ef1a2ecff470829a3d9aee9237c597b783ee27ced876893e0980559a9a5fb7"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EESYNC.IRX",
+            "size_bytes": 1545,
+            "sha256": "d22329d916442790f5626f0ece082452bbc11d15c2ccbb13e90d5cf4d9f44ddb"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EXCEPMAN.IRX",
+            "size_bytes": 3033,
+            "sha256": "5c608046da492f3621a42828f49c3aadb0ee3247289af60766d34b4461ed26ed"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\FILEIO.IRX",
+            "size_bytes": 20629,
+            "sha256": "e0c0ecc0f4869e1bc364cba7dac46add8a97f5d33a1e995a9132c7c1fb8165f9"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\HEAPLIB.IRX",
+            "size_bytes": 3313,
+            "sha256": "fef6731f6c8d10ac7ed1785502c071c4ecb6b416cdd3f53104aeed48e543ddd2"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\IGREETING.IRX",
+            "size_bytes": 4185,
+            "sha256": "318a20420bf85f22eda86d0aa666e62f71153bec358a1b155702a7035419da6a"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\INTRMANI.IRX",
+            "size_bytes": 7729,
+            "sha256": "779e22c247261fa6b72b92bdfae0783da146294e683f89e0e41c71f47234669e"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\INTRMANP.IRX",
+            "size_bytes": 6657,
+            "sha256": "95bd617db528cda0cc375babd301776b3b9558920380fc99b1adf5cacdba83da"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\IOMAN.IRX",
+            "size_bytes": 12545,
+            "sha256": "4539b1716fbb2fdb65590d8e445e99101791897049712a73f08797aec26b59f1"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\LOADCORE.IRX",
+            "size_bytes": 9849,
+            "sha256": "51c9e79f4529d3590643a46ce63d73433b377a38ccc9fd0fad59a25b463d3bd3"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\LOADFILE.IRX",
+            "size_bytes": 11617,
+            "sha256": "53738d5ad16f42472a698d0937393fe6e53af0ad643101f4d7b0e0e6b52858f0"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\MODLOAD.IRX",
+            "size_bytes": 17997,
+            "sha256": "4a9027499d8fe06ced66d0ab66a9e930b30943c17fd2b5ae5f0bf76abf8360a7"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\REBOOT.IRX",
+            "size_bytes": 1985,
+            "sha256": "2b6cfb7a6f8251629d39480349c739fb105fab97b3cae1ff7d984bf5134eb8b4"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\ROMDRV.IRX",
+            "size_bytes": 3881,
+            "sha256": "753d9d4767d5a4ca7c891624f569cda47c3b591c23c62a0742ea5b0fa8375846"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SECRMAN.IRX",
+            "size_bytes": 17633,
+            "sha256": "97b4628862efda71163320ac96394bbacde725399d720db0ca20c6993cb2cb27"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFCMD.IRX",
+            "size_bytes": 10105,
+            "sha256": "cbea6f65e4f38b2c212ebdbacfed21451a1cb46b8c1286ff3e2ef7408956af8a"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFINIT.IRX",
+            "size_bytes": 1041,
+            "sha256": "a7558548ad86e0c2835d05bcf6a112b4cbf4cfe1177e56c1997e83bc1c8bce6c"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFMAN.IRX",
+            "size_bytes": 5937,
+            "sha256": "999a2aeeb1fca70a4b89ee13a4db5cd8fbb15f503d8a9d336b184e57d70c6dcd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SSBUSC.IRX",
+            "size_bytes": 1897,
+            "sha256": "ffd736dd649714451ca94dd60b956cbf3495a2d8943a8bb5f1a59bafe6f992d9"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\STDIO.IRX",
+            "size_bytes": 3377,
+            "sha256": "f24ecef688f1af0d659aad5472a9056db843005b06b176899a4fe76c74fd69fd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SYSCLIB.IRX",
+            "size_bytes": 10205,
+            "sha256": "e57edb4df3c50d58d4af7c5e2a502b072783a8feb43c00d277db5a1733374fce"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SYSMEM.IRX",
+            "size_bytes": 4625,
+            "sha256": "1b03e6ffd2042c2545cf1a78ab937b6b57ccda037783e7ad52467bb9f5556054"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\THREADMAN.IRX",
+            "size_bytes": 39421,
+            "sha256": "61bef97ca94a8cbd96ffd442fbbd84c10fdef95dfe5e4ae5b23674bb810f9092"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\TIMEMANI.IRX",
+            "size_bytes": 6069,
+            "sha256": "1825b7fb1517f340b9e5dddf7c52d3a911e58055a00aa9472a4e18a195c1dbfd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\TIMEMANP.IRX",
+            "size_bytes": 3033,
+            "sha256": "9624ffa50f75e11502212dea14b6433353f24c209523b8067576b34690e64bcd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\VBLANK.IRX",
+            "size_bytes": 3465,
+            "sha256": "5181693327dfd6ee0be8e2331a287109098e26253a4788a5d121f1fd73f1e4ce"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\dw3xl\\CDVDFSV.IRX",
+            "size_bytes": 40661,
+            "sha256": "02cd6102a92074f7bcab557e66eec51a3cd52a32742863109c89ac6037818ccc"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\dw3xl\\module_manifest.json",
+            "size_bytes": 360,
+            "sha256": "2b54a4e83bb2cf290c065b393da722dcf9f667905d17fa6e8183aa3ec66e892f"
+          }
+        ],
+        "changed_inputs": [],
+        "input_integrity": "MATCH",
+        "game_parity": "NOT_ASSESSED",
+        "boot_verified": false
+      },
+      "stop": "0x1a88bc",
+      "identity": {
+        "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_097\\result.json",
+        "sha256": "8de2255b82c8a8f0969660cea366ce164bb0247cc4cbb0a1aa8c3669a1647bd0",
+        "bytes": 13847
+      }
+    },
+    {
+      "release": 98,
+      "result": {
+        "command": [
+          "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\fate_game.exe",
+          "<originals>\\sources\\dumps\\dw3xl_ps2",
+          "<originals>\\sources\\dumps\\dw3xl_ps2\\SLUS_206.17"
+        ],
+        "cwd": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_098\\run",
+        "started_utc": "2026-10-04T23:33:45.829360+00:00",
+        "timeout_seconds": 10.0,
+        "status": "PROCESS_FAILED",
+        "pid": 8660,
+        "exit_code": 4294967295,
+        "timed_out": false,
+        "termination_requested": false,
+        "scope": "Process observation only; no boot, rendering, or parity claim.",
+        "finished_utc": "2026-10-04T23:33:46.356737+00:00",
+        "duration_seconds": 0.5273765999954776,
+        "logs": {
+          "stdout.bin": {
+            "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_098\\stdout.bin",
+            "size_bytes": 2928,
+            "sha256": "b5894d08706a3d16d81e47eacbb3ae10ee1554ec72cb4657f69c6b2d80cfd8e7"
+          },
+          "stderr.bin": {
+            "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_098\\stderr.bin",
+            "size_bytes": 9748,
+            "sha256": "61eca7bf96bf9138f89d2b6c7ca720feecee38eccff89eab11bc53ae89964f2e"
+          }
+        },
+        "schema_version": 1,
+        "launch_sha256": "030f39f63598dfb6d3aac77218fcd1dffe54b97a18835125d2ac26ba86dda44c",
+        "inputs_after": [
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\fate_game.exe",
+            "size_bytes": 1080117760,
+            "sha256": "a34acae9df79cf3e7fb3d78a91ce666e7b951befcd381a1651535ac59a2b6de7"
+          },
+          {
+            "path": "<originals>\\sources\\dumps\\dw3xl_ps2\\SLUS_206.17",
+            "size_bytes": 1905272,
+            "sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avcodec-61.dll",
+            "size_bytes": 18477056,
+            "sha256": "b8acfed8d1103fa0ca02208978471526251d41fa9874517751ab30a52601f3a7"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avdevice-61.dll",
+            "size_bytes": 931328,
+            "sha256": "5fe10665a04a1ab379f8ac27f40f6b0d896dda6b22a3599ab3115ad73893ea10"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avfilter-10.dll",
+            "size_bytes": 7047680,
+            "sha256": "a4d54278ce76e8fb6aa34b40a06bf2bca6b581cba059f2eca54593ab1430959b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avformat-61.dll",
+            "size_bytes": 4228096,
+            "sha256": "aa8b5921966070236da75bef4ef6c49b0b607951e1f00a59a6b0d42fb93626d5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\avutil-59.dll",
+            "size_bytes": 2211328,
+            "sha256": "e2d999efc3fe848ae2944aa7f2983c36336fab3a3565d3e05c47a35b3e51a448"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlicommon.dll",
+            "size_bytes": 237056,
+            "sha256": "f0e8adfa650100adeaa0ab87e400b9b9129bc2dd5f8dbbf5cf35c262b41b90cf"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlidec.dll",
+            "size_bytes": 144896,
+            "sha256": "725574a176cebd7ca6c67402d57b85cdb4ed92e53392314bb3c7ff8e9a5a219e"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\brotlienc.dll",
+            "size_bytes": 3454976,
+            "sha256": "17461073f27ca26133e0fda9ec3808fef77258c113eb9be6dbfccd58ff0a0d41"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\freetype.dll",
+            "size_bytes": 796672,
+            "sha256": "85f8c4c7a5a40d9b07b8ae9e1c62fab9d31140129e1614aa46e339af32d18dab"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\harfbuzz.dll",
+            "size_bytes": 1252864,
+            "sha256": "862c7e060900d2ef6a5e9b49a3fd98b9aff804a6f86d4274ebc59df9ffe89136"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\Iex-3_3.dll",
+            "size_bytes": 396288,
+            "sha256": "6512bf5a3f48cbb4ba0342ec5db4bbfadda8fab25d0bd237e9ed5a5a3fa57be4"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\IlmThread-3_3.dll",
+            "size_bytes": 207872,
+            "sha256": "e292b48f9d713bbed01eb541f24b8b141aaa71aa97f8bbbbefb69106f7a1c50a"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\Imath-3_1.dll",
+            "size_bytes": 583680,
+            "sha256": "fc6bcba9bc556618426d8c5153a004848047ecb0cfb0ebd8a1a437499dc63af7"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl.dll",
+            "size_bytes": 2909184,
+            "sha256": "30ca8b2bd211f5602702c37c1443971e9ef23921f9bd750e547b9078e9abe730"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl_cms.dll",
+            "size_bytes": 306688,
+            "sha256": "39f04faf9e753bb325402a3504a95bcd1fb669da037eefb67b68b2a13ef027dd"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\jxl_threads.dll",
+            "size_bytes": 139264,
+            "sha256": "b1c3bddeedc3b4a0e741e8f8712bf24bb6f1c60e21589be86e18b444f951890b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libsharpyuv.dll",
+            "size_bytes": 142848,
+            "sha256": "3132d7c897cd6d3980779b762a4e4876ed5062dfc4bbe64297ba5b9ac5d4e4c2"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebp.dll",
+            "size_bytes": 488448,
+            "sha256": "45614a8a22d37e9211f1a4508107366f8f7f795f06423fba014ad1e18c003f4d"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpdecoder.dll",
+            "size_bytes": 257536,
+            "sha256": "336f395f5c36734ac1ae5c13d53c74c9eb4ba6275720b526efef4dbd6f706aa1"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpdemux.dll",
+            "size_bytes": 115200,
+            "sha256": "3347b67b866fe56453bfe6af1d9632f88f04a36cb4d4a6deb64cf564a7e10b26"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\libwebpmux.dll",
+            "size_bytes": 183296,
+            "sha256": "c3e3102481939a606afe4f7cf21556f90721e9341cb2c3184f75cd64901a44b5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXR-3_3.dll",
+            "size_bytes": 1297920,
+            "sha256": "6ae1caaa727e5567ca17a8d2b11a6d785bf7d657e4cbcb5f66fad469fc33ca6d"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXRCore-3_3.dll",
+            "size_bytes": 2429952,
+            "sha256": "c03e93fedcbf4ff9ddd1848af85d484062bb7ffb11a26789ecf2708ce4859149"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\OpenEXRUtil-3_3.dll",
+            "size_bytes": 376320,
+            "sha256": "8ea337b977ec93927c14e5b24f26063c3fe7e0634349bfcd80230efc3e2634b5"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\SDL2.dll",
+            "size_bytes": 1807360,
+            "sha256": "9b8563455c87aafedbe57b2bec4ab5406d5d6b46120d9d978d17fb69a16664d1"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\swresample-5.dll",
+            "size_bytes": 807936,
+            "sha256": "5bbfe1435877ad21bd78fdfc7749c417505b5cf32cb21566570a5938d926a2ae"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\swscale-8.dll",
+            "size_bytes": 1547776,
+            "sha256": "fb5761990f7d0fd69f34e8d3838336618a44298aaa707a233c0d09569f5eb67b"
+          },
+          {
+            "path": "<workspace>\\out\\host-barrier-20261003\\bin\\Release\\zlib1.dll",
+            "size_bytes": 223744,
+            "sha256": "4c69bd559e636b9ddf7710c4b869ee239ab6fd9d789f6726a7abc228e6c4cbab"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\CDVDFSV.IRX",
+            "size_bytes": 40661,
+            "sha256": "02cd6102a92074f7bcab557e66eec51a3cd52a32742863109c89ac6037818ccc"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\CDVDMAN.IRX",
+            "size_bytes": 72389,
+            "sha256": "a79d31b188b9738d9eeecee2b31f3cc8acd3af424fda7ba2c794de5b81d7eb8d"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\DMACMAN.IRX",
+            "size_bytes": 14069,
+            "sha256": "b0c35cb83cc61385cc86b1665b7a65e49dda71588feffc3ba70575267f1cc559"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EECONF.IRX",
+            "size_bytes": 3905,
+            "sha256": "40ef1a2ecff470829a3d9aee9237c597b783ee27ced876893e0980559a9a5fb7"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EESYNC.IRX",
+            "size_bytes": 1545,
+            "sha256": "d22329d916442790f5626f0ece082452bbc11d15c2ccbb13e90d5cf4d9f44ddb"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\EXCEPMAN.IRX",
+            "size_bytes": 3033,
+            "sha256": "5c608046da492f3621a42828f49c3aadb0ee3247289af60766d34b4461ed26ed"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\FILEIO.IRX",
+            "size_bytes": 20629,
+            "sha256": "e0c0ecc0f4869e1bc364cba7dac46add8a97f5d33a1e995a9132c7c1fb8165f9"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\HEAPLIB.IRX",
+            "size_bytes": 3313,
+            "sha256": "fef6731f6c8d10ac7ed1785502c071c4ecb6b416cdd3f53104aeed48e543ddd2"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\IGREETING.IRX",
+            "size_bytes": 4185,
+            "sha256": "318a20420bf85f22eda86d0aa666e62f71153bec358a1b155702a7035419da6a"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\INTRMANI.IRX",
+            "size_bytes": 7729,
+            "sha256": "779e22c247261fa6b72b92bdfae0783da146294e683f89e0e41c71f47234669e"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\INTRMANP.IRX",
+            "size_bytes": 6657,
+            "sha256": "95bd617db528cda0cc375babd301776b3b9558920380fc99b1adf5cacdba83da"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\IOMAN.IRX",
+            "size_bytes": 12545,
+            "sha256": "4539b1716fbb2fdb65590d8e445e99101791897049712a73f08797aec26b59f1"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\LOADCORE.IRX",
+            "size_bytes": 9849,
+            "sha256": "51c9e79f4529d3590643a46ce63d73433b377a38ccc9fd0fad59a25b463d3bd3"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\LOADFILE.IRX",
+            "size_bytes": 11617,
+            "sha256": "53738d5ad16f42472a698d0937393fe6e53af0ad643101f4d7b0e0e6b52858f0"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\MODLOAD.IRX",
+            "size_bytes": 17997,
+            "sha256": "4a9027499d8fe06ced66d0ab66a9e930b30943c17fd2b5ae5f0bf76abf8360a7"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\REBOOT.IRX",
+            "size_bytes": 1985,
+            "sha256": "2b6cfb7a6f8251629d39480349c739fb105fab97b3cae1ff7d984bf5134eb8b4"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\ROMDRV.IRX",
+            "size_bytes": 3881,
+            "sha256": "753d9d4767d5a4ca7c891624f569cda47c3b591c23c62a0742ea5b0fa8375846"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SECRMAN.IRX",
+            "size_bytes": 17633,
+            "sha256": "97b4628862efda71163320ac96394bbacde725399d720db0ca20c6993cb2cb27"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFCMD.IRX",
+            "size_bytes": 10105,
+            "sha256": "cbea6f65e4f38b2c212ebdbacfed21451a1cb46b8c1286ff3e2ef7408956af8a"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFINIT.IRX",
+            "size_bytes": 1041,
+            "sha256": "a7558548ad86e0c2835d05bcf6a112b4cbf4cfe1177e56c1997e83bc1c8bce6c"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SIFMAN.IRX",
+            "size_bytes": 5937,
+            "sha256": "999a2aeeb1fca70a4b89ee13a4db5cd8fbb15f503d8a9d336b184e57d70c6dcd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SSBUSC.IRX",
+            "size_bytes": 1897,
+            "sha256": "ffd736dd649714451ca94dd60b956cbf3495a2d8943a8bb5f1a59bafe6f992d9"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\STDIO.IRX",
+            "size_bytes": 3377,
+            "sha256": "f24ecef688f1af0d659aad5472a9056db843005b06b176899a4fe76c74fd69fd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SYSCLIB.IRX",
+            "size_bytes": 10205,
+            "sha256": "e57edb4df3c50d58d4af7c5e2a502b072783a8feb43c00d277db5a1733374fce"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\SYSMEM.IRX",
+            "size_bytes": 4625,
+            "sha256": "1b03e6ffd2042c2545cf1a78ab937b6b57ccda037783e7ad52467bb9f5556054"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\THREADMAN.IRX",
+            "size_bytes": 39421,
+            "sha256": "61bef97ca94a8cbd96ffd442fbbd84c10fdef95dfe5e4ae5b23674bb810f9092"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\TIMEMANI.IRX",
+            "size_bytes": 6069,
+            "sha256": "1825b7fb1517f340b9e5dddf7c52d3a911e58055a00aa9472a4e18a195c1dbfd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\TIMEMANP.IRX",
+            "size_bytes": 3033,
+            "sha256": "9624ffa50f75e11502212dea14b6433353f24c209523b8067576b34690e64bcd"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\boot\\VBLANK.IRX",
+            "size_bytes": 3465,
+            "sha256": "5181693327dfd6ee0be8e2331a287109098e26253a4788a5d121f1fd73f1e4ce"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\dw3xl\\CDVDFSV.IRX",
+            "size_bytes": 40661,
+            "sha256": "02cd6102a92074f7bcab557e66eec51a3cd52a32742863109c89ac6037818ccc"
+          },
+          {
+            "path": "<workspace>\\data\\iop\\dw3xl\\module_manifest.json",
+            "size_bytes": 360,
+            "sha256": "2b54a4e83bb2cf290c065b393da722dcf9f667905d17fa6e8183aa3ec66e892f"
+          }
+        ],
+        "changed_inputs": [],
+        "input_integrity": "MATCH",
+        "game_parity": "NOT_ASSESSED",
+        "boot_verified": false
+      },
+      "stop": "0x1b0308",
+      "identity": {
+        "path": "<workspace>\\artifacts\\lockstep_20261004\\native_boot_release_098\\result.json",
+        "sha256": "7c5a53aca0154c511dd3989057dec4f77288c9cb827201609ffaceabe9d6859d",
+        "bytes": 13846
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "return_catalog_Debug_001",
+      "exit": 0,
+      "log": {
+        "path": "<workspace>\\artifacts\\lockstep_20261004\\reboot_module_probe_001\\return_catalog_Debug_001.log",
+        "sha256": "091f2944767436e724690aedaddd14d968a62134809b815da4965386d07c7ead",
+        "bytes": 4889
+      }
+    },
+    {
+      "name": "return_catalog_Release_001",
+      "exit": 0,
+      "log": {
+        "path": "<workspace>\\artifacts\\lockstep_20261004\\reboot_module_probe_001\\return_catalog_Release_001.log",
+        "sha256": "091f2944767436e724690aedaddd14d968a62134809b815da4965386d07c7ead",
+        "bytes": 4889
+      }
+    },
+    {
+      "name": "epilogue_1abd78_Debug_002",
+      "exit": 0,
+      "log": {
+        "path": "<workspace>\\artifacts\\lockstep_20261004\\reboot_module_probe_001\\epilogue_1abd78_Debug_002.log",
+        "sha256": "436ec9f2e5f67957b15d4d31bbf97d241fd82dfc86a7a218c51b3a2f5d41120d",
+        "bytes": 4889
+      }
+    },
+    {
+      "name": "epilogue_1abd78_Release_002",
+      "exit": 0,
+      "log": {
+        "path": "<workspace>\\artifacts\\lockstep_20261004\\reboot_module_probe_001\\epilogue_1abd78_Release_002.log",
+        "sha256": "5a42c94b3c924b840955aec3d33b11f2536a83e260d9d23130dc78ea7f2555c3",
+        "bytes": 4889
+      }
+    },
+    {
+      "name": "reset_epilogues_Debug_001",
+      "exit": 0,
+      "log": {
+        "path": "<workspace>\\artifacts\\lockstep_20261004\\reboot_module_probe_001\\reset_epilogues_Debug_001.log",
+        "sha256": "dbbfa12c4417c1b0f8ef26145c33cad485b8f567bd823c691ae27a4956c7aaf8",
+        "bytes": 4889
+      }
+    },
+    {
+      "name": "reset_epilogues_Release_001",
+      "exit": 0,
+      "log": {
+        "path": "<workspace>\\artifacts\\lockstep_20261004\\reboot_module_probe_001\\reset_epilogues_Release_001.log",
+        "sha256": "d56c9bfef3560ffe715edb99635c1b6f0b1cd68758c4d546f65159fb8e9c313d",
+        "bytes": 4889
+      }
+    },
+    {
+      "name": "native_probe_tests_003",
+      "exit": 0,
+      "log": {
+        "path": "<workspace>\\artifacts\\lockstep_20261004\\reboot_module_probe_001\\native_probe_tests_003.log",
+        "sha256": "483862ca7f1c83a17679ef57a60b962e203d04e4f59bfc7218cef1173e8de68d",
+        "bytes": 1842
+      }
+    }
+  ],
+  "sources": [
+    {
+      "path": "<workspace>\\src\\generated_resume_catalog.cpp",
+      "sha256": "4d8b12e49ec06d3a4794ca439510715c2e1b507201de04ccecf72b413cd78aac",
+      "bytes": 506878
+    },
+    {
+      "path": "<workspace>\\include\\fate\\verified_return_tail.hpp",
+      "sha256": "2b2b8dc956ae08864a5d61c3b5b265778a53ba1f964f4ff66b363e50c7fe49c2",
+      "bytes": 1159
+    },
+    {
+      "path": "<workspace>\\tools\\generate_resume_catalog.py",
+      "sha256": "7273b391e21aff56b6aa723abc0dd951146b04fc9e7d8a0860834df6a93b1abb",
+      "bytes": 10276
+    },
+    {
+      "path": "<workspace>\\tests\\test_resume_catalog.py",
+      "sha256": "5452cd3ae14b96934daae4e5b9d43a037b2718cf3e6a179fdc09e5c529b85b24",
+      "bytes": 5343
+    },
+    {
+      "path": "<workspace>\\src\\boot_continuations.cpp",
+      "sha256": "8ca82d8b68ce3b4959ed67b65b7fb82eafad1ccdb8a5e2bdf3526d469c23aa5d",
+      "bytes": 139683
+    },
+    {
+      "path": "<workspace>\\tests\\integration\\boot_continuations_contract.cpp",
+      "sha256": "7951afb2fe83507d24eb5c696a9a9ae9a491b3bf1fe394139e5f0da8885d5d74",
+      "bytes": 161818
+    },
+    {
+      "path": "<workspace>\\tools\\native_boot_probe.py",
+      "sha256": "7bcf2ac340259383eca2519b369346834e6e9ce1e288dde6fe494d04fcdc5743",
+      "bytes": 12876
+    },
+    {
+      "path": "<workspace>\\src\\native_iop_boot.cpp",
+      "sha256": "0266417fdfb8fb55ba4bca64abb91e42d402a850455fd12c045c65a1b50dff81",
+      "bytes": 1811
+    },
+    {
+      "path": "<workspace>\\include\\fate\\native_iop_manifest.hpp",
+      "sha256": "7c2ccd177f562d7a00b237e88ab7433e50e186972d97d5007bc7b626b92b272e",
+      "bytes": 2994
+    }
+  ],
+  "scope": "Original-word and native-progress verification, not full boot or retail parity. All eight final criteria open.",
+  "next": "Missing continuation 0x1B0308 and IOMAN31 import at 0x29040."
+}

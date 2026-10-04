@@ -1,2 +1,0 @@
-dump,vsync,batch_id,gif_start_offset,gif_end_offset,prim,primitive_type,vertex_count,xyz_count,uv_count,rgbaq_count,tex0_state,frame_state,zbuf_state,scissor_state,xyoffset_state,classification,confidence
-190004,0,UNKNOWN,0,3034048,UNKNOWN,UNKNOWN,49959,49959,0,UNKNOWN,378,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,"geometry submissions present; actual batch boundary unresolved",MEDIUM

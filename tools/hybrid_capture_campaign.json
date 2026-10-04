@@ -1,0 +1,73 @@
+{
+  "id": "retail-preparation-20261003-v1",
+  "tasks": [
+    {
+      "id": "baseline_identity", "kind": "inventory",
+      "files": [
+        {"path": "docs/host_barrier_20261003_followup.md", "sha256": "51b31a525d211e368bbbf939d5e25e7cbb7aa6f54ddde72bcaf635b2738f9d60"},
+        {"path": "artifacts/host_barrier_20261003/followup_manifest.json", "sha256": "d0982403947f4d60f9e493c1af48f27d692fe30f14e18a50467d72abaa5013a1"},
+        {"path": "D:/Juegos/Playstation/Playstation 2/PS2 Tools/PCXS2 V2.3/pcsx2-qt.exe", "sha256": "982c7c62600a999cf15a25c18349426166c785e7867b2fcc5018d733245b71a3"},
+        {"path": "D:/Juegos/Playstation/Playstation 2/PS2 Tools/PCSX2 1.6.0/pcsx2-1.6.0-fldef-MediaChanged-SeekStatus.exe"}
+      ]
+    },
+    {
+      "id": "retail_elf_prefix", "kind": "elf_prefix", "depends": ["baseline_identity"],
+      "elf": "C:/DW3/sources/dumps/dw3xl_ps2/SLUS_206.17",
+      "sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731"
+    },
+    {
+      "id": "missing_evidence_rules", "kind": "worker", "depends": ["retail_elf_prefix"],
+      "providers": ["ollama"], "max_output": 128,
+      "instruction": "Extract the missing-field rule. Return exactly three keys: missing_field (English word absent), zero_fill (boolean whether unknown fields may be zero filled), equivalence_from_no_panic (boolean whether lack of panic proves equivalence).",
+      "expected": {"missing_field": "absent", "zero_fill": false, "equivalence_from_no_panic": false},
+      "sources": [{"path": "docs/host_barrier_20261003.md", "sha256": "e6cf0a67d453de42051e54862d916c339401c4f1bcbc39dfb337fc604e0a5764", "lines": [128,146]}]
+    },
+    {
+      "id": "debugger_step_analysis", "kind": "worker", "depends": ["baseline_identity"],
+      "providers": ["gemini", "ollama"], "max_output": 128,
+      "instruction": "Analyze onStepInto. Return exactly: taken_breakpoint (the field name used for bpAddr when conditionMet is true, without info. prefix), not_taken_advance_bytes (integer), delay_slot_separate_stop (boolean: does this method itself put a separate breakpoint on the delay-slot instruction for a conditional branch?).",
+      "expected": {"taken_breakpoint": "branchTarget", "not_taken_advance_bytes": 8, "delay_slot_separate_stop": false},
+      "sources": [{"path": "artifacts/retail_capture_20261003/inspection/pcsx2-qt_Debugger_DebuggerWindow.cpp", "sha256": "8baa206abd4c751b429e3791cc708cbdd7254e2573070cb6deee510a9de6a7cf", "lines": [446,491]}]
+    },
+    {
+      "id": "capture_points_primary", "kind": "worker", "depends": ["retail_elf_prefix"],
+      "critical": true, "providers": ["azure", "ollama"], "max_output": 192,
+      "instruction": "Extract the exact capture points. Return exactly these keys: A (PC hex 0x plus 8 lowercase digits), B (PC same format), B_hit (integer arrival count), delay_slot (PC same format), branch (PC same format), trace_instructions (integer).",
+      "expected": {"A": "0x00100008", "B": "0x00100018", "B_hit": 2, "delay_slot": "0x00100030", "branch": "0x0010002c", "trace_instructions": 11},
+      "sources": [{"path": "docs/host_barrier_20261003.md", "sha256": "e6cf0a67d453de42051e54862d916c339401c4f1bcbc39dfb337fc604e0a5764", "lines": [120,127]}]
+    },
+    {
+      "id": "capture_points_independent_review", "kind": "worker", "depends": ["capture_points_primary"],
+      "review_of": "capture_points_primary", "providers": ["aws", "gemini", "ollama"], "max_output": 192,
+      "instruction": "Independently verify candidate capture points using the source. If correct, return the same six-key JSON object (A,B,B_hit,delay_slot,branch,trace_instructions) and nothing else. If any field is incorrect, return only an object with the key reject and a concise reason. Do not claim actual retail capture exists.",
+      "expected": {"A": "0x00100008", "B": "0x00100018", "B_hit": 2, "delay_slot": "0x00100030", "branch": "0x0010002c", "trace_instructions": 11},
+      "sources": [{"path": "docs/host_barrier_20261003.md", "sha256": "e6cf0a67d453de42051e54862d916c339401c4f1bcbc39dfb337fc604e0a5764", "lines": [120,127]}]
+    },
+    {
+      "id": "capture_contract", "kind": "capture_plan",
+      "depends": ["missing_evidence_rules", "debugger_step_analysis", "capture_points_independent_review"],
+      "sources": [{"path": "docs/host_barrier_20261003.md", "sha256": "e6cf0a67d453de42051e54862d916c339401c4f1bcbc39dfb337fc604e0a5764", "lines": [120,146]}],
+      "plan": {
+        "kind": "CAPTURE_REQUIREMENTS_NOT_OBSERVED_STATE",
+        "pcsx2_version": "2.8.2.0",
+        "exe": "D:/Juegos/Playstation/Playstation 2/PS2 Tools/PCXS2 V2.3/pcsx2-qt.exe",
+        "elf": "C:/DW3/sources/dumps/dw3xl_ps2/SLUS_206.17",
+        "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+        "A": {"pc": "0x00100008", "hit": 1, "before": "LUI"},
+        "B": {"pc": "0x00100018", "hit": 2, "after_delay_slot": "0x00100030"},
+        "trace": {"first_pc": "0x00100008", "last_pc": "0x00100030", "instructions": 11},
+        "registers_required": ["r0..r31 low64/high64", "PC", "HI", "LO", "HI1", "LO1", "SA", "COP0 Status/Cause/EPC", "SP/GP/RA", "branch/delay if exposed"],
+        "missing_fields": "explicit null plus reason; never zero substitute",
+        "memory_ranges_half_open": [["0x00100000","0x00100100"],["0x002d0580","0x002d05c0"],["0x0007ff80","0x00080080"]],
+        "stack": "real retail SP +/- 0x80 after documented valid EE RAM translation",
+        "preferred_full_ee_ram": ["0x00000000","0x02000000"],
+        "step_warning": "Step Into at branch runs through delay slot to target; do not describe this as an observed intermediate state.",
+        "retail_capture_available": false,
+        "output_root": "artifacts/retail_capture_20261003/raw"
+      }
+    },
+    {
+      "id": "retail_evidence_gate", "kind": "retail_gate", "depends": ["capture_contract"]
+    }
+  ]
+}

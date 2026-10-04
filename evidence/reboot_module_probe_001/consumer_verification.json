@@ -1,0 +1,45 @@
+{
+  "created_utc": "2026-10-04T23:09:40.031351+00:00",
+  "previous_goal_turn": "PROGRESS",
+  "scope": "Subsystem original REBOOT consumption, candidate selected29 native provider profile; not production/game parity",
+  "tests": [
+    "artifacts\\lockstep_20261004\\reboot_module_probe_001\\selected_consumer_Debug_002.exit",
+    "artifacts\\lockstep_20261004\\reboot_module_probe_001\\selected_boot_Debug_004.exit",
+    "artifacts\\lockstep_20261004\\reboot_module_probe_001\\ioman_contract_Debug_006.exit",
+    "artifacts\\lockstep_20261004\\reboot_module_probe_001\\boot_callbacks_Debug_002.exit",
+    "artifacts\\lockstep_20261004\\reboot_module_probe_001\\boot_order_Debug_003.exit",
+    "artifacts\\lockstep_20261004\\reboot_module_probe_001\\eesync_Debug_010.exit",
+    "artifacts\\lockstep_20261004\\reboot_module_probe_001\\eesync_abi_Debug_001.exit",
+    "artifacts\\lockstep_20261004\\reboot_module_probe_001\\selected_consumer_Release_002.exit",
+    "artifacts\\lockstep_20261004\\reboot_module_probe_001\\selected_boot_Release_004.exit",
+    "artifacts\\lockstep_20261004\\reboot_module_probe_001\\ioman_contract_Release_006.exit",
+    "artifacts\\lockstep_20261004\\reboot_module_probe_001\\boot_callbacks_Release_002.exit",
+    "artifacts\\lockstep_20261004\\reboot_module_probe_001\\boot_order_Release_003.exit",
+    "artifacts\\lockstep_20261004\\reboot_module_probe_001\\eesync_Release_010.exit",
+    "artifacts\\lockstep_20261004\\reboot_module_probe_001\\eesync_abi_Release_001.exit"
+  ],
+  "production": "Release092 remains last executed game, TIMEOUT10s/inputMATCH; Release093 integration build started this turn",
+  "changes": [
+    "owned request consumed once after scheduler returns",
+    "old IOP services/memory/threads cleared, EE RAM preserved",
+    "29 modules started in selected original order, EESYNC callback publishes bootend last",
+    "MODLOAD12 stores three original SECRMAN callbacks",
+    "IOMAN tty fd0 read/write and fd1 write; fd2 remains available",
+    "unknown named HLE profile entries rejected"
+  ],
+  "limits": [
+    "selected29 test host has unavailable ROM filesystem; separate actual ROM EESYNC path tested",
+    "post-reboot EE INIT_CMD/RPC handshake still requires production observation",
+    "HLE providers are explicit native policy, not proved original equivalence",
+    "modload_callbacks_original_001.json used wrong ELF program header; superseded by PT_LOAD-based _002",
+    "eesync_009 synthetic ABI test applied BIOS-specific offsets to game module; original-only _010 and BIOS ABI _001 pass",
+    "no title/battle; all eight acceptance criteria open"
+  ],
+  "sha256": {
+    "tools\\PS2Recomp\\ps2xIOP\\src\\iop_subsystem.cpp": "27bca3e4e1e600eb1fc84c6172f8a2461ad1e34efa225005e9d1a50e18ff80a9",
+    "tools\\PS2Recomp\\ps2xIOP\\src\\emulator\\iop_emulator.cpp": "cec60cd0ccee96822f23a67a235eecad102523843db453dae4df921d962d3d57",
+    "tools\\PS2Recomp\\ps2xIOP\\src\\emulator\\imports\\iop_ioman.cpp": "9bf54cdaf40ec496736e0cc08bf618ec8e583720eb9125ce0549b37fb2b5b1fb",
+    "artifacts\\lockstep_20261004\\reboot_module_probe_001\\reboot_selected_consumer_probe.cpp": "2f2fee27e0bc4066c8c8c52a8c2e3e5c0f7e9cef7ff04fbd3ab3a04b14aac5ac",
+    "artifacts\\lockstep_20261004\\reboot_module_probe_001\\modload_callbacks_original_002.json": "9f5356afec5e0ff982dddfffe831abd36ab2712e3f0e34e06df5f05f2c177714"
+  }
+}

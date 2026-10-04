@@ -1,0 +1,2636 @@
+#include <stdexcept>
+#include "ps2_runtime_macros.h"
+#include "ps2_runtime.h"
+#include <ps2_recompiled_functions.h>
+#include <ps2_recompiled_stubs.h>
+
+#include "ps2_syscalls.h"
+#include "ps2_stubs.h"
+
+#ifdef PS2_FUNCTION_LOG_TRACKER
+#include "ps2_log.h"
+#endif
+
+// Function: FUN_00247410
+// Address: 0x247410 - 0x2874a4
+#ifdef PS2_FUNCTION_LOG_TRACKER
+#endif
+
+
+void FUN_00247410_part30(uint8_t* rdram, R5900Context* ctx, PS2Runtime *runtime) {
+    switch (ctx->pc) {
+        case 0x2556a0u: goto label_2556a0;
+        case 0x2556a4u: goto label_2556a4;
+        case 0x2556a8u: goto label_2556a8;
+        case 0x2556acu: goto label_2556ac;
+        case 0x2556b0u: goto label_2556b0;
+        case 0x2556b4u: goto label_2556b4;
+        case 0x2556b8u: goto label_2556b8;
+        case 0x2556bcu: goto label_2556bc;
+        case 0x2556c0u: goto label_2556c0;
+        case 0x2556c4u: goto label_2556c4;
+        case 0x2556c8u: goto label_2556c8;
+        case 0x2556ccu: goto label_2556cc;
+        case 0x2556d0u: goto label_2556d0;
+        case 0x2556d4u: goto label_2556d4;
+        case 0x2556d8u: goto label_2556d8;
+        case 0x2556dcu: goto label_2556dc;
+        case 0x2556e0u: goto label_2556e0;
+        case 0x2556e4u: goto label_2556e4;
+        case 0x2556e8u: goto label_2556e8;
+        case 0x2556ecu: goto label_2556ec;
+        case 0x2556f0u: goto label_2556f0;
+        case 0x2556f4u: goto label_2556f4;
+        case 0x2556f8u: goto label_2556f8;
+        case 0x2556fcu: goto label_2556fc;
+        case 0x255700u: goto label_255700;
+        case 0x255704u: goto label_255704;
+        case 0x255708u: goto label_255708;
+        case 0x25570cu: goto label_25570c;
+        case 0x255710u: goto label_255710;
+        case 0x255714u: goto label_255714;
+        case 0x255718u: goto label_255718;
+        case 0x25571cu: goto label_25571c;
+        case 0x255720u: goto label_255720;
+        case 0x255724u: goto label_255724;
+        case 0x255728u: goto label_255728;
+        case 0x25572cu: goto label_25572c;
+        case 0x255730u: goto label_255730;
+        case 0x255734u: goto label_255734;
+        case 0x255738u: goto label_255738;
+        case 0x25573cu: goto label_25573c;
+        case 0x255740u: goto label_255740;
+        case 0x255744u: goto label_255744;
+        case 0x255748u: goto label_255748;
+        case 0x25574cu: goto label_25574c;
+        case 0x255750u: goto label_255750;
+        case 0x255754u: goto label_255754;
+        case 0x255758u: goto label_255758;
+        case 0x25575cu: goto label_25575c;
+        case 0x255760u: goto label_255760;
+        case 0x255764u: goto label_255764;
+        case 0x255768u: goto label_255768;
+        case 0x25576cu: goto label_25576c;
+        case 0x255770u: goto label_255770;
+        case 0x255774u: goto label_255774;
+        case 0x255778u: goto label_255778;
+        case 0x25577cu: goto label_25577c;
+        case 0x255780u: goto label_255780;
+        case 0x255784u: goto label_255784;
+        case 0x255788u: goto label_255788;
+        case 0x25578cu: goto label_25578c;
+        case 0x255790u: goto label_255790;
+        case 0x255794u: goto label_255794;
+        case 0x255798u: goto label_255798;
+        case 0x25579cu: goto label_25579c;
+        case 0x2557a0u: goto label_2557a0;
+        case 0x2557a4u: goto label_2557a4;
+        case 0x2557a8u: goto label_2557a8;
+        case 0x2557acu: goto label_2557ac;
+        case 0x2557b0u: goto label_2557b0;
+        case 0x2557b4u: goto label_2557b4;
+        case 0x2557b8u: goto label_2557b8;
+        case 0x2557bcu: goto label_2557bc;
+        case 0x2557c0u: goto label_2557c0;
+        case 0x2557c4u: goto label_2557c4;
+        case 0x2557c8u: goto label_2557c8;
+        case 0x2557ccu: goto label_2557cc;
+        case 0x2557d0u: goto label_2557d0;
+        case 0x2557d4u: goto label_2557d4;
+        case 0x2557d8u: goto label_2557d8;
+        case 0x2557dcu: goto label_2557dc;
+        case 0x2557e0u: goto label_2557e0;
+        case 0x2557e4u: goto label_2557e4;
+        case 0x2557e8u: goto label_2557e8;
+        case 0x2557ecu: goto label_2557ec;
+        case 0x2557f0u: goto label_2557f0;
+        case 0x2557f4u: goto label_2557f4;
+        case 0x2557f8u: goto label_2557f8;
+        case 0x2557fcu: goto label_2557fc;
+        case 0x255800u: goto label_255800;
+        case 0x255804u: goto label_255804;
+        case 0x255808u: goto label_255808;
+        case 0x25580cu: goto label_25580c;
+        case 0x255810u: goto label_255810;
+        case 0x255814u: goto label_255814;
+        case 0x255818u: goto label_255818;
+        case 0x25581cu: goto label_25581c;
+        case 0x255820u: goto label_255820;
+        case 0x255824u: goto label_255824;
+        case 0x255828u: goto label_255828;
+        case 0x25582cu: goto label_25582c;
+        case 0x255830u: goto label_255830;
+        case 0x255834u: goto label_255834;
+        case 0x255838u: goto label_255838;
+        case 0x25583cu: goto label_25583c;
+        case 0x255840u: goto label_255840;
+        case 0x255844u: goto label_255844;
+        case 0x255848u: goto label_255848;
+        case 0x25584cu: goto label_25584c;
+        case 0x255850u: goto label_255850;
+        case 0x255854u: goto label_255854;
+        case 0x255858u: goto label_255858;
+        case 0x25585cu: goto label_25585c;
+        case 0x255860u: goto label_255860;
+        case 0x255864u: goto label_255864;
+        case 0x255868u: goto label_255868;
+        case 0x25586cu: goto label_25586c;
+        case 0x255870u: goto label_255870;
+        case 0x255874u: goto label_255874;
+        case 0x255878u: goto label_255878;
+        case 0x25587cu: goto label_25587c;
+        case 0x255880u: goto label_255880;
+        case 0x255884u: goto label_255884;
+        case 0x255888u: goto label_255888;
+        case 0x25588cu: goto label_25588c;
+        case 0x255890u: goto label_255890;
+        case 0x255894u: goto label_255894;
+        case 0x255898u: goto label_255898;
+        case 0x25589cu: goto label_25589c;
+        case 0x2558a0u: goto label_2558a0;
+        case 0x2558a4u: goto label_2558a4;
+        case 0x2558a8u: goto label_2558a8;
+        case 0x2558acu: goto label_2558ac;
+        case 0x2558b0u: goto label_2558b0;
+        case 0x2558b4u: goto label_2558b4;
+        case 0x2558b8u: goto label_2558b8;
+        case 0x2558bcu: goto label_2558bc;
+        case 0x2558c0u: goto label_2558c0;
+        case 0x2558c4u: goto label_2558c4;
+        case 0x2558c8u: goto label_2558c8;
+        case 0x2558ccu: goto label_2558cc;
+        case 0x2558d0u: goto label_2558d0;
+        case 0x2558d4u: goto label_2558d4;
+        case 0x2558d8u: goto label_2558d8;
+        case 0x2558dcu: goto label_2558dc;
+        case 0x2558e0u: goto label_2558e0;
+        case 0x2558e4u: goto label_2558e4;
+        case 0x2558e8u: goto label_2558e8;
+        case 0x2558ecu: goto label_2558ec;
+        case 0x2558f0u: goto label_2558f0;
+        case 0x2558f4u: goto label_2558f4;
+        case 0x2558f8u: goto label_2558f8;
+        case 0x2558fcu: goto label_2558fc;
+        case 0x255900u: goto label_255900;
+        case 0x255904u: goto label_255904;
+        case 0x255908u: goto label_255908;
+        case 0x25590cu: goto label_25590c;
+        case 0x255910u: goto label_255910;
+        case 0x255914u: goto label_255914;
+        case 0x255918u: goto label_255918;
+        case 0x25591cu: goto label_25591c;
+        case 0x255920u: goto label_255920;
+        case 0x255924u: goto label_255924;
+        case 0x255928u: goto label_255928;
+        case 0x25592cu: goto label_25592c;
+        case 0x255930u: goto label_255930;
+        case 0x255934u: goto label_255934;
+        case 0x255938u: goto label_255938;
+        case 0x25593cu: goto label_25593c;
+        case 0x255940u: goto label_255940;
+        case 0x255944u: goto label_255944;
+        case 0x255948u: goto label_255948;
+        case 0x25594cu: goto label_25594c;
+        case 0x255950u: goto label_255950;
+        case 0x255954u: goto label_255954;
+        case 0x255958u: goto label_255958;
+        case 0x25595cu: goto label_25595c;
+        case 0x255960u: goto label_255960;
+        case 0x255964u: goto label_255964;
+        case 0x255968u: goto label_255968;
+        case 0x25596cu: goto label_25596c;
+        case 0x255970u: goto label_255970;
+        case 0x255974u: goto label_255974;
+        case 0x255978u: goto label_255978;
+        case 0x25597cu: goto label_25597c;
+        case 0x255980u: goto label_255980;
+        case 0x255984u: goto label_255984;
+        case 0x255988u: goto label_255988;
+        case 0x25598cu: goto label_25598c;
+        case 0x255990u: goto label_255990;
+        case 0x255994u: goto label_255994;
+        case 0x255998u: goto label_255998;
+        case 0x25599cu: goto label_25599c;
+        case 0x2559a0u: goto label_2559a0;
+        case 0x2559a4u: goto label_2559a4;
+        case 0x2559a8u: goto label_2559a8;
+        case 0x2559acu: goto label_2559ac;
+        case 0x2559b0u: goto label_2559b0;
+        case 0x2559b4u: goto label_2559b4;
+        case 0x2559b8u: goto label_2559b8;
+        case 0x2559bcu: goto label_2559bc;
+        case 0x2559c0u: goto label_2559c0;
+        case 0x2559c4u: goto label_2559c4;
+        case 0x2559c8u: goto label_2559c8;
+        case 0x2559ccu: goto label_2559cc;
+        case 0x2559d0u: goto label_2559d0;
+        case 0x2559d4u: goto label_2559d4;
+        case 0x2559d8u: goto label_2559d8;
+        case 0x2559dcu: goto label_2559dc;
+        case 0x2559e0u: goto label_2559e0;
+        case 0x2559e4u: goto label_2559e4;
+        case 0x2559e8u: goto label_2559e8;
+        case 0x2559ecu: goto label_2559ec;
+        case 0x2559f0u: goto label_2559f0;
+        case 0x2559f4u: goto label_2559f4;
+        case 0x2559f8u: goto label_2559f8;
+        case 0x2559fcu: goto label_2559fc;
+        case 0x255a00u: goto label_255a00;
+        case 0x255a04u: goto label_255a04;
+        case 0x255a08u: goto label_255a08;
+        case 0x255a0cu: goto label_255a0c;
+        case 0x255a10u: goto label_255a10;
+        case 0x255a14u: goto label_255a14;
+        case 0x255a18u: goto label_255a18;
+        case 0x255a1cu: goto label_255a1c;
+        case 0x255a20u: goto label_255a20;
+        case 0x255a24u: goto label_255a24;
+        case 0x255a28u: goto label_255a28;
+        case 0x255a2cu: goto label_255a2c;
+        case 0x255a30u: goto label_255a30;
+        case 0x255a34u: goto label_255a34;
+        case 0x255a38u: goto label_255a38;
+        case 0x255a3cu: goto label_255a3c;
+        case 0x255a40u: goto label_255a40;
+        case 0x255a44u: goto label_255a44;
+        case 0x255a48u: goto label_255a48;
+        case 0x255a4cu: goto label_255a4c;
+        case 0x255a50u: goto label_255a50;
+        case 0x255a54u: goto label_255a54;
+        case 0x255a58u: goto label_255a58;
+        case 0x255a5cu: goto label_255a5c;
+        case 0x255a60u: goto label_255a60;
+        case 0x255a64u: goto label_255a64;
+        case 0x255a68u: goto label_255a68;
+        case 0x255a6cu: goto label_255a6c;
+        case 0x255a70u: goto label_255a70;
+        case 0x255a74u: goto label_255a74;
+        case 0x255a78u: goto label_255a78;
+        case 0x255a7cu: goto label_255a7c;
+        case 0x255a80u: goto label_255a80;
+        case 0x255a84u: goto label_255a84;
+        case 0x255a88u: goto label_255a88;
+        case 0x255a8cu: goto label_255a8c;
+        case 0x255a90u: goto label_255a90;
+        case 0x255a94u: goto label_255a94;
+        case 0x255a98u: goto label_255a98;
+        case 0x255a9cu: goto label_255a9c;
+        case 0x255aa0u: goto label_255aa0;
+        case 0x255aa4u: goto label_255aa4;
+        case 0x255aa8u: goto label_255aa8;
+        case 0x255aacu: goto label_255aac;
+        case 0x255ab0u: goto label_255ab0;
+        case 0x255ab4u: goto label_255ab4;
+        case 0x255ab8u: goto label_255ab8;
+        case 0x255abcu: goto label_255abc;
+        case 0x255ac0u: goto label_255ac0;
+        case 0x255ac4u: goto label_255ac4;
+        case 0x255ac8u: goto label_255ac8;
+        case 0x255accu: goto label_255acc;
+        case 0x255ad0u: goto label_255ad0;
+        case 0x255ad4u: goto label_255ad4;
+        case 0x255ad8u: goto label_255ad8;
+        case 0x255adcu: goto label_255adc;
+        case 0x255ae0u: goto label_255ae0;
+        case 0x255ae4u: goto label_255ae4;
+        case 0x255ae8u: goto label_255ae8;
+        case 0x255aecu: goto label_255aec;
+        case 0x255af0u: goto label_255af0;
+        case 0x255af4u: goto label_255af4;
+        case 0x255af8u: goto label_255af8;
+        case 0x255afcu: goto label_255afc;
+        case 0x255b00u: goto label_255b00;
+        case 0x255b04u: goto label_255b04;
+        case 0x255b08u: goto label_255b08;
+        case 0x255b0cu: goto label_255b0c;
+        case 0x255b10u: goto label_255b10;
+        case 0x255b14u: goto label_255b14;
+        case 0x255b18u: goto label_255b18;
+        case 0x255b1cu: goto label_255b1c;
+        case 0x255b20u: goto label_255b20;
+        case 0x255b24u: goto label_255b24;
+        case 0x255b28u: goto label_255b28;
+        case 0x255b2cu: goto label_255b2c;
+        case 0x255b30u: goto label_255b30;
+        case 0x255b34u: goto label_255b34;
+        case 0x255b38u: goto label_255b38;
+        case 0x255b3cu: goto label_255b3c;
+        case 0x255b40u: goto label_255b40;
+        case 0x255b44u: goto label_255b44;
+        case 0x255b48u: goto label_255b48;
+        case 0x255b4cu: goto label_255b4c;
+        case 0x255b50u: goto label_255b50;
+        case 0x255b54u: goto label_255b54;
+        case 0x255b58u: goto label_255b58;
+        case 0x255b5cu: goto label_255b5c;
+        case 0x255b60u: goto label_255b60;
+        case 0x255b64u: goto label_255b64;
+        case 0x255b68u: goto label_255b68;
+        case 0x255b6cu: goto label_255b6c;
+        case 0x255b70u: goto label_255b70;
+        case 0x255b74u: goto label_255b74;
+        case 0x255b78u: goto label_255b78;
+        case 0x255b7cu: goto label_255b7c;
+        case 0x255b80u: goto label_255b80;
+        case 0x255b84u: goto label_255b84;
+        case 0x255b88u: goto label_255b88;
+        case 0x255b8cu: goto label_255b8c;
+        case 0x255b90u: goto label_255b90;
+        case 0x255b94u: goto label_255b94;
+        case 0x255b98u: goto label_255b98;
+        case 0x255b9cu: goto label_255b9c;
+        case 0x255ba0u: goto label_255ba0;
+        case 0x255ba4u: goto label_255ba4;
+        case 0x255ba8u: goto label_255ba8;
+        case 0x255bacu: goto label_255bac;
+        case 0x255bb0u: goto label_255bb0;
+        case 0x255bb4u: goto label_255bb4;
+        case 0x255bb8u: goto label_255bb8;
+        case 0x255bbcu: goto label_255bbc;
+        case 0x255bc0u: goto label_255bc0;
+        case 0x255bc4u: goto label_255bc4;
+        case 0x255bc8u: goto label_255bc8;
+        case 0x255bccu: goto label_255bcc;
+        case 0x255bd0u: goto label_255bd0;
+        case 0x255bd4u: goto label_255bd4;
+        case 0x255bd8u: goto label_255bd8;
+        case 0x255bdcu: goto label_255bdc;
+        case 0x255be0u: goto label_255be0;
+        case 0x255be4u: goto label_255be4;
+        case 0x255be8u: goto label_255be8;
+        case 0x255becu: goto label_255bec;
+        case 0x255bf0u: goto label_255bf0;
+        case 0x255bf4u: goto label_255bf4;
+        case 0x255bf8u: goto label_255bf8;
+        case 0x255bfcu: goto label_255bfc;
+        case 0x255c00u: goto label_255c00;
+        case 0x255c04u: goto label_255c04;
+        case 0x255c08u: goto label_255c08;
+        case 0x255c0cu: goto label_255c0c;
+        case 0x255c10u: goto label_255c10;
+        case 0x255c14u: goto label_255c14;
+        case 0x255c18u: goto label_255c18;
+        case 0x255c1cu: goto label_255c1c;
+        case 0x255c20u: goto label_255c20;
+        case 0x255c24u: goto label_255c24;
+        case 0x255c28u: goto label_255c28;
+        case 0x255c2cu: goto label_255c2c;
+        case 0x255c30u: goto label_255c30;
+        case 0x255c34u: goto label_255c34;
+        case 0x255c38u: goto label_255c38;
+        case 0x255c3cu: goto label_255c3c;
+        case 0x255c40u: goto label_255c40;
+        case 0x255c44u: goto label_255c44;
+        case 0x255c48u: goto label_255c48;
+        case 0x255c4cu: goto label_255c4c;
+        case 0x255c50u: goto label_255c50;
+        case 0x255c54u: goto label_255c54;
+        case 0x255c58u: goto label_255c58;
+        case 0x255c5cu: goto label_255c5c;
+        case 0x255c60u: goto label_255c60;
+        case 0x255c64u: goto label_255c64;
+        case 0x255c68u: goto label_255c68;
+        case 0x255c6cu: goto label_255c6c;
+        case 0x255c70u: goto label_255c70;
+        case 0x255c74u: goto label_255c74;
+        case 0x255c78u: goto label_255c78;
+        case 0x255c7cu: goto label_255c7c;
+        case 0x255c80u: goto label_255c80;
+        case 0x255c84u: goto label_255c84;
+        case 0x255c88u: goto label_255c88;
+        case 0x255c8cu: goto label_255c8c;
+        case 0x255c90u: goto label_255c90;
+        case 0x255c94u: goto label_255c94;
+        case 0x255c98u: goto label_255c98;
+        case 0x255c9cu: goto label_255c9c;
+        case 0x255ca0u: goto label_255ca0;
+        case 0x255ca4u: goto label_255ca4;
+        case 0x255ca8u: goto label_255ca8;
+        case 0x255cacu: goto label_255cac;
+        case 0x255cb0u: goto label_255cb0;
+        case 0x255cb4u: goto label_255cb4;
+        case 0x255cb8u: goto label_255cb8;
+        case 0x255cbcu: goto label_255cbc;
+        case 0x255cc0u: goto label_255cc0;
+        case 0x255cc4u: goto label_255cc4;
+        case 0x255cc8u: goto label_255cc8;
+        case 0x255cccu: goto label_255ccc;
+        case 0x255cd0u: goto label_255cd0;
+        case 0x255cd4u: goto label_255cd4;
+        case 0x255cd8u: goto label_255cd8;
+        case 0x255cdcu: goto label_255cdc;
+        case 0x255ce0u: goto label_255ce0;
+        case 0x255ce4u: goto label_255ce4;
+        case 0x255ce8u: goto label_255ce8;
+        case 0x255cecu: goto label_255cec;
+        case 0x255cf0u: goto label_255cf0;
+        case 0x255cf4u: goto label_255cf4;
+        case 0x255cf8u: goto label_255cf8;
+        case 0x255cfcu: goto label_255cfc;
+        case 0x255d00u: goto label_255d00;
+        case 0x255d04u: goto label_255d04;
+        case 0x255d08u: goto label_255d08;
+        case 0x255d0cu: goto label_255d0c;
+        case 0x255d10u: goto label_255d10;
+        case 0x255d14u: goto label_255d14;
+        case 0x255d18u: goto label_255d18;
+        case 0x255d1cu: goto label_255d1c;
+        case 0x255d20u: goto label_255d20;
+        case 0x255d24u: goto label_255d24;
+        case 0x255d28u: goto label_255d28;
+        case 0x255d2cu: goto label_255d2c;
+        case 0x255d30u: goto label_255d30;
+        case 0x255d34u: goto label_255d34;
+        case 0x255d38u: goto label_255d38;
+        case 0x255d3cu: goto label_255d3c;
+        case 0x255d40u: goto label_255d40;
+        case 0x255d44u: goto label_255d44;
+        case 0x255d48u: goto label_255d48;
+        case 0x255d4cu: goto label_255d4c;
+        case 0x255d50u: goto label_255d50;
+        case 0x255d54u: goto label_255d54;
+        case 0x255d58u: goto label_255d58;
+        case 0x255d5cu: goto label_255d5c;
+        case 0x255d60u: goto label_255d60;
+        case 0x255d64u: goto label_255d64;
+        case 0x255d68u: goto label_255d68;
+        case 0x255d6cu: goto label_255d6c;
+        case 0x255d70u: goto label_255d70;
+        case 0x255d74u: goto label_255d74;
+        case 0x255d78u: goto label_255d78;
+        case 0x255d7cu: goto label_255d7c;
+        case 0x255d80u: goto label_255d80;
+        case 0x255d84u: goto label_255d84;
+        case 0x255d88u: goto label_255d88;
+        case 0x255d8cu: goto label_255d8c;
+        case 0x255d90u: goto label_255d90;
+        case 0x255d94u: goto label_255d94;
+        case 0x255d98u: goto label_255d98;
+        case 0x255d9cu: goto label_255d9c;
+        case 0x255da0u: goto label_255da0;
+        case 0x255da4u: goto label_255da4;
+        case 0x255da8u: goto label_255da8;
+        case 0x255dacu: goto label_255dac;
+        case 0x255db0u: goto label_255db0;
+        case 0x255db4u: goto label_255db4;
+        case 0x255db8u: goto label_255db8;
+        case 0x255dbcu: goto label_255dbc;
+        case 0x255dc0u: goto label_255dc0;
+        case 0x255dc4u: goto label_255dc4;
+        case 0x255dc8u: goto label_255dc8;
+        case 0x255dccu: goto label_255dcc;
+        case 0x255dd0u: goto label_255dd0;
+        case 0x255dd4u: goto label_255dd4;
+        case 0x255dd8u: goto label_255dd8;
+        case 0x255ddcu: goto label_255ddc;
+        case 0x255de0u: goto label_255de0;
+        case 0x255de4u: goto label_255de4;
+        case 0x255de8u: goto label_255de8;
+        case 0x255decu: goto label_255dec;
+        case 0x255df0u: goto label_255df0;
+        case 0x255df4u: goto label_255df4;
+        case 0x255df8u: goto label_255df8;
+        case 0x255dfcu: goto label_255dfc;
+        case 0x255e00u: goto label_255e00;
+        case 0x255e04u: goto label_255e04;
+        case 0x255e08u: goto label_255e08;
+        case 0x255e0cu: goto label_255e0c;
+        case 0x255e10u: goto label_255e10;
+        case 0x255e14u: goto label_255e14;
+        case 0x255e18u: goto label_255e18;
+        case 0x255e1cu: goto label_255e1c;
+        case 0x255e20u: goto label_255e20;
+        case 0x255e24u: goto label_255e24;
+        case 0x255e28u: goto label_255e28;
+        case 0x255e2cu: goto label_255e2c;
+        case 0x255e30u: goto label_255e30;
+        case 0x255e34u: goto label_255e34;
+        case 0x255e38u: goto label_255e38;
+        case 0x255e3cu: goto label_255e3c;
+        case 0x255e40u: goto label_255e40;
+        case 0x255e44u: goto label_255e44;
+        case 0x255e48u: goto label_255e48;
+        case 0x255e4cu: goto label_255e4c;
+        case 0x255e50u: goto label_255e50;
+        case 0x255e54u: goto label_255e54;
+        case 0x255e58u: goto label_255e58;
+        case 0x255e5cu: goto label_255e5c;
+        case 0x255e60u: goto label_255e60;
+        case 0x255e64u: goto label_255e64;
+        case 0x255e68u: goto label_255e68;
+        case 0x255e6cu: goto label_255e6c;
+        default: return;
+    }
+
+label_2556a0:
+    // 0x2556a0: 0x44f4b000  .word       0x44F4B000                   # INVALID     $a3, $s4, -0x5000 # 00000000 <InstrIdType: R5900_COP1>
+    ctx->pc = 0x2556a0u;
+// //     throw std::runtime_error("Unhandled FPU instruction: format 0x7, function 0x0 at 0x2556A0 raw=0x44F4B000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2556a4:
+    // 0x2556a4: 0x450f4000  .word       0x450F4000                   # INVALID     $t0, $t7, 0x4000 # 00000000 <InstrIdType: CPU_COP1_BC1>
+    ctx->pc = 0x2556a4u;
+    // FPU branch instruction - handled elsewhere
+label_2556a8:
+    // 0x2556a8: 0x44f8b000  .word       0x44F8B000                   # INVALID     $a3, $t8, -0x5000 # 00000000 <InstrIdType: R5900_COP1>
+    ctx->pc = 0x2556a8u;
+// //     throw std::runtime_error("Unhandled FPU instruction: format 0x7, function 0x0 at 0x2556A8 raw=0x44F8B000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2556ac:
+    // 0x2556ac: 0x40333333  .word       0x40333333                   # dmfc0       $s3, Wired # 00000333 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x2556acu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x1 at 0x2556AC raw=0x40333333"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2556b0:
+    // 0x2556b0: 0x3fb33333  .word       0x3FB33333                   # lui         $s3, 0x3333 # 03A00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x2556b0u;
+    SET_GPR_S32(ctx, 19, (int32_t)((uint32_t)13107 << 16));
+label_2556b4:
+    // 0x2556b4: 0x40333333  .word       0x40333333                   # dmfc0       $s3, Wired # 00000333 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x2556b4u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x1 at 0x2556B4 raw=0x40333333"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2556b8:
+    // 0x2556b8: 0x3fb33333  .word       0x3FB33333                   # lui         $s3, 0x3333 # 03A00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x2556b8u;
+    SET_GPR_S32(ctx, 19, (int32_t)((uint32_t)13107 << 16));
+label_2556bc:
+    // 0x2556bc: 0x3ad1b718  xori        $s1, $s6, 0xB718
+    ctx->pc = 0x2556bcu;
+    SET_GPR_U64(ctx, 17, GPR_U64(ctx, 22) ^ (uint64_t)(uint16_t)46872);
+label_2556c0:
+    // 0x2556c0: 0x3a51b718  xori        $s1, $s2, 0xB718
+    ctx->pc = 0x2556c0u;
+    SET_GPR_U64(ctx, 17, GPR_U64(ctx, 18) ^ (uint64_t)(uint16_t)46872);
+label_2556c4:
+    // 0x2556c4: 0x3c51b718  .word       0x3C51B718                   # lui         $s1, 0xB718 # 00400000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x2556c4u;
+    SET_GPR_S32(ctx, 17, (int32_t)((uint32_t)46872 << 16));
+label_2556c8:
+    // 0x2556c8: 0x3bd1b718  xori        $s1, $fp, 0xB718
+    ctx->pc = 0x2556c8u;
+    SET_GPR_U64(ctx, 17, GPR_U64(ctx, 30) ^ (uint64_t)(uint16_t)46872);
+label_2556cc:
+    // 0x2556cc: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x2556ccu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x2556CC raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2556d0:
+    // 0x2556d0: 0x43000000  .word       0x43000000                   # INVALID     $t8, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x2556d0u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x18 at 0x2556D0 raw=0x43000000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2556d4:
+    // 0x2556d4: 0x42800000  .word       0x42800000                   # INVALID     $s4, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x2556d4u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x14 at 0x2556D4 raw=0x42800000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2556d8:
+    // 0x2556d8: 0x450b4000  .word       0x450B4000                   # INVALID     $t0, $t3, 0x4000 # 00000000 <InstrIdType: CPU_COP1_BC1>
+    ctx->pc = 0x2556d8u;
+    // FPU branch instruction - handled elsewhere
+label_2556dc:
+    // 0x2556dc: 0x45015800  bc1t        . + 4 + (0x5800 << 2)
+label_2556e0:
+    if (ctx->pc == 0x2556E0u) {
+        ctx->pc = 0x2556E0u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x2556DCu;
+        // 0x2556e0: 0x450f4000  .word       0x450F4000                   # INVALID     $t0, $t7, 0x4000 # 00000000 <InstrIdType: CPU_COP1_BC1> (Delay Slot)
+        // FPU branch instruction - handled elsewhere
+        ctx->in_delay_slot = false;
+        ctx->pc = 0x2556E4u;
+        goto label_2556e4;
+    }
+    ctx->pc = 0x2556DCu;
+    {
+        const bool branch_taken_0x2556dc = ((ctx->fcr31 & 0x800000));
+        ctx->pc = 0x2556E0u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x2556DCu;
+        // 0x2556e0: 0x450f4000  .word       0x450F4000                   # INVALID     $t0, $t7, 0x4000 # 00000000 <InstrIdType: CPU_COP1_BC1> (Delay Slot)
+        // FPU branch instruction - handled elsewhere
+        ctx->in_delay_slot = false;
+        if (branch_taken_0x2556dc) {
+            ctx->pc = 0x26B6E0u;
+            { ctx->pc = 0x26b6e0; return; }
+        }
+    }
+    ctx->pc = 0x2556E4u;
+label_2556e4:
+    // 0x2556e4: 0x45035800  bc1tl       . + 4 + (0x5800 << 2)
+label_2556e8:
+    if (ctx->pc == 0x2556E8u) {
+        ctx->pc = 0x2556E8u;
+        ctx->in_delay_slot = true;
+        ctx->branch_pc = 0x2556E4u;
+        // 0x2556e8: 0x40600000  .word       0x40600000                   # INVALID     $v1, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0> (Delay Slot)
+// //         throw std::runtime_error("Unhandled COP0 instruction format: 0x3 at 0x2556E8 raw=0x40600000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+        ctx->in_delay_slot = false;
+        ctx->pc = 0x2556ECu;
+        goto label_2556ec;
+    }
+    ctx->pc = 0x2556E4u;
+    {
+        const bool branch_taken_0x2556e4 = ((ctx->fcr31 & 0x800000));
+        if (branch_taken_0x2556e4) {
+            ctx->pc = 0x2556E8u;
+            ctx->in_delay_slot = true;
+            ctx->branch_pc = 0x2556E4u;
+            // 0x2556e8: 0x40600000  .word       0x40600000                   # INVALID     $v1, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0> (Delay Slot)
+// //             throw std::runtime_error("Unhandled COP0 instruction format: 0x3 at 0x2556E8 raw=0x40600000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+            ctx->in_delay_slot = false;
+            ctx->pc = 0x26B6E8u;
+            { ctx->pc = 0x26b6e8; return; }
+        }
+    }
+    ctx->pc = 0x2556ECu;
+label_2556ec:
+    // 0x2556ec: 0x3fe00000  .word       0x3FE00000                   # lui         $zero, 0x0 # 03E00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x2556ecu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_2556f0:
+    // 0x2556f0: 0x40600000  .word       0x40600000                   # INVALID     $v1, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x2556f0u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x3 at 0x2556F0 raw=0x40600000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2556f4:
+    // 0x2556f4: 0x3fe00000  .word       0x3FE00000                   # lui         $zero, 0x0 # 03E00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x2556f4u;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_2556f8:
+    // 0x2556f8: 0x3b03126f  xori        $v1, $t8, 0x126F
+    ctx->pc = 0x2556f8u;
+    SET_GPR_U64(ctx, 3, GPR_U64(ctx, 24) ^ (uint64_t)(uint16_t)4719);
+label_2556fc:
+    // 0x2556fc: 0x3a83126f  xori        $v1, $s4, 0x126F
+    ctx->pc = 0x2556fcu;
+    SET_GPR_U64(ctx, 3, GPR_U64(ctx, 20) ^ (uint64_t)(uint16_t)4719);
+label_255700:
+    // 0x255700: 0x3c83126f  .word       0x3C83126F                   # lui         $v1, 0x126F # 00800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255700u;
+    SET_GPR_S32(ctx, 3, (int32_t)((uint32_t)4719 << 16));
+label_255704:
+    // 0x255704: 0x3c03126f  lui         $v1, 0x126F
+    ctx->pc = 0x255704u;
+    SET_GPR_S32(ctx, 3, (int32_t)((uint32_t)4719 << 16));
+label_255708:
+    // 0x255708: 0x42a00000  .word       0x42A00000                   # INVALID     $s5, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255708u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x15 at 0x255708 raw=0x42A00000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_25570c:
+    // 0x25570c: 0x43200000  .word       0x43200000                   # INVALID     $t9, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x25570cu;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x19 at 0x25570C raw=0x43200000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255710:
+    // 0x255710: 0x42a00000  .word       0x42A00000                   # INVALID     $s5, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255710u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x15 at 0x255710 raw=0x42A00000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255714:
+    // 0x255714: 0x45094000  .word       0x45094000                   # INVALID     $t0, $t1, 0x4000 # 00000000 <InstrIdType: CPU_COP1_BC1>
+    ctx->pc = 0x255714u;
+    // FPU branch instruction - handled elsewhere
+label_255718:
+    // 0x255718: 0x44f66000  .word       0x44F66000                   # INVALID     $a3, $s6, 0x6000 # 00000000 <InstrIdType: R5900_COP1>
+    ctx->pc = 0x255718u;
+// //     throw std::runtime_error("Unhandled FPU instruction: format 0x7, function 0x0 at 0x255718 raw=0x44F66000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_25571c:
+    // 0x25571c: 0x450e4000  .word       0x450E4000                   # INVALID     $t0, $t6, 0x4000 # 00000000 <InstrIdType: CPU_COP1_BC1>
+    ctx->pc = 0x25571cu;
+    // FPU branch instruction - handled elsewhere
+label_255720:
+    // 0x255720: 0x44fb6000  .word       0x44FB6000                   # INVALID     $a3, $k1, 0x6000 # 00000000 <InstrIdType: R5900_COP1>
+    ctx->pc = 0x255720u;
+// //     throw std::runtime_error("Unhandled FPU instruction: format 0x7, function 0x0 at 0x255720 raw=0x44FB6000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255724:
+    // 0x255724: 0x0  nop
+    ctx->pc = 0x255724u;
+    // NOP
+label_255728:
+    // 0x255728: 0x0  nop
+    ctx->pc = 0x255728u;
+    // NOP
+label_25572c:
+    // 0x25572c: 0x0  nop
+    ctx->pc = 0x25572cu;
+    // NOP
+label_255730:
+    // 0x255730: 0x0  nop
+    ctx->pc = 0x255730u;
+    // NOP
+label_255734:
+    // 0x255734: 0xc1100000  ll          $s0, 0x0($t0)
+    ctx->pc = 0x255734u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255738:
+    // 0x255738: 0x0  nop
+    ctx->pc = 0x255738u;
+    // NOP
+label_25573c:
+    // 0x25573c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x25573cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255740:
+    // 0x255740: 0xc0c00000  ll          $zero, 0x0($a2)
+    ctx->pc = 0x255740u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 6), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255744:
+    // 0x255744: 0x41100000  .word       0x41100000                   # INVALID     $t0, $s0, 0x0 # 00000000 <InstrIdType: CPU_COP0_BC0>
+    ctx->pc = 0x255744u;
+    // BC0 (Condition: 0x10) - Handled by branch logic
+label_255748:
+    // 0x255748: 0x0  nop
+    ctx->pc = 0x255748u;
+    // NOP
+label_25574c:
+    // 0x25574c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x25574cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255750:
+    // 0x255750: 0x40c00000  ctc0        $zero, Index
+    ctx->pc = 0x255750u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x6 at 0x255750 raw=0x40C00000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255754:
+    // 0x255754: 0x41100000  .word       0x41100000                   # INVALID     $t0, $s0, 0x0 # 00000000 <InstrIdType: CPU_COP0_BC0>
+    ctx->pc = 0x255754u;
+    // BC0 (Condition: 0x10) - Handled by branch logic
+label_255758:
+    // 0x255758: 0x0  nop
+    ctx->pc = 0x255758u;
+    // NOP
+label_25575c:
+    // 0x25575c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x25575cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255760:
+    // 0x255760: 0x0  nop
+    ctx->pc = 0x255760u;
+    // NOP
+label_255764:
+    // 0x255764: 0xc0c00000  ll          $zero, 0x0($a2)
+    ctx->pc = 0x255764u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 6), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255768:
+    // 0x255768: 0x0  nop
+    ctx->pc = 0x255768u;
+    // NOP
+label_25576c:
+    // 0x25576c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x25576cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255770:
+    // 0x255770: 0xbf99999a  cache       0x19, -0x6666($gp)
+    ctx->pc = 0x255770u;
+    // CACHE instruction (ignored)
+label_255774:
+    // 0x255774: 0x40c00000  ctc0        $zero, Index
+    ctx->pc = 0x255774u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x6 at 0x255774 raw=0x40C00000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255778:
+    // 0x255778: 0x0  nop
+    ctx->pc = 0x255778u;
+    // NOP
+label_25577c:
+    // 0x25577c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x25577cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255780:
+    // 0x255780: 0x3f99999a  .word       0x3F99999A                   # lui         $t9, 0x999A # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255780u;
+    SET_GPR_S32(ctx, 25, (int32_t)((uint32_t)39322 << 16));
+label_255784:
+    // 0x255784: 0x40c00000  ctc0        $zero, Index
+    ctx->pc = 0x255784u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x6 at 0x255784 raw=0x40C00000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255788:
+    // 0x255788: 0x0  nop
+    ctx->pc = 0x255788u;
+    // NOP
+label_25578c:
+    // 0x25578c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x25578cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255790:
+    // 0x255790: 0x590  .word       0x00000590                   # mfhi        $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x255790u;
+    SET_GPR_U64(ctx, 0, ctx->hi);
+label_255794:
+    // 0x255794: 0x591  .word       0x00000591                   # mthi        $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x255794u;
+    ctx->hi = GPR_U64(ctx, 0);
+label_255798:
+    // 0x255798: 0x592  .word       0x00000592                   # mflo        $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x255798u;
+    SET_GPR_U64(ctx, 0, ctx->lo);
+label_25579c:
+    // 0x25579c: 0x593  .word       0x00000593                   # mtlo        $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x25579cu;
+    ctx->lo = GPR_U64(ctx, 0);
+label_2557a0:
+    // 0x2557a0: 0x594  .word       0x00000594                   # dsllv       $zero, $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557a0u;
+    SET_GPR_U64(ctx, 0, GPR_U64(ctx, 0) << (GPR_U32(ctx, 0) & 0x3F));
+label_2557a4:
+    // 0x2557a4: 0x595  .word       0x00000595                   # INVALID     $zero, $zero, 0x595 # 00000000 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557a4u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x15 at 0x2557A4 raw=0x00000595"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2557a8:
+    // 0x2557a8: 0x596  .word       0x00000596                   # dsrlv       $zero, $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557a8u;
+    SET_GPR_U64(ctx, 0, GPR_U64(ctx, 0) >> (GPR_U32(ctx, 0) & 0x3F));
+label_2557ac:
+    // 0x2557ac: 0x597  .word       0x00000597                   # dsrav       $zero, $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557acu;
+    SET_GPR_S64(ctx, 0, GPR_S64(ctx, 0) >> (GPR_U32(ctx, 0) & 0x3F));
+label_2557b0:
+    // 0x2557b0: 0x598  .word       0x00000598                   # mult        $zero, $zero, $zero # 00000580 <InstrIdType: R5900_SPECIAL>
+    ctx->pc = 0x2557b0u;
+    { int64_t result = (int64_t)GPR_S32(ctx, 0) * (int64_t)GPR_S32(ctx, 0); ctx->lo = (uint64_t)(int64_t)(int32_t)result; ctx->hi = (uint64_t)(int64_t)(int32_t)(result >> 32); }
+label_2557b4:
+    // 0x2557b4: 0x599  .word       0x00000599                   # multu       $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557b4u;
+    { uint64_t result = (uint64_t)GPR_U32(ctx, 0) * (uint64_t)GPR_U32(ctx, 0); ctx->lo = (uint64_t)(int64_t)(int32_t)result; ctx->hi = (uint64_t)(int64_t)(int32_t)(result >> 32); }
+label_2557b8:
+    // 0x2557b8: 0x59a  .word       0x0000059A                   # div         $zero, $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557b8u;
+    { int32_t divisor = GPR_S32(ctx, 0);    int32_t dividend = GPR_S32(ctx, 0);    if (divisor != 0) {        if (divisor == -1 && dividend == INT32_MIN) {            ctx->lo = (uint64_t)(int64_t)INT32_MIN; ctx->hi = 0;        } else {            ctx->lo = (uint64_t)(int64_t)(dividend / divisor);            ctx->hi = (uint64_t)(int64_t)(dividend % divisor);        }    } else {        ctx->lo = (dividend < 0) ? 1ull : 0xFFFFFFFFFFFFFFFFull; ctx->hi = (uint64_t)(int64_t)dividend;    } }
+label_2557bc:
+    // 0x2557bc: 0x59b  .word       0x0000059B                   # divu        $zero, $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557bcu;
+    { uint32_t divisor = GPR_U32(ctx, 0); if (divisor != 0) { ctx->lo = (uint64_t)(int64_t)(int32_t)(GPR_U32(ctx, 0) / divisor); ctx->hi = (uint64_t)(int64_t)(int32_t)(GPR_U32(ctx, 0) % divisor); } else { ctx->lo = 0xFFFFFFFFFFFFFFFFull; ctx->hi = (uint64_t)(int64_t)(int32_t)GPR_U32(ctx,0); } }
+label_2557c0:
+    // 0x2557c0: 0x59c  .word       0x0000059C                   # dmult       $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557c0u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x1C at 0x2557C0 raw=0x0000059C"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2557c4:
+    // 0x2557c4: 0x59d  .word       0x0000059D                   # dmultu      $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557c4u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x1D at 0x2557C4 raw=0x0000059D"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2557c8:
+    // 0x2557c8: 0x59e  .word       0x0000059E                   # ddiv        $zero, $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557c8u;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x1E at 0x2557C8 raw=0x0000059E"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2557cc:
+    // 0x2557cc: 0x59f  .word       0x0000059F                   # ddivu       $zero, $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557ccu;
+// //     throw std::runtime_error("Unhandled SPECIAL instruction: 0x1F at 0x2557CC raw=0x0000059F"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_2557d0:
+    // 0x2557d0: 0x5a0  .word       0x000005A0                   # add         $zero, $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557d0u;
+    {     int32_t rs_val = GPR_S32(ctx, 0);     int32_t rt_val = GPR_S32(ctx, 0);     int64_t result = (int64_t)rs_val + (int64_t)rt_val;     if (result > INT32_MAX || result < INT32_MIN) {         runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW);     } else {         SET_GPR_S32(ctx, 0, (int32_t)result);     } }
+label_2557d4:
+    // 0x2557d4: 0x5a1  .word       0x000005A1                   # addu        $zero, $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557d4u;
+    SET_GPR_S32(ctx, 0, (int32_t)ADD32(GPR_U32(ctx, 0), GPR_U32(ctx, 0)));
+label_2557d8:
+    // 0x2557d8: 0x5a2  .word       0x000005A2                   # neg         $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557d8u;
+    { uint32_t tmp; bool ov; SUB32_OV(GPR_U32(ctx, 0), GPR_U32(ctx, 0), tmp, ov); if (ov) runtime->SignalException(ctx, EXCEPTION_INTEGER_OVERFLOW); else SET_GPR_S32(ctx, 0, (int32_t)tmp); }
+label_2557dc:
+    // 0x2557dc: 0x5a3  .word       0x000005A3                   # negu        $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557dcu;
+    SET_GPR_S32(ctx, 0, (int32_t)SUB32(GPR_U32(ctx, 0), GPR_U32(ctx, 0)));
+label_2557e0:
+    // 0x2557e0: 0x5a4  .word       0x000005A4                   # and         $zero, $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557e0u;
+    SET_GPR_U64(ctx, 0, GPR_U64(ctx, 0) & GPR_U64(ctx, 0));
+label_2557e4:
+    // 0x2557e4: 0x5a5  .word       0x000005A5                   # move        $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557e4u;
+    SET_GPR_U64(ctx, 0, GPR_U64(ctx, 0) | GPR_U64(ctx, 0));
+label_2557e8:
+    // 0x2557e8: 0x5a6  .word       0x000005A6                   # xor         $zero, $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557e8u;
+    SET_GPR_U64(ctx, 0, GPR_U64(ctx, 0) ^ GPR_U64(ctx, 0));
+label_2557ec:
+    // 0x2557ec: 0x5a7  .word       0x000005A7                   # not         $zero, $zero # 00000580 <InstrIdType: CPU_SPECIAL>
+    ctx->pc = 0x2557ecu;
+    SET_GPR_U64(ctx, 0, ~(GPR_U64(ctx, 0) | GPR_U64(ctx, 0)));
+label_2557f0:
+    // 0x2557f0: 0x40933333  .word       0x40933333                   # mtc0        $s3, Wired # 00000333 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x2557f0u;
+    ctx->cop0_wired = GPR_U32(ctx, 19) & 0x3F; ctx->cop0_random = 47;
+label_2557f4:
+    // 0x2557f4: 0xc1200000  ll          $zero, 0x0($t1)
+    ctx->pc = 0x2557f4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 9), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_2557f8:
+    // 0x2557f8: 0x400ccccd  .word       0x400CCCCD                   # mfc0        $t4, Reserved25 # 000004CD <InstrIdType: R5900_COP0>
+    ctx->pc = 0x2557f8u;
+    SET_GPR_S32(ctx, 12, (int32_t)ctx->cop0_perf);
+label_2557fc:
+    // 0x2557fc: 0x0  nop
+    ctx->pc = 0x2557fcu;
+    // NOP
+label_255800:
+    // 0x255800: 0x40f33333  .word       0x40F33333                   # INVALID     $a3, $s3, 0x3333 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255800u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x7 at 0x255800 raw=0x40F33333"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255804:
+    // 0x255804: 0xc1200000  ll          $zero, 0x0($t1)
+    ctx->pc = 0x255804u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 9), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255808:
+    // 0x255808: 0x40800000  mtc0        $zero, Index
+    ctx->pc = 0x255808u;
+    ctx->cop0_index = GPR_U32(ctx, 0) & 0x3F;
+label_25580c:
+    // 0x25580c: 0x0  nop
+    ctx->pc = 0x25580cu;
+    // NOP
+label_255810:
+    // 0x255810: 0xc0866666  ll          $a2, 0x6666($a0)
+    ctx->pc = 0x255810u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 26214); SET_GPR_S32(ctx, 6, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255814:
+    // 0x255814: 0xc1200000  ll          $zero, 0x0($t1)
+    ctx->pc = 0x255814u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 9), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255818:
+    // 0x255818: 0xc0333333  ll          $s3, 0x3333($at)
+    ctx->pc = 0x255818u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 1), 13107); SET_GPR_S32(ctx, 19, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_25581c:
+    // 0x25581c: 0x0  nop
+    ctx->pc = 0x25581cu;
+    // NOP
+label_255820:
+    // 0x255820: 0xc0f9999a  ll          $t9, -0x6666($a3)
+    ctx->pc = 0x255820u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 7), 4294941082); SET_GPR_S32(ctx, 25, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255824:
+    // 0x255824: 0xc1200000  ll          $zero, 0x0($t1)
+    ctx->pc = 0x255824u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 9), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255828:
+    // 0x255828: 0x40333333  .word       0x40333333                   # dmfc0       $s3, Wired # 00000333 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255828u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x1 at 0x255828 raw=0x40333333"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_25582c:
+    // 0x25582c: 0x0  nop
+    ctx->pc = 0x25582cu;
+    // NOP
+label_255830:
+    // 0x255830: 0x400ccccd  .word       0x400CCCCD                   # mfc0        $t4, Reserved25 # 000004CD <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255830u;
+    SET_GPR_S32(ctx, 12, (int32_t)ctx->cop0_perf);
+label_255834:
+    // 0x255834: 0xc1200000  ll          $zero, 0x0($t1)
+    ctx->pc = 0x255834u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 9), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255838:
+    // 0x255838: 0x40e00000  .word       0x40E00000                   # INVALID     $a3, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255838u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x7 at 0x255838 raw=0x40E00000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_25583c:
+    // 0x25583c: 0x0  nop
+    ctx->pc = 0x25583cu;
+    // NOP
+label_255840:
+    // 0x255840: 0x41bc0000  .word       0x41BC0000                   # INVALID     $t5, $gp, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255840u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xD at 0x255840 raw=0x41BC0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255844:
+    // 0x255844: 0x41a4cccd  .word       0x41A4CCCD                   # INVALID     $t5, $a0, -0x3333 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255844u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xD at 0x255844 raw=0x41A4CCCD"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255848:
+    // 0x255848: 0x41333333  .word       0x41333333                   # INVALID     $t1, $s3, 0x3333 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255848u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x9 at 0x255848 raw=0x41333333"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_25584c:
+    // 0x25584c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x25584cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255850:
+    // 0x255850: 0x421a0000  .word       0x421A0000                   # INVALID     $s0, $k0, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x255850u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x255850 raw=0x421A0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255854:
+    // 0x255854: 0x4114cccd  .word       0x4114CCCD                   # INVALID     $t0, $s4, -0x3333 # 00000000 <InstrIdType: CPU_COP0_BC0>
+    ctx->pc = 0x255854u;
+    // BC0 (Condition: 0x14) - Handled by branch logic
+label_255858:
+    // 0x255858: 0x41a00000  .word       0x41A00000                   # INVALID     $t5, $zero, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255858u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xD at 0x255858 raw=0x41A00000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_25585c:
+    // 0x25585c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x25585cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255860:
+    // 0x255860: 0xc1a80000  ll          $t0, 0x0($t5)
+    ctx->pc = 0x255860u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 13), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255864:
+    // 0x255864: 0x4039999a  .word       0x4039999A                   # dmfc0       $t9, WatchHi # 0000019A <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255864u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x1 at 0x255864 raw=0x4039999A"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255868:
+    // 0x255868: 0xc1666666  ll          $a2, 0x6666($t3)
+    ctx->pc = 0x255868u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 11), 26214); SET_GPR_S32(ctx, 6, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_25586c:
+    // 0x25586c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x25586cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255870:
+    // 0x255870: 0xc21e0000  ll          $fp, 0x0($s0)
+    ctx->pc = 0x255870u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 16), 0); SET_GPR_S32(ctx, 30, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255874:
+    // 0x255874: 0x3fa66666  .word       0x3FA66666                   # lui         $a2, 0x6666 # 03A00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255874u;
+    SET_GPR_S32(ctx, 6, (int32_t)((uint32_t)26214 << 16));
+label_255878:
+    // 0x255878: 0x4169999a  .word       0x4169999A                   # INVALID     $t3, $t1, -0x6666 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255878u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xB at 0x255878 raw=0x4169999A"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_25587c:
+    // 0x25587c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x25587cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255880:
+    // 0x255880: 0x413ccccd  .word       0x413CCCCD                   # INVALID     $t1, $gp, -0x3333 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255880u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x9 at 0x255880 raw=0x413CCCCD"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255884:
+    // 0x255884: 0xc0d00000  ll          $s0, 0x0($a2)
+    ctx->pc = 0x255884u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 6), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255888:
+    // 0x255888: 0x420c0000  .word       0x420C0000                   # INVALID     $s0, $t4, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x255888u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x255888 raw=0x420C0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_25588c:
+    // 0x25588c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x25588cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255890:
+    // 0x255890: 0xbd56774f  cache       0x16, 0x774F($t2)
+    ctx->pc = 0x255890u;
+    // CACHE instruction (ignored)
+label_255894:
+    // 0x255894: 0x0  nop
+    ctx->pc = 0x255894u;
+    // NOP
+label_255898:
+    // 0x255898: 0x3debe9a4  .word       0x3DEBE9A4                   # lui         $t3, 0xE9A4 # 01E00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255898u;
+    SET_GPR_S32(ctx, 11, (int32_t)((uint32_t)59812 << 16));
+label_25589c:
+    // 0x25589c: 0x0  nop
+    ctx->pc = 0x25589cu;
+    // NOP
+label_2558a0:
+    // 0x2558a0: 0xbdd6774f  cache       0x16, 0x774F($t6)
+    ctx->pc = 0x2558a0u;
+    // CACHE instruction (ignored)
+label_2558a4:
+    // 0x2558a4: 0x0  nop
+    ctx->pc = 0x2558a4u;
+    // NOP
+label_2558a8:
+    // 0x2558a8: 0x3e4bbe24  .word       0x3E4BBE24                   # lui         $t3, 0xBE24 # 02400000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x2558a8u;
+    SET_GPR_S32(ctx, 11, (int32_t)((uint32_t)48676 << 16));
+label_2558ac:
+    // 0x2558ac: 0x0  nop
+    ctx->pc = 0x2558acu;
+    // NOP
+label_2558b0:
+    // 0x2558b0: 0x3d962051  .word       0x3D962051                   # lui         $s6, 0x2051 # 01800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x2558b0u;
+    SET_GPR_S32(ctx, 22, (int32_t)((uint32_t)8273 << 16));
+label_2558b4:
+    // 0x2558b4: 0x0  nop
+    ctx->pc = 0x2558b4u;
+    // NOP
+label_2558b8:
+    // 0x2558b8: 0xbdd6774f  cache       0x16, 0x774F($t6)
+    ctx->pc = 0x2558b8u;
+    // CACHE instruction (ignored)
+label_2558bc:
+    // 0x2558bc: 0x0  nop
+    ctx->pc = 0x2558bcu;
+    // NOP
+label_2558c0:
+    // 0x2558c0: 0xbd962051  cache       0x16, 0x2051($t4)
+    ctx->pc = 0x2558c0u;
+    // CACHE instruction (ignored)
+label_2558c4:
+    // 0x2558c4: 0x0  nop
+    ctx->pc = 0x2558c4u;
+    // NOP
+label_2558c8:
+    // 0x2558c8: 0xbe4bbe24  cache       0x0B, -0x41DC($s2)
+    ctx->pc = 0x2558c8u;
+    // CACHE instruction (ignored)
+label_2558cc:
+    // 0x2558cc: 0x0  nop
+    ctx->pc = 0x2558ccu;
+    // NOP
+label_2558d0:
+    // 0x2558d0: 0xbe364bd0  cache       0x16, 0x4BD0($s1)
+    ctx->pc = 0x2558d0u;
+    // CACHE instruction (ignored)
+label_2558d4:
+    // 0x2558d4: 0x0  nop
+    ctx->pc = 0x2558d4u;
+    // NOP
+label_2558d8:
+    // 0x2558d8: 0x3d56774f  .word       0x3D56774F                   # lui         $s6, 0x774F # 01400000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x2558d8u;
+    SET_GPR_S32(ctx, 22, (int32_t)((uint32_t)30543 << 16));
+label_2558dc:
+    // 0x2558dc: 0x0  nop
+    ctx->pc = 0x2558dcu;
+    // NOP
+label_2558e0:
+    // 0x2558e0: 0x0  nop
+    ctx->pc = 0x2558e0u;
+    // NOP
+label_2558e4:
+    // 0x2558e4: 0xc11b3333  ll          $k1, 0x3333($t0)
+    ctx->pc = 0x2558e4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 13107); SET_GPR_S32(ctx, 27, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_2558e8:
+    // 0x2558e8: 0xbff33333  cache       0x13, 0x3333($ra)
+    ctx->pc = 0x2558e8u;
+    // CACHE instruction (ignored)
+label_2558ec:
+    // 0x2558ec: 0x0  nop
+    ctx->pc = 0x2558ecu;
+    // NOP
+label_2558f0:
+    // 0x2558f0: 0x3e99999a  .word       0x3E99999A                   # lui         $t9, 0x999A # 02800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x2558f0u;
+    SET_GPR_S32(ctx, 25, (int32_t)((uint32_t)39322 << 16));
+label_2558f4:
+    // 0x2558f4: 0xc0b33333  ll          $s3, 0x3333($a1)
+    ctx->pc = 0x2558f4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 5), 13107); SET_GPR_S32(ctx, 19, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_2558f8:
+    // 0x2558f8: 0xc0200000  ll          $zero, 0x0($at)
+    ctx->pc = 0x2558f8u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 1), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_2558fc:
+    // 0x2558fc: 0x0  nop
+    ctx->pc = 0x2558fcu;
+    // NOP
+label_255900:
+    // 0x255900: 0x3fb33333  .word       0x3FB33333                   # lui         $s3, 0x3333 # 03A00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255900u;
+    SET_GPR_S32(ctx, 19, (int32_t)((uint32_t)13107 << 16));
+label_255904:
+    // 0x255904: 0xc0666666  ll          $a2, 0x6666($v1)
+    ctx->pc = 0x255904u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 3), 26214); SET_GPR_S32(ctx, 6, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255908:
+    // 0x255908: 0xc0133333  ll          $s3, 0x3333($zero)
+    ctx->pc = 0x255908u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 0), 13107); SET_GPR_S32(ctx, 19, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_25590c:
+    // 0x25590c: 0x0  nop
+    ctx->pc = 0x25590cu;
+    // NOP
+label_255910:
+    // 0x255910: 0xbf99999a  cache       0x19, -0x6666($gp)
+    ctx->pc = 0x255910u;
+    // CACHE instruction (ignored)
+label_255914:
+    // 0x255914: 0xc09ccccd  ll          $gp, -0x3333($a0)
+    ctx->pc = 0x255914u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 4294954189); SET_GPR_S32(ctx, 28, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255918:
+    // 0x255918: 0xc0200000  ll          $zero, 0x0($at)
+    ctx->pc = 0x255918u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 1), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_25591c:
+    // 0x25591c: 0x0  nop
+    ctx->pc = 0x25591cu;
+    // NOP
+label_255920:
+    // 0x255920: 0xc0000000  ll          $zero, 0x0($zero)
+    ctx->pc = 0x255920u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 0), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255924:
+    // 0x255924: 0xc0accccd  ll          $t4, -0x3333($a1)
+    ctx->pc = 0x255924u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 5), 4294954189); SET_GPR_S32(ctx, 12, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255928:
+    // 0x255928: 0x40000000  mfc0        $zero, Index
+    ctx->pc = 0x255928u;
+    SET_GPR_S32(ctx, 0, (int32_t)ctx->cop0_index);
+label_25592c:
+    // 0x25592c: 0x0  nop
+    ctx->pc = 0x25592cu;
+    // NOP
+label_255930:
+    // 0x255930: 0xc0200000  ll          $zero, 0x0($at)
+    ctx->pc = 0x255930u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 1), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255934:
+    // 0x255934: 0xc02ccccd  ll          $t4, -0x3333($at)
+    ctx->pc = 0x255934u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 1), 4294954189); SET_GPR_S32(ctx, 12, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255938:
+    // 0x255938: 0xbe99999a  cache       0x19, -0x6666($s4)
+    ctx->pc = 0x255938u;
+    // CACHE instruction (ignored)
+label_25593c:
+    // 0x25593c: 0x0  nop
+    ctx->pc = 0x25593cu;
+    // NOP
+label_255940:
+    // 0x255940: 0xc0133333  ll          $s3, 0x3333($zero)
+    ctx->pc = 0x255940u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 0), 13107); SET_GPR_S32(ctx, 19, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255944:
+    // 0x255944: 0xc0accccd  ll          $t4, -0x3333($a1)
+    ctx->pc = 0x255944u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 5), 4294954189); SET_GPR_S32(ctx, 12, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255948:
+    // 0x255948: 0xc0066666  ll          $a2, 0x6666($zero)
+    ctx->pc = 0x255948u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 0), 26214); SET_GPR_S32(ctx, 6, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_25594c:
+    // 0x25594c: 0x0  nop
+    ctx->pc = 0x25594cu;
+    // NOP
+label_255950:
+    // 0x255950: 0x40200000  dmfc0       $zero, Index
+    ctx->pc = 0x255950u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x1 at 0x255950 raw=0x40200000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255954:
+    // 0x255954: 0xc0cccccd  ll          $t4, -0x3333($a2)
+    ctx->pc = 0x255954u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 6), 4294954189); SET_GPR_S32(ctx, 12, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255958:
+    // 0x255958: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255958u;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_25595c:
+    // 0x25595c: 0x0  nop
+    ctx->pc = 0x25595cu;
+    // NOP
+label_255960:
+    // 0x255960: 0x40200000  dmfc0       $zero, Index
+    ctx->pc = 0x255960u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x1 at 0x255960 raw=0x40200000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255964:
+    // 0x255964: 0xc02ccccd  ll          $t4, -0x3333($at)
+    ctx->pc = 0x255964u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 1), 4294954189); SET_GPR_S32(ctx, 12, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255968:
+    // 0x255968: 0x0  nop
+    ctx->pc = 0x255968u;
+    // NOP
+label_25596c:
+    // 0x25596c: 0x0  nop
+    ctx->pc = 0x25596cu;
+    // NOP
+label_255970:
+    // 0x255970: 0x40133333  .word       0x40133333                   # mfc0        $s3, Wired # 00000333 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255970u;
+    SET_GPR_S32(ctx, 19, (int32_t)ctx->cop0_wired);
+label_255974:
+    // 0x255974: 0xc0f66666  ll          $s6, 0x6666($a3)
+    ctx->pc = 0x255974u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 7), 26214); SET_GPR_S32(ctx, 22, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255978:
+    // 0x255978: 0xbf000000  cache       0x00, 0x0($t8)
+    ctx->pc = 0x255978u;
+    // CACHE instruction (ignored)
+label_25597c:
+    // 0x25597c: 0x0  nop
+    ctx->pc = 0x25597cu;
+    // NOP
+label_255980:
+    // 0x255980: 0x3dcccccd  .word       0x3DCCCCCD                   # lui         $t4, 0xCCCD # 01C00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255980u;
+    SET_GPR_S32(ctx, 12, (int32_t)((uint32_t)52429 << 16));
+label_255984:
+    // 0x255984: 0xc09ccccd  ll          $gp, -0x3333($a0)
+    ctx->pc = 0x255984u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 4294954189); SET_GPR_S32(ctx, 28, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255988:
+    // 0x255988: 0x40200000  dmfc0       $zero, Index
+    ctx->pc = 0x255988u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x1 at 0x255988 raw=0x40200000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_25598c:
+    // 0x25598c: 0x0  nop
+    ctx->pc = 0x25598cu;
+    // NOP
+label_255990:
+    // 0x255990: 0x0  nop
+    ctx->pc = 0x255990u;
+    // NOP
+label_255994:
+    // 0x255994: 0xbf000000  cache       0x00, 0x0($t8)
+    ctx->pc = 0x255994u;
+    // CACHE instruction (ignored)
+label_255998:
+    // 0x255998: 0x40200000  dmfc0       $zero, Index
+    ctx->pc = 0x255998u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x1 at 0x255998 raw=0x40200000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_25599c:
+    // 0x25599c: 0x0  nop
+    ctx->pc = 0x25599cu;
+    // NOP
+label_2559a0:
+    // 0x2559a0: 0x3ff33333  .word       0x3FF33333                   # lui         $s3, 0x3333 # 03E00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x2559a0u;
+    SET_GPR_S32(ctx, 19, (int32_t)((uint32_t)13107 << 16));
+label_2559a4:
+    // 0x2559a4: 0xc09ccccd  ll          $gp, -0x3333($a0)
+    ctx->pc = 0x2559a4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 4294954189); SET_GPR_S32(ctx, 28, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_2559a8:
+    // 0x2559a8: 0x4019999a  .word       0x4019999A                   # mfc0        $t9, WatchHi # 0000019A <InstrIdType: R5900_COP0>
+    ctx->pc = 0x2559a8u;
+    SET_GPR_S32(ctx, 25, 0);  // Unimplemented COP0 register 19
+label_2559ac:
+    // 0x2559ac: 0x0  nop
+    ctx->pc = 0x2559acu;
+    // NOP
+label_2559b0:
+    // 0x2559b0: 0xbecccccd  cache       0x0C, -0x3333($s6)
+    ctx->pc = 0x2559b0u;
+    // CACHE instruction (ignored)
+label_2559b4:
+    // 0x2559b4: 0xc1200000  ll          $zero, 0x0($t1)
+    ctx->pc = 0x2559b4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 9), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_2559b8:
+    // 0x2559b8: 0x0  nop
+    ctx->pc = 0x2559b8u;
+    // NOP
+label_2559bc:
+    // 0x2559bc: 0x0  nop
+    ctx->pc = 0x2559bcu;
+    // NOP
+label_2559c0:
+    // 0x2559c0: 0xc0133333  ll          $s3, 0x3333($zero)
+    ctx->pc = 0x2559c0u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 0), 13107); SET_GPR_S32(ctx, 19, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_2559c4:
+    // 0x2559c4: 0xc119999a  ll          $t9, -0x6666($t0)
+    ctx->pc = 0x2559c4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 4294941082); SET_GPR_S32(ctx, 25, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_2559c8:
+    // 0x2559c8: 0x0  nop
+    ctx->pc = 0x2559c8u;
+    // NOP
+label_2559cc:
+    // 0x2559cc: 0x0  nop
+    ctx->pc = 0x2559ccu;
+    // NOP
+label_2559d0:
+    // 0x2559d0: 0x0  nop
+    ctx->pc = 0x2559d0u;
+    // NOP
+label_2559d4:
+    // 0x2559d4: 0xc11b3333  ll          $k1, 0x3333($t0)
+    ctx->pc = 0x2559d4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 13107); SET_GPR_S32(ctx, 27, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_2559d8:
+    // 0x2559d8: 0x3fc00000  .word       0x3FC00000                   # lui         $zero, 0x0 # 03C00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x2559d8u;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_2559dc:
+    // 0x2559dc: 0x0  nop
+    ctx->pc = 0x2559dcu;
+    // NOP
+label_2559e0:
+    // 0x2559e0: 0x3dab92a6  .word       0x3DAB92A6                   # lui         $t3, 0x92A6 # 01A00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x2559e0u;
+    SET_GPR_S32(ctx, 11, (int32_t)((uint32_t)37542 << 16));
+label_2559e4:
+    // 0x2559e4: 0x0  nop
+    ctx->pc = 0x2559e4u;
+    // NOP
+label_2559e8:
+    // 0x2559e8: 0x0  nop
+    ctx->pc = 0x2559e8u;
+    // NOP
+label_2559ec:
+    // 0x2559ec: 0x0  nop
+    ctx->pc = 0x2559ecu;
+    // NOP
+label_2559f0:
+    // 0x2559f0: 0x3e00adfd  .word       0x3E00ADFD                   # lui         $zero, 0xADFD # 02000000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x2559f0u;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)44541 << 16));
+label_2559f4:
+    // 0x2559f4: 0x0  nop
+    ctx->pc = 0x2559f4u;
+    // NOP
+label_2559f8:
+    // 0x2559f8: 0x0  nop
+    ctx->pc = 0x2559f8u;
+    // NOP
+label_2559fc:
+    // 0x2559fc: 0x0  nop
+    ctx->pc = 0x2559fcu;
+    // NOP
+label_255a00:
+    // 0x255a00: 0x3e00adfd  .word       0x3E00ADFD                   # lui         $zero, 0xADFD # 02000000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255a00u;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)44541 << 16));
+label_255a04:
+    // 0x255a04: 0x0  nop
+    ctx->pc = 0x255a04u;
+    // NOP
+label_255a08:
+    // 0x255a08: 0x3d962051  .word       0x3D962051                   # lui         $s6, 0x2051 # 01800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255a08u;
+    SET_GPR_S32(ctx, 22, (int32_t)((uint32_t)8273 << 16));
+label_255a0c:
+    // 0x255a0c: 0x0  nop
+    ctx->pc = 0x255a0cu;
+    // NOP
+label_255a10:
+    // 0x255a10: 0x3e00adfd  .word       0x3E00ADFD                   # lui         $zero, 0xADFD # 02000000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255a10u;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)44541 << 16));
+label_255a14:
+    // 0x255a14: 0x0  nop
+    ctx->pc = 0x255a14u;
+    // NOP
+label_255a18:
+    // 0x255a18: 0xbd80adfd  cache       0x00, -0x5203($t4)
+    ctx->pc = 0x255a18u;
+    // CACHE instruction (ignored)
+label_255a1c:
+    // 0x255a1c: 0x0  nop
+    ctx->pc = 0x255a1cu;
+    // NOP
+label_255a20:
+    // 0x255a20: 0xbdd6774f  cache       0x16, 0x774F($t6)
+    ctx->pc = 0x255a20u;
+    // CACHE instruction (ignored)
+label_255a24:
+    // 0x255a24: 0x0  nop
+    ctx->pc = 0x255a24u;
+    // NOP
+label_255a28:
+    // 0x255a28: 0xbdd6774f  cache       0x16, 0x774F($t6)
+    ctx->pc = 0x255a28u;
+    // CACHE instruction (ignored)
+label_255a2c:
+    // 0x255a2c: 0x0  nop
+    ctx->pc = 0x255a2cu;
+    // NOP
+label_255a30:
+    // 0x255a30: 0x0  nop
+    ctx->pc = 0x255a30u;
+    // NOP
+label_255a34:
+    // 0x255a34: 0x0  nop
+    ctx->pc = 0x255a34u;
+    // NOP
+label_255a38:
+    // 0x255a38: 0xbe00adfd  cache       0x00, -0x5203($s0)
+    ctx->pc = 0x255a38u;
+    // CACHE instruction (ignored)
+label_255a3c:
+    // 0x255a3c: 0x0  nop
+    ctx->pc = 0x255a3cu;
+    // NOP
+label_255a40:
+    // 0x255a40: 0x3dd6774f  .word       0x3DD6774F                   # lui         $s6, 0x774F # 01C00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255a40u;
+    SET_GPR_S32(ctx, 22, (int32_t)((uint32_t)30543 << 16));
+label_255a44:
+    // 0x255a44: 0x0  nop
+    ctx->pc = 0x255a44u;
+    // NOP
+label_255a48:
+    // 0x255a48: 0xbdebe9a4  cache       0x0B, -0x165C($t7)
+    ctx->pc = 0x255a48u;
+    // CACHE instruction (ignored)
+label_255a4c:
+    // 0x255a4c: 0x0  nop
+    ctx->pc = 0x255a4cu;
+    // NOP
+label_255a50:
+    // 0x255a50: 0xbd56774f  cache       0x16, 0x774F($t2)
+    ctx->pc = 0x255a50u;
+    // CACHE instruction (ignored)
+label_255a54:
+    // 0x255a54: 0x0  nop
+    ctx->pc = 0x255a54u;
+    // NOP
+label_255a58:
+    // 0x255a58: 0x3dc104fa  .word       0x3DC104FA                   # lui         $at, 0x4FA # 01C00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255a58u;
+    SET_GPR_S32(ctx, 1, (int32_t)((uint32_t)1274 << 16));
+label_255a5c:
+    // 0x255a5c: 0x0  nop
+    ctx->pc = 0x255a5cu;
+    // NOP
+label_255a60:
+    // 0x255a60: 0x0  nop
+    ctx->pc = 0x255a60u;
+    // NOP
+label_255a64:
+    // 0x255a64: 0x0  nop
+    ctx->pc = 0x255a64u;
+    // NOP
+label_255a68:
+    // 0x255a68: 0x3e00adfd  .word       0x3E00ADFD                   # lui         $zero, 0xADFD # 02000000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255a68u;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)44541 << 16));
+label_255a6c:
+    // 0x255a6c: 0x0  nop
+    ctx->pc = 0x255a6cu;
+    // NOP
+label_255a70:
+    // 0x255a70: 0x0  nop
+    ctx->pc = 0x255a70u;
+    // NOP
+label_255a74:
+    // 0x255a74: 0x0  nop
+    ctx->pc = 0x255a74u;
+    // NOP
+label_255a78:
+    // 0x255a78: 0x3debe9a4  .word       0x3DEBE9A4                   # lui         $t3, 0xE9A4 # 01E00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255a78u;
+    SET_GPR_S32(ctx, 11, (int32_t)((uint32_t)59812 << 16));
+label_255a7c:
+    // 0x255a7c: 0x0  nop
+    ctx->pc = 0x255a7cu;
+    // NOP
+label_255a80:
+    // 0x255a80: 0xbe00adfd  cache       0x00, -0x5203($s0)
+    ctx->pc = 0x255a80u;
+    // CACHE instruction (ignored)
+label_255a84:
+    // 0x255a84: 0x0  nop
+    ctx->pc = 0x255a84u;
+    // NOP
+label_255a88:
+    // 0x255a88: 0x0  nop
+    ctx->pc = 0x255a88u;
+    // NOP
+label_255a8c:
+    // 0x255a8c: 0x0  nop
+    ctx->pc = 0x255a8cu;
+    // NOP
+label_255a90:
+    // 0x255a90: 0xbe00adfd  cache       0x00, -0x5203($s0)
+    ctx->pc = 0x255a90u;
+    // CACHE instruction (ignored)
+label_255a94:
+    // 0x255a94: 0x0  nop
+    ctx->pc = 0x255a94u;
+    // NOP
+label_255a98:
+    // 0x255a98: 0x0  nop
+    ctx->pc = 0x255a98u;
+    // NOP
+label_255a9c:
+    // 0x255a9c: 0x0  nop
+    ctx->pc = 0x255a9cu;
+    // NOP
+label_255aa0:
+    // 0x255aa0: 0xbe00adfd  cache       0x00, -0x5203($s0)
+    ctx->pc = 0x255aa0u;
+    // CACHE instruction (ignored)
+label_255aa4:
+    // 0x255aa4: 0x0  nop
+    ctx->pc = 0x255aa4u;
+    // NOP
+label_255aa8:
+    // 0x255aa8: 0x3dc104fa  .word       0x3DC104FA                   # lui         $at, 0x4FA # 01C00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255aa8u;
+    SET_GPR_S32(ctx, 1, (int32_t)((uint32_t)1274 << 16));
+label_255aac:
+    // 0x255aac: 0x0  nop
+    ctx->pc = 0x255aacu;
+    // NOP
+label_255ab0:
+    // 0x255ab0: 0x0  nop
+    ctx->pc = 0x255ab0u;
+    // NOP
+label_255ab4:
+    // 0x255ab4: 0x0  nop
+    ctx->pc = 0x255ab4u;
+    // NOP
+label_255ab8:
+    // 0x255ab8: 0x0  nop
+    ctx->pc = 0x255ab8u;
+    // NOP
+label_255abc:
+    // 0x255abc: 0x0  nop
+    ctx->pc = 0x255abcu;
+    // NOP
+label_255ac0:
+    // 0x255ac0: 0x0  nop
+    ctx->pc = 0x255ac0u;
+    // NOP
+label_255ac4:
+    // 0x255ac4: 0x0  nop
+    ctx->pc = 0x255ac4u;
+    // NOP
+label_255ac8:
+    // 0x255ac8: 0xbdebe9a4  cache       0x0B, -0x165C($t7)
+    ctx->pc = 0x255ac8u;
+    // CACHE instruction (ignored)
+label_255acc:
+    // 0x255acc: 0x0  nop
+    ctx->pc = 0x255accu;
+    // NOP
+label_255ad0:
+    // 0x255ad0: 0xbd962051  cache       0x16, 0x2051($t4)
+    ctx->pc = 0x255ad0u;
+    // CACHE instruction (ignored)
+label_255ad4:
+    // 0x255ad4: 0x0  nop
+    ctx->pc = 0x255ad4u;
+    // NOP
+label_255ad8:
+    // 0x255ad8: 0x0  nop
+    ctx->pc = 0x255ad8u;
+    // NOP
+label_255adc:
+    // 0x255adc: 0x0  nop
+    ctx->pc = 0x255adcu;
+    // NOP
+label_255ae0:
+    // 0x255ae0: 0xbf800000  cache       0x00, 0x0($gp)
+    ctx->pc = 0x255ae0u;
+    // CACHE instruction (ignored)
+label_255ae4:
+    // 0x255ae4: 0xc2c20000  ll          $v0, 0x0($s6)
+    ctx->pc = 0x255ae4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 22), 0); SET_GPR_S32(ctx, 2, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255ae8:
+    // 0x255ae8: 0xc218cccd  ll          $t8, -0x3333($s0)
+    ctx->pc = 0x255ae8u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 16), 4294954189); SET_GPR_S32(ctx, 24, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255aec:
+    // 0x255aec: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255aecu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255af0:
+    // 0x255af0: 0x40d66666  .word       0x40D66666                   # ctc0        $s6, Status # 00000666 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255af0u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x6 at 0x255AF0 raw=0x40D66666"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255af4:
+    // 0x255af4: 0xc2626666  ll          $v0, 0x6666($s3)
+    ctx->pc = 0x255af4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 19), 26214); SET_GPR_S32(ctx, 2, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255af8:
+    // 0x255af8: 0xc2480000  ll          $t0, 0x0($s2)
+    ctx->pc = 0x255af8u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 18), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255afc:
+    // 0x255afc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255afcu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255b00:
+    // 0x255b00: 0x41eccccd  .word       0x41ECCCCD                   # INVALID     $t7, $t4, -0x3333 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255b00u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xF at 0x255B00 raw=0x41ECCCCD"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255b04:
+    // 0x255b04: 0xc2106666  ll          $s0, 0x6666($s0)
+    ctx->pc = 0x255b04u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 16), 26214); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b08:
+    // 0x255b08: 0xc23d3333  ll          $sp, 0x3333($s1)
+    ctx->pc = 0x255b08u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 17), 13107); SET_GPR_S32(ctx, 29, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b0c:
+    // 0x255b0c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255b0cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255b10:
+    // 0x255b10: 0xc1cc0000  ll          $t4, 0x0($t6)
+    ctx->pc = 0x255b10u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 14), 0); SET_GPR_S32(ctx, 12, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b14:
+    // 0x255b14: 0xc2440000  ll          $a0, 0x0($s2)
+    ctx->pc = 0x255b14u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 18), 0); SET_GPR_S32(ctx, 4, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b18:
+    // 0x255b18: 0xc2480000  ll          $t0, 0x0($s2)
+    ctx->pc = 0x255b18u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 18), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b1c:
+    // 0x255b1c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255b1cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255b20:
+    // 0x255b20: 0xc2266666  ll          $a2, 0x6666($s1)
+    ctx->pc = 0x255b20u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 17), 26214); SET_GPR_S32(ctx, 6, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b24:
+    // 0x255b24: 0xc25acccd  ll          $k0, -0x3333($s2)
+    ctx->pc = 0x255b24u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 18), 4294954189); SET_GPR_S32(ctx, 26, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b28:
+    // 0x255b28: 0x42213333  .word       0x42213333                   # INVALID     $s1, $at, 0x3333 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255b28u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x11 at 0x255B28 raw=0x42213333"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255b2c:
+    // 0x255b2c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255b2cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255b30:
+    // 0x255b30: 0xc2480000  ll          $t0, 0x0($s2)
+    ctx->pc = 0x255b30u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 18), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b34:
+    // 0x255b34: 0xc1d9999a  ll          $t9, -0x6666($t6)
+    ctx->pc = 0x255b34u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 14), 4294941082); SET_GPR_S32(ctx, 25, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b38:
+    // 0x255b38: 0xc0cccccd  ll          $t4, -0x3333($a2)
+    ctx->pc = 0x255b38u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 6), 4294954189); SET_GPR_S32(ctx, 12, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b3c:
+    // 0x255b3c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255b3cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255b40:
+    // 0x255b40: 0xc23d3333  ll          $sp, 0x3333($s1)
+    ctx->pc = 0x255b40u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 17), 13107); SET_GPR_S32(ctx, 29, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b44:
+    // 0x255b44: 0xc258cccd  ll          $t8, -0x3333($s2)
+    ctx->pc = 0x255b44u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 18), 4294954189); SET_GPR_S32(ctx, 24, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b48:
+    // 0x255b48: 0xc2286666  ll          $t0, 0x6666($s1)
+    ctx->pc = 0x255b48u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 17), 26214); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b4c:
+    // 0x255b4c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255b4cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255b50:
+    // 0x255b50: 0x42480000  .word       0x42480000                   # INVALID     $s2, $t0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255b50u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x12 at 0x255B50 raw=0x42480000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255b54:
+    // 0x255b54: 0xc280999a  ll          $zero, -0x6666($s4)
+    ctx->pc = 0x255b54u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 20), 4294941082); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b58:
+    // 0x255b58: 0x41a40000  .word       0x41A40000                   # INVALID     $t5, $a0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255b58u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xD at 0x255B58 raw=0x41A40000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255b5c:
+    // 0x255b5c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255b5cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255b60:
+    // 0x255b60: 0x42480000  .word       0x42480000                   # INVALID     $s2, $t0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255b60u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x12 at 0x255B60 raw=0x42480000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255b64:
+    // 0x255b64: 0xc1df3333  ll          $ra, 0x3333($t6)
+    ctx->pc = 0x255b64u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 14), 13107); SET_GPR_S32(ctx, 31, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b68:
+    // 0x255b68: 0x3fd9999a  .word       0x3FD9999A                   # lui         $t9, 0x999A # 03C00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255b68u;
+    SET_GPR_S32(ctx, 25, (int32_t)((uint32_t)39322 << 16));
+label_255b6c:
+    // 0x255b6c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255b6cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255b70:
+    // 0x255b70: 0x423e6666  .word       0x423E6666                   # INVALID     $s1, $fp, 0x6666 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255b70u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x11 at 0x255B70 raw=0x423E6666"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255b74:
+    // 0x255b74: 0xc29a6666  ll          $k0, 0x6666($s4)
+    ctx->pc = 0x255b74u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 20), 26214); SET_GPR_S32(ctx, 26, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b78:
+    // 0x255b78: 0xc1266666  ll          $a2, 0x6666($t1)
+    ctx->pc = 0x255b78u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 9), 26214); SET_GPR_S32(ctx, 6, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b7c:
+    // 0x255b7c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255b7cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255b80:
+    // 0x255b80: 0x40133333  .word       0x40133333                   # mfc0        $s3, Wired # 00000333 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255b80u;
+    SET_GPR_S32(ctx, 19, (int32_t)ctx->cop0_wired);
+label_255b84:
+    // 0x255b84: 0xc2440000  ll          $a0, 0x0($s2)
+    ctx->pc = 0x255b84u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 18), 0); SET_GPR_S32(ctx, 4, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b88:
+    // 0x255b88: 0x42480000  .word       0x42480000                   # INVALID     $s2, $t0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255b88u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x12 at 0x255B88 raw=0x42480000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255b8c:
+    // 0x255b8c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255b8cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255b90:
+    // 0x255b90: 0xbf800000  cache       0x00, 0x0($gp)
+    ctx->pc = 0x255b90u;
+    // CACHE instruction (ignored)
+label_255b94:
+    // 0x255b94: 0xc0a00000  ll          $zero, 0x0($a1)
+    ctx->pc = 0x255b94u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 5), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255b98:
+    // 0x255b98: 0x42480000  .word       0x42480000                   # INVALID     $s2, $t0, 0x0 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255b98u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x12 at 0x255B98 raw=0x42480000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255b9c:
+    // 0x255b9c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255b9cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255ba0:
+    // 0x255ba0: 0x421a0000  .word       0x421A0000                   # INVALID     $s0, $k0, 0x0 # 00000000 <InstrIdType: CPU_COP0_TLB>
+    ctx->pc = 0x255ba0u;
+// //     throw std::runtime_error("Unhandled COP0 CO-OP: 0x0 at 0x255BA0 raw=0x421A0000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255ba4:
+    // 0x255ba4: 0xc2466666  ll          $a2, 0x6666($s2)
+    ctx->pc = 0x255ba4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 18), 26214); SET_GPR_S32(ctx, 6, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255ba8:
+    // 0x255ba8: 0x4240cccd  .word       0x4240CCCD                   # INVALID     $s2, $zero, -0x3333 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255ba8u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x12 at 0x255BA8 raw=0x4240CCCD"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255bac:
+    // 0x255bac: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255bacu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255bb0:
+    // 0x255bb0: 0xc1033333  ll          $v1, 0x3333($t0)
+    ctx->pc = 0x255bb0u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 13107); SET_GPR_S32(ctx, 3, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255bb4:
+    // 0x255bb4: 0xc2c80000  ll          $t0, 0x0($s6)
+    ctx->pc = 0x255bb4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 22), 0); SET_GPR_S32(ctx, 8, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255bb8:
+    // 0x255bb8: 0x0  nop
+    ctx->pc = 0x255bb8u;
+    // NOP
+label_255bbc:
+    // 0x255bbc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255bbcu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255bc0:
+    // 0x255bc0: 0xc23acccd  ll          $k0, -0x3333($s1)
+    ctx->pc = 0x255bc0u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 17), 4294954189); SET_GPR_S32(ctx, 26, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255bc4:
+    // 0x255bc4: 0xc2c00000  ll          $zero, 0x0($s6)
+    ctx->pc = 0x255bc4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 22), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255bc8:
+    // 0x255bc8: 0x0  nop
+    ctx->pc = 0x255bc8u;
+    // NOP
+label_255bcc:
+    // 0x255bcc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255bccu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255bd0:
+    // 0x255bd0: 0xbecccccd  cache       0x0C, -0x3333($s6)
+    ctx->pc = 0x255bd0u;
+    // CACHE instruction (ignored)
+label_255bd4:
+    // 0x255bd4: 0xc2c33333  ll          $v1, 0x3333($s6)
+    ctx->pc = 0x255bd4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 22), 13107); SET_GPR_S32(ctx, 3, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255bd8:
+    // 0x255bd8: 0x41f4cccd  .word       0x41F4CCCD                   # INVALID     $t7, $s4, -0x3333 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255bd8u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xF at 0x255BD8 raw=0x41F4CCCD"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255bdc:
+    // 0x255bdc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255bdcu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255be0:
+    // 0x255be0: 0xc0000000  ll          $zero, 0x0($zero)
+    ctx->pc = 0x255be0u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 0), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255be4:
+    // 0x255be4: 0xc0a00000  ll          $zero, 0x0($a1)
+    ctx->pc = 0x255be4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 5), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255be8:
+    // 0x255be8: 0xbf800000  cache       0x00, 0x0($gp)
+    ctx->pc = 0x255be8u;
+    // CACHE instruction (ignored)
+label_255bec:
+    // 0x255bec: 0x0  nop
+    ctx->pc = 0x255becu;
+    // NOP
+label_255bf0:
+    // 0x255bf0: 0xbf800000  cache       0x00, 0x0($gp)
+    ctx->pc = 0x255bf0u;
+    // CACHE instruction (ignored)
+label_255bf4:
+    // 0x255bf4: 0xc1000000  ll          $zero, 0x0($t0)
+    ctx->pc = 0x255bf4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255bf8:
+    // 0x255bf8: 0xc0400000  ll          $zero, 0x0($v0)
+    ctx->pc = 0x255bf8u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 2), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255bfc:
+    // 0x255bfc: 0x0  nop
+    ctx->pc = 0x255bfcu;
+    // NOP
+label_255c00:
+    // 0x255c00: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255c00u;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255c04:
+    // 0x255c04: 0xc0400000  ll          $zero, 0x0($v0)
+    ctx->pc = 0x255c04u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 2), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c08:
+    // 0x255c08: 0xc0400000  ll          $zero, 0x0($v0)
+    ctx->pc = 0x255c08u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 2), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c0c:
+    // 0x255c0c: 0x0  nop
+    ctx->pc = 0x255c0cu;
+    // NOP
+label_255c10:
+    // 0x255c10: 0x40000000  mfc0        $zero, Index
+    ctx->pc = 0x255c10u;
+    SET_GPR_S32(ctx, 0, (int32_t)ctx->cop0_index);
+label_255c14:
+    // 0x255c14: 0xc1100000  ll          $s0, 0x0($t0)
+    ctx->pc = 0x255c14u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c18:
+    // 0x255c18: 0xbf800000  cache       0x00, 0x0($gp)
+    ctx->pc = 0x255c18u;
+    // CACHE instruction (ignored)
+label_255c1c:
+    // 0x255c1c: 0x0  nop
+    ctx->pc = 0x255c1cu;
+    // NOP
+label_255c20:
+    // 0x255c20: 0x40400000  cfc0        $zero, Index
+    ctx->pc = 0x255c20u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x2 at 0x255C20 raw=0x40400000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255c24:
+    // 0x255c24: 0xc0000000  ll          $zero, 0x0($zero)
+    ctx->pc = 0x255c24u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 0), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c28:
+    // 0x255c28: 0x3f000000  .word       0x3F000000                   # lui         $zero, 0x0 # 03000000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255c28u;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255c2c:
+    // 0x255c2c: 0x0  nop
+    ctx->pc = 0x255c2cu;
+    // NOP
+label_255c30:
+    // 0x255c30: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255c30u;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255c34:
+    // 0x255c34: 0xc0c00000  ll          $zero, 0x0($a2)
+    ctx->pc = 0x255c34u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 6), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c38:
+    // 0x255c38: 0x40400000  cfc0        $zero, Index
+    ctx->pc = 0x255c38u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x2 at 0x255C38 raw=0x40400000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255c3c:
+    // 0x255c3c: 0x0  nop
+    ctx->pc = 0x255c3cu;
+    // NOP
+label_255c40:
+    // 0x255c40: 0xc0200000  ll          $zero, 0x0($at)
+    ctx->pc = 0x255c40u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 1), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c44:
+    // 0x255c44: 0xc1000000  ll          $zero, 0x0($t0)
+    ctx->pc = 0x255c44u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c48:
+    // 0x255c48: 0x40000000  mfc0        $zero, Index
+    ctx->pc = 0x255c48u;
+    SET_GPR_S32(ctx, 0, (int32_t)ctx->cop0_index);
+label_255c4c:
+    // 0x255c4c: 0x0  nop
+    ctx->pc = 0x255c4cu;
+    // NOP
+label_255c50:
+    // 0x255c50: 0xbf000000  cache       0x00, 0x0($t8)
+    ctx->pc = 0x255c50u;
+    // CACHE instruction (ignored)
+label_255c54:
+    // 0x255c54: 0xc0400000  ll          $zero, 0x0($v0)
+    ctx->pc = 0x255c54u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 2), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c58:
+    // 0x255c58: 0x40200000  dmfc0       $zero, Index
+    ctx->pc = 0x255c58u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x1 at 0x255C58 raw=0x40200000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255c5c:
+    // 0x255c5c: 0x0  nop
+    ctx->pc = 0x255c5cu;
+    // NOP
+label_255c60:
+    // 0x255c60: 0xc1f00000  ll          $s0, 0x0($t7)
+    ctx->pc = 0x255c60u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 15), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c64:
+    // 0x255c64: 0xc2340000  ll          $s4, 0x0($s1)
+    ctx->pc = 0x255c64u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 17), 0); SET_GPR_S32(ctx, 20, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c68:
+    // 0x255c68: 0xc12ccccd  ll          $t4, -0x3333($t1)
+    ctx->pc = 0x255c68u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 9), 4294954189); SET_GPR_S32(ctx, 12, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c6c:
+    // 0x255c6c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255c6cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255c70:
+    // 0x255c70: 0xc14b3333  ll          $t3, 0x3333($t2)
+    ctx->pc = 0x255c70u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 10), 13107); SET_GPR_S32(ctx, 11, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c74:
+    // 0x255c74: 0xc2a76666  ll          $a3, 0x6666($s5)
+    ctx->pc = 0x255c74u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 21), 26214); SET_GPR_S32(ctx, 7, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c78:
+    // 0x255c78: 0xc1cf3333  ll          $t7, 0x3333($t6)
+    ctx->pc = 0x255c78u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 14), 13107); SET_GPR_S32(ctx, 15, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c7c:
+    // 0x255c7c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255c7cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255c80:
+    // 0x255c80: 0x410ccccd  .word       0x410CCCCD                   # INVALID     $t0, $t4, -0x3333 # 00000000 <InstrIdType: CPU_COP0_BC0>
+    ctx->pc = 0x255c80u;
+    // BC0 (Condition: 0xC) - Handled by branch logic
+label_255c84:
+    // 0x255c84: 0xc1f33333  ll          $s3, 0x3333($t7)
+    ctx->pc = 0x255c84u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 15), 13107); SET_GPR_S32(ctx, 19, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c88:
+    // 0x255c88: 0xc1e0cccd  ll          $zero, -0x3333($t7)
+    ctx->pc = 0x255c88u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 15), 4294954189); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c8c:
+    // 0x255c8c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255c8cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255c90:
+    // 0x255c90: 0x41d4cccd  .word       0x41D4CCCD                   # INVALID     $t6, $s4, -0x3333 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255c90u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xE at 0x255C90 raw=0x41D4CCCD"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255c94:
+    // 0x255c94: 0xc2b53333  ll          $s5, 0x3333($s5)
+    ctx->pc = 0x255c94u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 21), 13107); SET_GPR_S32(ctx, 21, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c98:
+    // 0x255c98: 0xc09ccccd  ll          $gp, -0x3333($a0)
+    ctx->pc = 0x255c98u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 4), 4294954189); SET_GPR_S32(ctx, 28, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255c9c:
+    // 0x255c9c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255c9cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255ca0:
+    // 0x255ca0: 0x41b9999a  .word       0x41B9999A                   # INVALID     $t5, $t9, -0x6666 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255ca0u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xD at 0x255CA0 raw=0x41B9999A"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255ca4:
+    // 0x255ca4: 0xc18c0000  ll          $t4, 0x0($t4)
+    ctx->pc = 0x255ca4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 12, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255ca8:
+    // 0x255ca8: 0x4039999a  .word       0x4039999A                   # dmfc0       $t9, WatchHi # 0000019A <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255ca8u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x1 at 0x255CA8 raw=0x4039999A"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255cac:
+    // 0x255cac: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255cacu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255cb0:
+    // 0x255cb0: 0x41e26666  .word       0x41E26666                   # INVALID     $t7, $v0, 0x6666 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255cb0u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xF at 0x255CB0 raw=0x41E26666"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255cb4:
+    // 0x255cb4: 0xc2746666  ll          $s4, 0x6666($s3)
+    ctx->pc = 0x255cb4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 19), 26214); SET_GPR_S32(ctx, 20, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255cb8:
+    // 0x255cb8: 0x40d9999a  .word       0x40D9999A                   # ctc0        $t9, WatchHi # 0000019A <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255cb8u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x6 at 0x255CB8 raw=0x40D9999A"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255cbc:
+    // 0x255cbc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255cbcu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255cc0:
+    // 0x255cc0: 0xc181999a  ll          $at, -0x6666($t4)
+    ctx->pc = 0x255cc0u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 4294941082); SET_GPR_S32(ctx, 1, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255cc4:
+    // 0x255cc4: 0xc29e999a  ll          $fp, -0x6666($s4)
+    ctx->pc = 0x255cc4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 20), 4294941082); SET_GPR_S32(ctx, 30, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255cc8:
+    // 0x255cc8: 0x41ae6666  .word       0x41AE6666                   # INVALID     $t5, $t6, 0x6666 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255cc8u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xD at 0x255CC8 raw=0x41AE6666"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255ccc:
+    // 0x255ccc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255cccu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255cd0:
+    // 0x255cd0: 0xc0c00000  ll          $zero, 0x0($a2)
+    ctx->pc = 0x255cd0u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 6), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255cd4:
+    // 0x255cd4: 0xc1d0cccd  ll          $s0, -0x3333($t6)
+    ctx->pc = 0x255cd4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 14), 4294954189); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255cd8:
+    // 0x255cd8: 0x41accccd  .word       0x41ACCCCD                   # INVALID     $t5, $t4, -0x3333 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255cd8u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0xD at 0x255CD8 raw=0x41ACCCCD"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255cdc:
+    // 0x255cdc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255cdcu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255ce0:
+    // 0x255ce0: 0x3dd6774f  .word       0x3DD6774F                   # lui         $s6, 0x774F # 01C00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255ce0u;
+    SET_GPR_S32(ctx, 22, (int32_t)((uint32_t)30543 << 16));
+label_255ce4:
+    // 0x255ce4: 0x0  nop
+    ctx->pc = 0x255ce4u;
+    // NOP
+label_255ce8:
+    // 0x255ce8: 0xbdd6774f  cache       0x16, 0x774F($t6)
+    ctx->pc = 0x255ce8u;
+    // CACHE instruction (ignored)
+label_255cec:
+    // 0x255cec: 0x0  nop
+    ctx->pc = 0x255cecu;
+    // NOP
+label_255cf0:
+    // 0x255cf0: 0x3e20d97b  .word       0x3E20D97B                   # lui         $zero, 0xD97B # 02200000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255cf0u;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)55675 << 16));
+label_255cf4:
+    // 0x255cf4: 0x0  nop
+    ctx->pc = 0x255cf4u;
+    // NOP
+label_255cf8:
+    // 0x255cf8: 0xbdd6774f  cache       0x16, 0x774F($t6)
+    ctx->pc = 0x255cf8u;
+    // CACHE instruction (ignored)
+label_255cfc:
+    // 0x255cfc: 0x0  nop
+    ctx->pc = 0x255cfcu;
+    // NOP
+label_255d00:
+    // 0x255d00: 0x3e20d97b  .word       0x3E20D97B                   # lui         $zero, 0xD97B # 02200000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255d00u;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)55675 << 16));
+label_255d04:
+    // 0x255d04: 0x0  nop
+    ctx->pc = 0x255d04u;
+    // NOP
+label_255d08:
+    // 0x255d08: 0x3dd6774f  .word       0x3DD6774F                   # lui         $s6, 0x774F # 01C00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255d08u;
+    SET_GPR_S32(ctx, 22, (int32_t)((uint32_t)30543 << 16));
+label_255d0c:
+    // 0x255d0c: 0x0  nop
+    ctx->pc = 0x255d0cu;
+    // NOP
+label_255d10:
+    // 0x255d10: 0x3dd6774f  .word       0x3DD6774F                   # lui         $s6, 0x774F # 01C00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255d10u;
+    SET_GPR_S32(ctx, 22, (int32_t)((uint32_t)30543 << 16));
+label_255d14:
+    // 0x255d14: 0x0  nop
+    ctx->pc = 0x255d14u;
+    // NOP
+label_255d18:
+    // 0x255d18: 0x3dd6774f  .word       0x3DD6774F                   # lui         $s6, 0x774F # 01C00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255d18u;
+    SET_GPR_S32(ctx, 22, (int32_t)((uint32_t)30543 << 16));
+label_255d1c:
+    // 0x255d1c: 0x0  nop
+    ctx->pc = 0x255d1cu;
+    // NOP
+label_255d20:
+    // 0x255d20: 0xbd56774f  cache       0x16, 0x774F($t2)
+    ctx->pc = 0x255d20u;
+    // CACHE instruction (ignored)
+label_255d24:
+    // 0x255d24: 0x0  nop
+    ctx->pc = 0x255d24u;
+    // NOP
+label_255d28:
+    // 0x255d28: 0x3e56774f  .word       0x3E56774F                   # lui         $s6, 0x774F # 02400000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255d28u;
+    SET_GPR_S32(ctx, 22, (int32_t)((uint32_t)30543 << 16));
+label_255d2c:
+    // 0x255d2c: 0x0  nop
+    ctx->pc = 0x255d2cu;
+    // NOP
+label_255d30:
+    // 0x255d30: 0xbe20d97b  cache       0x00, -0x2685($s1)
+    ctx->pc = 0x255d30u;
+    // CACHE instruction (ignored)
+label_255d34:
+    // 0x255d34: 0x0  nop
+    ctx->pc = 0x255d34u;
+    // NOP
+label_255d38:
+    // 0x255d38: 0x3dd6774f  .word       0x3DD6774F                   # lui         $s6, 0x774F # 01C00000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255d38u;
+    SET_GPR_S32(ctx, 22, (int32_t)((uint32_t)30543 << 16));
+label_255d3c:
+    // 0x255d3c: 0x0  nop
+    ctx->pc = 0x255d3cu;
+    // NOP
+label_255d40:
+    // 0x255d40: 0xbdd6774f  cache       0x16, 0x774F($t6)
+    ctx->pc = 0x255d40u;
+    // CACHE instruction (ignored)
+label_255d44:
+    // 0x255d44: 0x0  nop
+    ctx->pc = 0x255d44u;
+    // NOP
+label_255d48:
+    // 0x255d48: 0xbdd6774f  cache       0x16, 0x774F($t6)
+    ctx->pc = 0x255d48u;
+    // CACHE instruction (ignored)
+label_255d4c:
+    // 0x255d4c: 0x0  nop
+    ctx->pc = 0x255d4cu;
+    // NOP
+label_255d50:
+    // 0x255d50: 0xbdd6774f  cache       0x16, 0x774F($t6)
+    ctx->pc = 0x255d50u;
+    // CACHE instruction (ignored)
+label_255d54:
+    // 0x255d54: 0x0  nop
+    ctx->pc = 0x255d54u;
+    // NOP
+label_255d58:
+    // 0x255d58: 0xbd56774f  cache       0x16, 0x774F($t2)
+    ctx->pc = 0x255d58u;
+    // CACHE instruction (ignored)
+label_255d5c:
+    // 0x255d5c: 0x0  nop
+    ctx->pc = 0x255d5cu;
+    // NOP
+label_255d60:
+    // 0x255d60: 0xc1300000  ll          $s0, 0x0($t1)
+    ctx->pc = 0x255d60u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 9), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255d64:
+    // 0x255d64: 0xc312199a  ll          $s2, 0x199A($t8)
+    ctx->pc = 0x255d64u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 24), 6554); SET_GPR_S32(ctx, 18, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255d68:
+    // 0x255d68: 0x42c46666  .word       0x42C46666                   # INVALID     $s6, $a0, 0x6666 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255d68u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x16 at 0x255D68 raw=0x42C46666"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255d6c:
+    // 0x255d6c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255d6cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255d70:
+    // 0x255d70: 0x0  nop
+    ctx->pc = 0x255d70u;
+    // NOP
+label_255d74:
+    // 0x255d74: 0xc39d8000  ll          $sp, -0x8000($gp)
+    ctx->pc = 0x255d74u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 28), 4294934528); SET_GPR_S32(ctx, 29, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255d78:
+    // 0x255d78: 0x431b3333  .word       0x431B3333                   # INVALID     $t8, $k1, 0x3333 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255d78u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x18 at 0x255D78 raw=0x431B3333"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255d7c:
+    // 0x255d7c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255d7cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255d80:
+    // 0x255d80: 0x0  nop
+    ctx->pc = 0x255d80u;
+    // NOP
+label_255d84:
+    // 0x255d84: 0xc3afc000  ll          $t7, -0x4000($sp)
+    ctx->pc = 0x255d84u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 29), 4294950912); SET_GPR_S32(ctx, 15, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255d88:
+    // 0x255d88: 0x43a33333  .word       0x43A33333                   # INVALID     $sp, $v1, 0x3333 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255d88u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x1D at 0x255D88 raw=0x43A33333"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255d8c:
+    // 0x255d8c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255d8cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255d90:
+    // 0x255d90: 0x0  nop
+    ctx->pc = 0x255d90u;
+    // NOP
+label_255d94:
+    // 0x255d94: 0xc2120000  ll          $s2, 0x0($s0)
+    ctx->pc = 0x255d94u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 16), 0); SET_GPR_S32(ctx, 18, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255d98:
+    // 0x255d98: 0x438ea666  .word       0x438EA666                   # INVALID     $gp, $t6, -0x599A # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255d98u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x1C at 0x255D98 raw=0x438EA666"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255d9c:
+    // 0x255d9c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255d9cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255da0:
+    // 0x255da0: 0xc0b00000  ll          $s0, 0x0($a1)
+    ctx->pc = 0x255da0u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 5), 0); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255da4:
+    // 0x255da4: 0xc33d8000  ll          $sp, -0x8000($t9)
+    ctx->pc = 0x255da4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 25), 4294934528); SET_GPR_S32(ctx, 29, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255da8:
+    // 0x255da8: 0x4427c666  .word       0x4427C666                   # dmfc1       $a3, $f24 # 00000666 <InstrIdType: R5900_COP1>
+    ctx->pc = 0x255da8u;
+// //     throw std::runtime_error("Unhandled FPU instruction: format 0x1, function 0x26 at 0x255DA8 raw=0x4427C666"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255dac:
+    // 0x255dac: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255dacu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255db0:
+    // 0x255db0: 0x0  nop
+    ctx->pc = 0x255db0u;
+    // NOP
+label_255db4:
+    // 0x255db4: 0xc3a33333  ll          $v1, 0x3333($sp)
+    ctx->pc = 0x255db4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 29), 13107); SET_GPR_S32(ctx, 3, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255db8:
+    // 0x255db8: 0x43fc4000  .word       0x43FC4000                   # INVALID     $ra, $gp, 0x4000 # 00000000 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255db8u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x1F at 0x255DB8 raw=0x43FC4000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255dbc:
+    // 0x255dbc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255dbcu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255dc0:
+    // 0x255dc0: 0x40200000  dmfc0       $zero, Index
+    ctx->pc = 0x255dc0u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x1 at 0x255DC0 raw=0x40200000"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255dc4:
+    // 0x255dc4: 0xc3ef7333  ll          $t7, 0x7333($ra)
+    ctx->pc = 0x255dc4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 31), 29491); SET_GPR_S32(ctx, 15, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255dc8:
+    // 0x255dc8: 0xc3834000  ll          $v1, 0x4000($gp)
+    ctx->pc = 0x255dc8u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 28), 16384); SET_GPR_S32(ctx, 3, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255dcc:
+    // 0x255dcc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255dccu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255dd0:
+    // 0x255dd0: 0x0  nop
+    ctx->pc = 0x255dd0u;
+    // NOP
+label_255dd4:
+    // 0x255dd4: 0xc36b199a  ll          $t3, 0x199A($k1)
+    ctx->pc = 0x255dd4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 27), 6554); SET_GPR_S32(ctx, 11, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255dd8:
+    // 0x255dd8: 0xc3644ccd  ll          $a0, 0x4CCD($k1)
+    ctx->pc = 0x255dd8u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 27), 19661); SET_GPR_S32(ctx, 4, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255ddc:
+    // 0x255ddc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255ddcu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255de0:
+    // 0x255de0: 0xc0333333  ll          $s3, 0x3333($at)
+    ctx->pc = 0x255de0u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 1), 13107); SET_GPR_S32(ctx, 19, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255de4:
+    // 0x255de4: 0xc350b333  ll          $s0, -0x4CCD($k0)
+    ctx->pc = 0x255de4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 26), 4294947635); SET_GPR_S32(ctx, 16, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255de8:
+    // 0x255de8: 0xc2b6999a  ll          $s6, -0x6666($s5)
+    ctx->pc = 0x255de8u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 21), 4294941082); SET_GPR_S32(ctx, 22, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255dec:
+    // 0x255dec: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255decu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255df0:
+    // 0x255df0: 0x0  nop
+    ctx->pc = 0x255df0u;
+    // NOP
+label_255df4:
+    // 0x255df4: 0xc28d999a  ll          $t5, -0x6666($s4)
+    ctx->pc = 0x255df4u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 20), 4294941082); SET_GPR_S32(ctx, 13, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255df8:
+    // 0x255df8: 0xc41f399a  lwc1        $f31, 0x399A($zero)
+    ctx->pc = 0x255df8u;
+    { uint32_t bits = FAST_READ32(0x399Au); float f; std::memcpy(&f, &bits, sizeof(f)); ctx->f[31] = f; }
+label_255dfc:
+    // 0x255dfc: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255dfcu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255e00:
+    // 0x255e00: 0x0  nop
+    ctx->pc = 0x255e00u;
+    // NOP
+label_255e04:
+    // 0x255e04: 0xc3846666  ll          $a0, 0x6666($gp)
+    ctx->pc = 0x255e04u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 28), 26214); SET_GPR_S32(ctx, 4, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255e08:
+    // 0x255e08: 0xc3f1f333  ll          $s1, -0xCCD($ra)
+    ctx->pc = 0x255e08u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 31), 4294964019); SET_GPR_S32(ctx, 17, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255e0c:
+    // 0x255e0c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255e0cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255e10:
+    // 0x255e10: 0xc1840000  ll          $a0, 0x0($t4)
+    ctx->pc = 0x255e10u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 0); SET_GPR_S32(ctx, 4, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255e14:
+    // 0x255e14: 0xc3cd7333  ll          $t5, 0x7333($fp)
+    ctx->pc = 0x255e14u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 30), 29491); SET_GPR_S32(ctx, 13, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255e18:
+    // 0x255e18: 0xc42a0ccd  lwc1        $f10, 0xCCD($at)
+    ctx->pc = 0x255e18u;
+    { uint32_t bits = READ32(ADD32(GPR_U32(ctx, 1), 3277)); float f; std::memcpy(&f, &bits, sizeof(f)); ctx->f[10] = f; }
+label_255e1c:
+    // 0x255e1c: 0x3f800000  .word       0x3F800000                   # lui         $zero, 0x0 # 03800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255e1cu;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255e20:
+    // 0x255e20: 0x3f000000  .word       0x3F000000                   # lui         $zero, 0x0 # 03000000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255e20u;
+    SET_GPR_S32(ctx, 0, (int32_t)((uint32_t)0 << 16));
+label_255e24:
+    // 0x255e24: 0xc154cccd  ll          $s4, -0x3333($t2)
+    ctx->pc = 0x255e24u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 10), 4294954189); SET_GPR_S32(ctx, 20, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255e28:
+    // 0x255e28: 0x3e99999a  .word       0x3E99999A                   # lui         $t9, 0x999A # 02800000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255e28u;
+    SET_GPR_S32(ctx, 25, (int32_t)((uint32_t)39322 << 16));
+label_255e2c:
+    // 0x255e2c: 0x0  nop
+    ctx->pc = 0x255e2cu;
+    // NOP
+label_255e30:
+    // 0x255e30: 0xbf666666  cache       0x06, 0x6666($k1)
+    ctx->pc = 0x255e30u;
+    // CACHE instruction (ignored)
+label_255e34:
+    // 0x255e34: 0xc1000000  ll          $zero, 0x0($t0)
+    ctx->pc = 0x255e34u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255e38:
+    // 0x255e38: 0xbf000000  cache       0x00, 0x0($t8)
+    ctx->pc = 0x255e38u;
+    // CACHE instruction (ignored)
+label_255e3c:
+    // 0x255e3c: 0x0  nop
+    ctx->pc = 0x255e3cu;
+    // NOP
+label_255e40:
+    // 0x255e40: 0x3f19999a  .word       0x3F19999A                   # lui         $t9, 0x999A # 03000000 <InstrIdType: CPU_NORMAL>
+    ctx->pc = 0x255e40u;
+    SET_GPR_S32(ctx, 25, (int32_t)((uint32_t)39322 << 16));
+label_255e44:
+    // 0x255e44: 0xc1926666  ll          $s2, 0x6666($t4)
+    ctx->pc = 0x255e44u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 12), 26214); SET_GPR_S32(ctx, 18, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255e48:
+    // 0x255e48: 0x40333333  .word       0x40333333                   # dmfc0       $s3, Wired # 00000333 <InstrIdType: R5900_COP0>
+    ctx->pc = 0x255e48u;
+// //     throw std::runtime_error("Unhandled COP0 instruction format: 0x1 at 0x255E48 raw=0x40333333"); /* MITIGATED MMI/COP0 */
+ /* MITIGATED */
+label_255e4c:
+    // 0x255e4c: 0x0  nop
+    ctx->pc = 0x255e4cu;
+    // NOP
+label_255e50:
+    // 0x255e50: 0xbf19999a  cache       0x19, -0x6666($t8)
+    ctx->pc = 0x255e50u;
+    // CACHE instruction (ignored)
+label_255e54:
+    // 0x255e54: 0xc1000000  ll          $zero, 0x0($t0)
+    ctx->pc = 0x255e54u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 8), 0); SET_GPR_S32(ctx, 0, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255e58:
+    // 0x255e58: 0xbff33333  cache       0x13, 0x3333($ra)
+    ctx->pc = 0x255e58u;
+    // CACHE instruction (ignored)
+label_255e5c:
+    // 0x255e5c: 0x0  nop
+    ctx->pc = 0x255e5cu;
+    // NOP
+label_255e60:
+    // 0x255e60: 0xbf000000  cache       0x00, 0x0($t8)
+    ctx->pc = 0x255e60u;
+    // CACHE instruction (ignored)
+label_255e64:
+    // 0x255e64: 0xbdcccccd  cache       0x0C, -0x3333($t6)
+    ctx->pc = 0x255e64u;
+    // CACHE instruction (ignored)
+label_255e68:
+    // 0x255e68: 0xc0f66666  ll          $s6, 0x6666($a3)
+    ctx->pc = 0x255e68u;
+    { uint32_t addr = ADD32(GPR_U32(ctx, 7), 26214); SET_GPR_S32(ctx, 22, (int32_t)READ32(addr)); ctx->llbit = 1; ctx->lladdr = addr; }
+label_255e6c:
+    // 0x255e6c: 0x0  nop
+    ctx->pc = 0x255e6cu;
+    // NOP
+    ctx->pc = 0x255e70u;
+    return;
+}
