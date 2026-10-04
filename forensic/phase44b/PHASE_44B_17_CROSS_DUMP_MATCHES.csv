@@ -1,4 +1,0 @@
-candidate_190004,candidate_190008,vertices_a,vertices_b,primitives_a,primitives_b,type_a,type_b,match_class,evidence,confidence
-BATCH_CANDIDATE_0001,BATCH_CANDIDATE_0001,2680,2680,2678,2678,TRIANGLE_STRIP,TRIANGLE_STRIP,STRONG_STRUCTURAL_REPEAT,"exact vertex/primitive count and type; state signature same",[MEDIUM]
-BATCH_CANDIDATE_0003,BATCH_CANDIDATE_0002,2730,2730,2728,2728,TRIANGLE_STRIP,TRIANGLE_STRIP,STRONG_STRUCTURAL_REPEAT,"exact vertex/primitive count and type; state signature same",[MEDIUM]
-BATCH_CANDIDATE_0002,UNKNOWN,1980,UNKNOWN,659,UNKNOWN,TRIANGLE_LIST,UNKNOWN,NO_MATCH,"no validated corresponding candidate in available comparison",[LOW]

@@ -1,0 +1,19 @@
+{
+  "clean_release_build": "PASS",
+  "build_exit_code": 0,
+  "clean_native_probe": "PROCESS_FAILED",
+  "input_integrity": "MATCH",
+  "missing_guest_pc": "0x001B0308",
+  "unresolved_iop_import": "ioman:31 version0x104",
+  "boot_verified": false,
+  "game_parity": "NOT_COMPLETE",
+  "acceptance_verified": 0,
+  "acceptance_total": 8,
+  "tooling_tests": {
+    "catalog": 15,
+    "native_probe": 10
+  },
+  "exe_sha256": "fd66667d5985b8a6aefc8a85ff1c390a587513a9129f89dccc7a545a5ae2e946",
+  "build_log_sha256": "4de052b2ed79784409fad14c54dfe89b69e004aafc0a51096dc9aa1462584dd2",
+  "scope": "Clean source/dependency build and bounded original-input process observation. No title, battle or full-game parity proof."
+}

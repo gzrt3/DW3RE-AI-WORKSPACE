@@ -1,0 +1,21 @@
+{
+  "scope": "Validator regression and read-only catalog re-derivation; no C++ build or generation",
+  "files_examined": 9396,
+  "old_candidates": 7636,
+  "new_candidates": 7636,
+  "old_aliases": 7636,
+  "new_aliases": 7636,
+  "old_ambiguous": 0,
+  "new_ambiguous": 0,
+  "old_tails": 589,
+  "new_tails": 589,
+  "changed_source_results": [],
+  "matches_current_aliases": true,
+  "matches_current_tails": true,
+  "generated_and_helper_unchanged": {
+    "<workspace>\\src\\generated_resume_catalog.cpp": true,
+    "<workspace>\\include\\fate\\verified_return_tail.hpp": true
+  },
+  "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+  "status": "PASS"
+}

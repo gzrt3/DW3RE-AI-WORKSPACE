@@ -1,0 +1,76 @@
+{
+  "title": "Dynasty Warriors 3 Complete Remastered",
+  "phases": [
+    {
+      "id": "heap",
+      "verified": true,
+      "detail": "SetupHeap: argumentos y retorno 0x01FF8000 coinciden con PCSX2 en Debug y Release. Heap de 4 KB utilizable. Kernel: 39 pruebas aprobadas por configuraciÃƒÂ³n; equivalencia del estado completo pendiente."
+    },
+    {
+      "id": "boot",
+      "verified": false,
+      "detail": "Release098: reinicio IOP original y nuevo enlace EE completados; siguiente parada 0x001B0308, con esa continuación y el import IOMAN31 pendientes. Catálogo de 7,636 alias y 589 retornos cotejados. Contratos Debug/Release aprobados. Sin título ni batalla."
+    },
+    {
+      "id": "menus",
+      "verified": false,
+      "detail": "Pendiente: tÃƒÂ­tulo, menÃƒÂºs y entrada de control mediante el backend nativo."
+    },
+    {
+      "id": "combined_battle",
+      "verified": false,
+      "detail": "Datos de ambos juegos preparados y lector nativo probado: los 5.138 recursos coinciden con los originales mediante SHA256 en Debug y Release. Acceso por sectores probado con versiÃƒÂ³n explÃƒÂ­cita y muestras originales coincidentes. IntegraciÃƒÂ³n en el juego, modos, mapas, lados y batalla pendientes."
+    }
+  ],
+  "acceptance": [
+    {
+      "name": "Inventario completo de ambos juegos",
+      "verified": false
+    },
+    {
+      "name": "Arranque nativo y ejecuciÃƒÂ³n",
+      "verified": false
+    },
+    {
+      "name": "Primera batalla completa",
+      "verified": false
+    },
+    {
+      "name": "DW3 + XL integrados sin cambio de disco",
+      "verified": false
+    },
+    {
+      "name": "Todos los modos, mapas y lados",
+      "verified": false
+    },
+    {
+      "name": "GrÃƒÂ¡ficos, audio y controles",
+      "verified": false
+    },
+    {
+      "name": "Guardado, progreso y desbloqueos",
+      "verified": false
+    },
+    {
+      "name": "Paquete standalone y validaciÃƒÂ³n final",
+      "verified": false
+    }
+  ],
+  "evidence": [
+    "evidence/extracted_sectors_001/verification.json",
+    "evidence/extracted_vfs_sha256_001/comparison.json",
+    "evidence/extracted_vfs_sha256_001/verified_Debug.json",
+    "evidence/extracted_vfs_sha256_001/verified_Release.json",
+    "evidence/native_boot_release_098/launch.json",
+    "evidence/native_boot_release_098/result.json",
+    "evidence/reboot_module_probe_001/boot_callbacks_verification.json",
+    "evidence/reboot_module_probe_001/consumer_verification.json",
+    "evidence/reboot_module_probe_001/reset_epilogues_original_001.json",
+    "evidence/reboot_module_probe_001/resume_catalog_003.json",
+    "evidence/reboot_module_probe_001/resume_progress_verification_001.json",
+    "evidence/reboot_module_probe_001/rom_deferred_verification.json",
+    "evidence/verification_002/summary.json",
+    "evidence/vfs_repair_001/verified/summary.json",
+    "evidence/reboot_module_probe_001/return_validator_audit_001/corpus.json"
+  ]
+}

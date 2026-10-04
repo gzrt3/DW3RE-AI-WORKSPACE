@@ -1,0 +1,15 @@
+{
+  "status": "MATCH",
+  "resources_per_configuration": 5138,
+  "configurations": [
+    "Debug",
+    "Release"
+  ],
+  "native_method": "SHA256 from Windows BCrypt over each byte vector returned by native DualExtractedVfs; empty and abc known vectors checked",
+  "reference_method": "Python hashlib SHA256 over direct original archive reads at original ELF descriptor extents",
+  "tsv_sha256": {
+    "Debug": "56b50c2d9e38698710bb32c68b1a50e2294d69435d44088c3a27a9585bc5e325",
+    "Release": "56b50c2d9e38698710bb32c68b1a50e2294d69435d44088c3a27a9585bc5e325"
+  },
+  "game_parity": "NOT_COMPLETE"
+}

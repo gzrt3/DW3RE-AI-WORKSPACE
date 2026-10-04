@@ -1,4 +1,0 @@
-correlation,status,evidence
-GS input transfer,PARTIAL,GS.cpp exposes raw transfer buffer and size; no synchronized ResourceID/EE PC/DMA/VIF event exists in the uninstrumented run.
-GSDump downstream,CONFIRMED,Existing 44B.10-44B.19 artifacts establish downstream GS dump evidence only.
-Resource1670 to GS,UNKNOWN,No runtime bridge event links Resource1670/Part/command offset to a GS transfer.

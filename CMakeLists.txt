@@ -1,101 +1,139 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.24)
+project(fate_soldiers_3 LANGUAGES CXX)
+# Configure output directories to a space-free path
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
-if(NOT DEFINED CMAKE_TOOLCHAIN_FILE AND DEFINED ENV{VITASDK})
-    set(PS2X_VITA_TOOLCHAIN_FILE "$ENV{VITASDK}/share/vita.toolchain.cmake")
-    if(EXISTS "${PS2X_VITA_TOOLCHAIN_FILE}")
-        set(CMAKE_TOOLCHAIN_FILE "${PS2X_VITA_TOOLCHAIN_FILE}" CACHE PATH
-            "Toolchain file used for cross-compiling" FORCE)
-        message(STATUS "Using VitaSDK toolchain from VITASDK: ${CMAKE_TOOLCHAIN_FILE}")
-    endif()
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+option(FATE_BOOT_CHAIN_ONLY "Build bounded retail entry diagnostics without graphics or corpus rebuild" OFF)
+if(FATE_BOOT_CHAIN_ONLY)
+    include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/BootChainDiagnostic.cmake")
+    return()
+endif()
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+
+if(MSVC)
+    add_compile_options(/W4 /WX /permissive- /EHsc /utf-8 /Od)
 endif()
 
-project(PS2RetroX)
+file(GLOB_RECURSE RECOMP_SOURCES "src/recomp/*.cpp")
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(MONSTER_FILES
+    "src/recomp/FUN_0019b8d0_0x19b8d0_master.cpp"
+    "src/recomp/FUN_0019b910_0x19b910_master.cpp"
+)
 
-option(PS2X_BUILD_RECOMP "Build ps2xRecomp" ON)
-option(PS2X_BUILD_RUNTIME "Build ps2xRuntime" ON)
-option(PS2X_BUILD_ANALYZER "Build ps2xAnalyzer" ON)
-option(PS2X_BUILD_TEST "Build ps2xTest" ON)
-option(PS2X_BUILD_STUDIO "Build ps2xStudio" ON)
+set_source_files_properties(${MONSTER_FILES} PROPERTIES 
+    SKIP_UNITY_BUILD_INCLUSION ON
+    COMPILE_FLAGS "/Od /bigobj /wd4100 /wd4102 /wd4127 /wd4310 /wd4702"
+)
 
-if(ANDROID)
-    message(STATUS "Android target detected, building runtime only")
-    set(PS2X_BUILD_RECOMP OFF)
-    set(PS2X_BUILD_ANALYZER OFF)
-    set(PS2X_BUILD_TEST OFF)
-    set(PS2X_BUILD_STUDIO OFF)
-endif()
-
-set(PS2X_IS_ARM_TARGET OFF)
-set(PS2X_IS_AARCH64_TARGET OFF)
-if(CMAKE_SYSTEM_PROCESSOR MATCHES "arm64|aarch64|ARM64")
-    set(PS2X_IS_ARM_TARGET ON)
-    set(PS2X_IS_AARCH64_TARGET ON)
-elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "^arm|^ARM")
-    set(PS2X_IS_ARM_TARGET ON)
-endif()
-
-if((CMAKE_C_COMPILER MATCHES "arm-vita-eabi") OR
-   (CMAKE_CXX_COMPILER MATCHES "arm-vita-eabi"))
-    set(PS2X_IS_ARM_TARGET ON)
-endif()
-
-if(PS2X_IS_ARM_TARGET)
-    message(STATUS "ARM target detected, fetching sse2neon")
-
-    include(FetchContent)
-    FetchContent_Declare(
-        sse2neon
-        GIT_REPOSITORY https://github.com/DLTcollab/sse2neon.git
-        GIT_TAG v1.9.1
-        GIT_SHALLOW TRUE
+# Decompiled MIPS functions retain fixed ABI parameters, labels, and compile-time
+# control flow, and translated instructions after explicit returns. These
+# warning patterns are expected in generated translations; keep strict warnings
+# enabled for host/runtime code and do not suppress narrowing.
+set(_recomp_source_index 0)
+foreach(_recomp_source IN LISTS RECOMP_SOURCES)
+    math(EXPR _recomp_group_index "${_recomp_source_index} / 100")
+    set_source_files_properties(${_recomp_source} PROPERTIES
+        UNITY_GROUP "recomp_${_recomp_group_index}"
     )
-    FetchContent_MakeAvailable(sse2neon)
+    math(EXPR _recomp_source_index "${_recomp_source_index} + 1")
+endforeach()
 
-    include_directories(${sse2neon_SOURCE_DIR})
-    add_compile_definitions(USE_SSE2NEON)
+add_library(fate_recomp_core STATIC
+    ${RECOMP_SOURCES}
+    "src/unsupported_hle.cpp"
+    "src/dispatcher.cpp"
+)
 
-    if(PS2X_IS_AARCH64_TARGET AND APPLE)
-        # macOS ARM64 already uses optimal defaults
-        message(STATUS "macOS ARM64 - using default compiler flags")
-    elseif(PS2X_IS_AARCH64_TARGET AND MSVC)
-        # Windows ARM64 - MSVC already uses optimal defaults
-        message(STATUS "Windows ARM64 (MSVC) - using default compiler flags")
-    elseif(PS2X_IS_AARCH64_TARGET)
-        # Linux ARM64 - add NEON flags
-        message(STATUS "Non-Apple ARM64 - adding NEON compiler flags")
-        add_compile_options(-march=armv8-a+fp+simd)
+target_include_directories(fate_recomp_core PUBLIC
+    "include"
+    "src"
+    "src/recomp"
+    "tools/PS2Recomp/ps2xRuntime/include"
+    "tools/PS2Recomp/ps2xIOP/include"
+    "tools/PS2Recomp/ps2xRecomp/include"
+    "tools/PS2Recomp/ps2xRuntime/src/lib/Kernel"
+)
 
-        # Try to enable crypto and CRC extensions if supported
-        include(CheckCXXCompilerFlag)
-        check_cxx_compiler_flag("-march=armv8-a+fp+simd+crypto+crc" COMPILER_SUPPORTS_CRYPTO_CRC)
-        if(COMPILER_SUPPORTS_CRYPTO_CRC)
-            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=armv8-a+fp+simd+crypto+crc")
-            message(STATUS "Crypto and CRC extensions enabled")
-        else()
-            add_compile_options(-march=armv8-a+fp+simd)
-        endif()
-    endif()
+set_target_properties(fate_recomp_core PROPERTIES
+    UNITY_BUILD ON
+    UNITY_BUILD_BATCH_SIZE 100
+    UNITY_BUILD_MODE GROUP
+    UNITY_BUILD_CODE_BEFORE_INCLUDE "#pragma warning(push)\n#pragma warning(disable: 4100 4102 4127 4310 4702)"
+    UNITY_BUILD_CODE_AFTER_INCLUDE "#pragma warning(pop)"
+)
+set_source_files_properties("src/dispatcher.cpp" PROPERTIES
+    SKIP_UNITY_BUILD_INCLUSION ON
+)
+if(MSVC)
+    set_source_files_properties("src/unsupported_hle.cpp" PROPERTIES
+        SKIP_UNITY_BUILD_INCLUSION ON COMPILE_OPTIONS "/W4;/WX")
 endif()
 
-if(PS2X_BUILD_RECOMP)
-    add_subdirectory("ps2xRecomp")
+add_executable(fate_game
+    "src/main.cpp"
+    "src/native_iop_boot.cpp"
+    "src/generated_resume_catalog.cpp"
+    "src/provenance.cpp"
+    "src/boot_continuations.cpp"
+    "src/sif_irq_continuations.cpp"
+    "src/boot_syscall_handlers.cpp"
+    "src/boot_thread_syscalls.cpp"
+    "src/elf.cpp"
+    "src/dispatcher.cpp"
+    "src/input/pad_bridge.cpp"
+    "src/audio/spu_bridge.cpp"
+    "src/sdl_window.cpp"
+    "src/gs_wrapper.cpp"
+    "src/patch_engine.cpp"
+    "src/vfs/vfs_hook.cpp"
+)
+
+target_include_directories(fate_game PRIVATE "tools/PS2Recomp/ps2xRuntime/src/lib")
+
+if(MSVC)
+    # R5900Context intentionally uses alignas(16). MSVC reports the resulting
+    # architectural tail padding as C4324; retain the ABI layout while keeping
+    # /W4 /WX enabled for all other warnings.
+    target_compile_options(fate_recomp_core PRIVATE /wd4324)
+    target_compile_options(fate_game PRIVATE /wd4324)
+    # Translated register macros check constant register indices. Keep all
+    # other /W4 /WX diagnostics on these recovered guest instructions.
+    set_source_files_properties("src/boot_continuations.cpp" "src/sif_irq_continuations.cpp" "src/boot_syscall_handlers.cpp" "src/boot_thread_syscalls.cpp" PROPERTIES COMPILE_OPTIONS "/wd4127")
+    # Preserved generated tail transfers retain unreachable fallthrough labels.
+    set_source_files_properties("src/sif_irq_continuations.cpp" PROPERTIES COMPILE_OPTIONS "/wd4127;/wd4702")
 endif()
 
-if(PS2X_BUILD_RUNTIME)
-    add_subdirectory("ps2xIOP")
-    add_subdirectory("ps2xRuntime")
+find_package(SDL2 REQUIRED)
+target_link_libraries(fate_game PRIVATE fate_recomp_core SDL2::SDL2)
+include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/ExistingRuntime.cmake")
+fate_link_existing_runtime(fate_game)
+
+add_executable(fate_host_dispatch_contract EXCLUDE_FROM_ALL
+    "tests/integration/host_dispatch_contract.cpp"
+)
+target_include_directories(fate_host_dispatch_contract PRIVATE "include")
+target_include_directories(fate_host_dispatch_contract SYSTEM PRIVATE
+    "tools/PS2Recomp/ps2xRuntime/include"
+    "tools/PS2Recomp/ps2xIOP/include"
+    "tools/PS2Recomp/ps2xRuntime/src/lib/Kernel"
+)
+target_link_libraries(fate_host_dispatch_contract PRIVATE fate_recomp_core)
+fate_link_existing_runtime(fate_host_dispatch_contract)
+if(MSVC)
+    target_compile_options(fate_host_dispatch_contract PRIVATE /W4 /WX /permissive- /EHsc /utf-8 /wd4324)
 endif()
 
-if(PS2X_BUILD_ANALYZER)
-    add_subdirectory("ps2xAnalyzer")
-endif()
-
-if(PS2X_BUILD_TEST)
-    add_subdirectory("ps2xTest")
-endif()
-
-if(PS2X_BUILD_STUDIO)
-    add_subdirectory("ps2xStudio")
+add_executable(fate_elf_loader_contract EXCLUDE_FROM_ALL
+    "tests/integration/host_elf_loader_contract.cpp"
+    "src/elf.cpp"
+)
+target_include_directories(fate_elf_loader_contract PRIVATE "include")
+if(MSVC)
+    target_compile_options(fate_elf_loader_contract PRIVATE /W4 /WX /permissive- /EHsc /utf-8)
 endif()

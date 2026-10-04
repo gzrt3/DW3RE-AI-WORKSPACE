@@ -1,7 +1,0 @@
-dependency,version,path,status,notes
-PNG,1.6.58,D:\\Juegos\\Playstation\\Playstation 2\\_forensic\\PCSX2_DEPS\\vcpkg\\installed\\x64-windows,FOUND,Headers/lib/CMake package available in isolated vcpkg
-ZLIB,1.3.2,D:\\Juegos\\Playstation\\Playstation 2\\_forensic\\PCSX2_DEPS\\vcpkg\\installed\\x64-windows,FOUND,Headers/lib/CMake package available in isolated vcpkg
-FFmpeg,9.0.1,D:\\Juegos\\Playstation\\Playstation 2\\_forensic\\PCSX2_DEPS\\vcpkg\\installed\\x64-windows,FOUND,Built successfully through isolated no-space SUBST path
-JPEG,3.2.0 planned,D:\\Juegos\\Playstation\\Playstation 2\\_forensic\\PCSX2_DEPS\\vcpkg,NOT_INSTALLED,First configure stopped before JPEG resolution
-HarfBuzz,14.4.0 planned,D:\\Juegos\\Playstation\\Playstation 2\\_forensic\\PCSX2_DEPS\\vcpkg,FAILED,Meson/link path-mount mismatch in mixed D:/X: package roots
-Remaining PCSX2 dependencies,current source declarations,D:\\Juegos\\Playstation\\Playstation 2\\_forensic\\PCSX2_SOURCE\\cmake\\SearchForStuff.cmake,NOT_COMPLETE,No final dependency closure claimed

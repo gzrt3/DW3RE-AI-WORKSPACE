@@ -1,0 +1,47 @@
+{
+  "version": 2,
+  "disabled_providers": ["openai"],
+  "pool": {"total_concurrency": 3, "cloud_concurrency": 2, "per_provider_concurrency": 1, "failure_threshold": 2, "cooldown_seconds": 300},
+  "max_attempts": 3,
+  "max_escalations": 2,
+  "max_timeout_seconds": 60,
+  "max_output_tokens": 512,
+  "max_prompt_bytes": 16000,
+  "unknown_cost_call_limit_per_provider": 2,
+  "usd_caps": {"aws": 100, "azure": 200, "openai": 1, "gemini": 1},
+  "aws_spending_ceiling_usd": 10,
+  "aws_budget_policy": "Require an explicitly configured per-model token price plus the existing append-only call ledger; unknown pricing or unreconciled historical cost fails closed.",
+  "aws_role_models": {
+    "NOVA_2_LITE": "us.amazon.nova-2-lite-v1:0",
+    "NOVA_PRO": "us.amazon.nova-pro-v1:0"
+  },
+  "aws_task_classes": {
+    "NOVA_2_LITE": ["classification", "extraction", "bounded_hypotheses", "address_symbol", "routine_review"],
+    "NOVA_PRO": ["code_reasoning", "ps2_r5900_semantics", "abi_runtime", "difficult_divergence", "independent_review"]
+  },
+    "prices_per_million_tokens": {
+    "aws/us.amazon.nova-2-lite-v1:0": {
+      "input": 0.30,
+      "output": 2.50
+    },
+    "aws/us.amazon.nova-pro-v1:0": {
+      "input": 0.80,
+      "output": 3.20
+    }
+  },
+  "models": {
+    "ollama": "qwen2.5-coder:7b",
+    "gemini": "gemini-2.5-flash",
+    "azure": "gpt-4.1-mini-1",
+    "openai": null,
+    "aws": "us.amazon.nova-2-lite-v1:0"
+  },
+  "routes": {
+    "LOCAL": [["ollama", "qwen2.5-coder:7b"], ["gemini", "gemini-2.5-flash"], ["azure", "gpt-4.1-mini-1"]],
+    "MECHANICAL": [["ollama", "qwen2.5-coder:7b"], ["gemini", "gemini-2.5-flash"], ["azure", "gpt-4.1-mini-1"]],
+    "LOW": [["gemini", "gemini-2.5-flash"], ["azure", "gpt-4.1-mini-1"], ["aws", "us.amazon.nova-2-lite-v1:0"], ["ollama", "qwen2.5-coder:7b"]],
+    "MEDIUM": [["azure", "gpt-4.1-mini-1"], ["gemini", "gemini-2.5-flash"], ["aws", "us.amazon.nova-2-lite-v1:0"], ["ollama", "qwen2.5-coder:7b"]],
+    "DIFFICULT": [["aws", "us.amazon.nova-2-lite-v1:0"], ["azure", "gpt-4.1-mini-1"], ["ollama", "qwen2.5-coder:7b"]],
+    "CRITICAL": [["aws", "us.amazon.nova-2-lite-v1:0"]]
+  }
+}

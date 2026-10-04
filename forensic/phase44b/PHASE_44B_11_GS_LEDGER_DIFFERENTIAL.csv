@@ -1,6 +1,0 @@
-metric,190004,190008,difference_or_result,status
-single_vsync_replay,confirmed,not_run,"only 190004 VSync 0 was required for first gate",partial
-complete_dump_ledger,not_run,not_run,"deferred after minimum successful gate",deferred
-character_body_attribution,unknown,unknown,"GS commands lack upstream identity",unknown
-section5_selection,unknown,unknown,"not represented in GSDump records",unknown
-0033_upstream_attribution,unknown,unknown,"not represented in GSDump records",unknown

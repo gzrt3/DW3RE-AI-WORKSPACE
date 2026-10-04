@@ -1,0 +1,43 @@
+{
+  "comparisons": {
+    "Debug": {
+      "status": "DIVERGENCE_OBSERVED",
+      "system_call_boundaries": {
+        "SetupThread": {
+          "argument_registers_match": true,
+          "v0_matches": true,
+          "v0_difference": null,
+          "claim": "Observed argument/return comparison only; hidden kernel state and memory side effects remain in the full checkpoint report."
+        },
+        "SetupHeap": {
+          "argument_registers_match": true,
+          "v0_matches": true,
+          "v0_difference": null,
+          "claim": "Observed argument/return comparison only; hidden kernel state and memory side effects remain in the full checkpoint report."
+        }
+      }
+    },
+    "Release": {
+      "status": "DIVERGENCE_OBSERVED",
+      "system_call_boundaries": {
+        "SetupThread": {
+          "argument_registers_match": true,
+          "v0_matches": true,
+          "v0_difference": null,
+          "claim": "Observed argument/return comparison only; hidden kernel state and memory side effects remain in the full checkpoint report."
+        },
+        "SetupHeap": {
+          "argument_registers_match": true,
+          "v0_matches": true,
+          "v0_difference": null,
+          "claim": "Observed argument/return comparison only; hidden kernel state and memory side effects remain in the full checkpoint report."
+        }
+      }
+    }
+  },
+  "debug_release_status": "INCOMPLETE_OBSERVATIONS",
+  "retail_boot": "<workspace>\\artifacts\\entry_provenance_20261004\\boot_001",
+  "host_work": "<workspace>\\artifacts\\lockstep_20261004\\verification_002\\host",
+  "BOOT_CHAIN_STATUS": "STOPPED_NOT_CLOSED",
+  "INTERACTIVE_MAIN_LOOP": "NOT_DEMONSTRATED"
+}

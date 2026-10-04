@@ -1,8 +1,0 @@
-command_index,opcode,role,vertex_records,submitted_vertices,strip_count,topology_state
-53,0x0033,draw-trigger/window-1,11,0,0,window-1-start
-56,0x0033,draw-trigger/window-1,11,1,1,strip-0
-65,0x0033,draw-trigger/window-1,11,2,1,strip-0
-97,0x0033,draw-trigger/window-1,11,11,1,strip-0-complete
-268,0x0033,draw-trigger/window-2,22,11,1,window-2-start
-274,0x0033,draw-trigger/window-2,22,12,2,strip-1
-309,0x0033,draw-trigger/window-2,22,22,2,strip-1-complete

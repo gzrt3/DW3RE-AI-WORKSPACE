@@ -1,0 +1,11 @@
+{
+  "status": "MATCH",
+  "expected_resources": 5138,
+  "observed_resources": 5138,
+  "missing": [],
+  "extra": [],
+  "changed": [],
+  "reference_sha256": "170ebae332937a0267b76b0fe7f48c66e26f8eb0297ce2275886594d06ab0b36",
+  "native_sha256": "56b50c2d9e38698710bb32c68b1a50e2294d69435d44088c3a27a9585bc5e325",
+  "scope": "Payload bytes and versioned resource identity only; gameplay parity not assessed."
+}

@@ -1,0 +1,58 @@
+{
+  "created_utc": "2026-10-04T22:54:30.688116+00:00",
+  "summary": "Native IOP ROM handles now read mounted original byte snapshots, retain ownership across remount, accept empty files and reject missing/closed/null reads. Actual runtime adapter executes original IOPRP253 EESYNC with original BIOS SECRMAN; exact17633 size selects256byte allocation. SIF/ROM13/13 contracts PASS Debug/Release. Original REBOOT request captures owned command/flags at modload4, stops execution into old RAM, consumes once only outside activeCPU/callback stack; explicit reset clears old modules/threads. Isolated deferred probe PASS both configurations. FullRelease092 linkPASS, actual10s bootTIMEOUT/inputMATCH, still SifGetReg4=0 at return1ACA98. No title/battle.",
+  "bios": {
+    "sha256": "f4c948e61a291d4b3f92a141e550cf8357204287a31ff784caccbedaef910c9d",
+    "SECRMAN_offset": 377616,
+    "SECRMAN_size": 17633,
+    "SECRMAN_sha256": "97b4628862efda71163320ac96394bbacde725399d720db0ca20c6993cb2cb27"
+  },
+  "reference": {
+    "url": "https://raw.githubusercontent.com/ps2dev/ps2sdk/ac92a9f657d2e531dd8f060250b07f2a5ac6dea5/iop/system/udnl/src/udnl.c",
+    "scope": "SDK evidence, exact original version words must be checked"
+  },
+  "limits": [
+    "no production REBOOT/ROM profile startup integration",
+    "no consumer implementing full ReBootStart lifecycle",
+    "LOADCORE boot collection/priority callbacks not implemented",
+    "UDNL module selection/version metadata/order not yet integrated",
+    "ROM device exposes only files actually mounted; no fabricated SECRMAN"
+  ],
+  "next_action": "Recover exact UDNL image selection and LOADCORE boot callback order against original words; build explicit owned reboot plan from original IOPBTCONF/EXTINFO and requested IOPRP253. Integrate reset at subsystem scheduling boundary, start HLE/physical services in original order, publish ready only via actual EESYNC callback. Then production ROM profile, REBOOT startup, relink/probe.",
+  "previous_goal_turn": "PROGRESS",
+  "game_parity": "NOT_COMPLETE",
+  "boot_chain_status": "STOPPED_NOT_CLOSED",
+  "sha256": {
+    "tools/PS2Recomp/ps2xRuntime/src/lib/ps2_iop_host.h": "0c55d2e1050a6c180765447e003c9d1412a8e43aee9c60169c7c2214b0f244da",
+    "tools/PS2Recomp/ps2xRuntime/src/lib/ps2_iop_host.cpp": "01f6bd989728e35eeb0b4809f10976c20e4687f79fe532592f950b4c3af70278",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.h": "bcc94c330c1d1a4aacf3cde9665a79fdbab16430dec53672545c1b51f90cf069",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.cpp": "30b7cab5d0fb12d44a9ebe68f23f77b902cf310f05f0d7ea5e27cb57e04b02c2",
+    "tests/integration/sif_register_contract.cpp": "18fc93a63675bd9f4db6c784fdda9ccf6a609c238fa67360d73e469a15f6add3",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/module_probe.cpp": "7d52a8bb2ae0efe895f17b3517896d4d92f30d7f830e0faab0a6568fd0cfb817",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/eesync_present_probe.cpp": "8c05300cc38ca06e19ec48a8499b5f4d221ee82bcc730502bda6eb2380e55395",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/SECRMAN.IRX": "97b4628862efda71163320ac96394bbacde725399d720db0ca20c6993cb2cb27",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/UDNL.bin": "dd05d86f9e47e900904c3eb1a5ee6a7fa700a678effc267ec3cdd929a8200051",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/udnl_reference.c": "783da9ea6c2dcc5d54a024f3c3ff46a7059ba8e24fb1277556a2817074a0b73d",
+    "artifacts/lockstep_20261004/native_boot_release_092/result.json": "19dde168b1227151ef68dd87bcbe448356e2ff9f47661ec8d2bb8b498ba6ea93",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/rom_contract_Debug_003.log": "f9b95cbca077115b05f1bfb10eef631d96b2cd89e9cab79101cb4d1dac16d329",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/rom_contract_Debug_003.exit": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/deferred_probe_Debug_001.log": "d44be0bbb620fed9834656d5ba526ffbcf25698a54418462fae6fb68d87a60e0",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/deferred_probe_Debug_001.exit": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/eesync_Debug_007.log": "50549fa58022c467b1ab4bc7db5f1adb46d76986aa588a985168b62ed8b0d3ec",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/eesync_Debug_007.exit": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/eesync_present_Debug_004.log": "d2261791e0aff9261ea21024c602576d72664e9092e468bfe2fa0eef905bdd77",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/eesync_present_Debug_004.exit": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/ioman_contract_Debug_004.log": "a8173d0281afa80dde47bcacf6c9d117794628bb0e5f1cf972cb4787ab836907",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/ioman_contract_Debug_004.exit": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/rom_contract_Release_003.log": "122e6f09f8ca9a01920fb50edbcab24ab0cc7d7b18ac2686178ad06eaff76884",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/rom_contract_Release_003.exit": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/deferred_probe_Release_001.log": "d44be0bbb620fed9834656d5ba526ffbcf25698a54418462fae6fb68d87a60e0",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/deferred_probe_Release_001.exit": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/eesync_Release_007.log": "50549fa58022c467b1ab4bc7db5f1adb46d76986aa588a985168b62ed8b0d3ec",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/eesync_Release_007.exit": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/eesync_present_Release_004.log": "d2261791e0aff9261ea21024c602576d72664e9092e468bfe2fa0eef905bdd77",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/eesync_present_Release_004.exit": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/ioman_contract_Release_004.log": "a8173d0281afa80dde47bcacf6c9d117794628bb0e5f1cf972cb4787ab836907",
+    "artifacts/lockstep_20261004/reboot_module_probe_001/ioman_contract_Release_004.exit": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+  }
+}

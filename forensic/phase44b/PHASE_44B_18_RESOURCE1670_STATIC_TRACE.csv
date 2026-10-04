@@ -1,7 +1,0 @@
-stage,address_or_offset,evidence,relation,status,confidence
-resource1670_part12,0x31A4,"Part12 size 10628, 332 commands",static Section0 artifact,CONFIRMED,[HIGH CONFIDENCE]
-part12_0033,0x3828,"known Part12 0x0033 geometry path",static Section0/native artifact,CONFIRMED,[HIGH CONFIDENCE]
-part12_003C,0x3728,"Bone50 -> QW40 socket evidence",static/native artifact,CONFIRMED,[CONFIRMED]
-part12_matrix,"VI_MAT_BASE+s16[9]","matrix address formula documented",static/native artifact,CONFIRMED,[HIGH CONFIDENCE]
-part12_to_runtime_buffer,UNKNOWN,"no runtime pointer/range trace",missing bridge,UNKNOWN,[UNKNOWN]
-part12_to_gs_candidate,UNKNOWN,"no synchronized ResourceID/GIF offset",missing bridge,UNKNOWN,[UNKNOWN]

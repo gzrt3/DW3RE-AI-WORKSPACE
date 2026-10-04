@@ -1,0 +1,44 @@
+{
+  "date_utc": "2026-10-04T21:45:10.074130+00:00",
+  "status": "EXTRACTED_VERSIONED_SECTOR_ADAPTER_VERIFIED",
+  "summary": "Original105E40 static data flow identifies selector gp-7CF8 and filename table24B150: BaseLINKDATA cache24B140; nonzero selector caches BGM,LINKDAT2, LINKOVL at24B144/148/14C. It performs SearchFile retries/cache writes, not payload merge. New native ExtractedSectorView assigns disjoint synthetic sectors to explicit version+path, keeps cached Base identity after XL lookup, normalizes bounded PS2CD paths and rejects missing files,cross-file reads, unknown/zero sectors,padding invention and changed archive metadata. Added bounded extracted file-range API; strict /W4 /WX Debug/Release synthetic contractsPASS. Native first/last sectors of both original archives and both BGM variants (8perconfig) SHA256MATCH independent original reads. Production integration deferred while Release072 owns build inputs; originals and src/recomp preserved. No title,battle or gameplay parity.",
+  "next_action": "Observe existing fullRelease072 PID25168/log/exit; compiler22668 CPU continues,unity97codegen at lastcheck. On terminal preserve any failure, move startup queued path copy inside noexcept try,rebuild stale runtime Debug/Release,rerun queue/module contracts,relink and bounded native probe --iop-root data/iop. Then integrate explicit data-root and tested dual extracted VFS/sector adapter into actual CDVD file consumers; preserve original cached extent semantics. Remaining source table import readers and tray adaptation need original callsite evidence. All eight final criteria remain open.",
+  "comparison": {
+    "status": "MATCH",
+    "configurations": {
+      "Debug": {
+        "matched_sectors": 8,
+        "tsv_sha256": "2c96bb55f6751ad9a42248e9c676e646dfadbf3f726dada3ff94137b1c5a2b82"
+      },
+      "Release": {
+        "matched_sectors": 8,
+        "tsv_sha256": "2c96bb55f6751ad9a42248e9c676e646dfadbf3f726dada3ff94137b1c5a2b82"
+      }
+    },
+    "scope": "Eight original first/last sectors per configuration; not full disc/gameplay parity"
+  },
+  "hashes": {
+    "<workspace>\\include\\fate\\vfs\\extracted.hpp": "bb5aef6413d9282b5d0a2e118ec7a92c7e0480dfb70f183305a495cb0adf2cfb",
+    "<workspace>\\src\\vfs\\extracted.cpp": "29bee0c33461cd202d74f034964be3140a5d54db84f0229e5da3212ce74c346c",
+    "<workspace>\\include\\fate\\vfs\\extracted_sectors.hpp": "9d339e1e4f3f910d77999c5004a92b9cb8916857ec628d7c13564158d29f96bb",
+    "<workspace>\\src\\vfs\\extracted_sectors.cpp": "07e2453a21c92ae3b2b11396bc5d3e9cb361a2e87bc33a4b650421da9b3799ac",
+    "<workspace>\\tests\\integration\\extracted_vfs_contract.cpp": "fe65642dcfab1b34999290345adff6d5dfbacf03283b6a5a5cc5578ce41d4086",
+    "<workspace>\\artifacts\\lockstep_20261004\\extracted_sectors_001\\CMakeLists.txt": "375cddf36d46c30f0e39776817aac923fe31da7633f5f4e0ced2703b2d14b64a",
+    "<workspace>\\artifacts\\lockstep_20261004\\extracted_sectors_001\\verify_sectors.py": "cf459b86c69affd3dd31b0b7c48130686741407c5ec6d572551f77bf952cddad",
+    "<workspace>\\artifacts\\lockstep_20261004\\extracted_sectors_001\\sector_comparison.json": "740c39fa082e0c882da2f2fbd4b8e5c0670d114571f65d9ffe9d75fbc9398bf6",
+    "<workspace>\\artifacts\\lockstep_20261004\\extracted_sectors_001\\synthetic_Debug_002.log": "6f77bbf1e145ea26c79078d31a6e74be4080581adeb46ec313112bc3ca1b3c24",
+    "<workspace>\\artifacts\\lockstep_20261004\\extracted_sectors_001\\synthetic_Release_002.log": "6f77bbf1e145ea26c79078d31a6e74be4080581adeb46ec313112bc3ca1b3c24",
+    "<workspace>\\artifacts\\lockstep_20261004\\extracted_sectors_001\\retail_Debug_002.log": "526e280e833b5888b999121fcfc512a15455365dfeabee0c02592671fb115b79",
+    "<workspace>\\artifacts\\lockstep_20261004\\extracted_sectors_001\\retail_Release_002.log": "526e280e833b5888b999121fcfc512a15455365dfeabee0c02592671fb115b79",
+    "<workspace>\\artifacts\\lockstep_20261004\\ee_call_rpc_review_001\\archive_selection_review.json": "f0b373395d36d7602c70ec8fc6180b7138da2976b70c8dd0e0875f2938611235"
+  },
+  "limits": [
+    "Synthetic sector addresses are not retail ISO LBAs.",
+    "VFS must outlive adapter and not remount with outstanding extents.",
+    "Sector sample comparison is bounded; earlier 5138payload fullSHA256 retained separately.",
+    "Loose file metadata-preserving mutation is not covered.",
+    "Production runtime CDVD integration,disc-flow adaptation and gameplay remain unverified."
+  ],
+  "game_parity": "NOT_COMPLETE",
+  "boot_chain_status": "STOPPED_NOT_CLOSED"
+}
