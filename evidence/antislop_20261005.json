@@ -1,0 +1,123 @@
+{
+  "utc": "2026-10-05T03:48:11.806807+00:00",
+  "scope": "Pinned anti-slop rules and selected tooling regressions; no runtime or visual parity claim.",
+  "upstream_revision": "388cbe3b6c37d5175b9f460015bb092ef9e34894",
+  "version": "3.2.20",
+  "license": "MIT",
+  "native_baseline": "01ec39d",
+  "tests": [
+    {
+      "suite": "tests-adviser_pool-001",
+      "count": 6,
+      "result": "PASS"
+    },
+    {
+      "suite": "tests-antislop-001",
+      "count": 4,
+      "result": "PASS"
+    },
+    {
+      "suite": "tests-copilot_bridge-001",
+      "count": 14,
+      "result": "PASS"
+    },
+    {
+      "suite": "tests-native_boot_probe-001",
+      "count": 12,
+      "result": "PASS"
+    },
+    {
+      "suite": "tests-native_pipeline-001",
+      "count": 8,
+      "result": "PASS"
+    },
+    {
+      "suite": "tests-resume_catalog-001",
+      "count": 15,
+      "result": "PASS"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "tools/verify_antislop.py",
+      "bytes": 2133,
+      "sha256": "4aa9bed8375051183811565b840ff0ad30dfa44be993808041feff043aa3573a"
+    },
+    {
+      "path": "tests/test_antislop.py",
+      "bytes": 2199,
+      "sha256": "013124ea4e133b372670c4981b6e4fb83ff598cc7efa26983c9ed387a0d60524"
+    },
+    {
+      "path": "third_party/antislop.json",
+      "bytes": 1252,
+      "sha256": "e53b5091acf4b814ec342c9206343b3d18405092cbdead802b2160387004a592"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 148,
+      "sha256": "ffbb430ad2e516783c22caa5dbcd944226b9f490d137915d7f5faf4e4c6da24b"
+    },
+    {
+      "path": ".github/workflows/tooling.yml",
+      "bytes": 773,
+      "sha256": "14e6fe2c45c0af3e3aabd6dfaa96b467e3cecbc4c06735d753910bc733072076"
+    },
+    {
+      "path": ".github/copilot-instructions.md",
+      "bytes": 841,
+      "sha256": "e03db7525c0dc263fbdf1d37d4fbc42696c51de46f67e79fdf4b20c3696829e2"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 3361,
+      "sha256": "f321d2178013e90462f7813bb0fe148c764566f9729ded4e5b32b450e4e9925e"
+    },
+    {
+      "path": "docs/ANTISLOP.md",
+      "bytes": 4337,
+      "sha256": "b8f48f26ee5ade756ccb4154ffa5d95a81a0784fa6ef455e882026397e27499b"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "tests-adviser_pool-001.log",
+      "bytes": 995,
+      "sha256": "8f0843ff5911a6d353a394f7dce88864256e8fbb83bfe8bee9f89e3750cf587e"
+    },
+    {
+      "path": "tests-antislop-001.log",
+      "bytes": 643,
+      "sha256": "b25372126b9a49e041c9c96c33fe04bea10bc7568a68dba4a1e136b0bc2dfd32"
+    },
+    {
+      "path": "tests-copilot_bridge-001.log",
+      "bytes": 2114,
+      "sha256": "40a3801c48f546fec2e219ce3124dcfef84d69afad5c2c054f7e134ea2e280fa"
+    },
+    {
+      "path": "tests-native_boot_probe-001.log",
+      "bytes": 2172,
+      "sha256": "24fd9758452ce1afb607c276bf901d0eee37f6fcb604803d4695e703cd44182e"
+    },
+    {
+      "path": "tests-native_pipeline-001.log",
+      "bytes": 1303,
+      "sha256": "b421be67df34d7527c13045ed48d13357c296d45e06754c6b00dbae34e2f8109"
+    },
+    {
+      "path": "tests-resume_catalog-001.log",
+      "bytes": 2021,
+      "sha256": "fc39995a850dd5bcbc7b0fb50eb45016024254c68989ee997b003711fa4a3dc1"
+    },
+    {
+      "path": "autocrlf-checkout-001.json",
+      "sha256": "ebad37107c47dc91229e17065488337db2083bc795408c521b2a0275ed54c11d"
+    }
+  ],
+  "all_eight_final_gates_open": true,
+  "new_native_run": false,
+  "new_model_calls": 0,
+  "tests_passed": 59,
+  "checkout_validation": "git checkout-index with core.autocrlf=true; five installed upstream files MATCH"
+}
