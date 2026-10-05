@@ -107,6 +107,28 @@ namespace
         }
     }
 
+    void loaderImageVersion()
+    {
+        IopMemory memory;
+        IopImportRegistry imports(memory);
+        IopLoadcore loadcore(memory, imports);
+        require(memory.zeroRam(0x8000u, 128u) && memory.zeroRam(0x9000u, 36u), "loader fixture failed");
+        for (const uint16_t version : {uint16_t{0u}, uint16_t{0x0101u}, uint16_t{0x0102u}, uint16_t{0x0104u}, uint16_t{0x0203u}})
+        {
+            for (const uint16_t ordinal : {uint16_t{22u}, uint16_t{23u}})
+            {
+                IopCpuState cpu{};
+                cpu.gpr[2] = 0xABCDEF01u; cpu.gpr[4] = 0x8000u; cpu.gpr[5] = 0x9000u;
+                require(!loadcore.dispatchImport(ordinal, cpu, version) && cpu.gpr[2] == 0xABCDEF01u,
+                        "selected loader HLE accepted an unverified version");
+            }
+        }
+        IopCpuState cpu{};
+        cpu.gpr[4] = 0x8000u; cpu.gpr[5] = 0x9000u;
+        require(loadcore.dispatchImport(22u, cpu, 0x0103u) && cpu.gpr[2] == UINT32_MAX &&
+                memory.read32(0x9000u) == UINT32_MAX, "selected loader probe did not return original invalid type");
+    }
+
     Irx provider(uint32_t base, uint16_t version, uint32_t result)
     {
         Irx image(base);
@@ -164,6 +186,7 @@ int main()
         {"Newest registered minor wins within the requested major", newestMinor},
         {"Ordinal lookup stays in the selected table", missingOrdinal},
         {"LOADCORE query returns function array and honors major", queryFunctionArray},
+        {"LOADCORE image services use only the verified original version", loaderImageVersion},
         {"Physical IRX consumer links correct version end to end", physicalImportsEndToEnd},
     };
     return run(tests);

@@ -13,7 +13,7 @@ namespace ps2x::iop::detail
     public:
         IopLoadcore(IopMemory &memory, IopImportRegistry &imports) noexcept;
 
-        [[nodiscard]] bool dispatchImport(uint16_t ordinal, IopCpuState &cpu);
+        [[nodiscard]] bool dispatchImport(uint16_t ordinal, IopCpuState &cpu, uint16_t version = 0u);
 
     private:
         IopMemory &m_memory;

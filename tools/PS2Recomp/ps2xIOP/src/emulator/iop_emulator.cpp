@@ -314,7 +314,7 @@ namespace ps2x::iop::detail
                 if(statusAddress!=0u)memory.write32(statusAddress,result);
                 setV0(0);return ImportDisposition::Handled;
             }
-            if (iequals(call.library, "loadcore") && loadcore.dispatchImport(call.ordinal, cpu))
+            if (iequals(call.library, "loadcore") && loadcore.dispatchImport(call.ordinal, cpu, call.version))
                 return ImportDisposition::Handled;
 
             if ((iequals(call.library, "thbase") || iequals(call.library, "threadman")) &&

@@ -95,10 +95,36 @@ namespace ps2x::iop::detail
 
         switch (ordinal)
         {
-        case 6: // io_read from native stdin: no buffered input, EOF.
-            if (a0 < m_files.size() && m_files[a0].console && a0 == 0u)
-            { setV0(0u); return true; }
-            return false;
+        case 6: // io_read: exact byte count from the owned native file.
+        {
+            // Original IOMAN1.4 export6 (0x53C..0x5DC) rejects missing or
+            // unreadable descriptors with -EBADF and returns the driver result.
+            if (a0 >= m_files.size() || m_files[a0].handle == 0u ||
+                (m_files[a0].console && a0 != 0u))
+            { setV0(static_cast<uint32_t>(-9)); return true; }
+            auto &file = m_files[a0];
+            // Native stdin has no buffered input. fd1 is write-only above.
+            if (file.console) { setV0(0u); return true; }
+            const uint32_t buffer = cpu.gpr[5], size = cpu.gpr[6];
+            if (size == 0u) { setV0(0u); return true; }
+            const uint32_t segment = buffer & 0xE0000000u;
+            if (size > INT32_MAX ||
+                (segment != 0u && segment != 0x80000000u && segment != 0xA0000000u) ||
+                !m_memory.ownsRamRange(buffer, size))
+            { setV0(static_cast<uint32_t>(-22)); return true; }
+            // A successful bounds check limits staging to the 2 MiB IOP RAM.
+            // Do not expose partial writes from a failed host read to the guest.
+            std::vector<uint8_t> bytes(size);
+            size_t bytesRead = 0u;
+            if (!m_host.readHostFile(file.handle, file.offset, bytes.data(), size, bytesRead) ||
+                bytesRead > size || file.offset > UINT64_MAX - bytesRead)
+            { setV0(static_cast<uint32_t>(-5)); return true; }
+            if (!m_memory.writeRam(buffer, bytes.data(), bytesRead))
+            { setV0(static_cast<uint32_t>(-22)); return true; }
+            file.offset += bytesRead;
+            setV0(static_cast<uint32_t>(bytesRead));
+            return true;
+        }
         case 7: // io_write to native tty read/write fd0 or write-only fd1.
         {
             if (a0 >= m_files.size() || !m_files[a0].console)

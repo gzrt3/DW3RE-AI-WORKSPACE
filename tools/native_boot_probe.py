@@ -52,6 +52,16 @@ SOURCE_NAMES = (
     'tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_ioman.cpp',
     'tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.cpp',
     'tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_rpc.h',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_rpc.cpp',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_kernel.h',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_kernel.cpp',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_memory.h',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_memory.cpp',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_sysmem.cpp',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_loadcore.h',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_loadcore.cpp',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_loadcore_image.h',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_loadcore_image.cpp',
 )
 
 

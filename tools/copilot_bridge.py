@@ -17,6 +17,11 @@ DEFAULT = ROOT / 'artifacts/copilot_bridge'
 MAX_JSON = 512 * 1024
 
 TASKS = {
+    'ioman-read-review': {
+        'objective': 'Review the native IOMAN read and actual host file adapter excerpts. Give at most one concrete defect or explicitly bounded uncertainty with a discriminating regression test. Assess real short reads, EOF, signed return count, memory bounds, error staging and file position. Do not infer unseen code, execute code or claim original-game parity. Return only the supplied JSON schema, under512 output tokens.',
+        'sections': [('tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_ioman.cpp', 98, 130),
+                     ('tools/PS2Recomp/ps2xRuntime/src/lib/ps2_iop_host.cpp', 370, 423)],
+    },
     'rpc-continuation-review': {
         'objective': 'Review these current IOP guest continuation and RPC ownership excerpts. Give at most one concrete defect or explicitly bounded uncertainty with a discriminating test. Consider caller identity, suspended state, consumption once and transport retry. Use only the excerpts; do not execute code or claim original game parity. Return only the supplied JSON schema, under512 output tokens.',
         'sections': [('tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_kernel.cpp', 39, 97),

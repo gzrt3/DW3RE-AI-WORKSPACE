@@ -9,7 +9,7 @@
     {
       "id": "boot",
       "verified": false,
-      "detail": "Ciclo008: compilación Release aprobada; 14 contratos de continuidad pasan en Debug/Release. El IOP conserva llamadas suspendidas y evita que otro hilo robe la respuesta. Tres pruebas nativas mantienen integridad MATCH y se detienen en MODLOAD7/SIO2MAN.IRX. Pantalla de título y arranque completo pendientes."
+      "detail": "Carga IOP: lectura de archivos, memoria de 256 bytes y LOADCORE22/23 implementados. Nueve suites pasan en Debug/Release; 24 comparaciones con instrucciones originales por configuración coinciden. Ventana nativa real: 2.420 observaciones, cero imágenes GS; bloqueo MODLOAD7/SIO2MAN. Título y arranque completo pendientes."
     },
     {
       "id": "menus",
@@ -81,11 +81,12 @@
     "evidence/current_audit_20261005.json",
     "evidence/native_input_20261005.json",
     "evidence/native_owned_continuation_20261005.json",
-    "evidence/adviser_pool_20261005.json"
+    "evidence/adviser_pool_20261005.json",
+    "evidence/native_loader_prerequisites_20261005.json"
   ],
   "objective": "Port nativo Windows x64 standalone: DW3 + XL completos sin cambio de disco, con modding y verificación de extremo a extremo.",
   "product_root": "C:/Games/DW",
   "development_root": "D:/DW3-GitHub-Publish-20261004",
   "backup_root": "D:/Backup/DWProject",
-  "research_update": "XInput nativo implementado como componente aislado y probado; entrada al juego pendiente. Archivo único SQLite diseñado, sin migrar partidas. Arranque detenido al cargar SIO2MAN; 0/8 criterios finales demostrados."
+  "research_update": "Prerrequisitos del cargador verificados; falta registro/enlace y ejecución del MODLOAD original. Integración de entrada, guardado único y juego completo pendientes. 0/8 criterios finales demostrados."
 }

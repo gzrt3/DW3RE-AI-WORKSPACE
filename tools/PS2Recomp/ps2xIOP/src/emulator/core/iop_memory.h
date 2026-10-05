@@ -31,6 +31,14 @@ namespace ps2x::iop::detail
         {
             uint32_t address = 0;
             uint32_t size = 0;
+            bool sysmem = false;
+        };
+
+        struct MemoryBlock
+        {
+            uint32_t address = 0;
+            uint32_t size = 0;
+            bool allocated = false;
         };
 
         struct DmaStart
@@ -60,6 +68,13 @@ namespace ps2x::iop::detail
         [[nodiscard]] uint32_t allocate(uint32_t size, uint32_t alignment = 16u, std::optional<uint32_t> fixed = std::nullopt);
         [[nodiscard]] bool freeAllocation(uint32_t address);
         [[nodiscard]] uint32_t maxFreeMemory() const;
+        // SYSMEM1.1 exports use 256-byte pages; host-owned allocations retain
+        // their finer granularity and cannot be freed through the guest API.
+        [[nodiscard]] uint32_t allocateSysMemory(uint32_t mode, uint32_t size, uint32_t fixed = 0u);
+        [[nodiscard]] bool freeSysMemory(uint32_t address);
+        [[nodiscard]] uint32_t maxFreeSysMemory() const;
+        [[nodiscard]] uint32_t totalFreeSysMemory() const;
+        [[nodiscard]] std::optional<MemoryBlock> sysMemoryBlockContaining(uint32_t address) const;
         [[nodiscard]] std::optional<Allocation> allocationContaining(uint32_t address) const;
 
         [[nodiscard]] uint32_t interruptStatus() const noexcept { return m_interruptStatus; }
@@ -78,6 +93,8 @@ namespace ps2x::iop::detail
         [[nodiscard]] uint32_t readHardware32(uint32_t address) const;
         void writeHardware32(uint32_t address, uint32_t value);
         void markOwned(uint32_t address, size_t size);
+        [[nodiscard]] std::vector<MemoryBlock> memoryBlocks(bool pages) const;
+        [[nodiscard]] uint32_t claimAllocation(uint32_t address, uint32_t size, bool sysmem);
 
         IopHost *m_sifHost = nullptr;
         std::vector<uint8_t> m_ram;

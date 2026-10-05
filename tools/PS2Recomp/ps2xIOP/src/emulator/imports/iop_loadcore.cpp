@@ -1,4 +1,5 @@
 #include "iop_loadcore.h"
+#include "iop_loadcore_image.h"
 
 #include "../core/iop_cpu.h"
 #include "iop_imports.h"
@@ -11,7 +12,7 @@ namespace ps2x::iop::detail
     {
     }
 
-    bool IopLoadcore::dispatchImport(uint16_t ordinal, IopCpuState &cpu)
+    bool IopLoadcore::dispatchImport(uint16_t ordinal, IopCpuState &cpu, uint16_t version)
     {
         const uint32_t a0 = cpu.gpr[4];
         const auto setV0 = [&](uint32_t value)
@@ -21,6 +22,17 @@ namespace ps2x::iop::detail
 
         switch (ordinal)
         {
+        case 22: // Selected LOADCORE1.3 ProbeExecutableObject.
+        case 23: // LoadExecutableObject; caller owns image/header allocation.
+        {
+            if (version != 0x0103u) return false;
+            const auto result = ordinal == 22u
+                ? probeLoadcore13Elf(m_memory, a0, cpu.gpr[5])
+                : loadLoadcore13Elf(m_memory, a0, cpu.gpr[5]);
+            if (!result) return false;
+            setV0(*result);
+            return true;
+        }
         case 3:
         case 4:
         case 5:
