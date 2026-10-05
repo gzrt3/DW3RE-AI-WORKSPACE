@@ -40,6 +40,45 @@ uint64_t reg(const R5900Context& ctx, unsigned index, unsigned half=0) {
     uint64_t parts[2]; std::memcpy(parts,&ctx.r[index],16); return parts[half];
 }
 void fill_opcodes(uint8_t* ram) {
+    word(ram,0x001b0308u,0x54400003u);
+    word(ram,0x001b030cu,0xae3088c0u);
+    word(ram,0x001b0310u,0x1000001eu);
+    word(ram,0x001b0314u,0x0000102du);
+    word(ram,0x001b0318u,0x0240202du);
+    word(ram,0x001b031cu,0x0c069beeu);
+    word(ram,0x001b0320u,0x24050004u);
+    word(ram,0x001b0324u,0x3c020029u);
+    word(ram,0x001b0328u,0x3c040029u);
+    word(ram,0x001b032cu,0x24508480u);
+    word(ram,0x001b0330u,0x24848cc8u);
+    word(ram,0x001b0334u,0x0240382du);
+    word(ram,0x001b0338u,0xafa00000u);
+    word(ram,0x001b033cu,0x24050022u);
+    word(ram,0x001b0340u,0x0000302du);
+    word(ram,0x001b0344u,0x24080004u);
+    word(ram,0x001b0348u,0x0200482du);
+    word(ram,0x001b034cu,0x240a0004u);
+    word(ram,0x001b0350u,0x0c069e2au);
+    word(ram,0x001b0354u,0x0000582du);
+    word(ram,0x001b0358u,0x04410006u);
+    word(ram,0x001b035cu,0x3c030028u);
+    word(ram,0x001b0360u,0x3c020028u);
+    word(ram,0x001b0364u,0x0c069210u);
+    word(ram,0x001b0368u,0x8c4472acu);
+    word(ram,0x001b036cu,0x10000007u);
+    word(ram,0x001b0370u,0x0000102du);
+    word(ram,0x001b0374u,0x3c022000u);
+    word(ram,0x001b0378u,0x02021025u);
+    word(ram,0x001b037cu,0x8c6472acu);
+    word(ram,0x001b0380u,0x0c069210u);
+    word(ram,0x001b0384u,0x8c500000u);
+    word(ram,0x001b0388u,0x0200102du);
+    word(ram,0x001b038cu,0xdfbf0040u);
+    word(ram,0x001b0390u,0xdfb20030u);
+    word(ram,0x001b0394u,0xdfb10020u);
+    word(ram,0x001b0398u,0xdfb00010u);
+    word(ram,0x001b039cu,0x03e00008u);
+    word(ram,0x001b03a0u,0x27bd0050u);
     word(ram,0x1a88bcu,0xdfbf0000u);
     word(ram,0x1a88c0u,0x0000102du);
     word(ram,0x1a88c4u,0x03e00008u);
@@ -2302,6 +2341,61 @@ int main() {
         }
         for(unsigned i=0;i<4;++i) if(previousRebootTargets[i]) runtime->replaceFunction(rebootTargets[i],previousRebootTargets[i]);
         runtime->setMissingFunctionPolicy(previousRebootPolicy);
+        // Original CDVD command continuation, with adversarial low64 values
+        // that distinguish the R5900 branch from the old signed32 emitter.
+        const uint64_t cdvdSaved[]{0x1234567887654321ull,0x1122334455667788ull,
+                                   0xaabbccdd8899aabbull,0x55667788abcdef01ull};
+        auto prepareCdvd=[&](uint32_t sp) {
+            for(unsigned i=0;i<4;++i) {
+                const auto address=(sp+0x40u-i*0x10u)&0x1ffffffu;
+                std::memcpy(ram+address,&cdvdSaved[i],8);
+            }
+            reg(ctx,29,sp,0x111);reg(ctx,31,0,0x222);reg(ctx,18,0x2888c0,0x333);
+            reg(ctx,17,0x290000,0x444);reg(ctx,16,0xabcdef02,0x555);reg(ctx,2,0,0x666);
+        };
+        auto cdvdStep=[&](uint32_t pc) {ctx.pc=pc;runtime->lookupFunction(pc)(ram,&ctx,runtime.get());};
+        for(const auto gate : {0ull,1ull,0x100000000ull}) {
+            prepareCdvd(0x57000);word(ram,0x2888c0,0x778899aa);reg(ctx,2,gate,0x666);
+            cdvdStep(0x1b0308);
+            if(gate) {
+                require(word(ram,0x2888c0)==0xabcdef02&&ctx.pc==0x1a6fb8&&reg(ctx,31)==0x1b0324,
+                        "CDVD BNEL full64 taken delay stores command and reaches cache call");
+                require(reg(ctx,4)==0x2888c0&&reg(ctx,5)==4,"CDVD original cache arguments");
+                cdvdStep(0x1b0324);
+                require(ctx.pc==0x1a78a8&&reg(ctx,31)==0x1b0358,"CDVD RPC continuation preserves call boundary");
+                require(reg(ctx,4)==0x288cc8&&reg(ctx,5)==0x22&&reg(ctx,6)==0&&reg(ctx,7)==0x2888c0&&
+                        reg(ctx,8)==4&&reg(ctx,9)==0x288480&&reg(ctx,10)==4&&reg(ctx,11)==0&&word(ram,0x57000)==0,
+                        "CDVD RPC command, buffers, lengths and stack callback are original");
+            } else {
+                require(word(ram,0x2888c0)==0x778899aa&&reg(ctx,2)==0&&ctx.pc==0x87654321,
+                        "CDVD zero gate annuls store and all calls");
+            }
+        }
+        for(const auto rpc : {0ull,1ull,0x80000000ull,0x100000000ull,0xffffffff00000001ull,0xffffffffffffffffull}) {
+            prepareCdvd(0x57000);reg(ctx,2,rpc,0x666);reg(ctx,16,0x288480,0x555);
+            word(ram,0x2872ac,0x80000009);word(ram,0x288480,0x8000abcd);
+            cdvdStep(0x1b0358);
+            const bool negative=(rpc>>63)!=0;
+            require(ctx.pc==0x1a4840&&reg(ctx,31)==(negative?0x1b036cull:0x1b0388ull),
+                    "CDVD BGEZ uses sign of low64 and signals once on each route");
+            require(reg(ctx,4)==0xffffffff80000009ull&&reg(ctx,3)==0x280000,"CDVD semaphore load and branch delay");
+            require(reg(ctx,16)==(negative?0x288480ull:0xffffffff8000abcdull),
+                    "CDVD successful result reads original uncached alias with sign extension");
+            cdvdStep(negative?0x1b036c:0x1b0388);
+            require(reg(ctx,2)==(negative?0ull:0xffffffff8000abcdull)&&reg(ctx,2,1)==0x666,
+                    "CDVD returns zero on RPC failure or original result, preserving upper lane");
+            require(ctx.pc==0x87654321&&reg(ctx,29)==0x57050&&reg(ctx,31)==cdvdSaved[0]&&
+                    reg(ctx,18)==cdvdSaved[1]&&reg(ctx,17)==cdvdSaved[2]&&reg(ctx,16)==cdvdSaved[3],
+                    "CDVD original low64 frame restored without repeating prologue");
+            require(reg(ctx,29,1)==0x111&&reg(ctx,31,1)==0x222&&reg(ctx,18,1)==0x333&&
+                    reg(ctx,17,1)==0x444&&reg(ctx,16,1)==0x555&&!ctx.in_delay_slot&&ctx.branch_pc==0x1b039c,
+                    "CDVD high64 lanes and JR delay metadata preserved");
+        }
+        for(const uint32_t sp : {0x20057000u,0xfffffff0u}) {
+            prepareCdvd(sp);cdvdStep(0x1b036c);
+            require(reg(ctx,29)==static_cast<uint64_t>(static_cast<int64_t>(static_cast<int32_t>(sp+0x50u)))&&
+                    reg(ctx,31)==cdvdSaved[0]&&ctx.pc==0x87654321,"CDVD stack alias and ADDIU wrap");
+        }
         word(ram,0x3200c,0x35000);word(ram,0x32010,32);word(ram,0x3201c,0x371940);
         word(ram,0x35008,0x1a6920);word(ram,0x3500c,0x32000);word(ram,0x371940,0);
         require(runtime->registerFunction(0x36000,[](uint8_t*,R5900Context* c,PS2Runtime* r){c->pc=0;r->eeScheduler().requestStop();}),"register bounded scheduler test stop");

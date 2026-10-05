@@ -48,6 +48,8 @@ void fate_original_sif_irq_resume(uint8_t*,R5900Context*,PS2Runtime*);
 
 namespace {
 
+#include "recovered/cdvd_command_001b0308.inc"
+
 void original_reset_return(uint8_t* rdram, R5900Context* ctx, PS2Runtime* runtime) {
     // Both original XL reset routines omit this identical four-word epilogue.
     const uint32_t entry = ctx->pc;
@@ -2532,6 +2534,14 @@ void fate::recomp::register_boot_continuations(PS2Runtime& runtime) {
         if(runtime.hasFunction(address)) throw std::runtime_error("Original IOP sync continuation conflict");
     auto* ram = runtime.memory().getRDRAM();
     if (!ram) throw std::runtime_error("Boot continuations require loaded EE RAM");
+    for(size_t index=0; index<fate_recovered_001b0308_words.size(); ++index) {
+        uint32_t actual=0;
+        std::memcpy(&actual,ram+0x1b0308u+index*4u,sizeof(actual));
+        if(actual!=fate_recovered_001b0308_words[index])
+            throw std::runtime_error("Recovered CDVD command differs from original ELF");
+    }
+    for(const uint32_t pc : {0x1b0308u,0x1b0324u,0x1b0358u,0x1b036cu,0x1b0388u})
+        if(runtime.hasFunction(pc)) throw std::runtime_error("Recovered CDVD command conflicts with existing function");
     for(const uint32_t address : {0x1ac93cu,0x1ac948u,0x1ac970u,0x1ac9ecu,0x1ac9f8u,0x1aca04u,0x1aca14u,0x1aca20u,0x1aca30u,0x1aca3cu,0x1aca54u})
         if(runtime.hasFunction(address)) throw std::runtime_error("Original IOP reboot continuation conflict");
     for(const uint32_t address : {0x1a6c28u,0x1a6c38u,0x1a6c44u,0x1a7218u,0x1a7224u})
@@ -2719,6 +2729,9 @@ void fate::recomp::register_boot_continuations(PS2Runtime& runtime) {
         if(!runtime.registerFunction(address,subsystem_flag_resume))
             throw std::runtime_error("Subsystem flag resume registration failed");
     }
+    for(const uint32_t pc : {0x1b0308u,0x1b0324u,0x1b0358u,0x1b036cu,0x1b0388u})
+        if(!runtime.registerFunction(pc,fate_recovered_001b0308))
+            throw std::runtime_error("Recovered CDVD command registration failed");
     if(!runtime.registerFunction(0x1abd78u,original_reset_return) ||
        !runtime.registerFunction(0x1a88bcu,original_reset_return))
         throw std::runtime_error("Original reset return registration failed");
