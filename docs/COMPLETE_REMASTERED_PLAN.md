@@ -2265,3 +2265,35 @@ argc/argv and ModuleInfo plus actual SIO2MAN hardware dependencies. Then origina
 video loops, Press Start/input/audio, battle, combined content, saves/modding and
 final C:/Games/DW packaging. All8 final criteria open; GAME_PARITY=NOT_COMPLETE.
 No native build/probe remains active at this checkpoint.
+
+## Audit recheck, XInput and single-save research — after cycle007
+
+Audited published395df9f and verified remote main, executable/ELF identity,
+nine saved run files and45 bounded source fingerprints. Prior ten public files
+remain intact. Four new Play! loader/SIO2 sources and three input/memory-card
+sources match pinned revisions. No redundant native build/run and no new game
+parity claimed. Original SIO2MAN is module2.5/library2.3, entry634, with28 static
+import stubs in eight libraries; differs from SDK3.17. Play!'s owned loader
+request design is useful, but original resultPtr/ABI/alignment/residency must
+be preserved rather than copied blindly. See audits/CURRENT_RECHECK_20261005.md.
+
+The user requested research into XInput and replacing memory cards with a single
+file. INPUT_AND_SINGLE_SAVE.md records integration points and acceptance cases.
+A new read-only tools/probe_xinput.py called the real Windows XInput1.4 API;
+all four indices returned1167/disconnected. No synthetic controller, input
+injection or rumble. Input remains unconnected to the actual guest.
+Recommended host save design: one statically integrated SQLite .dw3save container
+preserving original paths/payloads and logical card identity, with real durable
+completion and recovery. A journal may exist during writes/recovery. A raw .ps2
+image is the alternative for sector-level access, not a drop-in file-HLE backend.
+The original XL ELF contains both DW3 and XL save-name templates, supporting a
+shared namespace to investigate; actual cross-save use is not yet traced.
+
+Collected all three advisory queues; no new UI submission or paid calls, budget
+changes, cleanup or save migration. Backup VERIFIED report inspected, not65.7GB
+rehashed. Original files and all previous evidence remain intact. Triage updated
+to remove obsolete statements that presentation and backup were still pending.
+Next: implement MODLOAD7 owned/resumable loader and RPC continuation with original
+ABI and failure tests; prepare one common XInput provider/serialization contract,
+then original video/Start and verified saving. No required full-game work removed.
+GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED; all8 gates open.

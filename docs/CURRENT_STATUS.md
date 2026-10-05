@@ -1,5 +1,16 @@
 # Current verified state
 
+Audit after cycle007: current executable/ELF hashes, nine retained run files and
+45 recorded source fingerprints match; no native behavior change or new run.
+Original SIO2MAN metadata identifies2.5 (exports2.3), distinct from SDK3.17.
+Play!'s persistent loader requests provide an additional architecture reference,
+with documented ABI/result/residency differences from original MODLOAD1.6.
+See audits/CURRENT_RECHECK_20261005.md. The subsequent user-requested input/save
+research is in INPUT_AND_SINGLE_SAVE.md: common XInput provider and proposed
+single SQLite save container preserving both games' original paths/payloads.
+The real host XInput1.4 probe works; all four indices were disconnected.
+Neither input nor that save container is integrated in gameplay. All8 gates open.
+
 Latest update: cycle007, 2026-10-05 UTC. Release build and real native live
 observation passed their scoped checks. The game remains blocked at MODLOAD1.6
 export7 / IOP0x14374, now identified as the actual request for
