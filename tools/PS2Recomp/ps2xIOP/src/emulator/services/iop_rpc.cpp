@@ -19,8 +19,10 @@ namespace ps2x::iop::detail
     {
     }
 
-    void IopRpcBridge::reset()
+    void IopRpcBridge::reset(bool discardExecution)
     {
+        if (!discardExecution && !m_pendingRpcCompletions.empty())
+            throw std::logic_error("Cannot reset RPC while a request owns execution or completion");
         m_servers.clear();
         for(const auto &[server,pending]:m_pendingRpcCompletions) {
             (void)server;(void)m_memory.freeAllocation(pending.packet);
@@ -132,6 +134,12 @@ namespace ps2x::iop::detail
         if(!bytes || packetSize<56u) return false;
         std::array<uint32_t,14> packet{};std::memcpy(packet.data(),bytes,sizeof(packet));
         const uint32_t sd=packet[13];
+        // One descriptor cannot own a new RPC while its prior call/transport
+        // is unfinished. Reject before changing guest queue links or metadata.
+        if(m_pendingRpcCompletions.contains(sd))return false;
+        for(const auto &[ownerQueue,activeServer]:m_rpcLoopRequests) {
+            (void)ownerQueue;if(activeServer==sd)return false;
+        }
         if(!m_memory.ownsRamRange(sd,68u)) return false;
         const uint32_t queue=m_memory.read32(sd+64u);
         if(!m_memory.ownsRamRange(queue,24u)) return false;
@@ -265,13 +273,14 @@ namespace ps2x::iop::detail
         return false;
     }
 
-    bool IopRpcBridge::executeRpcRequest(uint32_t server,IopGuestExecutor &executor)
+    IopRpcBridge::Execution IopRpcBridge::executeRpcRequest(uint32_t server,IopGuestExecutor &executor,
+        const IopCpuState *caller)
     {
         auto pending=m_pendingRpcCompletions.find(server);
         if(pending==m_pendingRpcCompletions.end()) {
-            if(m_rpcStorage==0u || !m_memory.ownsRamRange(server,68u))return false;
+            if(m_rpcStorage==0u || !m_memory.ownsRamRange(server,68u))return Execution::Invalid;
             const uint32_t function=m_memory.read32(server+4u);
-            if(function==0u)return false;
+            if(function==0u || !m_memory.ownsRamRange(function,4u))return Execution::Invalid;
             uint32_t gp=0u;
             for(const auto &[sid,registered]:m_servers) {
                 (void)sid;if(registered.serverData==server){gp=registered.gp;break;}
@@ -279,42 +288,56 @@ namespace ps2x::iop::detail
             // Reserve completion snapshot before invoking potentially stateful
             // server code. Retrying transport must not invoke that code twice.
             const uint32_t owned=m_memory.allocate(64u,16u);
-            if(owned==0u)return false;
-            uint32_t result=0u;
-            try {
-                result=executor.executeGuestFunctionWithBudget(function,m_memory.read32(server+36u),
-                    m_memory.read32(server+8u),m_memory.read32(server+12u),0u,gp,100000u);
-            } catch(...) { (void)m_memory.freeAllocation(owned);throw; }
-            const uint32_t rid=m_memory.read32(server+52u);
-            const uint32_t reply=nextRpcReplyPacket((rid&4u)!=0u?static_cast<int>((rid>>16u)&0xFFFFu):-1);
-            if(reply==0u){(void)m_memory.freeAllocation(owned);return false;}
-            m_memory.write32(reply+32u,0x8000000au);
-            m_memory.write32(reply+28u,m_memory.read32(server+28u));
-            const bool command=m_memory.read32(server+48u)!=0u;
-            if(!command){m_memory.write32(reply+24u,0u);m_memory.write32(reply+16u,0u);}
-            std::array<uint8_t,64> snapshot{};
-            if(!m_memory.readRam(reply,snapshot.data(),snapshot.size()) || !m_memory.writeRam(owned,snapshot.data(),snapshot.size())) {
-                (void)m_memory.freeAllocation(owned);return false;
-            }
-            PendingRpcCompletion completion{};completion.packet=owned;completion.source=result;
+            if(owned==0u)return Execution::Pending;
+            PendingRpcCompletion completion{};
+            completion.packet=owned;completion.function=function;completion.gp=gp;
+            completion.caller=caller;completion.executor=&executor;completion.ownerThread=m_kernel.currentThreadId();
+            completion.arguments={m_memory.read32(server+36u),m_memory.read32(server+8u),m_memory.read32(server+12u)};
+            completion.rid=m_memory.read32(server+52u);completion.client=m_memory.read32(server+28u);
             completion.destination=m_memory.read32(server+40u);completion.directTarget=m_memory.read32(server+32u);
-            completion.size=result!=0u?static_cast<int32_t>(m_memory.read32(server+44u)):0;
-            completion.command=command;
+            completion.size=static_cast<int32_t>(m_memory.read32(server+44u));
+            completion.command=m_memory.read32(server+48u)!=0u;completion.queue=m_memory.read32(server+64u);
             pending=m_pendingRpcCompletions.emplace(server,completion).first;
         }
-        const auto completion=pending->second;
+        auto &completion=pending->second;
+        // Refuse a competing requester before touching the original token or
+        // its transport. Keep ownership even after the guest frame is consumed.
+        if(completion.caller!=caller || completion.executor!=&executor ||
+           completion.ownerThread!=m_kernel.currentThreadId())return Execution::Invalid;
+        if(completion.failed)return Execution::Invalid;
+        if(!completion.returned) {
+            try {
+                const auto result=executor.resumeGuestFunction(completion.callToken,completion.function,
+                    completion.arguments[0],completion.arguments[1],completion.arguments[2],0u,completion.gp,100000u);
+                if(!result)return Execution::Pending;
+                completion.source=*result;completion.returned=true;
+                if(*result==0u)completion.size=0;
+            } catch(...) { completion.failed=true;throw; }
+        }
+        if(!completion.replyReady) {
+            const uint32_t reply=nextRpcReplyPacket((completion.rid&4u)!=0u?static_cast<int>((completion.rid>>16u)&0xFFFFu):-1);
+            if(reply==0u)return Execution::Pending;
+            m_memory.write32(reply+32u,0x8000000au);
+            m_memory.write32(reply+28u,completion.client);
+            if(!completion.command){m_memory.write32(reply+24u,0u);m_memory.write32(reply+16u,0u);}
+            std::array<uint8_t,64> snapshot{};
+            if(!m_memory.readRam(reply,snapshot.data(),snapshot.size()) || !m_memory.writeRam(completion.packet,snapshot.data(),snapshot.size())) {
+                completion.failed=true;return Execution::Invalid;
+            }
+            completion.replyReady=true;
+        }
         bool transferred=false;
         if(completion.command)transferred=sendRpcReply(completion.packet,completion.source,completion.destination,completion.size);
         else {
             const uint32_t size=completion.size>0?static_cast<uint32_t>(completion.size):0u;
             if(size!=0u && (!m_memory.ownsRamRange(completion.source,size) ||
-               !m_host.writeGuest(completion.destination,m_memory.ram().data()+IopMemory::physicalAddress(completion.source),size)))return false;
+               !m_host.writeGuest(completion.destination,m_memory.ram().data()+IopMemory::physicalAddress(completion.source),size)))return Execution::Pending;
             transferred=m_host.writeGuest(completion.directTarget,
                 m_memory.ram().data()+IopMemory::physicalAddress(completion.packet),64u);
         }
-        if(!transferred)return false;
-        (void)m_memory.freeAllocation(completion.packet);m_pendingRpcCompletions.erase(pending);
-        return true;
+        if(!transferred)return Execution::Pending;
+        (void)m_memory.freeAllocation(completion.packet);m_pendingRpcCompletions.erase(server);
+        return Execution::Complete;
     }
 
     bool IopRpcBridge::installCommandService()
@@ -645,6 +668,9 @@ namespace ps2x::iop::detail
             RpcServer server;
             server.serverData = cpu.gpr[4];
             server.sid = cpu.gpr[5];
+            if(m_pendingRpcCompletions.contains(server.serverData))return false;
+            if(const auto existing=m_servers.find(server.sid);existing!=m_servers.end() &&
+               m_pendingRpcCompletions.contains(existing->second.serverData))return false;
             server.function = cpu.gpr[6];
             server.gp = cpu.gpr[28];
             server.buffer = cpu.gpr[7];
@@ -707,7 +733,13 @@ namespace ps2x::iop::detail
             setV0(server);return true;
         }
         case 21: // ExecRequest is void; transport failure remains pending.
-            return executor!=nullptr && executeRpcRequest(cpu.gpr[4],*executor);
+        {
+            if(!executor)return false;
+            const auto state=executeRpcRequest(cpu.gpr[4],*executor,&cpu);
+            if(state==Execution::Invalid)return false;
+            if(state==Execution::Pending)cpu.yielded=true;
+            return true;
+        }
         case 22: // Original nonreturning GetNextRequest/ExecRequest/Sleep loop.
         {
             const uint32_t queue=cpu.gpr[4];
@@ -728,7 +760,9 @@ namespace ps2x::iop::detail
                 }
                 active=m_rpcLoopRequests.emplace(queue,server).first;
             }
-            if(executeRpcRequest(active->second,*executor))m_rpcLoopRequests.erase(active);
+            const auto state=executeRpcRequest(active->second,*executor,&cpu);
+            if(state==Execution::Invalid)return false;
+            if(state==Execution::Complete)m_rpcLoopRequests.erase(queue);
             // Bound each scheduler slice to one request or transport retry.
             // The import PC is retained by IopEmulator; RpcLoop never returns.
             cpu.yielded=true;
@@ -741,6 +775,7 @@ namespace ps2x::iop::detail
         {
             const uint32_t serverData = cpu.gpr[4];
             const uint32_t queue=cpu.gpr[5];
+            if(m_pendingRpcCompletions.contains(serverData))return false;
             if(!m_memory.ownsRamRange(queue,24u)|| !m_memory.ownsRamRange(serverData,68u))return false;
             uint32_t link=0u;
             if(!rpcListLink(queue+8u,56u,serverData,false,link)){setV0(0u);return true;}
@@ -758,6 +793,9 @@ namespace ps2x::iop::detail
         case 25: // RemoveRpcQueue
         {
             const uint32_t target=cpu.gpr[4];
+            for(const auto &[server,pending]:m_pendingRpcCompletions) {
+                (void)server;if(pending.queue==target)return false;
+            }
             uint32_t current=m_rpcActiveQueue,previous=0u;
             for(uint32_t n=0u;current!=0u && n<IopMemory::RamSize/24u;++n) {
                 if(!m_memory.ownsRamRange(current,24u))return false;
@@ -976,16 +1014,22 @@ namespace ps2x::iop::detail
             m_host.log(LogLevel::Warning, "[IOP:SIFCMD] posted receiver packet rejected");
     }
 
-    void IopRpcBridge::removeServersInRange(uint32_t base, uint32_t size)
+    bool IopRpcBridge::removeServersInRange(uint32_t base, uint32_t size)
     {
+        for(const auto &[server,pending]:m_pendingRpcCompletions) {
+            (void)server;
+            const uint32_t function=IopMemory::physicalAddress(pending.function);
+            if(function>=base && function-base<size)return false;
+        }
         for (auto server = m_servers.begin(); server != m_servers.end();)
         {
             const uint32_t function = IopMemory::physicalAddress(server->second.function);
-            if (function >= base && function < base + size)
+            if (function >= base && function - base < size)
                 server = m_servers.erase(server);
             else
                 ++server;
         }
+        return true;
     }
 
     bool IopRpcBridge::hasServer(uint32_t sid) const noexcept

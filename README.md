@@ -20,7 +20,7 @@ Current product contract: [native PC objective](docs/NATIVE_PC_OBJECTIVE.md). Th
 - The original IOP reboot request now reaches the selected module startup and original EESYNC callback, followed by the new EE handshake.
 - A verified catalog restores 7,636 existing resume aliases and 589 original return tails. Existing reviewed overrides take precedence.
 - Native cycle007 builds in the Git checkout and waits at MODLOAD1.6 export7 while requesting the original SIO2MAN.IRX, with input integrity MATCH. A real native window observes zero GS images. MODLOAD15 is implemented; missing imports and incomplete synchronous IOP calls stop the affected execution without a fabricated RPC reply. The earlier `0x0019A6C4` continuation remains unresolved; see `docs/CURRENT_STATUS.md`.
-- Three bounded advisory queues are connected: GitHub Copilot runs hourly locally; Microsoft Copilot and browser ChatGPT use Computer Use through the main continuation. All findings are independently checked. See [integration and limits](docs/COPILOT_PIPELINE.md).
+- Four bounded advisory queues are connected: GitHub Copilot, Microsoft Copilot, browser ChatGPT and AWS Bedrock through the existing private budget ledger. Real GitHub and Nova Pro reviews ran in cycle008; all findings are independently checked. See [pool integration and limits](docs/ADVISER_POOL.md).
 - Combined data/VFS components exist, but combined gameplay, graphics, sound, input, saves and full content coverage remain unverified.
 
 The implementation and acceptance criteria are in [the project plan](docs/COMPLETE_REMASTERED_PLAN.md). Historical entries are retained and may describe superseded states.

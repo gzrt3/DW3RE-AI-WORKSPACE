@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "game_complete": false,
+  "final_acceptance_verified": 0,
+  "coordinator_tests": {
+    "pool": 6,
+    "bridge": 14,
+    "native_pipeline": 8,
+    "status": "PASS"
+  },
+  "private_hybrid_offline_tests": {
+    "count": 154,
+    "status": "PASS",
+    "includes_reconciliation": 25
+  },
+  "github_copilot": {
+    "ui_run": "COMPLETED",
+    "finding": "Active server descriptor can be overwritten by a second queued request.",
+    "independent_result": "Reproduced by failing regression and repaired;14 continuation contracts pass.",
+    "raw_reply": {
+      "path": "artifacts/copilot_bridge/replies/rpc-continuation-review-06244ff109c0df5998010f6e.json",
+      "bytes": 1350,
+      "sha256": "044a749b75aa348d9123d12ad64fef2309406c34cfde1d4cbf54e636b26187b6"
+    }
+  },
+  "bedrock": {
+    "model": "us.amazon.nova-pro-v1:0",
+    "region": "us-east-2",
+    "actual_adapter_success": true,
+    "usage": {
+      "input_tokens": 3903,
+      "output_tokens": 289,
+      "total_tokens": 4192
+    },
+    "cost_calculated_usd": 0.0040472,
+    "billed_usd": null,
+    "semantic_review": "REJECTED: the cited source explicitly checks caller, executor and thread identity before continuing.",
+    "raw_reply": {
+      "path": "artifacts/bedrock_bridge/replies/rpc-continuation-review-318eb3effd4e86202ba3b7d0.json",
+      "bytes": 911,
+      "sha256": "a8d6cebf072a930e3c7ee5944339c5b2db21983daf8083f62c82bfc32823a3db"
+    },
+    "existing_ledger_preserved": true,
+    "legacy_events_preserved": 109,
+    "historical_reservation_overlays": 3,
+    "effective_reserved_usd": 0.0223391,
+    "ceiling_usd": 10,
+    "remaining_calls": 30
+  },
+  "microsoft_copilot": {
+    "observed": "Accessible, onboarding/settings present",
+    "new_request_sent": false
+  },
+  "chatgpt": {
+    "observed": "No new observation; previous usage limit retained",
+    "new_request_sent": false
+  },
+  "logs": [
+    {
+      "path": "artifacts/adviser_pool/tests-bridge-001.log",
+      "bytes": 2114,
+      "sha256": "12a2ba5559b3ff74b832ca40abbb19fa083a2219af0dd18046b87efceb7eaa5b"
+    },
+    {
+      "path": "artifacts/adviser_pool/tests-bridge-final.log",
+      "bytes": 2114,
+      "sha256": "bef462dcc1fd0e16bd9a519ec12585ef6758c5b3906400b5215a3d57d1aee377"
+    },
+    {
+      "path": "artifacts/adviser_pool/tests-pipeline-001.log",
+      "bytes": 1303,
+      "sha256": "88e0dfeaa8cfad98878b06d1b4f2b3966af5fed8eaabd4f0e68480628a986e1e"
+    },
+    {
+      "path": "artifacts/adviser_pool/tests-pipeline-final.log",
+      "bytes": 1303,
+      "sha256": "d3a45e57d0ebeb1d00fa0541b289c7627958d771a5d5f8dea0ae433f8f785c7a"
+    },
+    {
+      "path": "artifacts/adviser_pool/tests-pool-001.log",
+      "bytes": 995,
+      "sha256": "1f5ad9725fe9013179b90084e362a5a951d140be22a1883fecaa35dfc05b5a87"
+    },
+    {
+      "path": "artifacts/adviser_pool/tests-pool-002.log",
+      "bytes": 995,
+      "sha256": "e2fc3588b043b180fabb9ca86205a02e5494f77280c3bc70d8e5ceb01879b086"
+    },
+    {
+      "path": "artifacts/adviser_pool/tests-pool-final.log",
+      "bytes": 995,
+      "sha256": "111eb281630317fa5b0c9815113f887f9c96244e492a47fdb0f776b16712469c"
+    }
+  ]
+}

@@ -2332,3 +2332,34 @@ complete its scheduler/RPC ownership integration and yield/wait/return tests
 before accepting it. Original MODLOAD7/SIO2MAN remains the measured barrier.
 Then original movies/Press Start, guest controls, battle, combined content,
 durable saves/modding and packaging. GAME_PARITY=NOT_COMPLETE; all8 gates open.
+
+## Cycle008: owned IOP calls and the working adviser pool
+
+Scheduler/RPC continuation is integrated and tested. Fourteen synthetic
+continuation contracts pass Debug/Release, with3 selected Debug suites and6
+Release suites passing. Two regressions first failed: a competing caller could
+steal/poison pending completion; a second queued request could overwrite the
+active descriptor. Both are repaired, with failures preserved. The second was
+suggested as a bounded uncertainty by a real GitHub Copilot Computer Use review
+and independently reproduced. Full Release buildPASS. Three cycle008 probes
+retain inputMATCH and the original MODLOAD7/IOP14374/SIO2MAN barrier. No title or
+movie; all8 product gates open. See NATIVE_IOP_CONTINUATIONS_20261005.md.
+
+Four adviser queues now share tools/adviser_pool.py and native_pipeline.py.
+GitHub's actual hourly inbox was observed in D. Microsoft Copilot was accessible
+but displayed onboarding/settings; no change/submission. ChatGPT's prior limit
+remains respected. Three historical AWS reservations were reconciled by additive
+hash-bound records, preserving109 original events and unknown actual billing.
+The private router passed154 offline tests. One real Nova Pro review in
+us-east-2 succeeded:3903 input+289 output tokens, calculatedUSD0.0040472,
+billed amount unknown. Its claim contradicts explicit ownership checks and was
+REJECTED without applying code. Reservation totalUSD0.0223391, capUSD10,
+30 remaining call grants. Azure policy and Copilot quotas remain separate.
+Public pool6/bridge14/pipeline8 contracts pass. See ADVISER_POOL.md and evidence.
+
+Next: preserve original MODLOAD worker execution by first implementing selected
+LOADCORE dependencies/header ownership, or a rigorously equivalent owned loader.
+Original ModuleInfo is separate from IopModuleID; completion/result/residency
+must remain distinct. Then real SIO2/DMA/IRQ behavior, original videos/Press Start,
+controls, battle, combined content, durable saves/modding and final packaging.
+No active native build/probe remains at this checkpoint. GAME_PARITY=NOT_COMPLETE.

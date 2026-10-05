@@ -1,5 +1,13 @@
 # Copilot participation in the native pipeline
 
+Current cycle008:14 owned IOP continuation contracts PASS Debug/Release; full
+Release buildPASS and3 native probes inputMATCH, still MODLOAD7/SIO2MAN with
+no title. Four adviser queues integrated. Real GitHub review led to a reproduced
+and repaired queue-overwrite bug. One real AWS Nova Pro review succeeded; its
+incorrect claim was rejected. Budget history preserved, capUSD10,30 call grants
+remaining. See ADVISER_POOL.md, NATIVE_IOP_CONTINUATIONS_20261005.md and
+evidence/adviser_pool_20261005.json. Historical entries below remain preserved.
+
 Latest cycle007: native-presentation now exports the implemented presenter,
 prepared entry path, VBlank observer and focused contracts. A changed-input
 request is queued for the existing GitHub review schedule. Earlier requests and
