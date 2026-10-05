@@ -2363,3 +2363,54 @@ Original ModuleInfo is separate from IopModuleID; completion/result/residency
 must remain distinct. Then real SIO2/DMA/IRQ behavior, original videos/Press Start,
 controls, battle, combined content, durable saves/modding and final packaging.
 No active native build/probe remains at this checkpoint. GAME_PARITY=NOT_COMPLETE.
+
+## Loader prerequisites and original replay — 2026-10-05 UTC
+
+Progress: implemented IOMAN6 native file reads, SYSMEM low/high/fixed page256
+allocation/free/query ownership, and selected LOADCORE1.3 image exports22/23.
+The separate ModuleInfo header is reserved with the image before loading.
+Unsupported relocation/format/ownership paths stay explicit and transactional.
+Three independent implementation/research paths converged before one owner built.
+Nine selected suites PASS Debug/Release, including41 new scoped contracts,
+10,000 allocation operations per configuration and a version regression.
+The original LOADCORE instruction replay matches full FileInfo/header/image/BSS
+and relocations for SIO2MAN/MODLOAD/LOADCORE at three bases plus malformed headers:
+24 comparisons per configuration. This is local-core original replay, not an
+independent PCSX2 trace. Full Release buildPASS; bridge14/probe12 testsPASS.
+
+Live native run lasted40.76seconds and exited2 at its cooperative visual deadline,
+inputMATCH,2420 observations, zero GS presentations. Computer Use displayed the
+actual black native window. The measured barrier remains MODLOAD1.6 export7,
+PC14374, SIO2MAN.IRX; SP now121c10 under the corrected allocator. The earlier
+EE19A6C4 remains unresolved. No boot/title/video/battle gate is closed.
+See NATIVE_LOADER_PREREQUISITES_20261005.md and native_loader_prerequisites evidence.
+
+All four adviser queues collected; a new named IOMAN review exported. One real
+Nova Pro call used2187 input/285 output tokens, calculatedUSD0.0026616, billed
+unknown. Its claim that short reads are unhandled contradicted explicit code and
+was rejected; raw response and additive review retained. Effective AWS reservation
+USD0.0318751, strict capUSD10,29 grants remain. No Azure/cap change. GitHub hourly
+automation observed. Microsoft prompt reserved/typed, but a diagnostic privacy
+modal appeared before send; no privacy action or send observed, no auto retry.
+ChatGPT remains deferred under its prior limit. UI screenshots were point-in-time,
+not continuous video streaming.
+
+Next: implement coherent LOADCORE internal data/module registration/linking and
+boot-mode state required by original MODLOAD. Preserve actual worker ownership,
+argv/entry/result/residency distinctions. Then real SIO2/DMA/IRQ, original video
+loops/Press Start, controls, battle, combined content, durable saves/modding and
+final C:/Games/DW packaging. EE SysMemory APIs still allocate host-tagged buffers;
+cross-free by guest SYSMEM needs explicit ownership integration before reliance.
+No active native build/probe remains. GAME_PARITY=NOT_COMPLETE; all8 gatesOPEN.
+
+GitHub hourly IOMAN review arrived during this continuation with a bounded
+last-byte/alias concern. Added the discriminating end-of-RAM test for all three
+direct aliases; valid final byte succeeds and crossing span rejects without I/O
+or mutation. Nine suites remain PASS Debug/Release in tests-*-002.log. Only test
+code changed, so the prior native build/probe and original replay remain current.
+
+Next lifecycle research confirmed export3 is internal data and12 is boot-mode
+lookup; original linking rewrites JR stubs to J, which the current decoder would
+not recognize. Implement verified HLE thunk/binding provenance with coherent
+guest module/provider/client lists before enabling physical MODLOAD. Preserve
+loadcore_lifecycle_011/contract.md and do not seed arbitrary boot records.

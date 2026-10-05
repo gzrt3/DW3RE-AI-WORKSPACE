@@ -1,5 +1,22 @@
 # Current verified state
 
+Latest: loader_prerequisites_001. IOMAN native reads, SYSMEM page256 allocation
+and selected LOADCORE1.3 exports22/23 are implemented. Nine selected suites PASS
+Debug/Release:11 file,12 allocator (10,000 bitmap-checked operations),18 image
+contracts plus version and existing regressions. Original LOADCORE replay PASS:
+24 comparisons per configuration, including full SIO2MAN/MODLOAD/LOADCORE image
+bytes at three bases. Full Release buildPASS. A40-second live native observation
+ended at its deadline, exit2/inputMATCH,2420 observations/zero GS presentations;
+MODLOAD7/SIO2MAN remains the barrier. Computer Use observed the real black window.
+No title/movie/battle; all8 final gates OPEN. Read NATIVE_LOADER_PREREQUISITES_20261005.md
+and evidence/native_loader_prerequisites_20261005.json. Next: actual LOADCORE
+module list, boot modes, registration/linking and original MODLOAD worker.
+One new Nova Pro review completed; unsupported short-read claim rejected.
+AWS reservedUSD0.0318751, capUSD10,29 calls remain; billed amount unknown.
+Microsoft request typed but not sent because a privacy modal appeared; no
+automatic retry or privacy action. GitHub hourly IOMAN reply prompted a new all-alias end-of-RAM test; it passes
+both configurations. Prior states below remain historical.
+
 Current cycle008:14 owned IOP continuation contracts PASS Debug/Release; full
 Release buildPASS and3 native probes inputMATCH, still MODLOAD7/SIO2MAN with
 no title. Four adviser queues integrated. Real GitHub review led to a reproduced

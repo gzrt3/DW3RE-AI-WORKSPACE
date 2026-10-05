@@ -296,45 +296,107 @@ namespace ps2x::iop::detail
         return result;
     }
 
+    std::vector<IopMemory::MemoryBlock> IopMemory::memoryBlocks(bool pages) const
+    {
+        // Allocations are sorted and non-overlapping. A host allocation makes
+        // every page it touches unavailable to SYSMEM, including its padding.
+        std::vector<MemoryBlock> blocks;
+        uint32_t cursor = HeapBase;
+        for (const auto &allocation : m_allocations)
+        {
+            const uint32_t begin = pages ? allocation.address & ~255u : allocation.address;
+            const uint32_t end = pages ? alignUp(allocation.address + allocation.size, 256u)
+                                       : allocation.address + allocation.size;
+            if (begin < cursor)
+            {
+                // Only page rounding can overlap; preserve adjacent allocation
+                // boundaries so queries still identify each separate block.
+                if (end > cursor)
+                {
+                    blocks.back().size += end - cursor;
+                    cursor = end;
+                }
+                continue;
+            }
+            if (begin > cursor) blocks.push_back({cursor, begin - cursor, false});
+            blocks.push_back({begin, end - begin, true});
+            cursor = end;
+        }
+        if (cursor < HeapLimit) blocks.push_back({cursor, HeapLimit - cursor, false});
+        return blocks;
+    }
+
+    uint32_t IopMemory::claimAllocation(uint32_t address, uint32_t size, bool sysmem)
+    {
+        if (size == 0u || address < HeapBase || address >= HeapLimit || size > HeapLimit - address)
+            return 0u;
+        const auto next = std::lower_bound(m_allocations.begin(), m_allocations.end(), address,
+            [](const Allocation &block, uint32_t value) { return block.address < value; });
+        if (next != m_allocations.end() && size > next->address - address) return 0u;
+        if (next != m_allocations.begin())
+        {
+            const auto &previous = *(next - 1);
+            if (previous.address + previous.size > address) return 0u;
+        }
+        m_allocations.insert(next, {address, size, sysmem});
+        markOwned(address, size);
+        return address;
+    }
+
     uint32_t IopMemory::allocate(uint32_t size, uint32_t alignment, std::optional<uint32_t> fixed)
     {
+        // Retain host size/alignment and bump preference, but bound arithmetic
+        // before rounding and reuse holes if the old high-water range is full.
+        if (size > HeapLimit - HeapBase) return 0u;
         size = alignUp(std::max(size, 1u), 16u);
         alignment = std::max<uint32_t>(alignment, 4u);
+        if ((alignment & (alignment - 1u)) != 0u || alignment > RamSize) return 0u;
         if (fixed)
         {
-            const uint32_t address = *fixed;
-            if (address < HeapBase || address + size > HeapLimit)
-                return 0u;
-            for (const auto &block : m_allocations)
-                if (address < block.address + block.size && block.address < address + size)
-                    return 0u;
-            m_allocations.push_back({address, size});
-            markOwned(address, size);
-            return address;
+            if ((*fixed & (alignment - 1u)) != 0u) return 0u;
+            return claimAllocation(*fixed, size, false);
         }
-
-        uint32_t candidate = alignUp(m_heapCursor, alignment);
-        for (;;)
+        const auto blocks = memoryBlocks(false);
+        for (const uint32_t lower : {m_heapCursor, HeapBase})
         {
-            bool overlap = false;
-            for (const auto &block : m_allocations)
+            for (const auto &block : blocks)
             {
-                if (candidate < block.address + block.size && block.address < candidate + size)
-                {
-                    candidate = alignUp(block.address + block.size, alignment);
-                    overlap = true;
-                    break;
-                }
+                if (block.allocated) continue;
+                const uint32_t candidate = alignUp(std::max(block.address, lower), alignment);
+                const uint32_t end = block.address + block.size;
+                if (candidate > end || size > end - candidate) continue;
+                const uint32_t result = claimAllocation(candidate, size, false);
+                if (result != 0u) m_heapCursor = std::max(m_heapCursor, candidate + size);
+                return result;
             }
-            if (!overlap)
-                break;
         }
-        if (candidate > HeapLimit || size > HeapLimit - candidate)
-            return 0u;
-        m_allocations.push_back({candidate, size});
-        markOwned(candidate, size);
-        m_heapCursor = std::max(m_heapCursor, candidate + size);
-        return candidate;
+        return 0u;
+    }
+
+    uint32_t IopMemory::allocateSysMemory(uint32_t mode, uint32_t size, uint32_t fixed)
+    {
+        // Identified SYSMEM1.1: export4@2ec, allocation@470, fixed check@604.
+        // This reproduces placement within our bounded owned heap, not the
+        // original allocator's RAM-resident metadata or boot reservation map.
+        if (mode > 2u || size == 0u || size > HeapLimit - HeapBase) return 0u;
+        size = alignUp(size, 256u);
+        if (mode == 2u && (fixed & 255u) != 0u) return 0u;
+        const auto blocks = memoryBlocks(true);
+        uint32_t candidate = 0u;
+        for (const auto &block : blocks)
+        {
+            if (block.allocated || size > block.size) continue;
+            if (mode == 2u)
+            {
+                if (fixed < block.address || fixed > block.address + block.size ||
+                    size > block.address + block.size - fixed) continue;
+                candidate = fixed;
+                break;
+            }
+            candidate = mode == 1u ? block.address + block.size - size : block.address;
+            if (mode == 0u) break;
+        }
+        return candidate != 0u ? claimAllocation(candidate, size, true) : 0u;
     }
 
     bool IopMemory::freeAllocation(uint32_t address)
@@ -342,18 +404,53 @@ namespace ps2x::iop::detail
         const auto block = std::find_if(m_allocations.begin(), m_allocations.end(),
                                         [&](const Allocation &candidate)
                                         { return candidate.address == address; });
-        if (block == m_allocations.end())
-            return false;
+        if (block == m_allocations.end()) return false;
+        // Contents remain in RAM, as on SYSMEM free. Only ownership is revoked.
         std::fill(m_owned.begin() + block->address,
-                  m_owned.begin() + block->address + block->size,
-                  uint8_t{0});
+                  m_owned.begin() + block->address + block->size, uint8_t{0});
         m_allocations.erase(block);
         return true;
     }
 
+    bool IopMemory::freeSysMemory(uint32_t address)
+    {
+        if ((address & 255u) != 0u) return false;
+        const auto block = allocationContaining(address);
+        return block && block->sysmem && block->address == address && freeAllocation(address);
+    }
+
     uint32_t IopMemory::maxFreeMemory() const
     {
-        return m_heapCursor < HeapLimit ? HeapLimit - m_heapCursor : 0u;
+        uint32_t maximum = 0u;
+        for (const auto &block : memoryBlocks(false))
+            if (!block.allocated) maximum = std::max(maximum, block.size);
+        return maximum;
+    }
+
+    uint32_t IopMemory::maxFreeSysMemory() const
+    {
+        uint32_t maximum = 0u;
+        for (const auto &block : memoryBlocks(true))
+            if (!block.allocated) maximum = std::max(maximum, block.size);
+        return maximum;
+    }
+
+    uint32_t IopMemory::totalFreeSysMemory() const
+    {
+        uint32_t total = 0u;
+        for (const auto &block : memoryBlocks(true))
+            if (!block.allocated) total += block.size;
+        return total;
+    }
+
+    std::optional<IopMemory::MemoryBlock> IopMemory::sysMemoryBlockContaining(uint32_t address) const
+    {
+        // The original queries compare the supplied address; do not accept an
+        // unrelated virtual alias by silently stripping its upper bits.
+        if (address < HeapBase || address >= HeapLimit) return std::nullopt;
+        for (const auto &block : memoryBlocks(true))
+            if (address >= block.address && address - block.address < block.size) return block;
+        return std::nullopt;
     }
 
     std::optional<IopMemory::Allocation> IopMemory::allocationContaining(uint32_t address) const

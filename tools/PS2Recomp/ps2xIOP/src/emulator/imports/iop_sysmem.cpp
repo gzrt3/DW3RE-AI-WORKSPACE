@@ -27,31 +27,31 @@ namespace ps2x::iop::detail
         {
         case 4: // AllocSysMemory
         {
-            const uint32_t address = a0 == 2u
-                                         ? m_memory.allocate(a1, 16u, a2)
-                                         : m_memory.allocate(a1, 16u);
+            const uint32_t address = m_memory.allocateSysMemory(a0, a1, a2);
             setV0(address);
             return true;
         }
         case 5: // FreeSysMemory
-            setV0(m_memory.freeAllocation(a0) ? 0u : 0xFFFFFFFFu);
+            setV0(m_memory.freeSysMemory(a0) ? 0u : 0xFFFFFFFFu);
             return true;
         case 6: // QueryMemSize
             setV0(IopMemory::RamSize);
             return true;
         case 7: // QueryMaxFreeMemSize
+            setV0(m_memory.maxFreeSysMemory());
+            return true;
         case 8: // QueryTotalFreeMemSize
-            setV0(m_memory.maxFreeMemory());
+            setV0(m_memory.totalFreeSysMemory());
             return true;
         case 9: // QueryBlockTopAddress
-            if (const auto block = m_memory.allocationContaining(a0))
-                setV0(block->address);
+            if (const auto block = m_memory.sysMemoryBlockContaining(a0))
+                setV0(block->address | (block->allocated ? 0u : 0x80000000u));
             else
-                setV0(0u);
+                setV0(0xFFFFFFFFu);
             return true;
         case 10: // QueryBlockSize
-            if (const auto block = m_memory.allocationContaining(a0))
-                setV0(block->size);
+            if (const auto block = m_memory.sysMemoryBlockContaining(a0))
+                setV0(block->size | (block->allocated ? 0u : 0x80000000u));
             else
                 setV0(0xFFFFFFFFu);
             return true;
