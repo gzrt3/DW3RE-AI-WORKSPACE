@@ -6,6 +6,7 @@
 #include <cstdint>
 #include <memory>
 #include <optional>
+#include <span>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -27,6 +28,8 @@ namespace ps2x::iop::detail
         IopEmulator &operator=(const IopEmulator &) = delete;
 
         void reset();
+        [[nodiscard]] bool initializeLoaderState(std::span<const uint32_t> bootModes = {});
+        [[nodiscard]] ModuleLoadResult installHleLibraryImage(std::string_view path, const std::vector<uint8_t> &image);
         [[nodiscard]] std::optional<IopRebootRequest> takeRebootRequest();
         [[nodiscard]] bool beginBootCallbacks(uint32_t capacity);
         [[nodiscard]] bool finishBootCallbacks();

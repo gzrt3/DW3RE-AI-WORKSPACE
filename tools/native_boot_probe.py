@@ -31,7 +31,17 @@ SOURCE_NAMES = (
     'src/audio/spu_bridge.cpp', 'src/sdl_window.cpp', 'src/gs_wrapper.cpp',
     'src/patch_engine.cpp', 'src/recomp/entry_0x100008.cpp',
     'src/recomp/FUN_001ad6e8_0x1ad6e8.cpp',
+    'src/recomp/FUN_0017fea0_0x17fea0.cpp',
     'src/boot_continuations.cpp', 'include/fate/boot_continuations.hpp',
+    'src/dma_init_continuation.cpp', 'include/fate/dma_init_continuation.hpp',
+    'src/recovered/dma_init_0019a6c0.inc',
+    'src/vif_init_continuation.cpp', 'include/fate/vif_init_continuation.hpp',
+    'src/graphics_init_continuation.cpp', 'include/fate/graphics_init_continuation.hpp',
+    'src/waitsema_continuation.cpp', 'include/fate/waitsema_continuation.hpp',
+    'src/irq_return_continuation.cpp', 'include/fate/irq_return_continuation.hpp',
+    'src/pad_boot_continuation.cpp', 'include/fate/pad_boot_continuation.hpp',
+    'src/recovered/graphics_init_00180384.inc',
+    'src/recovered/vblank_wait_001a4cc0.inc',
     'src/recovered/cdvd_command_001b0308.inc', 'tools/recover_continuation.py',
     'src/recovered/string_tail_0023cb40.inc',
     'src/recovered/cache_tail_001a7014.inc',
@@ -47,10 +57,18 @@ SOURCE_NAMES = (
     'tools/PS2Recomp/ps2xRuntime/include/ps2_runtime.h',
     'tools/PS2Recomp/ps2xRuntime/include/runtime/ee_scheduler.h',
     'tools/PS2Recomp/ps2xRuntime/src/lib/ps2_runtime.cpp',
+    'tools/PS2Recomp/ps2xRuntime/src/lib/ps2_memory.cpp',
+    'tools/PS2Recomp/ps2xRuntime/include/runtime/ps2_memory.h',
+    'tools/PS2Recomp/ps2xRuntime/src/lib/ps2_vif1_interpreter.cpp',
     'tools/PS2Recomp/ps2xRuntime/src/lib/Kernel/Syscalls/System.cpp',
+    'tools/PS2Recomp/ps2xRuntime/src/lib/Kernel/Stubs/SIF.cpp',
     'tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_ioman.h',
     'tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_ioman.cpp',
     'tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.cpp',
+    'tools/PS2Recomp/ps2xIOP/src/iop_subsystem.cpp',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_stdio.cpp',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_stdio.h',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_vblank.cpp',
     'tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_rpc.h',
     'tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_rpc.cpp',
     'tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_kernel.h',
@@ -165,13 +183,16 @@ def source_identities():
     # These sources are a contemporaneous fingerprint, not proof the EXE was
     # built from them. The EXE hash, build log and build provenance bind that.
     paths = [ROOT/name for name in SOURCE_NAMES]
+    paths.extend(sorted((ROOT/'src/recovered').glob('*.inc')))
     paths.append(Path(__file__).resolve())
-    return [identity(path) for path in paths if path.is_file()]
+    return [identity(path) for path in dict.fromkeys(path.resolve() for path in paths) if path.is_file()]
 
 
-def run(exe, dump_root, elf, output, timeout=30, iop_root=None, live_seconds=None):
+def run(exe, dump_root, elf, output, timeout=30, iop_root=None, live_seconds=None, vsync=None):
     if live_seconds is not None and (type(live_seconds) is not int or not 1 <= live_seconds <= 86400):
         raise ValueError('live-seconds must be an integer from 1 to 86400')
+    if vsync is not None and (vsync not in ('on', 'off') or live_seconds is None):
+        raise ValueError('vsync must be on or off with a live-seconds deadline')
     timeout = timeout_value(timeout)
     exe = Path(exe).resolve(strict=True)
     dump_root = Path(dump_root).resolve(strict=True)
@@ -232,10 +253,13 @@ def run(exe, dump_root, elf, output, timeout=30, iop_root=None, live_seconds=Non
     command = native_command(exe, dump_root, elf)
     if live_seconds is not None:
         command += ['--live-seconds', str(live_seconds)]
+    if vsync is not None:
+        command += ['--vsync', vsync]
     provenance = {
         'schema_version': 1, 'created_utc': utc_now(),
         'command': command, 'cwd': str(cwd),
         'live_observation_seconds': live_seconds,
+        'host_vsync_requested': vsync,
         'dump_root': str(dump_root), 'timeout_seconds': timeout,
         'exe': inputs[0], 'elf': inputs[1], 'adjacent_dlls': inputs[2:2+len(dlls)],
         'adjacent_configuration': inputs[2+len(dlls):], 'staged_configuration': config_copies,
@@ -277,9 +301,10 @@ def main(argv=None):
     parser.add_argument('--timeout', type=timeout_value, default=30)
     parser.add_argument('--iop-root', type=Path, help='Copy IRX/provenance files to isolated run/data/iop')
     parser.add_argument('--live-seconds', type=int, help='Observe the real GS in a native window for a cooperative deadline; use a longer probe timeout')
+    parser.add_argument('--vsync', choices=('on', 'off'), help='Choose SDL host pacing; requires --live-seconds and preserves guest VBLANK')
     args = parser.parse_args(argv)
     try:
-        result = run(args.exe, args.dump_root, args.elf, args.output, args.timeout, args.iop_root, args.live_seconds)
+        result = run(args.exe, args.dump_root, args.elf, args.output, args.timeout, args.iop_root, args.live_seconds, args.vsync)
     except (OSError, ValueError, argparse.ArgumentTypeError) as error:
         print(f'PROBE_SETUP_FAILED: {error}', file=sys.stderr)
         return 2

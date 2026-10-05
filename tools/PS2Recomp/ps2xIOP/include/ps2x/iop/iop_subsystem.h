@@ -16,12 +16,16 @@ namespace ps2x::iop
         // Nonempty bytes execute the original image. Empty bytes request an
         // explicitly named existing HLE provider; never silently fall back.
         std::vector<uint8_t> image;
+        bool hleLibraryImage = false;
     };
     struct NativeIopRebootProfile
     {
         std::string command;
         uint32_t flags = 0u;
         std::vector<NativeIopBootModule> modules;
+        bool prepareLoaderState = false;
+        std::vector<uint32_t> initialBootModes;
+        std::vector<uint32_t> bootModes;
     };
     class IopSubsystem
     {

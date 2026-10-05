@@ -32,9 +32,7 @@ namespace ps2x::iop::detail
         }
         case 8: // RegisterVblankHandler
         case 9: // ReleaseVblankHandler
-            // Callback delivery is not required by the scheduler wait ABI yet.
-            cpu.gpr[2] = 0u;
-            return true;
+            return false;
         default:
             return false;
         }

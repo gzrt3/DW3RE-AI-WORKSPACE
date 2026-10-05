@@ -22,5 +22,6 @@ namespace ps2x::iop::detail
     private:
         IopHost &m_host;
         IopMemory &m_memory;
+        uint32_t m_loadModuleObservations=0u;
     };
 }

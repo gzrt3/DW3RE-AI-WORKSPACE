@@ -1,4 +1,5 @@
 #include <stdexcept>
+#include <cstdio>
 #include "ps2_runtime_macros.h"
 #include "ps2_runtime.h"
 #include <ps2_recompiled_functions.h>
@@ -400,6 +401,11 @@ label_17ff9c:
     ctx->pc = 0x17ffa8u;
     SET_GPR_U64(ctx, 5, (uint64_t)GPR_U64(ctx, 0) + (uint64_t)GPR_U64(ctx, 0));
     // 0x17ffac: 0xc06b170  jal         func_1AC5C0
+    {
+        static unsigned observations=0;
+        if(observations++<32u) std::fprintf(stderr,"[EE:module-load:call] index=0x%x path=0x%x sp=0x%x\n",
+            GPR_U32(ctx,16),GPR_U32(ctx,4),GPR_U32(ctx,29));
+    }
     ctx->pc = 0x17FFACu;
     SET_GPR_U32(ctx, 31, 0x17FFB4u);
     ctx->pc = 0x17FFB0u;
@@ -414,6 +420,11 @@ label_17ff9c:
     }
     ctx->pc = 0x17FFB4u;
 label_17ffb4:
+    {
+        static unsigned observations=0;
+        if(observations++<32u) std::fprintf(stderr,"[EE:module-load:return] index=0x%x result=0x%llx sp=0x%x\n",
+            GPR_U32(ctx,16),static_cast<unsigned long long>(GPR_U64(ctx,2)),GPR_U32(ctx,29));
+    }
     // 0x17ffb4: 0x440fff9  bltz        $v0, . + 4 + (-0x7 << 2)
     ctx->pc = 0x17FFB4u;
     {

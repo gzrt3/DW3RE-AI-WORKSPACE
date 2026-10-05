@@ -96,9 +96,10 @@ namespace
     constexpr uint32_t COP0_CAUSE_BD = 0x80000000u;
     constexpr uint32_t COP0_STATUS_EXL = 0x00000002u;
     constexpr uint32_t COP0_STATUS_BEV = 0x00400000u;
-    constexpr uint32_t EXCEPTION_VECTOR_GENERAL = 0x80000080u;
+    constexpr uint32_t EXCEPTION_VECTOR_GENERAL = 0x80000180u;
     constexpr uint32_t EXCEPTION_VECTOR_TLB_REFILL = 0x80000000u;
     constexpr uint32_t EXCEPTION_VECTOR_BOOT = 0xBFC00200u;
+    constexpr uint32_t EXCEPTION_VECTOR_BOOT_GENERAL = 0xBFC00380u;
 
     struct DispatchHistory
     {
@@ -190,7 +191,7 @@ namespace
     {
         if (ctx->cop0_status & COP0_STATUS_BEV)
         {
-            return EXCEPTION_VECTOR_BOOT;
+            return tlbRefill ? EXCEPTION_VECTOR_BOOT : EXCEPTION_VECTOR_BOOT_GENERAL;
         }
         return tlbRefill ? EXCEPTION_VECTOR_TLB_REFILL : EXCEPTION_VECTOR_GENERAL;
     }
@@ -1400,7 +1401,6 @@ bool PS2Runtime::dispatchGuestBranch(uint8_t *rdram,
     }
 
     RecompiledFunction targetFn = lookupFunction(targetPc);
-    const uint32_t entryPc = ctx->pc;
     targetFn(rdram, ctx, this);
 
     if (isStopRequested() || ctx->pc == 0u)
@@ -1408,11 +1408,8 @@ bool PS2Runtime::dispatchGuestBranch(uint8_t *rdram,
         return false;
     }
 
-    if (ctx->pc == entryPc)
-    {
-        ctx->pc = fallthroughPc;
-    }
-
+    // A guest loop may yield at its entry PC. Only an explicit return to the
+    // caller's continuation completes this call; HLE entries follow that ABI too.
     return ctx->pc == fallthroughPc;
 }
 
@@ -2075,6 +2072,7 @@ uint32_t PS2Runtime::Load32(uint8_t *rdram, R5900Context *ctx, uint32_t vaddr)
     }
     catch (const std::exception &)
     {
+        ctx->cop0_badvaddr = vaddr;
         SignalException(ctx, EXCEPTION_ADDRESS_ERROR_LOAD);
         return 0;
     }
@@ -2084,10 +2082,12 @@ uint64_t PS2Runtime::Load64(uint8_t *rdram, R5900Context *ctx, uint32_t vaddr)
 {
     try
     {
-        if (vaddr < 0x02000000) return *(uint64_t*)&rdram[vaddr & 0x01FFFFFF]; return 0;
+        (void)rdram;
+        return m_memory.read64(vaddr);
     }
     catch (const std::exception &)
     {
+        ctx->cop0_badvaddr = vaddr;
         SignalException(ctx, EXCEPTION_ADDRESS_ERROR_LOAD);
         return 0;
     }
@@ -2142,6 +2142,7 @@ void PS2Runtime::Store32(uint8_t *rdram, R5900Context *ctx, uint32_t vaddr, uint
     }
     catch (const std::exception &)
     {
+        ctx->cop0_badvaddr = vaddr;
         SignalException(ctx, EXCEPTION_ADDRESS_ERROR_STORE);
     }
 }
@@ -2151,10 +2152,12 @@ void PS2Runtime::Store64(uint8_t *rdram, R5900Context *ctx, uint32_t vaddr, uint
     ps2TraceGuestWrite(rdram, vaddr, 8u, value, 0u, "WRITE64", ctx);
     try
     {
-        if (vaddr < 0x02000000) *(uint64_t*)&rdram[vaddr & 0x01FFFFFF] = value;
+        m_memory.write64(vaddr, value);
+        drainCompletedDmacHandlers(rdram);
     }
     catch (const std::exception &)
     {
+        ctx->cop0_badvaddr = vaddr;
         SignalException(ctx, EXCEPTION_ADDRESS_ERROR_STORE);
     }
 }
@@ -2166,7 +2169,8 @@ void PS2Runtime::Store128(uint8_t *rdram, R5900Context *ctx, uint32_t vaddr, __m
     ps2TraceGuestWrite(rdram, vaddr, 16u, _parts[0], _parts[1], "WRITE128", ctx);
     try
     {
-        if (vaddr < 0x02000000) *(__m128i*)&rdram[vaddr & 0x01FFFFFF] = value;
+        m_memory.write128(vaddr, value);
+        drainCompletedDmacHandlers(rdram);
     }
     catch (const std::exception &)
     {

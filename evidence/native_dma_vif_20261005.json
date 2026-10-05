@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-10-05T05:11:28.093931+00:00",
+  "scope": "Original EE DMA/VIF initialization and native Store128/VIF1 register routing",
+  "git_base": "242a8a299411d6823ce70e3bdafeba57317ec1b1",
+  "working_tree": "UNCOMMITTED",
+  "auxiliary_work": "PAUSED",
+  "final_acceptance_verified": 0,
+  "final_acceptance_total": 8,
+  "independent_pcsx2_lockstep": false,
+  "original_dma_identity": {
+    "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+    "intervals": [
+      {
+        "start": "0x19a628",
+        "stop_exclusive": "0x19a65c",
+        "words": 13,
+        "sha256": "5720cf71ec4865fc0034f663e94d687d914fb91fd2d5f52512d95d7f14a0074a"
+      },
+      {
+        "start": "0x19a6c0",
+        "stop_exclusive": "0x19a950",
+        "words": 164,
+        "sha256": "4af1b18a6e91dc88f81427eef3837a4cff924760ff37cd67fc40197273798c63"
+      }
+    ],
+    "recovered_candidate": "BYTE_IDENTICAL",
+    "helper_words": "MATCH",
+    "scope": "Opcode identity only; behavior checked separately with contracts, not independent PCSX2 lockstep."
+  },
+  "original_vif_identity": {
+    "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+    "tail": {
+      "start": "0x00198580",
+      "stop_exclusive": "0x001985A0",
+      "words": 8,
+      "sha256": "b75fda24a14f6a059a4839b905462cf80d47574a23959d996e48f7a3fbe78cce",
+      "identity": "MATCH"
+    },
+    "packet": {
+      "start": "0x002857C0",
+      "size_bytes": 32,
+      "sha256": "190d1646c76edb144d3da2d0475b92073c6cf9f1577675ccae0d8e2e86ab6a71",
+      "identity": "MATCH"
+    },
+    "return_delay_mmio": "GIF_CTRL 0x10003000 (not VIF0 STAT)",
+    "scope": "Original opcode and data identity; not independent PCSX2 behavior verification."
+  },
+  "original_channel_identity": {
+    "start": "0x0019A678",
+    "stop_exclusive": "0x0019A688",
+    "words": 4,
+    "sha256": "53777bd1f0efdc4f79e6a1a5c6160dae1e0d6ebaf71a95141adcdfbf9167d9fb",
+    "identity": "MATCH"
+  },
+  "tests": {
+    "Debug": {
+      "status": "PASS",
+      "dma_contracts": 23,
+      "dma_parameter_combinations": 7000,
+      "channel_return_cases": 12,
+      "store128_cases": 20,
+      "original_vif_source_aliases": 4,
+      "vif_mmio_alias_scenarios": 3,
+      "log": "artifacts/native_pipeline_20261005/ee_dma_init_014/contract-Debug-final-010.log",
+      "sha256": "74f8a8ce64acb424b7f03435f852bc8f78d537c48c594d34a93517c6d89808d2"
+    },
+    "Release": {
+      "status": "PASS",
+      "dma_contracts": 23,
+      "dma_parameter_combinations": 7000,
+      "channel_return_cases": 12,
+      "store128_cases": 20,
+      "original_vif_source_aliases": 4,
+      "vif_mmio_alias_scenarios": 3,
+      "log": "artifacts/native_pipeline_20261005/ee_dma_init_014/contract-Release-final-010.log",
+      "sha256": "74f8a8ce64acb424b7f03435f852bc8f78d537c48c594d34a93517c6d89808d2"
+    }
+  },
+  "native_probe_tool_tests": 12,
+  "native_run": {
+    "status": "PROCESS_FAILED",
+    "exit_code": 4294967295,
+    "input_integrity": "MATCH",
+    "sio2man": {
+      "worker_thread": 1,
+      "argc": 1,
+      "module_id": 21,
+      "entry_return": 0,
+      "resident_state": 3
+    },
+    "modmsin": {
+      "module_id": 22,
+      "entry_return": 0,
+      "resident_state": 3
+    },
+    "passed_pcs": [
+      "0x0019A6C4",
+      "0x00198580",
+      "0x0019A678"
+    ],
+    "next_barrier": "0x00180384",
+    "title_movie_battle_observed": false,
+    "result_path": "artifacts/native_pipeline_20261005/ee_dma_init_014/native-003/result.json",
+    "result_sha256": "4a72a2ae5bf069f6f213604d7800737d64d691a4fec4744f197e968992e72d4b",
+    "stderr_sha256": "963bd15fa94f222cf84f02456d82a83d3bf09a6e030f89a08657d0ccc5968608",
+    "executable_sha256": "00f6be31a0fc8c36cedcef1d404c9d9b23916e6a94e089ad670e83eb226fd6cf"
+  },
+  "preserved_failures": [
+    "contract-release-vif-before-005.log: RAM alias write lost",
+    "contract-release-vif-006.log: VIF MMIO read stale",
+    "contract-release-vif-007.log: interpreter owner correct, CPU read zero",
+    "native-001: missing 0x00198580",
+    "native-002: missing 0x0019A678",
+    "native-003: missing 0x00180384"
+  ],
+  "limits": [
+    "No independent PCSX2 lockstep or full EE/VIF/GS timing parity.",
+    "VU FBRST/SYNC prefix semantics remain unverified.",
+    "VIF split STROW/STCOL and other partial command payloads are not repaired by this change.",
+    "Runtime direct Load8/16/64/128 and Store8/16/64 retain low-RAM-only paths.",
+    "Store128 forwards to existing handlers; complete GS FIFO/GS register semantics remain unverified.",
+    "SIFCMD rejected-packet warnings remain; no title, movies, battle, combined content or final backend verified."
+  ],
+  "changed_source_sha256": {
+    "CMakeLists.txt": "792d4682b7a08db09e457c03155adad867b45e576f863e681bcffa923219f4e3",
+    "cmake/DmaInitContract.cmake": "b2d165aa68dd309e62aa0e1bd75de7fa5e99b73bf1569d6aad1f44d0e7a0f8ec",
+    "include/fate/dma_init_continuation.hpp": "f70d7e071b5d6a567bebae0d486f36c0d13370e9762597b233050dc8242554e8",
+    "include/fate/native_iop_manifest.hpp": "b0f3a50235f1fece0a4cdd9c6ba924179ae2f64fbd4cadf363993c38ce58f2f4",
+    "include/fate/vif_init_continuation.hpp": "93f70ecfc69aac33967c475cf5e5ff9518c37d1185a96a0bdcb8674408c8d1ee",
+    "src/dma_init_continuation.cpp": "2b68ccd7912db2f756affe5928941dcdf92fa487e5c9231adf87907a0da4f558",
+    "src/main.cpp": "e8fa9eb273c0c1332dd9dc5f825ca9ccd178c56f1d4f5cb53b194828d5e337af",
+    "src/native_iop_boot.cpp": "df16c59eb52b3de631a37645e565c8fd8e02fbcb9955097ca8a68fcdcd3a57ce",
+    "src/recovered/dma_init_0019a6c0.inc": "8532429886e18b2c767ca3db1c8ad4a614f979fdaf5fba133ca147f00c409ab1",
+    "src/vif_init_continuation.cpp": "072c47828f0c8b208ce9c3d14b2c1d11fad2aafc935cbc428ce1cd17b02215d2",
+    "tests/integration/dma_init_contract.cpp": "1558d404fc2f93928ebe951ac940892250c7b24f6f473b382051684dbddcb5b5",
+    "tools/PS2Recomp/ps2xIOP/CMakeLists.txt": "c63e1406897f8069a4288e10a9347c77585ba51d81a6b04cb69ae07a6ecac4b8",
+    "tools/PS2Recomp/ps2xIOP/include/ps2x/iop/iop_subsystem.h": "f64201f452aee342f949504c742dc452d9689721e685b5e585a119cefcfd4edf",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_cpu.h": "33b8f260b9d602a72120552e1f855a053eb009b83fbd4d0a00c594bff08c2570",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_kernel.cpp": "059aac2e542cccfc79468b5a9858228f35635221934c88ab7f9edf8abf84543b",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_imports.cpp": "0583513d7a573b9084a7160d02ec6d8a42a2c65b92d8858f6ffb4ab03582a331",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_imports.h": "7ca45a4c23ce7de3d59e9b82b84002d50b3a070594906bd1463cddd9bc75401f",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_loadcore.cpp": "3a8583f7752bfc3f16c240cadb9ccbab7e67e1a38c04e190bff0cc45d06b32a7",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_loadcore.h": "c5ec84479b4e4bf886f500d2ccb3c3976b1341414ea5460913a3b5cceda5b335",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_loadcore_state.cpp": "98b0854656567e0716194acfa9edee2e51f18deb7ee6f284eac59cb889f83cf8",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_loadcore_state.h": "ac5b91436016e25d1b69a11e7df937364446d773c7d254d1045cb1c5a0f5e56f",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.cpp": "dd518711495122927652eb63bcc0f2cf6858be3112f3a5a60af34fee86d0dd8d",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.h": "6237468edec4ea8f7169aa55f3bc950c7cccb45bca22fcafc6f6d50c89524eb6",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_module_loader.cpp": "40b028b63b1377856b6ff45afea03448d90c86a74db400760caaa1ce61ec0643",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_module_loader.h": "6fddf92c584d3b1f22c9ae17c974e809ac22767cb26a36079b309dff7f3bd490",
+    "tools/PS2Recomp/ps2xIOP/src/iop_subsystem.cpp": "97f59d5f4c763ecc3181f375b367c4bb144c11e5c3aae94960d23f6a0b17d24f",
+    "tools/PS2Recomp/ps2xIOP/tests/iop_continuation_tests.cpp": "8a97628fde8de72696ace48d34a1621824f86215e9b633f1cd2d36529f8051c9",
+    "tools/PS2Recomp/ps2xIOP/tests/iop_import_version_tests.cpp": "b67b8700899107857e234b4eeb3152fd5cb81918192a941563a4d999f8d8eb8e",
+    "tools/PS2Recomp/ps2xIOP/tests/iop_loadcore_link_original_replay.cpp": "665ab26cadd886b4ae3a69390b7a8d4a3d27fa511858f13121b81b3d3c34ea45",
+    "tools/PS2Recomp/ps2xIOP/tests/iop_loadcore_link_tests.cpp": "fef9c8c37a2bfe88b9fc44a4262affdaeb78fb70558f8a109aeb185bd3baac6c",
+    "tools/PS2Recomp/ps2xIOP/tests/iop_loadcore_state_tests.cpp": "4b48355f82212fb45507ec1ca62415f2bbfae178bb9cbfa64b384292685d9aab",
+    "tools/PS2Recomp/ps2xIOP/tests/iop_loader_dispatch_tests.cpp": "31d9da69723957d5b2ac296e377510aa03fab23538f09c049ef2024ccff04cb2",
+    "tools/PS2Recomp/ps2xIOP/tests/iop_modload_original_probe.cpp": "01959fff0695888ea67ef6631abb114967aa39390ba239d0158e16c9263141ab",
+    "tools/PS2Recomp/ps2xRuntime/src/lib/ps2_memory.cpp": "5c99cd8dee46ac4fc79a3765d3675bb627d915b556cb0b65297d57ad3bd31af8",
+    "tools/PS2Recomp/ps2xRuntime/src/lib/ps2_runtime.cpp": "462703ec9d00f7a848bc357dffae7173ef68fb4c53647b1154ffdd3d66e2093a",
+    "tools/native_boot_probe.py": "57686e1b550560840bd61ee4748f2b5d7761354a0ed0464b3f207b9f1b682e10"
+  },
+  "checkpoint": "D:/Backup/DWProject/ee-dma-vif-20261005-014 (verify external verification.json)"
+}

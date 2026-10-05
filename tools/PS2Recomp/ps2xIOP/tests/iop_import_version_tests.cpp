@@ -11,7 +11,7 @@ namespace
     using namespace ps2x::iop::detail;
 
     void addExport(IopMemory &memory, IopImportRegistry &imports, uint32_t address,
-                   uint16_t version, uint32_t target, uint32_t count = 4u)
+                   uint16_t version, uint32_t target, uint32_t count = 4u, int32_t expected = 0)
     {
         require(memory.zeroRam(address, 128u), "export table does not fit");
         memory.write32(address, 0x41C00000u);
@@ -20,7 +20,7 @@ namespace
         require(memory.writeRam(address + 12u, name, sizeof(name)), "export name does not fit");
         for (uint32_t i = 0u; i < count; ++i)
             memory.write32(address + 20u + 4u * i, target);
-        require(imports.registerExportTable(address), "export registration failed");
+        require(imports.registerLibrary(address) == expected, "export registration result differs");
     }
 
     void importTable(IopMemory &memory, uint32_t address, uint16_t version)
@@ -64,12 +64,12 @@ namespace
         IopImportRegistry imports(memory);
         addExport(memory, imports, 0x1000u, 0x0101u, 0x2100u);
         addExport(memory, imports, 0x1800u, 0x0104u, 0x3100u);
-        addExport(memory, imports, 0x1400u, 0x0103u, 0x4100u);
+        addExport(memory, imports, 0x1400u, 0x0103u, 0x4100u, 4u, -212);
         require(imports.resolve("tstlib", 3u, uint16_t{0x0101u}) == 0x3100u, "selected lowest address, not newest minor");
         require(imports.resolve("tstlib", 3u, uint16_t{0x017Fu}) == 0x3100u,
                 "invented a minimum-minor rule absent from LOADCORE linking");
         require(imports.releaseExportTable(0x1800u), "unregister failed");
-        require(imports.resolve("tstlib", 3u, uint16_t{0x0101u}) == 0x4100u, "unregistered library remained selected");
+        require(imports.resolve("tstlib", 3u, uint16_t{0x0101u}) == 0x2100u, "rejected provider entered the registry");
     }
 
     void missingOrdinal()

@@ -29,6 +29,10 @@ namespace ps2x::iop::detail
         uint32_t size = 0;
         uint32_t entry = 0;
         uint32_t gp = 0;
+        uint32_t moduleInfo = 0;
+        uint32_t textSize = 0;
+        uint32_t dataSize = 0;
+        uint32_t bssSize = 0;
         uint32_t nextModuleCursor = 0;
         bool relocationsComplete = true;
 

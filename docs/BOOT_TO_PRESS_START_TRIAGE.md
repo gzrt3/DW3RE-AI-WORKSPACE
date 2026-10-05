@@ -1,5 +1,21 @@
 # Triage: original boot, movies and Press Start
 
+Ciclo028: puente GS→Direct3D11/12 probado con readback RGBA y observación Computer Use de patrón diagnóstico. Auto prefiereD3D11; selección explícita y VSync comprobados. BuildReleasePASS. El juego mantienePMODE0, vblank:8 sin implementar,1215observaciones/0presentaciones en20s,inputMATCH. No logos originales;0/8criterios. Automatización principalPAUSED y revisorGitHubDisabled. Publicar checkpoint gráfico y después audio, según el usuario. Ver docs/NATIVE_GS_DIRECTX_20261005.md.
+
+Historial previo:
+
+Ciclo027: Release003 PASS;170B24,1ADE0C y1AEF98 superados. Ambos servidores PAD responden y la versiÃ³n403 procede del IOP. Nueva barrera vblank:8 (RegisterVblankHandler),antes de completar init. Native003: plazo40s,exit2,inputMATCH,2416observaciones y0presentaciones. Computer Use observÃ³ la ventana nativa negra. Contratos PAD Debug/Release PASS;3regresiones IOP generales siguen abiertas. Primeros logos pendientes;0/8criterios cerrados. Ver docs/NATIVE_PAD_BOOT_20261005.md.
+
+Los estados anteriores se conservan como historial.
+
+Current025 supersedes the baseline below. User priority: native boot followed
+by the first original logos, step by step.1B1004 is repaired; full Release build
+passes. Remaining pre-logo barrier: memory-card BindRpc80000400 has no server,
+several original modules do not enter, and234400 lacks an invocation owner.
+Measure the real failure results, then follow the actual first PSS request
+through native VFS, decoding, presentation and audio. No native game image shown.
+See NATIVE_WAITSEMA_20261005.md. The cycle007 details below are historical.
+
 This ordering follows dependencies and risk. The target remains the complete
 native Windows port in NATIVE_PC_OBJECTIVE.md; all eight final gates stay open.
 Baseline: cycle007, Release build passed. The latest live probe stopped at its

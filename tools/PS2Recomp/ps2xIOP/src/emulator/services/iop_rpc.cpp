@@ -495,8 +495,7 @@ namespace ps2x::iop::detail
             setV0(m_sifInitialized ? 1u : 0u);
             return true;
         default:
-            setV0(0u);
-            return true;
+            return false;
         }
     }
 

@@ -17,6 +17,11 @@ DEFAULT = ROOT / 'artifacts/copilot_bridge'
 MAX_JSON = 512 * 1024
 
 TASKS = {
+    'graphics-buffer-continuation-review': {
+        'objective': 'Review the recovered XL graphics buffer tail and its bounded tests. Original words are checked before registering only PC198918. Three scalar MOVN operations were repaired to preserve upper64; the BNE predicate must precede its MULT delay slot. Give at most one concrete defect or bounded uncertainty and a discriminating test. Review only supplied evidence; preserve guest ABI, visuals and provenance. Do not propose dummy success, invented data, cosmetic rewrites or claim gameplay parity. Return only the supplied JSON schema under512 output tokens.',
+        'sections': [('src/recovered/graphics_buffer_tail_00198918.inc', 145, 233),
+                     ('tests/integration/graphics_init_contract.cpp', 260, 287)],
+    },
     'ioman-read-review': {
         'objective': 'Review the native IOMAN read and actual host file adapter excerpts. Give at most one concrete defect or explicitly bounded uncertainty with a discriminating regression test. Assess real short reads, EOF, signed return count, memory bounds, error staging and file position. Do not infer unseen code, execute code or claim original-game parity. Return only the supplied JSON schema, under512 output tokens.',
         'sections': [('tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_ioman.cpp', 98, 130),

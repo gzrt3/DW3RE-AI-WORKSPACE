@@ -33,8 +33,8 @@ namespace
     constexpr uint32_t COP0_CAUSE_EXCCODE_MASK = 0x0000007Cu;
     constexpr uint32_t COP0_STATUS_EXL = 0x00000002u;
     constexpr uint32_t COP0_STATUS_BEV = 0x00400000u;
-    constexpr uint32_t EXCEPTION_VECTOR_GENERAL = 0x80000080u;
-    constexpr uint32_t EXCEPTION_VECTOR_BOOT = 0xBFC00200u;
+    constexpr uint32_t EXCEPTION_VECTOR_GENERAL = 0x80000180u;
+    constexpr uint32_t EXCEPTION_VECTOR_BOOT = 0xBFC00380u;
 
     constexpr int KE_OK = 0;
 

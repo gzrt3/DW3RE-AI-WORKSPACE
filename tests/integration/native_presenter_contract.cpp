@@ -8,16 +8,32 @@
 #include <memory>
 #include <stdexcept>
 #include <vector>
+#include <string_view>
 
 static void require(bool value, const char* message) {
     if (!value) throw std::runtime_error(message);
 }
 
-int main() {
+int main(int argc, char** argv) {
     try {
+        const std::string_view driver = argc >= 2 ? argv[1] : "dummy";
+        const bool observe = argc == 3 && std::string_view(argv[2]) == "--observe";
+        require(argc <= 3 && (argc != 3 || observe) && (driver == "dummy" || driver == "software" || driver == "auto" || driver == "direct3d11" || driver == "direct3d12"),
+            "usage: presenter_contract [dummy|software|auto|direct3d11|direct3d12] [--observe]");
+        fate::PresenterOptions options;
+        options.verify_first_upload = true;
+        options.diagnostic_title = "Diagnostico GS/GPU - patron sintetico, no es el juego";
+        if (driver == "direct3d11") options.renderer = fate::HostRenderer::Direct3D11;
+        if (driver == "direct3d12") options.renderer = fate::HostRenderer::Direct3D12;
+        if (driver == "software") options.renderer = fate::HostRenderer::Software;
         // Synthetic host integration contracts, never original-game evidence.
-        require(SDL_setenv("SDL_VIDEODRIVER", "dummy", 1) == 0, "dummy SDL setup");
+        const bool software = driver == "dummy" || driver == "software";
+        require(SDL_setenv("SDL_VIDEODRIVER", software ? "dummy" : "windows", 1) == 0, "SDL video setup");
         for (bool display_enabled : {false, true}) {
+          for (const auto vsync : {fate::HostVSync::Off, fate::HostVSync::On}) {
+            // Opposite global hints must not override the explicit host choice.
+            require(SDL_SetHintWithPriority(SDL_HINT_RENDER_VSYNC,
+                vsync == fate::HostVSync::On ? "0" : "1", SDL_HINT_OVERRIDE) == SDL_TRUE, "vsync hint setup");
             auto rt = std::make_unique<PS2Runtime>();
             require(rt->memory().initialize(PS2_RAM_SIZE) && rt->syncCoreSubsystems(), "runtime init");
             auto& mem = rt->memory();
@@ -34,15 +50,29 @@ int main() {
             require(event >= 0, "event setup");
             if (display_enabled) {
                 // Known VRAM bytes exercise the actual GS + SDL upload path.
-                auto* vram = mem.getGSVRAM();
-                for (size_t i = 0; i < PS2_GS_VRAM_SIZE; i += 4) {
-                    vram[i] = 0x12; vram[i + 1] = 0x34; vram[i + 2] = 0x56; vram[i + 3] = 0x80;
+                for (uint32_t y = 0; y < 64; ++y) {
+                    for (uint32_t x = 0; x < 64; ++x) {
+                        const uint32_t pixel = ((0x12u + x * 3 + y * 7) & 255u) |
+                            (((0x34u + x * 5 + y * 11) & 255u) << 8) |
+                            (((0x56u + x * 13 + y * 17) & 255u) << 16) | (((x * 17 + y * 31) & 255u) << 24);
+                        rt->gs().WriteVram(0, 0, 1, x, y, pixel);
+                    }
                 }
                 mem.write64(0x12000000, 1); // PMODE.EN1
                 mem.write64(0x12000070, 1ull << 9); // DISPFB1.FBW=1
-                mem.write64(0x12000080, (63ull << 32) | (31ull << 44)); // DISPLAY1 64x32
+                mem.write64(0x12000080, (63ull << 32) | (63ull << 44)); // DISPLAY1 64x64
             }
-            require(fate::run_native_live(*rt, 1) == fate::LiveExit::Deadline, "deadline lost");
+            fate::PresenterReport presenter;
+            require(fate::run_native_live(*rt, observe && display_enabled ? 10u : 1u, vsync, &presenter, options) == fate::LiveExit::Deadline, "deadline lost");
+            require(presenter.requested_vsync == vsync &&
+                presenter.sdl_vsync_enabled == (vsync == fate::HostVSync::On), "explicit SDL vsync choice lost");
+            require(software ? presenter.software_renderer :
+                !presenter.software_renderer && presenter.renderer == (driver == "auto" ? "direct3d11" : driver), "requested renderer or fallback not reported");
+            require(presenter.verified_upload_pixels == (display_enabled ? 4096u : 0u), "GS texture readback missing or fabricated");
+            require(presenter.gs_frame_state == (display_enabled ? "frame-ready" : "display-disabled") &&
+                presenter.pmode == (display_enabled ? 1u : 0u), "GS no-frame diagnostic lost");
+            require(presenter.observations > 1 && (presenter.presentations > 0) == display_enabled,
+                "VBLANK observation or GS presentation lost");
             require(mem.read32(0x70000) == marker, "EE memory reset by presenter");
             uint32_t readback = 0;
             require(rt->readIopMemory(iop_marker, &readback, sizeof(readback)) && readback == marker,
@@ -52,13 +82,42 @@ int main() {
             const auto snapshot = rt->eeScheduler().snapshot();
             require(snapshot.eventFlags.size() == 1 && snapshot.eventFlags[0].id == event &&
                 snapshot.eventFlags[0].bits == 0x123, "prepared scheduler objects reset by presenter");
+            const auto guest_tick = rt->eeScheduler().currentVSyncTick();
+            require(guest_tick > 0 && mem.gs().vsyncTick.load() == guest_tick,
+                "guest VBLANK stopped or GS tick diverged");
+            require(((mem.gs().csr.load() >> 13) & 1u) == (guest_tick & 1u), "guest field parity lost");
             std::vector<uint8_t> pixels;
             uint32_t width = 0, height = 0;
             const bool frame = rt->gs().copyLatchedHostPresentationFrame(pixels, width, height);
             require(frame == display_enabled, "missing GS frame was fabricated or real one was lost");
             if (frame) require(!pixels.empty() && pixels[0] == 0x12 && pixels[1] == 0x34 && pixels[2] == 0x56,
                 "GS source pixel mismatch");
-            std::cout << "PASS prepared-state-preserved display_enabled=" << display_enabled << '\n';
+            if (frame) for (uint32_t y = 0; y < height; ++y) for (uint32_t x = 0; x < width; ++x) {
+                const size_t offset = (static_cast<size_t>(y) * width + x) * 4;
+                require(pixels[offset] == ((0x12u + x * 3 + y * 7) & 255u) &&
+                    pixels[offset+1] == ((0x34u + x * 5 + y * 11) & 255u) &&
+                    pixels[offset+2] == ((0x56u + x * 13 + y * 17) & 255u) && pixels[offset+3] == 255u,
+                    "GS row/column/color or opaque host-alpha conversion mismatch");
+            }
+            std::cout << "PASS prepared-state-preserved display_enabled=" << display_enabled
+                      << " vsync=" << (vsync == fate::HostVSync::On ? "on" : "off")
+                      << " renderer=" << presenter.renderer << " readback_pixels=" << presenter.verified_upload_pixels << '\n';
+          }
+        }
+        SDL_ResetHint(SDL_HINT_RENDER_VSYNC);
+        if (driver == "dummy") {
+            auto rt = std::make_unique<PS2Runtime>();
+            require(rt->memory().initialize(PS2_RAM_SIZE) && rt->syncCoreSubsystems(), "failure test runtime init");
+            fate::PresenterOptions unavailable;
+            unavailable.renderer = fate::HostRenderer::Direct3D11;
+            bool rejected = false;
+            try { (void)fate::run_native_live(*rt, 1, fate::HostVSync::Off, nullptr, unavailable); }
+            catch (const std::runtime_error& error) {
+                const std::string_view message(error.what());
+                rejected = message.starts_with("Requested SDL renderer unavailable:") || message.starts_with("Create native presenter:");
+            }
+            require(rejected, "explicit unavailable renderer silently fell back");
+            std::cout << "PASS explicit unavailable Direct3D11 rejected without fallback\n";
         }
         return 0;
     } catch (const std::exception& error) {

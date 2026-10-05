@@ -1,0 +1,110 @@
+{
+  "recorded_utc": "2026-10-05T07:46:37.752715+00:00",
+  "entry": "0x0019AA4C",
+  "original_words": 15,
+  "changes": [
+    "Restore original GIF DMA submission tail, low64 BNEL annulment, owner writes and ABI return.",
+    "Correct R5900 general exception vectors to 0x80000180 and BEV 0xBFC00380; preserve boot refill 0xBFC00200."
+  ],
+  "focused_tests_per_configuration": {
+    "original_word_guards": 15,
+    "owner_conflicts": 1,
+    "original_opcode_GPR128_full32MB_RAM_comparisons": 192,
+    "delay_annul_alignment_boundaries": 6,
+    "actual_GIF_chain_owner_cases": 6,
+    "prior_channel_returns": 12,
+    "prior_initialization_contracts": 23,
+    "prior_parameter_combinations": 7000,
+    "prior_Store128_cases": 20,
+    "prior_VIF_regressions": "PASS"
+  },
+  "graphics_regressions": "Debug and Release PASS, including 12 added general/TLB/BEV/delay vector cases.",
+  "native": {
+    "build": "PASS",
+    "exe_sha256": "09210a9715608ea1690e011a38ec3466d8d3cc4c01adea0a654ddd01df21f907",
+    "input_integrity": "MATCH",
+    "exit_code": 4294967295,
+    "next_missing_pc": "0x001B7F84",
+    "gif_packets_observed": true,
+    "title_movie_battle": "NOT_DEMONSTRATED"
+  },
+  "evidence": [
+    {
+      "path": "artifacts/native_pipeline_20261005/dma_submit_022/dma-focused-summary-006.json",
+      "sha256": "52b0cdd4f81e2dc35f5de487127116b0847a7d0da06b0d2ba19aa02d9b3ddbb3",
+      "bytes": 7003
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/dma_submit_022/triage-corrections-006.json",
+      "sha256": "d9f2deaeadaff2d9c93223395ba61d986f2c645f962d4cd562177053acd61ee3",
+      "bytes": 1157
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/dma_submit_022/original-pair-001.json",
+      "sha256": "bfce9ae980d3b4f7ab1a71a374c73fd72c7a4e7e59fca77c1b2c5bd9f437970b",
+      "bytes": 8747
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/dma_submit_022/contract-Debug-004.log",
+      "sha256": "2cfb79352c8cfef3124abbcb54840430c905dda160d588f98308a274c4348779",
+      "bytes": 1808
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/dma_submit_022/contract-Release-004.log",
+      "sha256": "2cfb79352c8cfef3124abbcb54840430c905dda160d588f98308a274c4348779",
+      "bytes": 1808
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/dma_submit_022/native-build-004.log",
+      "sha256": "a16ed3f2bfd680eb7678985f214e0a26e82dc52f873d629c00d79c5d0b3ee10e",
+      "bytes": 16906
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/dma_submit_022/native-004/result.json",
+      "sha256": "607e222c457067e203b0a58462455bdb175f1973e48d13c249666c46269625a2",
+      "bytes": 13434
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/dma_submit_022/native-004/stderr.bin",
+      "sha256": "d6d560d0fe4ce5b2129474688bd462727ab6ce44433788d6980371afb1807041",
+      "bytes": 14987
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/dma_submit_022/native-004/stdout.bin",
+      "sha256": "9594841245f0b085652b1688079517e2b98631e6f8d161bba0162fafba4b4660",
+      "bytes": 3470
+    }
+  ],
+  "limits": [
+    "Actual original DMA entry/return captured; same-state native hardware comparison pending.",
+    "Historical cycle021 checkpoint comparisons were not rerun after the exception-vector repair.",
+    "Full ps2_runtime_expansion_tests suite not run; nested EXL/ERL and complete exception behavior unverified.",
+    "END-tag TADR defect inference rejected by measured contracts; MADR hypothesis remains unmeasured."
+  ],
+  "preserved_failures": [
+    {
+      "path": "artifacts/native_pipeline_20261005/dma_submit_022/contract-Debug-001.log",
+      "bytes": 266,
+      "sha256": "d00859dadd5a9c08addb78e6ca3c5d079e3df8aea1e9340401a220c318a28e74"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/dma_submit_022/contract-Debug-002.log",
+      "bytes": 894,
+      "sha256": "79319a2bb73c1d5368f1b7679f41bbfa715ec1c543ff0bf8ce61c5eff7a036f6"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/dma_submit_022/contract-Debug-003.log",
+      "bytes": 361,
+      "sha256": "39b9220a1fa33840fda3c54d69bfef4002bf96a1ecf0dcdbbfee47f89bc39722"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/dma_submit_022/dma-contract-Debug-005.log",
+      "bytes": 586,
+      "sha256": "2d3e2b533b1157b126a940f93b2eb816e15f39e1862e4ef8a3e759542e9e4d4f"
+    }
+  ],
+  "acceptance_verified": 0,
+  "acceptance_total": 8,
+  "new_cloud_calls": 0,
+  "working_tree": "UNCOMMITTED"
+}

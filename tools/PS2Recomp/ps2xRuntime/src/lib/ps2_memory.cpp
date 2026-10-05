@@ -411,12 +411,6 @@ uint32_t PS2Memory::advanceEeTimers(uint64_t eeCycles) noexcept
         return 0u;
     }
 
-    constexpr uint32_t kGifStat = 0x10003020u;
-    constexpr uint32_t kGifFqcMask = 0x1F000000u;
-    auto gifStatIt = m_ioRegisters.find(kGifStat);
-    if (gifStatIt != m_ioRegisters.end())
-        gifStatIt->second &= ~kGifFqcMask;
-
     uint32_t interruptMask = 0u;
     for (size_t index = 0; index < m_eeTimers.size(); ++index)
     {
@@ -742,24 +736,23 @@ uint32_t PS2Memory::read32(uint32_t address)
         throw std::runtime_error("Unaligned 32-bit read at address: 0x" + std::to_string(address));
     }
 
-    if (isGsPrivReg(address))
+    const bool scratch = isScratchpad(address);
+    const uint32_t physAddr = translateAddress(address);
+    if (!scratch && isGsPrivReg(physAddr))
     {
-        uint32_t off = address & 7;
-        const uint32_t regOff = (address - PS2_GS_PRIV_REG_BASE) & ~0x7u;
+        uint32_t off = physAddr & 7;
+        const uint32_t regOff = (physAddr - PS2_GS_PRIV_REG_BASE) & ~0x7u;
         if (regOff == kGsCsrRegOffset)
         {
             uint64_t val = gs_regs.csr.load();
             return (uint32_t)(val >> (off * 8));
         }
-        uint64_t *reg = gsRegPtr(gs_regs, address);
+        uint64_t *reg = gsRegPtr(gs_regs, physAddr);
         if (!reg)
             return 0;
         uint64_t val = *reg;
         return (uint32_t)(val >> (off * 8));
     }
-
-    const bool scratch = isScratchpad(address);
-    uint32_t physAddr = translateAddress(address);
 
     if (scratch)
     {
@@ -790,19 +783,18 @@ uint64_t PS2Memory::read64(uint32_t address)
         throw std::runtime_error("Unaligned 64-bit read at address: 0x" + std::to_string(address));
     }
 
-    if (isGsPrivReg(address))
+    const bool scratch = isScratchpad(address);
+    const uint32_t physAddr = translateAddress(address);
+    if (!scratch && isGsPrivReg(physAddr))
     {
-        const uint32_t regOff = (address - PS2_GS_PRIV_REG_BASE) & ~0x7u;
+        const uint32_t regOff = (physAddr - PS2_GS_PRIV_REG_BASE) & ~0x7u;
         if (regOff == kGsCsrRegOffset)
         {
             return gs_regs.csr.load();
         }
-        uint64_t *reg = gsRegPtr(gs_regs, address);
+        uint64_t *reg = gsRegPtr(gs_regs, physAddr);
         return reg ? *reg : 0;
     }
-
-    const bool scratch = isScratchpad(address);
-    uint32_t physAddr = translateAddress(address);
 
     if (scratch)
     {
@@ -819,12 +811,10 @@ uint64_t PS2Memory::read64(uint32_t address)
         return loadScalar<uint64_t>(vuMem, vuOffset, vuLimit, "read64 vu", address);
     }
 
-    // 64-bit IO read: compose from the two adjacent 32-bit IO register slots
-    // to avoid any side-effects from read32 handlers.
-    if (isIoRegister(address))
+    if (!scratch && isIoRegister(physAddr))
     {
-        uint32_t lo = m_ioRegisters.count(address) ? m_ioRegisters[address] : 0u;
-        uint32_t hi = m_ioRegisters.count(address + 4) ? m_ioRegisters[address + 4] : 0u;
+        const uint32_t lo = readIORegister(physAddr);
+        const uint32_t hi = readIORegister(physAddr + 4u);
         return static_cast<uint64_t>(lo) | (static_cast<uint64_t>(hi) << 32);
     }
     return (uint64_t)read32(address) | ((uint64_t)read32(address + 4) << 32);
@@ -951,17 +941,19 @@ void PS2Memory::write32(uint32_t address, uint32_t value)
         throw std::runtime_error("Unaligned 32-bit write at address: 0x" + std::to_string(address));
     }
 
-    if (isGsPrivReg(address))
+    const bool scratch = isScratchpad(address);
+    const uint32_t physAddr = translateAddress(address);
+    if (!scratch && isGsPrivReg(physAddr))
     {
-        uint32_t off = address & 7;
-        const uint32_t regOff = (address - PS2_GS_PRIV_REG_BASE) & ~0x7u;
+        uint32_t off = physAddr & 7;
+        const uint32_t regOff = (physAddr - PS2_GS_PRIV_REG_BASE) & ~0x7u;
         if (regOff == kGsCsrRegOffset)
         {
             // CSR: bits 0..1 of the low dword are write-one-to-clear status bits.
             // Done as a single atomic RMW -- see writeCsrHalf's comment.
             writeCsrHalf(gs_regs.csr, off, value);
         }
-        else if (uint64_t *reg = gsRegPtr(gs_regs, address))
+        else if (uint64_t *reg = gsRegPtr(gs_regs, physAddr))
         {
             uint64_t mask = 0xFFFFFFFFULL << (off * 8);
             uint64_t newVal = (*reg & ~mask) | ((uint64_t)value << (off * 8));
@@ -969,9 +961,6 @@ void PS2Memory::write32(uint32_t address, uint32_t value)
         }
         return;
     }
-
-    const bool scratch = isScratchpad(address);
-    uint32_t physAddr = translateAddress(address);
 
     if (scratch)
     {
@@ -1011,24 +1000,23 @@ void PS2Memory::write64(uint32_t address, uint64_t value)
         throw std::runtime_error("Unaligned 64-bit write at address: 0x" + std::to_string(address));
     }
 
-    if (isGsPrivReg(address))
+    const bool scratch = isScratchpad(address);
+    const uint32_t physAddr = translateAddress(address);
+    if (!scratch && isGsPrivReg(physAddr))
     {
-        const uint32_t regOff = (address - PS2_GS_PRIV_REG_BASE) & ~0x7u;
+        const uint32_t regOff = (physAddr - PS2_GS_PRIV_REG_BASE) & ~0x7u;
         if (regOff == kGsCsrRegOffset)
         {
             // CSR: bits 0..1 are write-one-to-clear status bits. Done as a single
             // atomic RMW -- see writeCsrFull's comment.
             writeCsrFull(gs_regs.csr, value);
         }
-        else if (uint64_t *reg = gsRegPtr(gs_regs, address))
+        else if (uint64_t *reg = gsRegPtr(gs_regs, physAddr))
         {
             *reg = value;
         }
         return;
     }
-
-    const bool scratch = isScratchpad(address);
-    uint32_t physAddr = translateAddress(address);
 
     if (scratch)
     {
@@ -1122,8 +1110,19 @@ void PS2Memory::write128(uint32_t address, __m128i value)
     }
 }
 
+void PS2Memory::raiseIntcInterrupt(uint32_t cause)
+{
+    if (cause < 15u)
+        m_ioRegisters[0x1000F000u] |= 1u << cause;
+}
+
 bool PS2Memory::writeIORegister(uint32_t address, uint32_t value)
 {
+    if (address == 0x1000F000u)
+    {
+        m_ioRegisters[address] &= ~value;
+        return true;
+    }
     size_t timerIndex = 0u;
     uint32_t timerOffset = 0u;
     if (decodeEeTimerRegister(address, timerIndex, timerOffset))
@@ -1230,6 +1229,11 @@ bool PS2Memory::writeIORegister(uint32_t address, uint32_t value)
     if (address >= 0x10003C00u && address < 0x10003E00u)
     {
         m_vifWriteCount.fetch_add(1, std::memory_order_relaxed);
+
+        if (address >= 0x10003D00u && address <= 0x10003D30u && (address & 0xFu) == 0u)
+            vif1_regs.row[(address - 0x10003D00u) / 16u] = value;
+        if (address >= 0x10003D40u && address <= 0x10003D70u && (address & 0xFu) == 0u)
+            vif1_regs.col[(address - 0x10003D40u) / 16u] = value;
 
         switch (address)
         {
@@ -1413,6 +1417,8 @@ bool PS2Memory::writeIORegister(uint32_t address, uint32_t value)
 
                     int tagsProcessed = 0;
                     uint32_t lastTagUpper = (chcr >> 16) & 0xFFFFu;
+                    uint32_t lastPayloadEnd = madr;
+                    bool observedTag = false;
 
                     while (tagsProcessed < kMaxChainTags)
                     {
@@ -1518,6 +1524,12 @@ bool PS2Memory::writeIORegister(uint32_t address, uint32_t value)
                             endChain = true;
                             break;
                         }
+                        if (channelBase == 0x1000A000u)
+                        {
+                            // MADR follows the last consumed payload; END leaves TADR at its tag.
+                            lastPayloadEnd = dataAddr + static_cast<uint32_t>(tagQwc) * 16u;
+                            observedTag = true;
+                        }
 
                         if (transferTagData)
                             appendVifTagData(currentTagAddr);
@@ -1531,6 +1543,8 @@ bool PS2Memory::writeIORegister(uint32_t address, uint32_t value)
                     }
 
                     m_ioRegisters[channelBase + 0x30] = tagAddr;
+                    if (channelBase == 0x1000A000u && observedTag)
+                        m_ioRegisters[channelBase + 0x10] = lastPayloadEnd;
                     m_ioRegisters[channelBase + 0x40] = asr0;
                     m_ioRegisters[channelBase + 0x50] = asr1;
                     chcr = (chcr & ~(0x3u << 4)) | ((asp & 0x3u) << 4);
@@ -1870,6 +1884,13 @@ void PS2Memory::processPendingTransfers()
 
     if (m_gifArbiter)
         m_gifArbiter->drain();
+    if (hadGif && m_path3MaskedFifo.empty() && (!m_gifArbiter || m_gifArbiter->empty()))
+    {
+        constexpr uint32_t kGifStat = 0x10003020u;
+        constexpr uint32_t kGifFqcMask = 0x1F000000u;
+        // FIFO occupancy clears when its packets drain, not when unrelated EE timers advance.
+        m_ioRegisters[kGifStat] &= ~kGifFqcMask;
+    }
 
     static constexpr uint32_t GIF_CHANNEL = 0x1000A000;
     static constexpr uint32_t VIF0_CHANNEL = 0x10008000;
@@ -1950,6 +1971,8 @@ void PS2Memory::flushMaskedPath3Packets(bool drainImmediately)
 
     if (m_gifArbiter && drainImmediately)
         m_gifArbiter->drain();
+    if (drainImmediately && (!m_gifArbiter || m_gifArbiter->empty()))
+        m_ioRegisters[0x10003020u] &= ~0x1F000000u;
 }
 
 void PS2Memory::submitGifPacket(GifPathId pathId, const uint8_t *data, uint32_t sizeBytes, bool drainImmediately, bool path2DirectHl)
@@ -2300,6 +2323,28 @@ bool PS2Memory::writeIopSifRegister(uint32_t index, uint32_t value)
 
 uint32_t PS2Memory::readIORegister(uint32_t address)
 {
+    switch (address)
+    {
+    case 0x10003C00u: return vif1_regs.stat;
+    case 0x10003C30u: return vif1_regs.mark;
+    case 0x10003C40u: return vif1_regs.cycle;
+    case 0x10003C50u: return vif1_regs.mode;
+    case 0x10003C60u: return vif1_regs.num;
+    case 0x10003C70u: return vif1_regs.mask;
+    case 0x10003C80u: return vif1_regs.code;
+    case 0x10003C90u: return vif1_regs.itops;
+    case 0x10003CA0u: return vif1_regs.base;
+    case 0x10003CB0u: return vif1_regs.ofst;
+    case 0x10003CC0u: return vif1_regs.tops;
+    case 0x10003CD0u: return vif1_regs.itop;
+    case 0x10003CE0u: return vif1_regs.top;
+    default: break;
+    }
+    if (address >= 0x10003D00u && address <= 0x10003D30u && (address & 0xFu) == 0u)
+        return vif1_regs.row[(address - 0x10003D00u) / 16u];
+    if (address >= 0x10003D40u && address <= 0x10003D70u && (address & 0xFu) == 0u)
+        return vif1_regs.col[(address - 0x10003D40u) / 16u];
+
     size_t timerIndex = 0u;
     uint32_t timerOffset = 0u;
     if (decodeEeTimerRegister(address, timerIndex, timerOffset))

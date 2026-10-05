@@ -31,18 +31,13 @@ namespace ps2_syscalls
 
             gs.smode2 = smode2;
 
-            // Keep CRT1 enabled after the BIOS syscall selects a display mode.
-            if ((gs.pmode & 0x3ull) == 0ull)
-            {
-                gs.pmode |= 0x1ull;
-            }
         }
 
         RUNTIME_LOG("PS2 GsSetCrt: interlaced=" << interlaced
                                                 << ", videoMode=" << videoMode
                                                 << ", frameMode=" << frameMode << std::endl);
 
-        setReturnS32(ctx, 0);
+        SET_GPR_S32(ctx, 2, 0);
     }
 
     void SetGsCrt(uint8_t *rdram, R5900Context *ctx, PS2Runtime *runtime)

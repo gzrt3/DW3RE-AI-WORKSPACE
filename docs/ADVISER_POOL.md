@@ -1,5 +1,13 @@
 # Development adviser pool
 
+Current019 continuation: the user resumed available project pools. Native
+review agents completed an instruction-width review and evidence audit. One
+Nova Pro call and one local Ollama call completed; both returned incorrect
+claims that were independently rejected. Azure's historical cost reconciliation
+remains open. No access repair, quota retry, budget change or UI submission was
+performed. Existing review schedules remain paused. See
+NATIVE_GRAPHICS_BUFFER_20261005.md for exact use and native progress.
+
 `tools/adviser_pool.py` collects GitHub Copilot, Microsoft Copilot, browser
 ChatGPT and Bedrock replies against the current source hashes. The native cycle
 also synchronizes the fourth queue. PowerShell, Python, CMake/MSVC and Git remain

@@ -21,6 +21,7 @@ add_library(ps2_iop STATIC
     src/emulator/imports/iop_ioman.cpp
     src/emulator/imports/iop_loadcore.cpp
     src/emulator/imports/iop_loadcore_image.cpp
+    src/emulator/imports/iop_loadcore_state.cpp
     src/emulator/imports/iop_modload.cpp
     src/emulator/imports/iop_stdio.cpp
     src/emulator/imports/iop_sysclib.cpp
@@ -84,7 +85,7 @@ if(PS2X_IOP_BUILD_TESTS)
     target_include_directories(ps2_iop_modload_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
     add_test(NAME ps2_iop_modload_tests COMMAND ps2_iop_modload_tests)
 
-    foreach(contract IN ITEMS ioman_read sysmem_allocation loadcore_image)
+    foreach(contract IN ITEMS ioman_read sysmem_allocation loadcore_image loadcore_link loadcore_state loader_dispatch)
         add_executable(ps2_iop_${contract}_tests tests/iop_${contract}_tests.cpp)
         target_link_libraries(ps2_iop_${contract}_tests PRIVATE ps2_iop)
         target_include_directories(ps2_iop_${contract}_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
@@ -95,6 +96,18 @@ if(PS2X_IOP_BUILD_TESTS)
     add_executable(ps2_iop_loadcore_original_replay tests/iop_loadcore_original_replay.cpp)
     target_link_libraries(ps2_iop_loadcore_original_replay PRIVATE ps2_iop)
     target_include_directories(ps2_iop_loadcore_original_replay PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
+    add_executable(ps2_iop_loadcore_link_original_replay tests/iop_loadcore_link_original_replay.cpp)
+    target_link_libraries(ps2_iop_loadcore_link_original_replay PRIVATE ps2_iop)
+    target_include_directories(ps2_iop_loadcore_link_original_replay PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
+    add_executable(ps2_iop_modload_original_probe tests/iop_modload_original_probe.cpp)
+    target_link_libraries(ps2_iop_modload_original_probe PRIVATE ps2_iop)
+    target_include_directories(ps2_iop_modload_original_probe PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
+    add_executable(ps2_iop_boot_provider_original_probe tests/iop_boot_provider_original_probe.cpp)
+    target_link_libraries(ps2_iop_boot_provider_original_probe PRIVATE ps2_iop)
+    target_include_directories(ps2_iop_boot_provider_original_probe PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 endif()
 

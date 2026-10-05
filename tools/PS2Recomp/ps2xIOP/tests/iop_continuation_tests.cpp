@@ -144,11 +144,14 @@ void tokenOwnership() {
     setup.gpr[4]=setup.gpr[2];require(kernel.dispatchThreadImport(6u,setup,0u),"StartThread");
     auto *thread=kernel.beginNextReady(0u);require(thread!=nullptr,"Ready thread");
     auto &parent=thread->cpu;parent.gpr[16]=0x12345678u;
+    parent.importEntered=true;parent.importPc=storage+0x90u;parent.importReturnPc=storage+0x94u;
     auto foreign=parent;
     require(kernel.beginGuestCall(foreign,storage+0x80u,0,0,0,0,0)==0,"foreign CPU accepted");
     const auto outer=kernel.beginGuestCall(parent,storage+0x80u,1,2,3,4,0xCAFEu);
     require(outer!=0,"owned frame rejected");
     auto &child=thread->executionCpu();
+    require(!child.importEntered && child.importPc==0u && child.importReturnPc==0u,
+            "child inherited parent's suspended import boundary");
     require(child.gpr[28]==0xCAFEu && child.gpr[29]==parent.gpr[29],"frame GP/stack");
     const auto nested=kernel.beginGuestCall(child,storage+0x80u,0,0,0,0,0);
     require(nested!=0 && nested!=outer,"nested token");
@@ -161,6 +164,8 @@ void tokenOwnership() {
     child.pc=kCallReturnSentinel;child.gpr[2]=42;child.yielded=false;
     kernel.endTimeslice(*thread,kThreadReturnSentinel);thread=kernel.beginNextReady(2u);
     require(kernel.takeGuestCallReturn(outer,parent,result) && result==42 && parent.gpr[16]==0x12345678u,"parent restore");
+    require(parent.importEntered && parent.importPc==storage+0x90u && parent.importReturnPc==storage+0x94u,
+            "child return changed parent's suspended import boundary");
     kernel.endTimeslice(*thread,kThreadReturnSentinel);kernel.reset();
     require(!kernel.takeGuestCallReturn(outer,setup,result),"stale token accepted after reset");
     setup.gpr[4]=storage;

@@ -23,6 +23,10 @@ namespace ps2x::iop::detail
         bool stopped = false;
         bool yielded = false;
         bool exception = false;
+        // A yielding HLE import resumes after its JR/delay pair, not before it.
+        bool importEntered = false;
+        uint32_t importPc = 0u;
+        uint32_t importReturnPc = 0u;
     };
 
     class IopCpuCore

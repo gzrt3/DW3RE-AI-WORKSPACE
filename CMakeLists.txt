@@ -15,7 +15,37 @@ if(FATE_NATIVE_INPUT_ONLY)
     add_test(NAME native_input_contract COMMAND fate_native_input_contract)
     return()
 endif()
+option(FATE_NATIVE_PRESENTER_ONLY "Build host presentation contracts without the translated game corpus" OFF)
+if(FATE_NATIVE_PRESENTER_ONLY)
+    include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/NativePresenterContract.cmake")
+    return()
+endif()
 option(FATE_BOOT_CONTINUATIONS_ONLY "Build focused original-continuation contracts" OFF)
+option(FATE_DMA_INIT_ONLY "Build original DMA initialization contracts" OFF)
+option(FATE_GRAPHICS_INIT_ONLY "Build original graphics initialization contracts" OFF)
+option(FATE_WAITSEMA_ONLY "Build original post-WaitSema continuation contracts" OFF)
+option(FATE_IRQ_RETURN_ONLY "Build original IRQ return contracts" OFF)
+option(FATE_PAD_BOOT_ONLY "Build original pad boot continuation contracts" OFF)
+if(FATE_PAD_BOOT_ONLY)
+    include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/PadBootContract.cmake")
+    return()
+endif()
+if(FATE_IRQ_RETURN_ONLY)
+    include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/IrqReturnContract.cmake")
+    return()
+endif()
+if(FATE_WAITSEMA_ONLY)
+    include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/WaitSemaContract.cmake")
+    return()
+endif()
+if(FATE_GRAPHICS_INIT_ONLY)
+    include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/GraphicsInitContract.cmake")
+    return()
+endif()
+if(FATE_DMA_INIT_ONLY)
+    include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/DmaInitContract.cmake")
+    return()
+endif()
 if(FATE_BOOT_CONTINUATIONS_ONLY)
     include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/BootContinuationsContract.cmake")
     return()
@@ -88,12 +118,18 @@ if(MSVC)
 endif()
 
 add_executable(fate_game
+    "src/pad_boot_continuation.cpp"
+    "src/irq_return_continuation.cpp"
     "src/main.cpp"
     "src/native_presenter.cpp"
     "src/native_iop_boot.cpp"
     "src/generated_resume_catalog.cpp"
     "src/provenance.cpp"
     "src/boot_continuations.cpp"
+    "src/dma_init_continuation.cpp"
+    "src/vif_init_continuation.cpp"
+    "src/graphics_init_continuation.cpp"
+    "src/waitsema_continuation.cpp"
     "src/sif_irq_continuations.cpp"
     "src/boot_syscall_handlers.cpp"
     "src/boot_thread_syscalls.cpp"
@@ -117,26 +153,18 @@ if(MSVC)
     target_compile_options(fate_game PRIVATE /wd4324)
     # Translated register macros check constant register indices. Keep all
     # other /W4 /WX diagnostics on these recovered guest instructions.
-    set_source_files_properties("src/boot_continuations.cpp" "src/sif_irq_continuations.cpp" "src/boot_syscall_handlers.cpp" "src/boot_thread_syscalls.cpp" PROPERTIES COMPILE_OPTIONS "/wd4127")
+    set_source_files_properties("src/boot_continuations.cpp" "src/dma_init_continuation.cpp" "src/vif_init_continuation.cpp" "src/sif_irq_continuations.cpp" "src/boot_syscall_handlers.cpp" "src/boot_thread_syscalls.cpp" PROPERTIES COMPILE_OPTIONS "/wd4127")
+    set_source_files_properties("src/graphics_init_continuation.cpp" "src/waitsema_continuation.cpp" "src/pad_boot_continuation.cpp" PROPERTIES COMPILE_OPTIONS "/wd4127")
     # Preserved generated tail transfers retain unreachable fallthrough labels.
     set_source_files_properties("src/sif_irq_continuations.cpp" PROPERTIES COMPILE_OPTIONS "/wd4127;/wd4702")
 endif()
 
-find_package(SDL2 REQUIRED)
+find_package(SDL2 2.0.18 REQUIRED)
 target_link_libraries(fate_game PRIVATE fate_recomp_core SDL2::SDL2)
 include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/ExistingRuntime.cmake")
 fate_link_existing_runtime(fate_game)
 
-add_executable(fate_native_presenter_contract EXCLUDE_FROM_ALL
-    "tests/integration/native_presenter_contract.cpp"
-    "src/native_presenter.cpp")
-target_include_directories(fate_native_presenter_contract PRIVATE "include"
-    "tools/PS2Recomp/ps2xRuntime/src/lib")
-target_link_libraries(fate_native_presenter_contract PRIVATE fate_recomp_core SDL2::SDL2)
-fate_link_existing_runtime(fate_native_presenter_contract)
-if(MSVC)
-    target_compile_options(fate_native_presenter_contract PRIVATE /wd4324)
-endif()
+include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/NativePresenterContract.cmake")
 
 add_executable(fate_host_dispatch_contract EXCLUDE_FROM_ALL
     "tests/integration/host_dispatch_contract.cpp"

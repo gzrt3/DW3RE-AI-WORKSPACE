@@ -7,6 +7,7 @@
 #include "imports/iop_ioman.h"
 #include "core/iop_kernel.h"
 #include "imports/iop_loadcore.h"
+#include "imports/iop_loadcore_state.h"
 #include "imports/iop_modload.h"
 #include "core/iop_memory.h"
 #include "services/iop_module_loader.h"
@@ -84,12 +85,21 @@ namespace ps2x::iop::detail
             uint32_t entry = 0;
             uint32_t gp = 0;
             bool resident = false;
+            uint32_t descriptor = 0u;
         };
 
         struct GuestCallback
         {
             uint32_t function = 0;
             uint32_t gp = 0;
+        };
+
+        struct ModuleObservation
+        {
+            uint32_t descriptor = 0u;
+            uint32_t returnPc = 0u;
+            const CpuState *owner = nullptr;
+            bool returned = false;
         };
 
         struct ScheduledGuestCallback
@@ -127,7 +137,12 @@ namespace ps2x::iop::detail
             memory.reset();
             kernel.reset();
             modules.clear();
+            hleThunks.clear();
+            moduleObservations.clear();
+            linkFailureObservations = 0u;
+            loaderData = 0u;
             imports.reset();
+            loadcore.reset();
             cdvd.reset();
             intrman.reset();
             timrman.reset();
@@ -256,13 +271,26 @@ namespace ps2x::iop::detail
             Missing,
         };
 
-        ImportDisposition dispatchImport(const IopImportCall &call, CpuState &cpu)
+        ImportDisposition dispatchImport(const IopImportCall &call, CpuState &cpu, bool directHle = false)
         {
             const uint32_t a0 = cpu.gpr[4];
             auto setV0 = [&](uint32_t value)
             {
                 cpu.gpr[2] = value;
             };
+
+            // Bound original providers own their data and lifecycle. ReBootStart
+            // remains the explicit whole-IOP replacement boundary.
+            if (!directHle && !(iequals(call.library, "modload") && call.ordinal == 4u))
+            {
+                const uint32_t target = imports.resolve(call.library, call.ordinal, call.version);
+                if (target != 0u)
+                {
+                    cpu.pc = target;
+                    cpu.branchPending = false;
+                    return ImportDisposition::JumpToGuest;
+                }
+            }
 
             if (iequals(call.library, "sysmem") && sysmem.dispatchImport(call.ordinal, cpu))
                 return ImportDisposition::Handled;
@@ -315,7 +343,48 @@ namespace ps2x::iop::detail
                 setV0(0);return ImportDisposition::Handled;
             }
             if (iequals(call.library, "loadcore") && loadcore.dispatchImport(call.ordinal, cpu, call.version))
+            {
+                if (call.ordinal == 8u && static_cast<int32_t>(cpu.gpr[2]) < 0 && linkFailureObservations < 16u)
+                {
+                    ++linkFailureObservations;
+                    const uint32_t size = cpu.gpr[5];
+                    std::ostringstream message;
+                    message << "[IOP:link-failed] result=" << static_cast<int32_t>(cpu.gpr[2])
+                            << " pc=0x" << std::hex << cpu.pc << " ra=0x" << cpu.gpr[31]
+                            << " base=0x" << a0 << " size=0x" << size;
+                    log(LogLevel::Warning, message.str());
+                    if ((a0 & 3u) == 0u && size <= IopMemory::RamSize && memory.ownsRamRange(a0, size))
+                    {
+                        uint32_t observed = 0u;
+                        for (uint32_t offset = 0u; offset + 20u <= size && observed < 32u; offset += 4u)
+                        {
+                            const uint32_t table = a0 + offset;
+                            if (read32(table) != 0x41E00000u) continue;
+                            ++observed;
+                            std::string library;
+                            std::string nameHex;
+                            constexpr char hex[] = "0123456789abcdef";
+                            for (uint32_t n = 0u; n < 8u; ++n)
+                            {
+                                const auto byte = read8(table + 12u + n);
+                                if (byte == 0u) break;
+                                library.push_back(static_cast<char>(byte));
+                                nameHex.push_back(hex[byte >> 4u]);
+                                nameHex.push_back(hex[byte & 15u]);
+                            }
+                            const auto version = read16(table + 8u);
+                            std::ostringstream entry;
+                            entry << "[IOP:link-candidate] name_hex=" << nameHex
+                                  << " version=0x" << std::hex << version << " table=0x" << table
+                                  << " provider=0x" << imports.findTable(library, version);
+                            log(LogLevel::Warning, entry.str());
+                        }
+                    }
+                }
+                if (call.ordinal == 16u && moduleObservations.size() < 128u)
+                    moduleObservations.push_back({a0});
                 return ImportDisposition::Handled;
+            }
 
             if ((iequals(call.library, "thbase") || iequals(call.library, "threadman")) &&
                 kernel.dispatchThreadImport(call.ordinal, cpu, totalCycles))
@@ -416,7 +485,7 @@ namespace ps2x::iop::detail
             if (iequals(call.library, "heaplib") && heaplib.dispatchImport(call.ordinal, cpu))
                 return ImportDisposition::Handled;
 
-            const uint32_t target = imports.resolve(call.library, call.ordinal, call.version);
+            const uint32_t target = directHle ? 0u : imports.resolve(call.library, call.ordinal, call.version);
             if (target != 0u)
             {
                 cpu.pc = target;
@@ -431,6 +500,45 @@ namespace ps2x::iop::detail
         {
             if (cpu.stopped)
                 return false;
+            for (auto watch = moduleObservations.begin(); watch != moduleObservations.end();)
+            {
+                const uint32_t descriptor = watch->descriptor;
+                const uint32_t flags = read16(descriptor + 10u);
+                if (!watch->owner && (flags & 15u) == 2u && cpu.pc == read32(descriptor + 16u))
+                {
+                    watch->owner = &cpu;
+                    watch->returnPc = cpu.gpr[31];
+                    std::ostringstream message;
+                    message << "[IOP:module-entry] id=" << read32(descriptor + 12u)
+                            << " thread=" << kernel.currentThreadId() << " argc=" << cpu.gpr[4]
+                            << " descriptor=0x" << std::hex << descriptor << " pc=0x" << cpu.pc
+                            << " gp=0x" << cpu.gpr[28] << " argv0_hex=";
+                    const uint32_t filename = memory.ownsRamRange(cpu.gpr[5], 4u) ? read32(cpu.gpr[5]) : 0u;
+                    constexpr char hex[] = "0123456789abcdef";
+                    for (uint32_t n = 0u; filename != 0u && n < 256u && filename <= UINT32_MAX - n &&
+                        memory.ownsRamRange(filename + n, 1u); ++n)
+                    {
+                        const auto value = read8(filename + n);
+                        if (value == 0u) break;
+                        message << hex[value >> 4u] << hex[value & 15u];
+                    }
+                    log(LogLevel::Info, message.str());
+                }
+                if (watch->owner == &cpu && !watch->returned && cpu.pc == watch->returnPc && !cpu.branchPending)
+                {
+                    watch->returned = true;
+                    log(LogLevel::Info, "[IOP:module-return] id=" + std::to_string(read32(descriptor + 12u)) +
+                        " thread=" + std::to_string(kernel.currentThreadId()) +
+                        " result=" + std::to_string(static_cast<int32_t>(cpu.gpr[2])));
+                }
+                if (watch->returned && (flags & 15u) == 3u)
+                {
+                    log(LogLevel::Info, "[IOP:module-resident] id=" + std::to_string(read32(descriptor + 12u)) +
+                        " flags=" + std::to_string(flags));
+                    watch = moduleObservations.erase(watch);
+                }
+                else ++watch;
+            }
             if (cpu.pc == kThreadReturnSentinel || cpu.pc == kCallReturnSentinel)
             {
                 cpu.stopped = true;
@@ -447,13 +555,47 @@ namespace ps2x::iop::detail
             if (checkInterrupt(cpu))
                 return true;
 
-            if (const auto import = imports.decode(cpu.pc))
+            if (cpu.importEntered && cpu.importPc != cpu.pc)
+                throw GuestExecutionError{};
+            auto import = imports.decode(cpu.pc);
+            const auto thunk = hleThunks.find(physicalAddress(cpu.pc));
+            const bool directHle = thunk != hleThunks.end();
+            if (directHle)
             {
-                const ImportDisposition disposition = dispatchImport(*import, cpu);
-                ++totalInstructions;
-                ++totalCycles;
+                if (memory.read32(cpu.pc) != 0x0000000Du ||
+                    !imports.isRegisteredTarget(thunk->second.providerAddress, thunk->second.ordinal, physicalAddress(cpu.pc)))
+                    throw GuestExecutionError{};
+                import = thunk->second;
+            }
+            if (
+                import && (!import->linked || import->targetAddress == 0u))
+            {
+                const auto before = cpu;
+                if (!import->linked && !cpu.importEntered)
+                {
+                    const uint32_t importPc = cpu.pc;
+                    if (cpu.branchPending || (!directHle && (!cpuCore.executeInstruction(cpu) || cpu.exception ||
+                        !cpuCore.executeInstruction(cpu) || cpu.exception)))
+                    {
+                        log(LogLevel::Error, "[IOP] invalid import instruction/delay boundary");
+                        throw GuestExecutionError{};
+                    }
+                    cpu.importReturnPc = directHle ? cpu.gpr[31] : cpu.pc;
+                    cpu.importPc = importPc;
+                    cpu.importEntered = true;
+                    cpu.pc = importPc;
+                    totalInstructions += 2u;
+                    totalCycles += 2u;
+                }
+                else
+                {
+                    ++totalInstructions;
+                    ++totalCycles;
+                }
+                const ImportDisposition disposition = import->linked ? ImportDisposition::Missing : dispatchImport(*import, cpu, directHle);
                 if (disposition == ImportDisposition::Missing)
                 {
+                    cpu = before;
                     std::ostringstream out;
                     out << "[IOP] unhandled import " << import->library << ':' << import->ordinal
                         << " version=0x" << std::hex << import->version << " pc=0x" << cpu.pc;
@@ -485,13 +627,19 @@ namespace ps2x::iop::detail
                     throw MissingImportError{};
                 }
                 if (disposition == ImportDisposition::JumpToGuest)
+                {
+                    cpu.importEntered = false;
                     return true;
+                }
                 // RpcLoop is a nonreturning SDK loop. Keep its import PC on
                 // sleep/yield so wakeups service the same original queue.
                 if (!(disposition==ImportDisposition::Handled &&
                       iequals(import->library,"sifcmd") &&
                       (import->ordinal==22u || (import->ordinal==21u && cpu.yielded))))
-                    cpu.pc = cpu.gpr[31];
+                {
+                    cpu.pc = cpu.importReturnPc;
+                    cpu.importEntered = false;
+                }
                 cpu.branchPending = false;
                 return !cpu.stopped;
             }
@@ -751,7 +899,50 @@ namespace ps2x::iop::detail
             }
         }
 
-        ModuleLoadResult loadImage(std::string path, std::span<const uint8_t> image, const void *arguments, uint32_t argumentSize)
+        bool initializeLoaderState(std::span<const uint32_t> bootModes)
+        {
+            if (loaderData != 0u || !modules.empty() || activeCpu || bootModes.size() > 16u)
+                return false;
+            size_t offset = 0u;
+            while (offset < bootModes.size())
+            {
+                const size_t words = (bootModes[offset] >> 24u) + 1u;
+                if (bootModes[offset] == 0u || words > bootModes.size() - offset) return false;
+                offset += words;
+            }
+            const uint32_t data = allocate(0x64u, 16u);
+            if (data == 0u || !zeroRam(data, 0x64u)) return false;
+            write32(data + 0x18u, 1u);
+            write32(0x3F0u, data + 0x20u);
+            write32(0x3F4u, data + 0x20u + static_cast<uint32_t>(bootModes.size()) * 4u);
+            if (!bootModes.empty() && !writeRam(data + 0x20u, bootModes.data(), bootModes.size_bytes())) return false;
+            if (!loadcore.bindState(data, data + 0x20u, data + 0x60u)) return false;
+            loaderData = data;
+            return true;
+        }
+
+        uint32_t registerPreparedModule(const IopImageLoadResult &loaded)
+        {
+            const uint32_t descriptor = allocate(0x30u, 16u);
+            if (descriptor == 0u || !zeroRam(descriptor, 0x30u)) return 0u;
+            if (loaded.moduleInfo != 0u)
+            {
+                if (!memory.ownsRamRange(loaded.moduleInfo, 6u)) return 0u;
+                write32(descriptor + 4u, read32(loaded.moduleInfo));
+                write16(descriptor + 8u, read16(loaded.moduleInfo + 4u));
+            }
+            write16(descriptor + 10u, 1u);
+            write32(descriptor + 0x10u, loaded.entry);
+            write32(descriptor + 0x14u, loaded.gp);
+            write32(descriptor + 0x18u, loaded.base);
+            write32(descriptor + 0x1Cu, loaded.textSize);
+            write32(descriptor + 0x20u, loaded.dataSize);
+            write32(descriptor + 0x24u, loaded.bssSize);
+            if (!registerLoadcore13Module(memory, loaderData, descriptor)) return 0u;
+            return descriptor;
+        }
+
+        ModuleLoadResult loadImage(std::string path, std::span<const uint8_t> image, const void *arguments, uint32_t argumentSize, bool hleImage = false)
         {
             ModuleLoadResult result{true, -1, -1};
             const IopImageLoadResult loaded = IopModuleLoader::load(image, memory, moduleCursor);
@@ -776,22 +967,108 @@ namespace ps2x::iop::detail
             module.size = loaded.size;
             module.entry = loaded.entry;
             module.gp = loaded.gp;
+            if (loaderData != 0u)
+            {
+                module.descriptor = registerPreparedModule(loaded);
+                if (module.descriptor == 0u) return result;
+                module.id = static_cast<int32_t>(read32(module.descriptor + 0xCu));
+            }
+
+            if (hleImage)
+            {
+                if (loaderData == 0u) return result;
+                uint32_t tables = 0u;
+                for (uint32_t offset = 0u; offset + 24u <= loaded.size; offset += 4u)
+                {
+                    const uint32_t table = loaded.base + offset;
+                    if (read32(table) != 0x41C00000u) continue;
+                    IopImportCall call;
+                    call.version = read16(table + 8u);
+                    call.providerAddress = table;
+                    for (uint32_t i = 0u; i < 8u; ++i) call.exactName[i] = read8(table + 12u + i);
+                    const auto end = std::find(call.exactName.begin(), call.exactName.end(), uint8_t{0});
+                    call.library.assign(call.exactName.begin(), end);
+                    {
+                        std::ostringstream message;
+                        message << "[IOP] HLE binding " << call.library << " table=0x" << std::hex << table
+                                << " version=0x" << call.version << " prior=0x" << imports.findTable(call.library, call.version);
+                        log(LogLevel::Info, message.str());
+                    }
+                    uint32_t count = 0u;
+                    while (count < 256u && memory.ownsRamRange(table + 20u + count * 4u, 4u) &&
+                           read32(table + 20u + count * 4u) != 0u) ++count;
+                    if (count == 0u || count == 256u)
+                    {
+                        log(LogLevel::Error, "[IOP] HLE provider has invalid function count: " + call.library);
+                        return result;
+                    }
+                    const uint32_t thunks = allocate(count * 8u, 16u);
+                    if (thunks == 0u) return result;
+                    for (uint32_t ordinal = 0u; ordinal < count; ++ordinal)
+                    {
+                        const uint32_t address = thunks + ordinal * 8u;
+                        write32(address, 0x0000000Du);
+                        write32(address + 4u, 0u);
+                        write32(table + 20u + ordinal * 4u, address);
+                        call.ordinal = static_cast<uint16_t>(ordinal);
+                        hleThunks.emplace(address, call);
+                    }
+                    const auto registered = imports.registerLibrary(table);
+                    if (registered != 0)
+                    {
+                        log(LogLevel::Error, "[IOP] HLE provider registration rejected: " + call.library +
+                            " result=" + (registered ? std::to_string(*registered) : "unsupported"));
+                        return result;
+                    }
+                    ++tables;
+                }
+                if (tables == 0u)
+                {
+                    log(LogLevel::Error, "[IOP] no export table in HLE image: " + module.path);
+                    return result;
+                }
+                write16(module.descriptor + 10u, 3u);
+                module.resident = true;
+                result = {true, module.id, 0};
+                modules[module.id] = std::move(module);
+                return result;
+            }
 
             uint32_t args = 0u;
-            if (arguments && argumentSize)
+            uint32_t argc = 1u;
+            std::vector<uint32_t> argumentOffsets;
+            if (argumentSize != 0u)
             {
-                args = allocate(argumentSize + 1u, 16u);
-                if (args)
+                if (!arguments || argumentSize > 0x10000u) return result;
+                const auto *bytes = static_cast<const uint8_t *>(arguments);
+                uint32_t offset = 0u;
+                while (offset < argumentSize)
                 {
-                    writeRam(args, arguments, argumentSize);
-                    write8(args + argumentSize, 0u);
+                    argumentOffsets.push_back(offset);
+                    while (offset < argumentSize && bytes[offset] != 0u) ++offset;
+                    if (offset == argumentSize) return result;
+                    ++offset;
                 }
+                argc += static_cast<uint32_t>(argumentOffsets.size());
             }
+            if (module.path.size() > 1024u) return result;
+            const uint32_t pointers = (argc + 1u) * 4u;
+            const uint32_t filenameBytes = static_cast<uint32_t>(module.path.size()) + 1u;
+            args = allocate(pointers + filenameBytes + argumentSize, 16u);
+            if (args == 0u) return result;
+            write32(args, args + pointers);
+            (void)writeRam(args + pointers, module.path.c_str(), filenameBytes);
+            const uint32_t payload = args + pointers + filenameBytes;
+            if (argumentSize) (void)writeRam(payload, arguments, argumentSize);
+            for (uint32_t i = 0u; i < argumentOffsets.size(); ++i)
+                write32(args + (i + 1u) * 4u, payload + argumentOffsets[i]);
+            write32(args + argc * 4u, 0u);
             const uint64_t missingBefore = missingImports;
             uint32_t startResult = UINT32_MAX;
             try
             {
-                startResult = callFunction(module.entry, argumentSize, args, 0u, 0u, module.gp);
+                if (module.descriptor) write16(module.descriptor + 10u, 2u);
+                startResult = callFunction(module.entry, argc, args, 0u, module.descriptor, module.gp);
             }
             catch (const GuestExecutionError &)
             {
@@ -800,6 +1077,8 @@ namespace ps2x::iop::detail
             if (args)
                 freeAllocation(args);
             module.resident = startResult == 0u || startResult == 2u;
+            if (module.descriptor && module.resident)
+                write16(module.descriptor + 10u, startResult == 0u ? 3u : 0x13u);
             result.moduleId = module.id;
             result.startResult = static_cast<int32_t>(startResult);
             if (missingImports != missingBefore)
@@ -845,11 +1124,18 @@ namespace ps2x::iop::detail
             auto it = modules.find(moduleId);
             if (it == modules.end())
                 return false;
+            if (loaderData != 0u && it->second.resident) return false;
             // A removable IRX normally exposes a stop entry through module metadata. We do not guess it; terminate owned execution and release the image cleanly.
             // Cancellation/unload of suspended guest frames is not implemented.
             // Reject before mutating any live module, queue or thread ownership.
             if (kernel.hasGuestCalls() || !rpc.removeServersInRange(it->second.base, it->second.size))
                 return false;
+            if (loaderData != 0u)
+            {
+                if (imports.unlinkLibraries(it->second.base, it->second.size) != 0 ||
+                    !releaseLoadcore13Module(memory, loaderData, it->second.descriptor, 0u)) return false;
+                (void)freeAllocation(it->second.descriptor);
+            }
             kernel.terminateThreadsInRange(it->second.base, it->second.size);
             imports.eraseRange(it->second.base, it->second.size);
             modules.erase(it);
@@ -876,6 +1162,10 @@ namespace ps2x::iop::detail
         IopImportRegistry imports;
         IopLoadcore loadcore;
         std::map<int, Module> modules;
+        std::map<uint32_t, IopImportCall> hleThunks;
+        std::vector<ModuleObservation> moduleObservations;
+        uint32_t linkFailureObservations = 0u;
+        uint32_t loaderData = 0u;
         std::map<int, uint64_t> pendingDmaInterrupts;
         std::multimap<uint64_t, ScheduledGuestCallback> pendingGuestCallbacks;
         uint32_t nextModuleId = 1;
@@ -927,6 +1217,16 @@ namespace ps2x::iop::detail
     ModuleLoadResult IopEmulator::loadOwnedModule(std::string_view path, const std::vector<uint8_t> &image)
     {
         return m_impl->loadImage(std::string(path), image, nullptr, 0u);
+    }
+
+    bool IopEmulator::initializeLoaderState(std::span<const uint32_t> bootModes)
+    {
+        return m_impl->initializeLoaderState(bootModes);
+    }
+
+    ModuleLoadResult IopEmulator::installHleLibraryImage(std::string_view path, const std::vector<uint8_t> &image)
+    {
+        return m_impl->loadImage(std::string(path), image, nullptr, 0u, true);
     }
 
     void IopEmulator::installConsoleService() { m_impl->ioman.installStandardStreams(); }
@@ -1144,6 +1444,7 @@ namespace ps2x::iop::detail
 
     uint32_t IopEmulator::loadedModuleCount() const noexcept
     {
+        if (m_impl->loaderData != 0u) return m_impl->read32(m_impl->loaderData + 0x14u);
         return static_cast<uint32_t>(m_impl->modules.size());
     }
 

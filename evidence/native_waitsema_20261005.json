@@ -1,0 +1,251 @@
+{
+  "utc": "2026-10-05T08:26:40.598778+00:00",
+  "cycle": 25,
+  "focus": "Native boot, then the first original logos; preserve the complete product objective.",
+  "changes": [
+    "Recovered guarded original1B1004..1B1158 continuation,11 owned PCs.",
+    "BGEZ/BGEZL use signed low64; memory faults return without destroying exception state.",
+    "Replay accepts two new original call boundaries; native probe fingerprints the new component."
+  ],
+  "contracts": {
+    "per_configuration": {
+      "original_word_guards": 85,
+      "owned_pcs": 11,
+      "owner_conflicts": 1,
+      "original_opcode_comparisons": 580,
+      "fault_annul_cases": 24,
+      "loop_yields": 3
+    },
+    "configurations": [
+      "Debug",
+      "Release"
+    ],
+    "evidence": {
+      "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/review-001/contract-summary-001.json",
+      "bytes": 5368,
+      "sha256": "4b98ff2c12602869e4517377836b283a7d888ab7d7b2f44a4526a5d9c446db55"
+    }
+  },
+  "original_replays": {
+    "pairs": [
+      "1B1004->1A7068",
+      "1B100C->1A76D8"
+    ],
+    "runs": [
+      {
+        "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/replay-call-init-Debug-001/result.json",
+        "bytes": 2070,
+        "sha256": "81c1975f5efc7c17099470c6d0482a53917857450d97a88edc01ac0a472ce5cf"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/replay-call-bind-Debug-001/result.json",
+        "bytes": 2070,
+        "sha256": "f3f828f29657c889c899a3aa4668bd04b31db9184b6371527a253ac12b0717cc"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/replay-call-init-Release-001/result.json",
+        "bytes": 2074,
+        "sha256": "8eff67faed5c93dca59e5587a2d7f42c42e21de30784bb6d39390e2c54744122"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/replay-call-bind-Release-001/result.json",
+        "bytes": 2074,
+        "sha256": "d998fe3516796d473e294aa354ef842a2a05df65d06796510811657f1a36ab48"
+      }
+    ],
+    "GPR128": 32,
+    "decoded_integer_control_fields": 10,
+    "RAM_bytes": 33554432,
+    "differences": 0
+  },
+  "tooling": {
+    "replay_tests": 5,
+    "native_probe_tests": 15,
+    "status": "PASS"
+  },
+  "full_build": {
+    "configuration": "Release",
+    "status": "PASS",
+    "log": {
+      "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/full-build-Release-001.log",
+      "bytes": 16918,
+      "sha256": "efedda37cf0b431c3f423c34668cb3948cc99f7e43b6257523a4db84000bf507"
+    },
+    "scope": "Incremental MSVC/CMake build through scripts/build_native.ps1; not a clean build."
+  },
+  "native_runs": [
+    {
+      "name": "native-001",
+      "status": "TIMEOUT",
+      "exit_code": 1,
+      "input_integrity": "MATCH",
+      "exe_sha256": "a0e54fb5765805228f74470c5b619593d7e6752ffe4a7c861515203a073a79c0",
+      "evidence": [
+        {
+          "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/native-001/launch.json",
+          "bytes": 37571,
+          "sha256": "9bcb0a4eb7b70bcf998558c00d7f438f73a3cbf26f49e6d58f2381755e196ec1"
+        },
+        {
+          "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/native-001/result.json",
+          "bytes": 13431,
+          "sha256": "b610ce97ae9038004a8b53a06f2841656304ead0ba3f00f2185b8446e44cdd40"
+        },
+        {
+          "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/native-001/stdout.bin",
+          "bytes": 1924,
+          "sha256": "963f8ac240edc05c9001138084175970f09e05d88cc50a8b918c474b9ff46446"
+        },
+        {
+          "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/native-001/stderr.bin",
+          "bytes": 39824,
+          "sha256": "c551e2c94b8a5ef87878334ec0dd43c4af6aa0ff2d0bcbe5181c7bfcf03ba58f"
+        }
+      ]
+    },
+    {
+      "name": "native-live-002",
+      "status": "PROCESS_FAILED",
+      "exit_code": 2,
+      "input_integrity": "MATCH",
+      "exe_sha256": "a0e54fb5765805228f74470c5b619593d7e6752ffe4a7c861515203a073a79c0",
+      "evidence": [
+        {
+          "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/native-live-002/launch.json",
+          "bytes": 37761,
+          "sha256": "a9175892b4012d159be4a532f85f67c5a754adecb6748ec0907064d701a834dc"
+        },
+        {
+          "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/native-live-002/result.json",
+          "bytes": 13487,
+          "sha256": "4734f9b52c8e9f3ad3d0019ed5ef418c757958a727d6119f9b397b1d641b5e44"
+        },
+        {
+          "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/native-live-002/stdout.bin",
+          "bytes": 2211,
+          "sha256": "0ec407649949613841bbb8eb786eb99bedc1f32975b0193f2dc0d0ab73f87282"
+        },
+        {
+          "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/native-live-002/stderr.bin",
+          "bytes": 38669,
+          "sha256": "7e143778f2ac8673b97221dbb0ae305735c951a7ab69aa83a5bce0635241a40c"
+        }
+      ],
+      "observations": 1026,
+      "presentations": 0,
+      "deadline_seconds": 20
+    },
+    {
+      "name": "native-live-003",
+      "status": "PROCESS_FAILED",
+      "exit_code": 2,
+      "input_integrity": "MATCH",
+      "exe_sha256": "a0e54fb5765805228f74470c5b619593d7e6752ffe4a7c861515203a073a79c0",
+      "evidence": [
+        {
+          "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/native-live-003/launch.json",
+          "bytes": 37761,
+          "sha256": "7991081e2f0e1ffdf89b66177cdcd8fcbc0ca347febedc39b443fc1f259bf4f3"
+        },
+        {
+          "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/native-live-003/result.json",
+          "bytes": 13485,
+          "sha256": "543e474133f0b053f9262e23fcce1805712e8a13a83a4ae219ef9420aa8cb2f4"
+        },
+        {
+          "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/native-live-003/stdout.bin",
+          "bytes": 2211,
+          "sha256": "cca6f24ec33ff1fea3a0f5eac5555b0fd4f24b655b0cb86a6b3cbe6e9ece4b70"
+        },
+        {
+          "path": "artifacts/native_pipeline_20261005/waitsema_resume_025/native-live-003/stderr.bin",
+          "bytes": 93944,
+          "sha256": "94cc96d15cc81ed804fe179a92e35809f2a7edd6f518b328de816c48fee0f908"
+        }
+      ],
+      "observations": 3310,
+      "presentations": 0,
+      "deadline_seconds": 60
+    }
+  ],
+  "original_checkpoints": [
+    {
+      "pc": "0x001b1004",
+      "capture": {
+        "path": "artifacts/native_pipeline_20261005/color_return_023/reference-002/debugger/captures/waitsema-return-entry/original.p2s",
+        "bytes": 1456278,
+        "sha256": "9156193c8d7e8a71e9b51f398f6cd40afe64413feaaef4bc01c1b8e2e4b202a9"
+      }
+    },
+    {
+      "pc": "0x001a7068",
+      "capture": {
+        "path": "artifacts/native_pipeline_20261005/color_return_023/reference-002/debugger/captures/sifinit-entry-025/original.p2s",
+        "bytes": 1456283,
+        "sha256": "906613b0a5fb7d83eaf1e160b8848a44026561253ac07c26e881f95d4978575f"
+      }
+    },
+    {
+      "pc": "0x001b100c",
+      "capture": {
+        "path": "artifacts/native_pipeline_20261005/color_return_023/reference-002/debugger/captures/sifinit-return-025/original.p2s",
+        "bytes": 1456287,
+        "sha256": "69f80796d09bb6d23b6d9f7b4b5ce636ffe3deaae863f201e8ac273c56484615"
+      }
+    },
+    {
+      "pc": "0x001a76d8",
+      "capture": {
+        "path": "artifacts/native_pipeline_20261005/color_return_023/reference-002/debugger/captures/sifbind-entry-confirmed-025/original.p2s",
+        "bytes": 1456303,
+        "sha256": "d4f309b62d179545ed12aaf56e278d0a066f722c6621c412ce2b7e2868f4d586"
+      }
+    },
+    {
+      "pc": "0x001b1058",
+      "capture": {
+        "path": "artifacts/native_pipeline_20261005/color_return_023/reference-002/debugger/captures/sifbind-return-confirmed-025/original.p2s",
+        "bytes": 1456402,
+        "sha256": "96dc4e05895ec2bb03d8bd1b37507a99beec60335795c94ed0e2713e4c6dc14d"
+      },
+      "rpc_client_server_pointer": "0x0007f448",
+      "v0": {
+        "low64": "0x0000000000000000",
+        "high64": "0x0000000000000000"
+      }
+    }
+  ],
+  "current_barrier": {
+    "rpc_sid": "0x80000400",
+    "native_server_pointer": "0x00000000",
+    "observed_module_entries": [
+      "SIO2MAN",
+      "MODMSIN"
+    ],
+    "additional_missing_invocation_pc": "0x00234400",
+    "meaning": "Original module startup and memory-card RPC binding remain unresolved before logos."
+  },
+  "computer_use": {
+    "reference_debugger": "Operated isolated PCSX2 and captured actual BindRpc entry/return.",
+    "native_live_003": {
+      "observed_window": "DW3 nativo - sin imagen del GS (arranque pendiente)",
+      "window_id": 35326616,
+      "image": "Black game area, no native logo."
+    },
+    "preserved_capture_failure": "native-live-002 expired before screenshot: foreground window did not report a process id"
+  },
+  "preserved_failures": [
+    "sifbind-entry-025: expected1A76D8 but actual1B100C; excluded from matching comparisons.",
+    "sifinit-return-attempt-025: expected1B100C but actual1A7068; excluded from matching comparisons.",
+    "native-001 timeout20; native-live-002/003 ended at their cooperative deadlines with zero presentations."
+  ],
+  "limits": [
+    "The two replay pairs stop at callee entry; callees, scheduler, timing, IOP, FPU/VU, graphics/audio and gameplay are not compared.",
+    "The580 local comparisons use a bounded original-opcode decoder, not an independent emulator.",
+    "No first logo, title, movie or battle demonstrated. Native changes remain uncommitted."
+  ],
+  "new_cloud_calls": 0,
+  "acceptance_verified": 0,
+  "acceptance_total": 8,
+  "next_action": "Measure real MODLOAD7 failure results and failed library/file requests; restore required original modules and234400 continuation, then trace the actual first-logo request."
+}

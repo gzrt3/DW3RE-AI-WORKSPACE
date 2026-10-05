@@ -11,6 +11,11 @@ void configure_native_iop_boot(PS2Runtime& runtime, const std::filesystem::path&
 {
     ps2x::iop::NativeIopRebootProfile reboot;
     reboot.command = "rom0:UDNL cdrom0:\\MODULES\\IOPRP253.IMG;1";
+    reboot.prepareLoaderState = true;
+    reboot.initialBootModes = {0x00040000u};
+    // Selected UDNL PCs374/378/380 set ResetData mode3 and null command;
+    // selected LOADCORE PCs12C..13C create mode4=3, with no mode5 record.
+    reboot.bootModes = {0x00040003u};
     PS2RomProfile rom;
     rom.id = "scph39001-dw3xl-ioprp253";
     rom.provider = "verified-extracted-originals";
@@ -25,8 +30,12 @@ void configure_native_iop_boot(PS2Runtime& runtime, const std::filesystem::path&
             throw std::runtime_error("Cannot read verified IOP module: " + path.string());
         // ROM file reads retain the original bytes even for explicit HLE services.
         rom.files.emplace(entry.name, image);
+        const std::string_view name(entry.name);
+        const bool libraryImage = name == "SYSMEM" || name == "LOADCORE" || name == "INTRMANP" ||
+            name == "THREADMAN" || name == "IOMAN" || name == "STDIO" ||
+            name == "SIFMAN" || name == "SIFCMD" || name == "CDVDMAN" || name == "VBLANK" || name == "TIMEMANI";
         reboot.modules.push_back({"rom0:" + std::string(entry.name),
-                                  entry.hle ? std::vector<uint8_t>{} : std::move(image)});
+                                  entry.hle && !libraryImage ? std::vector<uint8_t>{} : std::move(image), libraryImage});
     }
     if (!PS2IopTransport::configureReboot(&runtime, std::move(reboot)))
         throw std::runtime_error("Native IOP reboot profile rejected");

@@ -1,5 +1,164 @@
 # Current verified state
 
+Ciclo028: puente GS→Direct3D11/12 probado con readback RGBA y observación Computer Use de patrón diagnóstico. Auto prefiereD3D11; selección explícita y VSync comprobados. BuildReleasePASS. El juego mantienePMODE0, vblank:8 sin implementar,1215observaciones/0presentaciones en20s,inputMATCH. No logos originales;0/8criterios. Automatización principalPAUSED y revisorGitHubDisabled. Publicar checkpoint gráfico y después audio, según el usuario. Ver docs/NATIVE_GS_DIRECTX_20261005.md.
+
+Historial previo:
+
+Ciclo027: Release003 PASS;170B24,1ADE0C y1AEF98 superados. Ambos servidores PAD responden y la versiÃ³n403 procede del IOP. Nueva barrera vblank:8 (RegisterVblankHandler),antes de completar init. Native003: plazo40s,exit2,inputMATCH,2416observaciones y0presentaciones. Computer Use observÃ³ la ventana nativa negra. Contratos PAD Debug/Release PASS;3regresiones IOP generales siguen abiertas. Primeros logos pendientes;0/8criterios cerrados. Ver docs/NATIVE_PAD_BOOT_20261005.md.
+
+Los estados anteriores se conservan como historial.
+
+Latest026: native Release009 build PASS. SIF outgoing DMA now signals channel6,
+not incoming channel5; preserved before-test FAIL and after Debug/Release PASS.
+All eight original game modules enter/return/reside in native008, including
+MCMAN, LIBSD and KOEISND. Memory-card BindRpc80000400 returns a real owned IOP
+server163848 and its next RPC completes. Next missing EE00170B24. InputMATCH;
+no native logo/movie/title/battle. Five original provider tables and IRQ234400
+are integrated. Focused tests pass; three of14 broader IOP tests still fail.
+Read NATIVE_BOOT_PROVIDERS_20261005.md. All8 final gates OPEN; source uncommitted.
+Earlier states below are retained as history.
+
+Latest025: full native Release build PASS; recovered1B1004 now passes.
+Next barrier is memory-card BindRpc80000400 returning server0; only SIO2MAN and
+MODMSIN game-module entries observed, plus missing invocation234400. Native20s
+timeout and live20/60s runs preserve inputMATCH; zero GS presentations. Computer
+Use observed the native black window. Original BindRpc return has server7F448.
+Two new original intervals match32 GPR128,10 control fields and32MB RAM in both
+Debug/Release;580 local opcode comparisons,24 faults/annuls per configuration
+and20 Python tests PASS. See NATIVE_WAITSEMA_20261005.md. User priority: native
+boot and the first original logos, step by step. No logos/title/movie/battle;
+all8 final gates OPEN. Previous entries below are historical.
+
+Latest023: native Release build PASS;1B7F84 passes, next missing EE1B1004
+after WaitSema. InputMATCH; no native title/movie/battle. Four original intervals
+match Debug/Release:32 GPR128,10 control fields and32MB RAM; DMA also matches12
+MMIO words after measured MADR/FQC repair. Store64 BadVAddr repaired and tested.
+Computer Use captured color entry/return and next1B1004. Supplied PCSX2 log now
+records original XLâ†’DW3â†’XL transitions and module sequence; native integration
+remains open. See NATIVE_COLOR_DMA_PARITY_20261005.md. All8 final gates OPEN.
+Backup of this increment is verified only by the final checkpoint verification.json.
+Earlier status entries below are historical.
+
+Latest022: native Release build PASS; GIF submission19AA4C passes twice,
+and the first32-byte packets reach GS. Next missing EE0x001B7F84. InputMATCH;
+no native image/title/movie/battle. Debug/Release DMA and graphics contracts
+PASS; general exception vectors repaired from pinned PCSX2 evidence.
+Original DMA entry/return captured; native hardware replay pending. Cycle021
+integer/RAM comparisons remain historical. See NATIVE_DMA_SUBMIT_20261005.md.
+All8 final gates OPEN. Prior entries below are retained as history.
+
+Latest021: full native Release build PASS;1B8040 passed, next missing
+EE0x0019AA4C in GIF DMA submission. InputMATCH; no native title/movie/battle.
+Both original19A510â†’180490 and1B8040â†’1804A4 checkpoint replays PASS in
+Debug/Release, all32 GPR128,10 decoded control fields and32MB RAM identical.
+GS32 alias routing repaired after a preserved failure;48 RAM,12 owner,24 fault
+and prior graphics/IRQ contracts pass per configuration. Computer Use continues
+from fresh state after human input. Original disc swap remains unverified.
+See NATIVE_GS_STORE_20261005.md. All8 final gates OPEN.
+
+The following020 status is historical.
+
+Latest020: full native Release build PASS; recovered graphics configuration
+tail19A510 passes, next missing EE0x001B8040. InputMATCH; no native title/movie/
+battle. Debug/Release each pass216 original-opcode cases plus4 saved-RA overlap
+aliases and prior regressions;15 Python tests PASS. Two isolated original
+PCSX2 sessions opened through Computer Use; real19A510 entry captured and45
+words MATCH. Original return/disc swap remain unverified. Manual input is active
+in the experience window; do not compete for controls. See
+NATIVE_GRAPHICS_CONFIG_20261005.md. All8 final gates OPEN.
+
+The following019 status is historical.
+
+Latest native result: **graphics buffer and packet returns passed; missing
+EE0x0019A510**, 2026-10-05 UTC. Incremental full Release builds PASS;
+gs_buffer_018/native-001 passes198918 and stops198C7C, then
+gs_packet_return_019/native-001 passes both and stops19A510. InputMATCH in both.
+No title, movie or battle; all8 final gates OPEN.
+
+Three MOVN lowerings now preserve upper64. The raw candidate's register mismatch
+is retained. Per Debug/Release:576 original-opcode buffer comparisons,32 word
+guards/one owner conflict, plus4 packet returns/two word guards/one conflict
+PASS, with prior graphics/IRQ regressions. These are scoped contracts, not
+independent PCSX2 lockstep. See NATIVE_GRAPHICS_BUFFER_20261005.md and the
+buffer/packet-return evidence JSON. Missing015â€“017 evidence records are now saved.
+
+The user resumed available project pools and excluded OpenClaw. Native review
+agents completed useful work. One Nova Pro review and one local Ollama review
+completed; their incorrect claims were rejected and raw replies retained. Azure
+accounting remains unresolved; no extra call, cap increase or authentication
+repair. A rate-limited agent was not retried. Review schedules remain paused.
+
+Next: original19A510 continuation and its caller, then real movies/Press Start.
+Preserve full native-product scope, originals and uncommitted source. Check
+D:/Backup/DWProject/graphics-buffer-20261005-019/verification.json for the final
+backup result; previous backup statuses below are historical.
+
+## Historical graphics and VSync checkpoint
+
+Latest native result: **graphics initialization continues to missing
+EE0x001A4500**, 2026-10-05 UTC. Full Release build PASS;
+graphics_init_015/native-005 passes180384, GParam19852C, VBLANK1A4CC0,
+GsSetCrt1A4420 and allocator234444, then stops at1A4500. Two subsequent live
+host_vsync_016 probes (on/off) have inputMATCH,25 observations and zero GS
+presentations. No title, movie or battle; all8 final gates OPEN.
+
+Optional host VSync defaults off and is selectable with `--vsync on|off`.
+Four presenter contracts pass in each Debug/Release, including opposite SDL
+hints, software fallback, prepared memory/register/event preservation and
+continuing guest VBLANK/field parity. Fourteen probe tooling tests pass.
+Physical monitor sync, VRR and unlocked simulation remain unverified.
+See NATIVE_HOST_VSYNC_20261005.md and evidence/native_host_vsync_20261005.json.
+
+Selected graphics tests pass42 caller scenarios/322 GPR128+RAM boundaries,
+8 allocator scenarios/16 ABI boundaries,4 CRT wrappers,4 GParam returns,
+15 INTC cases and scheduled poll completion. These tests skip external callees
+and are not independent PCSX2 lockstep. Six actual original debugger checkpoints
+were captured, including CRT entry/return and allocator entry. Full CRT mode
+registers/kernel clobbers and allocator return parity remain open. The isolated
+PCSX2 session exited1; no allocator return checkpoint exists. See
+NATIVE_GRAPHICS_20261005.md and evidence/native_graphics_20261005.json.
+
+Next: restore the original four-word AddIntcHandler wrapper at1A4500 from
+verified XL words, test real owned registration and IRQ lifecycle, then probe
+again. Community PNACH and supplied modding references are audited candidates,
+not applied native behavior. Preserve both widescreen variants separately.
+Source remains uncommitted; auxiliary schedules/cloud/publication stay paused.
+The entries below are historical and their180384 barrier is superseded.
+
+Latest native result: **DMA/VIF initialization passed**, 2026-10-05 UTC.
+Release run `ee_dma_init_014/native-003` passes MODLOAD7/SIO2MAN, EE19A6C4,
+EE198580 and EE19A678, then fails at missing EE180384. Input integrity MATCH;
+no title/movie/battle demonstrated. All8 final gates OPEN. Auxiliary work stays
+PAUSED; source remains uncommitted. See NATIVE_DMA_VIF_20261005.md and
+evidence/native_dma_vif_20261005.json for tests, failures and exact limits.
+
+Per Debug/Release:23 DMA contracts plus7,000 parameter combinations,12 channel
+returns,20 Store128 cases, original VIF packets across4 source aliases and
+CPU/command/reset coherence across3 MMIO aliases PASS. Store128 now reaches the
+memory owner; VIF1 reads no longer return a stale shadow after commands.
+These scoped tests do not prove full PS2 hardware or gameplay parity.
+
+## Previous MODLOAD milestone
+
+Latest native result: **MODLOAD7/SIO2MAN startup barrier repaired**, 2026-10-05
+UTC. Full Release run `modload_focus_013/native-003` executes original SIO2MAN
+on MODLOAD worker thread1 with argc1, returns0 and makes module21 resident3.
+It proceeds to the unresolved EE0x0019A6C4 continuation, exit4294967295,
+input integrity MATCH. No title/movie/battle is demonstrated; all8 final gates
+remain OPEN. SIO2 transfers/controller parity and SIFCMD warnings remain open.
+
+Eleven focused suites pass Debug/Release with /W4 /WX. Per configuration,
+32 original LOADCORE state comparisons and69 library comparisons pass;
+positive and missing-file original MODLOAD worker probes pass. This is local
+original-instruction replay, not independent PCSX2 lockstep. See
+[repair and exact limits](NATIVE_MODLOAD_SIO2MAN_20261005.md) and
+`evidence/native_modload_sio2man_20261005.json`.
+
+User-directed focus: main automation PAUSED, GitHub reviewer Disabled,
+auxiliary servers/advisers/cloud/publication paused. Source changes remain
+local and uncommitted; do not overwrite them. Earlier states below are history
+and their MODLOAD7 barrier descriptions are superseded by this measured run.
+
 Agent Reach1.5.0 installed for public-source research; GitHub and Jina exercised
 against pinned PS2SDK, with a full MODLOAD source comparison MATCH. Exa returned
 a quota limit; no retries or paid key. All66 tooling tests PASS locally and in Windows CI run37262482135 on3b1fac6. This installation
