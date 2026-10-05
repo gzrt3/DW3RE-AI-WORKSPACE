@@ -2434,3 +2434,11 @@ next implement original LOADCORE lifecycle/linking and MODLOAD worker ownership.
 No title/movie/battle observed; all8 final criteria OPEN. Preserve prior C trees,
 raw evidence and private journals; publish source and verify incremental backup
 before treating this checkpoint as backed up. GAME_PARITY=NOT_COMPLETE.
+
+Remote anti-slop CI run37260903331 exposed a Windows8.3 fixture assumption,
+not a router failure. Reproduced locally: original pool suite1failure/6, repaired
+suite6PASS using the same actual short-path alias. Expected paths now resolve;
+fixture routing environment is isolated. Node24 action revisions pinned after
+the observed Node20 warning. Remote rerun must still be checked. Original failure
+retained; see antislop_ci_repair evidence. Backup56f391f VERIFIED:298files,
+3235893bytes, zero deletions, in loader-antislop-20261005-001. Native unchanged.
