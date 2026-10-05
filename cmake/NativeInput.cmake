@@ -1,0 +1,15 @@
+add_library(fate_native_input STATIC EXCLUDE_FROM_ALL
+    "${CMAKE_CURRENT_LIST_DIR}/../src/input/xinput_provider.cpp")
+target_include_directories(fate_native_input PUBLIC "${CMAKE_CURRENT_LIST_DIR}/../include")
+target_compile_features(fate_native_input PUBLIC cxx_std_20)
+if(WIN32)
+    target_sources(fate_native_input PRIVATE "${CMAKE_CURRENT_LIST_DIR}/../src/input/windows_xinput.cpp")
+    target_link_libraries(fate_native_input PUBLIC Xinput)
+endif()
+add_executable(fate_native_input_contract EXCLUDE_FROM_ALL
+    "${CMAKE_CURRENT_LIST_DIR}/../tests/integration/native_input_contract.cpp")
+target_link_libraries(fate_native_input_contract PRIVATE fate_native_input)
+if(MSVC)
+    target_compile_options(fate_native_input PRIVATE /W4 /WX /permissive- /EHsc /utf-8)
+    target_compile_options(fate_native_input_contract PRIVATE /W4 /WX /permissive- /EHsc /utf-8)
+endif()

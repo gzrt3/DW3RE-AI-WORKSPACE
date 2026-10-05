@@ -1,0 +1,112 @@
+{
+  "checked_utc": "2026-10-05T02:42:19.774607+00:00",
+  "base_commit": "c429c17f18291aa3722ce00e4672ffc1eaee4f87",
+  "scope": "Isolated Windows host input component; no original data or gameplay run",
+  "result": "PASS_SCOPED_HOST_CONTRACTS",
+  "contracts_per_configuration": 10,
+  "configurations": [
+    "Debug",
+    "Release"
+  ],
+  "toolchain": "MSVC 19.44.35228.0 /W4 /WX; Windows SDK 10.0.26100.0; x64",
+  "source_sha256": {
+    "CMakeLists.txt": "be0fc6b865542af31a8c1db4630ca2403f79b50e7696ce6b8eff9a0102ad5c72",
+    "cmake/NativeInput.cmake": "001024a0fb0d5602701c8243acddd58d74c84eb1013938313680d9af1d40e3e0",
+    "include/fate/input/xinput_provider.hpp": "56a14f52785c2721f408b40d976d39e83ce31f4444c6d28093128462ce817075",
+    "src/input/xinput_provider.cpp": "da29980c3e6a0b91df1950cd299a048a0fd298b13fc0d0e4ce1467950a942369",
+    "src/input/windows_xinput.cpp": "6cb1b5f3ce81e837676059625be1a7524f58a4b195cd18db95d70d1db139d374",
+    "tests/integration/native_input_contract.cpp": "c45e79105b9a0827e395e8fcebfcc63a58835b6407ca0b9fbb1649e9bfef956e"
+  },
+  "binary_sha256": {
+    "Debug": "4f72bdcd5432f16e553ca93934ce59d919c1f7d6a7ecd3e80f8afab587d2b5d9",
+    "Release": "73cb413d16915aa0c6afda3dfe111bfd893e680505681db4ac4b9c2b184f72c1"
+  },
+  "retained_logs": [
+    {
+      "file": "configure.log",
+      "original_sha256": "f884be18a9ed5fb7c2f8cb3a2f61123b81cf8370fed03e0380476f538e8d2a45",
+      "public_sha256": "04cbce2c3585dc97712241baad482e0aa45e879bcf437d80dd1a2682ede278b3"
+    },
+    {
+      "file": "build-debug-001.log",
+      "original_sha256": "473040b050c91c3fd77c70c9b039577804547da6e7d1f3f2aa7073d06d465be2",
+      "public_sha256": "2549f00db91519cb57b89064310ef3a943d9e176af46d96666782eba266d074d"
+    },
+    {
+      "file": "test-debug-001.log",
+      "original_sha256": "17a1dfe9c0dbbf0c9da71f992769c0c980583032f678a18c37baa76428a5ac34",
+      "public_sha256": "69384d34bfed041d9c84a570d9c87af8d2b64714a53b58e306d5ef1579cf8e12"
+    },
+    {
+      "file": "build-release-001.log",
+      "original_sha256": "504d05ff47c32424d57be920e7593f25b978460d5fb93601f1bed7b1df603730",
+      "public_sha256": "da07bbec3dc96c19900641ad4f2f5fcafad4f910436ab1f1c8915e03bcf6097a"
+    },
+    {
+      "file": "test-release-001.log",
+      "original_sha256": "bf36a08139eab36fcdf4b14247d3a29b610a9e547546ba92c3874717939b4152",
+      "public_sha256": "6e53c72a6257f7ba09fda698a91b5a994025650914c2283677ed98dff143ce51"
+    },
+    {
+      "file": "host-probe-001.log",
+      "original_sha256": "995eb5b6e2b4a05b6b454659c45b54d59b9c9ae1d4006aecaa9852fc596ae54d",
+      "public_sha256": "ede684dbb798425d9069486552af7f8cb927d6e34c8f44b30d8f386a0900fe22"
+    },
+    {
+      "file": "dependencies.log",
+      "original_sha256": "0c68adb16b3e78a767f4f6492802f7f7a1cd29c4f4ea399c3ad643c9ad49e127",
+      "public_sha256": "7f8cebad76031b834e07f7e1433eb9261a654431f0744a0bc488bf83d660c248"
+    }
+  ],
+  "public_sources_rechecked": [
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/xinput/nf-xinput-xinputgetstate",
+      "http_status": 200,
+      "local_html_sha256": "f8a8a542bcac083b8fdacfd9ad7890addcc65be6f14b6831666af3870504457c"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/xinput/nf-xinput-xinputsetstate",
+      "http_status": 200,
+      "local_html_sha256": "c9765aabc4443401aaeae6c129a5598c2401f5d5db5722db9d840dd8d659f331"
+    },
+    {
+      "url": "https://sqlite.org/appfileformat.html",
+      "http_status": 200,
+      "local_html_sha256": "2822f91d4efb98b700858d839f913e0bf548c873f44f44e8de6c8beed623fd73"
+    },
+    {
+      "url": "https://sqlite.org/atomiccommit.html",
+      "http_status": 200,
+      "local_html_sha256": "5a5be7b660217c9408c8a81eaf2faa2d08832ed3790f895a0a713916ad856ea1"
+    }
+  ],
+  "host_probe": {
+    "api": "XInput1.4",
+    "read_count": 4,
+    "indices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "results": [
+      1167,
+      1167,
+      1167,
+      1167
+    ],
+    "connected_devices": 0,
+    "vibration_calls": 0
+  },
+  "limitations": [
+    "Not connected to fate_game or EE/IOP consumers",
+    "No original padRead/SIO2 ABI trace equivalence",
+    "No connected-controller or physical rumble verification",
+    "Save container remains design only; no personal saves migrated",
+    "Existing uncommitted IOP kernel draft excluded from this build/change"
+  ],
+  "game_baseline": "cycle007: MODLOAD7/SIO2MAN, zero GS presentations",
+  "game_parity": "NOT_COMPLETE",
+  "acceptance_passed": 0,
+  "acceptance_total": 8
+}

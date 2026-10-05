@@ -14,7 +14,7 @@
     {
       "id": "menus",
       "verified": false,
-      "detail": "Prioridad: vídeos originales, sus bucles y Press Start. Siete archivos candidatos coinciden con los originales. Investigación de XInput terminada; API disponible, sin mando conectado en la prueba. Entrada al juego, reproducción y audio aún pendientes."
+      "detail": "Prioridad: vídeos originales, sus bucles y Press Start. Siete archivos candidatos coinciden con los originales. Proveedor XInput aislado: diez contratos pasan en Debug/Release; API real disponible sin mandos conectados. Integración de entrada al juego, reproducción y audio pendientes."
     },
     {
       "id": "combined_battle",
@@ -78,11 +78,12 @@
     "evidence/native_live_observation_20261005.json",
     "evidence/boot_web_sources_20261005.json",
     "evidence/boot_movie_candidates_20261005.json",
-    "evidence/current_audit_20261005.json"
+    "evidence/current_audit_20261005.json",
+    "evidence/native_input_20261005.json"
   ],
   "objective": "Port nativo Windows x64 standalone: DW3 + XL completos sin cambio de disco, con modding y verificación de extremo a extremo.",
   "product_root": "C:/Games/DW",
   "development_root": "D:/DW3-GitHub-Publish-20261004",
   "backup_root": "D:/Backup/DWProject",
-  "research_update": "Auditoría de fuentes y registros completada. Diseñados XInput y archivo único de guardado; integración pendiente. El arranque sigue detenido al cargar SIO2MAN. 0/8 criterios finales demostrados."
+  "research_update": "XInput nativo implementado como componente aislado y probado; entrada al juego pendiente. Archivo único SQLite diseñado, sin migrar partidas. Arranque detenido al cargar SIO2MAN; 0/8 criterios finales demostrados."
 }

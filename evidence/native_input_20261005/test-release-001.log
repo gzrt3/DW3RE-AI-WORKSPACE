@@ -1,0 +1,30 @@
+UpdateCTestConfiguration  from :<input-build>/DartConfiguration.tcl
+Test project <input-build>
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: native_input_contract
+
+1: Test command: <input-build>\bin\Release\fate_native_input_contract.exe
+1: Working Directory: <input-build>
+1: Test timeout computed to be: 10000000
+1: PASS neutral_packet
+1: PASS buttons_and_pressure_order
+1: PASS distinct_button_bits
+1: PASS axis_policy
+1: PASS mode_packets
+1: PASS disconnect_reconnect
+1: PASS errors_are_not_disconnects
+1: PASS fixed_player_assignment
+1: PASS rumble_and_focus
+1: PASS invalid_configuration_and_clock
+1: Host contracts only; retail ABI, real-controller gameplay and rumble are unverified.
+1/1 Test #1: native_input_contract ............   Passed    0.03 sec
+
+100% tests passed out of 1
+
+Total Test time (real) =   0.33 sec

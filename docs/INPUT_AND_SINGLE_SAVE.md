@@ -1,6 +1,7 @@
 # XInput y un archivo de guardado para el port nativo
 
-Diseño investigado el2026-10-05 UTC. No integrado todavía en el juego.
+Diseño investigado el2026-10-05 UTC. Proveedor XInput aislado implementado y
+probado; todavía no conectado al juego. Contenedor de partidas sin implementar.
 Objetivo: mandos Windows reales y `C:/Games/DW/saves/DW3_Complete.dw3save`
 como archivo principal de partidas de DW3 + XL, conservando sus datos originales.
 El bloqueo de arranque MODLOAD7/SIO2MAN sigue abierto.
@@ -138,7 +139,74 @@ solo desbloqueos ni evita las comprobaciones de disco del contenido.
 - [PCSX2 MemoryCardFile](https://github.com/PCSX2/pcsx2/blob/144a19ba05fd1aa514f7228972f0c6260c61b4e8/pcsx2/SIO/Memcard/MemoryCardFile.cpp):
   referencia para la alternativa de tarjeta por sectores, con ECC y NAND.
 
-No se integraron dependencias nuevas ni se migraron partidas durante esta
-investigación. La siguiente implementación aislada es el proveedor XInput y
-su contrato de serialización; la integración final mantiene el orden
+No se migraron partidas. La integración final mantiene el orden
 MODLOAD7/SIO2MAN → vídeo original → Press Start → batalla/guardado.
+
+## Proveedor nativo implementado (componente aislado)
+
+`include/fate/input/xinput_provider.hpp`, `src/input/xinput_provider.cpp` y
+`src/input/windows_xinput.cpp` implementan un único proveedor reutilizable.
+La biblioteca `fate_native_input` enlaza Xinput del SDK; el ejecutable de prueba
+importa realmente XINPUT1_4.dll. No depende de una ventana raylib, SDL o PCSX2.
+Todavía no está enlazado a fate_game ni sustituye el puente simulado existente.
+
+- Dos asignaciones fijas configurables entre los cuatro índices XInput, sin
+  desplazar al jugador2 cuando se desconecta el1. Índices repetidos o inválidos
+  se rechazan; no se admite multitarjeta de mandos/slot adicional en este nivel.
+- Una muestra compartida por actualización, con secuencia, paquete y error real.
+  Los errores limpian los botones anteriores. Los índices vacíos o con error
+  reintentan cada1000ms por defecto; los conectados se consultan cada poll.
+- Zona muerta **axial** configurable:7849/8689 por defecto para sticks izquierdo
+  y derecho, centro128, extremos0/255 e inversión vertical. Es una política
+  explícita del port, no una calibración medida del mando PS2 original.
+- Gatillos activan L2/R2 por encima de30; presión conserva su valor por encima
+  del umbral. Los restantes botones con presión usan0/255. Esta aproximación
+  no reproduce la presión física de los botones de un DualShock2.
+- Motor pequeño PS2 → motor derecho binario; motor grande → motor izquierdo
+  proporcional. La correspondencia mecánica sigue siendo una aproximación.
+  Pérdida de foco libera entrada y solicita parar motores; devuelve los errores.
+  El futuro propietario debe llamar `stopAll()` al cerrar y revisar su resultado.
+- Serializador candidato de32bytes, botones activos en0 y presiones L1/R1/L2/R2.
+  Recibe el modo ya negociado, rechaza desconectados/errores y modos desconocidos.
+  La negociación PADMAN/SIO2 y el ABI de DW3 no están implementados aquí.
+
+Pruebas reproducibles sin datos comerciales:
+
+```powershell
+cmake -S . -B out/input-contract -A x64 -DFATE_NATIVE_INPUT_ONLY=ON
+cmake --build out/input-contract --config Debug --target fate_native_input_contract
+ctest --test-dir out/input-contract -C Debug -V
+cmake --build out/input-contract --config Release --target fate_native_input_contract
+ctest --test-dir out/input-contract -C Release -V
+./out/input-contract/bin/Release/fate_native_input_contract.exe --probe
+```
+
+Diez contratos pasan en Debug/Release bajo MSVC /W4 /WX. Incluyen todo el
+rango signed16 de un stick, paquetes conocidos, los botones individualmente,
+dos jugadores, desconexión/reconexión, errores, pérdida de foco y vibración con
+API grabada. El modo `--probe` llama sólo XInputGetState en los cuatro índices:
+los cuatro devolvieron1167. No se probó vibración física ni entrada real al juego.
+Evidencia: `evidence/native_input_20261005.json`.
+
+Próxima conexión: propietario único en el ejecutor, muestras compartidas con
+EE/IOP, pérdida de foco/salida, registro y reproducción determinista; verificar
+padRead original antes de escribir esos32bytes en memoria del juego. Seguir
+mostrando `input=not-connected` hasta observar entrada en el guest.
+
+## Pasos para sustituir las tarjetas
+
+1. Fijar versión/hash de SQLite y compilar su amalgamación dentro del port.
+2. Implementar almacenamiento versionado en el contenedor: tarjeta lógica,
+   rutas originales, directorios, atributos y contenido binario, con errores
+   reales y capacidad persistente. No interpretar aún el payload de DW3/XL.
+3. Conectar el servicio sceMc*/MCSERV que invoque realmente el juego; terminar
+   las operaciones asíncronas sólo después de completar su trabajo. El puente
+   antiguo que no se compila no demuestra esta conexión.
+4. Importar únicamente a un contenedor nuevo y comparar ida/vuelta cada archivo.
+   Ensayar cierre/reapertura, fallo de escritura, disco lleno y recuperación.
+5. Demostrar guardar/cargar DW3 y XL y su acceso compartido desde el juego real.
+   Sólo después migrar partidas personales conservando los originales.
+
+Se consultaron de nuevo las páginas oficiales de Microsoft (GetState/SetState)
+y SQLite (formato de aplicación/commit atómico); se conservan respuestas HTTP200
+y hashes. No se añadieron SQLite ni dependencias de guardado en esta etapa.

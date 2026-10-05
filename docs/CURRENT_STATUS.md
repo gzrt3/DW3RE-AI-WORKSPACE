@@ -1,5 +1,15 @@
 # Current verified state
 
+Native input component update: fate_native_input now implements the Windows
+XInput1.4 backend, two fixed player assignments, polling/error handling,
+deadzone conversion, focus/rumble and a candidate32-byte PS2SDK serializer.
+Ten host contracts pass Debug/Release with /W4 /WX. The native read-only probe
+reports1167/disconnected on all four indices. It is NOT connected to fate_game
+or proven against original padRead/SIO2. Saves remain a design, not an integrated
+single-file backend. See INPUT_AND_SINGLE_SAVE.md and native_input evidence.
+The full native executable has not been rebuilt or run for this input component;
+cycle007 remains the game baseline and all8 final gates remain open.
+
 Audit after cycle007: current executable/ELF hashes, nine retained run files and
 45 recorded source fingerprints match; no native behavior change or new run.
 Original SIO2MAN metadata identifies2.5 (exports2.3), distinct from SDK3.17.
