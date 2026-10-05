@@ -82,11 +82,12 @@
     "evidence/native_input_20261005.json",
     "evidence/native_owned_continuation_20261005.json",
     "evidence/adviser_pool_20261005.json",
-    "evidence/native_loader_prerequisites_20261005.json"
+    "evidence/native_loader_prerequisites_20261005.json",
+    "evidence/antislop_20261005.json"
   ],
   "objective": "Port nativo Windows x64 standalone: DW3 + XL completos sin cambio de disco, con modding y verificación de extremo a extremo.",
   "product_root": "C:/Games/DW",
   "development_root": "D:/DW3-GitHub-Publish-20261004",
   "backup_root": "D:/Backup/DWProject",
-  "research_update": "Prerrequisitos del cargador verificados; falta registro/enlace y ejecución del MODLOAD original. Integración de entrada, guardado único y juego completo pendientes. 0/8 criterios finales demostrados."
+  "research_update": "Anti-slop integrado con alcance para el port nativo: 59 pruebas de herramientas aprobadas. MODLOAD7/SIO2MAN sigue pendiente; 0/8 criterios finales demostrados."
 }

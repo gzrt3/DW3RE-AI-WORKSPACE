@@ -2414,3 +2414,23 @@ lookup; original linking rewrites JR stubs to J, which the current decoder would
 not recognize. Implement verified HLE thunk/binding provenance with coherent
 guest module/provider/client lists before enabling physical MODLOAD. Preserve
 loadcore_lifecycle_011/contract.md and do not seed arbitrary boot records.
+
+
+## Scoped anti-slop integration - 2026-10-05 UTC
+
+User-requested anti-slop3.2.20 core/comment skills installed at pinned upstream
+388cbe3b6c37d5175b9f460015bb092ef9e34894 with MIT notices and exact hashes.
+Codex/Copilot instructions apply them during authorized development, preserving
+original UI, ABI/provenance explanations, generated code and failed evidence.
+No global settings or quotas changed; no new model request or source rewrite.
+All59 selected Python contracts PASS. Five vendor files also MATCH after an
+index checkout with autocrlf enabled. GitHub CI expanded to these scoped checks.
+This is no bug-free guarantee or native milestone. See docs/ANTISLOP.md,
+docs/audits/ANTISLOP_20261005.md and evidence/antislop_20261005.json.
+
+The previously verified loader work is committed as01ec39d. Native runtime
+source remains unchanged by anti-slop. MODLOAD7/SIO2MAN still blocks real boot;
+next implement original LOADCORE lifecycle/linking and MODLOAD worker ownership.
+No title/movie/battle observed; all8 final criteria OPEN. Preserve prior C trees,
+raw evidence and private journals; publish source and verify incremental backup
+before treating this checkpoint as backed up. GAME_PARITY=NOT_COMPLETE.

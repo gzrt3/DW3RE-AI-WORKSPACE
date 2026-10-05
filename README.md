@@ -25,6 +25,10 @@ Current product contract: [native PC objective](docs/NATIVE_PC_OBJECTIVE.md). Th
 
 The implementation and acceptance criteria are in [the project plan](docs/COMPLETE_REMASTERED_PLAN.md). Historical entries are retained and may describe superseded states.
 
+Agent reviews use [the scoped anti-slop integration](docs/ANTISLOP.md), pinned
+with its MIT license. It guides honest reporting, interface work and comments;
+runtime tests and original-behavior comparisons remain the correctness checks.
+
 ## Repository contents
 
 | Path | Purpose |

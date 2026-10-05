@@ -1,5 +1,12 @@
 # Current verified state
 
+Anti-slop integration: pinned 3.2.20 core/comment skills and MIT notices are
+installed locally, with scoped Codex/Copilot instructions. All59 selected Python
+tests PASS; the five pinned files also match after an index checkout with
+autocrlf enabled. This is tooling verification, not a new native run or a
+gameplay milestone. Original visuals, source provenance and all8 acceptance
+gates are preserved. See ANTISLOP.md and audits/ANTISLOP_20261005.md.
+
 Latest: loader_prerequisites_001. IOMAN native reads, SYSMEM page256 allocation
 and selected LOADCORE1.3 exports22/23 are implemented. Nine selected suites PASS
 Debug/Release:11 file,12 allocator (10,000 bitmap-checked operations),18 image

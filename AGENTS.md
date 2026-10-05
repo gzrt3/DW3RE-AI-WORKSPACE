@@ -18,3 +18,19 @@ This repository contains a Windows x64 static recompilation project in developme
 User objective clarification2026-10-05: docs/NATIVE_PC_OBJECTIVE.md is the
 current product contract. Final target is the native Windows x64 standalone
 DW3 + XL port, with modding and full end-to-end evidence; preserve all8criteria.
+
+<!-- antislop:start -->
+## Scoped anti-slop review
+
+Read `docs/ANTISLOP.md` before applying anti-slop. Apply it during authorized
+development using the project scope defined there. This project default follows
+the user's autonomous-development request; it is not a saved global preference.
+For new interface/copy work, read `.agents/skills/antislop/SKILL.md`. For comment
+edits, also read `.agents/skills/antislop-code/SKILL.md`. Their references to
+`antislop.md` mean the installed core SKILL.md above.
+Preserve original visuals, translated code, ABI/provenance explanations, licenses
+and historical evidence. Do not add approval loops for already authorized work,
+truncate technical comments to meet a line limit, or turn review into a claim of
+bug-free gameplay. The native objective and original-behavior evidence take
+precedence over website styling rules. Report failures and untested scope openly.
+<!-- antislop:end -->

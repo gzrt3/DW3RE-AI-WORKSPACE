@@ -1,0 +1,38 @@
+{
+  "repository": "https://github.com/miqdadbadjuber/anti-slop",
+  "revision": "388cbe3b6c37d5175b9f460015bb092ef9e34894",
+  "version": "3.2.20",
+  "license": "MIT",
+  "files": [
+    {
+      "path": ".agents/skills/antislop/SKILL.md",
+      "source": "skills/antislop/SKILL.md",
+      "bytes": 57827,
+      "sha256": "64a1ff70bafbfb7a105083cdff0026a6f09baf7e19d3aa1bc3e880cf7233f90c"
+    },
+    {
+      "path": ".agents/skills/antislop/VERSION",
+      "source": "skills/antislop/VERSION",
+      "bytes": 7,
+      "sha256": "ce6ddda39d58fbf68b3810aa75fe22894936f20c1e62c901ae455e0bab5138df"
+    },
+    {
+      "path": ".agents/skills/antislop/LICENSE",
+      "source": "LICENSE",
+      "bytes": 1083,
+      "sha256": "9fd83fb1fda52ca0094b96e2ed5a3d6c42a81b95a6c6326553f5bbe570f443de"
+    },
+    {
+      "path": ".agents/skills/antislop-code/SKILL.md",
+      "source": "skills/antislop-code/SKILL.md",
+      "bytes": 8944,
+      "sha256": "004933009d352710dcbea7817101d5c188474a442e3ece26a6e0c18d3223898f"
+    },
+    {
+      "path": ".agents/skills/antislop-code/LICENSE",
+      "source": "LICENSE",
+      "bytes": 1083,
+      "sha256": "9fd83fb1fda52ca0094b96e2ed5a3d6c42a81b95a6c6326553f5bbe570f443de"
+    }
+  ]
+}
