@@ -1,5 +1,13 @@
 # Dynasty Warriors 3 Complete Remastered
 
+## Objetivo vigente — port nativo de PC, 2026-10-05 UTC
+
+El entregable final es un port nativo Windows x64 standalone, DW3 + XL
+completos sin cambio de disco, con ejecución, gráficos, audio, controles,
+guardados y modding verificables. Leer [la especificación vigente](NATIVE_PC_OBJECTIVE.md)
+antes del historial siguiente. Partir del ciclo004 y conservar los ocho criterios
+finales; ninguno está cerrado. Esta actualización no reinicia el proyecto.
+
 ## Trabajo desatendido y revisión de errores — 2026-10-04 13:31 UTC
 
 El usuario no estará disponible durante aproximadamente ocho horas (hasta

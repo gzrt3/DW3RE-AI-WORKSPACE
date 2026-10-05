@@ -30,3 +30,7 @@ Native verification was performed in the development checkout. This update
 has not repeated the earlier full clean publication build. Selected summaries
 and hashes: evidence/native_repair_20261005.json. Original assets, raw logs,
 provider ledgers and personal data remain outside Git.
+
+The current user-authorized product target is explicit in NATIVE_PC_OBJECTIVE.md:
+a standalone native Windows x64 port, both games complete, no disc swapping,
+with verified modding and end-to-end release evidence. No acceptance gate closed.

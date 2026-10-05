@@ -4,6 +4,8 @@ Work in progress: a Windows x64 static recompilation and native runtime project 
 
 **This is a development workspace, not a playable remaster.** No title screen or complete battle has been demonstrated. All eight final acceptance criteria remain open. Successful builds and focused contracts do not establish equivalence with the original games.
 
+Current product contract: [native PC objective](docs/NATIVE_PC_OBJECTIVE.md).
+
 ## Current state
 
 - The native executable loads the identified XL ELF and executes translated EE code with an owned runtime.
