@@ -1,5 +1,13 @@
 # Copilot participation in the native pipeline
 
+Latest cycle007: native-presentation now exports the implemented presenter,
+prepared entry path, VBlank observer and focused contracts. A changed-input
+request is queued for the existing GitHub review schedule. Earlier requests and
+raw replies are preserved; old source identities are not current reviews.
+Computer Use in this cycle observed and closed the actual native game window;
+no new UI adviser request was sent. Public source research is documented in
+audits/BOOT_WEB_AUDIT_20261005.md. No quota, spending or permission changes.
+
 ## Current three-adviser loop — 2026-10-05 UTC
 
 The active checkout is D:/DW3-GitHub-Publish-20261004. All current bridge paths

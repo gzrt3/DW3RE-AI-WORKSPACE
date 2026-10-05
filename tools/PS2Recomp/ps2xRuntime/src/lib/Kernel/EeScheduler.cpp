@@ -154,6 +154,12 @@ void EeScheduler::reset(uint8_t *rdram, const R5900Context &mainContext)
     publishSnapshot();
 }
 
+void EeScheduler::setHostVblankObserver(std::function<void()> observer)
+{
+    assertExecutor();
+    m_hostVblankObserver = std::move(observer);
+}
+
 void EeScheduler::run()
 {
     assertExecutor();
@@ -1910,6 +1916,8 @@ void EeScheduler::processEvent(const EeEvent &event)
         }
         m_vsyncFlagAddress = 0u;
         m_vsyncTickAddress = 0u;
+        if (m_hostVblankObserver)
+            m_hostVblankObserver();
         completeVSync(m_vsyncTick);
         if (m_gsVSyncCallback != 0u && m_runtime.hasFunction(m_gsVSyncCallback))
         {

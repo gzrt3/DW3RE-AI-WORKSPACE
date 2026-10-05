@@ -82,6 +82,7 @@ endif()
 
 add_executable(fate_game
     "src/main.cpp"
+    "src/native_presenter.cpp"
     "src/native_iop_boot.cpp"
     "src/generated_resume_catalog.cpp"
     "src/provenance.cpp"
@@ -118,6 +119,17 @@ find_package(SDL2 REQUIRED)
 target_link_libraries(fate_game PRIVATE fate_recomp_core SDL2::SDL2)
 include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/ExistingRuntime.cmake")
 fate_link_existing_runtime(fate_game)
+
+add_executable(fate_native_presenter_contract EXCLUDE_FROM_ALL
+    "tests/integration/native_presenter_contract.cpp"
+    "src/native_presenter.cpp")
+target_include_directories(fate_native_presenter_contract PRIVATE "include"
+    "tools/PS2Recomp/ps2xRuntime/src/lib")
+target_link_libraries(fate_native_presenter_contract PRIVATE fate_recomp_core SDL2::SDL2)
+fate_link_existing_runtime(fate_native_presenter_contract)
+if(MSVC)
+    target_compile_options(fate_native_presenter_contract PRIVATE /wd4324)
+endif()
 
 add_executable(fate_host_dispatch_contract EXCLUDE_FROM_ALL
     "tests/integration/host_dispatch_contract.cpp"

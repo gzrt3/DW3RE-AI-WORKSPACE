@@ -457,6 +457,27 @@ namespace ps2x::iop::detail
                     std::ostringstream out;
                     out << "[IOP] unhandled import " << import->library << ':' << import->ordinal
                         << " version=0x" << std::hex << import->version << " pc=0x" << cpu.pc;
+                    out << " a0=0x" << cpu.gpr[4] << " a1=0x" << cpu.gpr[5]
+                        << " a2=0x" << cpu.gpr[6] << " a3=0x" << cpu.gpr[7]
+                        << " ra=0x" << cpu.gpr[31] << " sp=0x" << cpu.gpr[29];
+                    if (iequals(import->library, "modload") && import->ordinal == 7u &&
+                        import->version == 0x0106u)
+                    {
+                        // Observe the original request without accepting it. Bounded,
+                        // escaped bytes cannot inject log lines or read outside RAM.
+                        out << " filename_hex=";
+                        bool terminated = false;
+                        for (uint32_t i = 0; i < 256u; ++i)
+                        {
+                            const uint32_t address = cpu.gpr[4];
+                            if (address > UINT32_MAX - i || !memory.ownsRamRange(address + i, 1u)) break;
+                            const uint8_t value = memory.read8(address + i);
+                            if (value == 0u) { terminated = true; break; }
+                            constexpr char hex[] = "0123456789abcdef";
+                            out << hex[value >> 4u] << hex[value & 15u];
+                        }
+                        out << " filename_terminated=" << (terminated ? 1 : 0);
+                    }
                     log(LogLevel::Error, out.str());
                     ++missingImports;
                     cpu.stopped = true;

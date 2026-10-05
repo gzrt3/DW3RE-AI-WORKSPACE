@@ -1,0 +1,92 @@
+{
+  "scope": "Boot triage and native observation; no original gameplay or rendering parity",
+  "acceptance_verified": 0,
+  "acceptance_total": 8,
+  "native_runs": [
+    {
+      "status": "PROCESS_FAILED",
+      "exit_code": 2,
+      "duration_seconds": 180.59686109999893,
+      "input_integrity": "MATCH",
+      "boot_verified": false,
+      "name": "live",
+      "exe_sha256": "86ebe526d30e86b5f069bc02a2bf3acd365a159e723ffbb7abfe53e6799d18e0",
+      "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+      "launch_sha256": "1ae9316239db5341fc9ee38e95bdc846c101de23c425fb3936a7f66fc48c6e64",
+      "stdout_sha256": "d91657e4bf431a64654789e174f8842b6f6d26798a3d280733f323b69f578462",
+      "stderr_sha256": "ef35fbab3a71e557706fb65f9879d01f6d3d1155064eb5c78ef00c0f75959b51",
+      "module_request": "unhandled import modload:7 version=0x106 pc=0x14374 a0=0x148a8 a1=0x0 a2=0x149a4 a3=0x14aa4 ra=0x129b4 sp=0x1ffea8 filename_hex=6364726f6d303a5c4d4f44554c45535c53494f324d414e2e4952583b31 filename_terminated=1",
+      "final_live_log": "[LIVE] stopped reason=deadline observations=2a41 presentations=0 boot_verified=false"
+    },
+    {
+      "status": "PROCESS_EXITED",
+      "exit_code": 0,
+      "duration_seconds": 140.018610799998,
+      "input_integrity": "MATCH",
+      "boot_verified": false,
+      "name": "live_visible",
+      "exe_sha256": "86ebe526d30e86b5f069bc02a2bf3acd365a159e723ffbb7abfe53e6799d18e0",
+      "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+      "launch_sha256": "edecf6dca60ee85f31bfd062b6a72e5bfcd245f99703b4c1b7172c7124ae63da",
+      "stdout_sha256": "c429beee33903fb7c8bd4517edec4299d17bdb3ff596358006769ba0756a6b54",
+      "stderr_sha256": "ef35fbab3a71e557706fb65f9879d01f6d3d1155064eb5c78ef00c0f75959b51",
+      "module_request": "unhandled import modload:7 version=0x106 pc=0x14374 a0=0x148a8 a1=0x0 a2=0x149a4 a3=0x14aa4 ra=0x129b4 sp=0x1ffea8 filename_hex=6364726f6d303a5c4d4f44554c45535c53494f324d414e2e4952583b31 filename_terminated=1",
+      "final_live_log": "[LIVE] stopped reason=window-closed observations=20c4 presentations=0 boot_verified=false"
+    },
+    {
+      "status": "PROCESS_FAILED",
+      "exit_code": 2,
+      "duration_seconds": 11.560703399998602,
+      "input_integrity": "MATCH",
+      "boot_verified": false,
+      "name": "live_final",
+      "exe_sha256": "f7536a5b4ba4f775ca45bf2c18ea6d4ff82793d060d5e7d7dff1a49eb0fc9dd6",
+      "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+      "launch_sha256": "9dd68995849a1ac8db079d5a99eb3eedcda5bb16b06a0149629de647aaf0e010",
+      "stdout_sha256": "f91c2418e16f4edfe441f32719ccd902778c0db94496f6aaf55b87702ec75a5f",
+      "stderr_sha256": "ef35fbab3a71e557706fb65f9879d01f6d3d1155064eb5c78ef00c0f75959b51",
+      "module_request": "unhandled import modload:7 version=0x106 pc=0x14374 a0=0x148a8 a1=0x0 a2=0x149a4 a3=0x14aa4 ra=0x129b4 sp=0x1ffea8 filename_hex=6364726f6d303a5c4d4f44554c45535c53494f324d414e2e4952583b31 filename_terminated=1",
+      "final_live_log": "[LIVE] stopped reason=deadline observations=618 presentations=0 boot_verified=false"
+    }
+  ],
+  "computer_use": {
+    "observed_native_window": true,
+    "guest_frame_presentations": 0,
+    "window_close_verified": true,
+    "capture_sha256": "2cae3202b0b443b3018ea56dde5a8daeeb5c5a4e102cdd1e6263502ccc0977e4",
+    "capture_run": "live_visible"
+  },
+  "validation": {
+    "release_build": "PASS",
+    "presenter_contracts_release": 2,
+    "iop_import_barrier_contracts_debug_release": 7,
+    "iop_call_completion_contracts_debug_release": 11,
+    "probe_tests": 12,
+    "bridge_tests": 14,
+    "pipeline_tests": 8
+  },
+  "public_references_verified": 10,
+  "movie_candidate_copies_verified": 7,
+  "backup": {
+    "status": "VERIFIED",
+    "files": 268654,
+    "bytes": 65702318359,
+    "errors": [],
+    "deleted_files": 0
+  },
+  "retained_failures": [
+    "initial movie inventory assumed wrong base ELF filename; corrected to read SYSTEM.CNF",
+    "initial live runner inherited SW_HIDE and hid the requested SDL window",
+    "first visibility repair referenced unavailable subprocess.SW_SHOWNORMAL; test failed, repair retained"
+  ],
+  "limitations": [
+    "MODLOAD7 request not implemented",
+    "No original video/title/Press Start or battle",
+    "Input mock remains; audio not verified",
+    "Live deadline relies on cooperative guest safe points",
+    "Synthetic GS pixel contract is not original-game evidence",
+    "Reference SDK versions differ; source excerpts are not parity proof",
+    "No release executable installed in C:/Games/DW"
+  ],
+  "next": "Implement owned/resumable MODLOAD7 loader and original SIO2MAN startup; then measured EE continuation and PSS/Press Start path"
+}

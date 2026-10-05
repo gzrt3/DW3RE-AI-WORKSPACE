@@ -1,0 +1,122 @@
+{
+  "scope": "Static candidate identity only; boot order, decoding, loops and Press Start unverified",
+  "variants": [
+    {
+      "variant": "dw3_base",
+      "elf": "SLUS_202.77",
+      "elf_sha256": "b5a2fb3c32ce7468160e3845b64babc4ace0d6cb7650f4d940083c6841c1f5d1",
+      "elf_candidate_name_references": [
+        {
+          "name": "KOEILOGO.PSS",
+          "file_offset": "0x2428d7",
+          "virtual_addresses": [
+            "0x342857"
+          ]
+        },
+        {
+          "name": "OMEGA.PSS",
+          "file_offset": "0x2428f7",
+          "virtual_addresses": [
+            "0x342877"
+          ]
+        },
+        {
+          "name": "OPENING.PSS",
+          "file_offset": "0x242917",
+          "virtual_addresses": [
+            "0x342897"
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "path": "MOVIE/KOEILOGO.PSS",
+          "bytes": 2457604,
+          "original_sha256": "98ab03cfd6f74cc3242649c3910411f75137d223f41176e4e36ee712c2f2b9e7",
+          "mounted_sha256": "98ab03cfd6f74cc3242649c3910411f75137d223f41176e4e36ee712c2f2b9e7",
+          "match": true
+        },
+        {
+          "path": "MOVIE/OMEGA.PSS",
+          "bytes": 3096580,
+          "original_sha256": "5913b08917cb988e3a85ee9ad7fcf70d9de90fb561b8986d82c309f91f75406f",
+          "mounted_sha256": "5913b08917cb988e3a85ee9ad7fcf70d9de90fb561b8986d82c309f91f75406f",
+          "match": true
+        },
+        {
+          "path": "MOVIE/OPENING.PSS",
+          "bytes": 40075268,
+          "original_sha256": "a1459575216840f854ba80f311ab6ba49e24e54ad24c039e468619abe22eb2eb",
+          "mounted_sha256": "a1459575216840f854ba80f311ab6ba49e24e54ad24c039e468619abe22eb2eb",
+          "match": true
+        }
+      ]
+    },
+    {
+      "variant": "dw3_xl",
+      "elf": "SLUS_206.17",
+      "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+      "elf_candidate_name_references": [
+        {
+          "name": "KOEILOGO.PSS",
+          "file_offset": "0x1c9187",
+          "virtual_addresses": [
+            "0x2c8987"
+          ]
+        },
+        {
+          "name": "OMEGA.PSS",
+          "file_offset": "0x1c91a7",
+          "virtual_addresses": [
+            "0x2c89a7"
+          ]
+        },
+        {
+          "name": "OPENING.PSS",
+          "file_offset": "0x1c91c7",
+          "virtual_addresses": [
+            "0x2c89c7"
+          ]
+        },
+        {
+          "name": "OPENING.PSS",
+          "file_offset": "0x1c9488",
+          "virtual_addresses": [
+            "0x2c8c88"
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "path": "MOVIE/KOEILOGO.PSS",
+          "bytes": 3112964,
+          "original_sha256": "f6bc21da6787f2090750187ae3c2c4c75167e95951d69e6bde164eab2466e563",
+          "mounted_sha256": "f6bc21da6787f2090750187ae3c2c4c75167e95951d69e6bde164eab2466e563",
+          "match": true
+        },
+        {
+          "path": "MOVIE/OMEGA.PSS",
+          "bytes": 3096580,
+          "original_sha256": "5913b08917cb988e3a85ee9ad7fcf70d9de90fb561b8986d82c309f91f75406f",
+          "mounted_sha256": "5913b08917cb988e3a85ee9ad7fcf70d9de90fb561b8986d82c309f91f75406f",
+          "match": true
+        },
+        {
+          "path": "MOVIE/OPENING.PSS",
+          "bytes": 40075268,
+          "original_sha256": "a1459575216840f854ba80f311ab6ba49e24e54ad24c039e468619abe22eb2eb",
+          "mounted_sha256": "a1459575216840f854ba80f311ab6ba49e24e54ad24c039e468619abe22eb2eb",
+          "match": true
+        },
+        {
+          "path": "MOVIE2/OPENING.PSS",
+          "bytes": 26181636,
+          "original_sha256": "3eef6836f7eb8955cdd98e42750779c05c19b8c351d7cb9597b349794eff4798",
+          "mounted_sha256": "3eef6836f7eb8955cdd98e42750779c05c19b8c351d7cb9597b349794eff4798",
+          "match": true
+        }
+      ]
+    }
+  ],
+  "all_mounted_candidates_match": true
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "repo": "ps2dev/ps2sdk",
+    "revision": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+    "path": "iop/system/modload/src/modload.c",
+    "url": "https://github.com/ps2dev/ps2sdk/blob/ac92a9f657d2e531dd8f060250b07f2a5ac6dea5/iop/system/modload/src/modload.c",
+    "sha256": "2adcbe6bd2b4a9375e843fdcc29da74951c1e87aa7262d105e0d98fce9dac6de",
+    "bytes": 52034,
+    "matches_connector_text": true
+  },
+  {
+    "repo": "ps2dev/ps2sdk",
+    "revision": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+    "path": "iop/sio/sio2man/src/sio2man.c",
+    "url": "https://github.com/ps2dev/ps2sdk/blob/ac92a9f657d2e531dd8f060250b07f2a5ac6dea5/iop/sio/sio2man/src/sio2man.c",
+    "sha256": "b4f68e3c7b50d7ceb626edab6e80b5f97e5eb588b74bb4ee95bf942f9c1ba191",
+    "bytes": 11478,
+    "matches_connector_text": true
+  },
+  {
+    "repo": "ps2dev/ps2sdk",
+    "revision": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+    "path": "iop/system/loadcore/include/loadcore.h",
+    "url": "https://github.com/ps2dev/ps2sdk/blob/ac92a9f657d2e531dd8f060250b07f2a5ac6dea5/iop/system/loadcore/include/loadcore.h",
+    "sha256": "50b145acd6da87563824378783d0607a5eb9d2606b3bc2b0a9760a1fdef7d983",
+    "bytes": 7284,
+    "matches_connector_text": true
+  },
+  {
+    "repo": "ps2dev/ps2sdk",
+    "revision": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+    "path": "ee/mpeg/samples/mpeg.c",
+    "url": "https://github.com/ps2dev/ps2sdk/blob/ac92a9f657d2e531dd8f060250b07f2a5ac6dea5/ee/mpeg/samples/mpeg.c",
+    "sha256": "8eba389949461cd7281832d5114c2750eb08ecbf526076fcdd94241e8c6fdd70",
+    "bytes": 11764,
+    "matches_connector_text": true
+  },
+  {
+    "repo": "PCSX2/pcsx2",
+    "revision": "144a19ba05fd1aa514f7228972f0c6260c61b4e8",
+    "path": "pcsx2/SIO/Sio2.cpp",
+    "url": "https://github.com/PCSX2/pcsx2/blob/144a19ba05fd1aa514f7228972f0c6260c61b4e8/pcsx2/SIO/Sio2.cpp",
+    "sha256": "0e5c3067c3d31890aed4e75a55f5dcbcc0aeb1f00f2fe79a616e430eb1f78b91",
+    "bytes": 12813,
+    "matches_connector_text": true
+  },
+  {
+    "repo": "PCSX2/pcsx2",
+    "revision": "144a19ba05fd1aa514f7228972f0c6260c61b4e8",
+    "path": "pcsx2/Recording/InputRecording.cpp",
+    "url": "https://github.com/PCSX2/pcsx2/blob/144a19ba05fd1aa514f7228972f0c6260c61b4e8/pcsx2/Recording/InputRecording.cpp",
+    "sha256": "42fce82ed33b48b6b39411552e0f99bdc1d87b34a92a71ac248bc5256ae59902",
+    "bytes": 11362,
+    "matches_connector_text": true
+  },
+  {
+    "repo": "PCSX2/pcsx2",
+    "revision": "144a19ba05fd1aa514f7228972f0c6260c61b4e8",
+    "path": "pcsx2-qt/QtHost.cpp",
+    "url": "https://github.com/PCSX2/pcsx2/blob/144a19ba05fd1aa514f7228972f0c6260c61b4e8/pcsx2-qt/QtHost.cpp",
+    "sha256": "bbc06006a5f0278ace3f9071a7d398866727b065674cc1d5b19e02d3aeb885b3",
+    "bytes": 76163,
+    "matches_connector_text": true
+  },
+  {
+    "repo": "ran-j/PS2Recomp",
+    "revision": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+    "path": "ps2xIOP/src/emulator/iop_emulator.cpp",
+    "url": "https://github.com/ran-j/PS2Recomp/blob/c5a9d02573410a2085a4b4b831b0b68ba3515440/ps2xIOP/src/emulator/iop_emulator.cpp",
+    "sha256": "01deb410d04f441be12adc68638846061f19759e007c36cdfcbe987796199d36",
+    "bytes": 29433,
+    "matches_connector_text": true
+  },
+  {
+    "repo": "FFmpeg/FFmpeg",
+    "revision": "a35c8799920a93b99781eab6e70a5795ee7d182b",
+    "path": "libavformat/mpeg.c",
+    "url": "https://github.com/FFmpeg/FFmpeg/blob/a35c8799920a93b99781eab6e70a5795ee7d182b/libavformat/mpeg.c",
+    "sha256": "8271b1751ea3a1e1fc8e563a58686e17be2679e2b1be38409513afd20e4080c2",
+    "bytes": 37610,
+    "matches_connector_text": true
+  },
+  {
+    "repo": "PythWare/Dynasty-Warriors-3-Unit-Editor",
+    "revision": "e9cc4d01896cbc1bf886fdbfee3f3f5596e88339",
+    "path": "README.md",
+    "url": "https://github.com/PythWare/Dynasty-Warriors-3-Unit-Editor/blob/e9cc4d01896cbc1bf886fdbfee3f3f5596e88339/README.md",
+    "sha256": "c9960598bb0eb805fb36dcde97f9082ebddb0307c39eb887e3f52ccb8e77b4d7",
+    "bytes": 806,
+    "matches_connector_text": true
+  }
+]

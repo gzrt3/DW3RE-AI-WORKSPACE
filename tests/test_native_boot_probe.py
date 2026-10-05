@@ -163,6 +163,26 @@ class NativeBootProbeTests(unittest.TestCase):
         self.assertEqual(probe.native_command(self.exe, self.dump, self.elf),
                          [str(self.exe), str(self.dump), str(self.elf)])
 
+    def test_live_observation_preserves_deadline_exit_as_failure_not_boot(self):
+        command = self.fixture_command('import sys\nassert sys.argv[-2:] == ["--live-seconds", "1"]\nsys.exit(2)\n')
+        with patch.object(probe, 'native_command', return_value=command), patch.object(probe, 'source_identities', return_value=[]):
+            result = probe.run(self.exe, self.dump, self.elf, self.output, live_seconds=1)
+        self.assertEqual(result['status'], 'PROCESS_FAILED')
+        self.assertEqual(result['exit_code'], 2)
+        self.assertFalse(result['boot_verified'])
+        self.assertEqual(result['input_integrity'], 'MATCH')
+        launch = json.loads((self.output/'launch.json').read_text())
+        self.assertEqual(launch['live_observation_seconds'], 1)
+        self.assertEqual(launch['command'][-2:], ['--live-seconds', '1'])
+
+    def test_invalid_live_observation_never_launches(self):
+        for value in (0, -1, 86401, True, 1.5, '1'):
+            with self.subTest(value=value), patch.object(probe, 'run_process') as child:
+                with self.assertRaisesRegex(ValueError, 'live-seconds'):
+                    probe.run(self.exe, self.dump, self.elf, self.output, live_seconds=value)
+                child.assert_not_called()
+                self.assertFalse(self.output.exists())
+
     def test_iop_modules_staged_and_original_mutation_reported(self):
         iop = self.root/'iop'
         (iop/'dw3xl').mkdir(parents=True)
