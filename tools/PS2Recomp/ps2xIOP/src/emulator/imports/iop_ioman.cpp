@@ -1,4 +1,5 @@
 #include "iop_ioman.h"
+#include "iop_cdvd.h"
 
 #include "../core/iop_cpu.h"
 #include "../core/iop_memory.h"
@@ -33,6 +34,54 @@ namespace ps2x::iop::detail
         // Native console endpoints have no host file handles to release.
         for (size_t i = 0u; i < 2u; ++i)
             if (m_files[i].handle == 0u) m_files[i] = {UINT64_MAX,0u,true};
+    }
+
+    bool IopIoman::dispatchDevctl(uint16_t version, IopCpuState &cpu, IopCdvd &cdvd)
+    {
+        // Identified IOPRP253 IOMAN1.4 export31 and original FILEIO poweroff
+        // thread: devctl("cdrom0:", 0x4391, nullptr, 0, output, 4).
+        // Other versions/devices/controls retain the missing-import barrier.
+        if (version != 0x0104u || cpu.gpr[5] != 0x4391u) return false;
+        const auto invalid = [&]() { cpu.gpr[2] = static_cast<uint32_t>(-22); return true; };
+        const uint32_t pathAddress = cpu.gpr[4];
+        std::string path;
+        if (pathAddress == 0u) return invalid();
+        for (uint32_t i = 0u; i < 1024u; ++i)
+        {
+            if (pathAddress > UINT32_MAX - i || !m_memory.ownsRamRange(pathAddress + i, 1u))
+                return invalid();
+            const char value = static_cast<char>(m_memory.read8(pathAddress + i));
+            if (value == '\0') break;
+            path.push_back(value);
+        }
+        if (path.empty() || path.size() == 1024u) return invalid();
+        if (path != "cdrom0:") return false;
+        const uint32_t sp = cpu.gpr[29];
+        if (cpu.gpr[6] != 0u || cpu.gpr[7] != 0u || sp > UINT32_MAX - 0x18u ||
+            !m_memory.ownsRamRange(sp + 0x10u, 8u)) return invalid();
+        const uint32_t output = m_memory.read32(sp + 0x10u);
+        const uint32_t outputSize = m_memory.read32(sp + 0x14u);
+        if (output == 0u || outputSize < 4u || !m_memory.ownsRamRange(output, outputSize))
+            return invalid();
+        if (std::none_of(m_files.begin(), m_files.end(), [](const OpenFile &file) { return file.handle == 0u; }))
+        {
+            cpu.gpr[2] = static_cast<uint32_t>(-24); // Original temporary file-slot exhaustion.
+            return true;
+        }
+        // Original CDVDMAN4391 calls sceCdSC(-11). Forward to that same owner;
+        // neither allocate an unrelated event nor signal the poweroff bit0x10.
+        IopCpuState control{};
+        control.gpr[4] = static_cast<uint32_t>(-11);
+        if (!cdvd.dispatchImport(50u, control)) return false;
+        if (static_cast<int32_t>(control.gpr[2]) <= 0)
+        {
+            cpu.gpr[2] = static_cast<uint32_t>(-12);
+            return true;
+        }
+        m_memory.write32(output, control.gpr[2]);
+        cpu.gpr[2] = 0u;
+        m_host.log(LogLevel::Info, "[IOMAN] devctl0x4391 shared CDVD event=" + std::to_string(control.gpr[2]));
+        return true;
     }
 
     bool IopIoman::dispatchImport(uint16_t ordinal, IopCpuState &cpu, IopGuestExecutor &executor)

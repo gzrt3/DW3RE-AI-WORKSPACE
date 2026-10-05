@@ -2130,3 +2130,25 @@ Read docs/CURRENT_STATUS.md and docs/COPILOT_PIPELINE.md. Native cycle001/002
 builds complete; next measured PC23CB40, IOMAN31 still unresolved. The new
 Copilot bridge passes14tests and runner5; model advice never establishes parity.
 All8 acceptance criteria remain open. No active native build at this checkpoint.
+
+
+## Original string, CDVD event and cache continuation — cycles003/004
+
+Cycle003 buildPASS; actual probe passes23CB40 and logs shared CDVD event3,
+with no unhandled IOMAN31. Next1A7014 recovered from20 identified original
+words; bounded direct-RDRAM cache lowering, low64 BGTZ, exact back edge and
+delay slot pass Debug/Release contracts. Cycle004 buildPASS; actual probe
+PROCESS_FAILED/inputMATCH at0x0019A6C4, with MODLOAD15/7 version0x106 still
+unhandled. No active build/probe remains. Details and limits are in
+docs/NATIVE_REPAIR_20261005.md, repair_003 and repair_004/verification.json.
+
+Focused IOP import/version suites pass Debug/Release under /W4 /WX; production
+IOP rebuilt both configurations. Observer10 tests pass. Earlier strict broad
+IOP test failures remain preserved; no broad-suite or retail parity claim.
+Both adviser queues collected; no new reply and no Microsoft READY request.
+No new cloud calls/budget reset; unvalidated broad emitter edit stays local.
+Next recover19A6C4 and verify selected-original MODLOAD7 LoadStartModule /
+15 IsIllegalBootDevice against exact version and lifecycle before implementing.
+Do not return dummy success or infer successful module loads from reaching a PC.
+GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED; all8criteria
+remain open. No title/battle observed.

@@ -92,3 +92,6 @@ are excluded from READY. Interrupted raw preservation is resumable, corrupted
 raw files are retained and rejected, and response reads are bounded to512KiB.
 See docs/audits/COPILOT_REVIEW_20261005.md for the independent semantic review.
 Latest bridge/runner verification: adviser_integration_003 (14+5 tests).
+
+Native update: cycles003/004 pass23CB40/IOMAN31/1A7014 and stop at19A6C4
+with MODLOAD7/15 unresolved. No new adviser response. See NATIVE_REPAIR_20261005.md.

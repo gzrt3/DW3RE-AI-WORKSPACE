@@ -52,10 +52,10 @@ namespace
         IopImportRegistry imports(memory);
         addExport(memory, imports, 0x1000u, 0x0201u, 0x2100u);
         addExport(memory, imports, 0x1800u, 0x0101u, 0x3100u);
-        require(imports.resolve("tstlib", 3u, 0x0101u) == 0x3100u, "linked to wrong library major");
-        require(imports.resolve("tstlib", 3u, 0x0201u) == 0x2100u, "second major unavailable");
-        require(imports.resolve("tstlib", 3u, 0x0300u) == 0u, "incompatible major silently linked");
-        require(imports.findTable("tstlib", 0x0300u) == 0u, "query ignored requested major");
+        require(imports.resolve("tstlib", 3u, uint16_t{0x0101u}) == 0x3100u, "linked to wrong library major");
+        require(imports.resolve("tstlib", 3u, uint16_t{0x0201u}) == 0x2100u, "second major unavailable");
+        require(imports.resolve("tstlib", 3u, uint16_t{0x0300u}) == 0u, "incompatible major silently linked");
+        require(imports.findTable("tstlib", uint16_t{0x0300u}) == 0u, "query ignored requested major");
     }
 
     void newestMinor()
@@ -65,11 +65,11 @@ namespace
         addExport(memory, imports, 0x1000u, 0x0101u, 0x2100u);
         addExport(memory, imports, 0x1800u, 0x0104u, 0x3100u);
         addExport(memory, imports, 0x1400u, 0x0103u, 0x4100u);
-        require(imports.resolve("tstlib", 3u, 0x0101u) == 0x3100u, "selected lowest address, not newest minor");
-        require(imports.resolve("tstlib", 3u, 0x017Fu) == 0x3100u,
+        require(imports.resolve("tstlib", 3u, uint16_t{0x0101u}) == 0x3100u, "selected lowest address, not newest minor");
+        require(imports.resolve("tstlib", 3u, uint16_t{0x017Fu}) == 0x3100u,
                 "invented a minimum-minor rule absent from LOADCORE linking");
         require(imports.releaseExportTable(0x1800u), "unregister failed");
-        require(imports.resolve("tstlib", 3u, 0x0101u) == 0x4100u, "unregistered library remained selected");
+        require(imports.resolve("tstlib", 3u, uint16_t{0x0101u}) == 0x4100u, "unregistered library remained selected");
     }
 
     void missingOrdinal()
@@ -78,11 +78,11 @@ namespace
         IopImportRegistry imports(memory);
         addExport(memory, imports, 0x1000u, 0x0101u, 0x2100u, 8u);
         addExport(memory, imports, 0x1800u, 0x0102u, 0x3100u, 4u);
-        require(imports.resolve("tstlib", 7u, 0x0101u) == 0u,
+        require(imports.resolve("tstlib", 7u, uint16_t{0x0101u}) == 0u,
                 "missing ordinal fell back to a different export table");
-        require(imports.resolve("missing", 0u, 0x0101u) == 0u, "missing library resolved");
+        require(imports.resolve("missing", 0u, uint16_t{0x0101u}) == 0u, "missing library resolved");
         imports.reset();
-        require(imports.resolve("tstlib", 0u, 0x0101u) == 0u, "registry reset left exports");
+        require(imports.resolve("tstlib", 0u, uint16_t{0x0101u}) == 0u, "registry reset left exports");
     }
 
     void queryFunctionArray()

@@ -31,6 +31,8 @@ SOURCE_NAMES = (
     'src/recomp/FUN_001ad6e8_0x1ad6e8.cpp',
     'src/boot_continuations.cpp', 'include/fate/boot_continuations.hpp',
     'src/recovered/cdvd_command_001b0308.inc', 'tools/recover_continuation.py',
+    'src/recovered/string_tail_0023cb40.inc',
+    'src/recovered/cache_tail_001a7014.inc',
     'src/boot_syscall_handlers.cpp',
     'src/boot_thread_syscalls.cpp',
     'src/native_iop_boot.cpp', 'include/fate/native_iop_boot.hpp',
@@ -44,6 +46,10 @@ SOURCE_NAMES = (
     'tools/PS2Recomp/ps2xRuntime/include/runtime/ee_scheduler.h',
     'tools/PS2Recomp/ps2xRuntime/src/lib/ps2_runtime.cpp',
     'tools/PS2Recomp/ps2xRuntime/src/lib/Kernel/Syscalls/System.cpp',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_ioman.h',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_ioman.cpp',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.cpp',
+    'tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_rpc.h',
 )
 
 

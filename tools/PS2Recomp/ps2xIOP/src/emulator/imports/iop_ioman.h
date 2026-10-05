@@ -11,6 +11,7 @@ namespace ps2x::iop::detail
     struct IopCpuState;
     class IopGuestExecutor;
     class IopMemory;
+    class IopCdvd;
 
     class IopIoman
     {
@@ -21,6 +22,7 @@ namespace ps2x::iop::detail
         void reset();
         void installStandardStreams();
         [[nodiscard]] bool dispatchImport(uint16_t ordinal, IopCpuState &cpu, IopGuestExecutor &executor);
+        [[nodiscard]] bool dispatchDevctl(uint16_t version, IopCpuState &cpu, IopCdvd &cdvd);
 
     private:
         struct Device

@@ -10,7 +10,7 @@ Work in progress: a Windows x64 static recompilation and native runtime project 
 - SetupHeap arguments and return agree with recorded reference checkpoints in Debug and Release; other state differences remain open.
 - The original IOP reboot request now reaches the selected module startup and original EESYNC callback, followed by the new EE handshake.
 - A verified catalog restores 7,636 existing resume aliases and 589 original return tails. Existing reviewed overrides take precedence.
-- The latest native development cycles pass the recovered `0x001B0308` continuation and stop at `0x0023CB40`, with original input integrity MATCH. IOMAN31 remains unresolved; see `docs/CURRENT_STATUS.md`.
+- The latest native development cycle passes `0x0023CB40`, the shared CDVD event request and `0x001A7014`, then stops at `0x0019A6C4` with input integrity MATCH. MODLOAD exports7/15 remain unresolved; see `docs/CURRENT_STATUS.md`.
 - Bounded Copilot review queues are connected to the native pipeline. GitHub runs hourly locally; Microsoft uses Computer Use through the main continuation. See [integration and limits](docs/COPILOT_PIPELINE.md).
 - Combined data/VFS components exist, but combined gameplay, graphics, sound, input, saves and full content coverage remain unverified.
 
