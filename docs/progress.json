@@ -52,7 +52,7 @@
       "verified": false
     },
     {
-      "name": "Paquete standalone y validaciÃƒÂ³n final",
+      "name": "Paquete nativo standalone, modding y validación final",
       "verified": false
     }
   ],
@@ -73,5 +73,6 @@
     "evidence/vfs_repair_001/verified/summary.json",
     "evidence/reboot_module_probe_001/return_validator_audit_001/corpus.json",
     "evidence/native_repair_20261005.json"
-  ]
+  ],
+  "objective": "Port nativo Windows x64 standalone: DW3 + XL completos sin cambio de disco, con modding y verificación de extremo a extremo."
 }
