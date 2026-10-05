@@ -2450,3 +2450,30 @@ the tested loader snapshot. Next remains original LOADCORE lifecycle/linking and
 MODLOAD worker ownership, then real SIO2/GS/video/Press Start. All8 gates OPEN.
 The next source/evidence backup increment is loader-antislop-ci-20261005-002;
 read its verification.json for final status rather than inferring completion.
+
+
+## Agent Reach instalado y utilizado — 2026-10-05 UTC
+
+Instalación local1.5.0 fijada a a19a171fa980a0785849596492e0af4db800c82f,
+licencia MIT y skill con bytes comprobados. GitHub devuelve cinco referencias
+PS2SDK; Jina obtiene LOADCORE y MODLOAD. El MODLOAD completo leído desde su URL
+raw coincide con los bytes públicos salvo posibles saltos exteriores. Se conserva
+la lectura HTML parcial y una búsqueda estrecha sin resultados. Exa devolvió
+RATE_LIMITED, sin reintentos ni alta de clave pagada. No se añadieron llamadas
+Azure/AWS ni límites de gasto. Ver docs/AGENT_REACH.md y el informe público
+(evidence/agent_reach_20261005.json). Launcher reutilizable, fuentes fijadas,
+resultados fallidos conservados;66 pruebas de herramientas PASS.
+
+Trabajo nativo paralelo sin publicar: componente LOADCORE6/7/8/9/10,16 contratos
+y69 comparaciones originales por configuración Debug/Release PASS. Falta revisión
+de integración con dispatcher, listas compartidas, módulos y modos de arranque.
+No ejecutar ni publicar un port completo sobre esta evidencia aislada. La prueba
+original usa el intérprete IOP local e intercepta el flush0x1A60; no es PCSX2
+independiente. Se conserva el primer fallo de configuración /EHsc. Evidencia:
+artifacts/native_pipeline_20261005/loadcore_lifecycle_012/library-001/result.json.
+
+Siguiente acción: revisar la integración del enlazador (J y delay slot, ordinal
+sin destino) y construir estado LOADCORE único y lifecycle12/13/16/17 desde los
+originales. El módulo SDK2.9 solo orienta; el seleccionado sigue siendo1.6. Después,
+ejecutar el worker MODLOAD real y comparar antes de otro boot. Última observación
+nativa sigue en MODLOAD7/SIO2MAN sin imagen GS; ocho criterios finales abiertos.

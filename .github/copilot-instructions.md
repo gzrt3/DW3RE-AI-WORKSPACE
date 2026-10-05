@@ -13,3 +13,8 @@ gameplay parity. State uncertainty and propose a discriminating test.
 The hourly advisory task follows docs/COPILOT_PIPELINE.md and writes only its
 bounded JSON reply. It must not edit source, build, push, spend, approve release,
 or repeat completed/uncertain submissions. Anti-slop does not expand that role.
+
+Agent Reach research is documented in docs/AGENT_REACH.md. Use the owning
+continuation's pinned excerpts as advisory input; distinguish SDK versions from
+retail originals. This does not authorize the hourly review to install tools,
+research private data or expand its bounded role.

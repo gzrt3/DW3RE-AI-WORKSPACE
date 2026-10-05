@@ -1,0 +1,266 @@
+{
+  "recorded_utc": "2026-10-05T04:09:56.793839+00:00",
+  "state": "INSTALLED_RESEARCH_PATHS_VERIFIED_WITH_LIMITS",
+  "version": "1.5.0",
+  "revision": "a19a171fa980a0785849596492e0af4db800c82f",
+  "provenance": "third_party/agent-reach.json",
+  "local_install": "out/agent-reach",
+  "skills_files": 10,
+  "python_dependency_check": "PASS",
+  "capabilities": {
+    "github": {
+      "first_search_results": 5,
+      "subsequent_narrow_search_results": 0,
+      "authentication": "existing credential; child environment only"
+    },
+    "jina": {
+      "loadcore_header_content": "PRESENT",
+      "modload_html": "PARTIAL_CODE",
+      "modload_raw": {
+        "url": "https://raw.githubusercontent.com/ps2dev/ps2sdk/ac92a9f657d2e531dd8f060250b07f2a5ac6dea5/iop/system/modload/src/modload.c",
+        "raw_bytes": 52034,
+        "raw_sha256": "2adcbe6bd2b4a9375e843fdcc29da74951c1e87aa7262d105e0d98fce9dac6de",
+        "jina_body_bytes": 52034,
+        "equal_ignoring_outer_newlines": true,
+        "contains_worker_and_argument_builder": true
+      }
+    },
+    "exa": {
+      "state": "RATE_LIMITED",
+      "search_results": 0,
+      "automatic_retries": 0,
+      "schema_discovery": "PASS",
+      "observed_required_inputs": [
+        "query",
+        "objective"
+      ]
+    },
+    "other_platforms": "NOT_VALIDATED"
+  },
+  "tooling_tests": [
+    {
+      "suite": "agent_reach_research",
+      "returncode": 0,
+      "log": "tests-agent_reach_research-001.log",
+      "sha256": "80ac0e0bc1641fda9c7b699de8c19aa5cf8bbe643f98c82e4141eb23e5aaae1a",
+      "tests": 7
+    },
+    {
+      "suite": "antislop",
+      "returncode": 0,
+      "log": "tests-antislop-001.log",
+      "sha256": "11c02a8c08f9fd79e489d7b024eff14ace3482153f18bc65ab912c44edf9d102",
+      "tests": 4
+    },
+    {
+      "suite": "resume_catalog",
+      "returncode": 0,
+      "log": "tests-resume_catalog-001.log",
+      "sha256": "c7ac6514b70de1ea7ab650530003384efae8d198904915cb2dbabebc4491afab",
+      "tests": 15
+    },
+    {
+      "suite": "native_boot_probe",
+      "returncode": 0,
+      "log": "tests-native_boot_probe-001.log",
+      "sha256": "567162b69fced3b4aac0ee7dd53718a0ace52a26369d154ff38b537142377d2a",
+      "tests": 12
+    },
+    {
+      "suite": "copilot_bridge",
+      "returncode": 0,
+      "log": "tests-copilot_bridge-001.log",
+      "sha256": "e9e8a1933f582c310ab6f890e61c14f9acc7a7209f4beb082706c8b7b04c860c",
+      "tests": 14
+    },
+    {
+      "suite": "adviser_pool",
+      "returncode": 0,
+      "log": "tests-adviser_pool-001.log",
+      "sha256": "f45a1f5282fa221b109bf6832caa00b53c6c6d0f00753e3211216919de8ed1c3",
+      "tests": 6
+    },
+    {
+      "suite": "native_pipeline",
+      "returncode": 0,
+      "log": "tests-native_pipeline-001.log",
+      "sha256": "b8983d2c784a308dbec97b50f6a6cbd9ffdd424278b0f07b48c2d2e4244baade",
+      "tests": 8
+    }
+  ],
+  "tooling_test_total": 66,
+  "review_repair": "Retain sanitized evidence for missing GitHub authentication/helper timeout; no retry.",
+  "runtime_changed_by_installation": false,
+  "gameplay_acceptance_verified": 0,
+  "cloud_model_calls_for_installation": 0,
+  "spending_limits_changed": false,
+  "limits": [
+    "CAPTURED means process exit zero, not valid or complete content.",
+    "Doctor does not see all local portable tools and its web status is not a live proof.",
+    "mcporter npm cmd shim failed; direct Node CLI entry works.",
+    "PS2SDK MODLOAD2.9 is secondary reference, not selected original MODLOAD1.6.",
+    "Native LOADCORE library work remains a separate unintegrated working change."
+  ],
+  "artifacts": [
+    {
+      "path": "artifacts/agent_reach_20261005_001/doctor-001.json",
+      "bytes": 6187,
+      "sha256": "680f3dd902a78deffa070941f12082887d55100e464724b4c5baddb78d4d2252"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/exa-schema-001.txt",
+      "bytes": 3574,
+      "sha256": "450171201a0e6d65bb49eac77c6afcf91c27404783db7213fbbd6f46c5d67183"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/github-loadcore-search-001.json",
+      "bytes": 848,
+      "sha256": "b9748f1203531afbdcb97309d32809b10464e48c779c7afa7a6c81bb951e04a6"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/github-loadcore-search-001.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/github-modload-002/result.json",
+      "bytes": 738,
+      "sha256": "6122783ede0d632df331a987651b052ba8b6044a0b4bcdb7dfe88d27a2fbebd4"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/github-modload-002/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/github-modload-002/stdout.bin",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/install-001.log",
+      "bytes": 6755,
+      "sha256": "7e9bfd99d61b5bdacd78dd416a5eed1ad33ebc34e4285d69e312b262c211cf7d"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/installed-version-001.log",
+      "bytes": 7,
+      "sha256": "9d06f9026cc1478057f458bab5b5e62e151c8f3b9c8526dc182c5b3b00783d48"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/jina-modload-002/result.json",
+      "bytes": 881,
+      "sha256": "35b9b74b10dd96d5951b0dd004638ee3bcbbaefb5412dfac3919e9e73f1c5230"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/jina-modload-002/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/jina-modload-002/stdout.bin",
+      "bytes": 19317,
+      "sha256": "dbc576cbaa3ff4cdd3631d5abef0c8073af89da1be1156b517876fec20ffc2c6"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/jina-modload-raw-003/result.json",
+      "bytes": 891,
+      "sha256": "89a9f03de5b792d77df51178cfc9861caa2e847feec4d4726143caedb18e898a"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/jina-modload-raw-003/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/jina-modload-raw-003/stdout.bin",
+      "bytes": 52196,
+      "sha256": "3604e5e9a4a9870d8d53285fb08a795b1ea1e84beb72f0ff1c404ca4732d7908"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/loadcore-header-jina-001.md",
+      "bytes": 22849,
+      "sha256": "1f9a24978ee3adefbe247855321c1be3216d82fcadd82013d2fbb2e96d902362"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/loadcore-search-001.json",
+      "bytes": 371,
+      "sha256": "beba7d13389883fccaff96d031f4991e8329b8a7de6dd03a4dd028d53bc374cf"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/loadcore-search-001.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/mcporter-install-001.log",
+      "bytes": 28,
+      "sha256": "bf45a09b8f9cbc6a9e2125dce36f63b2b17303fe7c87195b406ebabb93d8a09e"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/modload-content-comparison-001.json",
+      "bytes": 368,
+      "sha256": "b57485aa6367defb6ab4af21aba122b661312a559357a1c3eac3137bd5c6c9b4"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/modload-upstream-raw-001.c",
+      "bytes": 52034,
+      "sha256": "2adcbe6bd2b4a9375e843fdcc29da74951c1e87aa7262d105e0d98fce9dac6de"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/pip-check-001.log",
+      "bytes": 31,
+      "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/python-freeze.txt",
+      "bytes": 479,
+      "sha256": "a5694e0c50949ba1fcae70fb7607faf23ca6f030f0f1f0b947ba76b49a41763f"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/tests-adviser_pool-001.log",
+      "bytes": 995,
+      "sha256": "f45a1f5282fa221b109bf6832caa00b53c6c6d0f00753e3211216919de8ed1c3"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/tests-agent_reach_research-001.log",
+      "bytes": 1049,
+      "sha256": "80ac0e0bc1641fda9c7b699de8c19aa5cf8bbe643f98c82e4141eb23e5aaae1a"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/tests-antislop-001.log",
+      "bytes": 643,
+      "sha256": "11c02a8c08f9fd79e489d7b024eff14ace3482153f18bc65ab912c44edf9d102"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/tests-copilot_bridge-001.log",
+      "bytes": 2114,
+      "sha256": "e9e8a1933f582c310ab6f890e61c14f9acc7a7209f4beb082706c8b7b04c860c"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/tests-native_boot_probe-001.log",
+      "bytes": 2172,
+      "sha256": "567162b69fced3b4aac0ee7dd53718a0ace52a26369d154ff38b537142377d2a"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/tests-native_pipeline-001.log",
+      "bytes": 1303,
+      "sha256": "b8983d2c784a308dbec97b50f6a6cbd9ffdd424278b0f07b48c2d2e4244baade"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/tests-resume_catalog-001.log",
+      "bytes": 2021,
+      "sha256": "c7ac6514b70de1ea7ab650530003384efae8d198904915cb2dbabebc4491afab"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/tooling-tests-001.json",
+      "bytes": 1346,
+      "sha256": "96b399cd7d3a566447ba022234559f8d599e1c0885ba6f71fcd0318b677f6762"
+    },
+    {
+      "path": "artifacts/agent_reach_20261005_001/upstream.json",
+      "bytes": 230,
+      "sha256": "7f420f5b63c1794383772dc99b40dec55d2dd434190ae3e5bee02f2509c508b0"
+    }
+  ]
+}

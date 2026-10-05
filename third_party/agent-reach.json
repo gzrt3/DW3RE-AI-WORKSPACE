@@ -1,0 +1,83 @@
+{
+  "repo": "https://github.com/Panniantong/agent-reach",
+  "revision": "a19a171fa980a0785849596492e0af4db800c82f",
+  "archive_sha256": "23c314cd6e70c318e737ceff4b3dc9761d9e239922b7d9596391dcf6e406dbaf",
+  "bytes": 684385,
+  "version": "1.5.0",
+  "license": "MIT",
+  "files": [
+    {
+      "path": ".agents/skills/agent-reach/LICENSE",
+      "source": "LICENSE",
+      "bytes": 1067,
+      "sha256": "e94c131ac1c2f78cfd8f7e69da354c0ff58e4e54071697703d56856c036de402"
+    },
+    {
+      "path": ".agents/skills/agent-reach/references/career.md",
+      "source": "agent_reach/skill/references/career.md",
+      "bytes": 9249,
+      "sha256": "ade444ac499e55f02c84bd663253a28cebc1eefc7f56c7248dc6792841fbe53e"
+    },
+    {
+      "path": ".agents/skills/agent-reach/references/dev.md",
+      "source": "agent_reach/skill/references/dev.md",
+      "bytes": 1383,
+      "sha256": "f6f91107557eacf1d28a023d597eb5a61353a8a6ede286c3c0a4888d274df9fe"
+    },
+    {
+      "path": ".agents/skills/agent-reach/references/finance.md",
+      "source": "agent_reach/skill/references/finance.md",
+      "bytes": 1474,
+      "sha256": "c0cf89af1119d81890f6797ff9e8154a00ee08c17141e7d18c1b09658a916551"
+    },
+    {
+      "path": ".agents/skills/agent-reach/references/search.md",
+      "source": "agent_reach/skill/references/search.md",
+      "bytes": 1066,
+      "sha256": "23bfc54a3b85847ac7c1e12d6dbb0913d6fa3bb89a706d79e2b36396a8a8ef5d"
+    },
+    {
+      "path": ".agents/skills/agent-reach/references/social.md",
+      "source": "agent_reach/skill/references/social.md",
+      "bytes": 10521,
+      "sha256": "e2e6451eb931effd4f63ea407fbb109bea1e98de34bd703c52753ad0cc7025b3"
+    },
+    {
+      "path": ".agents/skills/agent-reach/references/video.md",
+      "source": "agent_reach/skill/references/video.md",
+      "bytes": 5515,
+      "sha256": "167ce732382c664eea63b884685dc085caa27cd69820138f7eeb91b0162efac8"
+    },
+    {
+      "path": ".agents/skills/agent-reach/references/web.md",
+      "source": "agent_reach/skill/references/web.md",
+      "bytes": 1087,
+      "sha256": "b238fc897975a693d7bb262600ca2ea69cd13a4892e870d346dbe375c880b303"
+    },
+    {
+      "path": ".agents/skills/agent-reach/SKILL.md",
+      "source": "agent_reach/skill/SKILL.md",
+      "bytes": 8780,
+      "sha256": "eff66a9ddd717aa9d6e93d918191ee904f50f8aec5958517fb094e5e1726d665"
+    },
+    {
+      "path": ".agents/skills/agent-reach/SKILL_en.md",
+      "source": "agent_reach/skill/SKILL_en.md",
+      "bytes": 8294,
+      "sha256": "b0c2f6ed398921f6b61b9998a46af506c5732bed76bc8451e97d691ba91ab118"
+    }
+  ],
+  "dependencies": {
+    "python_constraints": "third_party/agent-reach-python-constraints.txt",
+    "mcporter": {
+      "version": "0.14.2",
+      "lock": "third_party/agent-reach-node-package-lock.json",
+      "integrity": "sha512-3ajjKzPLe/39hN582XqMuOw3S9vHQfLpSBq72zVakT03xso3GDXHcht/eVLu/l2MDqulIOtLevnTKreUxymHJQ=="
+    },
+    "github_cli": {
+      "version": "2.102.0",
+      "url": "https://github.com/cli/cli/releases/download/v2.102.0/gh_2.102.0_windows_amd64.zip",
+      "sha256": "ae64e556ecc240b200f7eba60d550e4bb60d78e860e69dd88c449405b86067f4"
+    }
+  }
+}

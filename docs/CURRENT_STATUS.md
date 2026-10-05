@@ -1,5 +1,18 @@
 # Current verified state
 
+Agent Reach1.5.0 installed for public-source research; GitHub and Jina exercised
+against pinned PS2SDK, with a full MODLOAD source comparison MATCH. Exa returned
+a quota limit; no retries or paid key. All66 tooling tests PASS. This installation
+does not change native runtime behavior or close an acceptance gate. See
+AGENT_REACH.md and evidence/agent_reach_20261005.json.
+
+Native work in progress: LOADCORE library registration/linking component has
+16 isolated contracts and69 selected-original instruction comparisons PASS per
+Debug/Release. It remains an uncommitted integration candidate: emulator linked
+call dispatch, shared guest state and original module lifecycle are still needed.
+No new full native build/run; loader_prerequisites_001 remains the live baseline.
+Local evidence: artifacts/native_pipeline_20261005/loadcore_lifecycle_012/library-001.
+
 Anti-slop integration: pinned 3.2.20 core/comment skills and MIT notices are
 installed locally, with scoped Codex/Copilot instructions. All59 selected Python
 tests PASS; the five pinned files also match after an index checkout with

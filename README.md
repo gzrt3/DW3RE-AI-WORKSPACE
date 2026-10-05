@@ -29,6 +29,11 @@ Agent reviews use [the scoped anti-slop integration](docs/ANTISLOP.md), pinned
 with its MIT license. It guides honest reporting, interface work and comments;
 runtime tests and original-behavior comparisons remain the correctness checks.
 
+[Agent Reach](docs/AGENT_REACH.md) is installed locally for public GitHub and
+web research with preserved evidence. These paths were exercised against PS2SDK;
+Exa returned a quota limit. Findings require original-version verification
+before changing native behavior.
+
 ## Repository contents
 
 | Path | Purpose |
