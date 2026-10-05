@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-10-05T06:57:58.259783+00:00",
+  "original": {
+    "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+    "start": "0x0019A510",
+    "end_exclusive": "0x0019A5C4",
+    "word_count": 45,
+    "words_sha256": "55a4d2bff2f2e388daa84f8995c69d155bbce0addd5e0bda9a237b52eba45ede"
+  },
+  "registered_entries": [
+    "0x0019A510"
+  ],
+  "source": {
+    "path": "src/recovered/graphics_config_tail_0019a510.inc",
+    "size_bytes": 12341,
+    "sha256": "6093187d96bb375f6b5e2b82c7af9f9cbeca0d56292df7241d93bc7d9e19d5c5"
+  },
+  "independent_review": {
+    "path": "artifacts/native_pipeline_20261005/graphics_config_020/independent-review-001/review.md",
+    "size_bytes": 4739,
+    "sha256": "14a91e524f4046333302fc12d98006d4dd0193399c4249a7360d24b9854b5bf3"
+  },
+  "tests_per_configuration": {
+    "configuration_word_guards": 45,
+    "configuration_owner_conflicts": 1,
+    "configuration_original_opcode_cases": 216,
+    "saved_ra_overlap_aliases": 4,
+    "buffer_original_opcode_cases": 576,
+    "buffer_word_guards": 32,
+    "buffer_owner_conflicts": 1,
+    "packet_return_cases": 4,
+    "packet_word_guards": 2,
+    "packet_owner_conflicts": 1,
+    "memory_routing_exception_cases": 15,
+    "vif_read64_aliases": 3,
+    "crt_wrapper_cases": 4,
+    "gparam_return_cases": 4,
+    "allocator_scenarios": 8,
+    "allocator_abi_boundaries": 16,
+    "caller_scenarios": 42,
+    "caller_gpr128_ram_boundaries": 322,
+    "intc_word_guards": 4,
+    "intc_owner_conflicts": 2,
+    "intc_wrapper_cases": 2,
+    "scheduled_irq_cases": 3,
+    "intc_latch_ack_cases": 15
+  },
+  "test_logs": {
+    "Debug": {
+      "path": "artifacts/native_pipeline_20261005/graphics_config_020/contract-Debug-001.log",
+      "size_bytes": 1516,
+      "sha256": "2f7856efc6faf5557ea0558b09fd4a8d1bc129a00bb69a016cfa1c7908cbbeff"
+    },
+    "Release": {
+      "path": "artifacts/native_pipeline_20261005/graphics_config_020/contract-Release-003.log",
+      "size_bytes": 1516,
+      "sha256": "2f7856efc6faf5557ea0558b09fd4a8d1bc129a00bb69a016cfa1c7908cbbeff"
+    },
+    "Python_15_tests": {
+      "path": "artifacts/native_pipeline_20261005/graphics_config_020/probe-tests-001.log",
+      "size_bytes": 2688,
+      "sha256": "1b356f971f7e40ef8e710c33abd22b3e9be1da58ab81c59fcb5d9c460a99779a"
+    }
+  },
+  "native": {
+    "build_status": "PASS",
+    "exe_sha256": "9b91b54d7d9ee14938ac5342e86847a8bfda5a74d34ae026d4b2f1b60c8591dd",
+    "status": "PROCESS_FAILED",
+    "exit_code": 4294967295,
+    "input_integrity": "MATCH",
+    "next_missing_pc": "0x001B8040",
+    "build_log": {
+      "path": "artifacts/native_pipeline_20261005/graphics_config_020/native-build-001.log",
+      "size_bytes": 16911,
+      "sha256": "14453902ac19726fd4e14911fccc41c0f41daa1226bcf88e62de7e77c65af173"
+    },
+    "launch": {
+      "path": "artifacts/native_pipeline_20261005/graphics_config_020/native-001/launch.json",
+      "size_bytes": 36721,
+      "sha256": "ee5eff5b45962221ef4ef56ca9eb7478c1a5ba4a0f677b547828b2402ec8260b"
+    },
+    "result": {
+      "path": "artifacts/native_pipeline_20261005/graphics_config_020/native-001/result.json",
+      "size_bytes": 13448,
+      "sha256": "f9a4ea3e476f6986cab6a076f704b38f60bfd08ed32f580d68c68eee0255ae03"
+    },
+    "stderr": {
+      "path": "artifacts/native_pipeline_20261005/graphics_config_020/native-001/stderr.bin",
+      "size_bytes": 15016,
+      "sha256": "40499853dca1c0962475aa4ffa42f8f36d9b119fe07a69756b269cf6ed45a312"
+    },
+    "source_fingerprint_improvement": "All recovered/*.inc files are now included and deduplicated."
+  },
+  "original_reference": {
+    "entry_checkpoint": {
+      "path": "artifacts/native_pipeline_20261005/graphics_config_020/dual-reference-001/debugger/captures/graphics-tail-entry/observation.json",
+      "size_bytes": 4114,
+      "sha256": "30b967206fc3be8d5b1fdc1a6a2bdab242d880f10bf37d170d69edbbb8bcf96f"
+    },
+    "savestate": {
+      "path": "artifacts/native_pipeline_20261005/graphics_config_020/dual-reference-001/debugger/captures/graphics-tail-entry/original.p2s",
+      "size_bytes": 1472298,
+      "sha256": "ae11827ca34073291a9cce03d787e4b1db98426945211f6075ff1c0dcdd7ced6"
+    },
+    "observed_pc": "0x0019a510",
+    "words_match": true,
+    "return_checkpoint": "NOT_CAPTURED",
+    "lockstep_comparison": "NOT_PERFORMED",
+    "original_boot": "BIOS animation and no-memory-card prompt observed with Computer Use",
+    "disc_swap": "NOT_VERIFIED",
+    "native_image": "NOT_DEMONSTRATED"
+  },
+  "final_acceptance_verified": 0,
+  "final_acceptance_total": 8,
+  "originals_modified": false,
+  "working_tree": "UNCOMMITTED",
+  "scope": "Focused contracts and a native barrier advance; original reference playback is not native gameplay."
+}

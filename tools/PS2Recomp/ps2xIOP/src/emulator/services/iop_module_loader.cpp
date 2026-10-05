@@ -510,6 +510,7 @@ namespace ps2x::iop::detail
         result.size = span;
         result.entry = static_cast<uint32_t>(static_cast<int64_t>(header.entry) + delta);
         result.gp = 0u;
+        result.textSize = span;
         for (const auto &program : programHeaders)
         {
             if (program.type == PT_SCE_IOPMOD && program.filesz >= 12u && checkedRange(image.size(), program.offset, 12u))
@@ -522,6 +523,16 @@ namespace ps2x::iop::detail
                 result.gp = gp != 0u
                                 ? static_cast<uint32_t>(static_cast<int64_t>(gp) + delta)
                                 : 0u;
+                if (program.filesz >= 24u && checkedRange(image.size(), program.offset, 24u))
+                {
+                    uint32_t metadata = 0u;
+                    std::memcpy(&metadata, image.data() + program.offset, 4u);
+                    if (metadata != UINT32_MAX)
+                        result.moduleInfo = static_cast<uint32_t>(static_cast<int64_t>(metadata) + delta);
+                    std::memcpy(&result.textSize, image.data() + program.offset + 12u, 4u);
+                    std::memcpy(&result.dataSize, image.data() + program.offset + 16u, 4u);
+                    std::memcpy(&result.bssSize, image.data() + program.offset + 20u, 4u);
+                }
                 break;
             }
         }

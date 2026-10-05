@@ -1,0 +1,254 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-10-05T06:31:36.815364+00:00",
+  "scope": "Original AddIntcHandler EE wrapper registration and selected native IRQ lifecycle",
+  "evidence_root": "artifacts/native_pipeline_20261005/irq_registration_017",
+  "working_tree": "UNCOMMITTED",
+  "final_acceptance_verified": 0,
+  "final_acceptance_total": 8,
+  "final_acceptance_status": "ALL_OPEN",
+  "game_parity": "NOT_COMPLETE",
+  "independent_pcsx2_lockstep": false,
+  "backup_status": "015-017_VERIFIED_BACKUP_NOT_ESTABLISHED",
+  "path_normalization": "Public paths are repository-relative. Hashes identify original retained files, not normalized JSON content.",
+  "original_wrapper": {
+    "start": "0x001a4500",
+    "stop_exclusive": "0x001a4510",
+    "words": 4,
+    "sha256": "531210b73f8542bd15829d70ca393d04d9434ae40a4a4a584a9068fe544aa2dc",
+    "identity": "MATCH_ORIGINAL_XL_ELF",
+    "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+    "opcodes": [
+      "0x24030010",
+      "0x0000000c",
+      "0x03e00008",
+      "0x00000000"
+    ],
+    "public_mappings": [
+      "0x001a4500",
+      "0x001a4508"
+    ],
+    "syscall": "numeric0x10 through existing dispatcher",
+    "return": "JR RA with original NOP delay; return-only mapping does not repeat syscall"
+  },
+  "tests": {
+    "Debug": {
+      "status": "PASS",
+      "contract": {
+        "path": "artifacts/native_pipeline_20261005/irq_registration_017/contract-Debug-004.log",
+        "size_bytes": 1057,
+        "sha256": "18cce46e1fa87dad2d3e08afe2deda607b3622cbe4cf875bbb8c9f0bd2e0bf1f"
+      },
+      "build": {
+        "path": "artifacts/native_pipeline_20261005/irq_registration_017/build-Debug-004.log",
+        "size_bytes": 227,
+        "sha256": "1cdadda63f7b69adc3a5d5b1378ffe43751b1c918421633c83a45697bb3e3ae7"
+      },
+      "opcode_guard_cases": 4,
+      "owner_conflicts": 2,
+      "wrapper_registration_return_cases": 2,
+      "scheduled_irq_lifecycle_cases": 3,
+      "existing_graphics_regressions": {
+        "memory64_routing_and_exception_cases": 15,
+        "live_vif64_mmio_aliases": 3,
+        "crt_wrapper_cases": 4,
+        "gparam_returns": 4,
+        "allocator_scenarios": 8,
+        "allocator_abi_boundaries": 16,
+        "caller_only_scenarios": 42,
+        "full_gpr128_and_ram_boundaries": 322,
+        "intc_latch_ack_cases": 15,
+        "scheduled_vblank_poll_tick": 1,
+        "external_callees_executed_by_caller_harness": false,
+        "independent_original_lockstep": false
+      }
+    },
+    "Release": {
+      "status": "PASS",
+      "contract": {
+        "path": "artifacts/native_pipeline_20261005/irq_registration_017/contract-Release-004.log",
+        "size_bytes": 1057,
+        "sha256": "18cce46e1fa87dad2d3e08afe2deda607b3622cbe4cf875bbb8c9f0bd2e0bf1f"
+      },
+      "build": {
+        "path": "artifacts/native_pipeline_20261005/irq_registration_017/build-Release-004.log",
+        "size_bytes": 195,
+        "sha256": "70ae5106d3fcc1949899e39a48bcacf31254a08589f7cbcd5fb80cb23fb3141a"
+      },
+      "opcode_guard_cases": 4,
+      "owner_conflicts": 2,
+      "wrapper_registration_return_cases": 2,
+      "scheduled_irq_lifecycle_cases": 3,
+      "existing_graphics_regressions": {
+        "memory64_routing_and_exception_cases": 15,
+        "live_vif64_mmio_aliases": 3,
+        "crt_wrapper_cases": 4,
+        "gparam_returns": 4,
+        "allocator_scenarios": 8,
+        "allocator_abi_boundaries": 16,
+        "caller_only_scenarios": 42,
+        "full_gpr128_and_ram_boundaries": 322,
+        "intc_latch_ack_cases": 15,
+        "scheduled_vblank_poll_tick": 1,
+        "external_callees_executed_by_caller_harness": false,
+        "independent_original_lockstep": false
+      }
+    }
+  },
+  "full_release_build": {
+    "status": "PASS",
+    "log": {
+      "path": "artifacts/native_pipeline_20261005/irq_registration_017/native-build-001.log",
+      "size_bytes": 16911,
+      "sha256": "a0b4644b88753271d269f8b7067290badfe7bb6428de03bd86bce9677b6aab34"
+    },
+    "completion_record": {
+      "path": "artifacts/native_pipeline_20261005/irq_registration_017/build-owner-005.json",
+      "size_bytes": 124,
+      "sha256": "4e5178de824ca3ee3358e8ab93ae56a3f79b3b2508a3ac201bd6a42487aefbe5"
+    },
+    "exit_code": 0,
+    "build_kind": "INCREMENTAL"
+  },
+  "native_run": {
+    "status": "PROCESS_FAILED",
+    "exit_code": 4294967295,
+    "started_utc": "2026-10-05T06:23:27.815552+00:00",
+    "finished_utc": "2026-10-05T06:23:28.663308+00:00",
+    "duration_seconds": 0.8477620999983628,
+    "timeout_seconds": 20.0,
+    "timed_out": false,
+    "input_integrity": "MATCH",
+    "path": "artifacts/native_pipeline_20261005/irq_registration_017/native-001",
+    "result_sha256": "770efa2330cbe0eb97d4ce640a44deca3b18bb553c35982817cc6e896d584d83",
+    "launch_sha256": "ee1613c7d6985bc092310098c98bb0603b8a3a9c33b0e06b7f3af0238dc44f6a",
+    "executable_sha256": "a1f60661c9fb4d78326cfb7cef864e33f32041719f1585e2cdf9e16dae9aea37",
+    "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+    "boot_verified": false,
+    "logs": {
+      "stdout.bin": {
+        "path": "artifacts/native_pipeline_20261005/irq_registration_017/native-001/stdout.bin",
+        "size_bytes": 3078,
+        "sha256": "ff4c522c5b9d374a26080fc536b59a5d9d0454a2ce04365415719d258a7643fc"
+      },
+      "stderr.bin": {
+        "path": "artifacts/native_pipeline_20261005/irq_registration_017/native-001/stderr.bin",
+        "size_bytes": 15004,
+        "sha256": "500dfa73f920eb2de9879dc2efb3ebfa18a7e3de60327e172dc13deb712cf012"
+      }
+    },
+    "next_barrier": "0x198918",
+    "host_vsync_requested": null,
+    "passed_pcs": [
+      "0x001a4500",
+      "0x001a5368",
+      "0x001a4560",
+      "0x00199fd4",
+      "0x00234450",
+      "0x00180450",
+      "0x001985a0",
+      "0x00198808",
+      "0x00198998",
+      "0x001988d0",
+      "0x00198900"
+    ]
+  },
+  "preserved_failures": [
+    {
+      "attempt": "001",
+      "log": {
+        "path": "artifacts/native_pipeline_20261005/irq_registration_017/contract-Release-001.log",
+        "size_bytes": 138,
+        "sha256": "ab8aedb0b4adf11f56549dc17fa4b3bc52bdb9d6149dd859bec2212b809dcf60"
+      },
+      "observed_failure": "AddIntcHandler wrapper mapping conflict",
+      "recorded_implementation_diagnosis": "Conflict fixture polluted the shared global dispatch table; repair restores the previous slot.",
+      "diagnosis_scope": "Recorded implementation-owner diagnosis. Retained logs and current corrected fixture support the account; no earlier source diff or independent root-cause proof is claimed."
+    },
+    {
+      "attempt": "002",
+      "log": {
+        "path": "artifacts/native_pipeline_20261005/irq_registration_017/contract-Release-002.log",
+        "size_bytes": 209,
+        "sha256": "e0ad8508a3b924785556b7ec82788edfb2cb6ed34aefdd22819bcf603d479242"
+      },
+      "observed_failure": "registration fabricated completion or callback",
+      "recorded_implementation_diagnosis": "Wrapper was manually called before scheduler replay of its saved context, causing duplicate registration; repair invokes wrapper only through scheduler.",
+      "diagnosis_scope": "Recorded implementation-owner diagnosis. Retained logs and current corrected fixture support the account; no earlier source diff or independent root-cause proof is claimed."
+    },
+    {
+      "attempt": "003",
+      "log": {
+        "path": "artifacts/native_pipeline_20261005/irq_registration_017/contract-Release-003.log",
+        "size_bytes": 260,
+        "sha256": "1acc474b70595ed932325b6344d3c9e2bb50e9da3e4e6bbb0d8e39b4c1d3d5f4"
+      },
+      "observed_failure": "IRQ wait mode0 actual_id2 expected_id1 calls0; registration fabricated completion or callback",
+      "recorded_implementation_diagnosis": "Same duplicate-execution fixture diagnosis as002; expected ID1 remains correct after scheduler reset.",
+      "diagnosis_scope": "Recorded implementation-owner diagnosis. Retained logs and current corrected fixture support the account; no earlier source diff or independent root-cause proof is claimed."
+    }
+  ],
+  "source_snapshot": {
+    "basis": "Saved launch-time identities. Later018 changes are not substituted.",
+    "captured_utc": "2026-10-05T06:23:27.756195+00:00",
+    "launch": {
+      "path": "artifacts/native_pipeline_20261005/irq_registration_017/native-001/launch.json",
+      "size_bytes": 36082,
+      "sha256": "ee1613c7d6985bc092310098c98bb0603b8a3a9c33b0e06b7f3af0238dc44f6a"
+    },
+    "full_source_file_count": 67,
+    "selected_sources": [
+      {
+        "path": "CMakeLists.txt",
+        "size_bytes": 6953,
+        "sha256": "691c003db12095a4344d3e87dc09b26c5943560647b4d0d5ea659c71b5df8d09"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/src/lib/Kernel/EeScheduler.cpp",
+        "size_bytes": 67629,
+        "sha256": "e739f174e7743ddd6b752a01f3e56bc3ea840acbc7603c9ed26bd348e0ba03f4"
+      },
+      {
+        "path": "src/graphics_init_continuation.cpp",
+        "size_bytes": 4782,
+        "sha256": "1e8983aa1a8339b1f62536d9b6b3e4f22a83adcd0f52955d36c14f26a2c2145a"
+      },
+      {
+        "path": "include/fate/graphics_init_continuation.hpp",
+        "size_bytes": 122,
+        "sha256": "73e77c48a0aa3c9d9189ed73aedac09e9005541cd8eef1c9fb7ebf47be0e9d17"
+      },
+      {
+        "path": "src/recovered/graphics_init_00180384.inc",
+        "size_bytes": 25671,
+        "sha256": "2c2e03c7af76a774c8698d5f0f96308f9db06daec10ef17e32aae83b8414661a"
+      },
+      {
+        "path": "src/recovered/vblank_wait_001a4cc0.inc",
+        "size_bytes": 10185,
+        "sha256": "a11e4f8d037b630cbce4ade2d424b50508550e77a0731b4c79fe102781c472b4"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/src/lib/Kernel/Syscalls/System.cpp",
+        "size_bytes": 35389,
+        "sha256": "781f0cda7bb714194b67541e9b9086feb60c9d87b563b0aada2c48e1710d022d"
+      },
+      {
+        "path": "tools/native_boot_probe.py",
+        "size_bytes": 15944,
+        "sha256": "6a40b6a66b2285f3b57bf89f1d9825c1fee88bde1ac93cb570fa057ce30ae260"
+      }
+    ],
+    "source_to_binary_correspondence": "NOT_ESTABLISHED_BY_PROBE",
+    "current_source_identity": "NOT_CLAIMED; current checkout includes later018 changes.",
+    "test_source_hash_at004": "NOT_RETAINED_IN_LAUNCH_MANIFEST; current test source includes later018 work and is not labeled as004."
+  },
+  "limits": [
+    "Four original words and selected wrapper/IRQ contracts do not establish full original kernel parity.",
+    "Exact original handler insertion ordering, optional arguments, kernel register clobbers and complete IRQ timing remain unverified.",
+    "Native run passes missing1A4500 and stops at missing198918; no native image/title/movie/battle.",
+    "Current checkout includes018 and differs from saved017 source; preserved017 result is historical.",
+    "No new original IRQ-registration checkpoint or independent PCSX2 lockstep exists.",
+    "All8 final acceptance gates remain open;015-017 verified backup not established."
+  ]
+}

@@ -33,6 +33,24 @@ class NativeBootProbeTests(unittest.TestCase):
         self.script.write_text(code, encoding='utf-8')
         return [sys.executable, '-I', '-u', str(self.script)]
 
+    def test_new_recovered_include_is_fingerprinted_without_duplicate_paths(self):
+        recovered = self.root/'src/recovered'
+        recovered.mkdir(parents=True)
+        known = recovered/'known.inc'
+        added = recovered/'new_tail.inc'
+        known.write_bytes(b'known original lowering')
+        added.write_bytes(b'new original lowering')
+        with patch.object(probe, 'ROOT', self.root), patch.object(probe, 'SOURCE_NAMES', ('src/recovered/known.inc',)):
+            before = probe.source_identities()
+            added.write_bytes(b'reviewed width correction')
+            after = probe.source_identities()
+        self.assertEqual(len({item['path'] for item in before}), len(before))
+        before = {item['path']: item['sha256'] for item in before}
+        after = {item['path']: item['sha256'] for item in after}
+        self.assertEqual(before[str(known.resolve())], after[str(known.resolve())])
+        self.assertNotEqual(before[str(added.resolve())], after[str(added.resolve())])
+        self.assertEqual(after[str(added.resolve())], probe.hash_file(added))
+
     def execute_fixture(self, code, timeout=30):
         command = self.fixture_command(code)
         self.output.mkdir()
@@ -180,6 +198,30 @@ class NativeBootProbeTests(unittest.TestCase):
             with self.subTest(value=value), patch.object(probe, 'run_process') as child:
                 with self.assertRaisesRegex(ValueError, 'live-seconds'):
                     probe.run(self.exe, self.dump, self.elf, self.output, live_seconds=value)
+                child.assert_not_called()
+                self.assertFalse(self.output.exists())
+
+    def test_vsync_choice_is_preserved_in_command_and_provenance(self):
+        for mode in ('on', 'off'):
+            with self.subTest(mode=mode):
+                output = self.root / ('vsync-' + mode)
+                command = self.fixture_command(
+                    'import sys\n'
+                    f'assert sys.argv[-4:] == ["--live-seconds", "1", "--vsync", {mode!r}]\n'
+                    'sys.exit(2)\n')
+                with patch.object(probe, 'native_command', return_value=command), patch.object(probe, 'source_identities', return_value=[]):
+                    result = probe.run(self.exe, self.dump, self.elf, output, live_seconds=1, vsync=mode)
+                self.assertEqual(result['exit_code'], 2)
+                self.assertFalse(result['boot_verified'])
+                launch = json.loads((output/'launch.json').read_text())
+                self.assertEqual(launch['host_vsync_requested'], mode)
+                self.assertEqual(launch['command'][-4:], ['--live-seconds', '1', '--vsync', mode])
+
+    def test_invalid_vsync_never_launches_or_creates_output(self):
+        for mode, seconds in [('auto', 1), (True, 1), (0, 1), ('ON', 1), ('on', None), ('off', None)]:
+            with self.subTest(mode=mode, seconds=seconds), patch.object(probe, 'run_process') as child:
+                with self.assertRaisesRegex(ValueError, 'vsync'):
+                    probe.run(self.exe, self.dump, self.elf, self.output, live_seconds=seconds, vsync=mode)
                 child.assert_not_called()
                 self.assertFalse(self.output.exists())
 

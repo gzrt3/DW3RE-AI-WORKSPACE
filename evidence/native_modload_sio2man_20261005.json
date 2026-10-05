@@ -1,0 +1,292 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-10-05T04:50:17.832132+00:00",
+  "scope": "Selected original MODLOAD7/SIO2MAN startup in the native runtime",
+  "git_base": "242a8a299411d6823ce70e3bdafeba57317ec1b1",
+  "working_tree": "UNCOMMITTED",
+  "auxiliary_work": "PAUSED",
+  "startup_barrier": "RESOLVED_IN_NATIVE_RUN",
+  "final_acceptance_verified": 0,
+  "final_acceptance_total": 8,
+  "game_parity": "NOT_COMPLETE",
+  "independent_pcsx2_lockstep": false,
+  "tests": {
+    "Debug": {
+      "suites_passed": 11,
+      "state_original_comparisons": 32,
+      "library_original_comparisons": 69
+    },
+    "Release": {
+      "suites_passed": 11,
+      "state_original_comparisons": 32,
+      "library_original_comparisons": 69
+    }
+  },
+  "positive_probe": {
+    "return_module_id": 11,
+    "entry_return": 0,
+    "resident_state": 3,
+    "worker_thread": 1,
+    "argc": 1,
+    "instructions": 2727,
+    "debug_release_ram_match": true,
+    "ram_sha256": "6c9d7d28900c3597ecfb3ff6f08c41066d5e02e729875bd617e9d0bb01288cfb"
+  },
+  "missing_file_probe": {
+    "return": -203,
+    "entry_result_untouched": true,
+    "resident_count": 10,
+    "instructions": 1333,
+    "debug_release_ram_match": true,
+    "ram_sha256": "320c5a218e7dcd8157defff1724e16e94c60f3073b65deec02c37d37a613aaf1"
+  },
+  "native_run": {
+    "status": "PROCESS_FAILED",
+    "exit_code": 4294967295,
+    "input_integrity": "MATCH",
+    "sio2man_module_id": 21,
+    "sio2man_worker_thread": 1,
+    "sio2man_argc": 1,
+    "sio2man_entry_return": 0,
+    "sio2man_resident_state": 3,
+    "entry_pc": "0x135C64",
+    "gp": "0x13E5B0",
+    "module_info": "0x135600",
+    "requested_filename": "cdrom0:\\MODULES\\SIO2MAN.IRX;1",
+    "next_barrier": "EE 0x0019A6C4",
+    "sifcmd_rejected_packet_warnings": 2
+  },
+  "limits": [
+    "Local interpreter replay is not independent PCSX2 lockstep.",
+    "Library replay intercepts cache flush and excludes stack scratch; state replay compares full RAM.",
+    "SIO2 transactions, DMA/IRQ timing and controller parity remain unverified.",
+    "Prepared native failed-start rollback and all HLE ownership are not proven.",
+    "No title, movie or battle demonstrated."
+  ],
+  "original_sha256": {
+    "LOADCORE.IRX": "51c9e79f4529d3590643a46ce63d73433b377a38ccc9fd0fad59a25b463d3bd3",
+    "MODLOAD.IRX": "4a9027499d8fe06ced66d0ab66a9e930b30943c17fd2b5ae5f0bf76abf8360a7",
+    "DMACMAN.IRX": "b0c35cb83cc61385cc86b1665b7a65e49dda71588feffc3ba70575267f1cc559",
+    "SYSCLIB.IRX": "e57edb4df3c50d58d4af7c5e2a502b072783a8feb43c00d277db5a1733374fce",
+    "SYSMEM.IRX": "1b03e6ffd2042c2545cf1a78ab937b6b57ccda037783e7ad52467bb9f5556054",
+    "INTRMANP.IRX": "95bd617db528cda0cc375babd301776b3b9558920380fc99b1adf5cacdba83da",
+    "THREADMAN.IRX": "61bef97ca94a8cbd96ffd442fbbd84c10fdef95dfe5e4ae5b23674bb810f9092",
+    "IOMAN.IRX": "4539b1716fbb2fdb65590d8e445e99101791897049712a73f08797aec26b59f1",
+    "STDIO.IRX": "f24ecef688f1af0d659aad5472a9056db843005b06b176899a4fe76c74fd69fd",
+    "DW3XL/MODULES/SIO2MAN.IRX": "d02dd7bcf83a802c388b6ce1fdd447b4d5c29dcc7ba11000ccd66f8f14714fd6"
+  },
+  "sources": [
+    {
+      "path": "include/fate/native_iop_manifest.hpp",
+      "bytes": 2997,
+      "sha256": "b0f3a50235f1fece0a4cdd9c6ba924179ae2f64fbd4cadf363993c38ce58f2f4"
+    },
+    {
+      "path": "src/native_iop_boot.cpp",
+      "bytes": 2330,
+      "sha256": "df16c59eb52b3de631a37645e565c8fd8e02fbcb9955097ca8a68fcdcd3a57ce"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/CMakeLists.txt",
+      "bytes": 5554,
+      "sha256": "c63e1406897f8069a4288e10a9347c77585ba51d81a6b04cb69ae07a6ecac4b8"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/include/ps2x/iop/iop_subsystem.h",
+      "bytes": 2854,
+      "sha256": "f64201f452aee342f949504c742dc452d9689721e685b5e585a119cefcfd4edf"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_cpu.h",
+      "bytes": 1426,
+      "sha256": "33b8f260b9d602a72120552e1f855a053eb009b83fbd4d0a00c594bff08c2570"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_kernel.cpp",
+      "bytes": 29886,
+      "sha256": "059aac2e542cccfc79468b5a9858228f35635221934c88ab7f9edf8abf84543b"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_imports.cpp",
+      "bytes": 24473,
+      "sha256": "0583513d7a573b9084a7160d02ec6d8a42a2c65b92d8858f6ffb4ab03582a331"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_imports.h",
+      "bytes": 2502,
+      "sha256": "7ca45a4c23ce7de3d59e9b82b84002d50b3a070594906bd1463cddd9bc75401f"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_loadcore.cpp",
+      "bytes": 4710,
+      "sha256": "3a8583f7752bfc3f16c240cadb9ccbab7e67e1a38c04e190bff0cc45d06b32a7"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_loadcore.h",
+      "bytes": 722,
+      "sha256": "c5ec84479b4e4bf886f500d2ccb3c3976b1341414ea5460913a3b5cceda5b335"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_loadcore_state.cpp",
+      "bytes": 6218,
+      "sha256": "98b0854656567e0716194acfa9edee2e51f18deb7ee6f284eac59cb889f83cf8"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_loadcore_state.h",
+      "bytes": 860,
+      "sha256": "ac5b91436016e25d1b69a11e7df937364446d773c7d254d1045cb1c5a0f5e56f"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.cpp",
+      "bytes": 60556,
+      "sha256": "dd518711495122927652eb63bcc0f2cf6858be3112f3a5a60af34fee86d0dd8d"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.h",
+      "bytes": 2774,
+      "sha256": "6237468edec4ea8f7169aa55f3bc950c7cccb45bca22fcafc6f6d50c89524eb6"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_module_loader.cpp",
+      "bytes": 24601,
+      "sha256": "40b028b63b1377856b6ff45afea03448d90c86a74db400760caaa1ce61ec0643"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_module_loader.h",
+      "bytes": 1364,
+      "sha256": "6fddf92c584d3b1f22c9ae17c974e809ac22767cb26a36079b309dff7f3bd490"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/iop_subsystem.cpp",
+      "bytes": 17911,
+      "sha256": "97f59d5f4c763ecc3181f375b367c4bb144c11e5c3aae94960d23f6a0b17d24f"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/tests/iop_continuation_tests.cpp",
+      "bytes": 18341,
+      "sha256": "8a97628fde8de72696ace48d34a1621824f86215e9b633f1cd2d36529f8051c9"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/tests/iop_import_version_tests.cpp",
+      "bytes": 9175,
+      "sha256": "b67b8700899107857e234b4eeb3152fd5cb81918192a941563a4d999f8d8eb8e"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/tests/iop_loadcore_link_original_replay.cpp",
+      "bytes": 12071,
+      "sha256": "665ab26cadd886b4ae3a69390b7a8d4a3d27fa511858f13121b81b3d3c34ea45"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/tests/iop_loadcore_link_tests.cpp",
+      "bytes": 14004,
+      "sha256": "fef9c8c37a2bfe88b9fc44a4262affdaeb78fb70558f8a109aeb185bd3baac6c"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/tests/iop_loadcore_state_tests.cpp",
+      "bytes": 8953,
+      "sha256": "4b48355f82212fb45507ec1ca62415f2bbfae178bb9cbfa64b384292685d9aab"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/tests/iop_loader_dispatch_tests.cpp",
+      "bytes": 4467,
+      "sha256": "31d9da69723957d5b2ac296e377510aa03fab23538f09c049ef2024ccff04cb2"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/tests/iop_modload_original_probe.cpp",
+      "bytes": 7051,
+      "sha256": "01959fff0695888ea67ef6631abb114967aa39390ba239d0158e16c9263141ab"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/native-build-003.log",
+      "bytes": 16988,
+      "sha256": "c1c8f31f46b121ba5d7856690bb4475f62d40bcdca016b16e8359ccaebb84b32"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/final-build-debug-012.log",
+      "bytes": 3503,
+      "sha256": "1dc00287a8ac0572a5bf07d54e5553265c7f2f6a3b3671bcee7cd0b59b663ce8"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/final-build-release-012.log",
+      "bytes": 4915,
+      "sha256": "3d655eec4bc5cceae3c4d2584bc0e07c8179a59263d40a18a3f4b7a27d264f37"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/final-tests-debug-012.log",
+      "bytes": 1420,
+      "sha256": "c2992e7757c87b8f8dff396fb044ff56b4859908b9fcbbfd5a23169b2f554869"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/final-tests-release-012.log",
+      "bytes": 1420,
+      "sha256": "3e3b29b3439bdd5a9d21e9abbafd52969e36fb358cb271b5d0efe8169f8536ea"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/state-replay-debug-012.log",
+      "bytes": 120,
+      "sha256": "2b165ce17e90ec680f690e00259ff6a88cde5746ac3248879224efbb25e2da98"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/state-replay-release-012.log",
+      "bytes": 120,
+      "sha256": "2b165ce17e90ec680f690e00259ff6a88cde5746ac3248879224efbb25e2da98"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/link-replay-debug-012.log",
+      "bytes": 1792,
+      "sha256": "3ec9bcf97cdb090b0eb0210f20c34d8af41a5a4f574c595a7e5d72eac9ef903f"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/link-replay-release-012.log",
+      "bytes": 1792,
+      "sha256": "3ec9bcf97cdb090b0eb0210f20c34d8af41a5a4f574c595a7e5d72eac9ef903f"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/original-probe-011.log",
+      "bytes": 2164,
+      "sha256": "7887c0c0f98e970d3f7b50478629ba613a75be4ca84e23c6054380ee23a0ede6"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/original-probe-release-012.log",
+      "bytes": 2164,
+      "sha256": "7887c0c0f98e970d3f7b50478629ba613a75be4ca84e23c6054380ee23a0ede6"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/missing-probe-011.log",
+      "bytes": 1911,
+      "sha256": "130638b39442f9852cb33281715bb2fd7dfbdeca2541428cd99bbddfdff38f6f"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/missing-probe-release-012.log",
+      "bytes": 1911,
+      "sha256": "130638b39442f9852cb33281715bb2fd7dfbdeca2541428cd99bbddfdff38f6f"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/native-003/result.json",
+      "bytes": 13442,
+      "sha256": "5179eef32e290ce6a5c5f049fcb1401f9491e40d2c15481f6830f5b16da97e78"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/native-003/stderr.bin",
+      "bytes": 14990,
+      "sha256": "8f97fa4c39a703d123c0cb71b0afe5d6bed97d21755255fc58f3f526332bf025"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/native-003/launch.json",
+      "bytes": 33355,
+      "sha256": "a654601d9f61746b87af7e4986f21c438345e9cd7f58b41f424b04aee398cb14"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/initial-boot-mode-evidence.json",
+      "bytes": 673,
+      "sha256": "10acbf40dfb912e5894d4eda6d9c2a5b8020b9c134a64b0c266b2599e06eaa34"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/modload_focus_013/bootstrap-original-evidence.json",
+      "bytes": 909,
+      "sha256": "dbfef0f2bac44923d5c93b5ced6751e6921acbca9426f92c0d4f125c9b6e927c"
+    }
+  ]
+}

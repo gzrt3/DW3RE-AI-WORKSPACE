@@ -1,0 +1,251 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-10-05T06:31:36.815364+00:00",
+  "scope": "Optional host presenter VSync with preserved guest VBLANK timing",
+  "evidence_root": "artifacts/native_pipeline_20261005/host_vsync_016",
+  "working_tree": "UNCOMMITTED",
+  "final_acceptance_verified": 0,
+  "final_acceptance_total": 8,
+  "final_acceptance_status": "ALL_OPEN",
+  "game_parity": "NOT_COMPLETE",
+  "independent_pcsx2_lockstep": false,
+  "backup_status": "015-017_VERIFIED_BACKUP_NOT_ESTABLISHED",
+  "path_normalization": "Public paths are repository-relative. Hashes identify original retained files, not normalized JSON content.",
+  "behavior": {
+    "option": "--vsync on|off",
+    "default": "off",
+    "enables_live_presentation": true,
+    "observer_option": "-VSync on|off",
+    "minimum_sdl_version": "2.0.18",
+    "normal_build_sdl_pin": "2.30.11",
+    "renderer_fallback": "accelerated then software",
+    "explicit_setter": "SDL_RenderSetVSync after creation",
+    "physical_monitor_sync": "UNVERIFIED",
+    "vrr": "UNVERIFIED",
+    "guest_vblank_and_irq_timing": "UNCHANGED"
+  },
+  "tests": {
+    "Debug": {
+      "status": "PASS",
+      "cases": 4,
+      "matrix": "empty GS / synthetic VRAM x on/off, with opposite global SDL hint",
+      "contract": {
+        "path": "artifacts/native_pipeline_20261005/host_vsync_016/contract-Debug-001.log",
+        "size_bytes": 1506,
+        "sha256": "52d904bad6ab8b4cb364685567e3204f2ee8e51da7d8ae6ccf90d97021d06878"
+      },
+      "build": {
+        "path": "artifacts/native_pipeline_20261005/host_vsync_016/build-Debug-001.log",
+        "size_bytes": 392,
+        "sha256": "40e28a91be3c65b8ae87df130e4358413b70af4cbb09bbb6f5d4fd3d50515676"
+      },
+      "renderer": "software",
+      "original_game_pixels": false
+    },
+    "Release": {
+      "status": "PASS",
+      "cases": 4,
+      "matrix": "empty GS / synthetic VRAM x on/off, with opposite global SDL hint",
+      "contract": {
+        "path": "artifacts/native_pipeline_20261005/host_vsync_016/contract-Release-001.log",
+        "size_bytes": 1506,
+        "sha256": "d39e7b74092b044228c7af4e1f09fa2572feefc268dfbc4361816b48a685d193"
+      },
+      "build": {
+        "path": "artifacts/native_pipeline_20261005/host_vsync_016/build-Release-001.log",
+        "size_bytes": 394,
+        "sha256": "45a79ac4c5552c0d889c42dd03352e7726145e8165628f6b93052daa6b80e6e9"
+      },
+      "renderer": "software",
+      "original_game_pixels": false
+    }
+  },
+  "tooling_tests": {
+    "status": "PASS",
+    "count": 14,
+    "log": {
+      "path": "artifacts/native_pipeline_20261005/host_vsync_016/probe-tests-001.log",
+      "size_bytes": 2498,
+      "sha256": "fee38422c7247ce257ee8420dcb2b47b8302b174c3c1fb0f9c0fedabc0cb02f6"
+    }
+  },
+  "full_release_build": {
+    "status": "PASS",
+    "log": {
+      "path": "artifacts/native_pipeline_20261005/host_vsync_016/native-build-001.log",
+      "size_bytes": 17080,
+      "sha256": "75a06709d7caf91eae99d42c2aed8cb41db11a982c8a7418b4ad5ab0ae753d07"
+    },
+    "completion_record": {
+      "path": "artifacts/native_pipeline_20261005/host_vsync_016/build-owner-002.json",
+      "size_bytes": 124,
+      "sha256": "939f5f34c2b098a45fd2c3276fb479c4473ac86670a83b40793346890e082c3c"
+    },
+    "exit_code": 0,
+    "build_kind": "INCREMENTAL"
+  },
+  "cli_rejections": [
+    {
+      "case": "invalid value",
+      "log": {
+        "path": "artifacts/native_pipeline_20261005/host_vsync_016/cli-invalid-value-001.log",
+        "size_bytes": 36,
+        "sha256": "6df0232ef2511a39d3391e648d8208e7383eb7ae9905c885f00a51bfdd6e613e"
+      },
+      "observed_message": "[BOOT] --vsync requires on or off.",
+      "recorded_exit_code": 2,
+      "exit_code_basis": "docs/NATIVE_HOST_VSYNC_20261005.md; raw message logs do not retain exit status"
+    },
+    {
+      "case": "missing value",
+      "log": {
+        "path": "artifacts/native_pipeline_20261005/host_vsync_016/cli-missing-value-001.log",
+        "size_bytes": 36,
+        "sha256": "6df0232ef2511a39d3391e648d8208e7383eb7ae9905c885f00a51bfdd6e613e"
+      },
+      "observed_message": "[BOOT] --vsync requires on or off.",
+      "recorded_exit_code": 2,
+      "exit_code_basis": "docs/NATIVE_HOST_VSYNC_20261005.md; raw message logs do not retain exit status"
+    }
+  ],
+  "native_runs": [
+    {
+      "status": "PROCESS_FAILED",
+      "exit_code": 4294967295,
+      "started_utc": "2026-10-05T06:15:04.444613+00:00",
+      "finished_utc": "2026-10-05T06:15:05.444547+00:00",
+      "duration_seconds": 0.9999358999994001,
+      "timeout_seconds": 25.0,
+      "timed_out": false,
+      "input_integrity": "MATCH",
+      "path": "artifacts/native_pipeline_20261005/host_vsync_016/native-off-001",
+      "result_sha256": "4ec1249671e93825d3ac746d219f6456a547c05c0c4166a9770540d77dc3b524",
+      "launch_sha256": "e589519fc190d9c0b24e856e22cd2e860f194e3a7500e8328c4446a0362eb036",
+      "executable_sha256": "d7200b838b76be3885812e47f9c87f834f3d07849ad8df7d305997cd56dfa749",
+      "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+      "boot_verified": false,
+      "logs": {
+        "stdout.bin": {
+          "path": "artifacts/native_pipeline_20261005/host_vsync_016/native-off-001/stdout.bin",
+          "size_bytes": 3368,
+          "sha256": "bfa6e6919a5c2d114faa7726906859aab8ae04437c0af76f7fd59cb0e9ea758c"
+        },
+        "stderr.bin": {
+          "path": "artifacts/native_pipeline_20261005/host_vsync_016/native-off-001/stderr.bin",
+          "size_bytes": 15017,
+          "sha256": "f94a22ded3242437518cfaea009a0f2db193df63a4ec6a307fd2be4701004892"
+        }
+      },
+      "next_barrier": "0x1a4500",
+      "host_vsync_requested": "off",
+      "presenter": {
+        "renderer": "direct3d",
+        "requested": "off",
+        "sdl_applied": "off",
+        "physical_sync": "UNVERIFIED",
+        "guest_timing": "UNCHANGED",
+        "stop_reason": "guest-stopped",
+        "observations": 25,
+        "presentations": 0
+      }
+    },
+    {
+      "status": "PROCESS_FAILED",
+      "exit_code": 4294967295,
+      "started_utc": "2026-10-05T06:15:22.534277+00:00",
+      "finished_utc": "2026-10-05T06:15:23.555654+00:00",
+      "duration_seconds": 1.0213823999947635,
+      "timeout_seconds": 25.0,
+      "timed_out": false,
+      "input_integrity": "MATCH",
+      "path": "artifacts/native_pipeline_20261005/host_vsync_016/native-on-001",
+      "result_sha256": "a7142d20a060024dfbaf504d89e7402bc50b769a07658c3baba999df0740c219",
+      "launch_sha256": "8fbb03e4b00e0762600f3da2c30beaaaad605f31452633e7e116e586c5749b6a",
+      "executable_sha256": "d7200b838b76be3885812e47f9c87f834f3d07849ad8df7d305997cd56dfa749",
+      "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+      "boot_verified": false,
+      "logs": {
+        "stdout.bin": {
+          "path": "artifacts/native_pipeline_20261005/host_vsync_016/native-on-001/stdout.bin",
+          "size_bytes": 3366,
+          "sha256": "2e4d45355c9e09faabe20bcf8a596d6a3478c6d468b769787df19325ee5dbfbe"
+        },
+        "stderr.bin": {
+          "path": "artifacts/native_pipeline_20261005/host_vsync_016/native-on-001/stderr.bin",
+          "size_bytes": 15017,
+          "sha256": "f94a22ded3242437518cfaea009a0f2db193df63a4ec6a307fd2be4701004892"
+        }
+      },
+      "next_barrier": "0x1a4500",
+      "host_vsync_requested": "on",
+      "presenter": {
+        "renderer": "direct3d",
+        "requested": "on",
+        "sdl_applied": "on",
+        "physical_sync": "UNVERIFIED",
+        "guest_timing": "UNCHANGED",
+        "stop_reason": "guest-stopped",
+        "observations": 25,
+        "presentations": 0
+      }
+    }
+  ],
+  "source_snapshot": {
+    "basis": "Saved launch-time identities. Later018 changes are not substituted.",
+    "captured_utc": "2026-10-05T06:15:03.597274+00:00",
+    "launch": {
+      "path": "artifacts/native_pipeline_20261005/host_vsync_016/native-off-001/launch.json",
+      "size_bytes": 36075,
+      "sha256": "e589519fc190d9c0b24e856e22cd2e860f194e3a7500e8328c4446a0362eb036"
+    },
+    "full_source_file_count": 67,
+    "selected_sources": [
+      {
+        "path": "CMakeLists.txt",
+        "size_bytes": 6953,
+        "sha256": "691c003db12095a4344d3e87dc09b26c5943560647b4d0d5ea659c71b5df8d09"
+      },
+      {
+        "path": "src/main.cpp",
+        "size_bytes": 14960,
+        "sha256": "c18880920d23ecb37391ebdd5b06daba25a9b64cfff46067cb4e93624eb2bd73"
+      },
+      {
+        "path": "src/native_presenter.cpp",
+        "size_bytes": 8073,
+        "sha256": "456120c4a010d817c89a4b61e1cdd02ab0b98c5163ab1e66577087ab66e4aef2"
+      },
+      {
+        "path": "include/fate/native_presenter.hpp",
+        "size_bytes": 953,
+        "sha256": "fb9088f3be5dd1fc15be5e4be2865b6a6dd417f70c253a70ac7dd5e24b517bf8"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/src/lib/Kernel/EeScheduler.cpp",
+        "size_bytes": 67629,
+        "sha256": "e739f174e7743ddd6b752a01f3e56bc3ea840acbc7603c9ed26bd348e0ba03f4"
+      },
+      {
+        "path": "src/graphics_init_continuation.cpp",
+        "size_bytes": 3819,
+        "sha256": "aa2e0ac5adf915f3c2fc361d49c0448aed14d73ef3673503550bc2b687a70854"
+      },
+      {
+        "path": "tools/native_boot_probe.py",
+        "size_bytes": 15944,
+        "sha256": "6a40b6a66b2285f3b57bf89f1d9825c1fee88bde1ac93cb570fa057ce30ae260"
+      }
+    ],
+    "source_to_binary_correspondence": "NOT_ESTABLISHED_BY_PROBE",
+    "current_source_identity": "NOT_CLAIMED; current checkout includes later018 changes."
+  },
+  "limits": [
+    "Dummy/software contracts use synthetic pixels; no original-game rendering demonstrated.",
+    "SDL mode/setter success may use simulated pacing and does not prove physical monitor sync or VRR.",
+    "Both live runs fail at missing1A4500 with25 observations and0 presentations; no title/movie/battle.",
+    "Presenter callback remains on the guest executor and can block it; no decoupled presentation or increased simulation rate verified.",
+    "Guest VBLANK/IRQ timing remains enabled.",
+    "Launch-time source snapshots do not prove correspondence to compiled binary or current018 source.",
+    "No verified015-017 backup claimed."
+  ]
+}

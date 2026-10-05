@@ -804,7 +804,7 @@ namespace ps2_stubs
             return;
         }
 
-        ps2_syscalls::dispatchDmacHandlersForCause(rdram, runtime, 5u);
+        ps2_syscalls::dispatchDmacHandlersForCause(rdram, runtime, 6u);
 
         setReturnS32(ctx, static_cast<int32_t>(allocateSifDmaTransferId()));
     }

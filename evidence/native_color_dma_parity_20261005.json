@@ -1,0 +1,193 @@
+{
+  "utc": "2026-10-05T08:01:56.468866+00:00",
+  "cycle": 23,
+  "native": {
+    "build": "PASS",
+    "exe_sha256": "97a0952759ef67b23f8be145f8d703f191015c87fc5d778d462593f851503ae7",
+    "input_integrity": "MATCH",
+    "next_missing_pc": "0x001B1004",
+    "title_movie_battle": "NOT_DEMONSTRATED",
+    "result": {
+      "path": "artifacts/native_pipeline_20261005/color_return_023/native-002/result.json",
+      "bytes": 13440,
+      "sha256": "a6c6979ab5dc722cd48a894e29aa9af9cac75205e488e42a43ab66fa45638554"
+    }
+  },
+  "changes": [
+    "Restore original JR RA / SD v1,-0x77F0(gp) at1B7F84 with64-bit value, memory ownership and captured return.",
+    "Set BadVAddr on Store64 faults before the existing address exception;14 misalignment cases verify delay-slot state.",
+    "Repair measured GIF-chain terminal MADR and clear FQC on actual drained transfer, preserving masked FIFO across timer advancement."
+  ],
+  "original_comparisons": {
+    "runs": [
+      {
+        "path": "artifacts/native_pipeline_20261005/color_return_023/original-replay-001/tail-Debug-001/result.json",
+        "bytes": 2067,
+        "sha256": "e2b742be51a60bca87aba512db2e3b5a2639b5d2483262b5e41887066dcc2855"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/color_return_023/original-replay-001/store-Debug-001/result.json",
+        "bytes": 2068,
+        "sha256": "696999f658d4d78b83590f1ee6d76b7f7bb258896fd9fb443550dfd0309b792b"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/color_return_023/original-replay-001/color-Debug-001/result.json",
+        "bytes": 2068,
+        "sha256": "32ef0cd25e0d7f170a602b41c3e48fd11e3c4aff9e251fe0fd3fc8d5eeb13578"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/dma_submit_022/original-dma-replay-001/replay-Debug-002/result.json",
+        "bytes": 2340,
+        "sha256": "2ec1496c51ce29671fc5f32e13065dc2063d8b8cadd913bcd8fb55060aa95433"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/color_return_023/original-replay-001/tail-Release-001/result.json",
+        "bytes": 2071,
+        "sha256": "22e23684c3bbefdb2c8c25e924e3aa1f123dad207fa02abf65af1b3851c2172e"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/color_return_023/original-replay-001/store-Release-001/result.json",
+        "bytes": 2072,
+        "sha256": "98f4f03ee9b2325cec3dfa9b7eb9459b0fdc35f9835e9520449e7a273938301b"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/color_return_023/original-replay-001/color-Release-001/result.json",
+        "bytes": 2072,
+        "sha256": "049e1a71c5c5014e765a5ebb86ac4942fcc6545f366ac2dc78983be16ac8c9b0"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/dma_submit_022/original-dma-replay-001/replay-Release-002/result.json",
+        "bytes": 2344,
+        "sha256": "ebefe7dbcd2b8f099d5691d7933d97fdd7de9ae2ca9b5872e4c97b80fccf39c5"
+      }
+    ],
+    "intervals": 4,
+    "configurations": [
+      "Debug",
+      "Release"
+    ],
+    "all_runs": {
+      "GPR128": 32,
+      "decoded_control_fields": 10,
+      "RAM_bytes": 33554432,
+      "differences": 0
+    },
+    "dma_runs_additionally": {
+      "MMIO_words": 12,
+      "differences": 0,
+      "actual_GIF_payload_bytes": 32
+    }
+  },
+  "color_contract_per_configuration": {
+    "word_guards": 2,
+    "owner_conflicts": 1,
+    "original_opcode_RAM_GPR128_cases": 24,
+    "memory_owner_wrap_cases": 9,
+    "delay_faults": 14,
+    "prior_graphics_IRQ_regressions": "PASS"
+  },
+  "tooling_tests": 9,
+  "DMA_detail": {
+    "path": "artifacts/native_pipeline_20261005/dma_submit_022/original-dma-replay-001/repair-summary-002.json",
+    "bytes": 17718,
+    "sha256": "e1795cc8498fa03a24d2181120942feba61784c11ec44655f1f402fb41413a05"
+  },
+  "user_log": {
+    "sha256": "4d3b5d8369c89eb5068e4085eda5a90aebbab3b28975de5eef28d2f598f56773",
+    "bytes": 28290,
+    "modules": [
+      {
+        "line": 313,
+        "path_as_logged": "cdrom0:MODULESSIO2MAN.IRX;1",
+        "argument_bytes": 0,
+        "result_line": "[  205.2396] loadmodule: id 25, ret 0"
+      },
+      {
+        "line": 315,
+        "path_as_logged": "cdrom0:MODULESMCMAN.IRX;1",
+        "argument_bytes": 0,
+        "result_line": "[  205.3062] loadmodule: id 26, ret 2"
+      },
+      {
+        "line": 317,
+        "path_as_logged": "cdrom0:MODULESMCSERV.IRX;1",
+        "argument_bytes": 0,
+        "result_line": "[  205.3075] loadmodule: id 27, ret 2"
+      },
+      {
+        "line": 319,
+        "path_as_logged": "cdrom0:MODULESPADMAN.IRX;1",
+        "argument_bytes": 0,
+        "result_line": "[  205.3566] loadmodule: id 28, ret 0"
+      },
+      {
+        "line": 321,
+        "path_as_logged": "cdrom0:MODULESLIBSD.IRX;1",
+        "argument_bytes": 0,
+        "result_line": "[  205.4059] loadmodule: id 29, ret 0"
+      },
+      {
+        "line": 323,
+        "path_as_logged": "cdrom0:MODULESMODHSYN.IRX;1",
+        "argument_bytes": 0,
+        "result_line": "[  205.4565] loadmodule: id 30, ret 0"
+      },
+      {
+        "line": 325,
+        "path_as_logged": "cdrom0:MODULESMODMSIN.IRX;1",
+        "argument_bytes": 0,
+        "result_line": "[  205.4578] loadmodule: id 31, ret 0"
+      },
+      {
+        "line": 327,
+        "path_as_logged": "cdrom0:MODULESCDROMKOEISND.IRX;1",
+        "argument_bytes": 0,
+        "result_line": "[  205.6895] loadmodule: id 32, ret 0"
+      }
+    ],
+    "disc_events": [
+      {
+        "line": 347,
+        "text": "[  250.1505] Disc changed to DW3PS2.iso."
+      },
+      {
+        "line": 372,
+        "text": "[  313.8052] Disc changed to DW3XL.iso."
+      }
+    ],
+    "stream_events": [
+      {
+        "line": 335,
+        "text": "[  224.9429] Stream Buffer 1Bank 32768byte 5banks 163840byte used"
+      },
+      {
+        "line": 337,
+        "text": "[  230.4646] Stream Buffer 1Bank 32768byte 5banks 163840byte used"
+      }
+    ],
+    "TLB_warnings": 50,
+    "COP2_warnings": 3
+  },
+  "next_original_checkpoint": {
+    "path": "artifacts/native_pipeline_20261005/color_return_023/reference-002/debugger/captures/waitsema-return-entry/observation.json",
+    "bytes": 4114,
+    "sha256": "557bed3e529b9866c0fc4c398f56600cae15ade59e4471c93e1a0bef6c996bba"
+  },
+  "limits": [
+    "Captured interval parity only, not full timing, GPU image, VU/FPU, IOP/audio, cache/TLB or gameplay parity.",
+    "PCSX2 warns MTVU is enabled and savestates may be unstable; these integer/RAM and boundedDMA comparisons do not certify VU or graphics state.",
+    "User log confirms emulator disc changes; native combined-content acceptance remains open. IDs and kernel clobbers are not forced to match.",
+    "Store64 BadVAddr tested on aligned-owner and misaligned-store cases; full exception semantics and other access widths remain unaudited."
+  ],
+  "preserved_failures": [
+    "color_return_023/contract-Debug-001.log: SD fault lost BadVAddr.",
+    "dma_submit_022/original-dma-replay-001/replay-{Debug,Release}-001: actual MADR/FQC mismatches.",
+    "Post-repair DMA fixture stale MADR failure; see repair-summary-002.",
+    "reference-001 CLI rejected forward-slash ISO path; reference-002 with native separators successfully restored1B7F0C."
+  ],
+  "acceptance_verified": 0,
+  "acceptance_total": 8,
+  "new_cloud_calls": 0,
+  "working_tree": "UNCOMMITTED",
+  "next_action": "Restore original1B1004 continuation after WaitSema and compare from the new checkpoint; then genuine native movie/title boot."
+}

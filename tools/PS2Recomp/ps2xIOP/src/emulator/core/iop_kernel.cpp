@@ -68,6 +68,8 @@ namespace ps2x::iop::detail
         frame.cpu.gpr[28] = gp;
         frame.cpu.gpr[31] = kCallReturnSentinel;
         frame.cpu.branchPending = frame.cpu.stopped = frame.cpu.yielded = false;
+        frame.cpu.importEntered = false;
+        frame.cpu.importPc = frame.cpu.importReturnPc = 0u;
         // The HLE wrapper keeps its register frame on the host; the guest
         // callee uses this same thread's o32 stack/home area, not global scratch.
         m_currentThread->calls.push_back(std::move(frame));

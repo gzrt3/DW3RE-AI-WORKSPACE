@@ -1,0 +1,460 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-10-05T06:36:20.727205+00:00",
+  "evidence_root": "artifacts/native_pipeline_20261005/gs_buffer_018",
+  "original": {
+    "start": "0x00198918",
+    "stop_exclusive": "0x00198998",
+    "word_count": 32,
+    "sha256": "ac15dae8bea438a87a3dc68d2e842a07f8be629c3ab5356ed9cc35577cc9c4bf",
+    "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+    "identity": "MATCH_ORIGINAL_XL_ELF"
+  },
+  "public_mappings_added": [
+    "0x00198918"
+  ],
+  "tests": {
+    "Debug": {
+      "status": "PASS",
+      "new_original_opcode_comparisons": 576,
+      "log": {
+        "path": "artifacts/native_pipeline_20261005/gs_buffer_018/contract-Debug-002.log",
+        "size_bytes": 1185,
+        "sha256": "fef763da24800655bed50521ed4778b5959ced6fcec291d8077ae2951c8b5b41"
+      },
+      "build": {
+        "path": "artifacts/native_pipeline_20261005/gs_buffer_018/build-Debug-002.log",
+        "size_bytes": 227,
+        "sha256": "1cdadda63f7b69adc3a5d5b1378ffe43751b1c918421633c83a45697bb3e3ae7"
+      },
+      "scope": "Focused original-opcode decoder and runtime contracts; not independent PCSX2 lockstep."
+    },
+    "Release": {
+      "status": "PASS",
+      "new_original_opcode_comparisons": 576,
+      "log": {
+        "path": "artifacts/native_pipeline_20261005/gs_buffer_018/contract-Release-002.log",
+        "size_bytes": 1185,
+        "sha256": "fef763da24800655bed50521ed4778b5959ced6fcec291d8077ae2951c8b5b41"
+      },
+      "build": {
+        "path": "artifacts/native_pipeline_20261005/gs_buffer_018/build-Release-002.log",
+        "size_bytes": 199,
+        "sha256": "fc0d62d639d0a9fb1bfc41bed75803fd3b5c6bdcd672e53b1d3751fa02335998"
+      },
+      "scope": "Focused original-opcode decoder and runtime contracts; not independent PCSX2 lockstep."
+    }
+  },
+  "native": {
+    "status": "PROCESS_FAILED",
+    "exit_code": 4294967295,
+    "input_integrity": "MATCH",
+    "missing_pc": "0x198c7c",
+    "exe_sha256": "c145306dcb14868ce7a24e6d61935bc51a6ab944c2d14622f5177a5a75c44a70",
+    "build_log": {
+      "path": "artifacts/native_pipeline_20261005/gs_buffer_018/native-build-001.log",
+      "size_bytes": 16911,
+      "sha256": "23940e5dfc8462ac09226f23f86bbc1dd788375dfda3efb3d02599d3e9e201d4"
+    },
+    "launch": {
+      "path": "artifacts/native_pipeline_20261005/gs_buffer_018/native-001/launch.json",
+      "size_bytes": 35858,
+      "sha256": "0948b4324db0ac182948f77412b70e79687de8bdb2646fb199bbd36c5543f1a9"
+    },
+    "result": {
+      "path": "artifacts/native_pipeline_20261005/gs_buffer_018/native-001/result.json",
+      "size_bytes": 13431,
+      "sha256": "c54279fca3a570800d0035c82361672f7f7c3e8bce3149752b52cd7843c06ccf"
+    },
+    "stderr": {
+      "path": "artifacts/native_pipeline_20261005/gs_buffer_018/native-001/stderr.bin",
+      "size_bytes": 15006,
+      "sha256": "78db9ed0884c0d05e3ea934fe2fdbc45d5c3a720c7a160bbe850e184ce7642d8"
+    },
+    "stdout": {
+      "path": "artifacts/native_pipeline_20261005/gs_buffer_018/native-001/stdout.bin",
+      "size_bytes": 3078,
+      "sha256": "14e5214e023b1f8e52a833965d688dcb5e763fba6ce515fa87938e639950930f"
+    },
+    "source_files_at_launch": [
+      {
+        "path": "CMakeLists.txt",
+        "size_bytes": 6953,
+        "sha256": "691c003db12095a4344d3e87dc09b26c5943560647b4d0d5ea659c71b5df8d09"
+      },
+      {
+        "path": "CMakePresets.json",
+        "size_bytes": 1056,
+        "sha256": "8cd4df09799329047724d65c0b35989ab687d048117fc15310afe9e9f1365afd"
+      },
+      {
+        "path": "cmake/ExistingRuntime.cmake",
+        "size_bytes": 1305,
+        "sha256": "d47a68d83dcfed0dcb1c4463fed4826dea84feab4360f553007cfb5093937cc5"
+      },
+      {
+        "path": "src/main.cpp",
+        "size_bytes": 14960,
+        "sha256": "c18880920d23ecb37391ebdd5b06daba25a9b64cfff46067cb4e93624eb2bd73"
+      },
+      {
+        "path": "src/elf.cpp",
+        "size_bytes": 11282,
+        "sha256": "aad88a1fecfcbcef65e151c469448e9da45989e12ae66956e5f2e3fbb94abf6b"
+      },
+      {
+        "path": "src/dispatcher.cpp",
+        "size_bytes": 403818,
+        "sha256": "9518329ced6f8733303f3f6a456fa36a3a727e4cd239bd15010a33d1372354fc"
+      },
+      {
+        "path": "src/unsupported_hle.cpp",
+        "size_bytes": 1931,
+        "sha256": "34a83b1b54230789f6ed0fd86a6bd548cf01b4d85fcdf0822d240ac5d2bb1bea"
+      },
+      {
+        "path": "src/native_presenter.cpp",
+        "size_bytes": 8073,
+        "sha256": "456120c4a010d817c89a4b61e1cdd02ab0b98c5163ab1e66577087ab66e4aef2"
+      },
+      {
+        "path": "include/fate/native_presenter.hpp",
+        "size_bytes": 953,
+        "sha256": "fb9088f3be5dd1fc15be5e4be2865b6a6dd417f70c253a70ac7dd5e24b517bf8"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/src/lib/Kernel/EeScheduler.cpp",
+        "size_bytes": 67629,
+        "sha256": "e739f174e7743ddd6b752a01f3e56bc3ea840acbc7603c9ed26bd348e0ba03f4"
+      },
+      {
+        "path": "src/audio/spu_bridge.cpp",
+        "size_bytes": 2120,
+        "sha256": "f7fec62b67a090790fcf04a4bd65defcb1e0a11e0664c328fb09067b1a05fc3b"
+      },
+      {
+        "path": "src/sdl_window.cpp",
+        "size_bytes": 9104,
+        "sha256": "079e2d8d518b88142a010e62aa043cf2175afebdf70afa922ebf41cd0dc24819"
+      },
+      {
+        "path": "src/gs_wrapper.cpp",
+        "size_bytes": 9802,
+        "sha256": "70c598c76ea6f423dcce9bc1ce569ace2ac809c115da935005b2d0a18c54168f"
+      },
+      {
+        "path": "src/patch_engine.cpp",
+        "size_bytes": 8796,
+        "sha256": "9ecc2c13ef3ef44390568491625467e21872693182700c86a21d93ae4ae5030d"
+      },
+      {
+        "path": "src/recomp/entry_0x100008.cpp",
+        "size_bytes": 6346,
+        "sha256": "013d40c4c3b3257236e217ae5ea0fba3a8082b0a6c7b3dcd83f3e4b4010ac54d"
+      },
+      {
+        "path": "src/recomp/FUN_001ad6e8_0x1ad6e8.cpp",
+        "size_bytes": 3423,
+        "sha256": "41f9a24d41ddf10d5e0483ca2b8c509a81092df638255e88f85556c88caf2ff8"
+      },
+      {
+        "path": "src/boot_continuations.cpp",
+        "size_bytes": 141966,
+        "sha256": "55cd87b1ad4b42de632a05b16003cc81f34b667f519713c311ab059234bec28f"
+      },
+      {
+        "path": "include/fate/boot_continuations.hpp",
+        "size_bytes": 264,
+        "sha256": "7184b4483ae78ced488bf69c9a454d6f201a0ebd78109a180a3e94bde5532294"
+      },
+      {
+        "path": "src/dma_init_continuation.cpp",
+        "size_bytes": 4259,
+        "sha256": "2b68ccd7912db2f756affe5928941dcdf92fa487e5c9231adf87907a0da4f558"
+      },
+      {
+        "path": "include/fate/dma_init_continuation.hpp",
+        "size_bytes": 119,
+        "sha256": "f70d7e071b5d6a567bebae0d486f36c0d13370e9762597b233050dc8242554e8"
+      },
+      {
+        "path": "src/recovered/dma_init_0019a6c0.inc",
+        "size_bytes": 51952,
+        "sha256": "8532429886e18b2c767ca3db1c8ad4a614f979fdaf5fba133ca147f00c409ab1"
+      },
+      {
+        "path": "src/vif_init_continuation.cpp",
+        "size_bytes": 1543,
+        "sha256": "072c47828f0c8b208ce9c3d14b2c1d11fad2aafc935cbc428ce1cd17b02215d2"
+      },
+      {
+        "path": "include/fate/vif_init_continuation.hpp",
+        "size_bytes": 118,
+        "sha256": "93f70ecfc69aac33967c475cf5e5ff9518c37d1185a96a0bdcb8674408c8d1ee"
+      },
+      {
+        "path": "src/graphics_init_continuation.cpp",
+        "size_bytes": 5293,
+        "sha256": "e66eb5a1bd36283cfdeb172722e448d5ae5ae08fc44e46af6799b218cf75cc0f"
+      },
+      {
+        "path": "include/fate/graphics_init_continuation.hpp",
+        "size_bytes": 122,
+        "sha256": "73e77c48a0aa3c9d9189ed73aedac09e9005541cd8eef1c9fb7ebf47be0e9d17"
+      },
+      {
+        "path": "src/recovered/graphics_init_00180384.inc",
+        "size_bytes": 25671,
+        "sha256": "2c2e03c7af76a774c8698d5f0f96308f9db06daec10ef17e32aae83b8414661a"
+      },
+      {
+        "path": "src/recovered/vblank_wait_001a4cc0.inc",
+        "size_bytes": 10185,
+        "sha256": "a11e4f8d037b630cbce4ade2d424b50508550e77a0731b4c79fe102781c472b4"
+      },
+      {
+        "path": "src/recovered/cdvd_command_001b0308.inc",
+        "size_bytes": 14543,
+        "sha256": "9e3dd385d0d251f1902305ab9ae7391a567253b460245fe154e9426965e51fb6"
+      },
+      {
+        "path": "tools/recover_continuation.py",
+        "size_bytes": 5334,
+        "sha256": "6b16d0aa5017f0c47f8b19d43e47ba4438496114ddd8671ed6a3e66fb6a424d0"
+      },
+      {
+        "path": "src/recovered/string_tail_0023cb40.inc",
+        "size_bytes": 1970,
+        "sha256": "a3c6569ae59fcf77f0f09245e6813e652e3a2e0a9f3b5d525ec8cec43b9bd491"
+      },
+      {
+        "path": "src/recovered/cache_tail_001a7014.inc",
+        "size_bytes": 2620,
+        "sha256": "2eb4f4794821c3c3969ce9a4cc3b756a21ad2cd968686ad17e0da253337d7018"
+      },
+      {
+        "path": "src/boot_syscall_handlers.cpp",
+        "size_bytes": 2241,
+        "sha256": "df6c4c24a9fa68b87bf9042eb7a801170233ba187c0ba1796a3d8efda5f53f28"
+      },
+      {
+        "path": "src/boot_thread_syscalls.cpp",
+        "size_bytes": 739,
+        "sha256": "edc73625fa13e542b564f579e46ea38ead060646d8e6f0d1e2efe66180d5fbe0"
+      },
+      {
+        "path": "src/native_iop_boot.cpp",
+        "size_bytes": 2330,
+        "sha256": "df16c59eb52b3de631a37645e565c8fd8e02fbcb9955097ca8a68fcdcd3a57ce"
+      },
+      {
+        "path": "include/fate/native_iop_boot.hpp",
+        "size_bytes": 345,
+        "sha256": "21d20aaa5bab2a2963885726720a6e9ad5bfc4a504dfd97aac1f59733ef1c002"
+      },
+      {
+        "path": "include/fate/native_iop_manifest.hpp",
+        "size_bytes": 2997,
+        "sha256": "b0f3a50235f1fece0a4cdd9c6ba924179ae2f64fbd4cadf363993c38ce58f2f4"
+      },
+      {
+        "path": "src/generated_resume_catalog.cpp",
+        "size_bytes": 506878,
+        "sha256": "4d8b12e49ec06d3a4794ca439510715c2e1b507201de04ccecf72b413cd78aac"
+      },
+      {
+        "path": "include/fate/resume_catalog.hpp",
+        "size_bytes": 219,
+        "sha256": "fcb342af1c2860fea0c3e955045621fdff54264bf5a561f38dcbd43a877b8ad8"
+      },
+      {
+        "path": "include/fate/verified_return_tail.hpp",
+        "size_bytes": 1159,
+        "sha256": "2b2b8dc956ae08864a5d61c3b5b265778a53ba1f964f4ff66b363e50c7fe49c2"
+      },
+      {
+        "path": "tools/generate_resume_catalog.py",
+        "size_bytes": 10276,
+        "sha256": "7273b391e21aff56b6aa723abc0dd951146b04fc9e7d8a0860834df6a93b1abb"
+      },
+      {
+        "path": "include/fate/syscall_return_words.hpp",
+        "size_bytes": 2241,
+        "sha256": "8de615ed9efc403c3d2e085afb1da3aeec635e77489488e5f132aede7e309ec1"
+      },
+      {
+        "path": "src/vfs/vfs_hook.cpp",
+        "size_bytes": 9907,
+        "sha256": "9c391f8a5ae50471dfa2bfa834dd0cade63b09ce60cd768867fbc3e7af55e043"
+      },
+      {
+        "path": "src/input/pad_bridge.cpp",
+        "size_bytes": 2535,
+        "sha256": "bde3f342d7ad3e806d869d58654f8195e58136e620ce6203140ac7d37eec5f03"
+      },
+      {
+        "path": "include/fate/guest_float_environment.hpp",
+        "size_bytes": 767,
+        "sha256": "ed0eb101e7fcd90ffee0e6300bd359523bcb3a505d7cb460330af82326c2c9b5"
+      },
+      {
+        "path": "include/fate/dispatcher.hpp",
+        "size_bytes": 415,
+        "sha256": "dcab879acb5627644bc5621e5611da7e7df4cdab59c8eb8b06418ef171a0ce5f"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/include/ps2_runtime.h",
+        "size_bytes": 21967,
+        "sha256": "3484795b39d4a32cc492913baf484e66e332650101309c4f8c9bdb7a9e724b38"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/include/runtime/ee_scheduler.h",
+        "size_bytes": 14801,
+        "sha256": "3f782d537b846b7921a1afe1d10c7c47d39fa89fca3f1f9f5aabfdf4bb20a25b"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/src/lib/ps2_runtime.cpp",
+        "size_bytes": 84916,
+        "sha256": "78931166c6a650c04da0ef9ddab0bcd1f8a2dc478b7d2c98d06f7d14c04d7518"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/src/lib/ps2_memory.cpp",
+        "size_bytes": 89154,
+        "sha256": "7a9aaf4280c86fd0d52ed476e57bf0fca9401ccd7b3c95dbda148878a4cf29f1"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/include/runtime/ps2_memory.h",
+        "size_bytes": 16756,
+        "sha256": "7f1367c7b147b744dffe0d69b7a07aea1a20b9a09faedc7b0de7a498e32c5a08"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/src/lib/ps2_vif1_interpreter.cpp",
+        "size_bytes": 29465,
+        "sha256": "b081b59297cbc544d985ebff4b75116a8514a6eeb06c5928d4c9c74d829d2848"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/src/lib/Kernel/Syscalls/System.cpp",
+        "size_bytes": 35389,
+        "sha256": "781f0cda7bb714194b67541e9b9086feb60c9d87b563b0aada2c48e1710d022d"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_ioman.h",
+        "size_bytes": 1073,
+        "sha256": "4403a9390fa73ad0bea46516899ea602eeba656f601ee0661bff1e0f2f5a2b6c"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_ioman.cpp",
+        "size_bytes": 11280,
+        "sha256": "2de4b623b6d62ea8aec8e947dcfb4380e26db8a2e15f56356509cdf80f7847a5"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.cpp",
+        "size_bytes": 60556,
+        "sha256": "dd518711495122927652eb63bcc0f2cf6858be3112f3a5a60af34fee86d0dd8d"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_rpc.h",
+        "size_bytes": 7183,
+        "sha256": "fc4ba8c49e5ac2f266f275d904d74a7001b9f3fe75b7a94596da76e0af250f9d"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_rpc.cpp",
+        "size_bytes": 52247,
+        "sha256": "c3f853ecd5b47d9bb666fa80a2f6f64670cbcb85a1e5dfc5032d49d2666cda12"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_kernel.h",
+        "size_bytes": 4314,
+        "sha256": "7a4f10ec056ccfe6862cd4cb8c0dbbe8858dc8427e6d2432aa836052cbb21865"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_kernel.cpp",
+        "size_bytes": 29886,
+        "sha256": "059aac2e542cccfc79468b5a9858228f35635221934c88ab7f9edf8abf84543b"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_memory.h",
+        "size_bytes": 4855,
+        "sha256": "479f1b2a089211d79f6b71fe0c393e27eb7a6ad251a5361701ac2d2bf5721cf7"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_memory.cpp",
+        "size_bytes": 18666,
+        "sha256": "ab6a753a3656cd8de2ec9b42b00ec0d38215ceceb52462b1e225dc88c9dd0ae8"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_sysmem.cpp",
+        "size_bytes": 2266,
+        "sha256": "f62a43418b3906963e413d3c9ba32d712fd9da321acfa789505cd6ef245de4f3"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_loadcore.h",
+        "size_bytes": 722,
+        "sha256": "c5ec84479b4e4bf886f500d2ccb3c3976b1341414ea5460913a3b5cceda5b335"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_loadcore.cpp",
+        "size_bytes": 4710,
+        "sha256": "3a8583f7752bfc3f16c240cadb9ccbab7e67e1a38c04e190bff0cc45d06b32a7"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_loadcore_image.h",
+        "size_bytes": 783,
+        "sha256": "134f94dc58e843de09bb0378449d40f12b36b26304dc70b1db7e7ffa97067392"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_loadcore_image.cpp",
+        "size_bytes": 17548,
+        "sha256": "eee411e4c76597e67eafe6aa2e0fcbb39c574d47c7f5e6c767a42fa1e25ee65e"
+      },
+      {
+        "path": "tools/native_boot_probe.py",
+        "size_bytes": 15944,
+        "sha256": "6a40b6a66b2285f3b57bf89f1d9825c1fee88bde1ac93cb570fa057ce30ae260"
+      }
+    ],
+    "source_scope": "Selected current native/runtime sources; source-to-binary correspondence is not established by this probe."
+  },
+  "final_acceptance_verified": 0,
+  "final_acceptance_total": 8,
+  "game_parity": "NOT_COMPLETE",
+  "native_title_movie_battle_demonstrated": false,
+  "originals_modified": false,
+  "working_tree": "UNCOMMITTED",
+  "backup": "Final verification is recorded separately at D:/Backup/DWProject/graphics-buffer-20261005-019/verification.json; do not infer success from this path.",
+  "lowering_repairs": {
+    "MOVN_low64_only": [
+      "0x00198918",
+      "0x00198930",
+      "0x00198948"
+    ],
+    "preserved": [
+      "original word guards",
+      "BNE predicate before MULT delay",
+      "HI/LO and HI1/LO1",
+      "64-bit config mask",
+      "JR and stack restore delay"
+    ],
+    "raw_candidate": {
+      "path": "artifacts/native_pipeline_20261005/gs_buffer_018/candidate.inc",
+      "size_bytes": 11194,
+      "sha256": "9fbd11802dd85b4f9d82447db0c40706fb21b56746ccf10f437c8fd44454d72a"
+    },
+    "recovery": {
+      "path": "artifacts/native_pipeline_20261005/gs_buffer_018/recovery.json",
+      "size_bytes": 434,
+      "sha256": "7f5b2a203a1fe3dc3a323850a8fbf741a6370d1b97c9ef63ee642ded061b8513"
+    },
+    "review": {
+      "path": "artifacts/native_pipeline_20261005/gs_buffer_018/independent-review-001/review.json",
+      "size_bytes": 7457,
+      "sha256": "486c873109c8227398d6cbfeda905dbeb8bc41db3ed602f3eb0791ff0752edcd"
+    },
+    "retained_failure": {
+      "path": "artifacts/native_pipeline_20261005/gs_buffer_018/contract-Release-001.log",
+      "size_bytes": 288,
+      "sha256": "868e5ea644ad8c4dd1453335d3392f31a784790ceae6b6f605c8c516f844df7f"
+    },
+    "failure": "Original generated MOVN overwrote upper64: case0 register3 mismatch; corrected locally in the recovered include."
+  }
+}

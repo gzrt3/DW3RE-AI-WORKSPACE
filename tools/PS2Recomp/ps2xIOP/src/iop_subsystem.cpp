@@ -137,6 +137,7 @@ namespace ps2x::iop
         std::unordered_set<std::string> paths;
         for (const auto &module : profile.modules)
         {
+            if (module.hleLibraryImage && (!profile.prepareLoaderState || module.image.empty())) return false;
             const auto path = parsePs2Path(module.path);
             if (!path || !paths.emplace(module.path).second) return false;
             if (module.image.empty())
@@ -153,6 +154,7 @@ namespace ps2x::iop
                     return false;
             }
         }
+        if (profile.prepareLoaderState && !m_impl->emulator.initializeLoaderState(profile.initialBootModes)) return false;
         m_impl->rebootProfile = std::move(profile);
         return true;
     }
@@ -245,6 +247,9 @@ namespace ps2x::iop
                 // thread pointer survives reset. EE RAM is owned by the host.
                 reset();
                 m_impl->rebootStarting = true;
+                if (m_impl->rebootProfile->prepareLoaderState &&
+                    !m_impl->emulator.initializeLoaderState(m_impl->rebootProfile->bootModes))
+                    throw std::runtime_error("IOP LOADCORE state initialization failed");
                 if (!m_impl->emulator.beginBootCallbacks(static_cast<uint32_t>(m_impl->rebootProfile->modules.size())))
                     throw std::runtime_error("IOP boot callback collection unavailable");
                 m_impl->host.log(LogLevel::Info,"[IOP:reboot] consumed owned request; old IOP services and memory reset");
@@ -259,7 +264,15 @@ namespace ps2x::iop
                     ModuleLoadResult result;
                     if (!module.image.empty())
                     {
-                        result = m_impl->emulator.loadOwnedModule(module.path,module.image);
+                        result = module.hleLibraryImage
+                            ? m_impl->emulator.installHleLibraryImage(module.path,module.image)
+                            : m_impl->emulator.loadOwnedModule(module.path,module.image);
+                        if (module.hleLibraryImage && result.moduleId > 0 && result.startResult == 0)
+                        {
+                            if (ps2PathLeafKey(module.path) == "ioman") m_impl->emulator.installConsoleService();
+                            if (ps2PathLeafKey(module.path) == "sifcmd" && !m_impl->emulator.installCommandService())
+                                throw std::runtime_error("IOP SIFCMD receiver installation failed");
+                        }
                         if (result.moduleId > 0 && result.startResult >= 0 && (result.startResult & 3) != 1)
                             m_impl->moduleManager.observePhysicalLoad(result.moduleId,module.path);
                         else if (result.moduleId > 0 && result.startResult == 1)

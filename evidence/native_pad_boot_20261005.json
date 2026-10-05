@@ -1,0 +1,455 @@
+{
+  "schema_version": 1,
+  "updated_utc": "2026-10-05T09:26:44.543710+00:00",
+  "cycle": "pad_boot_027",
+  "build": "Release003 PASS",
+  "native_run": "native-003",
+  "process": "PROCESS_FAILED",
+  "exit_code": 2,
+  "input_integrity": "MATCH",
+  "stop_reason": "cooperative deadline40s after unsupported vblank import",
+  "observations": 2416,
+  "presentations": 0,
+  "recovered_ee": [
+    "0x00170b24",
+    "0x001ade0c",
+    "0x001aef98"
+  ],
+  "pad_bindings": {
+    "0x80000100": "0x0016e57c",
+    "0x80000101": "0x0016e65c"
+  },
+  "pad_version_received": "0x403",
+  "barrier": {
+    "library": "vblank",
+    "version": "0x0101",
+    "ordinal": 8,
+    "pc": "0x00120cf0",
+    "caller": "0x00167f08",
+    "args": [
+      "0x0",
+      "0x10",
+      "0x001651e8",
+      "0x0016d990"
+    ]
+  },
+  "next_unintegrated_ee_return": "0x001adf60",
+  "tests_per_configuration": {
+    "pad_opcode_guards": 116,
+    "pad_owner_conflicts": 1,
+    "pad_boundaries": 432,
+    "quadword_alignment": 128,
+    "overlapping_memory": 24,
+    "memory_faults": 16,
+    "caller_paths": 16,
+    "caller_boundaries": 2541,
+    "init_opcode_guards": 68,
+    "init_owner_conflicts": 1,
+    "init_boundaries": 560,
+    "init_paths": 8,
+    "init_path_boundaries": 32,
+    "init_lw_faults": 4,
+    "version_opcode_guards": 7,
+    "version_owner_conflicts": 1,
+    "version_boundaries": 448,
+    "version_annuls": 12,
+    "version_load_faults": 16
+  },
+  "regressions": {
+    "waitsema": "Debug/Release PASS",
+    "irq": "Debug/Release PASS",
+    "python_probe_tests": 15,
+    "broader_iop": "3 prior failures remain open; not rerun in027"
+  },
+  "visual": "Computer Use observed native003 black GS window; screenshot preserved",
+  "limits": [
+    "local original-opcode decoder with external fixtures; no new PCSX2 lockstep",
+    "PAD controls and VBLANK callback behavior incomplete",
+    "no native logo/movie/title/battle",
+    "global Load128 and generated SQ/LQ semantics remain outside this scoped correction"
+  ],
+  "final_acceptance_closed": 0,
+  "new_cloud_calls": 0,
+  "artifacts": [
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-contract-Debug-008.log",
+      "bytes": 272,
+      "sha256": "30edd66ce52f830928e3e176bba94602e727baf0e5a1bac36ad93677408d1c30"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-contract-Debug-009.log",
+      "bytes": 173,
+      "sha256": "527e46be6486c859cd3c9cd5ddc2e8c24f86a2891ce30f0833437a0ad8c073de"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-contract-Release-009.log",
+      "bytes": 274,
+      "sha256": "e23d076add8648d6a10ee2c841e814c6f72f8d3799e94f19e890f1b5c864425d"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-Debug-001.log",
+      "bytes": 334,
+      "sha256": "0809992299c7505a727404898c568830145c17e7bb39221d1f680a7ed13e0458"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-Debug-002.log",
+      "bytes": 173,
+      "sha256": "527e46be6486c859cd3c9cd5ddc2e8c24f86a2891ce30f0833437a0ad8c073de"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-Debug-003.log",
+      "bytes": 177,
+      "sha256": "91664abda675b77a10b2b89b0ef63514315554c753b4cb46e1da30fdcc59c525"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-Debug-004.log",
+      "bytes": 173,
+      "sha256": "527e46be6486c859cd3c9cd5ddc2e8c24f86a2891ce30f0833437a0ad8c073de"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-Debug-005.log",
+      "bytes": 202,
+      "sha256": "d57186d2f3c2373ec0c1b7a48e6d16921fe5dd1d78eeb5a41b49559adedcac26"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-Debug-006.log",
+      "bytes": 173,
+      "sha256": "527e46be6486c859cd3c9cd5ddc2e8c24f86a2891ce30f0833437a0ad8c073de"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-Debug-007.log",
+      "bytes": 202,
+      "sha256": "d57186d2f3c2373ec0c1b7a48e6d16921fe5dd1d78eeb5a41b49559adedcac26"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-native-Release-001.log",
+      "bytes": 16918,
+      "sha256": "1299a195eb50f099396711b34dbedd09ae186c5269caffc07b81005d36369591"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-native-Release-002.log",
+      "bytes": 16918,
+      "sha256": "b6a5249f137ce40c4f8bb686f68f872bebcc6507a5c4ecfe93c8a941a498e7be"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-native-Release-003.log",
+      "bytes": 16918,
+      "sha256": "3e5a5a46dfa3bb36ca8c75b8e5eb02baf5ce849f4746bf4474eedbc8c4d2ce74"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-Release-003.log",
+      "bytes": 336,
+      "sha256": "058446e6a3e79cf2215da21bf6b76222e1a2fa6ad78858252aa6f229278bbc8c"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-Release-004.log",
+      "bytes": 175,
+      "sha256": "cc22b3e26b06ec0cc40481d126318521ebac8310d17b0e8fa932206aa4fee4c8"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-Release-006.log",
+      "bytes": 204,
+      "sha256": "f3b1b5768199a7719470d05f046c7fd100025b112647edc9da61b45583b16015"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/build-Release-007.log",
+      "bytes": 204,
+      "sha256": "f3b1b5768199a7719470d05f046c7fd100025b112647edc9da61b45583b16015"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/configure-001.log",
+      "bytes": 557,
+      "sha256": "bfea98441d430237c8c2bf3ac12ea106c9c54972c8071def76abab13fb2a184d"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/contract-Debug-001.log",
+      "bytes": 284,
+      "sha256": "deb9d939c98aa4b12a182146dca5789c847fbd35edbf331f111ffffd7d0622f3"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/contract-Debug-002.log",
+      "bytes": 141,
+      "sha256": "8de5dbfd2513133d731cb8f4309abb8ab5343c9e8cc4a08bdc0bddb77d7608bc"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/contract-Debug-003.log",
+      "bytes": 497,
+      "sha256": "55bcdeb1252d48e0b056c3a6961d4f0c5e088d24d7b7ffbaceab7788d4c62824"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/contract-Debug-004.log",
+      "bytes": 592,
+      "sha256": "03f13d76d3199a5c716be485331adc79c4e002cc9974510bb12c1d546afda28e"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/contract-Debug-005.log",
+      "bytes": 74,
+      "sha256": "6b59b0e06bdee590de714291a36fa387a9fa9db16300b8aada78c74b24ec84e0"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/contract-Debug-006.log",
+      "bytes": 645,
+      "sha256": "aeec68d5c3b2523e4f1d3a582ae7e69f602a63dfdd766ac8ace2bf32f752605c"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/contract-Debug-007.log",
+      "bytes": 835,
+      "sha256": "31c7647a29c92eb3febec0b8c23806e5a7875815e6c9ac2c2c4bdd7da6508483"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/contract-Debug-008.log",
+      "bytes": 778,
+      "sha256": "9be02d1d37827d9ab9b9303b5745146bc4e0d844142a7cca3ba0d78e394995df"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/contract-Debug-009.log",
+      "bytes": 932,
+      "sha256": "124a0f4b6ded67eb56b69dd6f07c29a15f3a3605c06b33c67df544b4d1c3af04"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/contract-Release-003.log",
+      "bytes": 497,
+      "sha256": "55bcdeb1252d48e0b056c3a6961d4f0c5e088d24d7b7ffbaceab7788d4c62824"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/contract-Release-004.log",
+      "bytes": 592,
+      "sha256": "03f13d76d3199a5c716be485331adc79c4e002cc9974510bb12c1d546afda28e"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/contract-Release-006.log",
+      "bytes": 645,
+      "sha256": "aeec68d5c3b2523e4f1d3a582ae7e69f602a63dfdd766ac8ace2bf32f752605c"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/contract-Release-007.log",
+      "bytes": 835,
+      "sha256": "31c7647a29c92eb3febec0b8c23806e5a7875815e6c9ac2c2c4bdd7da6508483"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/contract-Release-009.log",
+      "bytes": 932,
+      "sha256": "124a0f4b6ded67eb56b69dd6f07c29a15f3a3605c06b33c67df544b4d1c3af04"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/lower_pad_memory.py",
+      "bytes": 2193,
+      "sha256": "82a61732f79d9e6abf33a9285a19838cb59fdc8e09160602664722f301119afa"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/memory-lowering.json",
+      "bytes": 3170,
+      "sha256": "faee2245c00f20797df059106f157911833b2b6e9bcfa52448c29fd11d276cd1"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/native-001/launch.json",
+      "bytes": 39808,
+      "sha256": "8740052038a4351e5d19c054e81d91e5ac82471a4745b94cbc8836b7c87d3fea"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/native-001/result.json",
+      "bytes": 13459,
+      "sha256": "2656a7b54c37c54c1a658921a8852c7f428fae0736821317762d6261ecddeef1"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/native-001/stderr.bin",
+      "bytes": 53410,
+      "sha256": "8575574d7c665eb07daffe3d697206cbe84de9f1e19261b887525999b1e9607c"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/native-001/stdout.bin",
+      "bytes": 3760,
+      "sha256": "a177f17380fe46fce72775121843767fe08f4993102d33a6dbe69a54da0688ed"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/native-002/launch.json",
+      "bytes": 40026,
+      "sha256": "6ac425e2da82d2177eb1d1259fedc5720fc17b5b340d45b1ab902a2e5f8837ec"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/native-002/result.json",
+      "bytes": 13460,
+      "sha256": "69dd0d6d2b042c5692645911e33dfbf5e8ff7a9e3241afa56aa4cab4d254eaa0"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/native-002/stderr.bin",
+      "bytes": 54248,
+      "sha256": "6df6e7f69bf9a9db9364384bab0c4e4d57c239b8fa2af08061606f8c80a090cd"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/native-002/stdout.bin",
+      "bytes": 3760,
+      "sha256": "20224c87a65fd02fb179803d19611e5442669aa5e6c0814fa9b88a3afa0b1017"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/native-003/computer-use-native.png",
+      "bytes": 24925,
+      "sha256": "a021615d3a9d0c2d9eeadc84125221e1ea68b4b169eb1281c8863b1e1cfea9e6"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/native-003/computer-use-observation.json",
+      "bytes": 392,
+      "sha256": "650f6ebb4d7490643bbb087ed0ff82a5591bae5c8a916599294828be17b3611c"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/native-003/launch.json",
+      "bytes": 40247,
+      "sha256": "4892e6fa8049c599440ab6332525d38d9db4e54fee9f112494259334782bbe50"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/native-003/result.json",
+      "bytes": 13449,
+      "sha256": "f948d58beac8ba6afba893e8be9943e5db3c0a8f88d9cecab651e8cf8d42e6a8"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/native-003/stderr.bin",
+      "bytes": 53403,
+      "sha256": "645ba4ee38e574a7a99547650bd83ab5c866804c0eb6e8ea34903d229d6c6cc7"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/native-003/stdout.bin",
+      "bytes": 2211,
+      "sha256": "f75e304983147e80d18ca4f268ae6d69a57d55bd7a8b20b5ff3c4de647272c4f"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/pad-init-recovery.json",
+      "bytes": 663,
+      "sha256": "4801c768d90b1aef06f700c1802915e50d6ade677d38e2dcc0ffc265abaf56ac"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/pad-version-recovery.json",
+      "bytes": 549,
+      "sha256": "d29d029445f703d242defebce6747c36c04ddf3a146a05801fe8d649bb101693"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/probe-001.log",
+      "bytes": 228,
+      "sha256": "97309f763b5ac594e8ab4f088a7285d41d776e83e92365e05cd054a422f369c1"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/probe-002.log",
+      "bytes": 228,
+      "sha256": "2ad22a4fee73165a558c45d2e7d5f4aa51b4cb130f6abd412467ede492de3f70"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/probe-native-003.log",
+      "bytes": 219,
+      "sha256": "ef6bf95070e4f9f378753e43c7436e0aa0c51f3c52d9865c0475c7eecdd9c6c5"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/python-probe-001.log",
+      "bytes": 2688,
+      "sha256": "9b5e065ba217ae646823295086d006acf73e18709a69e35ec3d41ebe6d42b216"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/quadword-research-001/evidence.json",
+      "bytes": 2893,
+      "sha256": "125048660162ad09cba8e2ce34ffde7bd7ddd84eada1ce621c157356a32cd813"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/quadword-research-001/iR5900LoadStore.cpp",
+      "bytes": 24614,
+      "sha256": "abe0fb9e38230e26b0b97df1b280b0f640f181ec12244b0eb6ab2ba25f6c24cd"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/quadword-research-001/R5900OpcodeImpl.cpp",
+      "bytes": 43041,
+      "sha256": "fbc5a853c4b48e2059b0403482f570c2921942c1e025e81c0f7c955f69dfd9c4"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/raw-pad-candidate.inc",
+      "bytes": 38620,
+      "sha256": "79525552bf2f43b1f0b738e7973c1d405c286de8bb36248d8e29023d3e59278d"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/raw-pad-init-candidate.inc",
+      "bytes": 22394,
+      "sha256": "f637310cc6c4f39f4b7fc83174cc24cb6df4cfbc706fc3a045ac679383929af5"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/raw-pad-version-candidate.inc",
+      "bytes": 3462,
+      "sha256": "e03ea95e2090b92baa9fdb50f047acc456c6619f9f1b37fc53f3ff45ae67630c"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/record_checkpoint.py",
+      "bytes": 4813,
+      "sha256": "e01cd58b8f2e0593e0a3ff856cda3b6dfcb5ece5bb345c7d3109ea3c68875bee"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/recover_pad.py",
+      "bytes": 2186,
+      "sha256": "fc0768432e12a7edc9e04389cf458e7fe6da515ad801d1df9aae289aa4d173f9"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/recover_pad_init.py",
+      "bytes": 2410,
+      "sha256": "3fcc36b2a12deae87ef5507281fd64666205d4052f1831c661fd57610e00e7b0"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/recover_pad_version.py",
+      "bytes": 1956,
+      "sha256": "6d9b5589768302379297e732a7aff01acd30b63e2d745fa250da2ac3abbc1d4b"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/recovery-attempt-001.json",
+      "bytes": 220,
+      "sha256": "8065f273f6c85d03885b591684ff8fede0495976ec1348236988c65383f65e47"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/recovery.json",
+      "bytes": 750,
+      "sha256": "1d4d19227f355fa9efdd5341892a9686593ebbcac4fca587f3019314a15ee712"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/regression-build-irq_return_contract-Debug-001.log",
+      "bytes": 691,
+      "sha256": "300ea1817d074307da94dbe264e48b993e7b3337956931f383219a7152e80c2c"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/regression-build-irq_return_contract-Release-001.log",
+      "bytes": 253,
+      "sha256": "e56e31db3b371f92c6cd1ecf2fe3e56ba3722ec53e9e439258233bacfbdce735"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/regression-build-waitsema_resume_contract-Debug-001.log",
+      "bytes": 721,
+      "sha256": "0a87b27aeb0ff5514edd78918b0711e1e2680572b3c9d7a07ffd938511afcf5d"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/regression-build-waitsema_resume_contract-Release-001.log",
+      "bytes": 268,
+      "sha256": "1eea493d1cc7d31411258e383f29616932bd70585f825fbe438b734b8035d6e2"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/regression-irq_return_contract-Debug-001.log",
+      "bytes": 172,
+      "sha256": "13c131a328901a9ca18f83e0804ad91e09f84ee44a679e3942a7b384cdcacdaf"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/regression-irq_return_contract-Release-001.log",
+      "bytes": 172,
+      "sha256": "13c131a328901a9ca18f83e0804ad91e09f84ee44a679e3942a7b384cdcacdaf"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/regression-waitsema_resume_contract-Debug-001.log",
+      "bytes": 523,
+      "sha256": "f55e29be145215adcbc087f3e17be973c91ef20950e85c684de7a2bf46367214"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/regression-waitsema_resume_contract-Release-001.log",
+      "bytes": 523,
+      "sha256": "f55e29be145215adcbc087f3e17be973c91ef20950e85c684de7a2bf46367214"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/runtime-Debug-002.log",
+      "bytes": 495,
+      "sha256": "d9d0a4be4fd7b00cbb829c41d5b760f679a05177b38859d0b8ddf5a14e6c4eb5"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/pad_boot_027/runtime-Release-002.log",
+      "bytes": 503,
+      "sha256": "6c98f18b6ffef0461357fd33a82acd997b405d3125f061ec4aec82a10a99dc39"
+    }
+  ]
+}

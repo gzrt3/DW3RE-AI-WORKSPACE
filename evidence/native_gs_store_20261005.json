@@ -1,0 +1,113 @@
+{
+  "recorded_utc": "2026-10-05T07:36:12.247632+00:00",
+  "original_store_return": {
+    "entry": "0x001B8040",
+    "words": [
+      "03E00008",
+      "AC830040"
+    ],
+    "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+    "registered_entries": [
+      "0x001B8040"
+    ]
+  },
+  "changes": [
+    "Restore JR RA / SW v1,0x40(a0) with captured target and fault-preserving delay slot.",
+    "Route read32/write32 GS aliases through physical address before selecting GS register owner."
+  ],
+  "tests_per_configuration": {
+    "ram_original_opcode_comparisons": 48,
+    "address_wrap": 1,
+    "memory_owner_cases": 12,
+    "gs_dword_csr_alias_groups": 3,
+    "delay_slot_fault_cases": 24,
+    "word_guards": 2,
+    "owner_conflicts": 1,
+    "prior_graphics_irq_regressions": "PASS"
+  },
+  "test_logs": [
+    {
+      "path": "artifacts/native_pipeline_20261005/gs_store_021/contract-Debug-003.log",
+      "size_bytes": 1733,
+      "sha256": "ea0eaa9bfe07036fbe4bea4bfb43908e524b5cda5d0a62a7ebff94fa8558afaa"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/gs_store_021/contract-Release-003.log",
+      "size_bytes": 1733,
+      "sha256": "ea0eaa9bfe07036fbe4bea4bfb43908e524b5cda5d0a62a7ebff94fa8558afaa"
+    }
+  ],
+  "original_replay": {
+    "runs": [
+      {
+        "path": "artifacts/native_pipeline_20261005/graphics_config_020/original-replay-001/tail-Debug-001/result.json",
+        "size_bytes": 2073,
+        "sha256": "412223ed5ce14f54d6ed3e8ae8bc9e355ca735818b95338ac7b831d075b4f910"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/graphics_config_020/original-replay-001/tail-Release-001/result.json",
+        "size_bytes": 2077,
+        "sha256": "a25d55fb70052dec1d04e2974794da203eedeee26398300f1afe00e9d2fc9a96"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/graphics_config_020/original-replay-001/store-Debug-001/result.json",
+        "size_bytes": 2074,
+        "sha256": "268c251f789cb6097f16cfc7c9b3fe4fb3ab9b804b84cbbb96f154fa5f1d5832"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/graphics_config_020/original-replay-001/store-Release-001/result.json",
+        "size_bytes": 2078,
+        "sha256": "1c61b4b194912c76d07b864b06e09e8d1ac540977d7c438c72263a4123927f22"
+      }
+    ],
+    "gpr128_per_run": 32,
+    "decoded_control_fields": 10,
+    "ram_bytes_per_run": 33554432,
+    "differences": 0,
+    "scope": "Two recorded integer/RAM intervals, Debug and Release.",
+    "limitations": [
+      "Only one recorded scalar/RAM entry-to-return interval is replayed; no caller or scheduler runs.",
+      "The pinned decoder exposes no canonical cross-host pending branch state; native branch_pc is diagnostic only.",
+      "FPU, VU, GS/GIF, SPU2, IOP, DMA, TLB/cache, timer, instruction-count and external device state are not restored or compared.",
+      "Runtime hardware state starts from its normal initialization. This interval uses captured EE RAM; no full savestate import is claimed.",
+      "A matching pair does not prove other branch paths, gameplay, whole-system lockstep or any final acceptance criterion."
+    ]
+  },
+  "native": {
+    "build": "PASS",
+    "exe_sha256": "e619cf4e86c4e8bfd4c4a4f4608e97f1cb97d51f1e03243fb654b71f8b5be905",
+    "input_integrity": "MATCH",
+    "exit_code": 4294967295,
+    "next_missing_pc": "0x0019AA4C",
+    "build_log": {
+      "path": "artifacts/native_pipeline_20261005/gs_store_021/native-build-003.log",
+      "size_bytes": 16911,
+      "sha256": "3555bd74f66105a20cb561d7a799c5ab6a6a9936c84619e1e62c764d2f46b3d5"
+    },
+    "result": {
+      "path": "artifacts/native_pipeline_20261005/gs_store_021/native-001/result.json",
+      "size_bytes": 13427,
+      "sha256": "b5071cbf017a1bc1a82b60bf8b8e62700d451f871358b8e33a52151a480f84fd"
+    },
+    "stderr": {
+      "path": "artifacts/native_pipeline_20261005/gs_store_021/native-001/stderr.bin",
+      "size_bytes": 15018,
+      "sha256": "c9bdcb072e2664d5bd5c42fbd17c3bf0afde992a6109c339a789e944e4a19e94"
+    },
+    "title_movie_battle": "NOT_DEMONSTRATED"
+  },
+  "preserved_failures": [
+    "contract-Debug-001.log: GS32 alias owner mismatch before repair.",
+    "validation-002.ps1: evidence-script path replacement typo; no test or build ran. Superseded by validation-003."
+  ],
+  "source_record": {
+    "path": "artifacts/native_pipeline_20261005/gs_store_021/validation-003.source-after.json",
+    "size_bytes": 1295,
+    "sha256": "4ad20348ca0e21688d79034fb6d48f99c096fc5e20c4159fb4d3de1ef72a0113"
+  },
+  "acceptance_verified": 0,
+  "acceptance_total": 8,
+  "working_tree": "UNCOMMITTED",
+  "original_disc_swap": "NOT_VERIFIED",
+  "new_cloud_calls": 0
+}

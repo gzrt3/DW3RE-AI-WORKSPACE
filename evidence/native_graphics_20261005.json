@@ -1,0 +1,787 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-10-05T06:31:36.815364+00:00",
+  "scope": "Native graphics/VBLANK/CRT wrapper and allocator return recovery",
+  "evidence_root": "artifacts/native_pipeline_20261005/graphics_init_015",
+  "working_tree": "UNCOMMITTED",
+  "final_acceptance_verified": 0,
+  "final_acceptance_total": 8,
+  "final_acceptance_status": "ALL_OPEN",
+  "game_parity": "NOT_COMPLETE",
+  "independent_pcsx2_lockstep": false,
+  "backup_status": "015-017_VERIFIED_BACKUP_NOT_ESTABLISHED",
+  "path_normalization": "Public paths are repository-relative. Hashes identify original retained files, not normalized JSON content.",
+  "original_identity": {
+    "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+    "intervals": [
+      {
+        "start": "0x00180384",
+        "stop_exclusive": "0x001804d0",
+        "words": 83,
+        "sha256": "13485aa95dfa136e496b2187ee7978c7a403434598407771d6d351a8a5325dd5",
+        "identity": "MATCH_ORIGINAL_XL_ELF"
+      },
+      {
+        "start": "0x0019852c",
+        "stop_exclusive": "0x00198534",
+        "words": 2,
+        "sha256": "69192afa2f449f607168bc3e13e795dc5507b52b5c5f117ebe2986f203dad2a6",
+        "identity": "MATCH_ORIGINAL_XL_ELF"
+      },
+      {
+        "start": "0x001a4cc0",
+        "stop_exclusive": "0x001a4d40",
+        "words": 32,
+        "sha256": "8297f832cc68aba11de538f297c31cacde42a9de2abbe1e31c5c3e4fc228a498",
+        "identity": "MATCH_ORIGINAL_XL_ELF"
+      },
+      {
+        "start": "0x001a4420",
+        "stop_exclusive": "0x001a4430",
+        "words": 4,
+        "sha256": "8a6757f7c69327bab3934513e3852f7fdf2b7561dfc5102b71c01765d7e242b7",
+        "identity": "MATCH_ORIGINAL_XL_ELF"
+      },
+      {
+        "start": "0x00234444",
+        "stop_exclusive": "0x00234460",
+        "words": 7,
+        "sha256": "e5027bf055cc39d76987998b221cf7abd7dcd74259b69a72de799c9a30e62d1f",
+        "identity": "MATCH_ORIGINAL_XL_ELF"
+      }
+    ],
+    "candidate_reports": [
+      {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/graphics-candidate-002.json",
+        "size_bytes": 803,
+        "sha256": "c9abc5922202ee9c3f04b6d3fd0bfa0e3101b57b8e4f713ed4661071910d1697"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/vblank-candidate-001.json",
+        "size_bytes": 543,
+        "sha256": "17a35e6ebf7cdf19112e5ad9fecca1de00329b43cb1f840aacc25a1635f46dad"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/graphics_allocator_tail_candidate.json",
+        "size_bytes": 433,
+        "sha256": "0b5b2ad064f03b93eb6493a90a79e4543a28ac6318a3e87a6dc0dcbdb18af313"
+      }
+    ]
+  },
+  "tests": {
+    "Debug": {
+      "status": "PASS",
+      "contract": {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/contract-Debug-012.log",
+        "size_bytes": 899,
+        "sha256": "8baa6c57e806a2ee374488d37a6cb56c411ed5cac984e737878ff6933826d04d"
+      },
+      "build": {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/tail-build-Debug-012.log",
+        "size_bytes": 227,
+        "sha256": "1cdadda63f7b69adc3a5d5b1378ffe43751b1c918421633c83a45697bb3e3ae7"
+      },
+      "memory64_routing_and_exception_cases": 15,
+      "live_vif64_mmio_aliases": 3,
+      "crt_wrapper_cases": 4,
+      "gparam_returns": 4,
+      "allocator_scenarios": 8,
+      "allocator_abi_boundaries": 16,
+      "caller_only_scenarios": 42,
+      "full_gpr128_and_ram_boundaries": 322,
+      "intc_latch_ack_cases": 15,
+      "scheduled_vblank_poll_tick": 1,
+      "external_callees_executed_by_caller_harness": false,
+      "independent_original_lockstep": false
+    },
+    "Release": {
+      "status": "PASS",
+      "contract": {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/contract-Release-012.log",
+        "size_bytes": 899,
+        "sha256": "8baa6c57e806a2ee374488d37a6cb56c411ed5cac984e737878ff6933826d04d"
+      },
+      "build": {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/tail-build-Release-012.log",
+        "size_bytes": 229,
+        "sha256": "8044c1768fbe013cf3b6b1275c06870e87ad610ceeaa975380c34069c176e1b5"
+      },
+      "memory64_routing_and_exception_cases": 15,
+      "live_vif64_mmio_aliases": 3,
+      "crt_wrapper_cases": 4,
+      "gparam_returns": 4,
+      "allocator_scenarios": 8,
+      "allocator_abi_boundaries": 16,
+      "caller_only_scenarios": 42,
+      "full_gpr128_and_ram_boundaries": 322,
+      "intc_latch_ack_cases": 15,
+      "scheduled_vblank_poll_tick": 1,
+      "external_callees_executed_by_caller_harness": false,
+      "independent_original_lockstep": false
+    }
+  },
+  "tooling_tests": {
+    "status": "PASS",
+    "count": 12,
+    "log": {
+      "path": "artifacts/native_pipeline_20261005/graphics_init_015/probe-tests-006.log",
+      "size_bytes": 2172,
+      "sha256": "18c9f0a94a6f190c8feaf8659079d57dc82707654238e2110f7c0916325a096b"
+    }
+  },
+  "full_release_build": {
+    "status": "PASS",
+    "log": {
+      "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-build-005.log",
+      "size_bytes": 16911,
+      "sha256": "9f7770f0f3ef9fb8be0b0f28df3344701db9150135a4dca767376d2b20f17796"
+    },
+    "build_kind": "INCREMENTAL; not a fresh clean rebuild"
+  },
+  "native_run": {
+    "status": "PROCESS_FAILED",
+    "exit_code": 4294967295,
+    "started_utc": "2026-10-05T06:01:45.501616+00:00",
+    "finished_utc": "2026-10-05T06:01:46.329183+00:00",
+    "duration_seconds": 0.8275719999946887,
+    "timeout_seconds": 20.0,
+    "timed_out": false,
+    "input_integrity": "MATCH",
+    "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-005",
+    "result_sha256": "5d057c92b500c1749b26b07ef01f2fea7fff751b0b5c82bc040d4dd094a86c45",
+    "launch_sha256": "cdf3ba721637a613162bb15066ef92872106db997c1ca6b1fb2f038af2ac02d9",
+    "executable_sha256": "4862545b07aea7e46de7d7ba72f31957258dd317e2f16b6c2893ed764c881e46",
+    "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+    "boot_verified": false,
+    "logs": {
+      "stdout.bin": {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-005/stdout.bin",
+        "size_bytes": 3078,
+        "sha256": "4d39516e2ae730e49054ce20525c4f6f38f8f5badf8746d34599c459d31a608b"
+      },
+      "stderr.bin": {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-005/stderr.bin",
+        "size_bytes": 15017,
+        "sha256": "f94a22ded3242437518cfaea009a0f2db193df63a4ec6a307fd2be4701004892"
+      }
+    },
+    "next_barrier": "0x1a4500",
+    "passed_recoveries": [
+      "0x00180384",
+      "0x0019852c",
+      "0x001a4cc0",
+      "0x001a4420",
+      "0x00234444"
+    ],
+    "missing_wrapper_call": {
+      "source": "0x00199fc0",
+      "return_address": "0x00199fc8",
+      "cause": 2,
+      "handler": "0x002343b8"
+    }
+  },
+  "previous_native_attempts": [
+    {
+      "status": "PROCESS_FAILED",
+      "exit_code": 4294967295,
+      "started_utc": "2026-10-05T05:21:07.383116+00:00",
+      "finished_utc": "2026-10-05T05:21:08.252875+00:00",
+      "duration_seconds": 0.8697640999962459,
+      "timeout_seconds": 20.0,
+      "timed_out": false,
+      "input_integrity": "MATCH",
+      "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-001",
+      "result_sha256": "5cb3d050fd9b8bd0e580672895d4442edce9338ca5f09549caa068bed3631bf7",
+      "launch_sha256": "b2198dc0081669f5b359af82bbc463a8d72571e30f1c6b1b23977a73b171be04",
+      "executable_sha256": "97bb626caab03e117fb25315cf335aded374a5d84e494a5fa9542df7fbf93a32",
+      "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+      "boot_verified": false,
+      "logs": {
+        "stdout.bin": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-001/stdout.bin",
+          "size_bytes": 2928,
+          "sha256": "b9f54c5650b629e4e0efa3f251dbedb942809295a0615c132e14b8ef1672c872"
+        },
+        "stderr.bin": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-001/stderr.bin",
+          "size_bytes": 15000,
+          "sha256": "8b0a59676f67f6599a831b5ebd362d5971fac131763aecb0314ed3bedeec5e2e"
+        }
+      },
+      "next_barrier": "0x1a4cc0"
+    },
+    {
+      "status": "PROCESS_FAILED",
+      "exit_code": 4294967295,
+      "started_utc": "2026-10-05T05:43:40.571609+00:00",
+      "finished_utc": "2026-10-05T05:43:40.823975+00:00",
+      "duration_seconds": 0.25236859999859007,
+      "timeout_seconds": 20.0,
+      "timed_out": false,
+      "input_integrity": "MATCH",
+      "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-002",
+      "result_sha256": "731f58d6985e65930570dfa53406f2d5e3e2e8b6deeef6be4ae33f9f6753b919",
+      "launch_sha256": "3a81d84c4f495793c1702cbc8fd81d92a863379895bd75d7c99e3abecc6d0306",
+      "executable_sha256": "8b5d1e2434a2630db4192796b3b858fcb4ed886ed22c2ae83e5cb8c061f605bd",
+      "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+      "boot_verified": false,
+      "logs": {
+        "stdout.bin": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-002/stdout.bin",
+          "size_bytes": 800,
+          "sha256": "87b0d1ae8413de74b1300a4ee4e5962ffe0469b27eed0f4bf1aa9d5368617319"
+        },
+        "stderr.bin": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-002/stderr.bin",
+          "size_bytes": 76,
+          "sha256": "a56f558a50d68ce59c57d8f09d1bdac1768afae98e27f420710d41d820ff7541"
+        }
+      },
+      "next_barrier": null,
+      "registration_failure": "VBLANK wait mapping conflict"
+    },
+    {
+      "status": "PROCESS_FAILED",
+      "exit_code": 4294967295,
+      "started_utc": "2026-10-05T05:51:04.901565+00:00",
+      "finished_utc": "2026-10-05T05:51:05.731038+00:00",
+      "duration_seconds": 0.8294759999989765,
+      "timeout_seconds": 20.0,
+      "timed_out": false,
+      "input_integrity": "MATCH",
+      "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-003",
+      "result_sha256": "8a053292a72bd2c20b7c631b7fffe76c9c210ecd7ac91e8016b225d0aaec82b7",
+      "launch_sha256": "95d5c753280d3a666d37203068c558ec50a8766d0dd817f9bffaf5ea6896ffa6",
+      "executable_sha256": "b853b4666ae624d9c4feea077998ef6f57a44a0394f2318f5e5d054437e2f0ae",
+      "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+      "boot_verified": false,
+      "logs": {
+        "stdout.bin": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-003/stdout.bin",
+          "size_bytes": 3024,
+          "sha256": "864b000f40c94b0af165c6c7a6bc521fda8516bfe3ca01e3866c4d9331e9472d"
+        },
+        "stderr.bin": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-003/stderr.bin",
+          "size_bytes": 14972,
+          "sha256": "5a323b4e849fc917546f19b80ba23154794da6e7dd897a5618a3ca0d4b189d5b"
+        }
+      },
+      "next_barrier": "0x1a4420"
+    },
+    {
+      "status": "PROCESS_FAILED",
+      "exit_code": 4294967295,
+      "started_utc": "2026-10-05T05:58:54.485513+00:00",
+      "finished_utc": "2026-10-05T05:58:55.446549+00:00",
+      "duration_seconds": 0.9610393999973894,
+      "timeout_seconds": 20.0,
+      "timed_out": false,
+      "input_integrity": "MATCH",
+      "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-004",
+      "result_sha256": "aafc55c42ecca5c3b61c43fd4a7278686add6b2ab85323839eaf8ca51814fb30",
+      "launch_sha256": "b0a57f838befa3a02bb49f396f25551eec50adb7a67c27044c9ba1dcdfebcd8f",
+      "executable_sha256": "e22fb0b59de1ad2b6aafda3774028e8f11f0ddf65964f2b65364e6101ac8c974",
+      "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+      "boot_verified": false,
+      "logs": {
+        "stdout.bin": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-004/stdout.bin",
+          "size_bytes": 3078,
+          "sha256": "b360e5138b26d9d9d3d954005e85667c2829d8543c1d5aa156fc1565b58da0c4"
+        },
+        "stderr.bin": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-004/stderr.bin",
+          "size_bytes": 15006,
+          "sha256": "a1f15c16d21f574de369b3044ef3733ed1c803f3a9b9cc17cbb724f71b996441"
+        }
+      },
+      "next_barrier": "0x234444"
+    }
+  ],
+  "original_checkpoints": {
+    "count": 6,
+    "pcsx2_version": "2.8.2.0",
+    "pcsx2_executable_sha256": "982c7c62600a999cf15a25c18349426166c785e7867b2fcc5018d733245b71a3",
+    "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+    "identity_record": {
+      "path": "artifacts/native_pipeline_20261005/graphics_init_015/pcsx2-reference-001/input.json",
+      "size_bytes": 1362,
+      "sha256": "ea5e3f3c11de978891aa17fc4d8a7bd42d0709e0c7010c0e4f8f42a6fee8f457"
+    },
+    "launch_record": {
+      "path": "artifacts/native_pipeline_20261005/graphics_init_015/pcsx2-reference-001/launch.json",
+      "size_bytes": 1583,
+      "sha256": "1a4f2127cbd0f2977ea7abbecc022279fd53c88bcd362f200ea40d49017281ff"
+    },
+    "closed": {
+      "pid": 18588,
+      "exit_code": 1,
+      "utc": "2026-10-05T06:05:37.736318+00:00"
+    },
+    "captures": [
+      {
+        "label": "entry",
+        "observed_pc": "0x00100008",
+        "expected_pc": "0x00100008",
+        "pc_match": true,
+        "observed_utc": "2026-10-05T05:36:12.988189+00:00",
+        "observation": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/pcsx2-reference-001/captures/entry/observation.json",
+          "size_bytes": 4405,
+          "sha256": "1794240c1382982c6e1e5b3c7e7217545bb9bcc85f8af3beba8c3a7f2f1a5a60"
+        },
+        "savestate": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/pcsx2-reference-001/captures/entry/original.p2s",
+          "size_bytes": 904777,
+          "sha256": "64d0e1b60a37ee3c8796582e4f5f67ced508cddd6a82fac6a53d9c4999231140"
+        },
+        "ee_ram_sha256": "098f436c5645b122e5f462f9bedd0e713c1c82484deea9cb38faf82095361464",
+        "selected_loaded_words": [
+          {
+            "start": "0x00180384",
+            "stop_exclusive": "0x001804d0",
+            "match": true
+          },
+          {
+            "start": "0x001a4cc0",
+            "stop_exclusive": "0x001a4d40",
+            "match": true
+          },
+          {
+            "start": "0x0019852c",
+            "stop_exclusive": "0x00198534",
+            "match": true
+          },
+          {
+            "start": "0x001a4420",
+            "stop_exclusive": "0x001a4430",
+            "match": true
+          },
+          {
+            "start": "0x00234444",
+            "stop_exclusive": "0x00234460",
+            "match": true
+          }
+        ]
+      },
+      {
+        "label": "graphics-entry",
+        "observed_pc": "0x00180384",
+        "expected_pc": "0x00180384",
+        "pc_match": true,
+        "observed_utc": "2026-10-05T05:39:55.382050+00:00",
+        "observation": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/pcsx2-reference-001/captures/graphics-entry/observation.json",
+          "size_bytes": 4405,
+          "sha256": "e890c069ba48987bc2a41a20bd43ef1b6ff6169c71828b63ade3a0eb7df7d058"
+        },
+        "savestate": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/pcsx2-reference-001/captures/graphics-entry/original.p2s",
+          "size_bytes": 1025869,
+          "sha256": "fd1e710eb21caf25b0eb64adc70609ed50a349d82fcb22ea2157edcfc4fc9fb3"
+        },
+        "ee_ram_sha256": "f098b0214aa6e1003706a571f1d6d7f292be26503fb22d958891307e00d8a6e8",
+        "selected_loaded_words": [
+          {
+            "start": "0x00180384",
+            "stop_exclusive": "0x001804d0",
+            "match": true
+          },
+          {
+            "start": "0x001a4cc0",
+            "stop_exclusive": "0x001a4d40",
+            "match": true
+          },
+          {
+            "start": "0x0019852c",
+            "stop_exclusive": "0x00198534",
+            "match": true
+          },
+          {
+            "start": "0x001a4420",
+            "stop_exclusive": "0x001a4430",
+            "match": true
+          },
+          {
+            "start": "0x00234444",
+            "stop_exclusive": "0x00234460",
+            "match": true
+          }
+        ]
+      },
+      {
+        "label": "vblank-entry",
+        "observed_pc": "0x001a4cc0",
+        "expected_pc": "0x001A4CC0",
+        "pc_match": true,
+        "observed_utc": "2026-10-05T05:51:46.854857+00:00",
+        "observation": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/pcsx2-reference-001/captures/vblank-entry/observation.json",
+          "size_bytes": 4405,
+          "sha256": "a83dd6a03214ff03f7dabaae5dc62febce07cc3a663ab41d24d14b09d05c8acd"
+        },
+        "savestate": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/pcsx2-reference-001/captures/vblank-entry/original.p2s",
+          "size_bytes": 1025879,
+          "sha256": "49b8487b043b6ccd39fbfa0668749526ae5cd9424fdcded7c66f3fa3b2a0ca54"
+        },
+        "ee_ram_sha256": "0d5de85dafa8d445cd42230c09e57a6be5d5ce2c5f1519dbea620753a1bac3c3",
+        "selected_loaded_words": [
+          {
+            "start": "0x00180384",
+            "stop_exclusive": "0x001804d0",
+            "match": true
+          },
+          {
+            "start": "0x001a4cc0",
+            "stop_exclusive": "0x001a4d40",
+            "match": true
+          },
+          {
+            "start": "0x0019852c",
+            "stop_exclusive": "0x00198534",
+            "match": true
+          },
+          {
+            "start": "0x001a4420",
+            "stop_exclusive": "0x001a4430",
+            "match": true
+          },
+          {
+            "start": "0x00234444",
+            "stop_exclusive": "0x00234460",
+            "match": true
+          }
+        ]
+      },
+      {
+        "label": "gscrt-entry",
+        "observed_pc": "0x001a4420",
+        "expected_pc": "0x001A4420",
+        "pc_match": true,
+        "observed_utc": "2026-10-05T05:55:07.353368+00:00",
+        "observation": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/pcsx2-reference-001/captures/gscrt-entry/observation.json",
+          "size_bytes": 4405,
+          "sha256": "aba284a78ddb48f84b6762c831a01885782afa8f189d7c948a4eaa9d0f1809f8"
+        },
+        "savestate": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/pcsx2-reference-001/captures/gscrt-entry/original.p2s",
+          "size_bytes": 1025763,
+          "sha256": "7fb10798ae207fc1f285711134ef35ffa0fdfde2c33ea1a9639c76661aa60467"
+        },
+        "ee_ram_sha256": "4f9d04c4be3f7b24a588e68f0a35028cef9d57c6529eb260b5f57c649726bdd6",
+        "selected_loaded_words": [
+          {
+            "start": "0x00180384",
+            "stop_exclusive": "0x001804d0",
+            "match": true
+          },
+          {
+            "start": "0x001a4cc0",
+            "stop_exclusive": "0x001a4d40",
+            "match": true
+          },
+          {
+            "start": "0x0019852c",
+            "stop_exclusive": "0x00198534",
+            "match": true
+          },
+          {
+            "start": "0x001a4420",
+            "stop_exclusive": "0x001a4430",
+            "match": true
+          },
+          {
+            "start": "0x00234444",
+            "stop_exclusive": "0x00234460",
+            "match": true
+          }
+        ]
+      },
+      {
+        "label": "gscrt-return",
+        "observed_pc": "0x00180448",
+        "expected_pc": "0x00180448",
+        "pc_match": true,
+        "observed_utc": "2026-10-05T05:55:40.411070+00:00",
+        "observation": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/pcsx2-reference-001/captures/gscrt-return/observation.json",
+          "size_bytes": 4405,
+          "sha256": "bae6af2d727a9230536b96c33f8f7ee1280efc22c36ab141c589e2b59aba4339"
+        },
+        "savestate": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/pcsx2-reference-001/captures/gscrt-return/original.p2s",
+          "size_bytes": 1025803,
+          "sha256": "2029b2ef4a70bab742276bfd33f1d81e649ce68f0fc541fa900cf0b0cf492de7"
+        },
+        "ee_ram_sha256": "6ceb626381559e726908bb97f6bd64afc1db7c56aeab6e399b3f2541bcbc63d3",
+        "selected_loaded_words": [
+          {
+            "start": "0x00180384",
+            "stop_exclusive": "0x001804d0",
+            "match": true
+          },
+          {
+            "start": "0x001a4cc0",
+            "stop_exclusive": "0x001a4d40",
+            "match": true
+          },
+          {
+            "start": "0x0019852c",
+            "stop_exclusive": "0x00198534",
+            "match": true
+          },
+          {
+            "start": "0x001a4420",
+            "stop_exclusive": "0x001a4430",
+            "match": true
+          },
+          {
+            "start": "0x00234444",
+            "stop_exclusive": "0x00234460",
+            "match": true
+          }
+        ]
+      },
+      {
+        "label": "allocator-tail-entry",
+        "observed_pc": "0x00234444",
+        "expected_pc": "0x00234444",
+        "pc_match": true,
+        "observed_utc": "2026-10-05T06:00:54.970144+00:00",
+        "observation": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/pcsx2-reference-001/captures/allocator-tail-entry/observation.json",
+          "size_bytes": 4405,
+          "sha256": "ac019fe2013b27d6a702c1eb431ed683ca05272f876d6d37a713740db09a7aef"
+        },
+        "savestate": {
+          "path": "artifacts/native_pipeline_20261005/graphics_init_015/pcsx2-reference-001/captures/allocator-tail-entry/original.p2s",
+          "size_bytes": 1025803,
+          "sha256": "9e66650f00a62a2d2147a46ad5b03df7d17d12d0c7d8fd0f563aa5ad95a58c52"
+        },
+        "ee_ram_sha256": "17dc8de0e088663f2c8235cf4229626f7fc71ad9e5342e098c4091565f830f70",
+        "selected_loaded_words": [
+          {
+            "start": "0x00180384",
+            "stop_exclusive": "0x001804d0",
+            "match": true
+          },
+          {
+            "start": "0x001a4cc0",
+            "stop_exclusive": "0x001a4d40",
+            "match": true
+          },
+          {
+            "start": "0x0019852c",
+            "stop_exclusive": "0x00198534",
+            "match": true
+          },
+          {
+            "start": "0x001a4420",
+            "stop_exclusive": "0x001a4430",
+            "match": true
+          },
+          {
+            "start": "0x00234444",
+            "stop_exclusive": "0x00234460",
+            "match": true
+          }
+        ]
+      }
+    ],
+    "allocator_return_checkpoint": "ABSENT",
+    "scope": "Actual original checkpoints and selected byte identities, not native/original lockstep."
+  },
+  "crt_observation": {
+    "arguments_low64": [
+      "0x0000000000000001",
+      "0x0000000000000002",
+      "0x0000000000000001"
+    ],
+    "return_v0_low64": "0x0000000000000000",
+    "return_v0_high64": "0x0400000002000000",
+    "changed_low64_registers": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "all_gpr_upper64_preserved": true,
+    "gs_ui_records": [
+      {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/gscrt-entry-gs-ui.json",
+        "size_bytes": 22856,
+        "sha256": "5d99be54486f431b88ddf9d6af50cc7187ad3f4e91d286f2dddb1ac5bccac954"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/gscrt-entry-gs-ui.png",
+        "size_bytes": 164398,
+        "sha256": "23fca1e6d65957a9d7c213ea3e017a765869b681a1de31e6ebd3f3a0ce971cc7"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/gscrt-return-gs-ui.json",
+        "size_bytes": 22855,
+        "sha256": "7ef6056bc2d529c7a213d9aa92c5b5b3799dfa9cdc80a3cb4686adcc27c63954"
+      },
+      {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/gscrt-return-gs-ui.png",
+        "size_bytes": 176464,
+        "sha256": "bd7a1f6229e715adf146cc51735898a083edb283792d7a07b0da865b92bdd600"
+      }
+    ],
+    "pmode_entry_and_return": "0",
+    "mode_register_and_kernel_clobber_parity": "UNVERIFIED"
+  },
+  "preserved_failures": [
+    {
+      "kind": "contract",
+      "log": {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/contract-release-before-001.log",
+        "size_bytes": 39,
+        "sha256": "b26865600d3c8bc699e986bb8bf33335a640c442448170cafbd6729218119988"
+      },
+      "observed_failure": "Load64 lost original GS CSR read"
+    },
+    {
+      "kind": "contract",
+      "log": {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/contract-intc-before-004.log",
+        "size_bytes": 53,
+        "sha256": "a11003b28b0a13a517b5e114a7ba2ebe49a56d068dc922ce6e55c3846c8fad14"
+      },
+      "observed_failure": "INTC acknowledgement fabricated a VBLANK event"
+    },
+    {
+      "kind": "contract",
+      "log": {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/contract-registration-before-007.log",
+        "size_bytes": 127,
+        "sha256": "c991db11b3a51af39a38392b8061fd3673390463c5dc6c8b47fe1c5568dc0278"
+      },
+      "observed_failure": "VBLANK wait mapping conflict"
+    },
+    {
+      "kind": "contract",
+      "log": {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/contract-Debug-009.log",
+        "size_bytes": 278,
+        "sha256": "34cad0f5bd9a00f7e94f37376e8a8317af202496b7ec981d1c83d10f6f60f8ba"
+      },
+      "observed_failure": "CRT wrapper numeric dispatch, upper lanes or JR delay differs"
+    },
+    {
+      "kind": "contract",
+      "log": {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/contract-Release-009.log",
+        "size_bytes": 278,
+        "sha256": "34cad0f5bd9a00f7e94f37376e8a8317af202496b7ec981d1c83d10f6f60f8ba"
+      },
+      "observed_failure": "CRT wrapper numeric dispatch, upper lanes or JR delay differs"
+    },
+    {
+      "kind": "contract",
+      "log": {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/contract-Release-010.log",
+        "size_bytes": 323,
+        "sha256": "bdfaa4290bff66a2fbfcf24f814ab1c32a29cd139d73b2058ce0b60cbd11ad86"
+      },
+      "observed_failure": "CRT register2 differs despite matching low64: upper64 was lost"
+    },
+    {
+      "attempt": "008",
+      "status": "INVALID_INVOCATION",
+      "recorded_diagnosis": "Wrong executable path; no successful behavioral test claimed.",
+      "diagnosis_basis": "docs/NATIVE_GRAPHICS_20261005.md",
+      "build_log": {
+        "path": "artifacts/native_pipeline_20261005/graphics_init_015/contract-build-008.log",
+        "size_bytes": 727,
+        "sha256": "747dc824296b99c6c8eef48130743d46471301a3281b1532fb66cf58422b4d9c"
+      },
+      "invocation_failure_log": "NOT_PRESENT_IN_RETAINED_DIRECTORY"
+    }
+  ],
+  "source_snapshot": {
+    "basis": "Saved launch-time identities. Later018 changes are not substituted.",
+    "captured_utc": "2026-10-05T06:01:45.442609+00:00",
+    "launch": {
+      "path": "artifacts/native_pipeline_20261005/graphics_init_015/native-005/launch.json",
+      "size_bytes": 35954,
+      "sha256": "cdf3ba721637a613162bb15066ef92872106db997c1ca6b1fb2f038af2ac02d9"
+    },
+    "full_source_file_count": 67,
+    "selected_sources": [
+      {
+        "path": "CMakeLists.txt",
+        "size_bytes": 7142,
+        "sha256": "f6837df74582c483ea323d726abb68b810e6f930e4444a4bbbac9b4e2094b36a"
+      },
+      {
+        "path": "src/main.cpp",
+        "size_bytes": 14341,
+        "sha256": "0c9e71679583f68500d09e23d9cf311dd76b6908fab56bc92eadd6c6bb12ba3a"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/src/lib/Kernel/EeScheduler.cpp",
+        "size_bytes": 67629,
+        "sha256": "e739f174e7743ddd6b752a01f3e56bc3ea840acbc7603c9ed26bd348e0ba03f4"
+      },
+      {
+        "path": "src/graphics_init_continuation.cpp",
+        "size_bytes": 3819,
+        "sha256": "aa2e0ac5adf915f3c2fc361d49c0448aed14d73ef3673503550bc2b687a70854"
+      },
+      {
+        "path": "include/fate/graphics_init_continuation.hpp",
+        "size_bytes": 122,
+        "sha256": "73e77c48a0aa3c9d9189ed73aedac09e9005541cd8eef1c9fb7ebf47be0e9d17"
+      },
+      {
+        "path": "src/recovered/graphics_init_00180384.inc",
+        "size_bytes": 25671,
+        "sha256": "2c2e03c7af76a774c8698d5f0f96308f9db06daec10ef17e32aae83b8414661a"
+      },
+      {
+        "path": "src/recovered/vblank_wait_001a4cc0.inc",
+        "size_bytes": 10185,
+        "sha256": "a11e4f8d037b630cbce4ade2d424b50508550e77a0731b4c79fe102781c472b4"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/src/lib/ps2_runtime.cpp",
+        "size_bytes": 84916,
+        "sha256": "78931166c6a650c04da0ef9ddab0bcd1f8a2dc478b7d2c98d06f7d14c04d7518"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/src/lib/ps2_memory.cpp",
+        "size_bytes": 89154,
+        "sha256": "7a9aaf4280c86fd0d52ed476e57bf0fca9401ccd7b3c95dbda148878a4cf29f1"
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/src/lib/Kernel/Syscalls/System.cpp",
+        "size_bytes": 35389,
+        "sha256": "781f0cda7bb714194b67541e9b9086feb60c9d87b563b0aada2c48e1710d022d"
+      },
+      {
+        "path": "tools/native_boot_probe.py",
+        "size_bytes": 15512,
+        "sha256": "245376260c580872f8fc15955b684840e635322cf4c6839cd362d6b7de28caf5"
+      }
+    ],
+    "source_to_binary_correspondence": "NOT_ESTABLISHED_BY_PROBE",
+    "current_source_identity": "NOT_CLAIMED; current checkout includes later018 changes."
+  },
+  "limits": [
+    "No native game image, title, movie or battle demonstrated.",
+    "Caller-only original opcode comparison excludes external callees; no independent PCSX2 lockstep.",
+    "GsSetCrt HLE implements only selected SMODE2 behavior and return width; original CRT timing registers and clobbers remain unverified.",
+    "Selected memory routing tests do not establish all width/alias/exception or complete GS hardware parity.",
+    "Original reference session exited1; allocator return observation is absent.",
+    "Optional PNACH/profile integration was not applied by this checkpoint.",
+    "No verified015-017 backup is claimed."
+  ]
+}

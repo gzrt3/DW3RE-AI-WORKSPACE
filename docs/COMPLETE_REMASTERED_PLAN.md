@@ -1,33 +1,223 @@
 # Dynasty Warriors 3 Complete Remastered
 
-## Objetivo vigente — port nativo de PC, 2026-10-05 UTC
+Ciclo028: puente GS→Direct3D11/12 probado con readback RGBA y observación Computer Use de patrón diagnóstico. Auto prefiereD3D11; selección explícita y VSync comprobados. BuildReleasePASS. El juego mantienePMODE0, vblank:8 sin implementar,1215observaciones/0presentaciones en20s,inputMATCH. No logos originales;0/8criterios. Automatización principalPAUSED y revisorGitHubDisabled. Publicar checkpoint gráfico y después audio, según el usuario. Ver docs/NATIVE_GS_DIRECTX_20261005.md.
+
+Historial previo:
+
+Ciclo027: Release003 PASS;170B24,1ADE0C y1AEF98 superados. Ambos servidores PAD responden y la versiÃ³n403 procede del IOP. Nueva barrera vblank:8 (RegisterVblankHandler),antes de completar init. Native003: plazo40s,exit2,inputMATCH,2416observaciones y0presentaciones. Computer Use observÃ³ la ventana nativa negra. Contratos PAD Debug/Release PASS;3regresiones IOP generales siguen abiertas. Primeros logos pendientes;0/8criterios cerrados. Ver docs/NATIVE_PAD_BOOT_20261005.md.
+
+Los estados anteriores se conservan como historial.
+
+## Avance026 â€” ocho mÃ³dulos de arranque
+
+Se reparÃ³ la interrupciÃ³n SIF saliente que reejecutaba una recepciÃ³n anterior.
+Release009 PASS; native008 ejecuta las ocho entradas originales, incluido
+KOEISND, y supera BindRpc80000400 y su llamada siguiente. Nueva barrera170B24;
+inputMATCH, sin imagen nativa. IRQ234400 y cinco tablas originales instaladas.
+Pruebas Debug/Release de direcciÃ³nSIF4, yield8, IRQ512 y proveedores224 pasan;
+quedan3 fallos de14 pruebas generales IOP. Quince pruebas Python pasan.
+Detalles, fallos conservados y lÃ­mites en NATIVE_BOOT_PROVIDERS_20261005.md.
+Siguiente:170B24 con stores128/callees/bucles originales, despuÃ©s primera
+solicitud y reproducciÃ³n real de logo. Los ocho criterios finales siguen
+ABIERTOS. Consultar el verification.json final del respaldo026 antes de
+considerarlo verificado; no eliminar originales.
+
+## Prioridad y avance 025 â€” arranque y primeros logos
+
+El usuario pide concentrarse primero en el boot nativo y los primeros logos
+originales, paso a paso. Se conserva el producto completo; no se migra a Xbox
+ni se adelantan mejoras grÃ¡ficas/contenido antes de ese hito.
+
+Release completo PASS.1B1004 superado; nueva barrera: BindRpc80000400 con server0,
+cargas de mÃ³dulos sin entrada y una invocaciÃ³n ausente234400. Tres probes con
+inputMATCH; las observaciones nativas20/60s tienen cero presentaciones. Computer
+Use verificÃ³ la ventana nativa negra. El original retorna BindRpc en1B1058 con
+server7F448. Dos intervalos originales nuevos coinciden en32 GPR128,10 campos de
+control y32MB RAM en Debug/Release; contratos locales580/24 y20 pruebas Python
+pasan. No logos/tÃ­tulo/vÃ­deo/batalla, ocho criterios ABIERTOS.
+
+Siguiente: medir resultados de MODLOAD7 y fallos de archivo/enlace, recuperar el
+epÃ­logo234400 con su ABI, luego seguir la solicitud real del primer logo por VFS,
+decodificaciÃ³n, presentaciÃ³n y audio. Ver NATIVE_WAITSEMA_20261005.md y
+evidence/native_waitsema_20261005.json. Conservar fallos, originales y fuentes
+sin commit. El respaldo sÃ³lo se acredita por su verification.json final.
+
+## EvaluaciÃ³n 024 â€” alternativa Xbox, 2026-10-05 UTC
+
+Se auditÃ³ el XBE original: tÃ­tulo4B4F0003, 14 secciones y bibliotecas XDK4721,
+incluidas D3D8, DSOUND y XMV. Es una alternativa que requiere un prototipo
+comparativo; no demuestra menor trabajo para DW3+XL ni cambia la base actual.
+La mejora de presentaciÃ³n de Xbox se evaluarÃ¡ separada de resoluciÃ³n interna
+y calidad de cada recurso, todavÃ­a sin mediciÃ³n comparativa. DW3XL original
+no tuvo ediciÃ³n Xbox; su lÃ³gica y datos exigen integraciÃ³n adicional.
+Ver XBOX_FEASIBILITY_20261005.md para evidencia, fuentes y condiciones de decisiÃ³n.
+Sin build/run nuevo, sin cambios de runtime y sin criterios cerrados. El Ãºltimo
+estado nativo sigue siendo023, EE1B1004. Se preservan los originales y el pipeline.
+
+## Ãšltimo avance023 â€” EE1B1004, 2026-10-05 UTC
+
+Latest023: native Release build PASS;1B7F84 passes, next missing EE1B1004
+after WaitSema. InputMATCH; no native title/movie/battle. Four original intervals
+match Debug/Release:32 GPR128,10 control fields and32MB RAM; DMA also matches12
+MMIO words after measured MADR/FQC repair. Store64 BadVAddr repaired and tested.
+Computer Use captured color entry/return and next1B1004. Supplied PCSX2 log now
+records original XLâ†’DW3â†’XL transitions and module sequence; native integration
+remains open. See NATIVE_COLOR_DMA_PARITY_20261005.md. All8 final gates OPEN.
+Backup of this increment is verified only by the final checkpoint verification.json.
+Earlier status entries below are historical.
+
+## Ãšltimo avance022 â€” EE1B7F84, 2026-10-05 UTC
+
+Latest022: native Release build PASS; GIF submission19AA4C passes twice,
+and the first32-byte packets reach GS. Next missing EE0x001B7F84. InputMATCH;
+no native image/title/movie/battle. Debug/Release DMA and graphics contracts
+PASS; general exception vectors repaired from pinned PCSX2 evidence.
+Original DMA entry/return captured; native hardware replay pending. Cycle021
+integer/RAM comparisons remain historical. See NATIVE_DMA_SUBMIT_20261005.md.
+All8 final gates OPEN. Prior entries below are retained as history.
+
+## Ãšltimo avance021 â€” EE19AA4C, 2026-10-05 UTC
+
+Turno con progreso: retorno1B8040 y alias GS32 reparados. Build completo Release
+PASS; siguiente barrera19AA4C, integridadMATCH. ComparaciÃ³n con checkpoints
+originales de PCSX2: dos intervalos Ã— Debug/Release,32 GPR128 y32MB RAM
+idÃ©nticos. Pruebas de fallos de delay slot y propietarios pasan. Referencia
+visual en prompt Beginner Mode; cambio de disco sin acreditar. Sin tÃ­tulo,
+vÃ­deo o batalla nativos; ocho criterios ABIERTOS. Ver NATIVE_GS_STORE_20261005.md.
+Siguiente: envÃ­o DMA original19AA4C con BNEL y propietario real, despuÃ©s boot.
+
+
+## Ãšltimo avance020 â€” EE1B8040, 2026-10-05 UTC
+
+La continuaciÃ³n19A510 supera las pruebas Debug/Release y el arranque nativo.
+Siguiente bloqueo medido1B8040; build completo Release PASS, inputMATCH.
+216 comparaciones originales y4 alias de RA por configuraciÃ³n, mÃ¡s regresiones;
+15 pruebas Python PASS. Dos sesiones PCSX2 aisladas abiertas por Computer Use:
+BIOS/prompt sin tarjeta observados y checkpoint original19A510 capturado con45
+palabras coincidentes. Retorno y cambio de disco pendientes. Entrada manual
+detectada: no interferir con la ventana de experiencia. Ver
+NATIVE_GRAPHICS_CONFIG_20261005.md y evidence/native_graphics_config_20261005.json.
+Siguiente: retorno original/1B8040, continuaciÃ³n nativa, vÃ­deos y Press Start.
+Sin tÃ­tulo/vÃ­deo/batalla nativos; ocho criterios ABIERTOS; conservar todo.
+
+
+## Objetivo vigente â€” port nativo de PC, 2026-10-05 UTC
 
 El entregable final es un port nativo Windows x64 standalone, DW3 + XL
-completos sin cambio de disco, con ejecución, gráficos, audio, controles,
-guardados y modding verificables. Leer [la especificación vigente](NATIVE_PC_OBJECTIVE.md)
+completos sin cambio de disco, con ejecuciÃ³n, grÃ¡ficos, audio, controles,
+guardados y modding verificables. Leer [la especificaciÃ³n vigente](NATIVE_PC_OBJECTIVE.md)
 antes del historial siguiente. Partir de CURRENT_STATUS.md y conservar los ocho criterios
-finales; ninguno está cerrado. Esta actualización no reinicia el proyecto.
+finales; ninguno estÃ¡ cerrado. Esta actualizaciÃ³n no reinicia el proyecto.
 
-## Trabajo desatendido y revisión de errores — 2026-10-04 13:31 UTC
+## Prioridad vigente: continuar desde EE19A510, 2026-10-05 UTC
 
-El usuario no estará disponible durante aproximadamente ocho horas (hasta
+Turno con progreso: se recuperaron32 instrucciones de cÃ¡lculo de buffers GS,
+se corrigieron tres MOVN que destruÃ­an upper64 y se restaurÃ³ el retorno original
+198C7C. Los dos builds Release completos pasan. El Ãºltimo probe019 supera
+198918/198C7C y se detiene en19A510 con inputMATCH. No tÃ­tulo/vÃ­deo/batalla;
+los ocho criterios finales siguen ABIERTOS. Ver NATIVE_GRAPHICS_BUFFER_20261005.md.
+
+Por Debug/Release pasan576 comparaciones originales del buffer y4 del retorno,
+guardas de instrucciones, conflictos de propietario y regresiones grÃ¡ficas/IRQ.
+El candidato incorrecto y todos los fallos anteriores se conservan. Esta prueba
+por decodificador acotado no es lockstep PCSX2 independiente ni paridad completa.
+
+El usuario reanudÃ³ el uso de pools disponibles para el port y excluyÃ³ OpenClaw.
+Se usaron revisiÃ³n paralela, AWS Nova Pro y Ollama local. Las respuestas de los
+dos modelos contenÃ­an errores comprobables y fueron rechazadas. Azure
+mantiene8 reservas histÃ³ricas sin coste reconciliado; no se invocÃ³ ni cambiÃ³
+el ledger. Sin reintentos de cuotas, configuraciones de acceso ni instalaciones.
+Las programaciones auxiliares y publicaciÃ³n siguen pausadas; fuente sin commit.
+
+Siguiente: recuperar19A510 y sus lÃ­mites reales desde XL, comprobar ABI/retornos
+y volver a ejecutar el arranque. DespuÃ©s, vÃ­deos originales/Press Start, primera
+batalla, contenido DW3+XL, guardados y modding, paquete nativo final. El respaldo
+incremental reÃºne015â€“019 en D:/Backup/DWProject/graphics-buffer-20261005-019;
+su verification.json determina si terminÃ³ y verificÃ³ los hashes. No borrar
+originales ni interpretar una ruta o copia en curso como respaldo verificado.
+
+## Hito anterior: continuar desde EE1A4500, 2026-10-05 UTC
+
+La ejecuciÃ³n graphics_init_015/native-005 supera preparaciÃ³n grÃ¡fica180384,
+GParam19852C, espera VBLANK1A4CC0, GsSetCrt1A4420 y retorno234444. Falla en
+el wrapper1A4500, inputMATCH. Pruebas grÃ¡ficas Debug/Release PASS; seis
+checkpoints originales reales, sin lockstep completo ni retorno del allocator.
+Estado CRT completo y clobbers del kernel pendientes. Ver NATIVE_GRAPHICS_20261005.md.
+
+VSync de presentaciÃ³n opcional, apagado por defecto. --vsync on|off cambia SDL
+sin eliminar VBLANK del guest. Cuatro contratos en cada Debug/Release y14 pruebas
+del observador PASS; build Release PASS. Dos probes reales con ambos modos
+alcanzan1A4500, inputMATCH,25 observaciones y cero imÃ¡genes. No acredita VRR,
+sincronizaciÃ³n fÃ­sica, FPS de simulaciÃ³n mayor ni juego. Ver NATIVE_HOST_VSYNC_20261005.md.
+
+Siguiente acciÃ³n: wrapper original1A4500 (24030010,0000000C,03E00008,00000000),
+registro real AddIntcHandler y callback/propiedad de IRQ verificados antes de
+otro probe. No inventar orden ni estado de hardware. PNACH/referencias de modding
+siguen como candidatos auditados; cambios de instrucciones requieren integraciÃ³n
+con las traducciones estÃ¡ticas. Preservar los dos widescreen y cÃ³digos rechazados.
+Ocho criterios finales ABIERTOS. Mantener auxiliares/nube/publicaciÃ³n pausados,
+cambios sin commit y originales/evidencia. Respaldo de esta etapa registrado
+en el checkpoint graphics-vsync-20261005-016 cuando su verificaciÃ³n final exista.
+
+## Hito anterior: DMA/VIF hasta EE180384, 2026-10-05 UTC
+
+La ejecuciÃ³n nativa ee_dma_init_014/native-003 supera MODLOAD7/SIO2MAN,
+DMA19A6C4, VIF198580 y el retorno19A678. Falla en la continuaciÃ³n180384;
+inputMATCH y ocho criterios ABIERTOS. No tÃ­tulo, vÃ­deo ni batalla demostrados.
+Se corrigieron escrituras Store128 descartadas y lecturas VIF1 desactualizadas.
+Debug/Release:23 contratos DMA,7,000 combinaciones,12 retornos,20 casos Store128,
+paquetes VIF originales con4 alias y coherencia MMIO con3 alias PASS.
+
+Siguiente acciÃ³n: recuperar180384 desde las instrucciones originales, revisar
+la ruta de preparaciÃ³n grÃ¡fica y contrastar el estado real. No cambiar el API
+de presentaciÃ³n como sustituto de recuperar los comandos GS/GIF. DirectX/Vulkan
+pueden consumir esa capa en el backend nativo. Mantener pausados auxiliares,
+asesores, nube, instalaciones y publicaciÃ³n. Conservar cambios sin commit.
+Detalle, lÃ­mites, fallos y reproducciÃ³n: NATIVE_DMA_VIF_20261005.md y
+evidence/native_dma_vif_20261005.json. Respaldo separado con manifiesto de hashes
+en D:/Backup/DWProject/ee-dma-vif-20261005-014; conservar el checkpoint anterior.
+
+## Hito anterior: reparaciÃ³n MODLOAD7/SIO2MAN verificada, 2026-10-05 UTC
+
+Se mantiene la pausa de automatizaciones, revisores, servidores auxiliares,
+instalaciones, pools y publicaciÃ³n. El trabajo enfocado resolviÃ³ el bloqueo de
+carga: el ejecutable nativo Release ejecuta SIO2MAN original en el hilo1 de
+MODLOAD, argc1, retorno0 y mÃ³dulo21 residente con estado3. TambiÃ©n alcanza el
+arranque de MODMSIN; termina despuÃ©s en EE0x0019A6C4 con inputMATCH.
+
+Once suites PASS en Debug/Release,32 comparaciones de estado LOADCORE y69 del
+enlazador por configuraciÃ³n; pruebas originales de archivo presente y ausente
+PASS. La ausencia devuelve -203 sin ejecutar ni registrar SIO2MAN. Se conservan
+todos los intentos fallidos. No es lockstep PCSX2 independiente ni prueba de
+transferencias SIO2, tÃ­tulo, vÃ­deo o gameplay. Ocho criterios finales ABIERTOS.
+
+Detalle y reproducciÃ³n: NATIVE_MODLOAD_SIO2MAN_20261005.md; resumen pÃºblico:
+evidence/native_modload_sio2man_20261005.json; evidencia local:
+artifacts/native_pipeline_20261005/modload_focus_013. Las entradas anteriores de
+MODLOAD7 pendiente son histÃ³ricas. Cambios locales sin publicar. Siguiente barrera
+nativa: continuaciÃ³n EE0x0019A6C4 desde el ELF original, seguida de vÃ­deos/Press
+Start autÃ©nticos. Mantener la pausa auxiliar y conservar originales e historial.
+
+## Trabajo desatendido y revisiÃ³n de errores â€” 2026-10-04 13:31 UTC
+
+El usuario no estarÃ¡ disponible durante aproximadamente ocho horas (hasta
 2026-10-04 21:31 UTC / 14:31 Sonora). Continuar el objetivo completo sin esperar
-intervención para decisiones rutinarias. Usar los pools disponibles y Computer
-Use cuando aceleren o mejoren la comprobación, respetando permisos y presupuestos.
+intervenciÃ³n para decisiones rutinarias. Usar los pools disponibles y Computer
+Use cuando aceleren o mejoren la comprobaciÃ³n, respetando permisos y presupuestos.
 Corregir errores y hacer regresiones antes de acreditar la entrega; no prometer
 ausencia absoluta de errores ni marcar 100% por agotar una lista de pruebas.
-La ausencia temporal del usuario no autoriza eludir una denegación de herramienta.
+La ausencia temporal del usuario no autoriza eludir una denegaciÃ³n de herramienta.
 
-Estado real de pools: la lectura del ledger a 13:32 UTC encontró 17 llamadas Azure,
+Estado real de pools: la lectura del ledger a 13:32 UTC encontrÃ³ 17 llamadas Azure,
 29 AWS y 19 Gemini restantes antes de las revisiones de este turno. Las antiguas
-notas de cero llamadas son históricas; no crear nuevas ventanas ni resetearlas.
-Ollama falló por conexión; Azure produjo una revisión de precondiciones rechazada
+notas de cero llamadas son histÃ³ricas; no crear nuevas ventanas ni resetearlas.
+Ollama fallÃ³ por conexiÃ³n; Azure produjo una revisiÃ³n de precondiciones rechazada
 por formato y una salida incompleta. AWS sigue requiriendo resolver/validar su
 estado previo mediante el router. Conservar eventos y no repetir el mismo job.
 La interfaz de Computer Use expone el navegador, sin aplicaciones nativas
-accesibles en esta sesión; no afirmar observación visual de PCSX2.
+accesibles en esta sesiÃ³n; no afirmar observaciÃ³n visual de PCSX2.
 
-## Instruccion vigente de interfaz y progreso — 2026-10-04, posterior
+## Instruccion vigente de interfaz y progreso â€” 2026-10-04, posterior
 
 El usuario vuelve a autorizar Computer Use para facilitar todas las tareas y
 solicita una barra visible hasta la entrega final. Esta instruccion sustituye
@@ -39,33 +229,33 @@ Actualizar `docs/progress.json` y ejecutar `python tools/update_progress.py`
 en cada hito verificado. La barra distingue fases prioritarias de ocho criterios
 de entrega final. Un conteo de fases no representa porcentaje del trabajo total.
 
-## Addendum de autoridad — port nativo standalone, 2026-10-04
+## Addendum de autoridad â€” port nativo standalone, 2026-10-04
 
 El usuario conserva los objetivos anteriores y fija estas prioridades:
 
 - Ejecutable Windows x64 `DW3_Remastered.exe`, MSVC/CMake, sin dependencia del
-  proceso PCSX2 en tiempo de ejecución. Usar componentes nativos integrados para
+  proceso PCSX2 en tiempo de ejecuciÃ³n. Usar componentes nativos integrados para
   consumir GIF/GS, SPU2 y controladores; elegir backend existente comprobable
   antes de reemplazarlo. D3D11/12, Vulkan o GS integrado; XAudio2 o SDL2_mixer;
-  XInput o SDL2 GameController según compatibilidad real.
-- Assets extraídos bajo `/data/` y VFS combinado DW3/DW3XL. Indexar ambos juegos,
-  conservar identidades por versión y servir ambos desde disco sin pedir cambio
-  de disco. Interceptar la comprobación correspondiente solo después de localizar
+  XInput o SDL2 GameController segÃºn compatibilidad real.
+- Assets extraÃ­dos bajo `/data/` y VFS combinado DW3/DW3XL. Indexar ambos juegos,
+  conservar identidades por versiÃ³n y servir ambos desde disco sin pedir cambio
+  de disco. Interceptar la comprobaciÃ³n correspondiente solo despuÃ©s de localizar
   la rutina/contrato real; no eliminar flags a ciegas ni afirmar carga en memoria
-  sin que el contenido esté disponible. Integrar modos, armas de nivel 5,
+  sin que el contenido estÃ© disponible. Integrar modos, armas de nivel 5,
   personajes, mapas y lados a partir de las tablas verificadas.
-- SUSPENDER COMPUTER USE: no más interacción con `pcsx2-qt` ni nuevos intentos
+- SUSPENDER COMPUTER USE: no mÃ¡s interacciÃ³n con `pcsx2-qt` ni nuevos intentos
   de permisos. Verificar con checkpoints, RAM y logs existentes. Solo usar PCSX2
   por CLI/headless sin GUI para nuevas trazas si hay interfaz compatible; su
   ausencia no debe bloquear trabajo independiente en el HLE con dumps existentes.
-- Orden de trabajo: (1) SetupHeap devuelve el límite observado `0x01FF8000` con
-  heap real disponible; (2) boot estático hasta inicialización de subsistemas;
-  (3) título y menús mediante backend nativo; (4) batalla y unificación de tablas.
+- Orden de trabajo: (1) SetupHeap devuelve el lÃ­mite observado `0x01FF8000` con
+  heap real disponible; (2) boot estÃ¡tico hasta inicializaciÃ³n de subsistemas;
+  (3) tÃ­tulo y menÃºs mediante backend nativo; (4) batalla y unificaciÃ³n de tablas.
 
-Este addendum sustituye únicamente las instrucciones anteriores de usar Computer
+Este addendum sustituye Ãºnicamente las instrucciones anteriores de usar Computer
 Use o esperar permiso para la GUI; el historial siguiente se conserva como registro.
 
-## User-authorized objective — 2026-10-04
+## User-authorized objective â€” 2026-10-04
 
 Develop one complete Windows game combining Dynasty Warriors 3 and Dynasty
 Warriors 3 Xtreme Legends, with their features, modes, maps and playable sides
@@ -191,20 +381,20 @@ each item. No percentage is justified until the content inventory is complete.
 
 ## Current blockers and next actions
 
-Actualización vigente: build Release completa terminó; continuaciones enlazadas
-y `native_boot_release_002` alcanza `0x001ad6e0`. Computer Use nativo funcionó
-con Sky y se operó PCSX2: seis capturas de una misma sesión prueban IDs0/1.
+ActualizaciÃ³n vigente: build Release completa terminÃ³; continuaciones enlazadas
+y `native_boot_release_002` alcanza `0x001ad6e0`. Computer Use nativo funcionÃ³
+con Sky y se operÃ³ PCSX2: seis capturas de una misma sesiÃ³n prueban IDs0/1.
 Fix scheduler pool256/LIFO pasa kernel37/37 Debug/Release. VFS15/15 por
-configuración. Segunda reparación en `boot_continuations_002`, prueba
+configuraciÃ³n. Segunda reparaciÃ³n en `boot_continuations_002`, prueba
 `entry_slice_005` activa. Ver addendum de `BOOT_CONTINUATIONS_20261004.md`;
 las instrucciones siguientes sobre build activa y falta de acceso son historia.
 
-Actualización posterior: `docs/BOOT_CONTINUATIONS_20261004.md` describe la
-siguiente barrera medida (retorno CreateSema no registrado) y su recuperación
-probada en Debug/Release con fuentes originales. La reparación aditiva está
+ActualizaciÃ³n posterior: `docs/BOOT_CONTINUATIONS_20261004.md` describe la
+siguiente barrera medida (retorno CreateSema no registrado) y su recuperaciÃ³n
+probada en Debug/Release con fuentes originales. La reparaciÃ³n aditiva estÃ¡
 en `src/boot_continuations.cpp`; falta enlazarla al host cuando termine la
-compilación activa. `boot_continuations_evidence.json` conserva opcodes y hashes.
-No iniciar otra build completa ni promover el diagnóstico a boot verificado.
+compilaciÃ³n activa. `boot_continuations_evidence.json` conserva opcodes y hashes.
+No iniciar otra build completa ni promover el diagnÃ³stico a boot verificado.
 
 1. Finish the full native Release rebuild already running; log:
    `artifacts/lockstep_20261004/native_build_Release.log`. Do not launch a second
@@ -236,7 +426,7 @@ Keep this document current at each autonomous milestone; never overwrite raw
 captures or the historical reports cited above.
 
 
-## Scheduler integration verified — 2026-10-04 14:17 UTC
+## Scheduler integration verified â€” 2026-10-04 14:17 UTC
 
 Current evidence supersedes the earlier hypotheses about slice006. The new
 instrumented manual diagnostic entry_slice_007 completed all initialization
@@ -265,7 +455,7 @@ this segment. No new retail capture or graphical gameplay verification.
 No active build/diagnostic remains after these commands complete.
 
 
-## Boot table continuation repair — 2026-10-04
+## Boot table continuation repair â€” 2026-10-04
 
 Wrapper001adb50 restored from identified ELF JR RA/NOP; synthetic register/delay
 contracts pass Debug/Release. Release build005/probe005 advances to001adbf8,
@@ -286,7 +476,7 @@ table_setup_opcodes/table_source_identity, native_build_Release_005/006 and
 native_boot_release_005/006. No cloud budget used; original assets unchanged.
 
 
-## Truncated syscall wrappers recovered — 2026-10-04
+## Truncated syscall wrappers recovered â€” 2026-10-04
 
 tools/recover_syscall_returns.py inspects only catalogued translations against
 the identified original ELF.63 exact four-word addiu-v1/syscall0/JR-RA/NOP
@@ -312,7 +502,7 @@ Evidence: syscall_returns_001/verification.json, manifest.json, contracts;
 native_build_Release_007/008 and native_boot_release_007/008/result.json.
 
 
-## Thread startup translation recovery — 2026-10-04
+## Thread startup translation recovery â€” 2026-10-04
 
 Pinned56 decoded opcodes in FUN001a55f8 and original epilogue entry001a56b8.
 Five missing switch resumes and JR-RA/addiu-SP epilogue001a56c4 registered
@@ -342,7 +532,7 @@ entry_slice_010/011 contracts and native_build/probe_Release_009/010.
 GAME_PARITY=NOT_COMPLETE; original assets preserved; no cloud calls.
 
 
-## Retail thread priority correction — 2026-10-04 14:52 UTC
+## Retail thread priority correction â€” 2026-10-04 14:52 UTC
 
 Computer Use operated the actual EE debugger in isolated pcsx2_live_002.
 Same-boot paused snapshots: entry00100008, CreateThread001a4620 and return001a566c.
@@ -381,7 +571,7 @@ session90258 Ctrl+C after capture. Preserve capture/config and original assets.
 Capture cleanup correction: Ctrl+C of exec session90258 did not stop its Python/PCSX2 processes. Verified PID13288 executable and isolated pcsx2_live_002 command line, then stopped only that owned process. MSBuild23540 is nodeReuse idle helper, not active build. All saved evidence preserved.
 
 
-## OSD transfer and interrupt patch continuations — 2026-10-04 15:00 UTC
+## OSD transfer and interrupt patch continuations â€” 2026-10-04 15:00 UTC
 
 Previous goal turn was PROGRESS: retail CreateThread observation changed kernel
 implementation and verified next action. Current segment independently recovered
@@ -422,7 +612,7 @@ host_verification.json, entry_slice_014, native_build_Release_012.log and
 native_boot_release_012/result.json. Originals/history retained.
 
 
-## Syscall install loop recovered — 2026-10-04 15:06 UTC
+## Syscall install loop recovered â€” 2026-10-04 15:06 UTC
 
 Current goal turn PROGRESS: eight existing FUN001acd20 resumes registered;
 original missing tail001acdb4 is BNEL, not an epilogue. Additive tail preserves
@@ -456,7 +646,7 @@ GetEntryAddress/SetSyscall reference semantics before certifying kernel tables.
 Title/native graphics, combined data VFS, first battle/full content/saves pending.
 
 
-## Main startup continuation — 2026-10-04 15:14 UTC
+## Main startup continuation â€” 2026-10-04 15:14 UTC
 
 Previous goal turn PROGRESS: syscall install loop recovered and full host reached
 0010008c. Current goal turn PROGRESS: original entry switch resume0010008c
@@ -492,7 +682,7 @@ entry_slice_016, native_build_Release_014.log and native_boot_release_014/result
 GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED.
 
 
-## Game prologue and initializer argument tail — 2026-10-04
+## Game prologue and initializer argument tail â€” 2026-10-04
 
 Previous goal turn PROGRESS: startup tail tested/relinked; host reached157468.
 Current goal turn PROGRESS: additive game prologue157468..15749c and
@@ -531,7 +721,7 @@ verification,host_verification}.json, entry_slice_017, native_build_Release_015.
 native_boot_release_015/result.json, constructor_source_identity_001.json.
 
 
-## Constructor restore and game subsystem calls — 2026-10-04
+## Constructor restore and game subsystem calls â€” 2026-10-04
 
 Previous goal turn PROGRESS: prologue/arguments verified; full host stops1966ec.
 Current goal turn PROGRESS: recovered LQ128 s1/s0, JR RA/SP30 delay tail1966ec
@@ -566,7 +756,7 @@ registered_word_verification,verification,host_verification}.json, entry_slice_0
 *_002 logs, native_build_Release_016.log, native_boot_release_016/result.json.
 
 
-## Table lookup return and heap caller resumes — 2026-10-04
+## Table lookup return and heap caller resumes â€” 2026-10-04
 
 Previous goal turn PROGRESS: full host016 reached23f580. Current PROGRESS:
 original JR RA/LW v0 delay recovered; signed32 loaded value preserves upper64
@@ -1907,7 +2097,7 @@ Original FUN001afe08 resumes registered and JR/SPB0 epilogue001B00E0 recovered;1
 Recover original EE packet allocator001A7248 onward from identified ELF and pinned EE sifrpc source; preserve interrupt suspension/resume, actual32x64 packet ring/PID/recid semantics. Test exhaustion/wrap/busy/interrupt restore, relink/probe. RPC scheduler/retry/IRQ and independent retail comparisons remain open; all final acceptance criteria unverified.
 No active build/probe. Original src/recomp unchanged. GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED. Evidence loadmodule_caller_001/verification.json and native_boot_release_062/result.json.
 
-## Snapshot storage recovery — 2026-10-04
+## Snapshot storage recovery â€” 2026-10-04
 
 C: reached zero free bytes during snapshot creation after loadmodule_caller_001. Both failed snapshot directories are retained as incomplete historical attempts; they must not be used as complete snapshots. Automatic review rejected deletion of build caches; no deletion executed. NTFS compression attempts did not free space. Five complete snapshots (20261004T202121Z,20261004T202334Z,20261004T202616Z,20261004T203016Z,20261004T203220Z) moved to D:\DW3-evidence-archive with junctions preserving their original C:\DW3\knowledge\snapshots paths. All manifest hashes verified (703,706,709,713,715 files respectively). Original assets and src/recomp unchanged. A new complete snapshot succeeded: 20261004T203714Z. Next work: recover original EE RPC packet allocator001A7248 from ELF/pinned EE SDK; no production build active. GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED.
 
@@ -2060,7 +2250,7 @@ Next inspect1A6C18 resumes1A6C28/38/JR1A6C44 and1A7208 truncated return; verify/
 Previous turn PROGRESS: actual084 reached1A6C28. Original1A6C18 and1A7208 words/comments verified; missing resumes and JRSP+10 recovered. Debug/Release contractsPASS including exact handler argument and distinct initialized-flag stores/low64return/high64preservation. Release085 link exit0; actual boot inputMATCH passes1A6C28 and nested SIF/RPC returns then invokes unimplemented syscall0x6B and stops missing1AC93C in original1AC920. Pinned SDK kernel.S/syscallnr.h prove0x6B=SifStopDma, kernel.h documents SIF0disable; existing named stub silent0 and numeric dispatcher absent. No new runtime stub or guessed reboot applied.
 Next inspect identified BIOS/kernel0x6B implementation, implement evidence-backed SIF0stop/numeric routing with lifecycle tests; recover original1AC920 resumes/JR; rebuildruntime Debug/Release and relink/probe. Production dual extracted VFS/CDVD route still required. No active build/probe. All8final criteria open, no title/battle/parity. GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED. Evidence rpc_deinit_resume_001/verification.json/native_boot_release_085/result.json.
 
-## Original StopDma and reboot packet resumes — Release087
+## Original StopDma and reboot packet resumes â€” Release087
 Original BIOS syscall6B now stops SIF0 CHCR/QWC and returns signed readback, preserving unrelated channels/register lanes; numeric route added. Original79reboot words/76comments verified;10generated resumes+missingJR/SP40 recovered without changing generated sources. Original7game-return words17FEE4..FF00 verified and resume added. Debug/Release004 contractsPASS including exact packet/path/flags, full64branch, call arguments, register acknowledgements and low64restore/high64preservation. Initial fixture failures retained: tests placed after stopped scheduler fell through call boundaries; moved before schedulerstop and explicitly selected ContinueToTarget. ActualRelease086 inputMATCH passes reboot returns, stops17FEE4. Release087 linkPASS; see native_boot_release_087/result.json/stderr.bin for measured next barrier. No title/battle/IOP reboot lifecycle/parity claim.
 Next recover measured1ACA88 sync continuations/JR from original ELF, verify actual SIF register4 readiness and reboot lifecycle rather than forcing ready; continue actual dual extracted CDVD VFS integration. All8finalcriteria open. GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED. No active build/probe after087.
 
@@ -2081,7 +2271,7 @@ All8finalcriteria open; no title,battle,combined gameplay or retail reboot parit
 Original MODLOAD follow-up: exact ROM export4=1518 (table file1600), CpuExecuteKmode helper1508/syscall12, termination proc12E0..1504 verified. Original path copy0480 and IOPBOOT JALR agree with pinned SDK, but original ROM version uses direct DI resident termination; do not transplant current SDK priority/EI behavior without version match. Identified source modules preserved with BIOS hashes in reboot_module_probe_001/boot_modules_provenance.json; IOPBTCONF includes REBOOT and EESYNC. Next investigate IOPBOOT/UDNL boot and EESYNC publication and implement owned deferred reset safe point; no production REBOOT integration yet.
 
 
-## LOADCORE immediate callback and actual game EESYNC — 2026-10-04
+## LOADCORE immediate callback and actual game EESYNC â€” 2026-10-04
 
 Original BIOS LOADCORE export20 immediate path executes callback with next.callback=1, boot=0 and caller GP, writes optional callback result and returns0. Original BIOS EESYNC callback publishes40000 preservingCMDINIT. Debug/Release original+synthetic ABI/status tests PASS. Synthetic fixture relocation error and aborted assertion retained. Original IOPRP253 EESYNC tests FAIL both configs with missing ioman4/open,8/read,5/close; BIOS variant success is not game-module parity.
 
@@ -2090,7 +2280,7 @@ Recover actual IOPRP253 EESYNC file paths/effects and IOMAN imports; implement o
 All eight final acceptance criteria remain open. GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED. Evidence reboot_module_probe_001/eesync_verification.json. No active build/probe.
 
 
-## Original game EESYNC file imports — 2026-10-04
+## Original game EESYNC file imports â€” 2026-10-04
 
 Implemented bounded read-only IOMAN open4/lseek8/close5 via existing host file adapter. Signed seeks, descriptor0/capacity/reuse, invalid pointers/modes/whence/closed handles and reset ownership pass Debug/Release. Original IOPRP253 EESYNC now starts without missing imports and publishes exactly40000 in an isolated host with unavailable ROM filesystem. BIOS EESYNC ABI/status and original REBOOT regression pass both configurations. Actual ROM SECRMAN present-file allocation path and boot-collection queue remain unverified. Not production integrated or completed reboot.
 Correction to previous note: ioman8 is lseek, not read; pinned exports and original words preserved. Historical failed tests retained.
@@ -2098,7 +2288,7 @@ Integrate native ROM file adapter with provenance and inspect exact SECRMAN allo
 No title/battle; all eight final criteria open. GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED. Evidence reboot_module_probe_001/ioman_verification.json.
 
 
-## Native ROM adapter and owned reboot request — Release092
+## Native ROM adapter and owned reboot request â€” Release092
 
 Native IOP ROM handles now read mounted original byte snapshots, retain ownership across remount, accept empty files and reject missing/closed/null reads. Actual runtime adapter executes original IOPRP253 EESYNC with original BIOS SECRMAN; exact17633 size selects256byte allocation. SIF/ROM13/13 contracts PASS Debug/Release. Original REBOOT request captures owned command/flags at modload4, stops execution into old RAM, consumes once only outside activeCPU/callback stack; explicit reset clears old modules/threads. Isolated deferred probe PASS both configurations. FullRelease092 linkPASS, actual10s bootTIMEOUT/inputMATCH, still SifGetReg4=0 at return1ACA98. No title/battle.
 Initial original-allocation test expectations wrongly assumed freed heap cursor rewinds; actual allocator does not. Corrected fixture tests retained alongside failures. Initial missing include compile failure retained.
@@ -2106,7 +2296,7 @@ Recover exact UDNL image selection and LOADCORE boot callback order against orig
 All8finalcriteria open. GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED. No active build/probe. Evidence reboot_module_probe_001/rom_deferred_verification.json.
 
 
-## Original LOADCORE callback order and module selection — 2026-10-04
+## Original LOADCORE callback order and module selection â€” 2026-10-04
 
 Implemented owned LOADCORE boot callback collection and finish: priority0..3, per-entry GP, bootarg1, a0 collection start except priority3 next entry, priority2 trailing entry cleanup; original BIOS4F0..5C4 and selected IOPRP25357C..650 agree. Original game EESYNC with actual BIOS SECRMAN starts without ready; publishes40000 only at callback finish. Debug/Release original and synthetic priority/argument/GP probes PASS; original REBOOT capture, immediate EESYNC and IOMAN regressions PASS. Original BIOS IOPBTCONF order and ROMDIR EXTINFO type2 version selection derived for29 modules: selected game LOADCORE/EESYNC/SIF/CDVD, BIOS REBOOT/SECRMAN. Not production restart integration.
 Original BIOS ROMDIR includes repeated padding entries named dash; parser records unique padding IDs and preserves offsets, not duplicate module aliases.
@@ -2115,7 +2305,7 @@ Implement subsystem consumption of owned request after emulator scheduling retur
 GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED. No active build/probe. Evidence reboot_module_probe_001/boot_callbacks_verification.json.
 
 
-## Original reboot consumer and selected29 startup — 2026-10-04
+## Original reboot consumer and selected29 startup â€” 2026-10-04
 
 Original REBOOT consumed safely once; selected29 startup order and original EESYNC last callback PASS Debug/Release. MODLOAD12 and two-descriptor IOMAN tty repaired. Not production or game parity.
 Production integration added verified original module manifest, ROM mounts and exact game command MODULES path. Release093 build started; do not restart while active. Post-reboot EE INIT_CMD/RPC requires actual probe. Previous turn PROGRESS; evidence consumer_verification.json includes retained fixture/version failures and limitations.
@@ -2123,7 +2313,7 @@ User renewed cloud authorization: Azure up to available USD[private balance], AW
 GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED; all8 acceptance criteria open.
 
 
-## Native reboot and continuation catalog — Release098
+## Native reboot and continuation catalog â€” Release098
 
 Release093 consumed original REBOOT and selected29/EESYNC readiness60000;094 completed the new EE handshake;095 installed6,521 missing aliases.096 installed7,089 aliases/returns and passed23A768. Original four-word epilogues1ABD78 and1A88BC pass Debug/Release and are integrated in098. Latest native098: PROCESS_FAILED/inputMATCH, missing1B0308; IOMAN31@29040 also unresolved. No title/battle. Catalog7,636 aliases+589 tails; hardened validator15/15,9,396 canonical sources reread, generated hash identical. Boot contracts Debug/Release pass; native-probe tooling10/10. First wrong build-target path retained as a failed command. Evidence: reboot_module_probe_001/resume_progress_verification_001.json.
 
@@ -2132,7 +2322,7 @@ Quota correction: local Adviser config selects Azure deployment gpt-6.1-sol-1; A
 User authorizes replacement/publication of gzrt3/DW3RE-AI-WORKSPACE and disk compaction. Staging D:/DW3-GitHub-Publish-20261004, original Git history preserved in D:/DW3RE-AI-WORKSPACE-before-20261004.bundle. Preserve originals and unique history in verified archives before cleanup. Native task resumes after publication with1B0308/IOMAN31; all8finalcriteria open.
 
 
-## Latest verified update — 2026-10-05 UTC
+## Latest verified update â€” 2026-10-05 UTC
 
 Read docs/CURRENT_STATUS.md and docs/COPILOT_PIPELINE.md. Native cycle001/002
 builds complete; next measured PC23CB40, IOMAN31 still unresolved. The new
@@ -2140,7 +2330,7 @@ Copilot bridge passes14tests and runner5; model advice never establishes parity.
 All8 acceptance criteria remain open. No active native build at this checkpoint.
 
 
-## Original string, CDVD event and cache continuation — cycles003/004
+## Original string, CDVD event and cache continuation â€” cycles003/004
 
 Cycle003 buildPASS; actual probe passes23CB40 and logs shared CDVD event3,
 with no unhandled IOMAN31. Next1A7014 recovered from20 identified original
@@ -2162,7 +2352,7 @@ GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED; all8criteria
 remain open. No title/battle observed.
 
 
-## Active D checkout, three advisers and NVMe product target — 2026-10-05 UTC
+## Active D checkout, three advisers and NVMe product target â€” 2026-10-05 UTC
 
 Development now runs in D:/DW3-GitHub-Publish-20261004, backed by the existing
 public GitHub repository. C:/Games/DW is the user-authorized final NVMe product
@@ -2200,7 +2390,7 @@ title/menus, first battle, full combined content, saves and final NVMe packaging
 All8 final acceptance criteria remain open. GAME_PARITY=NOT_COMPLETE;
 BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED. No native build/probe remains active.
 
-## Native call completion and final NVMe location — cycle006
+## Native call completion and final NVMe location â€” cycle006
 
 Synchronous IOP calls previously treated yield, instruction-budget exhaustion
 or execution outside RAM as completed returns. Eight new regressions fail
@@ -2233,7 +2423,7 @@ startup success. Then title/menus, battle, complete DW3+XL and final packaging.
 GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED; all8 criteria open.
 
 
-## Boot/video/Press Start triage, native window and public references — cycle007
+## Boot/video/Press Start triage, native window and public references â€” cycle007
 
 Release buildPASS. Three real live observations retain inputMATCH, the same
 MODLOAD1.6 export7/IOP14374 barrier and zero GS images. Original request now
@@ -2266,7 +2456,7 @@ video loops, Press Start/input/audio, battle, combined content, saves/modding an
 final C:/Games/DW packaging. All8 final criteria open; GAME_PARITY=NOT_COMPLETE.
 No native build/probe remains active at this checkpoint.
 
-## Audit recheck, XInput and single-save research — after cycle007
+## Audit recheck, XInput and single-save research â€” after cycle007
 
 Audited published395df9f and verified remote main, executable/ELF identity,
 nine saved run files and45 bounded source fingerprints. Prior ten public files
@@ -2298,7 +2488,7 @@ ABI and failure tests; prepare one common XInput provider/serialization contract
 then original video/Start and verified saving. No required full-game work removed.
 GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED; all8 gates open.
 
-## Native XInput component and single-save implementation path — 2026-10-05 UTC
+## Native XInput component and single-save implementation path â€” 2026-10-05 UTC
 
 User input/save research now has an isolated C++ provider: Windows XInput1.4,
 two fixed player assignments, bounded disconnected polling, real error codes,
@@ -2364,7 +2554,7 @@ must remain distinct. Then real SIO2/DMA/IRQ behavior, original videos/Press Sta
 controls, battle, combined content, durable saves/modding and final packaging.
 No active native build/probe remains at this checkpoint. GAME_PARITY=NOT_COMPLETE.
 
-## Loader prerequisites and original replay — 2026-10-05 UTC
+## Loader prerequisites and original replay â€” 2026-10-05 UTC
 
 Progress: implemented IOMAN6 native file reads, SYSMEM low/high/fixed page256
 allocation/free/query ownership, and selected LOADCORE1.3 image exports22/23.
@@ -2452,32 +2642,40 @@ The next source/evidence backup increment is loader-antislop-ci-20261005-002;
 read its verification.json for final status rather than inferring completion.
 
 
-## Agent Reach instalado y utilizado — 2026-10-05 UTC
+## Agent Reach instalado y utilizado â€” 2026-10-05 UTC
 
-Instalación local1.5.0 fijada a a19a171fa980a0785849596492e0af4db800c82f,
+InstalaciÃ³n local1.5.0 fijada a a19a171fa980a0785849596492e0af4db800c82f,
 licencia MIT y skill con bytes comprobados. GitHub devuelve cinco referencias
-PS2SDK; Jina obtiene LOADCORE y MODLOAD. El MODLOAD completo leído desde su URL
-raw coincide con los bytes públicos salvo posibles saltos exteriores. Se conserva
-la lectura HTML parcial y una búsqueda estrecha sin resultados. Exa devolvió
-RATE_LIMITED, sin reintentos ni alta de clave pagada. No se añadieron llamadas
-Azure/AWS ni límites de gasto. Ver docs/AGENT_REACH.md y el informe público
+PS2SDK; Jina obtiene LOADCORE y MODLOAD. El MODLOAD completo leÃ­do desde su URL
+raw coincide con los bytes pÃºblicos salvo posibles saltos exteriores. Se conserva
+la lectura HTML parcial y una bÃºsqueda estrecha sin resultados. Exa devolviÃ³
+RATE_LIMITED, sin reintentos ni alta de clave pagada. No se aÃ±adieron llamadas
+Azure/AWS ni lÃ­mites de gasto. Ver docs/AGENT_REACH.md y el informe pÃºblico
 (evidence/agent_reach_20261005.json). Launcher reutilizable, fuentes fijadas,
 resultados fallidos conservados;66 pruebas de herramientas PASS.
 
 Trabajo nativo paralelo sin publicar: componente LOADCORE6/7/8/9/10,16 contratos
-y69 comparaciones originales por configuración Debug/Release PASS. Falta revisión
-de integración con dispatcher, listas compartidas, módulos y modos de arranque.
+y69 comparaciones originales por configuraciÃ³n Debug/Release PASS. Falta revisiÃ³n
+de integraciÃ³n con dispatcher, listas compartidas, mÃ³dulos y modos de arranque.
 No ejecutar ni publicar un port completo sobre esta evidencia aislada. La prueba
-original usa el intérprete IOP local e intercepta el flush0x1A60; no es PCSX2
-independiente. Se conserva el primer fallo de configuración /EHsc. Evidencia:
+original usa el intÃ©rprete IOP local e intercepta el flush0x1A60; no es PCSX2
+independiente. Se conserva el primer fallo de configuraciÃ³n /EHsc. Evidencia:
 artifacts/native_pipeline_20261005/loadcore_lifecycle_012/library-001/result.json.
 
-Siguiente acción: revisar la integración del enlazador (J y delay slot, ordinal
-sin destino) y construir estado LOADCORE único y lifecycle12/13/16/17 desde los
-originales. El módulo SDK2.9 solo orienta; el seleccionado sigue siendo1.6. Después,
-ejecutar el worker MODLOAD real y comparar antes de otro boot. Última observación
+Siguiente acciÃ³n: revisar la integraciÃ³n del enlazador (J y delay slot, ordinal
+sin destino) y construir estado LOADCORE Ãºnico y lifecycle12/13/16/17 desde los
+originales. El mÃ³dulo SDK2.9 solo orienta; el seleccionado sigue siendo1.6. DespuÃ©s,
+ejecutar el worker MODLOAD real y comparar antes de otro boot. Ãšltima observaciÃ³n
 nativa sigue en MODLOAD7/SIO2MAN sin imagen GS; ocho criterios finales abiertos.
 
 Verificacion remota Agent Reach: Windows CI37262482135 PASS sobre commit
 3b1fac63acea90a46bde8b366a1c75956fb0001a;66 pruebas de herramientas y checks
 de skills. https://github.com/gzrt3/DW3RE-AI-WORKSPACE/actions/runs/37262482135
+
+## Prioridad del usuario: MODLOAD7/SIO2MAN â€” 2026-10-05 UTC
+
+Automatizacion principal PAUSED mediante la app y revisor GitHub Copilot Disabled
+observado por Computer Use. Sin subagentes ni builds activos. Servidores auxiliares
+de progreso detenidos. Investigacion, nuevas herramientas y pools quedan pausados;
+trabajo activo exclusivo en MODLOAD7/SIO2MAN. No reactivar tareas sin indicacion
+del usuario. Evidencia local: artifacts/native_pipeline_20261005/modload_focus_013.

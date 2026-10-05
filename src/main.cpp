@@ -14,6 +14,12 @@
 #include "ps2_runtime_macros.h"
 #include "runtime/ee_scheduler.h"
 #include "fate/boot_continuations.hpp"
+#include "fate/dma_init_continuation.hpp"
+#include "fate/vif_init_continuation.hpp"
+#include "fate/graphics_init_continuation.hpp"
+#include "fate/waitsema_continuation.hpp"
+#include "fate/irq_return_continuation.hpp"
+#include "fate/pad_boot_continuation.hpp"
 #include "fate/dispatcher.hpp"
 #include "fate/elf.hpp"
 #include "fate/guest_float_environment.hpp"
@@ -120,6 +126,8 @@ int main(int argc, char** argv) {
 
     bool live = false;
     unsigned live_seconds = 0;
+    fate::HostVSync host_vsync = fate::HostVSync::Off;
+    fate::PresenterOptions presenter_options;
     int positional = 0;
     for (int i = 1; i < argc; ++i) {
         const std::string_view arg(argv[i]);
@@ -133,11 +141,33 @@ int main(int argc, char** argv) {
                 return 2;
             }
             live = true;
+        } else if (arg == "--vsync") {
+            if (i + 1 >= argc) {
+                std::cerr << "[BOOT] --vsync requires on or off.\n";
+                return 2;
+            }
+            const std::string_view mode(argv[++i]);
+            if (mode == "on") host_vsync = fate::HostVSync::On;
+            else if (mode == "off") host_vsync = fate::HostVSync::Off;
+            else {
+                std::cerr << "[BOOT] --vsync requires on or off.\n";
+                return 2;
+            }
+            live = true;
+        } else if (arg == "--renderer") {
+            if (i + 1 >= argc) { std::cerr << "[BOOT] --renderer requires auto, direct3d11, direct3d12 or software.\n"; return 2; }
+            const std::string_view name(argv[++i]);
+            if (name == "auto") presenter_options.renderer = fate::HostRenderer::Auto;
+            else if (name == "direct3d11") presenter_options.renderer = fate::HostRenderer::Direct3D11;
+            else if (name == "direct3d12") presenter_options.renderer = fate::HostRenderer::Direct3D12;
+            else if (name == "software") presenter_options.renderer = fate::HostRenderer::Software;
+            else { std::cerr << "[BOOT] Unsupported renderer. Choose auto, direct3d11, direct3d12 or software; Vulkan is not integrated.\n"; return 2; }
+            live = true;
         } else if (!arg.starts_with("--") && positional < 2) {
             if (positional++ == 0) dump_root = argv[i];
             else elf_path = argv[i];
         } else {
-            std::cerr << "Usage: fate_game [dump-root] [elf] [--live] [--live-seconds N]\n";
+            std::cerr << "Usage: fate_game [dump-root] [elf] [--live] [--live-seconds N] [--vsync on|off] [--renderer auto|direct3d11|direct3d12|software]\n";
             return 2;
         }
     }
@@ -176,6 +206,14 @@ int main(int argc, char** argv) {
     std::cout << "[CORE] Dispatcher initialized." << std::endl;
     try {
         fate::recomp::register_boot_continuations(*runtime);
+        fate::recomp::register_dma_init_continuations(*runtime);
+        fate::recomp::register_vif_init_continuation(*runtime);
+        fate::recomp::register_graphics_init_continuations(*runtime);
+        fate::recomp::register_waitsema_continuations(*runtime);
+        fate::recomp::register_irq_return_continuation(*runtime);
+        fate::recomp::register_pad_boot_continuations(*runtime);
+        fate::recomp::register_pad_init_continuations(*runtime);
+        fate::recomp::register_pad_version_continuations(*runtime);
         const auto resumes = fate::recomp::register_generated_resumes(*runtime);
         std::cout << "[CORE] Verified generated resume aliases installed: " << resumes << std::endl;
         std::cout << "[CORE] Verified boot continuations registered." << std::endl;
@@ -273,7 +311,7 @@ int main(int argc, char** argv) {
         const fate::GuestFloatEnvironment guest_float_environment;
         runtime->setMissingFunctionPolicy(PS2Runtime::MissingFunctionPolicy::Stop);
         if (live) {
-            const auto result = fate::run_native_live(*runtime, live_seconds);
+            const auto result = fate::run_native_live(*runtime, live_seconds, host_vsync, nullptr, presenter_options);
             // An intentional observer stop is not an ELF return or a verified boot.
             if (result == fate::LiveExit::WindowClosed) return 0;
             if (result == fate::LiveExit::Deadline) return 2;

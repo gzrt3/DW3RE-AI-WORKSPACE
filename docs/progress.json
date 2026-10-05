@@ -4,22 +4,22 @@
     {
       "id": "heap",
       "verified": true,
-      "detail": "SetupHeap: argumentos y retorno 0x01FF8000 coinciden con PCSX2 en Debug y Release. Heap de 4 KB utilizable. Kernel: 39 pruebas aprobadas por configuración; equivalencia del estado completo pendiente."
+      "detail": "SetupHeap: argumentos y retorno 0x01FF8000 coinciden con PCSX2 en Debug y Release. Heap de 4 KB utilizable. Kernel: 39 pruebas aprobadas por configuraciÃ³n; equivalencia del estado completo pendiente."
     },
     {
       "id": "boot",
       "verified": false,
-      "detail": "Carga IOP: lectura de archivos, memoria de 256 bytes y LOADCORE22/23 implementados. Nueve suites pasan en Debug/Release; 24 comparaciones con instrucciones originales por configuración coinciden. Ventana nativa real: 2.420 observaciones, cero imágenes GS; bloqueo MODLOAD7/SIO2MAN. Título y arranque completo pendientes."
+      "detail": "Ciclo028: puente GS→Direct3D11/12 probado con readback RGBA y observación Computer Use de patrón diagnóstico. Auto prefiereD3D11; selección explícita y VSync comprobados. BuildReleasePASS. El juego mantienePMODE0, vblank:8 sin implementar,1215observaciones/0presentaciones en20s,inputMATCH. No logos originales;0/8criterios. Automatización principalPAUSED y revisorGitHubDisabled. Publicar checkpoint gráfico y después audio, según el usuario. Ver docs/NATIVE_GS_DIRECTX_20261005.md."
     },
     {
       "id": "menus",
       "verified": false,
-      "detail": "Prioridad: vídeos originales, sus bucles y Press Start. Siete archivos candidatos coinciden con los originales. Proveedor XInput aislado: diez contratos pasan en Debug/Release; API real disponible sin mandos conectados. Integración de entrada al juego, reproducción y audio pendientes."
+      "detail": "Prioridad: vÃ­deos originales, sus bucles y Press Start. Siete archivos candidatos coinciden con los originales. Proveedor XInput aislado: diez contratos pasan en Debug/Release; API real disponible sin mandos conectados. IntegraciÃ³n de entrada al juego, reproducciÃ³n y audio pendientes."
     },
     {
       "id": "combined_battle",
       "verified": false,
-      "detail": "Datos de ambos juegos preparados y lector nativo probado: los 5.138 recursos coinciden con los originales mediante SHA256 en Debug y Release. Acceso por sectores probado con versión explícita y muestras originales coincidentes. Integración en el juego, modos, mapas, lados y batalla pendientes."
+      "detail": "Datos de ambos juegos preparados y lector nativo probado: los 5.138 recursos coinciden con los originales mediante SHA256 en Debug y Release. Acceso por sectores probado con versiÃ³n explÃ­cita y muestras originales coincidentes. IntegraciÃ³n en el juego, modos, mapas, lados y batalla pendientes."
     }
   ],
   "acceptance": [
@@ -28,7 +28,7 @@
       "verified": false
     },
     {
-      "name": "Arranque nativo y ejecución",
+      "name": "Arranque nativo y ejecuciÃ³n",
       "verified": false
     },
     {
@@ -44,7 +44,7 @@
       "verified": false
     },
     {
-      "name": "Gráficos, audio y controles",
+      "name": "GrÃ¡ficos, audio y controles",
       "verified": false
     },
     {
@@ -52,7 +52,7 @@
       "verified": false
     },
     {
-      "name": "Paquete nativo standalone, modding y validación final",
+      "name": "Paquete nativo standalone, modding y validaciÃ³n final",
       "verified": false
     }
   ],
@@ -84,11 +84,26 @@
     "evidence/adviser_pool_20261005.json",
     "evidence/native_loader_prerequisites_20261005.json",
     "evidence/antislop_20261005.json",
-    "evidence/agent_reach_20261005.json"
+    "evidence/agent_reach_20261005.json",
+    "evidence/native_modload_sio2man_20261005.json",
+    "evidence/native_dma_vif_20261005.json",
+    "evidence/native_graphics_20261005.json",
+    "evidence/native_host_vsync_20261005.json",
+    "evidence/native_irq_registration_20261005.json",
+    "evidence/native_graphics_buffer_20261005.json",
+    "evidence/native_graphics_packet_return_20261005.json",
+    "evidence/native_graphics_config_20261005.json",
+    "evidence/native_gs_store_20261005.json",
+    "evidence/native_dma_submit_20261005.json",
+    "evidence/native_color_dma_parity_20261005.json",
+    "evidence/native_waitsema_20261005.json",
+    "evidence/native_boot_providers_20261005.json",
+    "evidence/native_pad_boot_20261005.json",
+    "evidence/native_gs_directx_20261005.json"
   ],
-  "objective": "Port nativo Windows x64 standalone: DW3 + XL completos sin cambio de disco, con modding y verificación de extremo a extremo.",
+  "objective": "Port nativo Windows x64 standalone: DW3 + XL completos sin cambio de disco, con modding y verificaciÃ³n de extremo a extremo.",
   "product_root": "C:/Games/DW",
   "development_root": "D:/DW3-GitHub-Publish-20261004",
   "backup_root": "D:/Backup/DWProject",
-  "research_update": "Agent Reach 1.5.0 integrado: GitHub y Jina probados con fuentes PS2SDK; Exa limitado por cuota. 66 pruebas de herramientas aprobadas. MODLOAD7/SIO2MAN sigue pendiente; 0/8 criterios finales demostrados."
+  "research_update": "PuenteGS→D3D11/12 verificado con readback. Pantalla del juego: PMODE0 y bloqueo vblank:8. Siguiente prioridad autorizada: audio después de publicar Git."
 }

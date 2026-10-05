@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "updated_utc": "2026-10-05T09:39:11.483312+00:00",
+  "cycle": "gs_presenter_028",
+  "bridge": "GS CPU frame -> RGBA texture -> SDL Direct3D11/12",
+  "default_windows_renderer": "direct3d11",
+  "tests": [
+    {
+      "configuration": "Debug",
+      "requested": "dummy",
+      "cases": 4,
+      "readback_pixels_per_enabled_case": 4096,
+      "explicit_failure_case": true,
+      "log": "artifacts/native_pipeline_20261005/gs_presenter_028/final-Debug-dummy.log",
+      "sha256": "9943642bf56f166b0d8b52ecb6d8fa67f11faf70c682178ab536227e32ae92b2"
+    },
+    {
+      "configuration": "Release",
+      "requested": "dummy",
+      "cases": 4,
+      "readback_pixels_per_enabled_case": 4096,
+      "explicit_failure_case": true,
+      "log": "artifacts/native_pipeline_20261005/gs_presenter_028/final-Release-dummy.log",
+      "sha256": "c9356c668b5ea5ee6b03b3bb193a82a0c485ca42ae39b3ec60bf4c31e1c071be"
+    },
+    {
+      "configuration": "Debug",
+      "requested": "direct3d11",
+      "cases": 4,
+      "readback_pixels_per_enabled_case": 4096,
+      "explicit_failure_case": false,
+      "log": "artifacts/native_pipeline_20261005/gs_presenter_028/final-Debug-direct3d11.log",
+      "sha256": "a18ee543f985fd0e644331d5961e76748806690bb8b342de92b50fd5be902694"
+    },
+    {
+      "configuration": "Release",
+      "requested": "direct3d11",
+      "cases": 4,
+      "readback_pixels_per_enabled_case": 4096,
+      "explicit_failure_case": false,
+      "log": "artifacts/native_pipeline_20261005/gs_presenter_028/final-Release-direct3d11.log",
+      "sha256": "b64a7bfd57980e82edc31d3582a7788ce0af8f966492c142a8ac6762065c9f33"
+    },
+    {
+      "configuration": "Release",
+      "requested": "direct3d12",
+      "cases": 4,
+      "readback_pixels_per_enabled_case": 4096,
+      "explicit_failure_case": false,
+      "log": "artifacts/native_pipeline_20261005/gs_presenter_028/final-Release-direct3d12.log",
+      "sha256": "f20b511efc67dd8c0260627c06442c232a6510df58878326ebf6a5945557b077"
+    },
+    {
+      "configuration": "Release",
+      "requested": "software",
+      "cases": 4,
+      "readback_pixels_per_enabled_case": 4096,
+      "explicit_failure_case": false,
+      "log": "artifacts/native_pipeline_20261005/gs_presenter_028/final-Release-software.log",
+      "sha256": "d86d37d80812f2339c4d228970182b66d65ced8ab73651ea9c2dd5cf9b440dad"
+    },
+    {
+      "configuration": "Release",
+      "requested": "auto",
+      "cases": 4,
+      "readback_pixels_per_enabled_case": 4096,
+      "explicit_failure_case": false,
+      "log": "artifacts/native_pipeline_20261005/gs_presenter_028/final-Release-auto.log",
+      "sha256": "192e83daa0712a3012410db8dfc28d36f478acad2ecfc64031c341f0aef89f8a"
+    }
+  ],
+  "gpu_readback": "exact RGBA MATCH for tested4096-pixel fixture",
+  "build": "Release001 PASS",
+  "native": {
+    "run": "native-001",
+    "exit_code": 2,
+    "input_integrity": "MATCH",
+    "renderer": "direct3d11",
+    "pmode": "0x0",
+    "frame_state": "display-disabled",
+    "observations": 1215,
+    "presentations": 0,
+    "remaining_barrier": "IOP vblank0101 ordinal8"
+  },
+  "tooling": [
+    {
+      "name": "antislop-pin",
+      "exit_code": 0,
+      "log": "prepublish-antislop-pin.log"
+    },
+    {
+      "name": "agent-reach-pin",
+      "exit_code": 0,
+      "log": "prepublish-agent-reach-pin.log"
+    },
+    {
+      "name": "agent_reach_research",
+      "exit_code": 0,
+      "log": "prepublish-agent_reach_research.log"
+    },
+    {
+      "name": "antislop",
+      "exit_code": 0,
+      "log": "prepublish-antislop.log"
+    },
+    {
+      "name": "resume_catalog",
+      "exit_code": 0,
+      "log": "prepublish-resume_catalog.log"
+    },
+    {
+      "name": "copilot_bridge",
+      "exit_code": 0,
+      "log": "prepublish-copilot_bridge.log"
+    },
+    {
+      "name": "adviser_pool",
+      "exit_code": 0,
+      "log": "prepublish-adviser_pool.log"
+    },
+    {
+      "name": "native_pipeline",
+      "exit_code": 0,
+      "log": "prepublish-native_pipeline.log"
+    },
+    {
+      "name": "original_dma_checkpoint_replay",
+      "exit_code": 0,
+      "log": "prepublish-original_dma_checkpoint_replay.log"
+    },
+    {
+      "name": "original_graphics_checkpoint_replay",
+      "exit_code": 0,
+      "log": "prepublish-original_graphics_checkpoint_replay.log"
+    }
+  ],
+  "visual": {
+    "path": "artifacts/native_pipeline_20261005/gs_presenter_028/computer-use-direct3d11.png",
+    "sha256": "aab2c0a7592821dac2e2e601a51384d0c6a91a15885861964f25f4f4bed9f50d",
+    "scope": "synthetic diagnostic visible, not game"
+  },
+  "adviser": {
+    "requested_model": "gpt-6.1-sol",
+    "transport": "Adviser subagent gs_d3d_review",
+    "findings": "No concrete defect; policy and alpha coverage gaps verified after extending tests"
+  },
+  "paused": {
+    "main_automation": "PAUSED",
+    "github_review": "Disabled observed by Computer Use"
+  },
+  "limits": [
+    "Vulkan not integrated",
+    "GS rasterization remains CPU",
+    "original game frames/logos not reached",
+    "sub64 dimension fallback remains",
+    "3 prior general IOP regressions remain open"
+  ],
+  "new_azure_aws_calls": 0,
+  "final_acceptance_closed": 0,
+  "sources": [
+    {
+      "path": "src/native_presenter.cpp",
+      "sha256": "4803bd630b671935333a543cd0853bb0d84a8d74d96ab746417595d2a3301723"
+    },
+    {
+      "path": "include/fate/native_presenter.hpp",
+      "sha256": "1920cc78cfff3d4169326831d2e92760c38cef3d5cda5901184a6ac60283ebe0"
+    },
+    {
+      "path": "src/main.cpp",
+      "sha256": "07f0319e7389373115814271e3e0a99e9d5ce593b5ecbf3bcc9d1a85d6de4392"
+    },
+    {
+      "path": "tests/integration/native_presenter_contract.cpp",
+      "sha256": "97771c043dbc203ac9a8b10e14a64fd3f231294275d61fa5e7276a0483e79de5"
+    }
+  ]
+}

@@ -5,9 +5,26 @@ Work in progress: a Windows x64 static recompilation and native runtime project 
 **This is a development workspace, not a playable remaster.** No title screen or complete battle has been demonstrated. All eight final acceptance criteria remain open. Successful builds and focused contracts do not establish equivalence with the original games.
 
 Current priority: [original boot, movies and Press Start](docs/BOOT_TO_PRESS_START_TRIAGE.md).
-The native GS can now be observed in a real window without resetting prepared
-state. cycle007 still produces no game image and stops at the SIO2MAN request
-through MODLOAD7. See the [current audit and public references](docs/audits/BOOT_WEB_AUDIT_20261005.md).
+
+Ciclo028: puente GS→Direct3D11/12 probado con readback RGBA y observación Computer Use de patrón diagnóstico. Auto prefiereD3D11; selección explícita y VSync comprobados. BuildReleasePASS. El juego mantienePMODE0, vblank:8 sin implementar,1215observaciones/0presentaciones en20s,inputMATCH. No logos originales;0/8criterios. Automatización principalPAUSED y revisorGitHubDisabled. Publicar checkpoint gráfico y después audio, según el usuario. Ver docs/NATIVE_GS_DIRECTX_20261005.md.
+
+
+Ciclo027: Release003 PASS;170B24,1ADE0C y1AEF98 superados. Ambos servidores PAD responden y la versiÃ³n403 procede del IOP. Nueva barrera vblank:8 (RegisterVblankHandler),antes de completar init. Native003: plazo40s,exit2,inputMATCH,2416observaciones y0presentaciones. Computer Use observÃ³ la ventana nativa negra. Contratos PAD Debug/Release PASS;3regresiones IOP generales siguen abiertas. Primeros logos pendientes;0/8criterios cerrados. Ver docs/NATIVE_PAD_BOOT_20261005.md.
+
+The following026 checkpoint is retained as history.
+Cycle026: all eight initial modules now enter, return and reside, including
+KOEISND. Correcting outgoing SIF DMA direction removed premature RPC completion.
+Memory-card binding and its next call complete; next missing continuation is
+`0x00170B24`. Full Release build passes; no native logo has been demonstrated.
+Three broader IOP regressions remain open. See [current evidence](docs/NATIVE_BOOT_PROVIDERS_20261005.md).
+The following025 checkpoint is retained as history.
+The latest native run passes original SIO2MAN startup, DMA/VIF initialization,
+graphics setup, GsSetCrt, IRQ registration and recovered graphics buffer/packet
+returns. It also passes the recovered graphics configuration tail19A510 and store return1B8040; GIF submission19AA4C also passes; color return1B7F84 passes; the recovered `0x001B1004` continuation also passes. It now waits for memory-card RPC `0x80000400`, with missing module startup and invocation `0x00234400` under investigation; no game image is demonstrated. User priority: native boot and the first original logos. See [cycle025](docs/NATIVE_WAITSEMA_20261005.md). See the
+[buffer and packet checkpoint](docs/NATIVE_GRAPHICS_BUFFER_20261005.md),
+[graphics checkpoint](docs/NATIVE_GRAPHICS_20261005.md),
+[DMA/VIF checkpoint](docs/NATIVE_DMA_VIF_20261005.md) and the preceding
+[MODLOAD7/SIO2MAN repair](docs/NATIVE_MODLOAD_SIO2MAN_20261005.md).
 `scripts/observe_native.ps1` runs a bounded visible observation with preserved
 logs; it is not a standalone game release.
 
@@ -19,7 +36,7 @@ Current product contract: [native PC objective](docs/NATIVE_PC_OBJECTIVE.md). Th
 - SetupHeap arguments and return agree with recorded reference checkpoints in Debug and Release; other state differences remain open.
 - The original IOP reboot request now reaches the selected module startup and original EESYNC callback, followed by the new EE handshake.
 - A verified catalog restores 7,636 existing resume aliases and 589 original return tails. Existing reviewed overrides take precedence.
-- Native cycle007 builds in the Git checkout and waits at MODLOAD1.6 export7 while requesting the original SIO2MAN.IRX, with input integrity MATCH. A real native window observes zero GS images. MODLOAD15 is implemented; missing imports and incomplete synchronous IOP calls stop the affected execution without a fabricated RPC reply. The earlier `0x0019A6C4` continuation remains unresolved; see `docs/CURRENT_STATUS.md`.
+- Native `waitsema_resume_025/native-001` passes `0x001B1004` and times out at memory-card RPC binding with input integrity MATCH; live runs produce no GS presentation. Selected graphics Debug/Release contracts pass; full CRT kernel state and gameplay remain unverified. See `docs/CURRENT_STATUS.md`.
 - Four bounded advisory queues are connected: GitHub Copilot, Microsoft Copilot, browser ChatGPT and AWS Bedrock through the existing private budget ledger. Real GitHub and Nova Pro reviews ran in cycle008; all findings are independently checked. See [pool integration and limits](docs/ADVISER_POOL.md).
 - Combined data/VFS components exist, but combined gameplay, graphics, sound, input, saves and full content coverage remain unverified.
 
@@ -73,6 +90,13 @@ python -m unittest discover -s tests -p test_native_boot_probe.py -v
 ```
 
 For a bounded local run, provide `--exe`, `--dump-root`, `--elf`, `--iop-root`, a new `--output` directory and a timeout to `tools/native_boot_probe.py`. Logs preserve input identities and failures. A timeout or process exit is not a verified boot.
+
+Host presentation VSync is optional and defaults to off. Use `--vsync on` or
+`--vsync off` with `fate_game`; this enables live presentation. The bounded
+observer accepts `./scripts/observe_native.ps1 -VSync on -Seconds 120`.
+Internal PS2 VBLANK timing stays enabled. SDL may implement pacing in software;
+this setting does not establish VRR, higher simulation FPS or physical display
+synchronization. See [presentation checks](docs/NATIVE_HOST_VSYNC_20261005.md).
 
 ## Modding and contributions
 

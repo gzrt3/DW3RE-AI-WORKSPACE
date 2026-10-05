@@ -5,6 +5,7 @@
 #include "ps2x/iop/iop_host.h"
 
 #include <string>
+#include <sstream>
 
 namespace ps2x::iop::detail
 {
@@ -31,8 +32,25 @@ namespace ps2x::iop::detail
         switch (ordinal)
         {
         case 4: // printf
+        {
+            const auto format=m_memory.readString(a0,128u);
+            if(format.starts_with("loadmodule:") && m_loadModuleObservations++<64u) {
+                std::ostringstream out;
+                out<<"[IOP:loadfile-printf-args] ra=0x"<<std::hex<<cpu.gpr[31]
+                   <<" a1=0x"<<a1<<" a2=0x"<<cpu.gpr[6]<<" a3=0x"<<cpu.gpr[7];
+                if(format.starts_with("loadmodule: fname")) {
+                    out<<" filename_hex=";
+                    constexpr char hex[]="0123456789abcdef";
+                    for(uint32_t n=0u;n<256u&&a1<=UINT32_MAX-n&&m_memory.ownsRamRange(a1+n,1u);++n) {
+                        const auto byte=m_memory.read8(a1+n);if(byte==0u) break;
+                        out<<hex[byte>>4u]<<hex[byte&15u];
+                    }
+                }
+                m_host.log(LogLevel::Info,out.str());
+            }
             logString("[IOP printf] ", a0);
             return true;
+        }
         case 5: // getchar
         case 10:
             setV0(0xFFFFFFFFu);

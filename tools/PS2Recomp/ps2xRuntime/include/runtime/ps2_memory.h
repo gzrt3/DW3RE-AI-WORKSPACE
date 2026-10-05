@@ -306,6 +306,7 @@ public:
     // Hardware register interface
     bool writeIORegister(uint32_t address, uint32_t value);
     uint32_t readIORegister(uint32_t address);
+    void raiseIntcInterrupt(uint32_t cause);
     bool writeIopSifRegister(uint32_t index, uint32_t value);
 
     // EE timers advance from the scheduler's emulated EE-cycle clock. The

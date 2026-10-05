@@ -304,6 +304,23 @@ void EeScheduler::run()
             continue;
         }
 
+        const uint32_t dispatchPc = context.pc;
+        static unsigned moduleDispatchObservations = 0u;
+        const bool traceModuleDispatch = moduleDispatchObservations < 240u &&
+            ((dispatchPc >= 0x17ff74u && dispatchPc <= 0x17ffd8u) ||
+             (dispatchPc >= 0x1ac398u && dispatchPc <= 0x1ac5e0u) ||
+             (dispatchPc >= 0x1a78a8u && dispatchPc <= 0x1a7b20u) ||
+             (dispatchPc >= 0x1a4860u && dispatchPc <= 0x1a486cu));
+        const auto traceModule = [&](const char* phase) {
+            if (!traceModuleDispatch) return;
+            ++moduleDispatchObservations;
+            std::cerr << "[EE:module-dispatch:" << phase << "] entry=0x" << std::hex << dispatchPc
+                      << " pc=0x" << context.pc << " sp=0x" << getRegU32(&context,29)
+                      << " ra=0x" << getRegU32(&context,31) << " s0=0x" << getRegU32(&context,16)
+                      << " v0=0x" << getRegU32(&context,2) << std::dec << " thread=" << running->id
+                      << " invocations=" << running->invocations.size() << std::endl;
+        };
+        traceModule("before");
         try
         {
             m_insideInterrupt = !running->invocations.empty() && running->invocations.back().kind == GuestInvocationKind::Interrupt;
@@ -325,6 +342,7 @@ void EeScheduler::run()
             throw;
         }
 
+        traceModule("after");
         processPendingEvents();
         if (m_rescheduleRequested && m_currentThreadId != 0)
         {
@@ -865,6 +883,8 @@ int EeScheduler::createSemaphore(int initCount, int maxCount, uint32_t attr, uin
     semaphore.attr = attr;
     semaphore.option = option;
     m_semaphores.emplace(id, std::move(semaphore));
+    static unsigned createObservations=0u;
+    if(createObservations++<64u) std::cerr << "[EE:sema:create] id=" << id << " init=" << initCount << " max=" << maxCount << std::endl;
     publishSnapshot();
     return id;
 }
@@ -895,6 +915,14 @@ int EeScheduler::signalSemaphore(int id, bool interruptSafe)
 {
     assertExecutor();
     EeSemaphore *object = semaphore(id);
+    static unsigned signalObservations=0u;
+    if(signalObservations++<96u) {
+        const auto* owner=currentThread();
+        std::cerr << "[EE:sema:signal] id=" << id << " count=" << (object?object->count:-1)
+                  << " waiters=" << (object?object->waiters.size():0u) << " pc=0x" << std::hex
+                  << (owner?owner->activeContext().pc:0u) << " ra=0x" << (owner?getRegU32(&owner->activeContext(),31):0u)
+                  << std::dec << " invocations=" << (owner?owner->invocations.size():0u) << std::endl;
+    }
     if (!object)
     {
         return KE_UNKNOWN_SEMID;
@@ -939,6 +967,8 @@ void EeScheduler::waitSemaphore(int id)
 {
     assertExecutor();
     EeSemaphore *object = semaphore(id);
+    static unsigned waitObservations=0u;
+    if(waitObservations++<64u) std::cerr << "[EE:sema:wait] id=" << id << " count=" << (object?object->count:-1) << std::endl;
     if (!object)
     {
         GuestThread *self = currentThread();
@@ -1283,6 +1313,8 @@ int EeScheduler::setIrqCauseEnabled(bool dmac, uint32_t cause, bool enabled)
 void EeScheduler::dispatchIrq(bool dmac, uint32_t cause)
 {
     assertExecutor();
+    if (!dmac)
+        m_runtime.memory().raiseIntcInterrupt(cause);
     const uint32_t mask = dmac ? m_enabledDmacMask : m_enabledIntcMask;
     if (cause < 32u && (mask & (1u << cause)) == 0u)
     {
