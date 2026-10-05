@@ -155,3 +155,21 @@ then rerun native boot and recover19A6C4 when actually reached. Continue real
 title/menus, first battle, full combined content, saves and final NVMe packaging.
 All8 final acceptance criteria remain open. GAME_PARITY=NOT_COMPLETE;
 BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED. No native build/probe remains active.
+
+## Latest cycle006: synchronous completion barrier
+
+Full Release buildPASS and bounded10s probeTIMEOUT/inputMATCH. MODLOAD1.6
+export7 at14374 remains the barrier; cycle006 stderr matches cycle005 exactly.
+New synchronous call completion checks reject yield/budget/out-of-RAM stops
+instead of publishing v0 as a return. Eleven contracts plus four focused suites
+pass Debug/Release; eight pipeline tests pass. The classifier records entry,
+stopping PC and reason for incomplete calls, excluding intentional deferred
+reboot from that category. See NATIVE_CALL_COMPLETION_20261005.md.
+
+Three queues synchronized; changed runtime review is READY for the next eligible
+UI continuation, prior reply preserved as stale. No repeated submission or paid
+call. Current source and build remain in D; final folder C:/Games/DW is reserved
+and its standalone progress page is visually checked. Backup owner20256 is
+still hashing,48000/268654 verified/zero errors at last observation; no deletion.
+Next original MODLOAD7 worker/argument/lifecycle implementation, then actual
+title, battle and complete combined content. All8 final acceptance gates open.

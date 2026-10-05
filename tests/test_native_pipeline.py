@@ -32,6 +32,23 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(len(r['work']),2)
         self.assertEqual(r['work'][0]['pc'],0x2000)
 
+    def test_incomplete_call_preserves_entry_stop_and_reason_without_duplicates(self):
+        for reason in ('yielded', 'stopped', 'budget-exhausted'):
+            text=f'[IOP] incomplete guest call entry=0x10100 pc=0x10204 reason={reason}\n'
+            r=classify({'input_integrity':'MATCH','status':'TIMEOUT'},text*2)
+            self.assertEqual(len(r['work']),1)
+            self.assertEqual(r['work'][0]['kind'],'repair_incomplete_iop_call')
+            self.assertEqual(r['work'][0]['entry'],0x10100)
+            self.assertEqual(r['work'][0]['pc'],0x10204)
+            self.assertEqual(r['work'][0]['reason'],reason)
+            self.assertFalse(r['game_complete'])
+
+    def test_nonreturning_reboot_is_not_classified_as_a_lost_continuation(self):
+        text='[IOP] incomplete guest call entry=0x10100 pc=0x10204 reason=reboot\n'
+        r=classify({'input_integrity':'MATCH','status':'PROCESS_EXITED'},text)
+        self.assertEqual(r['work'][0]['kind'],'inspect_native_observation')
+        self.assertFalse(r['game_complete'])
+
     def test_adviser_failure_is_recorded_and_other_adviser_continues(self):
         with tempfile.TemporaryDirectory() as directory:
             with patch('native_pipeline.copilot_bridge.collect', side_effect=[ValueError('changed'), [], []]), \

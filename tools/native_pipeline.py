@@ -23,6 +23,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def classify(result, stderr):
     missing=re.findall(r'\[guest-branch:missing-target\][^\n]*?target=(0x[0-9a-fA-F]+)',stderr)
     imports=re.findall(r'unhandled import ([\w]+):(\d+) version=(0x[0-9a-fA-F]+) pc=(0x[0-9a-fA-F]+)',stderr)
+    incomplete=re.findall(r'\[IOP\] incomplete guest call entry=(0x[0-9a-fA-F]+) pc=(0x[0-9a-fA-F]+) reason=(yielded|stopped|budget-exhausted)\b',stderr)
     work=[]
     if result.get('input_integrity')!='MATCH':
         return {'state':'INPUT_INTEGRITY_BLOCKED','work':[],'game_complete':False}
@@ -33,6 +34,13 @@ def classify(result, stderr):
         work.append({'kind':'implement_versioned_iop_import','library':library,'ordinal':int(ordinal),
                      'version':int(version,16),'pc':int(pc,16),
                      'requires':['matching original export table','shared subsystem ownership','original module replay']})
+    # A deferred reboot is intentionally nonreturning; its separate lifecycle
+    # owns that request. Only discarded synchronous continuations belong here.
+    for entry,pc,reason in dict.fromkeys(incomplete):
+        work.append({'kind':'repair_incomplete_iop_call','entry':int(entry,16),
+                     'pc':int(pc,16),'reason':reason,
+                     'requires':['original calling convention and worker ownership',
+                                 'persistent continuation or explicit terminal failure','native replay']})
     if not work:
         work.append({'kind':'inspect_native_observation','status':result.get('status'),
                      'requires':['bounded state/trace diagnosis','title/battle observation when reached']})

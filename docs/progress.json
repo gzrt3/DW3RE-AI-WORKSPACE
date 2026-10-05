@@ -9,7 +9,7 @@
     {
       "id": "boot",
       "verified": false,
-      "detail": "Arranque nativo desde la copia de GitHub: compilación Release aprobada; MODLOAD15 implementado y comparación acotada con instrucciones originales aprobada. Ciclo005: espera en MODLOAD7, sin inventar respuesta RPC. Título y batalla pendientes."
+      "detail": "Ciclo006: compilación nativa Release aprobada; prueba de 10 segundos con entradas intactas, todavía detenida en MODLOAD7. Corregidas falsas finalizaciones de llamadas: 11 contratos y cuatro suites de regresión pasan en Debug y Release. Título y batalla pendientes."
     },
     {
       "id": "menus",
@@ -73,7 +73,8 @@
     "evidence/vfs_repair_001/verified/summary.json",
     "evidence/reboot_module_probe_001/return_validator_audit_001/corpus.json",
     "evidence/native_repair_20261005.json",
-    "evidence/native_import_barrier_20261005.json"
+    "evidence/native_import_barrier_20261005.json",
+    "evidence/native_call_completion_20261005.json"
   ],
   "objective": "Port nativo Windows x64 standalone: DW3 + XL completos sin cambio de disco, con modding y verificación de extremo a extremo.",
   "product_root": "C:/Games/DW",
