@@ -30,6 +30,7 @@ SOURCE_NAMES = (
     'src/patch_engine.cpp', 'src/recomp/entry_0x100008.cpp',
     'src/recomp/FUN_001ad6e8_0x1ad6e8.cpp',
     'src/boot_continuations.cpp', 'include/fate/boot_continuations.hpp',
+    'src/recovered/cdvd_command_001b0308.inc', 'tools/recover_continuation.py',
     'src/boot_syscall_handlers.cpp',
     'src/boot_thread_syscalls.cpp',
     'src/native_iop_boot.cpp', 'include/fate/native_iop_boot.hpp',

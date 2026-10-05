@@ -1,15 +1,27 @@
 # Current verified state
 
-Last native development probe: **Release098**, 2026-10-04.
+Latest development native probes: cycles001/002, 2026-10-05 UTC. Both builds
+passed. Their processes then stopped at missing continuation **0x0023CB40**,
+with input integrity MATCH and unresolved IOMAN export31 version0x104 at0x29040.
+The prior1B0308 barrier is passed by the bounded39-instruction recovery, checked
+against the identified original ELF and focused Debug/Release contracts.
 
-The standalone process consumed the original IOP reboot request, initialized the selected module plan, observed original EESYNC readiness `0x60000`, completed the post-reset EE handshake, and entered file/CDVD service setup.
+**0/8 final acceptance criteria verified.** No title screen or complete battle
+has been demonstrated. The next work is original23CB40 recovery and versioned
+IOMAN devctl0x4391 through the existing CDVD event owner, retaining FILEIO waits.
 
-It then stopped at missing guest continuation **`0x001B0308`**. The log also reports unresolved **IOP IOMAN export31 at `0x00029040`**. Input integrity was `MATCH`; the process result was `PROCESS_FAILED`, not a successful boot.
+Both Copilot advisers returned real results: GitHub desktop has a local hourly
+review automation; Microsoft Copilot personal is accessed through supported
+Computer Use by the main continuation. Their quotas are separate from Azure/AWS.
+The runner synchronizes bounded requests/replies without executing model output.
+Fourteen bridge tests and five runner tests pass. One incorrect mathematical
+statement from Microsoft was rejected; see docs/audits/COPILOT_REVIEW_20261005.md.
 
-Completed repairs include the original return at `0x0023A768` and two omitted four-instruction epilogues at `0x001ABD78` and `0x001A88BC`. Focused contracts pass in Debug and Release. The catalog contains 7,636 aliases and 589 original JR tails; stronger validation retained the identical generated catalog after checking 9,396 canonical sources. Its 15 Python tests pass. Native probe tooling passes 10 tests.
+The broader signed branch emitter edit remains local pending its own build and
+behavioral tests; this publication does not include that unvalidated change.
+Existing generated corpus is unchanged. Native code in this update was verified
+in the development checkout; the previous clean publication build is documented
+in PUBLICATION.md and has not been rerun for this update.
 
-**0/8 final acceptance criteria verified.** No title screen, full battle or combined playable game is demonstrated. The next runtime work is to recover the two measured missing interfaces from original instructions and imports, then continue toward title, menus and battle.
-
-See `evidence/native_boot_release_098/result.json` and `evidence/reboot_module_probe_001/resume_progress_verification_001.json`. Public paths are normalized; raw traces remain in the private local evidence archive.
-
-Publication work adds a portable dependency-build script, removes machine-specific SDL lookup, and publishes the modified runtime source. A clean build validates packaging separately from game behavior; see PUBLICATION.md for the measured result.
+Selected evidence is in evidence/copilot_pipeline_20261005.json. Private raw
+responses, logs, original assets, provider ledgers and full traces stay local.

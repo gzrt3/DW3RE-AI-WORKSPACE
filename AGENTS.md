@@ -11,3 +11,5 @@ This repository contains a Windows x64 static recompilation project in developme
 - The vendored runtime contains local modifications; do not replace it with an unmodified upstream checkout.
 - Build with scripts/build_native.ps1. The full game target currently uses separately built native runtime libraries. Focused tooling tests run without game data.
 - Public evidence normalizes local paths. Embedded hashes identify the original local artifacts; normalized JSON files have different hashes.
+
+- The bounded Copilot bridge and native pipeline are documented in docs/COPILOT_PIPELINE.md. Advisers never apply code; recheck live source hashes and independently verify every claim. Preserve submitted/uncertain requests without automatic retries.

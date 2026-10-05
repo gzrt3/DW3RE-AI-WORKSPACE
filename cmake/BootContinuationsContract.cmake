@@ -1,0 +1,70 @@
+# Focused original-continuation ABI contracts, without rebuilding the full corpus.
+set(fate_contract_sources
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_0017fea0_0x17fea0.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001966a0_0x1966a0.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001a4820_0x1a4820.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001a4840_0x1a4840.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001a4f20_0x1a4f20.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001a53d0_0x1a53d0.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001a5438_0x1a5438.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001a55f8_0x1a55f8.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001a6c18_0x1a6c18.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001a7208_0x1a7208.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001a76d8_0x1a76d8.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001a78a8_0x1a78a8.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001ac920_0x1ac920.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001aca88_0x1aca88.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001acac0_0x1acac0.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001acd20_0x1acd20.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001ad4c0_0x1ad4c0.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001ad590_0x1ad590.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001ad5d8_0x1ad5d8.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001ad6d8_0x1ad6d8.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001ad6e8_0x1ad6e8.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001ad790_0x1ad790.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001ad7f8_0x1ad7f8.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001adbb0_0x1adbb0.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001af3e8_0x1af3e8.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001afe08_0x1afe08.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_001bffe0_0x1bffe0.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_00238b00_0x238b00.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_00238df8_0x238df8.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_00239928_0x239928.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_00239980_0x239980.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_002399c8_0x2399c8.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_00239c20_0x239c20.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_0023a770_0x23a770.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_0023a7f0_0x23a7f0.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/FUN_0023c3f8_0x23c3f8.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/entry_00100018_0x100018.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/entry_00238bb0_0x238bb0.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/entry_00239bbc_0x239bbc.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/entry_00239bf0_0x239bf0.cpp"
+    "${CMAKE_SOURCE_DIR}/src/recomp/entry_0x100008.cpp"
+)
+add_executable(boot_continuations_contract
+    "${CMAKE_SOURCE_DIR}/tests/integration/boot_continuations_contract.cpp"
+    "${CMAKE_SOURCE_DIR}/src/boot_continuations.cpp"
+    "${CMAKE_SOURCE_DIR}/src/boot_syscall_handlers.cpp"
+    "${CMAKE_SOURCE_DIR}/src/boot_thread_syscalls.cpp"
+    "${CMAKE_SOURCE_DIR}/src/sif_irq_continuations.cpp"
+    ${fate_contract_sources})
+target_include_directories(boot_continuations_contract PRIVATE "${CMAKE_SOURCE_DIR}/include")
+target_include_directories(boot_continuations_contract SYSTEM PRIVATE
+    "${CMAKE_SOURCE_DIR}/src/recomp"
+    "${CMAKE_SOURCE_DIR}/tools/PS2Recomp/ps2xRuntime/include"
+    "${CMAKE_SOURCE_DIR}/tools/PS2Recomp/ps2xIOP/include"
+    "${CMAKE_SOURCE_DIR}/tools/PS2Recomp/ps2xRuntime/src/lib/Kernel")
+if(MSVC)
+    target_compile_options(boot_continuations_contract PRIVATE /W4 /WX /permissive- /EHsc /utf-8 /external:W0 /wd4324)
+    set_source_files_properties(${fate_contract_sources}
+        "${CMAKE_SOURCE_DIR}/src/boot_continuations.cpp"
+        "${CMAKE_SOURCE_DIR}/src/boot_syscall_handlers.cpp"
+        "${CMAKE_SOURCE_DIR}/src/boot_thread_syscalls.cpp"
+        "${CMAKE_SOURCE_DIR}/src/sif_irq_continuations.cpp"
+        PROPERTIES COMPILE_OPTIONS "/wd4100;/wd4102;/wd4127;/wd4310;/wd4702")
+endif()
+include("${CMAKE_SOURCE_DIR}/cmake/ExistingRuntime.cmake")
+fate_link_existing_runtime(boot_continuations_contract)
+enable_testing()
+add_test(NAME boot_continuations_contract COMMAND boot_continuations_contract)

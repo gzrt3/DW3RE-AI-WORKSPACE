@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "utc": "2026-10-05T00:34:13.708322+00:00",
+  "native_cycle": {
+    "build_exit": 0,
+    "probe_status": "PROCESS_FAILED",
+    "input_integrity": "MATCH",
+    "next_pc": "0x0023CB40",
+    "unresolved_import": "ioman:31 version=0x0104 pc=0x00029040"
+  },
+  "bridge_tests_passed": 14,
+  "pipeline_tests_passed": 5,
+  "github_copilot": {
+    "hourly_local": true,
+    "actual_reply_collected": true,
+    "observed_run_seconds": 51
+  },
+  "microsoft_copilot": {
+    "computer_use": true,
+    "actual_reply_collected": true,
+    "api_integration": false,
+    "incorrect_math_statement_rejected": true
+  },
+  "no_new_azure_aws_calls": true,
+  "game_complete": false,
+  "development_verification_sha256": "cc3a85e8c5381de58af711ea2943d7d054996e0d689ea19093a3ac5430cd16de",
+  "published_source_sha256": {
+    "CMakeLists.txt": "5ea920f4804202f95bc0742f8987ef9518496fd71ced1054e3ec87caa3af9457",
+    "cmake/BootContinuationsContract.cmake": "f87e01ddcd44c2e4942fee0a0898d0f35706e49eb00eacaa284f31ce6be04b35",
+    "src/boot_continuations.cpp": "cb8e6406d69bfbe2159d79a5596880572e56ec94526e9083ee8fd74823598bac",
+    "src/recovered/cdvd_command_001b0308.inc": "9e3dd385d0d251f1902305ab9ae7391a567253b460245fe154e9426965e51fb6",
+    "tests/integration/boot_continuations_contract.cpp": "da3034cd9978dc81c96eefe2a1650b262cad674d553296414be93433522aea9f",
+    "tools/recover_continuation.py": "6b16d0aa5017f0c47f8b19d43e47ba4438496114ddd8671ed6a3e66fb6a424d0",
+    "tests/test_recover_continuation.py": "e7738a88a8a192590b0dc6c2c5c4ed686bac2aa5005da972c442bfc648f0414d",
+    "tools/native_boot_probe.py": "c452046eacbfa9c7024abf9450881fda1c925f37973734442f48db9ebc7c3591",
+    "tools/native_pipeline.py": "667bbb91c926f30bc8778d00e5c92f4e47328c03e022285fe168e7c0cae5f90b",
+    "tests/test_native_pipeline.py": "dc7fe3d876254123b73c61d39d166417b12aa3bf9031a0f2ef9dd77235dd8657",
+    "tools/copilot_bridge.py": "d023467ce625769dbb1701d41dcb199cd9f1ccf2dd62a36f70ed08c23b3bd450",
+    "tests/test_copilot_bridge.py": "d566d1b79e1a4b9388ed17288d595c9b096d7e7f18eece4f32ff4f3e273e13d3",
+    "docs/COPILOT_PIPELINE.md": "c0724a2b55b5b005a8f7c5c7aabae0dceebd37d19159009039ab6c32f91d74a8",
+    "docs/NATIVE_PIPELINE_20261005.md": "755bf92a92e1255fb7fbb79742d3f9202a0dc1fad7a404dc29bd78a52736ee76",
+    "docs/audits/COPILOT_RENDERER_AUDIT.md": "06a7d036f15c61b18f12586d3e218469f484f805a3bbe4729b34740d1f80d928",
+    "docs/audits/COPILOT_REVIEW_20261005.md": "4f43ac76f41162d7a02a1126beaa63dc13f7fddc3043dd02c2dc83ea5a8aa13c"
+  },
+  "scope": "Summarized original local evidence. Native code verified in development checkout; clean publication build not repeated for this update.",
+  "source_line_endings": "Unchanged tracked lines retain their original endings; additions use LF."
+}
