@@ -26,6 +26,8 @@ CONFIG_SUFFIXES = {'.ini', '.toml', '.cfg', '.conf', '.config', '.json'}
 SOURCE_NAMES = (
     'CMakeLists.txt', 'CMakePresets.json', 'cmake/ExistingRuntime.cmake',
     'src/main.cpp', 'src/elf.cpp', 'src/dispatcher.cpp', 'src/unsupported_hle.cpp',
+    'src/native_presenter.cpp', 'include/fate/native_presenter.hpp',
+    'tools/PS2Recomp/ps2xRuntime/src/lib/Kernel/EeScheduler.cpp',
     'src/audio/spu_bridge.cpp', 'src/sdl_window.cpp', 'src/gs_wrapper.cpp',
     'src/patch_engine.cpp', 'src/recomp/entry_0x100008.cpp',
     'src/recomp/FUN_001ad6e8_0x1ad6e8.cpp',
@@ -96,7 +98,7 @@ def native_command(exe, dump_root, elf):
     return [str(exe), str(dump_root), str(elf)]
 
 
-def run_process(command, cwd, output, timeout):
+def run_process(command, cwd, output, timeout, visible=False):
     """Capture a real process without pipes, so output cannot fill a pipe buffer."""
     started = utc_now()
     clock = time.monotonic()
@@ -109,8 +111,12 @@ def run_process(command, cwd, output, timeout):
     options = dict(stdin=subprocess.DEVNULL, shell=False, close_fds=True)
     if os.name == 'nt':
         startup = subprocess.STARTUPINFO()
-        startup.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-        startup.wShowWindow = subprocess.SW_HIDE
+        # CREATE_NO_WINDOW hides the console. STARTF_USESHOWWINDOW also controls
+        # SDL's first ShowWindow call, so a user-requested live observer must not
+        # inherit the diagnostic runner's usual SW_HIDE.
+        if not visible:
+            startup.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+            startup.wShowWindow = subprocess.SW_HIDE
         options.update(startupinfo=startup, creationflags=subprocess.CREATE_NO_WINDOW)
 
     process = None
@@ -153,7 +159,9 @@ def source_identities():
     return [identity(path) for path in paths if path.is_file()]
 
 
-def run(exe, dump_root, elf, output, timeout=30, iop_root=None):
+def run(exe, dump_root, elf, output, timeout=30, iop_root=None, live_seconds=None):
+    if live_seconds is not None and (type(live_seconds) is not int or not 1 <= live_seconds <= 86400):
+        raise ValueError('live-seconds must be an integer from 1 to 86400')
     timeout = timeout_value(timeout)
     exe = Path(exe).resolve(strict=True)
     dump_root = Path(dump_root).resolve(strict=True)
@@ -211,9 +219,13 @@ def run(exe, dump_root, elf, output, timeout=30, iop_root=None):
         if original['sha256'] != copied['sha256']:
             raise ValueError('configuration changed during staging')
 
+    command = native_command(exe, dump_root, elf)
+    if live_seconds is not None:
+        command += ['--live-seconds', str(live_seconds)]
     provenance = {
         'schema_version': 1, 'created_utc': utc_now(),
-        'command': native_command(exe, dump_root, elf), 'cwd': str(cwd),
+        'command': command, 'cwd': str(cwd),
+        'live_observation_seconds': live_seconds,
         'dump_root': str(dump_root), 'timeout_seconds': timeout,
         'exe': inputs[0], 'elf': inputs[1], 'adjacent_dlls': inputs[2:2+len(dlls)],
         'adjacent_configuration': inputs[2+len(dlls):], 'staged_configuration': config_copies,
@@ -225,7 +237,7 @@ def run(exe, dump_root, elf, output, timeout=30, iop_root=None):
         'environment_scope': 'Inherited environment; not recorded because it may contain credentials.',
     }
     write_json(output/'launch.json', provenance)
-    result = run_process(provenance['command'], cwd, output, timeout)
+    result = run_process(provenance['command'], cwd, output, timeout, visible=live_seconds is not None)
     # Changes never turn a process exit into a success claim. Preserve initial
     # hashes, including when a file was deleted or became unreadable at runtime.
     post_inputs, changed = [], []
@@ -254,9 +266,10 @@ def main(argv=None):
     parser.add_argument('--output', required=True, type=Path)
     parser.add_argument('--timeout', type=timeout_value, default=30)
     parser.add_argument('--iop-root', type=Path, help='Copy IRX/provenance files to isolated run/data/iop')
+    parser.add_argument('--live-seconds', type=int, help='Observe the real GS in a native window for a cooperative deadline; use a longer probe timeout')
     args = parser.parse_args(argv)
     try:
-        result = run(args.exe, args.dump_root, args.elf, args.output, args.timeout, args.iop_root)
+        result = run(args.exe, args.dump_root, args.elf, args.output, args.timeout, args.iop_root, args.live_seconds)
     except (OSError, ValueError, argparse.ArgumentTypeError) as error:
         print(f'PROBE_SETUP_FAILED: {error}', file=sys.stderr)
         return 2

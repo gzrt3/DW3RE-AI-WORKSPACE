@@ -9,12 +9,12 @@
     {
       "id": "boot",
       "verified": false,
-      "detail": "Ciclo006: compilación nativa Release aprobada; prueba de 10 segundos con entradas intactas, todavía detenida en MODLOAD7. Corregidas falsas finalizaciones de llamadas: 11 contratos y cuatro suites de regresión pasan en Debug y Release. Título y batalla pendientes."
+      "detail": "Ciclo007: compilación Release aprobada. Petición real bloqueada en MODLOAD7: MODULES/SIO2MAN.IRX, sin argumentos. Ventana nativa verificada con Computer Use; cero imágenes GS. Memoria y estado conservados en pruebas. Arranque completo pendiente."
     },
     {
       "id": "menus",
       "verified": false,
-      "detail": "Pendiente: título, menús y entrada de control mediante el backend nativo."
+      "detail": "Prioridad: vídeos originales, sus bucles y Press Start. Siete archivos candidatos coinciden con sus originales. Reproducción, audio y controles todavía sin demostrar; el puente de entrada sigue simulado."
     },
     {
       "id": "combined_battle",
@@ -74,7 +74,10 @@
     "evidence/reboot_module_probe_001/return_validator_audit_001/corpus.json",
     "evidence/native_repair_20261005.json",
     "evidence/native_import_barrier_20261005.json",
-    "evidence/native_call_completion_20261005.json"
+    "evidence/native_call_completion_20261005.json",
+    "evidence/native_live_observation_20261005.json",
+    "evidence/boot_web_sources_20261005.json",
+    "evidence/boot_movie_candidates_20261005.json"
   ],
   "objective": "Port nativo Windows x64 standalone: DW3 + XL completos sin cambio de disco, con modding y verificación de extremo a extremo.",
   "product_root": "C:/Games/DW",

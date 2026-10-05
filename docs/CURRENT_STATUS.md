@@ -1,5 +1,36 @@
 # Current verified state
 
+Latest update: cycle007, 2026-10-05 UTC. Release build and real native live
+observation passed their scoped checks. The game remains blocked at MODLOAD1.6
+export7 / IOP0x14374, now identified as the actual request for
+cdrom0:\MODULES\SIO2MAN.IRX;1 with zero argument bytes. No GS image was produced.
+The state-preserving SDL presenter is available with --live/--live-seconds;
+Computer Use verified the real window and its clean close. This does not prove
+title, video, Press Start or gameplay. The earlier hidden-window attempt is
+preserved; the probe now preserves SDL visibility when live mode is requested.
+
+Read BOOT_TO_PRESS_START_TRIAGE.md and audits/BOOT_WEB_AUDIT_20261005.md first.
+Ten public source files were verified against pinned revisions. PS2SDK and
+PCSX2 help reconstruct loader/SIO2 semantics; upstream PS2Recomp still contains
+older false-completion behavior and must not replace this modified runtime.
+Seven original movie candidates match mounted copies. Their execution and
+transitions remain unverified. Native input is still a mock bridge.
+
+Two presentation contracts pass Release (empty GS and known synthetic VRAM),
+preserving prepared EE/IOP memory, registers and scheduler objects. Seven
+missing-import contracts and eleven call-completion contracts pass Debug and
+Release; probe12, bridge14 and pipeline8 tests pass. The new observation logs
+registers and bounded hexadecimal filenames without accepting missing imports.
+All eight final criteria remain open. Next: original MODLOAD7 request/worker
+ownership and resumable startup of the identified SIO2MAN, then measured EE
+continuations, original video loops and authentic Press Start/input/audio.
+
+Full migration backup VERIFIED:268654 files,65702318359 bytes, zero errors and
+zero deletions. External junction targets remain separately preserved.
+Current source/build in D; C:/Games/DW remains the reserved final destination.
+
+## Historical cycle006 baseline
+
 Latest native probe: cycle006, 2026-10-05 UTC, built and run from the D Git
 checkout. Runtime and full Release build passed. The bounded process timed out
 after10seconds with input integrity MATCH at **MODLOAD1.6 export7, PC0x14374**.
@@ -16,9 +47,8 @@ See NATIVE_CALL_COMPLETION_20261005.md and evidence/native_call_completion_20261
 
 Active source: D:/DW3-GitHub-Publish-20261004. Final product: C:/Games/DW (NVMe),
 reserved but not released. Backup: D:/Backup/DWProject; see STORAGE_LAYOUT.md.
-The ongoing backup has verified48000/268654 files with zero errors at the latest
-observation; it must finish source/destination hashing before cleanup.
-Original C trees and external junction targets remain preserved.
+The then-running backup later completed as recorded above. Original C trees and
+external junction targets remain preserved; nothing was deleted in cycle007.
 
 The previous23CB40 and1A7014 barriers are passed. IOMAN1.4 devctl0x4391 now
 returns the shared CDVD event; the actual run logged event3. String scan/return

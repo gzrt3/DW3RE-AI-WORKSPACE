@@ -66,6 +66,31 @@ namespace
         require(result.startResult == -1 && failures(host) == 1u, "partial library fault not counted");
     }
 
+    void loadRequestDiagnostic()
+    {
+        for (const uint32_t address : {base + 0x420u, 0xFFFFFFFFu})
+        {
+            Host host;
+            IopEmulator iop(host);
+            Irx image = missingEntry();
+            image.words(0u, {0x3C040000u | (address >> 16u), 0x34840000u | (address & 0xFFFFu),
+                0x24050007u, 0x24061234u, 0x24075678u, jal(base + 0x194u), 0u,
+                0x3C080001u, 0xAD000400u, 0x03E00008u, 0u});
+            // Include newline and a high byte: the diagnostic must not emit either raw.
+            image.words(0x420u, {0xFF0A3A63u, 0u});
+            require(iop.loadOwnedModule("test:request", image.bytes).startResult == -1, "request was accepted");
+            require(word(iop, base + 0x400u) == sentinel, "diagnostic altered the fault barrier");
+            const auto it = std::find_if(host.logs.begin(), host.logs.end(), [](const auto& line) {
+                return line.find("unhandled import modload:7") != std::string::npos;
+            });
+            require(it != host.logs.end(), "request diagnostic missing");
+            require(it->find("a1=0x7 a2=0x1234 a3=0x5678") != std::string::npos, "request registers missing");
+            require(it->find('\n') == std::string::npos, "guest path injected a log line");
+            require(it->find(address == 0xFFFFFFFFu ? "filename_hex= filename_terminated=0" :
+                "filename_hex=633a0aff filename_terminated=1") != std::string::npos, "unsafe or inaccurate filename read");
+        }
+    }
+
     Irx nestedImage()
     {
         Irx image;
@@ -184,6 +209,7 @@ int main()
     const Test tests[] = {
         {"Missing module import stops before post-call store", missingStartup},
         {"Unsupported ordinal in a known library is a failure", partiallyImplementedLibrary},
+        {"Failed load request is observed without guest writes or unsafe reads", loadRequestDiagnostic},
         {"Nested callback failure preserves outputs and unwinds ownership", nestedCallback},
         {"Scheduler does not resume a thread with a missing import", scheduledThread},
         {"Failed RPC does not copy a reply or signal completion", rpcDoesNotSignalSuccess},

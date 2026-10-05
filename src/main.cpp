@@ -21,6 +21,8 @@
 #include "fate/input/pad_bridge.hpp"
 #include "fate/native_iop_boot.hpp"
 #include "fate/resume_catalog.hpp"
+#include "fate/native_presenter.hpp"
+#include <charconv>
 
 #include <iostream>
 #include <fstream>
@@ -116,9 +118,29 @@ int main(int argc, char** argv) {
     const char* dump_root = "C:/DW3/sources/dumps/dw3xl_ps2";
     const char* elf_path  = "C:/DW3/sources/dumps/dw3xl_ps2/SLUS_206.17";
 
-    // Allow overriding dump root via command line
-    if (argc > 1) dump_root = argv[1];
-    if (argc > 2) elf_path  = argv[2];
+    bool live = false;
+    unsigned live_seconds = 0;
+    int positional = 0;
+    for (int i = 1; i < argc; ++i) {
+        const std::string_view arg(argv[i]);
+        if (arg == "--live") live = true;
+        else if (arg == "--live-seconds" && i + 1 < argc) {
+            const std::string_view duration(argv[++i]);
+            const auto parsed = std::from_chars(duration.data(), duration.data() + duration.size(), live_seconds);
+            if (parsed.ec != std::errc{} || parsed.ptr != duration.data() + duration.size() ||
+                live_seconds == 0 || live_seconds > 86400) {
+                std::cerr << "[BOOT] --live-seconds requires an integer from 1 to 86400.\n";
+                return 2;
+            }
+            live = true;
+        } else if (!arg.starts_with("--") && positional < 2) {
+            if (positional++ == 0) dump_root = argv[i];
+            else elf_path = argv[i];
+        } else {
+            std::cerr << "Usage: fate_game [dump-root] [elf] [--live] [--live-seconds N]\n";
+            return 2;
+        }
+    }
 
     std::cout << "[BOOT] Dynasty Warriors 3 XL - PC Native Boot" << std::endl;
     std::cout << "[BOOT] Dump root: " << dump_root << std::endl;
@@ -250,7 +272,14 @@ int main(int argc, char** argv) {
         // and cannot resume EeDispatcherTransfer from installed handlers.
         const fate::GuestFloatEnvironment guest_float_environment;
         runtime->setMissingFunctionPolicy(PS2Runtime::MissingFunctionPolicy::Stop);
-        runtime->eeScheduler().run();
+        if (live) {
+            const auto result = fate::run_native_live(*runtime, live_seconds);
+            // An intentional observer stop is not an ELF return or a verified boot.
+            if (result == fate::LiveExit::WindowClosed) return 0;
+            if (result == fate::LiveExit::Deadline) return 2;
+        } else {
+            runtime->eeScheduler().run();
+        }
         if (ctx.pc != 0) {
             std::cerr << "[EXEC] Execution stopped at PC=0x" << std::hex << ctx.pc << std::dec << std::endl;
             ctx.dump();

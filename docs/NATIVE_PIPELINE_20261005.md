@@ -173,3 +173,37 @@ and its standalone progress page is visually checked. Backup owner20256 is
 still hashing,48000/268654 verified/zero errors at last observation; no deletion.
 Next original MODLOAD7 worker/argument/lifecycle implementation, then actual
 title, battle and complete combined content. All8 final acceptance gates open.
+
+
+## Boot/video/Press Start triage, native window and public references — cycle007
+
+Release buildPASS. Three real live observations retain inputMATCH, the same
+MODLOAD1.6 export7/IOP14374 barrier and zero GS images. Original request now
+identified: cdrom0:\MODULES\SIO2MAN.IRX;1, arglen0. Native window uses the
+prepared scheduler on its executor, samples the real GS at VBlank, and preserves
+EE/IOP state. Computer Use observed the empty window and verified clean closure.
+Initial hidden-window launch and failed SW_SHOWNORMAL test retained; repaired
+runner honors explicit live visibility. Final 10s deadline exits2, not boot PASS.
+Seven import-barrier and eleven call-completion contracts PASS Debug/Release;
+two presenter contracts PASS Release; observer12/bridge14/pipeline8 tests PASS.
+Seven original logo/opening candidates match mounted copies. No movie played.
+
+Read BOOT_TO_PRESS_START_TRIAGE.md and audits/BOOT_WEB_AUDIT_20261005.md. Ten
+public references match pinned revisions. PS2SDK MODLOAD/LOADCORE/SIO2MAN and
+PCSX2 SIO2/input recording provide concrete contracts. SDK versions differ from
+the original; upstream PS2Recomp still has false success/incomplete call return
+paths and must not replace the modified runtime. Existing MPEG audio callback
+selection needs original evidence. No ready DW3 source port was found in the
+bounded GitHub search; this is not a claim about the whole internet.
+
+Full C migration backup VERIFIED:268654files/65702318359bytes/zero errors and
+deletions. Preserve external junction targets; no cleanup this turn. Changed
+native-presentation review exported for the existing GitHub adviser; no new UI
+adviser request, paid call, budget reset or permission bypass. References and
+failures retained locally; compact public evidence added.
+
+Next implement original MODLOAD7 ownership/loader worker/resumable execution,
+argc/argv and ModuleInfo plus actual SIO2MAN hardware dependencies. Then original
+video loops, Press Start/input/audio, battle, combined content, saves/modding and
+final C:/Games/DW packaging. All8 final criteria open; GAME_PARITY=NOT_COMPLETE.
+No native build/probe remains active at this checkpoint.

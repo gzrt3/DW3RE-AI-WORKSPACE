@@ -261,6 +261,10 @@ struct EeThreadCreateParams
 class EeScheduler
 {
 public:
+    // Installed/cleared only by the executor while stopped or at a safe point.
+    // Invoked at the native VBlank boundary on that same thread. The observer
+    // must not execute guest code or reset any subsystem.
+    void setHostVblankObserver(std::function<void()> observer);
     static constexpr int kMainThreadId = 1;
     static constexpr int kFirstThreadId = 2;
     static constexpr int kLastThreadId = 255;
@@ -431,6 +435,7 @@ private:
     uint64_t m_eeCycle = 0;
     uint64_t m_sliceEndCycle = kDefaultTimeSliceCycles;
     std::thread::id m_executorThread{};
+    std::function<void()> m_hostVblankObserver;
     std::atomic<bool> m_running{false};
     std::atomic<bool> m_guestExecuting{false};
     std::atomic<bool> m_stopRequested{false};

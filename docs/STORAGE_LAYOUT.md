@@ -50,7 +50,8 @@ page. The current optional local preview serves C:/Games/DW at
 http://127.0.0.1:8770/Estado-del-proyecto.html; regenerate the file and refresh
 that page after a verified milestone. It is a status preview, not game graphics.
 
-At the latest backup observation,48000/268654 files had matching source/backup
-hashes, with zero errors; backup-verification.json is not yet complete.
-No C files were deleted. Development and cycle006 ran in D while the backup
-continued. C:/Games/DW contains no release executable.
+The final migration backup-verification.json now reports VERIFIED:268654 files,
+65702318359 bytes, zero errors and zero deletions. Junction destinations listed
+in that report were not copied and remain preserved separately. No C files were
+deleted. Development and cycle007 ran in D. C:/Games/DW contains no release
+executable; its status page is separate from the native diagnostic window.

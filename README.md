@@ -4,6 +4,13 @@ Work in progress: a Windows x64 static recompilation and native runtime project 
 
 **This is a development workspace, not a playable remaster.** No title screen or complete battle has been demonstrated. All eight final acceptance criteria remain open. Successful builds and focused contracts do not establish equivalence with the original games.
 
+Current priority: [original boot, movies and Press Start](docs/BOOT_TO_PRESS_START_TRIAGE.md).
+The native GS can now be observed in a real window without resetting prepared
+state. cycle007 still produces no game image and stops at the SIO2MAN request
+through MODLOAD7. See the [current audit and public references](docs/audits/BOOT_WEB_AUDIT_20261005.md).
+`scripts/observe_native.ps1` runs a bounded visible observation with preserved
+logs; it is not a standalone game release.
+
 Current product contract: [native PC objective](docs/NATIVE_PC_OBJECTIVE.md). The local final product directory is `C:/Games/DW` on NVMe; see [storage layout](docs/STORAGE_LAYOUT.md). It is reserved, not a playable release.
 
 ## Current state
@@ -12,7 +19,7 @@ Current product contract: [native PC objective](docs/NATIVE_PC_OBJECTIVE.md). Th
 - SetupHeap arguments and return agree with recorded reference checkpoints in Debug and Release; other state differences remain open.
 - The original IOP reboot request now reaches the selected module startup and original EESYNC callback, followed by the new EE handshake.
 - A verified catalog restores 7,636 existing resume aliases and 589 original return tails. Existing reviewed overrides take precedence.
-- Native cycle006 builds in the Git checkout and waits at MODLOAD1.6 export7 with input integrity MATCH. MODLOAD15 is implemented; missing imports and incomplete synchronous IOP calls stop the affected execution without a fabricated RPC reply. The earlier `0x0019A6C4` continuation remains unresolved; see `docs/CURRENT_STATUS.md`.
+- Native cycle007 builds in the Git checkout and waits at MODLOAD1.6 export7 while requesting the original SIO2MAN.IRX, with input integrity MATCH. A real native window observes zero GS images. MODLOAD15 is implemented; missing imports and incomplete synchronous IOP calls stop the affected execution without a fabricated RPC reply. The earlier `0x0019A6C4` continuation remains unresolved; see `docs/CURRENT_STATUS.md`.
 - Three bounded advisory queues are connected: GitHub Copilot runs hourly locally; Microsoft Copilot and browser ChatGPT use Computer Use through the main continuation. All findings are independently checked. See [integration and limits](docs/COPILOT_PIPELINE.md).
 - Combined data/VFS components exist, but combined gameplay, graphics, sound, input, saves and full content coverage remain unverified.
 
