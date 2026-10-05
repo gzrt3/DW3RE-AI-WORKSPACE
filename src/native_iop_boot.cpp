@@ -33,7 +33,7 @@ void configure_native_iop_boot(PS2Runtime& runtime, const std::filesystem::path&
         const std::string_view name(entry.name);
         const bool libraryImage = name == "SYSMEM" || name == "LOADCORE" || name == "INTRMANP" ||
             name == "THREADMAN" || name == "IOMAN" || name == "STDIO" ||
-            name == "SIFMAN" || name == "SIFCMD" || name == "CDVDMAN" || name == "VBLANK" || name == "TIMEMANI";
+            name == "SIFMAN" || name == "SIFCMD" || name == "CDVDMAN" || name == "TIMEMANI";
         reboot.modules.push_back({"rom0:" + std::string(entry.name),
                                   entry.hle && !libraryImage ? std::vector<uint8_t>{} : std::move(image), libraryImage});
     }

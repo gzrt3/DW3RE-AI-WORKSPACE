@@ -109,6 +109,13 @@ if(PS2X_IOP_BUILD_TESTS)
     target_link_libraries(ps2_iop_boot_provider_original_probe PRIVATE ps2_iop)
     target_include_directories(ps2_iop_boot_provider_original_probe PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
+    add_executable(ps2_iop_vblank_original_probe tests/iop_vblank_original_probe.cpp)
+    target_link_libraries(ps2_iop_vblank_original_probe PRIVATE ps2_iop)
+    target_include_directories(ps2_iop_vblank_original_probe PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+    if(MSVC)
+        target_compile_options(ps2_iop_vblank_original_probe PRIVATE /W4 /WX /EHsc /utf-8)
+    endif()
+
 endif()
 
 install(TARGETS ps2_iop

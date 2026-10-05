@@ -17,6 +17,7 @@ namespace ps2x::iop::detail
         void reset();
         [[nodiscard]] bool dispatchImport(uint16_t ordinal, IopCpuState &cpu, IopGuestExecutor &executor);
         [[nodiscard]] bool dispatchInterrupt(int irq, IopGuestExecutor &executor) const;
+        [[nodiscard]] bool canDispatch(int irq) const;
 
     private:
         struct Handler

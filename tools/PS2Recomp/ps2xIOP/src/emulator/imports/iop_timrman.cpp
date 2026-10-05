@@ -438,6 +438,7 @@ namespace ps2x::iop::detail
             const Callback callback = compareDue ? timer.compareCallback : timer.overflowCallback;
             timer.compareCycle = UINT64_MAX;
             timer.overflowCycle = UINT64_MAX;
+            const IopGuestExecutor::InterruptScope context(executor);
             const uint32_t result = callback.function != 0u
                                         ? executor.executeGuestFunctionWithBudget(callback.function,
                                                                                   callback.common,

@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "cycle": 29,
+  "recorded_utc": "2026-10-05T09:56:27.460069+00:00",
+  "native": {
+    "status": "PROCESS_FAILED",
+    "exit_code": 4294967295,
+    "input_integrity": "MATCH",
+    "missing_pc": "0x001AE7B0",
+    "caller_ra": "0x00170C8C",
+    "vblank8_passed": true,
+    "original_movies_verified": false
+  },
+  "validation": {
+    "vblank_original_probe": {
+      "Debug": "PASS",
+      "Release": "PASS",
+      "groups_per_config": 7
+    },
+    "pad_debug": "PASS",
+    "pad_release": "PASS",
+    "release_libraries_stable": true,
+    "iop_release_regression_suites": 4,
+    "python_probe_tests": 15,
+    "native_release_build": "PASS"
+  },
+  "limits": [
+    "No independent PCSX2 lockstep or timing parity",
+    "No original movie/title/battle",
+    "Three historical broad IOP regression failures remain open",
+    "Existing TIMRMAN global/per-IRQ eligibility is not fixed",
+    "Selected VBLANK hash verified; bootstrap origin not established by this cycle"
+  ],
+  "acceptance_verified": 0,
+  "acceptance_total": 8,
+  "evidence": {
+    "artifacts/native_pipeline_20261005/vblank_original_029/after-001.log": {
+      "bytes": 245,
+      "sha256": "a2aa976f6bac6d7993c5ddba0e346b2d447fb4d5200f1e80459e0d4b25d2bcdd"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/after-002.log": {
+      "bytes": 836,
+      "sha256": "6f0480a17c2d21b1868edea3bfde657fd032fa4012845b7de96027f7bd0e150c"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/after-003.log": {
+      "bytes": 1210,
+      "sha256": "eacfac353ebd46229d6033681981025047ea59ef678ceeedc75b4a62eaca1992"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/before-001.log": {
+      "bytes": 183,
+      "sha256": "6df3ef3c86e4855ce697987fd43c1bcff8a506b91209a4c88097c6052db7d31b"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/before-002.log": {
+      "bytes": 172,
+      "sha256": "f29ffb327d6013f1098144f86c4eeec70108f1c3ccf3954f90ae1e56fb105a7e"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/before-003.log": {
+      "bytes": 275,
+      "sha256": "d961d69d3ef3e512c932fb4932a0150799780ef43513b89931351fb15d256f9c"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/build-after-001.log": {
+      "bytes": 358,
+      "sha256": "72493ba596db1c359cfb0d833f45ad9a8b0ae93109060c5b348ef8c437411020"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/build-after-002.log": {
+      "bytes": 259,
+      "sha256": "2c2e345337acf239bc189fa95253c91ecde2940a4e7486332bfc2444fc8d9740"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/build-after-003.log": {
+      "bytes": 279,
+      "sha256": "73c1b4701ed314379a153979b7c6570060106f908d77e15a07f15244fd70d9b3"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/build-before-001.log": {
+      "bytes": 1026,
+      "sha256": "e13b93ea99f1a26ef6cb83376d8ca0d42053483c52f994cdf3e53ed7b0d57539"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/build-before-002.log": {
+      "bytes": 259,
+      "sha256": "2c2e345337acf239bc189fa95253c91ecde2940a4e7486332bfc2444fc8d9740"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/build-before-003.log": {
+      "bytes": 259,
+      "sha256": "2c2e345337acf239bc189fa95253c91ecde2940a4e7486332bfc2444fc8d9740"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/configure-001.log": {
+      "bytes": 555,
+      "sha256": "572958d1ac29c4216c3f227792f1540b2aae1f31117164754d24e8ccbc34eefd"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/final-debug-001.log": {
+      "bytes": 1210,
+      "sha256": "eacfac353ebd46229d6033681981025047ea59ef678ceeedc75b4a62eaca1992"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/final-release-001.log": {
+      "bytes": 1210,
+      "sha256": "eacfac353ebd46229d6033681981025047ea59ef678ceeedc75b4a62eaca1992"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/native-build-001.log": {
+      "bytes": 17073,
+      "sha256": "c6bb2580f6cd2e607539bf9018d0fe730d3345c0a5db4038f4aaba0fd46d3d9c"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/python-probe-001.log": {
+      "bytes": 2688,
+      "sha256": "f2820920dd639e2581e6f45dd4eb3ae38211dd2e0d9a5ed7395d3dc2a32068d4"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/regressions-release-001.log": {
+      "bytes": 547,
+      "sha256": "aec35c398a694fc63df2f0fa114dc2b6ee8b04add7fc56aedea86865aa5e9833"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/release-001.log": {
+      "bytes": 1210,
+      "sha256": "eacfac353ebd46229d6033681981025047ea59ef678ceeedc75b4a62eaca1992"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/release-contract-build-001.log": {
+      "bytes": 2422,
+      "sha256": "9fb6861df0ba009bc3da5b19eb5b248aece538d2035de7409c1b9acff46e9e96"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/strict-debug-001.log": {
+      "bytes": 926,
+      "sha256": "460307f1f5cb3ab321b4be813ca3f735d6c5a82c472a129dd57bb1d350789b9c"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/strict-release-001.log": {
+      "bytes": 478,
+      "sha256": "331c00b75f0553f6c98de9db3b6c93f340b92785a7a37b7cf4cff305b1fced30"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/native-001/result.json": {
+      "bytes": 13481,
+      "sha256": "0d2afbf4fe2b72c7ecad5d8afaa6db49d32fa993d207685311d396fe8c38dc2e"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/native-001/launch.json": {
+      "bytes": 42303,
+      "sha256": "3964cc73868b56f0793f6dd62cbe138cf8ad2648660738d4eccdaabf07984979"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/native-001/stdout.bin": {
+      "bytes": 3888,
+      "sha256": "1f5fb5669b9a464eb7b343568a194f27173508d98fa234206d95012d66addfc8"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/native-001/stderr.bin": {
+      "bytes": 55437,
+      "sha256": "26c24b80bf1a3ba4458e362547f06fff1947ec2394a69d24a4e9586ad0467106"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/original-provenance-001.json": {
+      "bytes": 608,
+      "sha256": "930b4507cb1bb1634f57524afd6f7a18340ec84130c69c5afa1282b0e05edfc6"
+    },
+    "artifacts/native_pipeline_20261005/vblank_original_029/prior-commit-ci-001.json": {
+      "bytes": 227,
+      "sha256": "08b0216737af10557b36e3a1b040bc6e68dbf7eed3e88959c65d4e5d614d0acb"
+    },
+    "artifacts/native_pipeline_20261005/pad_boot_027/data-recovery-001/contracts-002/Debug-test.log": {
+      "bytes": 1229,
+      "sha256": "21b016825c050d20f4fbff92e0c847c9fc732d89c6a71cde965dcf1403aeba05"
+    },
+    "artifacts/native_pipeline_20261005/pad_boot_027/data-recovery-001/contracts-003/Release-test.log": {
+      "bytes": 1229,
+      "sha256": "21b016825c050d20f4fbff92e0c847c9fc732d89c6a71cde965dcf1403aeba05"
+    },
+    "artifacts/native_pipeline_20261005/pad_boot_027/data-recovery-001/contracts-003/result.json": {
+      "bytes": 166,
+      "sha256": "5be07bd2e186a32b89416af94697b0f0d4f66ad9132a4a98f23061534d4d7128"
+    }
+  }
+}

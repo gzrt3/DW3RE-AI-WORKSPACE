@@ -25,6 +25,19 @@ namespace ps2x::iop::detail
     public:
         virtual ~IopGuestExecutor() = default;
 
+        class InterruptScope {
+        public:
+            explicit InterruptScope(IopGuestExecutor& executor) noexcept : m_executor(executor) {
+                ++m_executor.m_interruptDepth;
+            }
+            ~InterruptScope() { --m_executor.m_interruptDepth; }
+            InterruptScope(const InterruptScope&) = delete;
+            InterruptScope& operator=(const InterruptScope&) = delete;
+        private:
+            IopGuestExecutor& m_executor;
+        };
+        [[nodiscard]] bool inInterruptContext() const noexcept { return m_interruptDepth != 0; }
+
         [[nodiscard]] virtual uint32_t executeGuestFunction(uint32_t address,
                                                             uint32_t a0,
                                                             uint32_t a1,
@@ -50,6 +63,8 @@ namespace ps2x::iop::detail
             if (token != 0u) throw std::logic_error("Executor cannot resume a guest call");
             return executeGuestFunctionWithBudget(address, a0, a1, a2, a3, gp, budget);
         }
+    private:
+        uint32_t m_interruptDepth = 0;
     };
 
     class IopRpcBridge
