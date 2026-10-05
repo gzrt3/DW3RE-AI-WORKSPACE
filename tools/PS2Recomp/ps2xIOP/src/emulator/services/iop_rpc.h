@@ -35,7 +35,7 @@ namespace ps2x::iop::detail
                                                                       uint32_t a2,
                                                                       uint32_t a3,
                                                                       uint32_t gp,
-                                                                      uint32_t instructionBudget)
+                                                                      uint32_t /*instructionBudget*/)
         {
             return executeGuestFunction(address, a0, a1, a2, a3, gp);
         }

@@ -1,0 +1,157 @@
+{
+  "created_utc": "2026-10-05T00:52:08.182168+00:00",
+  "summary": "Original string continuation, shared CDVD event devctl, and bounded coherent-RDRAM cache continuation pass focused contracts and actual native replay to the next barriers.",
+  "cycles": {
+    "cycle_003": {
+      "build": {
+        "exit_code": 0,
+        "log_sha256": "309faecd09f8d96a768532b73e3c14a04a16adabfdc506a176ab1fda426b56db"
+      },
+      "status": "PROCESS_FAILED",
+      "exit_code": 4294967295,
+      "input_integrity": "MATCH",
+      "duration_seconds": 0.4767068000001018,
+      "work": [
+        {
+          "kind": "recover_original_continuation",
+          "pc": 1732628,
+          "requires": [
+            "identified ELF words",
+            "register/delay-slot contracts",
+            "native replay"
+          ]
+        }
+      ],
+      "result_sha256": "e10e5ed4a4d1691c8c4aa819c4152cd5ff27663b08d53b208dc6052617da2a76",
+      "stderr_sha256": "bddfaeb42c51be3e9cdccd3296b416dfc2d710f4bef514f801db658a68826c95"
+    },
+    "cycle_004": {
+      "build": {
+        "exit_code": 0,
+        "log_sha256": "309faecd09f8d96a768532b73e3c14a04a16adabfdc506a176ab1fda426b56db"
+      },
+      "status": "PROCESS_FAILED",
+      "exit_code": 4294967295,
+      "input_integrity": "MATCH",
+      "duration_seconds": 0.4738096000000951,
+      "work": [
+        {
+          "kind": "recover_original_continuation",
+          "pc": 1681092,
+          "requires": [
+            "identified ELF words",
+            "register/delay-slot contracts",
+            "native replay"
+          ]
+        },
+        {
+          "kind": "implement_versioned_iop_import",
+          "library": "modload",
+          "ordinal": 15,
+          "version": 262,
+          "pc": 82844,
+          "requires": [
+            "matching original export table",
+            "shared subsystem ownership",
+            "original module replay"
+          ]
+        },
+        {
+          "kind": "implement_versioned_iop_import",
+          "library": "modload",
+          "ordinal": 7,
+          "version": 262,
+          "pc": 82804,
+          "requires": [
+            "matching original export table",
+            "shared subsystem ownership",
+            "original module replay"
+          ]
+        }
+      ],
+      "result_sha256": "b7c5b61bd8ec4ced4e27a6b851d2840fe22b8e5ba5d03ef9274ee1944316f83a",
+      "stderr_sha256": "1388ffd601a01ce2eaeab406da04ba22c21235260ee2ee10ef27afb320ef7303"
+    }
+  },
+  "checks": {
+    "repair_003/iop-build-Debug-004.json": {
+      "exit_code": 0,
+      "sha256": "6f48e6f757149612b2c227b944428f5d74e234819235371d4c29f8c717218b8e"
+    },
+    "repair_003/iop-build-Release-004.json": {
+      "exit_code": 0,
+      "sha256": "ae6f58e001b2e607b87e31abe5cfad0e30f55bc8dec81f377eed116bdf3c663a"
+    },
+    "repair_003/iop-test-Debug-004.json": {
+      "exit_code": 0,
+      "sha256": "30d803645fec499a832663e445b35fe0841f4d2a059b586fb30646cdd450807e"
+    },
+    "repair_003/iop-test-Release-004.json": {
+      "exit_code": 0,
+      "sha256": "80e7d199daf98cb40b43ccf6363582699e8d4ad9180c49e03ded3e0e9e6e3003"
+    },
+    "repair_003/production-iop-Debug.json": {
+      "exit_code": 0,
+      "sha256": "cf6acc07413bf72fd8d5ffe20125dd43ba44df4cea625758cdbfea2fb7e90e31"
+    },
+    "repair_003/production-iop-Release.json": {
+      "exit_code": 0,
+      "sha256": "966b7b5837476bd4f1ba813a2b04ca05d5dc8da5508ca143adbc4f2763173340"
+    },
+    "repair_004/build-Debug.json": {
+      "exit_code": 0,
+      "sha256": "1e289c6b0cf0051f08cac2df351934ec954c876724dc9fb1eaf02498c53f4375"
+    },
+    "repair_004/test-Debug.json": {
+      "exit_code": 0,
+      "sha256": "93be438c0dcc27ab23c5160812a83e8e6763b98838785eee3b5fb5120a4165b5"
+    },
+    "repair_004/build-Release.json": {
+      "exit_code": 0,
+      "sha256": "714998136ec01de07aa7ab2bd329d56572a9e5b6139ee7ed4e3a55a16135e257"
+    },
+    "repair_004/test-Release.json": {
+      "exit_code": 0,
+      "sha256": "9f93a1d1e9f0e1af41b3f646952e01515a88ae71682aee25048a1e089834941f"
+    },
+    "repair_004/observer-tests-002.json": {
+      "exit_code": 0,
+      "sha256": "f1275faaf0412f845cfc7cf114bb44600e0a63cb223753a7590d0cab46bc643e"
+    }
+  },
+  "source_sha256": {
+    "src/boot_continuations.cpp": "821f2cc448b841500f398ab01449ae71bd1e003e964ebdf65a83689019145d11",
+    "src/recovered/string_tail_0023cb40.inc": "a3c6569ae59fcf77f0f09245e6813e652e3a2e0a9f3b5d525ec8cec43b9bd491",
+    "src/recovered/cache_tail_001a7014.inc": "2eb4f4794821c3c3969ce9a4cc3b756a21ad2cd968686ad17e0da253337d7018",
+    "tests/integration/boot_continuations_contract.cpp": "d97f7a1b2732ebab96e1bac4300c3cbe50721a86e9308f8fa36ec42d067c1cd0",
+    "tools/native_boot_probe.py": "bdeac5dc9363528a8fb1d5b4f520a893a587d92ba0a01a2957680a08a0d20e50",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_ioman.h": "36251f5629bf1b66fe06b9348fd8168855230b7f9a23530b1edf1eb2f0daa35e",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_ioman.cpp": "7731c3735d5fac7bb32a32beab6b72cef24c80f721b772d71b1a3611d97e4b62",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.cpp": "0168f1e3ec969ebf037249883902ea8e8b613ddeb7144c66e29f9e3356712e15",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_rpc.h": "4a8c7d14163fecf94e702ca0bf11addddbff9fc15cef6288c1bd8910b08bac01",
+    "tools/PS2Recomp/ps2xIOP/tests/iop_import_tests.cpp": "90da9008c365dfa7d76318bddd371f8c4b4970b1c6d9e95ac4baa03d754bb506",
+    "tools/PS2Recomp/ps2xIOP/tests/iop_import_version_tests.cpp": "b228ebdca51597efcc8b9e52f1b6f24770b211f942a0e3516bcfee12a690abb4"
+  },
+  "limitations": [
+    "0/8 final acceptance criteria; no title or battle",
+    "No new retail comparison or complete cache/FILEIO lifecycle proof",
+    "Historical broad IOP strict-build failures retained; only named import suites pass",
+    "Original MODLOAD version0x106 exports7 and15 remain unimplemented",
+    "Broader emitter change stays local and unvalidated"
+  ],
+  "next_action": "Recover identified19A6C4 continuation; verify original MODLOAD7/15 ABI and module/file ownership before implementation; do not fake module loading.",
+  "published_source_sha256": {
+    "src/boot_continuations.cpp": "55cd87b1ad4b42de632a05b16003cc81f34b667f519713c311ab059234bec28f",
+    "src/recovered/string_tail_0023cb40.inc": "a3c6569ae59fcf77f0f09245e6813e652e3a2e0a9f3b5d525ec8cec43b9bd491",
+    "src/recovered/cache_tail_001a7014.inc": "2eb4f4794821c3c3969ce9a4cc3b756a21ad2cd968686ad17e0da253337d7018",
+    "tests/integration/boot_continuations_contract.cpp": "a2292067a8d847dc68e88fed7da4232c809f923c5e6f95487702b2196462b3b0",
+    "tools/native_boot_probe.py": "bdeac5dc9363528a8fb1d5b4f520a893a587d92ba0a01a2957680a08a0d20e50",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_ioman.h": "4403a9390fa73ad0bea46516899ea602eeba656f601ee0661bff1e0f2f5a2b6c",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_ioman.cpp": "0c9efda2a7e702b885ef56ba7d2b9f7d6a13e21e66e9d63aa97b784cc10f25fe",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.cpp": "9faa2175f924e00c5a75f91765eed35c106065cca546ca5c10cb62bf3ee88629",
+    "tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_rpc.h": "0e96d9e12d37ee512ec7d2dc057770c077f81f0f26d6d6541229399c6fcbc19e",
+    "tools/PS2Recomp/ps2xIOP/tests/iop_import_tests.cpp": "5bb9f8e2317f2fc7c8abbdfc4e0124f7f63b7815280fb3ebc50f10771c3d77ed",
+    "tools/PS2Recomp/ps2xIOP/tests/iop_import_version_tests.cpp": "972741fec1b50fb3939e6c41e3514fc8ccbfb3c3b040bbca9cb591e447355d94"
+  },
+  "source_hash_note": "source_sha256 identifies tested development bytes; publication preserves old line endings on unchanged lines. Normalized source text matches. No new clean corpus build."
+}

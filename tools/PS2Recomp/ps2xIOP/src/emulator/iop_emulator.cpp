@@ -284,12 +284,12 @@ namespace ps2x::iop::detail
                 const uint32_t function=cpu.gpr[4],statusAddress=cpu.gpr[6];
                 if(function==0u || !memory.ownsRamRange(function,4u) ||
                    (statusAddress!=0u && !memory.ownsRamRange(statusAddress,4u))) {
-                    setV0(-1);return ImportDisposition::Handled;
+                    setV0(UINT32_MAX);return ImportDisposition::Handled;
                 }
                 if (collectingBootCallbacks)
                 {
                     if (bootCallbacksCount >= bootCallbacksCapacity)
-                    { setV0(-1); return ImportDisposition::Handled; }
+                    { setV0(UINT32_MAX); return ImportDisposition::Handled; }
                     const uint32_t entry = bootCallbacksAddress + bootCallbacksCount++ * 8u;
                     memory.write32(entry, function + (cpu.gpr[5] & 3u));
                     memory.write32(entry + 4u, cpu.gpr[28]);
@@ -298,7 +298,7 @@ namespace ps2x::iop::detail
                     return ImportDisposition::Handled;
                 }
                 const uint32_t next=memory.allocate(4u,4u);
-                if(next==0u) {setV0(-1);return ImportDisposition::Handled;}
+                if(next==0u) {setV0(UINT32_MAX);return ImportDisposition::Handled;}
                 struct CallbackArgumentOwner {
                     IopMemory& memory;uint32_t address;
                     ~CallbackArgumentOwner(){(void)memory.freeAllocation(address);}
@@ -393,6 +393,9 @@ namespace ps2x::iop::detail
                 setV0(0);
                 return ImportDisposition::Handled;
             }
+            if (iequals(call.library, "ioman") && call.ordinal == 31u &&
+                ioman.dispatchDevctl(call.version, cpu, cdvd))
+                return ImportDisposition::Handled;
             if (iequals(call.library, "ioman") && ioman.dispatchImport(call.ordinal, cpu, *this))
                 return ImportDisposition::Handled;
             if (iequals(call.library, "sifman"))

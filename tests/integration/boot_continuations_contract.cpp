@@ -40,6 +40,15 @@ uint64_t reg(const R5900Context& ctx, unsigned index, unsigned half=0) {
     uint64_t parts[2]; std::memcpy(parts,&ctx.r[index],16); return parts[half];
 }
 void fill_opcodes(uint8_t* ram) {
+    const std::array<uint32_t,20> cacheTail{
+        0x254affffu,0xfu,0xbd180000u,0xfu,0xbd180040u,0xfu,0xbd180080u,0xfu,
+        0xbd1800c0u,0xfu,0xbd180100u,0xfu,0xbd180140u,0xfu,0xbd180180u,0xfu,
+        0xbd1801c0u,0xfu,0x1d40ffedu,0x25080200u};
+    for(size_t i=0;i<cacheTail.size();++i) word(ram,0x1a700cu+static_cast<uint32_t>(i)*4u,cacheTail[i]);
+    const std::array<uint32_t,9> stringTail{
+        0x5440fffau,0x24840001u,0x0c08f390u,0u,0x0200102du,
+        0x7bbf0010u,0x7bb00000u,0x03e00008u,0x27bd0020u};
+    for(size_t i=0;i<stringTail.size();++i) word(ram,0x23cb40u+static_cast<uint32_t>(i)*4u,stringTail[i]);
     word(ram,0x001b0308u,0x54400003u);
     word(ram,0x001b030cu,0xae3088c0u);
     word(ram,0x001b0310u,0x1000001eu);
@@ -2396,6 +2405,79 @@ int main() {
             require(reg(ctx,29)==static_cast<uint64_t>(static_cast<int64_t>(static_cast<int32_t>(sp+0x50u)))&&
                     reg(ctx,31)==cdvdSaved[0]&&ctx.pc==0x87654321,"CDVD stack alias and ADDIU wrap");
         }
+        auto cacheStep=[&](uint32_t pc) {
+            ctx.pc=pc; auto fn=runtime->lookupFunction(pc);
+            require(fn!=nullptr,"original cache continuation registered");
+            fn(ram,&ctx,runtime.get());
+        };
+        for(const uint64_t count : {0ull,1ull,0x80000000ull,0x100000000ull,0x8000000000000000ull,0xffffffffffffffffull}) {
+            ctx={};reg(ctx,8,0x60000,0x111);reg(ctx,10,count,0x222);reg(ctx,31,0x12345678,0x333);
+            cacheStep(0x1a7014);
+            const bool positive=count!=0 && (count>>63)==0;
+            require(ctx.pc==(positive?0x1a700cu:0x1a705cu)&&reg(ctx,10)==count&&reg(ctx,10,1)==0x222,
+                    "cache BGTZ tests original low64 count without repeating initial decrement");
+            require(reg(ctx,8)==0x60200&&reg(ctx,8,1)==0x111&&reg(ctx,31)==0x12345678&&
+                    reg(ctx,31,1)==0x333&&ctx.branch_pc==0x1a7054&&!ctx.in_delay_slot,
+                    "cache pointer delay executes once on both branch paths and preserves upper lanes");
+        }
+        for(const uint32_t address : {0x60000u,0x20060000u,0x80060000u,0xa0060000u}) {
+            std::array<uint8_t,512> bytes{};
+            for(size_t i=0;i<bytes.size();++i) bytes[i]=static_cast<uint8_t>(i*17u);
+            std::memcpy(ram+0x60000,bytes.data(),bytes.size());
+            ctx={};reg(ctx,8,address,0xaaa);reg(ctx,10,1,0xbbb);
+            cacheStep(0x1a700c);
+            require(ctx.pc==0x1a705c&&reg(ctx,10)==0&&reg(ctx,10,1)==0xbbb,
+                    "cache back edge decrements once and exits after final block");
+            const auto next=static_cast<uint64_t>(static_cast<int64_t>(static_cast<int32_t>(address+0x200u)));
+            require(reg(ctx,8)==next&&reg(ctx,8,1)==0xaaa&&std::memcmp(ram+0x60000,bytes.data(),bytes.size())==0,
+                    "coherent cache aliases preserve all bytes and sign extend the pointer delay");
+        }
+        ctx={};reg(ctx,8,0x60000,0);reg(ctx,10,2,0);
+        cacheStep(0x1a700c);require(ctx.pc==0x1a700c&&reg(ctx,8)==0x60200&&reg(ctx,10)==1,"cache first block yields at back edge");
+        cacheStep(ctx.pc);require(ctx.pc==0x1a705c&&reg(ctx,8)==0x60400&&reg(ctx,10)==0,"cache next block resumes at decrement");
+        ctx={};reg(ctx,8,PS2_RAM_SIZE-0x200u,0);reg(ctx,10,0,0);cacheStep(0x1a7014);
+        require(ctx.pc==0x1a705c&&reg(ctx,8)==PS2_RAM_SIZE,"cache last complete RDRAM block is valid");
+        ctx={};reg(ctx,8,PS2_RAM_SIZE-64u,0);reg(ctx,10,0,0);
+        bool invalidCache=false;try {cacheStep(0x1a7014);} catch(const std::runtime_error&) {invalidCache=true;}
+        require(invalidCache&&ctx.pc==0x1a701c&&reg(ctx,8)==PS2_RAM_SIZE-64u,
+                "cache range crossing stops at first unsupported line without MMIO or pointer advance");
+        for(const uint32_t address : {0x10000000u,0x70000000u,0xc0060000u,0xffffffc0u}) {
+            ctx={};reg(ctx,8,address,0);reg(ctx,10,0,0);invalidCache=false;
+            try {cacheStep(0x1a7014);} catch(const std::runtime_error&) {invalidCache=true;}
+            require(invalidCache&&ctx.pc==0x1a7014,"unsupported cache mapping remains an explicit barrier");
+        }
+        auto stringStep=[&](uint32_t pc) {
+            ctx.pc=pc; auto fn=runtime->lookupFunction(pc);
+            require(fn!=nullptr,"original string continuation registered");
+            fn(ram,&ctx,runtime.get());
+        };
+        for(const uint64_t byteResult : {1ull,0x100000000ull,0xffffffffffffffffull}) {
+            ctx={};reg(ctx,2,byteResult,0x123);reg(ctx,4,0x7fffffff,0x456);reg(ctx,31,0x789,0xabc);
+            stringStep(0x23cb40);
+            require(ctx.pc==0x23cb2c&&reg(ctx,4)==0xffffffff80000000ull&&reg(ctx,4,1)==0x456,
+                    "taken string BNEL tests low64 and sign-extends wrapped pointer increment");
+            require(reg(ctx,31)==0x789&&reg(ctx,31,1)==0xabc&&reg(ctx,2)==byteResult&&
+                    ctx.branch_pc==0x23cb40&&!ctx.in_delay_slot,"taken branch preserves live registers and returns to byte scan");
+        }
+        ctx={};reg(ctx,2,1,0);reg(ctx,4,0xffffffffu,0x456);stringStep(0x23cb40);
+        require(reg(ctx,4)==0&&reg(ctx,4,1)==0x456,"string pointer ADDIU wraps at32bits");
+        for(const uint32_t pc : {0x23cb40u,0x23cb48u}) {
+            ctx={};reg(ctx,2,0,0xffff);reg(ctx,4,0x60000,0x11);reg(ctx,5,0x61000,0x22);reg(ctx,31,0,0x33);
+            stringStep(pc);
+            require(ctx.pc==0x23ce40&&reg(ctx,4)==0x60000&&reg(ctx,5)==0x61000&&reg(ctx,31)==0x23cb50,
+                    "not-taken string BNEL annuls increment and calls original copy with unchanged args");
+            require(reg(ctx,31,1)==0x33&&ctx.branch_pc==0x23cb48&&!ctx.in_delay_slot,"JAL NOP delay and upper return lane preserved");
+        }
+        const std::array<uint64_t,4> savedStringFrame{0x1122334455667788ull,0x8877665544332211ull,0x12345678ull,0xabcdef0123456789ull};
+        std::memcpy(ram+0x58000,savedStringFrame.data(),sizeof(savedStringFrame));
+        ctx={};reg(ctx,29,0x20058000,0xaabb);reg(ctx,16,0x1234000060000ull,0);reg(ctx,2,0,0x5566);
+        stringStep(0x23cb50);
+        require(reg(ctx,2)==0x1234000060000ull&&reg(ctx,2,1)==0x5566&&ctx.pc==0x12345678,
+                "string return uses original destination low64 before frame restore");
+        require(reg(ctx,16)==savedStringFrame[0]&&reg(ctx,16,1)==savedStringFrame[1]&&
+                reg(ctx,31)==savedStringFrame[2]&&reg(ctx,31,1)==savedStringFrame[3],"string epilogue restores full128-bit LQ values");
+        require(reg(ctx,29)==0x20058020&&reg(ctx,29,1)==0xaabb&&ctx.branch_pc==0x23cb5c&&!ctx.in_delay_slot,
+                "string JR restores aliased frame and advances stack in delay slot");
         word(ram,0x3200c,0x35000);word(ram,0x32010,32);word(ram,0x3201c,0x371940);
         word(ram,0x35008,0x1a6920);word(ram,0x3500c,0x32000);word(ram,0x371940,0);
         require(runtime->registerFunction(0x36000,[](uint8_t*,R5900Context* c,PS2Runtime* r){c->pc=0;r->eeScheduler().requestStop();}),"register bounded scheduler test stop");

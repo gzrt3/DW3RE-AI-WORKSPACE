@@ -4,6 +4,7 @@
 #include "ps2_runtime_macros.h"
 
 #include <array>
+#include <atomic>
 #include <cstring>
 #include <stdexcept>
 
@@ -49,6 +50,8 @@ void fate_original_sif_irq_resume(uint8_t*,R5900Context*,PS2Runtime*);
 namespace {
 
 #include "recovered/cdvd_command_001b0308.inc"
+#include "recovered/string_tail_0023cb40.inc"
+#include "recovered/cache_tail_001a7014.inc"
 
 void original_reset_return(uint8_t* rdram, R5900Context* ctx, PS2Runtime* runtime) {
     // Both original XL reset routines omit this identical four-word epilogue.
@@ -2534,6 +2537,22 @@ void fate::recomp::register_boot_continuations(PS2Runtime& runtime) {
         if(runtime.hasFunction(address)) throw std::runtime_error("Original IOP sync continuation conflict");
     auto* ram = runtime.memory().getRDRAM();
     if (!ram) throw std::runtime_error("Boot continuations require loaded EE RAM");
+    for(size_t index=0; index<original_cache_tail_words.size(); ++index) {
+        uint32_t actual=0;
+        std::memcpy(&actual,ram+0x1a700cu+index*4u,sizeof(actual));
+        if(actual!=original_cache_tail_words[index])
+            throw std::runtime_error("Original cache continuation differs from ELF");
+    }
+    for(const uint32_t pc : {0x1a700cu,0x1a7014u})
+        if(runtime.hasFunction(pc)) throw std::runtime_error("Original cache continuation conflict");
+    for(size_t index=0; index<original_string_tail_words.size(); ++index) {
+        uint32_t actual=0;
+        std::memcpy(&actual,ram+0x23cb40u+index*4u,sizeof(actual));
+        if(actual!=original_string_tail_words[index])
+            throw std::runtime_error("Original string continuation differs from ELF");
+    }
+    for(const uint32_t pc : {0x23cb40u,0x23cb48u,0x23cb50u})
+        if(runtime.hasFunction(pc)) throw std::runtime_error("Original string continuation conflict");
     for(size_t index=0; index<fate_recovered_001b0308_words.size(); ++index) {
         uint32_t actual=0;
         std::memcpy(&actual,ram+0x1b0308u+index*4u,sizeof(actual));
@@ -2732,6 +2751,12 @@ void fate::recomp::register_boot_continuations(PS2Runtime& runtime) {
     for(const uint32_t pc : {0x1b0308u,0x1b0324u,0x1b0358u,0x1b036cu,0x1b0388u})
         if(!runtime.registerFunction(pc,fate_recovered_001b0308))
             throw std::runtime_error("Recovered CDVD command registration failed");
+    for(const uint32_t pc : {0x23cb40u,0x23cb48u,0x23cb50u})
+        if(!runtime.registerFunction(pc,original_string_tail))
+            throw std::runtime_error("Original string continuation registration failed");
+    for(const uint32_t pc : {0x1a700cu,0x1a7014u})
+        if(!runtime.registerFunction(pc,original_cache_tail))
+            throw std::runtime_error("Original cache continuation registration failed");
     if(!runtime.registerFunction(0x1abd78u,original_reset_return) ||
        !runtime.registerFunction(0x1a88bcu,original_reset_return))
         throw std::runtime_error("Original reset return registration failed");

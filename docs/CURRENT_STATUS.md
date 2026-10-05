@@ -1,27 +1,32 @@
 # Current verified state
 
-Latest development native probes: cycles001/002, 2026-10-05 UTC. Both builds
-passed. Their processes then stopped at missing continuation **0x0023CB40**,
-with input integrity MATCH and unresolved IOMAN export31 version0x104 at0x29040.
-The prior1B0308 barrier is passed by the bounded39-instruction recovery, checked
-against the identified original ELF and focused Debug/Release contracts.
+Latest native development probe: cycle004, 2026-10-05 UTC. The build passed;
+the actual process stopped at missing **0x0019A6C4**, input integrity MATCH.
+MODLOAD exports7 and15 version0x106 are also unhandled. Next recover that
+original continuation and verify original module loading/boot-device behavior.
 
-**0/8 final acceptance criteria verified.** No title screen or complete battle
-has been demonstrated. The next work is original23CB40 recovery and versioned
-IOMAN devctl0x4391 through the existing CDVD event owner, retaining FILEIO waits.
+The previous23CB40 and1A7014 barriers are passed. IOMAN1.4 devctl0x4391 now
+returns the shared CDVD event; the actual run logged event3. String scan/return
+and cache block continuations are bound to the identified original ELF words.
+The cache lowering supports direct coherent RDRAM mappings only. Unsupported
+mappings fail explicitly; cache tags, timing and TLB exceptions remain outside
+its scope. See NATIVE_REPAIR_20261005.md for the exact limitations.
 
-Both Copilot advisers returned real results: GitHub desktop has a local hourly
-review automation; Microsoft Copilot personal is accessed through supported
-Computer Use by the main continuation. Their quotas are separate from Azure/AWS.
-The runner synchronizes bounded requests/replies without executing model output.
-Fourteen bridge tests and five runner tests pass. One incorrect mathematical
-statement from Microsoft was rejected; see docs/audits/COPILOT_REVIEW_20261005.md.
+Boot continuation contracts pass Debug/Release. Two focused IOP import/version
+suites per configuration pass under /W4 /WX; production IOP was rebuilt in both.
+Ten native observer tests pass. Historical failed broad IOP strict builds are
+preserved locally; the entire IOP test suite is not claimed to pass.
 
-The broader signed branch emitter edit remains local pending its own build and
-behavioral tests; this publication does not include that unvalidated change.
-Existing generated corpus is unchanged. Native code in this update was verified
-in the development checkout; the previous clean publication build is documented
-in PUBLICATION.md and has not been rerun for this update.
+**0/8 final acceptance criteria verified.** No title screen, complete battle,
+combined gameplay or full original parity has been demonstrated. Actual FILEIO
+clear/wait/SIF notification lifecycle still requires independent state evidence.
 
-Selected evidence is in evidence/copilot_pipeline_20261005.json. Private raw
-responses, logs, original assets, provider ledgers and full traces stay local.
+Both Copilot queues were collected; no new reply or Microsoft READY request.
+Previously rejected advice remains rejected. Copilot quotas remain separate
+from Azure/AWS; no new auxiliary cloud call or budget reset was performed.
+The broader signed-branch emitter edit stays local pending validation.
+
+Native verification was performed in the development checkout. This update
+has not repeated the earlier full clean publication build. Selected summaries
+and hashes: evidence/native_repair_20261005.json. Original assets, raw logs,
+provider ledgers and personal data remain outside Git.

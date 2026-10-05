@@ -2,6 +2,7 @@
 #include "emulator/core/iop_kernel.h"
 #include "emulator/core/iop_memory.h"
 #include "emulator/imports/iop_cdvd.h"
+#include "emulator/imports/iop_ioman.h"
 #include "emulator/imports/iop_imports.h"
 #include "emulator/imports/iop_loadcore.h"
 #include "emulator/imports/iop_timrman.h"
@@ -160,6 +161,73 @@ namespace
         cpu.gpr[7] = resultAddress;
         return expect(kernel.dispatchEventImport(11u, cpu), "PollEventFlag was not handled") &&
                expect(static_cast<int32_t>(cpu.gpr[2]) == expected, "PollEventFlag returned an unexpected result");
+    }
+
+    bool testIomanCdvdEventDevctl()
+    {
+        NullHost host;
+        IopMemory memory;
+        IopKernel kernel(memory);
+        kernel.reset();
+        IopCdvd cdvd(host, memory, kernel);
+        cdvd.reset();
+        IopIoman ioman(memory, host);
+        ioman.installStandardStreams();
+        constexpr uint32_t path = 0x3000u, sp = 0x3100u, output = 0x3204u;
+        const char device[] = "cdrom0:";
+        (void)memory.writeRam(path, device, sizeof(device));
+        auto request = [&]() {
+            IopCpuState cpu{};
+            cpu.gpr[2] = 0xaabbccddu;
+            cpu.gpr[4] = path; cpu.gpr[5] = 0x4391u; cpu.gpr[29] = sp;
+            memory.write32(sp + 0x10u, output); memory.write32(sp + 0x14u, 8u);
+            memory.write32(output - 4u, 0x12345678u);
+            memory.write32(output, 0xdeadbeefu); memory.write32(output + 4u, 0x87654321u);
+            return cpu;
+        };
+        IopCpuState cpu = request();
+        if (!expect(ioman.dispatchDevctl(0x104u, cpu, cdvd), "IOMAN1.4 devctl was not handled") ||
+            !expect(cpu.gpr[2] == 0u, "CDVD event devctl failed")) return false;
+        const int event = static_cast<int>(memory.read32(output));
+        IopCpuState sc{}; sc.gpr[4] = static_cast<uint32_t>(-11);
+        if (!expect(cdvd.dispatchImport(50u, sc), "sceCdSC event query failed") ||
+            !expect(event > 0 && sc.gpr[2] == static_cast<uint32_t>(event), "devctl did not reuse CDVD event owner") ||
+            !expect(memory.read32(output-4u) == 0x12345678u && memory.read32(output+4u) == 0x87654321u,
+                    "devctl must write exactly four output bytes") ||
+            !pollEvent(kernel, event, 0x10u, 0x3300u, -418)) return false;
+        cpu = request();
+        if (!expect(ioman.dispatchDevctl(0x104u, cpu, cdvd) && memory.read32(output) == static_cast<uint32_t>(event),
+                    "repeated devctl changed the owned event")) return false;
+        for (int kind = 0; kind < 7; ++kind)
+        {
+            cpu = request();
+            if (kind == 0) cpu.gpr[4] = 0u;
+            if (kind == 1) cpu.gpr[4] = 0x00200000u;
+            if (kind == 2) cpu.gpr[29] = 0xfffffff0u;
+            if (kind == 3) cpu.gpr[6] = path;
+            if (kind == 4) memory.write32(sp+0x14u, 3u);
+            if (kind == 5) memory.write32(sp+0x10u, 0x001ffffeu);
+            if (kind == 6) memory.write32(sp+0x10u, 0u);
+            if (!expect(ioman.dispatchDevctl(0x104u, cpu, cdvd) && static_cast<int32_t>(cpu.gpr[2]) == -22,
+                        "invalid devctl arguments were not rejected") ||
+                !expect(memory.read32(output) == 0xdeadbeefu, "invalid devctl mutated output")) return false;
+        }
+        cpu = request();
+        if (!expect(!ioman.dispatchDevctl(0x101u, cpu, cdvd) && cpu.gpr[2] == 0xaabbccddu,
+                    "unverified IOMAN version must retain missing-import barrier")) return false;
+        cpu.gpr[5] = 0x4392u;
+        if (!expect(!ioman.dispatchDevctl(0x104u, cpu, cdvd), "unsupported devctl silently succeeded")) return false;
+        cpu = request(); memory.write8(path, 'x');
+        if (!expect(!ioman.dispatchDevctl(0x104u, cpu, cdvd), "unverified device silently succeeded")) return false;
+        memory.write8(path, 'c');
+        (void)kernel.setInternalEventFlag(event, 0x10u);
+        if (!pollEvent(kernel, event, 0x10u, 0x3300u, 0)) return false;
+        ioman.reset(); cdvd.reset(); kernel.reset();
+        cpu = request();
+        if (!expect(ioman.dispatchDevctl(0x104u, cpu, cdvd) && cpu.gpr[2] == 0u, "devctl failed after reboot reset")) return false;
+        const int freshEvent = static_cast<int>(memory.read32(output));
+        return pollEvent(kernel, freshEvent, 0x29u, 0x3300u, 0) &&
+               pollEvent(kernel, freshEvent, 0x10u, 0x3300u, -418);
     }
 
     bool testCdvdSpecialControl()
@@ -330,7 +398,7 @@ namespace
 
 int main()
 {
-    if (!testLoadcoreRebootLibraryMode() || !testCdvdSpecialControl() || !testCdvdSearchFile() ||
+    if (!testLoadcoreRebootLibraryMode() || !testIomanCdvdEventDevctl() || !testCdvdSpecialControl() || !testCdvdSearchFile() ||
         !testTimrmanPeriodicCallback())
         return 1;
     std::cout << "ps2xIOP import tests passed\n";
