@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python tools/verify_antislop.py
+      - run: python tools/agent_reach_research.py verify
+      - run: python -m unittest discover -s tests -p test_agent_reach_research.py -v
       - run: python -m unittest discover -s tests -p test_antislop.py -v
       - run: python -m unittest discover -s tests -p test_resume_catalog.py -v
       - run: python -m unittest discover -s tests -p test_native_boot_probe.py -v

@@ -34,3 +34,13 @@ truncate technical comments to meet a line limit, or turn review into a claim of
 bug-free gameplay. The native objective and original-behavior evidence take
 precedence over website styling rules. Report failures and untested scope openly.
 <!-- antislop:end -->
+
+## Agent Reach research
+
+For public research that can resolve a native-port uncertainty, read
+`docs/AGENT_REACH.md` and `.agents/skills/agent-reach/SKILL_en.md`. Use local
+`tools/agent_reach_research.py`, preserve each attempt in a new artifact directory
+and reuse unchanged sources. Inspect actual contents and original-version
+compatibility before applying findings. Exa returned a quota limit; no automatic
+retries or new paid keys. Keep upstream setup, updates and global-directory
+defaults within the documented project scope.

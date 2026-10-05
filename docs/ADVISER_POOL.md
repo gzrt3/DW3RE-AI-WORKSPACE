@@ -10,6 +10,10 @@ answers require independent review before use.
 The product target remains the standalone native PC port. No adviser or passing
 tool test closes a game acceptance criterion.
 
+Public-source research uses the local [Agent Reach integration](AGENT_REACH.md)
+when useful to an identified barrier. Its pinned excerpts can inform a new
+bounded review; it is not a fifth model provider and adds no spending grants.
+
 ## Operation
 
 ```powershell

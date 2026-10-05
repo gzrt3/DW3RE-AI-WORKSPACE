@@ -1,3 +1,4 @@
 # Preserve the exact reviewed upstream bytes for offline integrity checks.
 /.agents/skills/antislop/** -text
 /.agents/skills/antislop-code/** -text
+/.agents/skills/agent-reach/** -text
