@@ -2442,3 +2442,11 @@ fixture routing environment is isolated. Node24 action revisions pinned after
 the observed Node20 warning. Remote rerun must still be checked. Original failure
 retained; see antislop_ci_repair evidence. Backup56f391f VERIFIED:298files,
 3235893bytes, zero deletions, in loader-antislop-20261005-001. Native unchanged.
+
+Remote rerun37261101749 on a33e102 SUCCESS:59 tests and exact anti-slop-file
+verification pass on hosted Windows. Logs/steps retained; see
+evidence/antislop_ci_success_20261005.json. All55 native source identities MATCH
+the tested loader snapshot. Next remains original LOADCORE lifecycle/linking and
+MODLOAD worker ownership, then real SIO2/GS/video/Press Start. All8 gates OPEN.
+The next source/evidence backup increment is loader-antislop-ci-20261005-002;
+read its verification.json for final status rather than inferring completion.
