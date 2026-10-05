@@ -1,0 +1,547 @@
+{
+  "scope": "Audit, public-source research and one real read-only XInput snapshot; no new native game execution.",
+  "audited_commit": "395df9ffe45faf4e55567785caf34da2bd21035d",
+  "verification": {
+    "checked_utc": "2026-10-05T02:22:22.064936+00:00",
+    "prior_public_sources": [
+      {
+        "path": "iop/system/modload/src/modload.c",
+        "match": true
+      },
+      {
+        "path": "iop/sio/sio2man/src/sio2man.c",
+        "match": true
+      },
+      {
+        "path": "iop/system/loadcore/include/loadcore.h",
+        "match": true
+      },
+      {
+        "path": "ee/mpeg/samples/mpeg.c",
+        "match": true
+      },
+      {
+        "path": "pcsx2/SIO/Sio2.cpp",
+        "match": true
+      },
+      {
+        "path": "pcsx2/Recording/InputRecording.cpp",
+        "match": true
+      },
+      {
+        "path": "pcsx2-qt/QtHost.cpp",
+        "match": true
+      },
+      {
+        "path": "ps2xIOP/src/emulator/iop_emulator.cpp",
+        "match": true
+      },
+      {
+        "path": "libavformat/mpeg.c",
+        "match": true
+      },
+      {
+        "path": "README.md",
+        "match": true
+      }
+    ],
+    "retained_run_logs": [
+      {
+        "run": "live",
+        "file": "launch.json",
+        "match": true
+      },
+      {
+        "run": "live",
+        "file": "stdout.bin",
+        "match": true
+      },
+      {
+        "run": "live",
+        "file": "stderr.bin",
+        "match": true
+      },
+      {
+        "run": "live_visible",
+        "file": "launch.json",
+        "match": true
+      },
+      {
+        "run": "live_visible",
+        "file": "stdout.bin",
+        "match": true
+      },
+      {
+        "run": "live_visible",
+        "file": "stderr.bin",
+        "match": true
+      },
+      {
+        "run": "live_final",
+        "file": "launch.json",
+        "match": true
+      },
+      {
+        "run": "live_final",
+        "file": "stdout.bin",
+        "match": true
+      },
+      {
+        "run": "live_final",
+        "file": "stderr.bin",
+        "match": true
+      }
+    ],
+    "recorded_source_scope": [
+      {
+        "path": "CMakeLists.txt",
+        "match": true
+      },
+      {
+        "path": "CMakePresets.json",
+        "match": true
+      },
+      {
+        "path": "cmake/ExistingRuntime.cmake",
+        "match": true
+      },
+      {
+        "path": "src/main.cpp",
+        "match": true
+      },
+      {
+        "path": "src/elf.cpp",
+        "match": true
+      },
+      {
+        "path": "src/dispatcher.cpp",
+        "match": true
+      },
+      {
+        "path": "src/unsupported_hle.cpp",
+        "match": true
+      },
+      {
+        "path": "src/native_presenter.cpp",
+        "match": true
+      },
+      {
+        "path": "include/fate/native_presenter.hpp",
+        "match": true
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/src/lib/Kernel/EeScheduler.cpp",
+        "match": true
+      },
+      {
+        "path": "src/audio/spu_bridge.cpp",
+        "match": true
+      },
+      {
+        "path": "src/sdl_window.cpp",
+        "match": true
+      },
+      {
+        "path": "src/gs_wrapper.cpp",
+        "match": true
+      },
+      {
+        "path": "src/patch_engine.cpp",
+        "match": true
+      },
+      {
+        "path": "src/recomp/entry_0x100008.cpp",
+        "match": true
+      },
+      {
+        "path": "src/recomp/FUN_001ad6e8_0x1ad6e8.cpp",
+        "match": true
+      },
+      {
+        "path": "src/boot_continuations.cpp",
+        "match": true
+      },
+      {
+        "path": "include/fate/boot_continuations.hpp",
+        "match": true
+      },
+      {
+        "path": "src/recovered/cdvd_command_001b0308.inc",
+        "match": true
+      },
+      {
+        "path": "tools/recover_continuation.py",
+        "match": true
+      },
+      {
+        "path": "src/recovered/string_tail_0023cb40.inc",
+        "match": true
+      },
+      {
+        "path": "src/recovered/cache_tail_001a7014.inc",
+        "match": true
+      },
+      {
+        "path": "src/boot_syscall_handlers.cpp",
+        "match": true
+      },
+      {
+        "path": "src/boot_thread_syscalls.cpp",
+        "match": true
+      },
+      {
+        "path": "src/native_iop_boot.cpp",
+        "match": true
+      },
+      {
+        "path": "include/fate/native_iop_boot.hpp",
+        "match": true
+      },
+      {
+        "path": "include/fate/native_iop_manifest.hpp",
+        "match": true
+      },
+      {
+        "path": "src/generated_resume_catalog.cpp",
+        "match": true
+      },
+      {
+        "path": "include/fate/resume_catalog.hpp",
+        "match": true
+      },
+      {
+        "path": "include/fate/verified_return_tail.hpp",
+        "match": true
+      },
+      {
+        "path": "tools/generate_resume_catalog.py",
+        "match": true
+      },
+      {
+        "path": "include/fate/syscall_return_words.hpp",
+        "match": true
+      },
+      {
+        "path": "src/vfs/vfs_hook.cpp",
+        "match": true
+      },
+      {
+        "path": "src/input/pad_bridge.cpp",
+        "match": true
+      },
+      {
+        "path": "include/fate/guest_float_environment.hpp",
+        "match": true
+      },
+      {
+        "path": "include/fate/dispatcher.hpp",
+        "match": true
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/include/ps2_runtime.h",
+        "match": true
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/include/runtime/ee_scheduler.h",
+        "match": true
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/src/lib/ps2_runtime.cpp",
+        "match": true
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xRuntime/src/lib/Kernel/Syscalls/System.cpp",
+        "match": true
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_ioman.h",
+        "match": true
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_ioman.cpp",
+        "match": true
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.cpp",
+        "match": true
+      },
+      {
+        "path": "tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_rpc.h",
+        "match": true
+      },
+      {
+        "path": "tools/native_boot_probe.py",
+        "match": true
+      }
+    ],
+    "exe_sha256_match": true,
+    "elf_sha256_match": true,
+    "backup_report_status": "VERIFIED",
+    "backup_report_sha256": "2d311273192cf9c3d3b31684b7512eeaa159d09e4391f78d69db76f1cffa979e",
+    "limitations": [
+      "No new native execution or full test suite run.",
+      "Recorded source_files is a bounded fingerprint, not every translation unit.",
+      "Backup report inspected; the 65.7 GB backup was not rehashed again."
+    ]
+  },
+  "new_pinned_public_sources": [
+    {
+      "repo": "jpd002/Play-",
+      "revision": "83700b2c31e593bc94e845b4b31b797be84dda59",
+      "path": "Source/iop/Iop_Modload.cpp",
+      "url": "https://github.com/jpd002/Play-/blob/83700b2c31e593bc94e845b4b31b797be84dda59/Source/iop/Iop_Modload.cpp",
+      "sha256": "870af241661c4c6a4046cbcface7f89b70bcfb9992da8c9c406f44a782efbf19",
+      "bytes": 10793,
+      "matches_connector_text_normalized": true
+    },
+    {
+      "repo": "jpd002/Play-",
+      "revision": "83700b2c31e593bc94e845b4b31b797be84dda59",
+      "path": "Source/iop/IopBios.cpp",
+      "url": "https://github.com/jpd002/Play-/blob/83700b2c31e593bc94e845b4b31b797be84dda59/Source/iop/IopBios.cpp",
+      "sha256": "fba7f641fcce4764472b3d35968f0e4b426254e3abf069adc27b5fb4ae9835a4",
+      "bytes": 117026,
+      "matches_connector_text_normalized": true
+    },
+    {
+      "repo": "jpd002/Play-",
+      "revision": "83700b2c31e593bc94e845b4b31b797be84dda59",
+      "path": "Source/iop/IopBios.h",
+      "url": "https://github.com/jpd002/Play-/blob/83700b2c31e593bc94e845b4b31b797be84dda59/Source/iop/IopBios.h",
+      "sha256": "9b87cf57e3272aa0b5a7092bcfa186654dc94ff2ee4a48ea16ec6133330577d0",
+      "bytes": 17462,
+      "matches_connector_text_normalized": true
+    },
+    {
+      "repo": "jpd002/Play-",
+      "revision": "83700b2c31e593bc94e845b4b31b797be84dda59",
+      "path": "Source/iop/Iop_Sio2.cpp",
+      "url": "https://github.com/jpd002/Play-/blob/83700b2c31e593bc94e845b4b31b797be84dda59/Source/iop/Iop_Sio2.cpp",
+      "sha256": "a982ff90ad556f9e361579e2011fafbc1785719ff242350d135583f6738890c0",
+      "bytes": 22790,
+      "matches_connector_text_normalized": true
+    },
+    {
+      "repo": "PCSX2/pcsx2",
+      "revision": "144a19ba05fd1aa514f7228972f0c6260c61b4e8",
+      "path": "pcsx2/SIO/Memcard/MemoryCardFile.cpp",
+      "url": "https://github.com/PCSX2/pcsx2/blob/144a19ba05fd1aa514f7228972f0c6260c61b4e8/pcsx2/SIO/Memcard/MemoryCardFile.cpp",
+      "sha256": "bea13ef9bee15e9a59ab14cf0d2235f366b79c169d7f854445b4172652e97b0a",
+      "bytes": 31503,
+      "matches_connector_text_normalized": true
+    },
+    {
+      "repo": "microsoft/DirectXTK",
+      "revision": "74e9b3c3871280b3a8b9907f862c55a50ae392ef",
+      "path": "Src/GamePad.cpp",
+      "url": "https://github.com/microsoft/DirectXTK/blob/74e9b3c3871280b3a8b9907f862c55a50ae392ef/Src/GamePad.cpp",
+      "sha256": "70544a7c2c7a042a95a27198137285fddeda4b42203377183226332bbde95e59",
+      "bytes": 59908,
+      "matches_connector_text_normalized": true
+    },
+    {
+      "repo": "ps2dev/ps2sdk",
+      "revision": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+      "path": "ee/rpc/pad/include/libpad.h",
+      "url": "https://github.com/ps2dev/ps2sdk/blob/ac92a9f657d2e531dd8f060250b07f2a5ac6dea5/ee/rpc/pad/include/libpad.h",
+      "sha256": "c42e337f1351819ba48a8a294469827ab3d46af78060deab05b095ec26b3d5c2",
+      "bytes": 7201,
+      "matches_connector_text_normalized": true
+    }
+  ],
+  "web_documentation_observed_with_computer_use": [
+    "https://learn.microsoft.com/en-us/windows/win32/xinput/getting-started-with-xinput",
+    "https://learn.microsoft.com/en-us/windows/win32/api/xinput/nf-xinput-xinputgetstate",
+    "https://sqlite.org/appfileformat.html",
+    "https://sqlite.org/atomiccommit.html"
+  ],
+  "original_sio2man": {
+    "sha256": "d02dd7bcf83a802c388b6ce1fdd447b4d5c29dcc7ba11000ccd66f8f14714fd6",
+    "bytes": 6553,
+    "metadata": [
+      {
+        "module_info": "0xf80",
+        "entry": "0x634",
+        "gp": "0x8f80",
+        "textsize": 3856,
+        "datasize": 128,
+        "bsssize": 48,
+        "version": "0x205",
+        "name": "sio2man"
+      }
+    ],
+    "export_table_versions": [
+      {
+        "library": "sio2man",
+        "version": "0x203"
+      }
+    ],
+    "import_libraries": [
+      {
+        "library": "loadcore",
+        "version": "0x103",
+        "stub_count": 1
+      },
+      {
+        "library": "intrman",
+        "version": "0x102",
+        "stub_count": 6
+      },
+      {
+        "library": "stdio",
+        "version": "0x103",
+        "stub_count": 1
+      },
+      {
+        "library": "dmacman",
+        "version": "0x102",
+        "stub_count": 5
+      },
+      {
+        "library": "thbase",
+        "version": "0x101",
+        "stub_count": 3
+      },
+      {
+        "library": "thevent",
+        "version": "0x101",
+        "stub_count": 5
+      },
+      {
+        "library": "thsemap",
+        "version": "0x101",
+        "stub_count": 4
+      },
+      {
+        "library": "sysclib",
+        "version": "0x103",
+        "stub_count": 3
+      }
+    ],
+    "scope": "Static metadata and import tables; runtime initialization remains blocked."
+  },
+  "xinput_host": {
+    "checked_utc": "2026-10-05T02:25:13.204122+00:00",
+    "api": "XInput 1.4 / XInputGetState",
+    "samples_per_index": 1,
+    "controllers": [
+      {
+        "index": 0,
+        "result": 1167,
+        "status": "DISCONNECTED"
+      },
+      {
+        "index": 1,
+        "result": 1167,
+        "status": "DISCONNECTED"
+      },
+      {
+        "index": 2,
+        "result": 1167,
+        "status": "DISCONNECTED"
+      },
+      {
+        "index": 3,
+        "result": 1167,
+        "status": "DISCONNECTED"
+      }
+    ],
+    "game_integration_verified": false,
+    "scope": "Read-only host API snapshot; no input injection, rumble, or game execution."
+  },
+  "original_save_name_candidates": {
+    "scope": "Static original ELF strings, not save-path reachability or compatibility proof.",
+    "variants": [
+      {
+        "elf": "SLUS_202.77",
+        "sha256": "b5a2fb3c32ce7468160e3845b64babc4ace0d6cb7650f4d940083c6841c1f5d1",
+        "candidate_strings": [
+          {
+            "text": "/BASLUS-20277XXXXXXXX",
+            "file_offset": "0x247870",
+            "virtual_addresses": [
+              "0x3477f0"
+            ]
+          },
+          {
+            "text": "/BASLUS-20277XXXXXXXX/icon.sys",
+            "file_offset": "0x247890",
+            "virtual_addresses": [
+              "0x347810"
+            ]
+          },
+          {
+            "text": "/BASLUS-20277XXXXXXXX/musou.ico",
+            "file_offset": "0x2478b0",
+            "virtual_addresses": [
+              "0x347830"
+            ]
+          },
+          {
+            "text": "/BASLUS-20277XXXXXXXX/BASLUS-20277XXXXXXXX",
+            "file_offset": "0x2478d0",
+            "virtual_addresses": [
+              "0x347850"
+            ]
+          },
+          {
+            "text": "/BASLUS-20277XXXXXXXX/*",
+            "file_offset": "0x247910",
+            "virtual_addresses": [
+              "0x347890"
+            ]
+          },
+          {
+            "text": "BASLUS-20277XXXXXXXX",
+            "file_offset": "0x247950",
+            "virtual_addresses": [
+              "0x3478d0"
+            ]
+          },
+          {
+            "text": "/BASLUS-20079XXXXXXXX",
+            "file_offset": "0x2481c0",
+            "virtual_addresses": [
+              "0x348140"
+            ]
+          }
+        ]
+      },
+      {
+        "elf": "SLUS_206.17",
+        "sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+        "candidate_strings": [
+          {
+            "text": "BASLUS-20277XXXXXXXX",
+            "file_offset": "0x1ce750",
+            "virtual_addresses": [
+              "0x2cdf50"
+            ]
+          },
+          {
+            "text": "BASLUS-20617XXXXXXXX",
+            "file_offset": "0x1ce7a0",
+            "virtual_addresses": [
+              "0x2cdfa0"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "recommendations": {
+    "loader": "Owned resumable MODLOAD7 request and IOP/RPC continuation matched to original1.6.",
+    "input": "One XInput provider feeding verified EE/IOP consumers and deterministic recorder.",
+    "saves": "Proposed single SQLite container with original shared paths/payloads; raw PS2 image alternative if sector access is required."
+  },
+  "acceptance_verified": 0,
+  "acceptance_total": 8,
+  "game_input_integrated": false,
+  "single_save_container_integrated": false,
+  "new_native_game_run": false,
+  "new_full_build": false,
+  "new_full_test_run": false,
+  "personal_saves_modified": false,
+  "paid_calls": 0,
+  "deleted_originals": 0
+}

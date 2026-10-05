@@ -2,14 +2,17 @@
 
 This ordering follows dependencies and risk. The target remains the complete
 native Windows port in NATIVE_PC_OBJECTIVE.md; all eight final gates stay open.
-Baseline: cycle006, Release build passed, 10-second probe timed out at
-MODLOAD1.6 export7 / IOP PC0x14374, input integrity MATCH. No title or battle.
+Baseline: cycle007, Release build passed. The latest live probe stopped at its
+10-second cooperative deadline with MODLOAD1.6 export7 / IOP PC0x14374 still
+unhandled, input integrity MATCH and zero GS presentations. No title or battle.
+The subsequent audit rechecked saved identities without another identical run;
+see audits/CURRENT_RECHECK_20261005.md and INPUT_AND_SINGLE_SAVE.md.
 
 | Order | Work and measured gap | Required proof before moving past it |
 | --- | --- | --- |
 | P0.1 | Original module loader and resumable IOP execution. MODLOAD7 is missing; synchronous calls cannot resume after yield. Existing image startup passes raw bytes instead of argc/argv, tests residence against exact0/2 and lacks original ModuleInfo ownership. Some module-manager paths accept an ID after failed startup. | Capture the actual filename/arguments at the failed call. Recover selected-original request, loader-thread/semaphore/event, entry ABI and lifecycle. Exercise yield/resume, reentrant load, failed load/start, returned result and unload. No RPC completion before actual completion. Then native boot with unchanged originals. |
 | P0.2 | Remaining original EE continuations and initialization. Historical0x0019A6C4 remains unresolved but was reached via an unverified RPC path. | Repair only identified original intervals; preserve registers/widths/delay slots and compare checkpoints. A later PC alone does not prove successful initialization. |
-| P0.3 | Safe native observation. main.cpp runs only the scheduler. PS2Runtime::run resets prepared IOP/EE state; the old renderer wrapper is incomplete. | Present the current runtime GS output without reinitialization. Pump a real Windows window, record source/dimensions, preserve faults, and verify close/stop. Empty output must remain explicitly empty; no placeholder title, magenta frame or video-player substitute. |
+| P0.3 | Native observation implemented in cycle007. The SDL presenter samples the existing scheduler/GS on its executor without resetting prepared state. Window visibility and clean close were observed. | Keep state-preserving observation during the next boot repairs. No game image has been produced; the two presentation contracts are synthetic transport tests. Empty output must remain explicitly empty. |
 | P0.4 | Original PSS stream, IPU/MPEG and GS path. Local data contains MOVIE/KOEILOGO.PSS, OMEGA.PSS and OPENING.PSS; XL also has MOVIE2/OPENING.PSS. These names do not prove order or reachability. MPEG.cpp has FFmpeg-backed decoding; IPU.cpp contains fixed guest addresses requiring game/version validation. | Hash originals and mounted copies; trace guest file requests and actual byte delivery through demux, decoding, timestamps and framebuffer. Validate decoded output/audio against an independent original run. Recover call sites before installing any version-specific HLE. |
 | P0.5 | Original boot-to-attract-to-Press-Start state machine, timing, sound and input. PadBridge currently returns mock released buttons. Audio and real title resource path remain unverified. | Record natural boot, at least two attract loops, skip input and actual Start transition to the menu. Correlate video/audio, input and guest state with the original. No manual sequence or invented menu image. |
 | P1.1 | First battle: VIF/VU, GS effects, animation, audio, controls, AI, collisions, objectives and results. | Reproducible deterministic scenario from title through results, with independent state/image/audio comparisons and regression cases. |
@@ -44,11 +47,13 @@ executable/input hashes and logs. A screenshot of an empty framebuffer proves
 only that observation works. The progress webpage is a separate status tool.
 Reference captures must identify PCSX2 and must never be labelled native output.
 
-Current work first exposes the actual unresolved module request, then connects
-state-preserving GS observation. This observation is instrumentation, not a
-substitute for implementing P0.1. Do not spend cycles on cosmetic menus or
-packaging before original boot/video/Start transitions execute.
+The actual request and state-preserving GS observation are now implemented.
+SIO2MAN's file metadata is2.5, export library2.3; its tables list28 imports in
+eight libraries. Next implement P0.1 against that identified original.
+The researched XInput and single-save design can be prepared as isolated host
+components; neither closes the guest startup/input/save gates by itself.
+Do not spend cycles on cosmetic menus or packaging before original transitions.
 
-Originals, failed probes and history remain preserved. The full backup is still
-being verified; no cleanup follows from a partial file count. Adviser queues
+Originals, failed probes and history remain preserved. The full backup report
+now says VERIFIED; external junction targets remain separately necessary. Adviser queues
 are advisory and never authorize dummy returns or establish acceptance by vote.
