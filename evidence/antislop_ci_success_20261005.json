@@ -1,0 +1,49 @@
+{
+  "utc": "2026-10-05T03:52:53.990528+00:00",
+  "run": "https://github.com/gzrt3/DW3RE-AI-WORKSPACE/actions/runs/37261101749",
+  "commit": "a33e102c81cf13648e60d466a1852a6e80dd4218",
+  "conclusion": "success",
+  "tests_passed": 59,
+  "suite_counts": [
+    4,
+    15,
+    12,
+    14,
+    6,
+    8
+  ],
+  "source_files": [
+    {
+      "path": "tools/verify_antislop.py",
+      "sha256": "4aa9bed8375051183811565b840ff0ad30dfa44be993808041feff043aa3573a"
+    },
+    {
+      "path": "tests/test_antislop.py",
+      "sha256": "013124ea4e133b372670c4981b6e4fb83ff598cc7efa26983c9ed387a0d60524"
+    },
+    {
+      "path": "tests/test_adviser_pool.py",
+      "sha256": "b2214c731d6f06ac7d14543ab9fd9ea8d12bab7b0dbdd731fdb15686b2d67bdb"
+    },
+    {
+      "path": ".github/workflows/tooling.yml",
+      "sha256": "a6258d28374c433a4b17c9bdde3c4b54641248d4c62c326a361845cbf50b94cf"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "ci-run-002.json",
+      "sha256": "4bda01e9b4e46ef6280080fbecd2c827e1b4f6c303a7c0da745b9622cabeb3f3"
+    },
+    {
+      "path": "ci-jobs-002.json",
+      "sha256": "1e72efed9c714648533bc9cf93597a9ad56be263ee4602e493ab9091fb17ab98"
+    },
+    {
+      "path": "ci-job-002.log",
+      "sha256": "615b0ce6ad366878965ef85d732e03cbf2db37718b368af212fd408c0e8647fb"
+    }
+  ],
+  "gameplay_verified": false,
+  "scope": "Windows GitHub Actions tooling, including exact pinned anti-slop files; no retail assets or native game run"
+}

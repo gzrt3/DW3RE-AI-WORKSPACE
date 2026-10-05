@@ -6,6 +6,9 @@ tests PASS; the five pinned files also match after an index checkout with
 autocrlf enabled. This is tooling verification, not a new native run or a
 gameplay milestone. Original visuals, source provenance and all8 acceptance
 gates are preserved. See ANTISLOP.md and audits/ANTISLOP_20261005.md.
+Remote CI run37261101749 now PASS on a33e102: all59 tests and pinned-file checks.
+The prior Windows8.3 path-comparison failure was reproduced and fixed in the
+fixture; its failed run remains preserved. No native runtime source changed.
 
 Latest: loader_prerequisites_001. IOMAN native reads, SYSMEM page256 allocation
 and selected LOADCORE1.3 exports22/23 are implemented. Nine selected suites PASS
