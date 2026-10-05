@@ -24,4 +24,17 @@ inline constexpr uint32_t PadVersionStart=0x001aef98u,PadVersionEnd=0x001aefb4u;
 inline constexpr std::array<uint32_t,4> PadVersionPcs{0x1aef98u,0x1aefa0u,0x1aefa4u,0x1aefa8u};
 std::span<const uint32_t> pad_version_original_words() noexcept;
 void register_pad_version_continuations(PS2Runtime& runtime);
+inline constexpr uint32_t PadInitializeReturnStart=0x001adf60u,PadInitializeReturnEnd=0x001adf7cu;
+inline constexpr std::array<uint32_t,4> PadInitializeReturnPcs{0x1adf60u,0x1adf68u,0x1adf6cu,0x1adf70u};
+std::span<const uint32_t> pad_initialize_return_original_words() noexcept;
+void register_pad_initialize_return_continuations(PS2Runtime& runtime);
+inline constexpr uint32_t PadStateResetStart=0x001711e0u,PadStateResetEnd=0x00171298u;
+inline constexpr uint32_t PadBufferResetStart=0x00171130u,PadBufferResetEnd=0x001711dcu;
+inline constexpr uint32_t PadConfigurationStart=0x00170d00u,PadConfigurationEnd=0x00170dc8u;
+inline constexpr std::array<uint32_t,8> PadDataPcs{
+    0x1711e0u,0x171230u,0x17126cu,0x171130u,0x171134u,0x170d00u,0x170d18u,0x170d20u};
+std::span<const uint32_t> pad_state_reset_original_words() noexcept;
+std::span<const uint32_t> pad_buffer_reset_original_words() noexcept;
+std::span<const uint32_t> pad_configuration_original_words() noexcept;
+void register_pad_data_continuations(PS2Runtime& runtime);
 }

@@ -78,6 +78,10 @@ struct Original {
         case 0x1e: if(rt) std::memcpy(&c.r[rt],ram.data()+address(raw&~15u,16),16);break;
         case 0x1f: std::memcpy(ram.data()+address(raw&~15u,16),&c.r[rt],16);break;
         case 0x23: low(c,rt,sx(read<uint32_t>(ram.data(),address(raw,4))));break;
+        case 0x28: write<uint8_t>(ram.data(),address(raw,1),static_cast<uint8_t>(value));break;
+        case 0x29:
+            require((raw&1u)==0,"reference SH alignment");
+            write<uint16_t>(ram.data(),address(raw,2),static_cast<uint16_t>(value));break;
         case 0x2b: write<uint32_t>(ram.data(),address(raw,4),static_cast<uint32_t>(value));break;
         case 0x37: low(c,rt,read<uint64_t>(ram.data(),address(raw,8)));break;
         default: throw std::runtime_error("reference scalar opcode");
@@ -156,14 +160,14 @@ void paths(PS2Runtime& runtime,uint8_t* ram) {
         unsigned initial=0,resetA=0,resetB=0,configure=0,modes=0;
         std::array<unsigned,2> opened{};
         for(unsigned steps=0;c.pc!=Return&&steps<1200;++steps) {
+            if(c.pc==0x1711e0) {require(reg(c,4)==0x364530u+resetA*0x22u,"first reset stride");++resetA;}
+            if(c.pc==0x171130) {require(reg(c,4)==0x364100u+resetB*0x1c0u,"second reset stride");++resetB;}
+            if(c.pc==0x170d00) {require(reg(c,4)==16&&reg(c,5)==4&&reg(c,31)==0x170bec,"configuration JAL ABI");++configure;}
             if(runtime.hasFunction(c.pc)) {compare(runtime,c,ram,count);continue;}
             const auto target=c.pc;uint32_t result=0;
             switch(target) {
             case 0x1adda0: result=initial++>=initReady?1u:0u;break;
             case 0x199068: require(reg(c,4)==0,"wait argument");break;
-            case 0x1711e0: require(reg(c,4)==0x364530u+resetA*0x22u,"first reset stride");++resetA;break;
-            case 0x171130: require(reg(c,4)==0x364100u+resetB*0x1c0u,"second reset stride");++resetB;break;
-            case 0x170d00: require(reg(c,4)==16&&reg(c,5)==4&&reg(c,31)==0x170bec,"external JAL ABI");++configure;break;
             case 0x1ae000:
                 require(reg(c,4)<2&&reg(c,5)==0&&reg(c,6)==0x364100u+reg(c,4)*0x1c0u,"port open arguments");
                 { const auto port=static_cast<unsigned>(reg(c,4));
@@ -187,7 +191,7 @@ void paths(PS2Runtime& runtime,uint8_t* ram) {
             if(openReady==61) require(opened[0]==1&&opened[1]==61,"second-port timeout not exercised");
         }
     }
-    std::cout<<"PASS 16 caller paths, "<<count<<" compared boundaries; retry/timeout on each port, external dispatch and GPR128 restore\n";
+    std::cout<<"PASS 16 caller paths, "<<count<<" compared boundaries; original data leaves, retry/timeout on each port, external dispatch and GPR128 restore\n";
 }
 void quadword_alignment(PS2Runtime& runtime,uint8_t* ram) {
     unsigned count=0;
@@ -345,6 +349,129 @@ void version_contracts(PS2Runtime& runtime,uint8_t* ram) {
     }
     std::cout<<"PASS 7 version word guards,1 owner conflict,"<<count<<" GPR128/RAM comparisons,"<<annuls<<" annuls,"<<faultCount<<" load faults\n";
 }
+void initialize_return_contracts(PS2Runtime& runtime,uint8_t* ram) {
+    using namespace fate::recomp;
+    const auto words=pad_initialize_return_original_words();require(words.size()==7,"initialize return range");
+    for(unsigned n=0;n<words.size();++n) {
+        const auto at=PadInitializeReturnStart+n*4,old=read<uint32_t>(ram,at);write(ram,at,old^1u);
+        bool rejected=false;
+        try {register_pad_initialize_return_continuations(runtime);} catch(const std::runtime_error&) {rejected=true;}
+        require(rejected,"changed initialize return word accepted");write(ram,at,old);
+        for(const auto pc:PadInitializeReturnPcs) require(!runtime.hasFunction(pc),"partial initialize return registration");
+    }
+    runtime.registerFunction(0x1adf6c,[](uint8_t*,R5900Context*,PS2Runtime*){});bool rejected=false;
+    try {register_pad_initialize_return_continuations(runtime);} catch(const std::runtime_error&) {rejected=true;}
+    require(rejected&&!runtime.hasFunction(PadInitializeReturnStart),"initialize return mapping conflict");
+    runtime.registerFunction(0x1adf6c,nullptr);register_pad_initialize_return_continuations(runtime);
+    unsigned count=0,annuls=0,faultCount=0;
+    for(const auto pc:PadInitializeReturnPcs)
+    for(const uint32_t alias:{0u,0x20000000u,0x80000000u,0xa0000000u})
+    for(const uint64_t result:{0ull,1ull,0x80000000ull,0x100000000ull,0xffffffff00000000ull,0x8000000000000001ull,UINT64_MAX})
+    for(const uint32_t payload:{0u,1u,0x80000000u,0xffffffffu}) {
+        auto c=version_fixture(ram,pc,alias);low(c,2,result);write(ram,0x7400c,payload);
+        compare(runtime,c,ram,count);
+    }
+    for(const uint32_t alias:{0u,0x20000000u,0x80000000u,0xa0000000u}) {
+        for(const uint32_t buffer:{0x74001u,0x74002u}) {
+            auto c=version_fixture(ram,PadInitializeReturnStart,alias);low(c,16,buffer|alias);low(c,2,UINT64_MAX);
+            compare(runtime,c,ram,annuls);require(reg(c,2)==0&&c.pc==Return,"initialize failure did not annul LW");
+            c=version_fixture(ram,PadInitializeReturnStart,alias);low(c,16,buffer|alias);low(c,2,0x80000000ull);
+            const auto before=c;const std::vector<uint8_t> bytes(ram,ram+PS2_RAM_SIZE);
+            runtime.lookupFunction(c.pc)(ram,&c,&runtime);
+            require(c.pc==0x80000180u&&c.cop0_epc==PadInitializeReturnStart&&((c.cop0_cause>>2)&31)==4&&(c.cop0_cause>>31)&&
+                    c.cop0_badvaddr==((buffer|alias)+12),"initialize LW delay lost its own EPC/BD/BadVAddr");
+            require(!std::memcmp(c.r,before.r,sizeof(c.r))&&!std::memcmp(ram,bytes.data(),PS2_RAM_SIZE),"initialize LW fault mutated registers/RAM");
+            ++faultCount;
+        }
+        for(const auto pc:{0x1adf6cu,0x1adf70u}) {
+            auto c=version_fixture(ram,pc,alias);low(c,29,(Stack|alias)+1);const auto before=c;
+            runtime.lookupFunction(c.pc)(ram,&c,&runtime);
+            require(c.pc==0x80000180u&&c.cop0_epc==pc&&((c.cop0_cause>>2)&31)==4&&!(c.cop0_cause>>31)&&
+                    c.cop0_badvaddr==((Stack|alias)+1+(pc==0x1adf6c?32u:16u))&&
+                    !std::memcmp(c.r,before.r,sizeof(c.r)),"initialize LD fault restored register or used version EPC");
+            ++faultCount;
+        }
+    }
+    std::cout<<"PASS 7 initialize return word guards,1 owner conflict,"<<count<<" GPR128/RAM comparisons,"<<annuls<<" annuls,"<<faultCount<<" load faults at original PCs\n";
+}
+void leaf_path(PS2Runtime& runtime,R5900Context& c,uint8_t* ram,unsigned& count) {
+    for(unsigned step=0;c.pc!=Return&&step<32;++step) compare(runtime,c,ram,count);
+    require(c.pc==Return,"data leaf did not return within original loop bounds");
+}
+void data_contracts(PS2Runtime& runtime,uint8_t* ram) {
+    using namespace fate::recomp;
+    const std::array starts{PadStateResetStart,PadBufferResetStart,PadConfigurationStart};
+    const std::array words{pad_state_reset_original_words(),pad_buffer_reset_original_words(),pad_configuration_original_words()};
+    require(words[0].size()==46&&words[1].size()==43&&words[2].size()==50,"data leaf original ranges");
+    unsigned guarded=0;
+    for(unsigned range=0;range<starts.size();++range)
+    for(unsigned n=0;n<words[range].size();++n) {
+        const auto at=starts[range]+n*4,old=read<uint32_t>(ram,at);write(ram,at,old^1u);bool rejected=false;
+        try {register_pad_data_continuations(runtime);} catch(const std::runtime_error&) {rejected=true;}
+        require(rejected,"changed data leaf word accepted");write(ram,at,old);
+        for(const auto pc:PadDataPcs) require(!runtime.hasFunction(pc),"partial data leaf registration");
+        ++guarded;
+    }
+    runtime.registerFunction(0x170d20,[](uint8_t*,R5900Context*,PS2Runtime*){});bool rejected=false;
+    try {register_pad_data_continuations(runtime);} catch(const std::runtime_error&) {rejected=true;}
+    require(rejected&&!runtime.hasFunction(PadStateResetStart)&&!runtime.hasFunction(PadBufferResetStart),"data leaf mapping conflict");
+    runtime.registerFunction(0x170d20,nullptr);register_pad_data_continuations(runtime);
+    unsigned count=0,complete=0,faultCount=0;
+    for(const auto pc:PadDataPcs)
+    for(const uint32_t alias:{0u,0x20000000u,0x80000000u,0xa0000000u})
+    for(const uint32_t counter:{0u,1u,7u,8u,11u,12u,16u}) {
+        auto c=fixture(ram,pc,alias);std::memset(ram+0x75fe0,0x5a,0x240);
+        low(c,4,0x76000u|alias);low(c,5,counter);low(c,6,counter);
+        low(c,7,0x364100u|alias);low(c,8,(counter&1u)*0x1c0u);
+        compare(runtime,c,ram,count);
+    }
+    for(const uint32_t alias:{0u,0x20000000u,0x80000000u,0xa0000000u}) {
+        for(unsigned port=0;port<2;++port) {
+            auto c=fixture(ram,PadStateResetStart,alias);const auto before=c;
+            const uint32_t base=0x364530u+port*0x22u;low(c,4,base|alias);
+            leaf_path(runtime,c,ram,complete);
+            for(unsigned offset=0;offset<0x22;++offset) {
+                const auto expected=offset==0x21?0x66u:offset>=0x11&&offset<=0x14?0x7fu:0u;
+                require(ram[base+offset]==expected,"state reset byte footprint or neutral axes");
+            }
+            require(ram[base-1]==0x66&&ram[base+0x22]==0x66&&reg(c,29)==reg(before,29),"state reset overwrote neighbor/stack");
+            c=fixture(ram,PadBufferResetStart,alias);const uint32_t buffer=0x364100u+port*0x1c0u;low(c,4,buffer|alias);
+            leaf_path(runtime,c,ram,complete);
+            for(unsigned offset=0;offset<0x1c0;++offset) {
+                const auto expected=offset>=0x100&&offset<=0x12f?0u:
+                    offset==0x130||offset==0x150||offset==0x170||offset==0x190?0xffu:0x66u;
+                require(ram[buffer+offset]==expected,"buffer reset footprint or JR delay sentinel");
+            }
+        }
+        auto c=fixture(ram,PadConfigurationStart,alias);
+        for(unsigned port=0;port<2;++port)
+            for(const uint32_t offset:{0x130u,0x150u,0x170u,0x190u}) ram[0x364100u+port*0x1c0u+offset]=0xff;
+        leaf_path(runtime,c,ram,complete);
+        require(read<uint32_t>(ram,0x380040)==16&&read<uint32_t>(ram,0x38003c)==4,"configuration original arguments lost before fixed-buffer setup");
+        for(unsigned port=0;port<2;++port)
+        for(unsigned offset=0;offset<0x1c0;++offset) {
+            const auto expected=offset>=0x100&&offset<=0x12f?0u:
+                offset==0x130||offset==0x150||offset==0x170||offset==0x190?0xffu:0x66u;
+            require(ram[0x364100u+port*0x1c0u+offset]==expected,"configuration changed bytes outside both original clear ranges");
+        }
+        c=fixture(ram,PadConfigurationStart,alias);low(c,28,(0x364200u|alias)+0x78c0u);
+        leaf_path(runtime,c,ram,complete);
+        require(read<uint32_t>(ram,0x3641fc)==4&&read<uint32_t>(ram,0x364200)==0,"configuration GP/data alias store order");
+        for(const uint32_t pc:{PadStateResetStart,PadConfigurationStart}) {
+            c=fixture(ram,pc,alias);
+            if(pc==PadStateResetStart) low(c,4,0x364531u|alias);
+            else low(c,28,(0x387900u|alias)+1);
+            const auto before=c;const std::vector<uint8_t> bytes(ram,ram+PS2_RAM_SIZE);
+            runtime.lookupFunction(pc)(ram,&c,&runtime);
+            const auto bad=pc==PadStateResetStart?(0x364531u|alias):(0x380041u|alias);
+            require(c.pc==0x80000180u&&c.cop0_epc==pc&&((c.cop0_cause>>2)&31)==5&&!(c.cop0_cause>>31)&&c.cop0_badvaddr==bad,
+                    "data leaf SH/SW alignment fault ownership");
+            require(!std::memcmp(c.r,before.r,sizeof(c.r))&&!std::memcmp(ram,bytes.data(),PS2_RAM_SIZE),"data leaf alignment fault mutated registers/RAM");
+            ++faultCount;
+        }
+    }
+    std::cout<<"PASS "<<guarded<<" data word guards,1 owner conflict,"<<count<<" GPR128/RAM boundaries,"<<complete<<" complete-leaf boundaries,"<<faultCount<<" SH/SW faults;4 RAM aliases and exact untouched bytes\n";
+}
 }
 int main(int argc,char** argv) {
     try {
@@ -354,8 +481,10 @@ int main(int argc,char** argv) {
         const auto image=fate::elf::Image::parse(std::as_bytes(std::span(bytes)));
         auto runtime=std::make_unique<PS2Runtime>();require(runtime->memory().initialize(PS2_RAM_SIZE),"RAM initialization");
         auto* ram=runtime->memory().getRDRAM();image.load_segments(std::as_bytes(std::span(bytes)),{reinterpret_cast<std::byte*>(ram),PS2_RAM_SIZE});
-        guards(*runtime,ram);faults(*runtime,ram);quadword_alignment(*runtime,ram);overlapping_memory(*runtime,ram);boundaries(*runtime,ram);paths(*runtime,ram);init_contracts(*runtime,ram);
+        guards(*runtime,ram);faults(*runtime,ram);quadword_alignment(*runtime,ram);overlapping_memory(*runtime,ram);boundaries(*runtime,ram);
+        data_contracts(*runtime,ram);paths(*runtime,ram);init_contracts(*runtime,ram);
         version_contracts(*runtime,ram);
+        initialize_return_contracts(*runtime,ram);
         std::cout<<"PASS pad boot continuation contracts; no independent PCSX2/PAD timing or gameplay parity claim\n";
     } catch(const std::exception& e) {std::cerr<<"FAIL "<<e.what()<<'\n';return 1;}
 }

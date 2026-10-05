@@ -214,6 +214,8 @@ int main(int argc, char** argv) {
         fate::recomp::register_pad_boot_continuations(*runtime);
         fate::recomp::register_pad_init_continuations(*runtime);
         fate::recomp::register_pad_version_continuations(*runtime);
+        fate::recomp::register_pad_initialize_return_continuations(*runtime);
+        fate::recomp::register_pad_data_continuations(*runtime);
         const auto resumes = fate::recomp::register_generated_resumes(*runtime);
         std::cout << "[CORE] Verified generated resume aliases installed: " << resumes << std::endl;
         std::cout << "[CORE] Verified boot continuations registered." << std::endl;

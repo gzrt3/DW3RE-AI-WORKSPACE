@@ -1,5 +1,9 @@
 # Dynasty Warriors 3 Complete Remastered
 
+Ciclo029: VBLANK original ejecuta init y callbacks; superado vblank:8. Build Release y contratos VBLANK/PAD Debug/Release PASS. Native001 llega a EE1AE7B0, RA170C8C; exit4294967295 e inputMATCH. No vídeo/logo/título; 0/8 criterios. Gráficos siguen abiertos hasta visualizar los vídeos iniciales originales; audio después. Ver docs/NATIVE_VBLANK_20261005.md.
+
+Historial conservado:
+
 Work in progress: a Windows x64 static recompilation and native runtime project for Dynasty Warriors 3 and Dynasty Warriors 3 Xtreme Legends.
 
 **This is a development workspace, not a playable remaster.** No title screen or complete battle has been demonstrated. All eight final acceptance criteria remain open. Successful builds and focused contracts do not establish equivalence with the original games.

@@ -146,6 +146,7 @@ namespace ps2x::iop::detail
             cdvd.reset();
             intrman.reset();
             timrman.reset();
+            vblank.reset();
             ioman.reset();
             pendingDmaInterrupts.clear();
             pendingGuestCallbacks.clear();
@@ -671,6 +672,7 @@ namespace ps2x::iop::detail
                         servicePendingDmaInterrupts();
                     if (!servicingGuestCallbacks && !pendingGuestCallbacks.empty())
                         servicePendingGuestCallbacks();
+                    vblank.serviceDue(totalCycles, memory, intrman, *this);
                 }
             }
             catch (const GuestExecutionError &)
@@ -786,26 +788,26 @@ namespace ps2x::iop::detail
         // Not that good to use exception handling for control flow but will do for now
         void servicePendingDmaInterrupts()
         {
-            if (servicingDmaInterrupts || pendingDmaInterrupts.empty())
+            if (servicingDmaInterrupts || inInterruptContext() || pendingDmaInterrupts.empty())
                 return;
 
             servicingDmaInterrupts = true;
 
             std::vector<int> completed;
-            for (auto it = pendingDmaInterrupts.begin(); it != pendingDmaInterrupts.end();)
+            for (const auto& [irq, due] : pendingDmaInterrupts)
             {
-                if (it->second > totalCycles)
-                {
-                    ++it;
-                    continue;
-                }
-                completed.push_back(it->first);
-                it = pendingDmaInterrupts.erase(it);
+                if (due <= totalCycles) completed.push_back(irq);
             }
             try
             {
-                for (const int irq : completed)
+                for (const int irq : completed) {
+                    const auto pending = pendingDmaInterrupts.find(irq);
+                    if (pending == pendingDmaInterrupts.end() || pending->second > totalCycles ||
+                        !intrman.canDispatch(irq)) continue;
+                    // Earlier handlers can mask this IRQ or reschedule its completion.
+                    pendingDmaInterrupts.erase(pending);
                     (void)intrman.dispatchInterrupt(irq, *this);
+                }
             }
             catch (...)
             {
@@ -866,15 +868,18 @@ namespace ps2x::iop::detail
                     servicePendingDmaInterrupts();
                     servicePendingGuestCallbacks();
                     timrman.serviceDue(totalCycles, *this);
+                    vblank.serviceDue(totalCycles, memory, intrman, *this);
                     IopThread *next = kernel.beginNextReady(totalCycles);
                     if (!next)
                     {
                         uint64_t nextWake = kernel.nextWakeCycle(target);
                         for (const auto &[irq, completionCycle] : pendingDmaInterrupts)
-                            nextWake = std::min(nextWake, completionCycle);
+                            if (completionCycle > totalCycles || intrman.canDispatch(irq))
+                                nextWake = std::min(nextWake, completionCycle);
                         if (!pendingGuestCallbacks.empty())
                             nextWake = std::min(nextWake, pendingGuestCallbacks.begin()->first);
                         nextWake = timrman.nextEventCycle(nextWake);
+                        nextWake = vblank.nextEventCycle(nextWake);
                         totalCycles = std::max(totalCycles + 1u, std::min(target, nextWake));
                         continue;
                     }

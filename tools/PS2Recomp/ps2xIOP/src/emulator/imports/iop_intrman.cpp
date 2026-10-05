@@ -70,12 +70,14 @@ namespace ps2x::iop::detail
             return true;
         case 15:
         case 16:
-        case 23:
         case 24:
         case 25:
         case 28:
         case 30:
             setV0(0u);
+            return true;
+        case 23: // QueryIntrContext, used by the original VBLANK register/release guards.
+            setV0(executor.inInterruptContext() ? 1u : 0u);
             return true;
         case 17:
             if (a0 != 0u)
@@ -92,21 +94,32 @@ namespace ps2x::iop::detail
         }
     }
 
-    bool IopIntrman::dispatchInterrupt(int irq, IopGuestExecutor &executor) const
+    bool IopIntrman::canDispatch(int irq) const
     {
+        if (m_memory.interruptControl() == 0u) return false;
+        if (irq >= 0 && irq < 32 && (m_memory.interruptMask() & (1u << irq)) == 0u) return false;
         const auto enabled = m_enabled.find(irq);
         if (enabled == m_enabled.end() || !enabled->second)
             return false;
         const auto handler = m_handlers.find(irq);
         if (handler == m_handlers.end() || handler->second.function == 0u)
             return false;
+        return true;
+    }
 
-        (void)executor.executeGuestFunctionWithBudget(handler->second.function,
-                                                      handler->second.argument,
+    bool IopIntrman::dispatchInterrupt(int irq, IopGuestExecutor &executor) const
+    {
+        if (executor.inInterruptContext() || !canDispatch(irq)) return false;
+        // A callback may release its own registration; copy before invoking it.
+        const Handler handler = m_handlers.at(irq);
+        const IopGuestExecutor::InterruptScope context(executor);
+
+        (void)executor.executeGuestFunctionWithBudget(handler.function,
+                                                      handler.argument,
                                                       0u,
                                                       0u,
                                                       0u,
-                                                      handler->second.gp,
+                                                      handler.gp,
                                                       100000u);
         return true;
     }
