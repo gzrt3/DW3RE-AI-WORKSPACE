@@ -15,6 +15,7 @@ from pathlib import Path
 
 import native_boot_probe as probe
 import copilot_bridge
+import adviser_pool
 from hybrid_supervisor import process_lock, process_identity
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -54,10 +55,17 @@ def write(path,value):
 def sync_advisers(output, phase):
     """Synchronize advice only; unavailable advisers never suppress native work."""
     report = {}
+    # Local configuration points at the actual GitHub scheduler inbox and the
+    # existing private provider ledger; it is intentionally outside Git.
+    try:
+        private_root, router_path = adviser_pool.configuration(ROOT)
+    except (ValueError, OSError, TypeError):
+        private_root, router_path = None, None
     providers = {
-        'github_copilot': (ROOT/'artifacts/copilot_bridge', ('native-presentation', 'signed-branch-emitter')),
+        'github_copilot': (adviser_pool.exchanges(ROOT, private_root)['github_copilot'], ('rpc-continuation-review',)),
         'microsoft_copilot_ui': (ROOT/'artifacts/microsoft_copilot_bridge', ('signed-width-oracle', 'missing-import-review')),
         'chatgpt_ui': (ROOT/'artifacts/chatgpt_bridge', ('modload-contract-review',)),
+        'bedrock': (ROOT/'artifacts/bedrock_bridge', ('rpc-continuation-review',)),
     }
     for provider, (exchange, kinds) in providers.items():
         try:
@@ -69,6 +77,7 @@ def sync_advisers(output, phase):
         except (OSError, ValueError, KeyError, TypeError) as error:
             report[provider] = {'state': 'BRIDGE_REVIEW_REQUIRED', 'error_type': type(error).__name__,
                                 'code_applied': False, 'model_invoked_by_runner': False}
+    report['bedrock']['accounting'] = adviser_pool.budget_status(router_path)
     write(output/f'advisers-{phase}.json', report)
     return report
 

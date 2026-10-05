@@ -123,7 +123,7 @@ namespace ps2x::iop::detail
         void reset()
         {
             // Release service-owned event/buffers before resetting their owners.
-            rpc.reset();
+            rpc.reset(true); // Whole-emulator teardown also discards thread continuations.
             memory.reset();
             kernel.reset();
             modules.clear();
@@ -489,7 +489,8 @@ namespace ps2x::iop::detail
                 // RpcLoop is a nonreturning SDK loop. Keep its import PC on
                 // sleep/yield so wakeups service the same original queue.
                 if (!(disposition==ImportDisposition::Handled &&
-                      iequals(import->library,"sifcmd") && import->ordinal==22u))
+                      iequals(import->library,"sifcmd") &&
+                      (import->ordinal==22u || (import->ordinal==21u && cpu.yielded))))
                     cpu.pc = cpu.gpr[31];
                 cpu.branchPending = false;
                 return !cpu.stopped;
@@ -611,6 +612,29 @@ namespace ps2x::iop::detail
             return callFunction(address, a0, a1, a2, a3, gp, instructionBudget);
         }
 
+        std::optional<uint32_t> resumeGuestFunction(uint64_t &token, uint32_t address,
+            uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3, uint32_t gp, uint32_t budget) override
+        {
+            if (token == 0u)
+            {
+                if (!activeCpu || !kernel.ownsCurrentCpu(*activeCpu))
+                    return callFunction(address, a0, a1, a2, a3, gp, budget);
+                token = kernel.beginGuestCall(*activeCpu, address, a0, a1, a2, a3, gp);
+                if (token != 0u) return std::nullopt;
+            }
+            else
+            {
+                uint32_t result = 0u;
+                if (activeCpu && kernel.takeGuestCallReturn(token, *activeCpu, result))
+                {
+                    token = 0u;
+                    return result;
+                }
+            }
+            log(LogLevel::Error, "[IOP] invalid guest continuation owner, token or stack");
+            throw GuestExecutionError{};
+        }
+
         // Not that good to use exception handling for control flow but will do for now
         void servicePendingDmaInterrupts()
         {
@@ -709,7 +733,7 @@ namespace ps2x::iop::detail
                     const uint64_t before = totalCycles;
                     try
                     {
-                        runCpu(next->cpu, static_cast<uint32_t>(std::min<uint64_t>(kDefaultSlice, target - totalCycles)));
+                        runCpu(next->executionCpu(), static_cast<uint32_t>(std::min<uint64_t>(kDefaultSlice, target - totalCycles)));
                     }
                     catch (const GuestExecutionError &)
                     {
@@ -822,8 +846,11 @@ namespace ps2x::iop::detail
             if (it == modules.end())
                 return false;
             // A removable IRX normally exposes a stop entry through module metadata. We do not guess it; terminate owned execution and release the image cleanly.
+            // Cancellation/unload of suspended guest frames is not implemented.
+            // Reject before mutating any live module, queue or thread ownership.
+            if (kernel.hasGuestCalls() || !rpc.removeServersInRange(it->second.base, it->second.size))
+                return false;
             kernel.terminateThreadsInRange(it->second.base, it->second.size);
-            rpc.removeServersInRange(it->second.base, it->second.size);
             imports.eraseRange(it->second.base, it->second.size);
             modules.erase(it);
             kernel.cleanupDeadThreads();

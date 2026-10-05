@@ -1,0 +1,257 @@
+{
+  "schema_version": 1,
+  "scope": "Synthetic interpreted IOP contracts and bounded original native process observations; not PCSX2 lockstep or completed boot.",
+  "sources": [
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/CMakeLists.txt",
+      "bytes": 4047,
+      "sha256": "490f33eb05f5e93d87e372d38f73a69eefab73351cfb80ff338ddcb9f99a4b28"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_kernel.cpp",
+      "bytes": 29783,
+      "sha256": "55baf77b472f0bc395cb79a6be7036c40ff0f81ad83f9c308dcdbd29e94f325f"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_kernel.h",
+      "bytes": 4314,
+      "sha256": "7a4f10ec056ccfe6862cd4cb8c0dbbe8858dc8427e6d2432aa836052cbb21865"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.cpp",
+      "bytes": 46951,
+      "sha256": "7768528df53fb8355234bd6336a3dea4685cd1bfadd20f88ae811794090bede4"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_rpc.cpp",
+      "bytes": 52247,
+      "sha256": "c3f853ecd5b47d9bb666fa80a2f6f64670cbcb85a1e5dfc5032d49d2666cda12"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_rpc.h",
+      "bytes": 7183,
+      "sha256": "fc4ba8c49e5ac2f266f275d904d74a7001b9f3fe75b7a94596da76e0af250f9d"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/tests/iop_continuation_tests.cpp",
+      "bytes": 17908,
+      "sha256": "dc577bec0e6f8adbb149d16ce780a4b7d5af139c9572c7d8bbd5a7f89d708d8e"
+    },
+    {
+      "path": "tools/PS2Recomp/ps2xIOP/tests/iop_compat_test_support.h",
+      "bytes": 8607,
+      "sha256": "74bb14afc43b32d25f693c0f155f71837d870cecc4c49355932a8fa383352a4a"
+    }
+  ],
+  "continuation_contracts": {
+    "debug": 14,
+    "release": 14,
+    "result": "PASS"
+  },
+  "selected_suites": {
+    "debug": 3,
+    "release": 6,
+    "result": "PASS"
+  },
+  "preserved_failures": [
+    "build-debug-001.log (missing test include)",
+    "tests-debug-red-owner.log (competing RPC caller)",
+    "build-debug-005.log (incremental linker COMDAT)",
+    "tests-debug-red-requeue.log (second request overwrote active server)"
+  ],
+  "raw_logs": [
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/build-debug-001.log",
+      "bytes": 2153,
+      "sha256": "89b43d355883d13f2cf177385681de5e887fe934ba52dcd8b06cae61a4e09c2a"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/build-debug-002.log",
+      "bytes": 1001,
+      "sha256": "13378b656de7f6ffa0ab4ebb9b700d08b7f3ae839b5d66cca3b388920af8a52a"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/build-debug-003.log",
+      "bytes": 266,
+      "sha256": "11fee8f023fa6b695c824b5152770f903b829f6e4e54b55fa196b4753da39907"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/build-debug-004.log",
+      "bytes": 266,
+      "sha256": "11fee8f023fa6b695c824b5152770f903b829f6e4e54b55fa196b4753da39907"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/build-debug-005.log",
+      "bytes": 721,
+      "sha256": "6c8b58fe96937a9fcbec7938c681ea15d7844d18b46d26c32acad819839d7ea8"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/build-debug-006.log",
+      "bytes": 482,
+      "sha256": "7f9559f1f5af424e933befcc5f656de9738e7dcc1cb369d2bdbd5681628a5075"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/build-debug-007.log",
+      "bytes": 266,
+      "sha256": "11fee8f023fa6b695c824b5152770f903b829f6e4e54b55fa196b4753da39907"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/build-debug-008.log",
+      "bytes": 733,
+      "sha256": "98e697cf62cef9244afdd189c32855c920e1b18ab2cba9690926db43d5399b7c"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/build-release-001.log",
+      "bytes": 2459,
+      "sha256": "38d8f655337cc3c56690f48ab812ef90c5c3c6d5ddeaa9a1bf26ac2db1bb5e21"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/build-release-002.log",
+      "bytes": 1652,
+      "sha256": "d6e633c676885f5b67772aea12d8592ef7639ffeb5fb15bfe5e539643ca77feb"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/build-release-003.log",
+      "bytes": 1477,
+      "sha256": "3c7beb7f84e3f7391ade05fcb8ae53ae381ffae4e4b2dc1960b76bc74a52f81e"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/tests-debug-001.log",
+      "bytes": 3102,
+      "sha256": "866c161d38eccce655ed7da9d28962da6f04c7c9b6fbb6a9c39f1287cf2c4e29"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/tests-debug-002.log",
+      "bytes": 1421,
+      "sha256": "5753e8dcd11d9e790de8a3da8953e5d07c8c1bf409aa0797b0ad5a917e0d7304"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/tests-debug-004.log",
+      "bytes": 449,
+      "sha256": "36aa3285d6571c1e9508d9a386b19289118a7ce8e5b224a285abaa6fb1da9271"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/tests-debug-005.log",
+      "bytes": 449,
+      "sha256": "34c75d013dfae7ef3d9e51a07b6ac158696586b0cb9eb16195eb6a987c1ec641"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/tests-debug-green-owner.log",
+      "bytes": 679,
+      "sha256": "80bc1d290771e9b4e791eea3a8e4e80b4e8fdbf176916261ea0da18c01cdf419"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/tests-debug-red-owner.log",
+      "bytes": 732,
+      "sha256": "aef73a43acb1716af2ef326519110f375a5b5eeeeafa524ea64999fe05b74d1c"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/tests-debug-red-requeue.log",
+      "bytes": 772,
+      "sha256": "0e0b9a0dc3d87b06bddda2cbf3e9894fb6e0a37761fc8a35804e267540f92098"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/tests-release-001.log",
+      "bytes": 4762,
+      "sha256": "716d9dad3d3aa4a138aa900fdc080918101d4605db9a87409ef0ec0bf1969cbb"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/tests-release-002.log",
+      "bytes": 773,
+      "sha256": "7ac7509db246490b7289f91898ca844cef4a822b3ee2280ea2e0e0cdd317cf12"
+    },
+    {
+      "path": "artifacts/native_pipeline_20261005/iop_continuation_001/tests-release-003.log",
+      "bytes": 773,
+      "sha256": "c7a53d3e4f618dd1f55ab761b1d5e4f52f4f4de655e09cdf74a4bb8b9a718bc7"
+    }
+  ],
+  "builds": [
+    {
+      "log": {
+        "path": "artifacts/native_pipeline_20261005/cycle_008/build.log",
+        "bytes": 17210,
+        "sha256": "27118e403a854871c0572dd6555e513f5857b0dc1b4e15f6d779c2899f3ab94e"
+      },
+      "exit_code": 0
+    },
+    {
+      "log": {
+        "path": "artifacts/native_pipeline_20261005/cycle_008/build-owner-002.log",
+        "bytes": 17043,
+        "sha256": "e1600b4d2cb3f66e6b6d3fdc3d623bc86210474058ff0a0b6336ad33890b8ed1"
+      },
+      "exit_code": 0
+    },
+    {
+      "log": {
+        "path": "artifacts/native_pipeline_20261005/cycle_008/build-requeue-003.log",
+        "bytes": 16892,
+        "sha256": "1ab68da8bac48c28b1ad00d4bfc2cf04d5f0e0ed51edd49fb0041d23f747916c"
+      },
+      "exit_code": 0
+    }
+  ],
+  "observations": [
+    {
+      "name": "probe_001",
+      "status": "TIMEOUT",
+      "exit_code": 1,
+      "input_integrity": "MATCH",
+      "exe_sha256": "73d7a7a99b744736f5ee140436a36d771fe8b6eff36bc52cf2182b69a1480b36",
+      "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+      "stop": "modload:7 version=0x106 pc=0x14374, MODULES/SIO2MAN.IRX;1",
+      "result": {
+        "path": "artifacts/native_pipeline_20261005/cycle_008/probe_001/result.json",
+        "bytes": 13396,
+        "sha256": "c145b124b54fed6f4b08c266523773fb37dace9ac6f22841e2b2a38a695bd317"
+      },
+      "stderr": {
+        "path": "artifacts/native_pipeline_20261005/cycle_008/probe_001/stderr.bin",
+        "bytes": 10076,
+        "sha256": "49689b098a777e9f70cd74654134d044217e245e1b9b704db044dc997997f5e3"
+      }
+    },
+    {
+      "name": "probe_owner_002",
+      "status": "TIMEOUT",
+      "exit_code": 1,
+      "input_integrity": "MATCH",
+      "exe_sha256": "c0e12047f9cc389b113ce56a998ee8fde6d3b2f07ab802aad408871fdbc16025",
+      "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+      "stop": "modload:7 version=0x106 pc=0x14374, MODULES/SIO2MAN.IRX;1",
+      "result": {
+        "path": "artifacts/native_pipeline_20261005/cycle_008/probe_owner_002/result.json",
+        "bytes": 13416,
+        "sha256": "47d47cefadf307761150e506dc3ee45c436e01ff1dd1b26e9281b6c748b2b44c"
+      },
+      "stderr": {
+        "path": "artifacts/native_pipeline_20261005/cycle_008/probe_owner_002/stderr.bin",
+        "bytes": 10076,
+        "sha256": "49689b098a777e9f70cd74654134d044217e245e1b9b704db044dc997997f5e3"
+      }
+    },
+    {
+      "name": "probe_requeue_003",
+      "status": "TIMEOUT",
+      "exit_code": 1,
+      "input_integrity": "MATCH",
+      "exe_sha256": "0aeaca6f55575ebd1413b44957af8552d1e91f906d953f56492132109551c62a",
+      "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+      "stop": "modload:7 version=0x106 pc=0x14374, MODULES/SIO2MAN.IRX;1",
+      "result": {
+        "path": "artifacts/native_pipeline_20261005/cycle_008/probe_requeue_003/result.json",
+        "bytes": 13422,
+        "sha256": "abc699c0a53446a3dbb41b0e5753b93651f70371d78b6cf352410e007f93a52c"
+      },
+      "stderr": {
+        "path": "artifacts/native_pipeline_20261005/cycle_008/probe_requeue_003/stderr.bin",
+        "bytes": 10140,
+        "sha256": "3c04210174a98e702c20257f34cdb7207481def3b6650eb66095e466ee211f80"
+      }
+    }
+  ],
+  "game_complete": false,
+  "final_acceptance_verified": 0,
+  "final_acceptance_total": 8
+}

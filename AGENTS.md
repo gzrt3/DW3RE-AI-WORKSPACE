@@ -13,6 +13,7 @@ This repository contains a Windows x64 static recompilation project in developme
 - Public evidence normalizes local paths. Embedded hashes identify the original local artifacts; normalized JSON files have different hashes.
 
 - The bounded Copilot bridge and native pipeline are documented in docs/COPILOT_PIPELINE.md. Advisers never apply code; recheck live source hashes and independently verify every claim. Preserve submitted/uncertain requests without automatic retries.
+- Read docs/ADVISER_POOL.md for the four-adviser coordinator. Collect it before continuation work. For a changed READY Bedrock task, the owning continuation may dispatch one bounded review through the configured original private router after accounting and service-access checks; no new ledger, cap increase, fallback or automatic retry. Keep native implementation progressing while an adviser is unavailable.
 
 User objective clarification2026-10-05: docs/NATIVE_PC_OBJECTIVE.md is the
 current product contract. Final target is the native Windows x64 standalone

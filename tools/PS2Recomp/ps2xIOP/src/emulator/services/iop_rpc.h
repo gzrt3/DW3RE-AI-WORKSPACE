@@ -5,6 +5,8 @@
 #include <cstddef>
 #include <array>
 #include <cstdint>
+#include <optional>
+#include <stdexcept>
 #include <unordered_map>
 
 namespace ps2x::iop
@@ -39,6 +41,15 @@ namespace ps2x::iop::detail
         {
             return executeGuestFunction(address, a0, a1, a2, a3, gp);
         }
+        // A persistent token belongs to one request and one owning IOP thread.
+        // Empty means suspended, never a successful function return.
+        [[nodiscard]] virtual std::optional<uint32_t> resumeGuestFunction(uint64_t &token,
+            uint32_t address, uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3,
+            uint32_t gp, uint32_t budget)
+        {
+            if (token != 0u) throw std::logic_error("Executor cannot resume a guest call");
+            return executeGuestFunctionWithBudget(address, a0, a1, a2, a3, gp, budget);
+        }
     };
 
     class IopRpcBridge
@@ -46,7 +57,7 @@ namespace ps2x::iop::detail
     public:
         IopRpcBridge(IopHost &host, IopMemory &memory, IopKernel &kernel) noexcept;
 
-        void reset();
+        void reset(bool discardExecution = false);
         [[nodiscard]] bool installCommandService();
         [[nodiscard]] uint32_t commandReceiverAddress() const noexcept { return m_commandReceiver; }
         [[nodiscard]] uint32_t commandEeDestination() const noexcept { return m_commandEeDestination; }
@@ -60,14 +71,16 @@ namespace ps2x::iop::detail
         [[nodiscard]] bool installRpcHandlers();
         [[nodiscard]] bool advanceRpcInitialization();
         [[nodiscard]] bool rpcInitializationComplete() const noexcept { return m_rpcInitializationComplete; }
-        [[nodiscard]] bool executeRpcRequest(uint32_t server,IopGuestExecutor &executor);
+        enum class Execution { Invalid, Pending, Complete };
+        [[nodiscard]] Execution executeRpcRequest(uint32_t server,IopGuestExecutor &executor,
+            const IopCpuState *caller=nullptr);
         [[nodiscard]] bool dispatchSifManImport(uint16_t ordinal, IopCpuState &cpu);
         [[nodiscard]] bool dispatchSifCmdImport(uint16_t ordinal, IopCpuState &cpu,IopGuestExecutor *executor=nullptr);
         [[nodiscard]] RpcResult handleRpc(const RpcRequest &request, IopGuestExecutor &executor);
         void onSifTransfer(const SifTransfer &transfer, IopGuestExecutor &executor);
         [[nodiscard]] bool receiveCommandPacket(uint32_t packetAddress, uint32_t availableBytes,
                                                  IopGuestExecutor &executor);
-        void removeServersInRange(uint32_t base, uint32_t size);
+        [[nodiscard]] bool removeServersInRange(uint32_t base, uint32_t size);
 
         [[nodiscard]] bool hasServer(uint32_t sid) const noexcept;
         [[nodiscard]] size_t serverCount() const noexcept { return m_servers.size(); }
@@ -98,8 +111,14 @@ namespace ps2x::iop::detail
         bool m_rpcInitializationSent=false,m_rpcInitializationComplete=false;
         struct PendingRpcCompletion {
             uint32_t packet=0u,source=0u,destination=0u,directTarget=0u;
+            uint32_t function=0u,gp=0u,rid=0u,client=0u,queue=0u;
+            std::array<uint32_t,3> arguments{};
+            uint64_t callToken=0u;
+            const IopCpuState *caller=nullptr; // Identity only; never dereferenced.
+            const IopGuestExecutor *executor=nullptr;
+            int ownerThread=0;
             int32_t size=0;
-            bool command=false;
+            bool command=false,returned=false,replyReady=false,failed=false;
         };
         std::unordered_map<uint32_t,PendingRpcCompletion> m_pendingRpcCompletions;
         // RpcLoop retains a dequeued request while its transport is pending.

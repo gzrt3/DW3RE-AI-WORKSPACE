@@ -17,6 +17,12 @@ DEFAULT = ROOT / 'artifacts/copilot_bridge'
 MAX_JSON = 512 * 1024
 
 TASKS = {
+    'rpc-continuation-review': {
+        'objective': 'Review these current IOP guest continuation and RPC ownership excerpts. Give at most one concrete defect or explicitly bounded uncertainty with a discriminating test. Consider caller identity, suspended state, consumption once and transport retry. Use only the excerpts; do not execute code or claim original game parity. Return only the supplied JSON schema, under512 output tokens.',
+        'sections': [('tools/PS2Recomp/ps2xIOP/src/emulator/core/iop_kernel.cpp', 39, 97),
+                     ('tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_rpc.cpp', 131, 162),
+                     ('tools/PS2Recomp/ps2xIOP/src/emulator/services/iop_rpc.cpp', 273, 332)],
+    },
     'modload-contract-review': {
         'objective': 'Audit the MODLOAD1.6 boot-device HLE and its tests for signed-byte, unsigned-wrap, pointer-boundary and false-equivalence risks. Read only these excerpts. Identify at most four concrete defects or explicitly bounded uncertainties, with source lines and discriminating tests. Do not run code, browse, open files, request credentials or claim original-game parity. Reply using the supplied strict JSON schema only.',
         'sections': [('tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_modload.cpp', 1, 90),

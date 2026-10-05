@@ -22,7 +22,7 @@ namespace iop_test
             throw std::runtime_error(message);
     }
 
-    class Host final : public IopHost
+    class Host : public IopHost
     {
     public:
         explicit Host(size_t bytes = 0x20000u) : guest(bytes, 0xCCu) {}

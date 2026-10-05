@@ -4,6 +4,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <deque>
 #include <map>
 
 namespace ps2x::iop::detail
@@ -25,6 +26,13 @@ namespace ps2x::iop::detail
 
     struct IopThread
     {
+        struct GuestCall
+        {
+            uint64_t token = 0;
+            IopCpuState cpu;
+            IopCpuState *caller = nullptr;
+            bool returned = false;
+        };
         int id = 0;
         IopThreadState state = IopThreadState::Dormant;
         IopCpuState cpu;
@@ -41,6 +49,11 @@ namespace ps2x::iop::detail
         uint32_t waitMode = 0;
         uint32_t waitResultAddress = 0;
         int wakeupCount = 0;
+        // deque keeps the active interpreter's CPU reference stable when an
+        // import queues a nested call. Frames live as long as their IOP thread.
+        std::deque<GuestCall> calls;
+        [[nodiscard]] IopCpuState &executionCpu() noexcept;
+        [[nodiscard]] const IopCpuState &executionCpu() const noexcept;
     };
 
     class IopKernel
@@ -60,6 +73,13 @@ namespace ps2x::iop::detail
 
         void sleepCurrent(IopCpuState &cpu);
         void delayCurrentUntil(uint64_t wakeCycle, IopCpuState &cpu);
+
+        [[nodiscard]] bool ownsCurrentCpu(const IopCpuState &cpu) const noexcept;
+        [[nodiscard]] bool hasGuestCalls() const noexcept;
+        [[nodiscard]] int currentThreadId() const noexcept { return m_currentThread ? m_currentThread->id : 0; }
+        [[nodiscard]] uint64_t beginGuestCall(IopCpuState &caller, uint32_t address,
+            uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3, uint32_t gp);
+        [[nodiscard]] bool takeGuestCallReturn(uint64_t token, IopCpuState &caller, uint32_t &result);
 
         [[nodiscard]] IopThread *beginNextReady(uint64_t currentCycle);
         [[nodiscard]] uint64_t nextWakeCycle(uint64_t fallback) const;
@@ -101,5 +121,6 @@ namespace ps2x::iop::detail
         uint32_t m_nextEventFlagId = 1;
         int m_systemStatusEventFlag = 0;
         IopThread *m_currentThread = nullptr;
+        uint64_t m_nextCallToken = 1; // Do not reuse stale tokens after reset.
     };
 }

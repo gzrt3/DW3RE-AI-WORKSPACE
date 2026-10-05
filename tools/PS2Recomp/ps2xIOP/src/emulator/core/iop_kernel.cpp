@@ -23,6 +23,68 @@ namespace ps2x::iop::detail
     {
     }
 
+    IopCpuState &IopThread::executionCpu() noexcept
+    {
+        if (calls.empty()) return cpu;
+        return calls.back().returned ? *calls.back().caller : calls.back().cpu;
+    }
+
+    const IopCpuState &IopThread::executionCpu() const noexcept
+    {
+        if (calls.empty()) return cpu;
+        return calls.back().returned ? *calls.back().caller : calls.back().cpu;
+    }
+
+    bool IopKernel::ownsCurrentCpu(const IopCpuState &cpu) const noexcept
+    {
+        return m_currentThread && m_currentThread->state == IopThreadState::Running &&
+            &m_currentThread->executionCpu() == &cpu;
+    }
+
+    bool IopKernel::hasGuestCalls() const noexcept
+    {
+        return std::any_of(m_threads.begin(), m_threads.end(),
+            [](const auto &entry) { return !entry.second.calls.empty(); });
+    }
+
+    uint64_t IopKernel::beginGuestCall(IopCpuState &caller, uint32_t address,
+        uint32_t a0, uint32_t a1, uint32_t a2, uint32_t a3, uint32_t gp)
+    {
+        if (!ownsCurrentCpu(caller) || m_nextCallToken == 0u ||
+            m_currentThread->calls.size() >= 128u ||
+            (!m_currentThread->calls.empty() && m_currentThread->calls.back().returned) ||
+            !m_memory.ownsRamRange(address, 4u)) return 0u;
+        const uint32_t sp = IopMemory::physicalAddress(caller.gpr[29]);
+        if (sp < m_currentThread->stackBase + 16u ||
+            sp > m_currentThread->stackBase + m_currentThread->stackSize - 16u || (sp & 7u) != 0u)
+            return 0u;
+        IopThread::GuestCall frame;
+        frame.token = m_nextCallToken++;
+        frame.caller = &caller;
+        frame.cpu = caller;
+        frame.cpu.pc = address;
+        frame.cpu.gpr[4] = a0; frame.cpu.gpr[5] = a1;
+        frame.cpu.gpr[6] = a2; frame.cpu.gpr[7] = a3;
+        frame.cpu.gpr[28] = gp;
+        frame.cpu.gpr[31] = kCallReturnSentinel;
+        frame.cpu.branchPending = frame.cpu.stopped = frame.cpu.yielded = false;
+        // The HLE wrapper keeps its register frame on the host; the guest
+        // callee uses this same thread's o32 stack/home area, not global scratch.
+        m_currentThread->calls.push_back(std::move(frame));
+        caller.yielded = true;
+        return m_currentThread->calls.back().token;
+    }
+
+    bool IopKernel::takeGuestCallReturn(uint64_t token, IopCpuState &caller, uint32_t &result)
+    {
+        if (!ownsCurrentCpu(caller) || m_currentThread->calls.empty()) return false;
+        const auto &frame = m_currentThread->calls.back();
+        if (!frame.returned || frame.token != token || frame.caller != &caller) return false;
+        result = frame.cpu.gpr[2];
+        m_currentThread->calls.pop_back();
+        return true;
+    }
+
     void IopKernel::reset()
     {
         m_threads.clear();
@@ -75,6 +137,7 @@ namespace ps2x::iop::detail
                 setV0(-1);
                 return true;
             }
+            if (!it->second.calls.empty()) return false;
             if (it->second.stackBase != 0u)
                 (void)m_memory.freeAllocation(it->second.stackBase);
             m_threads.erase(it);
@@ -92,6 +155,7 @@ namespace ps2x::iop::detail
                 return true;
             }
             IopThread &thread = it->second;
+            if (!thread.calls.empty()) return false; // Preserve an unfinished call; no restart.
             thread.cpu = {};
             thread.cpu.pc = thread.entry;
             thread.cpu.gpr[4] = cpu.gpr[5];
@@ -105,6 +169,7 @@ namespace ps2x::iop::detail
         }
         case 8: // ExitThread
         case 9: // ExitDeleteThread
+            if (m_currentThread && !m_currentThread->calls.empty()) return false;
             if (m_currentThread != nullptr)
             {
                 m_currentThread->state = ordinal == 9 ? IopThreadState::Dead : IopThreadState::Dormant;
@@ -123,6 +188,7 @@ namespace ps2x::iop::detail
                 setV0(-1);
                 return true;
             }
+            if (!it->second.calls.empty()) return false;
             it->second.state = IopThreadState::Dormant;
             setV0(0);
             return true;
@@ -339,7 +405,7 @@ namespace ps2x::iop::detail
         m_memory.write32(outputAddress + 12u, thread.entry);
         m_memory.write32(outputAddress + 16u, thread.stackBase);
         m_memory.write32(outputAddress + 20u, thread.stackSize);
-        m_memory.write32(outputAddress + 24u, thread.cpu.gpr[28]);
+        m_memory.write32(outputAddress + 24u, thread.executionCpu().gpr[28]);
         m_memory.write32(outputAddress + 28u, thread.initialPriority);
         m_memory.write32(outputAddress + 32u, thread.priority);
         m_memory.write32(outputAddress + 36u, thread.state == IopThreadState::Sleep ? 1u : thread.state == IopThreadState::Delay   ? 2u
@@ -490,7 +556,7 @@ namespace ps2x::iop::detail
 
             if (thread.waitResultAddress != 0u)
                 m_memory.write32(thread.waitResultAddress, event.bits);
-            thread.cpu.gpr[2] = 0u;
+            thread.executionCpu().gpr[2] = 0u;
             if ((thread.waitMode & 0x10u) != 0u)
                 event.bits = 0u;
             thread.state = IopThreadState::Ready;
@@ -563,7 +629,7 @@ namespace ps2x::iop::detail
                 {
                     thread.state = IopThreadState::Ready;
                     thread.waitId = 0;
-                    thread.cpu.gpr[2] = static_cast<uint32_t>(-1);
+                    thread.executionCpu().gpr[2] = static_cast<uint32_t>(-1);
                 }
             }
             setV0(0);
@@ -699,8 +765,8 @@ namespace ps2x::iop::detail
 
         m_currentThread = next;
         next->state = IopThreadState::Running;
-        next->cpu.stopped = false;
-        next->cpu.yielded = false;
+        next->executionCpu().stopped = false;
+        next->executionCpu().yielded = false;
         return next;
     }
 
@@ -717,7 +783,15 @@ namespace ps2x::iop::detail
 
     void IopKernel::endTimeslice(IopThread &thread, uint32_t returnSentinel)
     {
-        if (thread.cpu.pc == returnSentinel || thread.cpu.stopped)
+        auto &cpu = thread.executionCpu();
+        if (!thread.calls.empty() && !thread.calls.back().returned &&
+            thread.state == IopThreadState::Running && cpu.pc == kCallReturnSentinel &&
+            !cpu.branchPending && !cpu.yielded)
+        {
+            thread.calls.back().returned = true;
+            thread.state = IopThreadState::Ready;
+        }
+        else if (thread.state != IopThreadState::Dead && (cpu.pc == returnSentinel || cpu.stopped))
             thread.state = IopThreadState::Dormant;
         else if (thread.state == IopThreadState::Running)
             thread.state = IopThreadState::Ready;
@@ -744,8 +818,12 @@ namespace ps2x::iop::detail
     {
         for (auto &[id, thread] : m_threads)
         {
-            const uint32_t pc = IopMemory::physicalAddress(thread.cpu.pc);
-            if (pc >= base && pc < base + size)
+            const auto inRange = [base, size](uint32_t pc) {
+                const uint32_t physical = IopMemory::physicalAddress(pc);
+                return physical >= base && physical - base < size;
+            };
+            if (inRange(thread.cpu.pc) || std::any_of(thread.calls.begin(), thread.calls.end(),
+                    [&](const auto &call) { return inRange(call.cpu.pc); }))
                 thread.state = IopThreadState::Dead;
         }
     }
