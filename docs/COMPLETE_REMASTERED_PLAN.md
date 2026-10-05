@@ -2297,3 +2297,38 @@ Next: implement MODLOAD7 owned/resumable loader and RPC continuation with origin
 ABI and failure tests; prepare one common XInput provider/serialization contract,
 then original video/Start and verified saving. No required full-game work removed.
 GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED; all8 gates open.
+
+## Native XInput component and single-save implementation path — 2026-10-05 UTC
+
+User input/save research now has an isolated C++ provider: Windows XInput1.4,
+two fixed player assignments, bounded disconnected polling, real error codes,
+axial deadzones, focus release, rumble and candidate32-byte libpad serialization.
+Ten meaningful host contracts PASS Debug/Release /W4 /WX, including signed16
+axis range, distinct buttons, golden packets, reconnect and output failures.
+Actual native read-only API probe: all four indices1167/disconnected. No physical
+rumble, connected-controller/gameplay test or original padRead ABI proof.
+Library is deliberately not connected to fate_game until the actual EE/IOP
+consumer and ownership are verified; presentation still reports input disconnected.
+No full game rebuild/run was needed for this independent component.
+See INPUT_AND_SINGLE_SAVE.md and evidence/native_input_20261005.json.
+
+Single-save recommendation remains an embedded SQLite container preserving
+original payloads, paths and logical cards; one main file after clean close,
+with recovery journal during writes. Exact native implementation and sceMc*/
+MCSERV completion must follow observed original calls. No SQLite added, save
+migrated or original file replaced. Source-backed implementation steps recorded.
+
+All three advisory queues collected. New current GitHub presentation reply was
+independently checked: input is unconnected (confirmed); observer precedes
+completeVSync/callback/IRQ on executor (confirmed), but an actual guest timing
+divergence is not demonstrated. Retain single-owner GS capture and measure
+latency/order before any asynchronous presenter change. Raw reply preserved.
+No new UI request or cloud charge; budgets and acceptance criteria unchanged.
+
+Prior local iop_kernel.h/.cpp guest-call-frame draft is retained separately,
+uncommitted, untested and not scheduler/RPC integrated. It is not part of the
+published XInput change or a validated MODLOAD7 repair. Next boot work must
+complete its scheduler/RPC ownership integration and yield/wait/return tests
+before accepting it. Original MODLOAD7/SIO2MAN remains the measured barrier.
+Then original movies/Press Start, guest controls, battle, combined content,
+durable saves/modding and packaging. GAME_PARITY=NOT_COMPLETE; all8 gates open.

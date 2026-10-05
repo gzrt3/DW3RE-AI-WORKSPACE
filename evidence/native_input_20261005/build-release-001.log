@@ -1,0 +1,11 @@
+Versión de MSBuild 17.14.51+25f168cee para .NET Framework
+
+  1>Checking Build System
+  Building Custom Rule <source>/CMakeLists.txt
+  xinput_provider.cpp
+  windows_xinput.cpp
+  Generando código...
+  fate_native_input.vcxproj -> <input-build>\bin\Release\fate_native_input.lib
+  Building Custom Rule <source>/CMakeLists.txt
+  native_input_contract.cpp
+  fate_native_input_contract.vcxproj -> <input-build>\bin\Release\fate_native_input_contract.exe
