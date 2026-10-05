@@ -2,7 +2,7 @@
 
 Agent Reach1.5.0 installed for public-source research; GitHub and Jina exercised
 against pinned PS2SDK, with a full MODLOAD source comparison MATCH. Exa returned
-a quota limit; no retries or paid key. All66 tooling tests PASS. This installation
+a quota limit; no retries or paid key. All66 tooling tests PASS locally and in Windows CI run37262482135 on3b1fac6. This installation
 does not change native runtime behavior or close an acceptance gate. See
 AGENT_REACH.md and evidence/agent_reach_20261005.json.
 
