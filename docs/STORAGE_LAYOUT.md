@@ -55,3 +55,12 @@ The final migration backup-verification.json now reports VERIFIED:268654 files,
 in that report were not copied and remain preserved separately. No C files were
 deleted. Development and cycle007 ran in D. C:/Games/DW contains no release
 executable; its status page is separate from the native diagnostic window.
+
+The loader and anti-slop checkpoint56f391f has a verified incremental backup in
+D:/Backup/DWProject/loader-antislop-20261005-001. Its verification.json records
+298 copied files,3235893 bytes, zero deletions and the source bundle prerequisite
+005aeac. The prior bundle hash was checked. It preserves new original-loader
+analysis, failed/successful probes, adviser replies, focused test executables and
+a private journal/policy snapshot taken under the existing journal lock. This
+increment complements the earlier migration and source-bundle chain; it is not
+a replacement for original assets. Later CI repairs require their own increment.

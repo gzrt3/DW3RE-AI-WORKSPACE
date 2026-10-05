@@ -1,0 +1,52 @@
+{
+  "utc": "2026-10-05T03:51:38.741934+00:00",
+  "scope": "CI test portability; native runtime unchanged",
+  "failed_run": "https://github.com/gzrt3/DW3RE-AI-WORKSPACE/actions/runs/37260903331",
+  "failed_commit": "56f391ff418ec8d0b7e5944c98b0711720629054",
+  "cause": "Unresolved Windows 8.3 spelling compared with canonical configuration result",
+  "reproduction": {
+    "before_failures": 1,
+    "before_tests": 6,
+    "after_tests": 6,
+    "after_result": "PASS",
+    "actual_windows_83_alias_used": true
+  },
+  "files": [
+    {
+      "path": "tests/test_adviser_pool.py",
+      "sha256": "b2214c731d6f06ac7d14543ab9fd9ea8d12bab7b0dbdd731fdb15686b2d67bdb"
+    },
+    {
+      "path": ".github/workflows/tooling.yml",
+      "sha256": "a6258d28374c433a4b17c9bdde3c4b54641248d4c62c326a361845cbf50b94cf"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "ci-run-001.json",
+      "sha256": "338dda59ec923098503c16160818dcc6724183460ea86422a682390a73204b25"
+    },
+    {
+      "path": "ci-jobs-001.json",
+      "sha256": "150b3bcad63ba9fdf9571cbe2a1ca806be01853da66e9c8e53904538fcb2566f"
+    },
+    {
+      "path": "ci-job-001.log",
+      "sha256": "5017de3508e0fa07cabd93b08b223e9aa06aaeb3f7907890a3bf97767adce709"
+    },
+    {
+      "path": "pool-shortpath-before-001.log",
+      "sha256": "846599dcf5407ed9678af65ce0e7b7269377dca6052d55927d5ed069d7cc0484"
+    },
+    {
+      "path": "pool-shortpath-after-001.log",
+      "sha256": "981ba00a97842ed0947b6817882ee5e8def6492a9507895924144b27ad5d719b"
+    },
+    {
+      "path": "pool-shortpath-reproduction-001.json",
+      "sha256": "9a1dc5368b0820dfa61ddf09b6f0a4cd0eacc082b6a52912c5c1332c45664a73"
+    }
+  ],
+  "gameplay_verified": false,
+  "repaired_remote_run": "NOT_YET_OBSERVED"
+}

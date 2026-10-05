@@ -1,5 +1,6 @@
 import contextlib
 import json
+import os
 from pathlib import Path
 import sys
 import tempfile
@@ -17,6 +18,11 @@ class PoolTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
+        environment = patch.dict(os.environ, {
+            'DW3_PRIVATE_ROOT': '', 'DW3_HYBRID_ROUTER': '', 'DW3_GITHUB_BRIDGE': '',
+        })
+        environment.start()
+        self.addCleanup(environment.stop)
         (self.root / 'source.cpp').write_text('return result;\n')
         self.task = {'objective': 'Check return ownership', 'sections': [('source.cpp', 1, 1)]}
         self.tasks = patch.dict(bridge.TASKS, {'rpc-continuation-review': self.task})
@@ -69,9 +75,9 @@ class PoolTests(unittest.TestCase):
         path = self.root / 'artifacts/adviser_pool/config.json'
         bridge.write_new(path, {'private_root': str(other), 'github_bridge': str(other / 'queue')})
         private, router = pool.configuration(self.root)
-        self.assertEqual(private, other)
-        self.assertEqual(router, other / 'tools/hybrid_router.py')
-        self.assertEqual(pool.exchanges(self.root)['github_copilot'], other / 'queue')
+        self.assertEqual(private, other.resolve())
+        self.assertEqual(router, (other / 'tools/hybrid_router.py').resolve())
+        self.assertEqual(pool.exchanges(self.root)['github_copilot'], (other / 'queue').resolve())
 
     def test_enqueue_idempotent_and_uncertain_not_ready(self):
         identifier, exchange = self.request()
