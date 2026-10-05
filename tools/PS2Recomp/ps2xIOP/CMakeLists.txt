@@ -68,6 +68,11 @@ if(PS2X_IOP_BUILD_TESTS)
     target_include_directories(ps2_iop_import_barrier_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
     add_test(NAME ps2_iop_import_barrier_tests COMMAND ps2_iop_import_barrier_tests)
 
+    add_executable(ps2_iop_call_completion_tests tests/iop_call_completion_tests.cpp)
+    target_link_libraries(ps2_iop_call_completion_tests PRIVATE ps2_iop)
+    target_include_directories(ps2_iop_call_completion_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+    add_test(NAME ps2_iop_call_completion_tests COMMAND ps2_iop_call_completion_tests)
+
     add_executable(ps2_iop_modload_tests tests/iop_modload_tests.cpp)
     target_link_libraries(ps2_iop_modload_tests PRIVATE ps2_iop)
     target_include_directories(ps2_iop_modload_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)

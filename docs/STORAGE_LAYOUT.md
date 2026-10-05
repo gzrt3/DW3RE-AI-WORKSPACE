@@ -41,3 +41,16 @@ on a junction back to the development tree. Install only reproducible reviewed
 outputs, retain prior versions, and never overwrite personal saves or mods during
 an update. Final standalone, gameplay, modding and clean-install verification
 remain required; reserving this directory closes no acceptance gate.
+
+The standalone status page is C:/Games/DW/Estado-del-proyecto.html, regenerated
+from docs/progress.json with tools/update_progress.py. Its bars, typography and
+phase controls have their own styles, so opening the file does not require the
+old visualization wrapper. The previous server at127.0.0.1:8768 cached an older
+page. The current optional local preview serves C:/Games/DW at
+http://127.0.0.1:8770/Estado-del-proyecto.html; regenerate the file and refresh
+that page after a verified milestone. It is a status preview, not game graphics.
+
+At the latest backup observation,48000/268654 files had matching source/backup
+hashes, with zero errors; backup-verification.json is not yet complete.
+No C files were deleted. Development and cycle006 ran in D while the backup
+continued. C:/Games/DW contains no release executable.

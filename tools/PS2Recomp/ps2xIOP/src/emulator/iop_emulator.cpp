@@ -69,9 +69,10 @@ namespace ps2x::iop::detail
     public:
         using CpuState = IopCpuState;
 
-        // Internal unwind only: an absent implementation is not a guest return
-        // value. Stop before callers can publish callback outputs or RPC success.
-        struct MissingImportError {};
+        // Internal unwind only: a missing import or an incomplete synchronous
+        // call has no guest return value. Do not publish callback/RPC outputs.
+        struct GuestExecutionError {};
+        struct MissingImportError : GuestExecutionError {};
 
         struct Module
         {
@@ -502,7 +503,7 @@ namespace ps2x::iop::detail
                         servicePendingGuestCallbacks();
                 }
             }
-            catch (const MissingImportError &)
+            catch (const GuestExecutionError &)
             {
                 cpu.stopped = true; // Also stop suspended callers of a failed callback.
                 throw;
@@ -551,6 +552,20 @@ namespace ps2x::iop::detail
             }
             cpu.gpr[31] = kCallReturnSentinel;
             runCpu(cpu, budget);
+            // This CPU and its stack are local to the synchronous call. A
+            // scheduler yield or budget boundary cannot be resumed after this
+            // scope ends, and v0 at that point is not a function result. Accept
+            // the return only after its delay slot has reached our sentinel.
+            if (pendingReboot || cpu.yielded || cpu.branchPending || cpu.pc != kCallReturnSentinel)
+            {
+                const char *reason = pendingReboot ? "reboot" : cpu.yielded ? "yielded" :
+                    cpu.stopped ? "stopped" : "budget-exhausted";
+                std::ostringstream out;
+                out << "[IOP] incomplete guest call entry=0x" << std::hex << address
+                    << " pc=0x" << cpu.pc << " reason=" << reason;
+                log(LogLevel::Error, out.str());
+                throw GuestExecutionError{};
+            }
             return cpu.gpr[2];
         }
 
@@ -675,7 +690,7 @@ namespace ps2x::iop::detail
                     {
                         runCpu(next->cpu, static_cast<uint32_t>(std::min<uint64_t>(kDefaultSlice, target - totalCycles)));
                     }
-                    catch (const MissingImportError &)
+                    catch (const GuestExecutionError &)
                     {
                         kernel.endTimeslice(*next, kThreadReturnSentinel);
                         throw;
@@ -733,7 +748,7 @@ namespace ps2x::iop::detail
             {
                 startResult = callFunction(module.entry, argumentSize, args, 0u, 0u, module.gp);
             }
-            catch (const MissingImportError &)
+            catch (const GuestExecutionError &)
             {
                 // Keep the loaded image for diagnostics; startup did not complete.
             }
@@ -1003,7 +1018,7 @@ namespace ps2x::iop::detail
         {
             return m_impl->rpc.handleRpc(request, *m_impl);
         }
-        catch (const Impl::MissingImportError &)
+        catch (const Impl::GuestExecutionError &)
         {
             RpcResult failed{};
             failed.handled = true;
@@ -1024,7 +1039,7 @@ namespace ps2x::iop::detail
         {
             m_impl->rpc.onSifTransfer(transfer, *m_impl);
         }
-        catch (const Impl::MissingImportError &)
+        catch (const Impl::GuestExecutionError &)
         {
             // The original fault is logged; do not finish the failed callback.
         }

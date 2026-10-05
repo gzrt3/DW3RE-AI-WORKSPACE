@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-05T01:49:17.097241+00:00",
+  "scope": "Synthetic synchronous IOP completion contracts and bounded native process observation. No original-game parity or final acceptance claim.",
+  "baseline": {
+    "failed": 8,
+    "passed": 1,
+    "test_log_sha256": "6e88e11de0934b1de2f6c96803c62d8a0c5a2c310143ae5cb76cc938dbe63c2d",
+    "runtime_sha256": "92d92b6cca76499516f9214f7da38790b6a2b26bb8f9a1172f068f23751f8f21"
+  },
+  "sources": {
+    "tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.cpp": "995292cd614485a747e97e212b6f0ae43911a71d9d88b3c65c7f763672ea8697",
+    "tools/PS2Recomp/ps2xIOP/tests/iop_call_completion_tests.cpp": "2ceae7ef6e689c8649a95d4ca3dbdf4fc4fcf8e5d2d15e49e753cb8b7f1fb453",
+    "tools/PS2Recomp/ps2xIOP/CMakeLists.txt": "00fb634e4093dad511fb8be91a451e457a1dbe615cbc671d8cf3957ece6f2677",
+    "tools/native_pipeline.py": "c284972ebeed9fa48cf0e0f7cda260a50b5bb8dfe9efbd3d88fcce02b0b925d1",
+    "tests/test_native_pipeline.py": "efa090a5e23bf60a33aa4cd7c142cf84a23f96be0b1e429cf88f951928b7080b"
+  },
+  "configurations": {
+    "Debug": {
+      "new_cases_passed": 11,
+      "focused_suites_passed": 5,
+      "build_log_sha256": "007fdc36222fced4cbe6eb46b59519d264941e469fd0a0bd0ba5d742cf545dcd",
+      "test_log_sha256": "d5ec42b63c2dd029772ade3d4300d9a67edf0b4353113edd5ebaa3dc7e9a9019",
+      "compiler_flags": "/W4 /WX /EHsc"
+    },
+    "Release": {
+      "new_cases_passed": 11,
+      "focused_suites_passed": 5,
+      "build_log_sha256": "6bcf6af446984157cf9c7a1076fdfc7992ca526b9ec9bd3970f98a74172c5c30",
+      "test_log_sha256": "5f2ece7ab48e487d713f609a5b2b5cee0efec69fc3fc1fe68e0666f78e990108",
+      "compiler_flags": "/W4 /WX /EHsc"
+    }
+  },
+  "final_acceptance_verified": 0,
+  "final_acceptance_total": 8,
+  "originals_deleted": 0,
+  "pipeline_tests": {
+    "passed": 8,
+    "log_sha256": "9034e27bffbeb5167244c7194d6ccc3e4907d2f4c50e4181f735c85e08ce9c2e"
+  },
+  "native_cycle_006": {
+    "build_exit_code": 0,
+    "result_sha256": "0cd968506e0205cb2bed9329421207e101111d3a905cc3bc8284acf7ad709ba3",
+    "status": "TIMEOUT",
+    "duration_seconds": 10.051287599999341,
+    "input_integrity": "MATCH",
+    "logs": {
+      "stdout.bin": "5eb1075c24f3e4a02063f2c68aff09a4a99e48e15cfa65ce2ae94af32834ed86",
+      "stderr.bin": "426745178228c282d6bb37575ed1ef85ba962b77381240a4cab63f75bf485683"
+    }
+  }
+}

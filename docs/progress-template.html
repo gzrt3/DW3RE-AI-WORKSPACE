@@ -1,6 +1,19 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dynasty Warriors 3 Complete Remastered · Estado</title>
 <div id="dw3-project-progress">
   <style>
-    #dw3-project-progress { max-width: 760px; }
+    #dw3-project-progress { max-width: 920px; box-sizing: border-box; padding: 24px; border-radius: 16px; background: #111827; color: #f1f5f9; font: 16px/1.5 system-ui, sans-serif; }
+    #dw3-project-progress h2 { margin: 0 0 12px; font-size: 24px; }
+    #dw3-project-progress .viz-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    #dw3-project-progress .viz-badge { border: 1px solid #64748b; border-radius: 20px; padding: 3px 10px; }
+    #dw3-project-progress .text-small { font-size: 14px; }
+    #dw3-project-progress .text-muted { color: #cbd5e1; }
+    #dw3-project-progress .progress { height: 12px; background: #334155; border-radius: 8px; overflow: hidden; margin-bottom: 8px; }
+    #dw3-project-progress .progress-bar { height: 100%; background: #38bdf8; }
+    #dw3-project-progress .btn { font: inherit; color: #e2e8f0; background: #1e293b; border: 1px solid #64748b; border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+    #dw3-project-progress .btn[aria-pressed="true"] { color: #0f172a; background: #7dd3fc; border-color: #7dd3fc; }
+    #dw3-project-progress .btn:focus-visible { outline: 3px solid #fbbf24; outline-offset: 3px; }
     #dw3-project-progress .progress-section { margin: 20px 0; }
     #dw3-project-progress .progress-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
     #dw3-project-progress .phase-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
@@ -8,6 +21,7 @@
   </style>
   <h2>Dynasty Warriors 3 Complete Remastered</h2>
   <div class="viz-row"><span class="viz-badge">En desarrollo</span><span class="text-small text-muted">Actualizado: {{UPDATED}}</span></div>
+  <p class="text-small text-muted">Destino final en NVMe: <strong>C:\Games\DW</strong>. Carpeta preparada; versión jugable pendiente.</p>
   <div class="progress-section">
     <div class="progress-heading"><span>Entrega final verificada</span><span class="tabular-nums">{{FINAL_DONE}} / 8 criterios</span></div>
     <div class="progress" role="progressbar" aria-label="Criterios de entrega final verificados" aria-valuenow="{{FINAL_DONE}}" aria-valuemin="0" aria-valuemax="8"><div class="progress-bar" style="width:{{FINAL_WIDTH}}%"></div></div>

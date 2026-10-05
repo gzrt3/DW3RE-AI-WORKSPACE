@@ -5,7 +5,7 @@
 El entregable final es un port nativo Windows x64 standalone, DW3 + XL
 completos sin cambio de disco, con ejecución, gráficos, audio, controles,
 guardados y modding verificables. Leer [la especificación vigente](NATIVE_PC_OBJECTIVE.md)
-antes del historial siguiente. Partir del ciclo004 y conservar los ocho criterios
+antes del historial siguiente. Partir de CURRENT_STATUS.md y conservar los ocho criterios
 finales; ninguno está cerrado. Esta actualización no reinicia el proyecto.
 
 ## Trabajo desatendido y revisión de errores — 2026-10-04 13:31 UTC
@@ -2199,3 +2199,35 @@ then rerun native boot and recover19A6C4 when actually reached. Continue real
 title/menus, first battle, full combined content, saves and final NVMe packaging.
 All8 final acceptance criteria remain open. GAME_PARITY=NOT_COMPLETE;
 BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED. No native build/probe remains active.
+
+## Native call completion and final NVMe location — cycle006
+
+Synchronous IOP calls previously treated yield, instruction-budget exhaustion
+or execution outside RAM as completed returns. Eight new regressions fail
+against the previous runtime. The repaired barrier requires the actual return
+sentinel after the delay slot, unwinds caller ownership and suppresses callback
+stores/RPC completion. Eleven contracts plus four existing focused suites pass
+Debug/Release under /W4 /WX. Eight pipeline tests pass, including classification
+of incomplete-call entry/PC/reason without misclassifying deferred reboot.
+See NATIVE_CALL_COMPLETION_20261005.md and evidence/native_call_completion_20261005.json.
+
+Full Release build using scripts/build_native.ps1 PASS; actual cycle00610s probe
+TIMEOUT/inputMATCH, still MODLOAD1.6 export7 at14374. Its stderr hash is identical
+to cycle005; no title/battle or EE19A6C4 recovery. Native build/probe completed.
+All three queues synchronized; changed runtime creates one new Microsoft review
+request, while prior advice becomes stale. No duplicate UI request, paid model
+call or provider-budget change occurred in this continuation.
+
+C:/Games/DW is the final NVMe destination and contains the standalone progress
+page and prepared data/mods/config/saves/logs directories, not a release game.
+Computer Use verified phase navigation and the eight pending criteria. The
+old8768 preview cached stale content; current local preview at8770 serves the
+actual final-folder status file. The full C backup is still hashing:48000 of
+268654 files verified, zero errors at last observation; owner20256/session10981.
+No cleanup performed. Preserve originals, failed tests and both backup generations.
+
+Next implement original MODLOAD7 argc/argv, loader-worker ownership and module
+lifecycle, retaining the explicit incomplete-call barrier until continuations
+are actually implemented. Review module-manager paths that observe IDs before
+startup success. Then title/menus, battle, complete DW3+XL and final packaging.
+GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED; all8 criteria open.

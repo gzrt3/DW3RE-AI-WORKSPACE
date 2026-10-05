@@ -14,6 +14,11 @@ Desarrollar, completar y verificar Dynasty Warriors 3 Complete Remastered como u
 
 ## Punto de partida verificado
 
+El registro siguiente corresponde a la redefinición inicial del objetivo.
+El estado actual es ciclo006 en CURRENT_STATUS.md: MODLOAD15 implementado,
+MODLOAD7 pendiente y barreras de finalización de llamadas verificadas. Se conserva
+el punto de partida histórico y los ocho criterios finales siguen abiertos.
+
 - Ejecutable de desarrollo actual: `fate_game.exe`; el nombre de entrega será
   `DW3_Remastered.exe` cuando el empaquetado real esté preparado.
 - Ciclo004: compilación Release aprobada; proceso detenido en `0x0019A6C4`,
