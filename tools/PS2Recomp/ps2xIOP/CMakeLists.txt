@@ -20,6 +20,7 @@ add_library(ps2_iop STATIC
     src/emulator/imports/iop_intrman.cpp
     src/emulator/imports/iop_ioman.cpp
     src/emulator/imports/iop_loadcore.cpp
+    src/emulator/imports/iop_modload.cpp
     src/emulator/imports/iop_stdio.cpp
     src/emulator/imports/iop_sysclib.cpp
     src/emulator/imports/iop_sysmem.cpp
@@ -61,6 +62,16 @@ if(PS2X_IOP_BUILD_TESTS)
     target_link_libraries(ps2_iop_import_version_tests PRIVATE ps2_iop)
     target_include_directories(ps2_iop_import_version_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
     add_test(NAME ps2_iop_import_version_tests COMMAND ps2_iop_import_version_tests)
+
+    add_executable(ps2_iop_import_barrier_tests tests/iop_import_barrier_tests.cpp)
+    target_link_libraries(ps2_iop_import_barrier_tests PRIVATE ps2_iop)
+    target_include_directories(ps2_iop_import_barrier_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+    add_test(NAME ps2_iop_import_barrier_tests COMMAND ps2_iop_import_barrier_tests)
+
+    add_executable(ps2_iop_modload_tests tests/iop_modload_tests.cpp)
+    target_link_libraries(ps2_iop_modload_tests PRIVATE ps2_iop)
+    target_include_directories(ps2_iop_modload_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+    add_test(NAME ps2_iop_modload_tests COMMAND ps2_iop_modload_tests)
 
 endif()
 

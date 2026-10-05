@@ -2160,3 +2160,42 @@ Next recover19A6C4 and verify selected-original MODLOAD7 LoadStartModule /
 Do not return dummy success or infer successful module loads from reaching a PC.
 GAME_PARITY=NOT_COMPLETE; BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED; all8criteria
 remain open. No title/battle observed.
+
+
+## Active D checkout, three advisers and NVMe product target — 2026-10-05 UTC
+
+Development now runs in D:/DW3-GitHub-Publish-20261004, backed by the existing
+public GitHub repository. C:/Games/DW is the user-authorized final NVMe product
+location; only a reserved location marker and empty data/mods/config/saves/logs
+folders exist there. No final executable or playable release is claimed.
+The backup to D:/Backup/DWProject/migration-20261005 is still running; preserve
+both C source trees while it copies/hashes. Junction targets are recorded but
+not included. No files were deleted in this continuation. Git refs were saved
+in public-before.bundle. Read STORAGE_LAYOUT.md before migration or cleanup.
+
+The D ps2_iop/ps2_runtime Release builds and full native cycle005 completed.
+Actual10s probe: TIMEOUT/inputMATCH, MODLOAD1.6 export7 at14374. MODLOAD15 no
+longer appears missing; the failed RPC suppresses completion instead of reaching
+EE19A6C4 through invented success. That historical EE continuation is still
+unresolved. Six import-barrier regressions, three MODLOAD contracts and existing
+focused import/version suites pass Debug/Release; original IOP-core replay2077
+paths agrees per configuration. D runtime text matches tested C after newline
+normalization. This is not an independent PCSX2 trace or full parity.
+Evidence: evidence/native_import_barrier_20261005.json and local cycle005.
+
+Three bounded advisory queues are connected to the runner and hourly main loop.
+Real ChatGPT/Microsoft responses were collected through Computer Use; the main
+agent independently rejected incorrect claims and retained useful limitations.
+GitHub's completed C-emitter advice is preserved but stale against D's published
+emitter. Raw historical queues were copied unchanged. Bridge14/pipeline6 tests
+pass. ChatGPT reported a usage limit after its reply, so no further request was
+made. No Azure/AWS call, budget reset or limit increase. See COPILOT_PIPELINE.md
+and audits/THREE_ADVISER_REVIEW_20261005.md. The C emitter edit stays unpublished.
+
+Next: inspect the existing backup owner/report without restarting it; finish
+verified migration before any deletion. Implement original MODLOAD7 argc/argv,
+loader-worker/thread and module ownership with explicit completion semantics;
+then rerun native boot and recover19A6C4 when actually reached. Continue real
+title/menus, first battle, full combined content, saves and final NVMe packaging.
+All8 final acceptance criteria remain open. GAME_PARITY=NOT_COMPLETE;
+BOOT_CHAIN_STATUS=STOPPED_NOT_CLOSED. No native build/probe remains active.

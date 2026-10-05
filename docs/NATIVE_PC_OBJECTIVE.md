@@ -1,5 +1,10 @@
 # Objetivo vigente: port nativo de PC
 
+Ubicaciones vigentes: desarrollo en `D:/DW3-GitHub-Publish-20261004`,
+entrega final en `C:/Games/DW` (NVMe) y respaldo en `D:/Backup/DWProject`.
+Los arboles anteriores se conservan mientras termina su verificacion; ver
+`docs/STORAGE_LAYOUT.md`. La carpeta final aun no contiene un juego terminado.
+
 Actualización autorizada por el usuario: 2026-10-05 UTC. Esta especificación
 aclara y amplía el objetivo existente; conserva el trabajo y la evidencia previos.
 

@@ -17,6 +17,17 @@ DEFAULT = ROOT / 'artifacts/copilot_bridge'
 MAX_JSON = 512 * 1024
 
 TASKS = {
+    'modload-contract-review': {
+        'objective': 'Audit the MODLOAD1.6 boot-device HLE and its tests for signed-byte, unsigned-wrap, pointer-boundary and false-equivalence risks. Read only these excerpts. Identify at most four concrete defects or explicitly bounded uncertainties, with source lines and discriminating tests. Do not run code, browse, open files, request credentials or claim original-game parity. Reply using the supplied strict JSON schema only.',
+        'sections': [('tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_modload.cpp', 1, 90),
+                     ('tools/PS2Recomp/ps2xIOP/tests/iop_modload_tests.cpp', 1, 170)],
+    },
+    'missing-import-review': {
+        'objective': 'Audit the IOP missing-import barrier for incorrect continuation, nested CPU/thread ownership, unwinding and false RPC completion. Read only these excerpts and identify at most four concrete defects or bounded uncertainties. Include precise source lines and behavioral regression tests. No source edits, code execution, external research, credentials or game-parity claims. Reply using the supplied strict JSON schema only.',
+        'sections': [('tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.cpp', 425, 575),
+                     ('tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.cpp', 635, 755),
+                     ('tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.cpp', 985, 1055)],
+    },
     'signed-width-oracle': {
         'objective': 'Independently review regression cases for signed low64 branch predicates in the excerpts. For values 0x0000000080000000, 0x0000000100000000, 0xffffffff00000000, 0x8000000000000000 and zero, derive which of <0, >=0, <=0 and >0 are true using signed64, and identify cases that signed32 would misclassify. Recommend delay-slot tests for taken/not-taken likely and ordinary branches. At most six findings. This is a mathematical test review, not proof of R5900 hardware parity. Do not browse, run code, access files or request credentials.',
         'sections': [('tools/PS2Recomp/ps2xRecomp/src/lib/control_flow_emitter.cpp', 398, 435),

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "tools/copilot_bridge.py": "5217762be9433e43510dc94e34bcd17d8fd9f93b41eefe88c2162057fd366164",
+    "tools/native_pipeline.py": "afe8d74356c977441d23244f18d2b245b5c406dd203268d29f19e63f92ddd1ea",
+    "tests/test_native_pipeline.py": "a898e9383448230efe0bdeead22dc0bd88fda4ad6c6bd5cada6bf841656fec90"
+  },
+  "tests": {
+    "bridge": {
+      "count": 14,
+      "status": "PASS",
+      "log_sha256": "a424310bc0fd9298b166107911e670556c64ad16f8092cf7870f839b35841e6e"
+    },
+    "native_pipeline": {
+      "count": 6,
+      "status": "PASS",
+      "log_sha256": "22589132bba95e868e6d712b4350a7c387bbd4f83160ec7cec8b2009bcbe583b"
+    }
+  },
+  "github_hourly_prompt_verified": true,
+  "github_saved_prompt_sha256": "f295541ae114103a6dcd7a24d2c76dcddefaeca2e08374547e9f0d27d5ef92d6",
+  "microsoft_actual_reply_sha256": "c834f390bfedc30bc1c4c3dc40ae8ddfbcce3a354802d5224970c9396ad1ed9b",
+  "chatgpt_actual_reply_sha256": "0dda41a4d755ea829976c36d91f8d67cac18fc4b89b605e696bb200682e2d4bf",
+  "advice_applied_automatically": false,
+  "chatgpt_limit_observed_after_reply": true,
+  "cloud_budget_changed": false,
+  "semantic_review": "docs/audits/THREE_ADVISER_REVIEW_20261005.md",
+  "acceptance_gates_verified": 0
+}
