@@ -7,6 +7,7 @@
 #include "imports/iop_ioman.h"
 #include "core/iop_kernel.h"
 #include "imports/iop_loadcore.h"
+#include "imports/iop_modload.h"
 #include "core/iop_memory.h"
 #include "services/iop_module_loader.h"
 #include "services/iop_rpc.h"
@@ -67,6 +68,10 @@ namespace ps2x::iop::detail
     {
     public:
         using CpuState = IopCpuState;
+
+        // Internal unwind only: an absent implementation is not a guest return
+        // value. Stop before callers can publish callback outputs or RPC success.
+        struct MissingImportError {};
 
         struct Module
         {
@@ -311,30 +316,15 @@ namespace ps2x::iop::detail
             if (iequals(call.library, "loadcore") && loadcore.dispatchImport(call.ordinal, cpu))
                 return ImportDisposition::Handled;
 
-            if (iequals(call.library, "thbase") || iequals(call.library, "threadman"))
-            {
-                return kernel.dispatchThreadImport(call.ordinal, cpu, totalCycles)
-                           ? ImportDisposition::Handled
-                           : ImportDisposition::Missing;
-            }
-            if (iequals(call.library, "thsemap"))
-            {
-                return kernel.dispatchSemaphoreImport(call.ordinal, cpu)
-                           ? ImportDisposition::Handled
-                           : ImportDisposition::Missing;
-            }
-            if (iequals(call.library, "thevent"))
-            {
-                return kernel.dispatchEventImport(call.ordinal, cpu)
-                           ? ImportDisposition::Handled
-                           : ImportDisposition::Missing;
-            }
-            if (iequals(call.library, "sifcmd"))
-            {
-                return rpc.dispatchSifCmdImport(call.ordinal, cpu,this)
-                           ? ImportDisposition::Handled
-                           : ImportDisposition::Missing;
-            }
+            if ((iequals(call.library, "thbase") || iequals(call.library, "threadman")) &&
+                kernel.dispatchThreadImport(call.ordinal, cpu, totalCycles))
+                return ImportDisposition::Handled;
+            if (iequals(call.library, "thsemap") && kernel.dispatchSemaphoreImport(call.ordinal, cpu))
+                return ImportDisposition::Handled;
+            if (iequals(call.library, "thevent") && kernel.dispatchEventImport(call.ordinal, cpu))
+                return ImportDisposition::Handled;
+            if (iequals(call.library, "sifcmd") && rpc.dispatchSifCmdImport(call.ordinal, cpu, this))
+                return ImportDisposition::Handled;
             if (iequals(call.library, "intrman") && intrman.dispatchImport(call.ordinal, cpu, *this))
                 return ImportDisposition::Handled;
             if (iequals(call.library, "secrman"))
@@ -393,17 +383,22 @@ namespace ps2x::iop::detail
                 setV0(0);
                 return ImportDisposition::Handled;
             }
+            if (iequals(call.library, "modload") && call.ordinal == 15u && call.version == 0x0106u)
+            {
+                if (const auto result = modload16IllegalBootDevice(memory, a0))
+                {
+                    setV0(*result);
+                    return ImportDisposition::Handled;
+                }
+                return ImportDisposition::Missing;
+            }
             if (iequals(call.library, "ioman") && call.ordinal == 31u &&
                 ioman.dispatchDevctl(call.version, cpu, cdvd))
                 return ImportDisposition::Handled;
             if (iequals(call.library, "ioman") && ioman.dispatchImport(call.ordinal, cpu, *this))
                 return ImportDisposition::Handled;
-            if (iequals(call.library, "sifman"))
-            {
-                return rpc.dispatchSifManImport(call.ordinal, cpu)
-                           ? ImportDisposition::Handled
-                           : ImportDisposition::Missing;
-            }
+            if (iequals(call.library, "sifman") && rpc.dispatchSifManImport(call.ordinal, cpu))
+                return ImportDisposition::Handled;
             if (iequals(call.library, "vblank") && vblank.dispatchImport(call.ordinal, cpu, totalCycles))
                 return ImportDisposition::Handled;
             if (iequals(call.library, "timrman") && timrman.dispatchImport(call.ordinal, cpu, totalCycles))
@@ -415,12 +410,8 @@ namespace ps2x::iop::detail
             }
             if (iequals(call.library, "stdio") && stdio.dispatchImport(call.ordinal, cpu))
                 return ImportDisposition::Handled;
-            if (iequals(call.library, "sysclib"))
-            {
-                return sysclib.dispatchImport(call.ordinal, cpu)
-                           ? ImportDisposition::Handled
-                           : ImportDisposition::Missing;
-            }
+            if (iequals(call.library, "sysclib") && sysclib.dispatchImport(call.ordinal, cpu))
+                return ImportDisposition::Handled;
             if (iequals(call.library, "heaplib") && heaplib.dispatchImport(call.ordinal, cpu))
                 return ImportDisposition::Handled;
 
@@ -432,12 +423,6 @@ namespace ps2x::iop::detail
                 return ImportDisposition::JumpToGuest;
             }
 
-            std::ostringstream out;
-            out << "[IOP] unhandled import " << call.library << ':' << call.ordinal
-                << " version=0x" << std::hex << call.version << " pc=0x" << cpu.pc;
-            log(LogLevel::Warning, out.str());
-            ++missingImports;
-            setV0(0);
             return ImportDisposition::Missing;
         }
 
@@ -466,6 +451,17 @@ namespace ps2x::iop::detail
                 const ImportDisposition disposition = dispatchImport(*import, cpu);
                 ++totalInstructions;
                 ++totalCycles;
+                if (disposition == ImportDisposition::Missing)
+                {
+                    std::ostringstream out;
+                    out << "[IOP] unhandled import " << import->library << ':' << import->ordinal
+                        << " version=0x" << std::hex << import->version << " pc=0x" << cpu.pc;
+                    log(LogLevel::Error, out.str());
+                    ++missingImports;
+                    cpu.stopped = true;
+                    // Preserve the fault PC and registers, including v0.
+                    throw MissingImportError{};
+                }
                 if (disposition == ImportDisposition::JumpToGuest)
                     return true;
                 // RpcLoop is a nonreturning SDK loop. Keep its import PC on
@@ -486,19 +482,31 @@ namespace ps2x::iop::detail
 
         uint32_t runCpu(CpuState &cpu, uint32_t instructionBudget)
         {
-            CpuState *previous = activeCpu;
+            struct ActiveCpuGuard
+            {
+                CpuState *&active;
+                CpuState *previous;
+                ~ActiveCpuGuard() { active = previous; }
+            } guard{activeCpu, activeCpu};
             activeCpu = &cpu;
             const uint64_t start = totalInstructions;
-            while (!cpu.stopped && !cpu.yielded && !pendingReboot && totalInstructions - start < instructionBudget)
+            try
             {
-                if (!step(cpu))
-                    break;
-                if (!servicingDmaInterrupts && !pendingDmaInterrupts.empty())
-                    servicePendingDmaInterrupts();
-                if (!servicingGuestCallbacks && !pendingGuestCallbacks.empty())
-                    servicePendingGuestCallbacks();
+                while (!cpu.stopped && !cpu.yielded && !pendingReboot && totalInstructions - start < instructionBudget)
+                {
+                    if (!step(cpu))
+                        break;
+                    if (!servicingDmaInterrupts && !pendingDmaInterrupts.empty())
+                        servicePendingDmaInterrupts();
+                    if (!servicingGuestCallbacks && !pendingGuestCallbacks.empty())
+                        servicePendingGuestCallbacks();
+                }
             }
-            activeCpu = previous;
+            catch (const MissingImportError &)
+            {
+                cpu.stopped = true; // Also stop suspended callers of a failed callback.
+                throw;
+            }
             return static_cast<uint32_t>(totalInstructions - start);
         }
 
@@ -663,7 +671,15 @@ namespace ps2x::iop::detail
                         continue;
                     }
                     const uint64_t before = totalCycles;
-                    runCpu(next->cpu, static_cast<uint32_t>(std::min<uint64_t>(kDefaultSlice, target - totalCycles)));
+                    try
+                    {
+                        runCpu(next->cpu, static_cast<uint32_t>(std::min<uint64_t>(kDefaultSlice, target - totalCycles)));
+                    }
+                    catch (const MissingImportError &)
+                    {
+                        kernel.endTimeslice(*next, kThreadReturnSentinel);
+                        throw;
+                    }
                     kernel.endTimeslice(*next, kThreadReturnSentinel);
                     if (totalCycles == before)
                         ++totalCycles;
@@ -712,7 +728,15 @@ namespace ps2x::iop::detail
                 }
             }
             const uint64_t missingBefore = missingImports;
-            const uint32_t startResult = callFunction(module.entry, argumentSize, args, 0u, 0u, module.gp);
+            uint32_t startResult = UINT32_MAX;
+            try
+            {
+                startResult = callFunction(module.entry, argumentSize, args, 0u, 0u, module.gp);
+            }
+            catch (const MissingImportError &)
+            {
+                // Keep the loaded image for diagnostics; startup did not complete.
+            }
             if (args)
                 freeAllocation(args);
             module.resident = startResult == 0u || startResult == 2u;
@@ -975,7 +999,18 @@ namespace ps2x::iop::detail
 
     RpcResult IopEmulator::handleRpc(const RpcRequest &request)
     {
-        return m_impl->rpc.handleRpc(request, *m_impl);
+        try
+        {
+            return m_impl->rpc.handleRpc(request, *m_impl);
+        }
+        catch (const Impl::MissingImportError &)
+        {
+            RpcResult failed{};
+            failed.handled = true;
+            failed.callbackPolicy = CallbackPolicy::Suppress;
+            failed.serverDispatchPolicy = ServerDispatchPolicy::Suppress;
+            return failed;
+        }
     }
 
     bool IopEmulator::hasRpcServer(uint32_t sid) const noexcept
@@ -985,7 +1020,14 @@ namespace ps2x::iop::detail
 
     void IopEmulator::onSifTransfer(const SifTransfer &transfer)
     {
-        m_impl->rpc.onSifTransfer(transfer, *m_impl);
+        try
+        {
+            m_impl->rpc.onSifTransfer(transfer, *m_impl);
+        }
+        catch (const Impl::MissingImportError &)
+        {
+            // The original fault is logged; do not finish the failed callback.
+        }
     }
 
     uint32_t IopEmulator::allocateMemory(uint32_t size, uint32_t alignment)

@@ -48,7 +48,8 @@ def sync_advisers(output, phase):
     report = {}
     providers = {
         'github_copilot': (ROOT/'artifacts/copilot_bridge', ('native-presentation', 'signed-branch-emitter')),
-        'microsoft_copilot_ui': (ROOT/'artifacts/microsoft_copilot_bridge', ('signed-width-oracle',)),
+        'microsoft_copilot_ui': (ROOT/'artifacts/microsoft_copilot_bridge', ('signed-width-oracle', 'missing-import-review')),
+        'chatgpt_ui': (ROOT/'artifacts/chatgpt_bridge', ('modload-contract-review',)),
     }
     for provider, (exchange, kinds) in providers.items():
         try:

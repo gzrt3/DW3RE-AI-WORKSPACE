@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "utc": "2026-10-05T01:30:40.254029+00:00",
+  "native_cycle": "cycle005",
+  "checkout_role": "public Git checkout",
+  "build": {
+    "exit_code": 0,
+    "log_sha256": "86e191d7fdf743c833a7cd000b856d2696379e8945aecf45b9bc0264c388a695"
+  },
+  "native": {
+    "status": "TIMEOUT",
+    "exit_code": 1,
+    "input_integrity": "MATCH",
+    "duration_seconds": 10.04585809999844,
+    "boot_verified": false
+  },
+  "logs": {
+    "stderr.bin": "426745178228c282d6bb37575ed1ef85ba962b77381240a4cab63f75bf485683",
+    "stdout.bin": "1adb8d05ac4cc1d44f5179dba7d1695ff51d502359791f7a68c9ad2319383e5c"
+  },
+  "barrier": {
+    "library": "modload",
+    "version": "0x0106",
+    "ordinal": 7,
+    "pc": "0x14374"
+  },
+  "modload15_missing_in_probe": false,
+  "prior_ee_19a6c4_repaired": false,
+  "original_module_sha256": "4a9027499d8fe06ced66d0ab66a9e930b30943c17fd2b5ae5f0bf76abf8360a7",
+  "original_slice_sha256": "d25aab9d1cb9f7f6b6eec6dfa84d5c60601cec6dfcd5957a32770ca6fb01311c",
+  "contracts": {
+    "Debug": {
+      "focused_ctest_log_sha256": "9a16474bb094b3522a387e722979a1eb7befcd763dfa89ead2de404cd5a2ba39",
+      "original_replay_exit": 0,
+      "original_replay_exe_sha256": "3b6dfac48df9c5da3a211bfe86b79314d141a5800a77b0a76dd7cf5460acd42a",
+      "original_paths": 2077,
+      "scope": "Original instructions through IopCpuCore compared with HLE return value and preserved ABI. Synthetic path inputs. No PCSX2 trace, original module startup, or game parity claim."
+    },
+    "Release": {
+      "focused_ctest_log_sha256": "209b1524479d325fddada55a690983792d65018a62a970b3f60f027edea6e47a",
+      "original_replay_exit": 0,
+      "original_replay_exe_sha256": "d404ccae0454efedb65a99c8024fa4dbab5ece61c1677da13bbc5c572a3bd8dc",
+      "original_paths": 2077,
+      "scope": "Original instructions through IopCpuCore compared with HLE return value and preserved ABI. Synthetic path inputs. No PCSX2 trace, original module startup, or game parity claim."
+    }
+  },
+  "sources": {
+    "tools/PS2Recomp/ps2xIOP/src/emulator/iop_emulator.cpp": {
+      "sha256": "92d92b6cca76499516f9214f7da38790b6a2b26bb8f9a1172f068f23751f8f21",
+      "same_text_as_tested_development_source": true,
+      "line_endings_may_differ": true
+    },
+    "tools/PS2Recomp/ps2xIOP/src/emulator/imports/iop_modload.cpp": {
+      "sha256": "79062cb041c79a12551544b063f6f90c342eb2cc83f058c01afe589f6b779f36",
+      "same_text_as_tested_development_source": true,
+      "line_endings_may_differ": true
+    },
+    "tools/PS2Recomp/ps2xIOP/tests/iop_import_barrier_tests.cpp": {
+      "sha256": "fa820181bafc60d5ff7f35b98c1908650bba60819f3b278b7bb2bf5b36785c74",
+      "same_text_as_tested_development_source": true,
+      "line_endings_may_differ": true
+    },
+    "tools/PS2Recomp/ps2xIOP/tests/iop_modload_tests.cpp": {
+      "sha256": "8a47d122b3a1f9786382b81333e76b4553536bf49dfd3d89f07c8afbc4c45671",
+      "same_text_as_tested_development_source": true,
+      "line_endings_may_differ": true
+    }
+  },
+  "all_final_gates_open": true
+}

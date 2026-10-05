@@ -34,14 +34,27 @@ class PipelineTests(unittest.TestCase):
 
     def test_adviser_failure_is_recorded_and_other_adviser_continues(self):
         with tempfile.TemporaryDirectory() as directory:
-            with patch('native_pipeline.copilot_bridge.collect', side_effect=[ValueError('changed'), []]), \
+            with patch('native_pipeline.copilot_bridge.collect', side_effect=[ValueError('changed'), [], []]), \
                  patch('native_pipeline.copilot_bridge.enqueue', return_value='bounded-review'):
                 result=sync_advisers(Path(directory), 'test')
             self.assertEqual(result['github_copilot']['state'],'BRIDGE_REVIEW_REQUIRED')
             self.assertEqual(result['microsoft_copilot_ui']['state'],'SYNCHRONIZED')
             self.assertFalse(result['microsoft_copilot_ui']['model_invoked_by_runner'])
             self.assertFalse(result['microsoft_copilot_ui']['code_applied'])
+            self.assertEqual(result['chatgpt_ui']['state'],'SYNCHRONIZED')
+            self.assertFalse(result['chatgpt_ui']['model_invoked_by_runner'])
+            self.assertFalse(result['chatgpt_ui']['code_applied'])
             self.assertTrue((Path(directory)/'advisers-test.json').is_file())
+
+    def test_chatgpt_unavailable_does_not_suppress_existing_advisers(self):
+        with tempfile.TemporaryDirectory() as directory:
+            with patch('native_pipeline.copilot_bridge.collect', side_effect=[[], [], OSError('unavailable')]), \
+                 patch('native_pipeline.copilot_bridge.enqueue', return_value='bounded-review'):
+                result=sync_advisers(Path(directory), 'chatgpt-unavailable')
+            self.assertEqual(result['github_copilot']['state'],'SYNCHRONIZED')
+            self.assertEqual(result['microsoft_copilot_ui']['state'],'SYNCHRONIZED')
+            self.assertEqual(result['chatgpt_ui']['state'],'BRIDGE_REVIEW_REQUIRED')
+            self.assertFalse(result['chatgpt_ui']['code_applied'])
 
 
 if __name__=='__main__':unittest.main()
