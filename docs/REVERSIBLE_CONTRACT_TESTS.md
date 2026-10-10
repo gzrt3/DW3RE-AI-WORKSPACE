@@ -75,7 +75,11 @@ instruction semantics or coverage outside the discovery map.
 The current failed callback `001A73C0 → 00235CC0`, RA `001A73C8`, has no
 discovered owner, producer annotation or producer local entry. Three preserved
 native probes agree. There are also 34 distinct direct-call targets outside
-the discovered bodies. These findings separate discovery omissions from
+the discovered bodies; the subsequent bounded scan finds that all 34 are
+outside the ELF's executable mapping too. They are unresolved static edges,
+not 34 proven missing game functions. Only the observed callback supplies an
+unowned target inside the original executable mapping in this frontier.
+These findings separate discovery omissions from
 integration of already emitted entries. Source-declared registration does
 not establish what historical imported objects contain; local branch labels
 do not all require global registration. No new per-address adapter was added.
@@ -84,3 +88,7 @@ The first census was rejected because it misread RA positionally and could
 not parse a rollback registration loop. Its corrected successor extracts
 labeled event fields and records the complete owner's four identified entries.
 Both local reports remain preserved; only the corrected census is published.
+The follow-up counts and the observed root's bounded window are recorded in
+`docs/evidence/V3_1_DISCOVERY_FRONTIER.json`. That window contains two store
+instructions; skipping it or replacing it with a successful return is
+unjustified. Its return pattern still does not establish a safe owner or parity.
