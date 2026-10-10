@@ -1,0 +1,13 @@
+{
+  "repository": "https://github.com/PCSX2/pcsx2.git",
+  "tag": "v2.8.2",
+  "commit": "fd9d310ccbb6b8b62c976da8886a3c8fd3a10ff3",
+  "license": "GPL-3.0-or-later",
+  "integration": "DIRECT_GS_REPLAY_TESTED_NATIVE_GAMEPLAY_PENDING",
+  "windows_dependencies": {
+    "repository": "https://github.com/PCSX2/pcsx2-windows-dependencies",
+    "asset_id": 619873001,
+    "bytes": 172750623,
+    "sha256": "a3133c7841e8fbdab6f4d1d5ad8efec31fb1ecda95ffed39f4d1f36bb7eb0007"
+  }
+}

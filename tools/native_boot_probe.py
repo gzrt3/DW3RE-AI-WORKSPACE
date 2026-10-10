@@ -155,6 +155,24 @@ def run_process(command, cwd, output, timeout, visible=False):
     # Exclusive raw files retain invalid UTF-8, crashes and partial timeout output.
     with (output/'stdout.bin').open('xb') as stdout, (output/'stderr.bin').open('xb') as stderr:
         try:
+            if os.name == 'nt':
+                # Reject non-PE input before CreateProcess. The child timeout
+                # starts only after Popen returns; invalid input needs no launch.
+                target = Path(command[0])
+                if not target.is_file():
+                    located = shutil.which(str(command[0]))
+                    if located:
+                        target = Path(located)
+                with target.open('rb') as candidate:
+                    dos = candidate.read(64)
+                    if len(dos) != 64 or dos[:2] != b'MZ':
+                        raise OSError('Not a Windows PE executable')
+                    pe_offset = int.from_bytes(dos[60:64], 'little')
+                    if pe_offset < 64 or pe_offset > target.stat().st_size - 4:
+                        raise OSError('Invalid Windows PE header extent')
+                    candidate.seek(pe_offset)
+                    if candidate.read(4) != b'PE\0\0':
+                        raise OSError('Not a Windows PE executable')
             process = subprocess.Popen(command, cwd=cwd, stdout=stdout, stderr=stderr, **options)
             result['pid'] = process.pid
             try:

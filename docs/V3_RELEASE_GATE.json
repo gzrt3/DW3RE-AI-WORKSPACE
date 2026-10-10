@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "version": "3.0",
+  "release_allowed": false,
+  "criteria": {
+    "source_identity": "OPEN",
+    "native_boot": "OPEN",
+    "complete_battle": "OPEN",
+    "combined_content": "OPEN",
+    "modes_maps_sides": "OPEN",
+    "presentation_controls": "OPEN",
+    "persistence": "OPEN",
+    "clean_release_soak": "OPEN"
+  },
+  "graphics_comparison": "FAIL_PIXEL_EXACT",
+  "native_next_target": "0x00237014"
+}
