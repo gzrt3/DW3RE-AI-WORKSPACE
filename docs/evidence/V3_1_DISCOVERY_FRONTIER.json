@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "roots_total": 35,
+  "observed_indirect_roots": 1,
+  "static_direct_roots": 34,
+  "static_roots_with_available_executable_words": 0,
+  "observed_root": {
+    "target": "0x00235CC0",
+    "observed_sources": [
+      "0x001A73C0"
+    ],
+    "static_direct_call_sources": [],
+    "original_available_words_in_bounded_window": 6,
+    "bounded_window_end": "0x00235CD8",
+    "instruction_family_counts": {
+      "PRIMARY_9": 1,
+      "PRIMARY_43": 2,
+      "SPECIAL_8": 1,
+      "SPECIAL_0": 2
+    },
+    "return_candidate_ends": [
+      "0x00235CD4"
+    ],
+    "bounded_original_sha256": "66e5e32f3f696396749ef7b89d90f209d365ec9ccb80d313e6dd030966ed3db6",
+    "safe_owner_boundary": "UNPROVEN",
+    "semantic_parity": "NOT_RUN"
+  },
+  "local_report_sha256": "65fdb07d0755f9422170f932bdd5f996451338d75fb5c104264262c2ff36372a",
+  "safe_owner_boundary": "UNPROVEN",
+  "semantic_parity": "NOT_RUN",
+  "new_registration_performed": false
+}
