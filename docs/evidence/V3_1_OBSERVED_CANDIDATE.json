@@ -1,0 +1,464 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-10T11:31:17.624737+00:00",
+  "verdict": "PARTIAL",
+  "promotion": "NOT_PERFORMED",
+  "release_allowed": false,
+  "product_gates_closed": 0,
+  "discovery": {
+    "input_sha256": {
+      "elf": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+      "ranges": "d30470342d07501f6bff8e237143128659b58bd8195d5eaf96a99f6a44df15a0",
+      "observed_log": "ed5202d8b7feeec4a28fc0caa734e583126992b52df21ab09e0c21b058e28341",
+      "boundary_report": "c42305061298306504be41f0859cc54f7a9d8ca320b742858733be2e8f40654d",
+      "base_config": "0e52f8313bec3172238acfdb525af5ce441072fc2b64c80b672ab60a9a315d2a"
+    },
+    "roots": [
+      {
+        "entry": "0x00235CC0",
+        "end_exclusive": "0x00235CD4",
+        "words": 5,
+        "stores": 2,
+        "original_range_sha256": "df64c86543c788067d5f297e451507cc4a1a0a595da364a93c5e7cc7de02ae67",
+        "observations": [
+          {
+            "source": "0x001A73C0",
+            "target": "0x00235CC0",
+            "pc": "0x00235CC0",
+            "ra": "0x001A73C8",
+            "sp": "0x01FFBFC0",
+            "gp": "0x002D8170"
+          }
+        ],
+        "boundary": "GHIDRA_AND_ELF_LEAF_AGREE",
+        "reference_effects": "NOT_CAPTURED",
+        "semantic_parity": "NOT_RUN"
+      }
+    ],
+    "original_functions": 3058,
+    "contiguous_chunks": 3519,
+    "original_map_changed": false
+  },
+  "generation": {
+    "source_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+    "requested_functions": 3519,
+    "emitted_functions": 3519,
+    "generated_files": 3522,
+    "requested_unique_words": 329353,
+    "annotated_unique_words": 313546,
+    "requested_annotated_words": 313546,
+    "annotations_outside_requested_bodies": 0,
+    "executable_segment_words": 475488,
+    "executable_words_not_in_discovered_bodies": 146135,
+    "annotation_identity_mismatches": 0,
+    "annotation_owner_conflicts": 0,
+    "functions_missing": 0,
+    "functions_truncated": 0,
+    "requested_words_unannotated": 15807,
+    "nonzero_or_unavailable_slots_unannotated": 0,
+    "registry_entries": 33099,
+    "registry_arithmetic_errors": 0,
+    "known_return_sites": 17176,
+    "known_return_sites_registered": 17176,
+    "known_return_sites_unregistered": 0,
+    "unregistered_return_sites_with_local_resume": 0,
+    "unsupported_emission_sites_by_primary": {},
+    "legacy_load_commit_sites_by_family": {
+      "LB": 641,
+      "LBU": 5881,
+      "LD": 5611,
+      "LDL": 81,
+      "LDR": 81,
+      "LH": 1681,
+      "LHU": 1290,
+      "LQ": 5705,
+      "LWC1": 4860,
+      "LWL": 18,
+      "LWR": 18,
+      "LWU": 43
+    },
+    "ignored_cache_emission_sites": 17,
+    "recompiler_summary": {
+      "discovered": 3519,
+      "generated": 3519,
+      "unhandled": 0,
+      "additional_entries": 29675,
+      "processed": 3519,
+      "recompiled": 3519,
+      "stubs": 0,
+      "skipped": 0,
+      "decode_failures": 0
+    },
+    "barrier_001A6968_emitted": true,
+    "barrier_001A6968_registered": true,
+    "verdict": "PARTIAL"
+  },
+  "generation_reproducibility": {
+    "left_files": 3522,
+    "right_files": 3522,
+    "filename_sets_match": true,
+    "identical_files": 3522,
+    "generated_guest_content_exported": false,
+    "status": "PASS"
+  },
+  "source_builds": {
+    "source_build_release_001": {
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 759.297,
+      "outputs": {
+        "stdout.log": {
+          "bytes": 122046,
+          "sha256": "e317579e5306c9dd2d2f1d032f718d7a635dce97b7b2d92b0474a68a75ea0805"
+        },
+        "stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "source_build_release_002": {
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 37.844,
+      "outputs": {
+        "stdout.log": {
+          "bytes": 2140,
+          "sha256": "cf4034f3fc8dae928ec40d893ba0fa4cd84a8fc85a52fb87ab8f6e820cdcd23d"
+        },
+        "stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "source_build_release_003": {
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 71.031,
+      "outputs": {
+        "stdout.log": {
+          "bytes": 854,
+          "sha256": "550a169211cf23a27718e20cb02ed15dc396ec86a542a9a9991ad6f85319f45d"
+        },
+        "stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "source_build_release_005": {
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 27.391,
+      "outputs": {
+        "stdout.log": {
+          "bytes": 842,
+          "sha256": "fbbff9df3378814ba283a712e5c809bc9b975cd8cc65d2d06c8213a2f750ed47"
+        },
+        "stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "source_build_debug_001": {
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 981.125,
+      "outputs": {
+        "stdout.log": {
+          "bytes": 114625,
+          "sha256": "35d3338c998afae4362842e8b7f8ca54367d1b9158e903fd4f52998c2195feb9"
+        },
+        "stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  },
+  "source_links": {
+    "Release": {
+      "config": "Release",
+      "source_projects": {
+        "fate_game": {
+          "project_sha256": "f92b6b42686c8ee989ba6b23d01f690f9b71f751c1b1d42b2f7c726c1bec64cf",
+          "compile_inputs": 19
+        },
+        "v31_corpus": {
+          "project_sha256": "9851b17cb62fdf054328d4352e76e1d7f8105f93f40af8118dd48886548c0f15",
+          "compile_inputs": 3521
+        },
+        "ps2_runtime": {
+          "project_sha256": "a4790facac48f688a9471ab46629cc4b3f7cc12f36a6e9195754c72624b4f514",
+          "compile_inputs": 46
+        },
+        "ps2_iop": {
+          "project_sha256": "d19df76448624b5b74f9e165e236a5b07b28f0cfa64bf955972b7063a545737a",
+          "compile_inputs": 26
+        },
+        "raylib": {
+          "project_sha256": "fe0161c378873e0eee9bd7ff9f9c037431f20ac2fd87c07bead37be82b52fe78",
+          "compile_inputs": 7
+        },
+        "glfw": {
+          "project_sha256": "42a2af68ae2f15ad1ff4e51d434edd837c9bdb7d10f43e2ca63b572e044704e3",
+          "compile_inputs": 21
+        },
+        "SDL2": {
+          "project_sha256": "97b668f6a099729dc40e733e3f7465dfccc618a2214761da507004c3ec76c0b1",
+          "compile_inputs": 196
+        }
+      },
+      "source_files": 3836,
+      "historical_game_runtime_objects_imported": 0,
+      "linked_root_symbol_matches": 21,
+      "linked_registry": true,
+      "executable_sha256": "56caa6f0785d9e512f63ee08c8200a8222e34d962aac9ddea722b4f5847d625c",
+      "link_map_sha256": "251c3f65ce5d9c64922636d41ea537e7ff9b01bd79a83b674ed9a4d3a64c22da",
+      "external_ffmpeg_binary_dependency": true,
+      "live_pcsx2_effects": "NOT_CAPTURED",
+      "promotion": "NOT_PERFORMED"
+    },
+    "Debug": {
+      "config": "Debug",
+      "source_projects": {
+        "fate_game": {
+          "project_sha256": "f92b6b42686c8ee989ba6b23d01f690f9b71f751c1b1d42b2f7c726c1bec64cf",
+          "compile_inputs": 19
+        },
+        "v31_corpus": {
+          "project_sha256": "9851b17cb62fdf054328d4352e76e1d7f8105f93f40af8118dd48886548c0f15",
+          "compile_inputs": 3521
+        },
+        "ps2_runtime": {
+          "project_sha256": "a4790facac48f688a9471ab46629cc4b3f7cc12f36a6e9195754c72624b4f514",
+          "compile_inputs": 46
+        },
+        "ps2_iop": {
+          "project_sha256": "d19df76448624b5b74f9e165e236a5b07b28f0cfa64bf955972b7063a545737a",
+          "compile_inputs": 26
+        },
+        "raylib": {
+          "project_sha256": "fe0161c378873e0eee9bd7ff9f9c037431f20ac2fd87c07bead37be82b52fe78",
+          "compile_inputs": 7
+        },
+        "glfw": {
+          "project_sha256": "42a2af68ae2f15ad1ff4e51d434edd837c9bdb7d10f43e2ca63b572e044704e3",
+          "compile_inputs": 21
+        },
+        "SDL2": {
+          "project_sha256": "97b668f6a099729dc40e733e3f7465dfccc618a2214761da507004c3ec76c0b1",
+          "compile_inputs": 196
+        }
+      },
+      "source_files": 3836,
+      "historical_game_runtime_objects_imported": 0,
+      "linked_root_symbol_matches": 851,
+      "linked_registry": true,
+      "executable_sha256": "443e57e017ea3ebf4300d12a4d0cace2cda777b62bd7afed3ce2da17abaa0a20",
+      "link_map_sha256": "fa56fc8b9b092647c51a2e3cf7c00f66c6e4a2f5097d9e4d35909a0303bda72b",
+      "external_ffmpeg_binary_dependency": true,
+      "live_pcsx2_effects": "NOT_CAPTURED",
+      "promotion": "NOT_PERFORMED"
+    }
+  },
+  "instruction_contract": {
+    "Release": {
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 0.797,
+      "outputs": {
+        "stdout.log": {
+          "bytes": 175,
+          "sha256": "a78a190c8251972cd873cdc62f8cdf367e38e1c6f9181365f3450734f93e83e3"
+        },
+        "stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "result": {
+        "cases": 128,
+        "full_gpr_bits": 128,
+        "ram_bytes_compared_per_case": 33554432,
+        "reference_stores": 256,
+        "mismatches": 0,
+        "live_pcsx2_capture": false,
+        "native_store_order_observed": false
+      }
+    },
+    "Debug": {
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 0.875,
+      "outputs": {
+        "stdout.log": {
+          "bytes": 175,
+          "sha256": "a78a190c8251972cd873cdc62f8cdf367e38e1c6f9181365f3450734f93e83e3"
+        },
+        "stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "result": {
+        "cases": 128,
+        "full_gpr_bits": 128,
+        "ram_bytes_compared_per_case": 33554432,
+        "reference_stores": 256,
+        "mismatches": 0,
+        "live_pcsx2_capture": false,
+        "native_store_order_observed": false
+      }
+    }
+  },
+  "live_probes": {
+    "Release": {
+      "status": "PROCESS_FAILED",
+      "exit_code": 2,
+      "input_integrity": "MATCH",
+      "duration_seconds": 31.187999999994645,
+      "timed_out": false,
+      "config": "Release",
+      "executable_sha256": "56caa6f0785d9e512f63ee08c8200a8222e34d962aac9ddea722b4f5847d625c",
+      "source_corpus_registered": true,
+      "missing_targets": [],
+      "native_frame": "NOT_DEMONSTRATED",
+      "live_stop": {
+        "reason": "deadline",
+        "observations": 52,
+        "presentations": 0
+      },
+      "observer_cpu_stop": {
+        "pc": "0x1ad660",
+        "ra": "0x1ad674",
+        "sp": "0x1fffcd0",
+        "gp": "0x2d8170",
+        "insn_count": "0"
+      },
+      "observed_callback_reached": "UNKNOWN",
+      "threads": [
+        {
+          "id": "1",
+          "pc": "0x1ad660",
+          "ra": "0x1ad674",
+          "sp": "0x1fffcd0",
+          "gp": "0x2d8170",
+          "status": "0",
+          "wait_reason": "0",
+          "wait_id": "0"
+        }
+      ],
+      "semaphores": [
+        {
+          "id": "0",
+          "count": "1",
+          "max_count": "1",
+          "waiters": "0"
+        },
+        {
+          "id": "1",
+          "count": "1",
+          "max_count": "1",
+          "waiters": "0"
+        }
+      ],
+      "interpretation": "BOUNDED_OBSERVER_STOP_NOT_BOOT_SUCCESS"
+    },
+    "Debug": {
+      "status": "PROCESS_FAILED",
+      "exit_code": 2,
+      "input_integrity": "MATCH",
+      "duration_seconds": 30.60899999999674,
+      "timed_out": false,
+      "config": "Debug",
+      "executable_sha256": "443e57e017ea3ebf4300d12a4d0cace2cda777b62bd7afed3ce2da17abaa0a20",
+      "source_corpus_registered": true,
+      "missing_targets": [],
+      "native_frame": "NOT_DEMONSTRATED",
+      "live_stop": {
+        "reason": "deadline",
+        "observations": 29,
+        "presentations": 0
+      },
+      "observer_cpu_stop": {
+        "pc": "0x1ad660",
+        "ra": "0x1ad674",
+        "sp": "0x1fffcd0",
+        "gp": "0x2d8170",
+        "insn_count": "0"
+      },
+      "observed_callback_reached": "UNKNOWN",
+      "threads": [
+        {
+          "id": "1",
+          "pc": "0x1ad660",
+          "ra": "0x1ad674",
+          "sp": "0x1fffcd0",
+          "gp": "0x2d8170",
+          "status": "0",
+          "wait_reason": "0",
+          "wait_id": "0"
+        }
+      ],
+      "semaphores": [
+        {
+          "id": "0",
+          "count": "1",
+          "max_count": "1",
+          "waiters": "0"
+        },
+        {
+          "id": "1",
+          "count": "1",
+          "max_count": "1",
+          "waiters": "0"
+        }
+      ],
+      "interpretation": "BOUNDED_OBSERVER_STOP_NOT_BOOT_SUCCESS"
+    }
+  },
+  "preservation": {
+    "kit_files_verified": 31,
+    "kit_files_total": 31,
+    "frozen_verified": 9,
+    "frozen_total": 9,
+    "baseline_checks": {
+      "m12_original": true,
+      "old_candidate_release": true,
+      "old_candidate_debug": true
+    },
+    "producer_inputs_match": {
+      "elf": true,
+      "ranges": true,
+      "observed_log": true,
+      "boundary_report": true,
+      "base_config": true
+    },
+    "gs_registers_preserved": 19,
+    "swap_sequence_preserved": "XL_TO_DW3_TO_XL",
+    "rollback": "SELECT_PREVIOUS_UNCHANGED_BINARY",
+    "promotion": "NOT_PERFORMED",
+    "status": "PASS"
+  },
+  "tests": {
+    "metadata_negative_contracts": 13
+  },
+  "rejected_trials": {
+    "callback_boundary_001": "Sandbox blocked Java configuration; scoped read-only 002 succeeded",
+    "source_prepare_001": "Default Windows text decoding rejected UTF-8",
+    "source_prepare_002": "Two host source paths were incorrect; paths resolved uniquely before 003",
+    "source_build_release_001_output_contract": "Build/link passed; authored output-variable substitution defect subsequently corrected",
+    "native_source_release_002": "No execution: probe started while linker held binary; preserved unused run directory",
+    "source_build_release_004": "Diagnostic relink exceeded 180 seconds; no Release child remained; 005 subsequently passed"
+  },
+  "live_original_callback": "NOT_CAPTURED",
+  "native_store_order": "NOT_OBSERVED",
+  "first_mixjoy_causal_write": "NOT_OBSERVED",
+  "native_frame": "NOT_DEMONSTRATED",
+  "debugger_screenshot_approval": "REJECTED_PRIVACY_RISK",
+  "new_address_specific_adapter": false,
+  "next_requirement": "Restore verified native boot frontier through source integration and independent original effects; do not infer callback reach from absence of missing-target log"
+}

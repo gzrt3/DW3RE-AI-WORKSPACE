@@ -1,11 +1,19 @@
 # Estabilización V3.1 — 2026-10-10
 
-Veredicto **PARTIAL**. El candidato nativo supera 0x00237014 en Debug y en dos
-arranques Release. La nueva barrera es una llamada indirecta emitida en
-0x001A73C0 hacia 0x00235CC0. No se ha generado un frame desde el runtime nativo.
+Veredicto **PARTIAL**, sin promoción ni versión jugable. El candidato actual
+incorpora 0x00235CC0 al descubrimiento y al registro del productor y compila
+desde fuentes en Debug y Release. Pasa 128 comparaciones de instrucciones en
+cada configuración, pero no reproduce la frontera de arranque histórica:
+ambos probes llegan al límite de observación sin presentar frames. La última
+PC publicada es 0x001AD660; la causa del estancamiento sigue sin demostrarse.
 Los ocho criterios de producto continúan abiertos.
 
-## Arranque y productor
+Véase [el candidato actual](OBSERVED_DISCOVERY_CANDIDATE.md) y su ledger numérico.
+Los resultados de arranque que siguen describen el candidato histórico
+preservado: superó 0x00237014 y su siguiente destino ausente fue 0x00235CC0,
+llamado desde 0x001A73C0. Estos resultados no se atribuyen al candidato actual.
+
+## Arranque y productor — candidato histórico
 
 Se integró en un candidato privado aislado el propietario completo
 0x00236FE0..0x00237020 y todas sus entradas producidas: 236FE0, 236FF8, 237008
