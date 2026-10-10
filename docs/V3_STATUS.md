@@ -1,5 +1,8 @@
 # Consolidación V3 — 2026-10-09
 
+Este checkpoint se conserva como historial. El trabajo posterior y el nuevo
+destino nativo 0x00235CC0 se documentan en [V3.1](V3_1_STATUS.md).
+
 V3.0 no está terminada. Los ocho criterios de producto siguen abiertos.
 
 ## Decisiones

@@ -94,3 +94,30 @@ software se conserva como resultado; los campos fríos ausentes no se sustituyen
 La experiencia final requiere instalar ambos volcados una vez y conservar
 progreso independiente del disco. Faltan el resolver compartido CDVD/IOP,
 estado real de MixJoy, boot completo y pruebas de AV, input, saves y sesión larga.
+
+## Diagnóstico V3.1 por draw
+
+Compilar también `dw3_gs_diagnostic`. Es un ejecutable derivado separado: el
+GSRunner original desactiva sus snapshots finales cuando se activan dumps de
+draws; éste conserva ambos para verificar que instrumentar no cambia la salida.
+No sustituir el ejecutable oficial al obtener los baselines sin diagnóstico.
+
+```powershell
+cmake --build $v3Build --config Release --target dw3_gs_diagnostic --parallel 4
+$v31HwBaseline = 'C:/DW3-build/new-official-vulkan'
+$v31HwDraws = 'C:/DW3-build/new-draws-vulkan'
+$v31SwDraws = 'C:/DW3-build/new-draws-software'
+python research/pcsx2_bridge/run_replay.py --build $v3Build --pcsx2 $v3Source --dependencies $v3Deps --capture $v3Dump --output $v31HwBaseline --reference --renderer vulkan
+python research/pcsx2_bridge/run_replay.py --build $v3Build --pcsx2 $v3Source --dependencies $v3Deps --capture $v3Dump --output $v31HwDraws --reference --renderer vulkan --draw-count 16
+python research/pcsx2_bridge/run_replay.py --build $v3Build --pcsx2 $v3Source --dependencies $v3Deps --capture $v3Dump --output $v31SwDraws --reference --renderer sw --draw-count 16
+& out/image-env/Scripts/python.exe research/pcsx2_bridge/draw_contracts.py
+& out/image-env/Scripts/python.exe research/pcsx2_bridge/compare_draws.py --hw $v31HwDraws --sw $v31SwDraws --hw-baseline $v31HwBaseline --sw-baseline $v3SwRun --pcsx2 $v3Source --output 'C:/DW3-build/new-draw-comparison.json'
+```
+
+Se comprueban los cuatro cuadros finales completos antes de comparar RGB en
+el mismo rectángulo lógico de los targets. Sólo se acepta C_32 a 1x, contexto
+igual y misma dirección base, con las fuentes públicas de coordenadas fijadas.
+El resultado actual comienza a diferir después del draw 2. Un exit 0 de esta
+herramienta significa que pudo producir el diagnóstico, no igualdad ni una
+corrección del GS. Alpha y la causa de textura/CLUT/raster/readback siguen
+pendientes. Los ocho criterios de producto no cambian.

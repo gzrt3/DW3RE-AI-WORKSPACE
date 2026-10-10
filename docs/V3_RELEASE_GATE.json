@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "3.0",
+  "version": "3.1",
   "release_allowed": false,
   "criteria": {
     "source_identity": "OPEN",
@@ -13,5 +13,7 @@
     "clean_release_soak": "OPEN"
   },
   "graphics_comparison": "FAIL_PIXEL_EXACT",
-  "native_next_target": "0x00237014"
+  "native_next_target": "0x00235CC0",
+  "native_boot": "PARTIAL_ADVANCE",
+  "graphics_first_observed_difference": "draw2 post-target RGB; cause UNKNOWN"
 }

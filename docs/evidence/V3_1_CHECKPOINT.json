@@ -1,0 +1,622 @@
+{
+  "schema": 1,
+  "version": "3.1",
+  "verdict": "PARTIAL",
+  "release_allowed": false,
+  "stage_A": "PARTIAL",
+  "stage_B": "PARTIAL_ADVANCE",
+  "stage_C": "PARTIAL_DIAGNOSIS",
+  "stage_D": "NOT_RUN",
+  "stage_E": "NOT_RUN",
+  "public_base_commit": "768156cd1551b3b1bf0dbf694c5d90ea77ed55c8",
+  "owner_audit": {
+    "owner_start": "0x00236FE0",
+    "owner_end": "0x00237020",
+    "unit_sha256": "e0be08117afc4a6e1964aae236f05d39215fd8e0f4b0c9376d614d01b2215d88",
+    "source_elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+    "original_range_sha256": "0fc84adaaff6627522c7d957805bd959dc2e4554ecf1d4775fc3b9307a73c947",
+    "original_slots": 16,
+    "annotated_slots": 14,
+    "annotation_mismatches": 0,
+    "omitted_slots": 2,
+    "omitted_nonzero_slots": 0,
+    "resume_addresses": [
+      "0x00236FF8",
+      "0x00237008",
+      "0x00237014"
+    ],
+    "registered_addresses": [
+      "0x00236FE0",
+      "0x00236FF8",
+      "0x00237008",
+      "0x00237014"
+    ],
+    "unregistered_resumes": [],
+    "resume_delay_slot_overlap": [],
+    "unregistered_interior_returns": [],
+    "static_edges": [
+      {
+        "source": "0x00236FE8",
+        "target": "0x00237000"
+      },
+      {
+        "source": "0x00236FF0",
+        "target": "0x001A4860"
+      },
+      {
+        "source": "0x00236FF8",
+        "target": "0x00237014"
+      },
+      {
+        "source": "0x00237000",
+        "target": "0x001A4870"
+      },
+      {
+        "source": "0x0023700C",
+        "target": "0x00237014"
+      }
+    ],
+    "semantic_parity": "NOT_RUN"
+  },
+  "next_target_audit": {
+    "schema": 1,
+    "observed_source_pc": "0x001A73C0",
+    "observed_target": "0x00235CC0",
+    "source_is_indirect_call": true,
+    "source_in_executable_segment": true,
+    "target_in_executable_segment": true,
+    "discovered_owners": [],
+    "previous_owner": "FUN_00235cb0",
+    "next_owner": "FUN_00235cd8",
+    "map_gap_start": "0x00235CBC",
+    "map_gap_end": "0x00235CD8",
+    "gap_slots": 7,
+    "gap_nonzero_slots": 4,
+    "target_to_next_owner_sha256": "66e5e32f3f696396749ef7b89d90f209d365ec9ccb80d313e6dd030966ed3db6",
+    "target_interval_jr_ra_count": 1,
+    "target_interval_syscall_count": 0,
+    "root_cause": "Confirmed function-map omission at an observed indirect target; safe complete owner boundary and semantics remain unverified",
+    "structural_action": "Require executable coverage and reachable-target ledger from the producer, before replacing more isolated targets",
+    "new_registration_performed": false
+  },
+  "native_runs": {
+    "native_owner_release_001": {
+      "status": "PROCESS_FAILED",
+      "exit_code": 4294967295,
+      "input_integrity": "MATCH",
+      "duration_seconds": 2.4069999999919673,
+      "timed_out": false,
+      "config": "Release",
+      "executable_sha256": "0a1b157aeb48c9984150984ea52ba6f44b1d3e03ab75d0a7ece985618d61a09c",
+      "complete_owner_registered": true,
+      "missing_targets": [
+        {
+          "addresses": [
+            "0x1a73c0",
+            "0x235cc0",
+            "0x235cc0",
+            "0x1a73c8",
+            "0x1ffbfc0",
+            "0x2d8170",
+            "0x58b244",
+            "0x3731c0",
+            "0x58b2c0"
+          ],
+          "kind": "IndirectCall"
+        }
+      ],
+      "native_frame": "NOT_DEMONSTRATED"
+    },
+    "native_owner_release_002": {
+      "status": "PROCESS_FAILED",
+      "exit_code": 4294967295,
+      "input_integrity": "MATCH",
+      "duration_seconds": 4.98399999999674,
+      "timed_out": false,
+      "config": "Release",
+      "executable_sha256": "0a1b157aeb48c9984150984ea52ba6f44b1d3e03ab75d0a7ece985618d61a09c",
+      "complete_owner_registered": true,
+      "missing_targets": [
+        {
+          "addresses": [
+            "0x1a73c0",
+            "0x235cc0",
+            "0x235cc0",
+            "0x1a73c8",
+            "0x1ffbfc0",
+            "0x2d8170",
+            "0x58b244",
+            "0x3731c0",
+            "0x58b2c0"
+          ],
+          "kind": "IndirectCall"
+        }
+      ],
+      "native_frame": "NOT_DEMONSTRATED"
+    },
+    "native_owner_debug_001": {
+      "status": "PROCESS_FAILED",
+      "exit_code": 4294967295,
+      "input_integrity": "MATCH",
+      "duration_seconds": 28.468999999997322,
+      "timed_out": false,
+      "config": "Debug",
+      "executable_sha256": "8df8ba8de3848be5e83847b7296725e61972a5341ca47d1f1622ca98bfbf3529",
+      "complete_owner_registered": true,
+      "missing_targets": [
+        {
+          "addresses": [
+            "0x1a73c0",
+            "0x235cc0",
+            "0x235cc0",
+            "0x1a73c8",
+            "0x1ffbfc0",
+            "0x2d8170",
+            "0x58b244",
+            "0x3731c0",
+            "0x58b2c0"
+          ],
+          "kind": "IndirectCall"
+        }
+      ],
+      "native_frame": "NOT_DEMONSTRATED"
+    }
+  },
+  "native_next_target": "0x00235CC0",
+  "native_frame": "NOT_DEMONSTRATED",
+  "native_clean_source_build": false,
+  "native_imported_producers": [
+    "M6",
+    "M7",
+    "M11.1",
+    "FFmpeg external bundle"
+  ],
+  "graphics": {
+    "capture_sha256": "421803f4f89eea899dde81cbbca864aa2f784cb40cb70bef3476c6699fe1d99f",
+    "coordinate_proof_sources": {
+      "pcsx2/GS/GSLocalMemory.cpp": "532d569cb29bb80c85c237df0c538ff53beff906edb74ce6bfbc0079f16f2e08",
+      "pcsx2/GS/GSLocalMemory.h": "fbf5448bf8a58ca6d97fd3df6e163cfc3858d3848b5f8ad8d2fa59b8bcf65b42",
+      "pcsx2/GS/Renderers/Common/GSTexture.cpp": "e1461af64d0afbea44677fd15366fff773bd98f4a3ea98018ec6521e02291f28",
+      "pcsx2/GS/Renderers/SW/GSRendererSW.cpp": "8ed1d838c44b3f5951f6baffaba74056433fcd4ac87ee57283c5bf249c6f46a2"
+    },
+    "official_vulkan_vs_direct": {
+      "fields": [
+        {
+          "field": 0,
+          "reference_dimensions": [
+            640,
+            480
+          ],
+          "bridge_dimensions": [
+            640,
+            480
+          ],
+          "reference_file_sha256": "f969bac99bbb0a764a463a12a5b2028a37b5611b82fc3bf07dc07a7b19242c4b",
+          "bridge_file_sha256": "975fe979f22260d82d6edb91c9001bc12e924531ff5c43819329f2699bb4d4d2",
+          "pixel_equal": true,
+          "mean_absolute_error": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_absolute_error": [
+            0,
+            0,
+            0
+          ],
+          "different_pixels": 0,
+          "first_different_pixel": null
+        },
+        {
+          "field": 1,
+          "reference_dimensions": [
+            640,
+            480
+          ],
+          "bridge_dimensions": [
+            640,
+            480
+          ],
+          "reference_file_sha256": "ca6f9b5463703a8808a841ee0c7c97aeaaaf3495589db6a54fa7fdf369b55cd1",
+          "bridge_file_sha256": "a51977a7044fd8a07ddc2ca97625dccb0680943e72ba57a1ab29a7df33f10aab",
+          "pixel_equal": true,
+          "mean_absolute_error": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_absolute_error": [
+            0,
+            0,
+            0
+          ],
+          "different_pixels": 0,
+          "first_different_pixel": null
+        },
+        {
+          "field": 2,
+          "reference_dimensions": [
+            640,
+            480
+          ],
+          "bridge_dimensions": [
+            640,
+            480
+          ],
+          "reference_file_sha256": "e975ba7da6d43117ca21ddad295e50ae3e9168a4552cc07d6cef90e7a955751a",
+          "bridge_file_sha256": "e8327da3223251fe68821de387387f1e74b116cce8572fb6e69aa13266cd51eb",
+          "pixel_equal": true,
+          "mean_absolute_error": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_absolute_error": [
+            0,
+            0,
+            0
+          ],
+          "different_pixels": 0,
+          "first_different_pixel": null
+        },
+        {
+          "field": 3,
+          "reference_dimensions": [
+            640,
+            480
+          ],
+          "bridge_dimensions": [
+            640,
+            480
+          ],
+          "reference_file_sha256": "538239263c660265e3947675e5b508e74b2c5fa49fb480105107be2052c211ab",
+          "bridge_file_sha256": "35a73f41e9ce36f353218d16751470613c948d00f001fdda2c162cdd866562d2",
+          "pixel_equal": true,
+          "mean_absolute_error": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_absolute_error": [
+            0,
+            0,
+            0
+          ],
+          "different_pixels": 0,
+          "first_different_pixel": null
+        }
+      ],
+      "pairing": "official loop2 frame00001..4 = direct loop1 field0..3",
+      "capture_sha256": "421803f4f89eea899dde81cbbca864aa2f784cb40cb70bef3476c6699fe1d99f",
+      "reference_renderer": "vulkan",
+      "bridge_renderer": "vulkan",
+      "tolerance": "pixel-exact",
+      "native_gameplay": "UNTESTED",
+      "all_four_pixel_equal": true
+    },
+    "first_difference": {
+      "draw": 2,
+      "phase": "rt1"
+    },
+    "first_difference_repeated": true,
+    "draw2": {
+      "draw": 2,
+      "context_identity_equal": true,
+      "planes": [
+        {
+          "status": "EQUAL",
+          "different_pixels": 0,
+          "first_different_pixel": null,
+          "maximum_rgb_error": [
+            0,
+            0,
+            0
+          ],
+          "logical_rectangle": [
+            0,
+            0,
+            640,
+            150
+          ],
+          "hw_dimensions": [
+            640,
+            224
+          ],
+          "sw_dimensions": [
+            640,
+            150
+          ],
+          "phase": "rt0"
+        },
+        {
+          "status": "DIFFERENT",
+          "different_pixels": 11677,
+          "first_different_pixel": [
+            6,
+            0
+          ],
+          "maximum_rgb_error": [
+            2,
+            2,
+            2
+          ],
+          "logical_rectangle": [
+            0,
+            0,
+            640,
+            150
+          ],
+          "hw_dimensions": [
+            640,
+            224
+          ],
+          "sw_dimensions": [
+            640,
+            150
+          ],
+          "phase": "rt1"
+        }
+      ]
+    },
+    "matching_contexts": 15,
+    "diagnostic_final_invariance": {
+      "hw": [
+        {
+          "field": 0,
+          "pixel_equal": true,
+          "candidate_sha256": "f969bac99bbb0a764a463a12a5b2028a37b5611b82fc3bf07dc07a7b19242c4b",
+          "baseline_sha256": "f969bac99bbb0a764a463a12a5b2028a37b5611b82fc3bf07dc07a7b19242c4b"
+        },
+        {
+          "field": 1,
+          "pixel_equal": true,
+          "candidate_sha256": "ca6f9b5463703a8808a841ee0c7c97aeaaaf3495589db6a54fa7fdf369b55cd1",
+          "baseline_sha256": "ca6f9b5463703a8808a841ee0c7c97aeaaaf3495589db6a54fa7fdf369b55cd1"
+        },
+        {
+          "field": 2,
+          "pixel_equal": true,
+          "candidate_sha256": "e975ba7da6d43117ca21ddad295e50ae3e9168a4552cc07d6cef90e7a955751a",
+          "baseline_sha256": "e975ba7da6d43117ca21ddad295e50ae3e9168a4552cc07d6cef90e7a955751a"
+        },
+        {
+          "field": 3,
+          "pixel_equal": true,
+          "candidate_sha256": "538239263c660265e3947675e5b508e74b2c5fa49fb480105107be2052c211ab",
+          "baseline_sha256": "538239263c660265e3947675e5b508e74b2c5fa49fb480105107be2052c211ab"
+        }
+      ],
+      "sw": [
+        {
+          "field": 0,
+          "pixel_equal": true,
+          "candidate_sha256": "66e5610ba1c564cbb2874d9f1a6bed4766cbf5b3b873d76620c24d264f2814bb",
+          "baseline_sha256": "66e5610ba1c564cbb2874d9f1a6bed4766cbf5b3b873d76620c24d264f2814bb"
+        },
+        {
+          "field": 1,
+          "pixel_equal": true,
+          "candidate_sha256": "d35c26069a22932dd9d8232fced308065b34cae9273b4b3721bcfd28cf220d02",
+          "baseline_sha256": "d35c26069a22932dd9d8232fced308065b34cae9273b4b3721bcfd28cf220d02"
+        },
+        {
+          "field": 2,
+          "pixel_equal": true,
+          "candidate_sha256": "294654ce992da6f7d93737550f3b6d2ccb6881781fe381acc25588188702691f",
+          "baseline_sha256": "294654ce992da6f7d93737550f3b6d2ccb6881781fe381acc25588188702691f"
+        },
+        {
+          "field": 3,
+          "pixel_equal": true,
+          "candidate_sha256": "1d42ff8f7224661a46f30385caaa8eeefd14a8e245375f810887cd01ee3dacb3",
+          "baseline_sha256": "1d42ff8f7224661a46f30385caaa8eeefd14a8e245375f810887cd01ee3dacb3"
+        }
+      ]
+    },
+    "alpha_validation": "NOT_CAPTURED",
+    "cause": "UNKNOWN",
+    "original_pixel_exact_failures_preserved": true,
+    "tolerances_changed": false
+  },
+  "corrections": [
+    {
+      "id": "V31-COMPARE-001",
+      "severity": "P2",
+      "subsystem": "comparison metadata",
+      "root_cause": "Renderer role and blending accuracy were not checked",
+      "fail_before": {
+        "exit_code": 1,
+        "timed_out": false,
+        "seconds": 0.109,
+        "outputs": {
+          "stdout.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr.log": {
+            "bytes": 2634,
+            "sha256": "d24d07117ce950455b6a6dca5e698b0ec4ceb8790019dda03f2e5200a71a0c9e"
+          }
+        }
+      },
+      "pass_after": {
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 0.11,
+        "outputs": {
+          "stdout.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr.log": {
+            "bytes": 110,
+            "sha256": "7a14a6b7a78ab0c73959601709b293818678a1cfb496728a9dcd17340f008027"
+          }
+        }
+      },
+      "counterexamples": 4,
+      "tests_after": 7,
+      "status": "FIXED_WITH_SYNTHETIC_REGRESSIONS"
+    }
+  ],
+  "open_defects": [
+    {
+      "id": "V31-NATIVE-001",
+      "severity": "P0",
+      "subsystem": "function-map producer",
+      "root_cause": "Observed indirect target absent from discovered map",
+      "status": "OPEN",
+      "correction": "Coverage ledger and verified reachable owners required; no 235CC0 adapter installed"
+    },
+    {
+      "id": "V31-GS-001",
+      "severity": "P1",
+      "subsystem": "GS texture/CLUT/raster/readback",
+      "root_cause": "UNKNOWN",
+      "status": "OPEN",
+      "reproduction": "Frozen capture, Maximum, 1x; draw2 pre-target equal/post-target differs in RGB"
+    }
+  ],
+  "builds": {
+    "configure_owner_002": {
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 2.391,
+      "outputs": {
+        "stdout.log": {
+          "bytes": 572,
+          "sha256": "7505661d3675e07385c7f56dcbd1278158567c634cd82c64d85e37959f135f1e"
+        },
+        "stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "configure_owner_003": {
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 0.234,
+      "outputs": {
+        "stdout.log": {
+          "bytes": 213,
+          "sha256": "fc7235f4e844328211396290b55eb8aab9272587cdec8e13e21f968ddfc189a2"
+        },
+        "stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "build_owner_release_001": {
+      "exit_code": 1,
+      "timed_out": false,
+      "seconds": 33.297,
+      "outputs": {
+        "stdout.log": {
+          "bytes": 754,
+          "sha256": "9ee46d6cdcc1fd7e5b85ff93a62d5214da54ece71edc4d99e183c8141c9cd939"
+        },
+        "stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "build_owner_release_002": {
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 31.328,
+      "outputs": {
+        "stdout.log": {
+          "bytes": 346,
+          "sha256": "c3c73c414e2de13d40a176a7cff710d5987b28a4e6695b278ffdd5f34f1a286a"
+        },
+        "stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "build_owner_debug_001": {
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 164.609,
+      "outputs": {
+        "stdout.log": {
+          "bytes": 700,
+          "sha256": "e09c9a708d9d9e7cbef929eb5052840dfdea6768def31e3001ef4ac45759265c"
+        },
+        "stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "configure_diagnostic_001": {
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 5.672,
+      "outputs": {
+        "stdout.log": {
+          "bytes": 862,
+          "sha256": "e82b048bb3df80b1da5580271432d453c819d9e7672860bee5ecc27641680e8e"
+        },
+        "stderr.log": {
+          "bytes": 523,
+          "sha256": "617f5356aa2edf764ee7696532c27aae8aed947861cc59dd94905eb7fecf90c2"
+        }
+      }
+    },
+    "build_diagnostic_001": {
+      "exit_code": 0,
+      "timed_out": false,
+      "seconds": 33.297,
+      "outputs": {
+        "stdout.log": {
+          "bytes": 2516,
+          "sha256": "4e1fd95798601b24526aff7ed4cdc14a3d0c00ed6ad2f9144648c85e42eee3cf"
+        },
+        "stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  },
+  "diagnostic_derivation": {
+    "source_commit": "fd9d310ccbb6b8b62c976da8886a3c8fd3a10ff3",
+    "license": "GPL-3.0-or-later",
+    "original_main_sha256": "f8a992ecb68dd5305355ce4f417bf2b1c6a7a0b9287ad1cb4c9981527fe55cf6",
+    "derived_main_sha256": "9590c14a5946b8eb68aa8f0d000ca8528d980ecfd08075ca9ff158bea93d7eb2",
+    "change": "Retain snapshot prefix when draw dumping is enabled",
+    "hardware_semantics_changed": false,
+    "pixel_invariance": "NOT_RUN"
+  },
+  "preservation": {
+    "final_kit_files_verified": 31,
+    "historic_capture_files_verified": 2,
+    "m12_release_original_unchanged": true,
+    "m12_gs_sources_unchanged": true,
+    "m12_release_sha256": "5b60c6a3710f088c2aa3a5b598310eb600e550ae9da6ff25f80bf5f1bdde1f38",
+    "new_gs_dll_sha256": "19417cc4547a29aa2cc6c6a02be0792c1c1a8f44b6c951c1fb0dd15588051c11",
+    "new_scoped_native_sha256": "0ac89496028b9b0349fffe1d55b145a7039c0253c9f922ffc7b27ee408b7c8a6",
+    "native_playable_verified": false
+  },
+  "original_mixjoy_causal_write": "NOT_OBSERVED",
+  "final_criteria_closed": 0,
+  "tests": {
+    "host_ctest_debug_groups": 8,
+    "host_ctest_release_groups": 8,
+    "draw_coordinate_tests": 2,
+    "draw_coordinate_counterexamples": 4,
+    "independent_native_owner_parity": "NOT_RUN"
+  },
+  "references": {
+    "rerac_license": "ISC",
+    "rerac_pcsx2_document_blob": "94a65e13449bb9f59cf08b1869572f3f73fa3531",
+    "rerac_hardware_document_blob": "74076ba8bf8cce56279fad5a0cf968921f04a216",
+    "rerac_trace_document_blob": "d0a437f8ebbb023a11b380814e65b624e1d851c3",
+    "external_code_copied": false
+  }
+}

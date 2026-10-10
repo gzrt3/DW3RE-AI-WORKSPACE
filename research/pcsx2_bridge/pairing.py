@@ -7,6 +7,11 @@ def validate_runs(reference, bridge):
             raise ValueError('Successful hash-bound run metadata required')
         if run.get('loops') != 2 or run.get('upscale') != 1:
             raise ValueError('Expected two passes at original resolution')
+        allowed_renderers = ('sw', 'vulkan', 'dx11', 'dx12') if role == 'reference' else ('vulkan', 'dx11', 'dx12')
+        if run.get('renderer') not in allowed_renderers:
+            raise ValueError('Unsupported renderer for comparison role')
+        if run.get('blending_accuracy') != 'maximum':
+            raise ValueError('Expected maximum blending accuracy in both runs')
         capture = run.get('capture', {})
         if (capture.get('schema') != 1 or capture.get('vsync_events') != 4
                 or capture.get('last_event_kind') != 1 or capture.get('packet_csr_field_mismatches') != 0):
