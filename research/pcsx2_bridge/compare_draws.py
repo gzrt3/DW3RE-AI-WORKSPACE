@@ -17,13 +17,15 @@ PLANE=re.compile(r'^(\d+)_f(\d+)_rt([01])_([0-9a-f]+)_(?:\(([0-9a-f]+)\)_)?(.+)\
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
-def compare_plane(hw,sw,hw_name,sw_name,context_equal):
+def compare_plane(hw,sw,hw_name,sw_name,context_equal,channels='RGB'):
     h,s=PLANE.fullmatch(hw_name),PLANE.fullmatch(sw_name)
     if not (context_equal and h and s and h.groups()[:4]==s.groups()[:4] and h[6]==s[6]=='C_32'
             and h[5]==h[4] and s[5] is None and hw.width>=sw.width and hw.height>=sw.height):
         raise ValueError('Unproven draw coordinate identity')
-    a,b=hw.convert('RGB'),sw.convert('RGB')
-    maximum=[0,0,0];changed=0;first=None
+    if channels not in ('RGB','RGBA') or (channels=='RGBA' and (hw.mode!='RGBA' or sw.mode!='RGBA')):
+        raise ValueError('Captured RGBA images required; synthesized alpha is not evidence')
+    a,b=hw.convert(channels),sw.convert(channels)
+    maximum=[0]*len(channels);changed=0;first=None
     for y in range(b.height):
         for x in range(b.width):
             errors=[abs(left-right) for left,right in zip(a.getpixel((x,y)),b.getpixel((x,y)))]
@@ -32,7 +34,7 @@ def compare_plane(hw,sw,hw_name,sw_name,context_equal):
                 changed+=1
                 if first is None:first=[x,y]
     return {'status':'EQUAL' if first is None else 'DIFFERENT','different_pixels':changed,
-            'first_different_pixel':first,'maximum_rgb_error':maximum,
+            'first_different_pixel':first,'maximum_'+channels.lower()+'_error':maximum,
             'logical_rectangle':[0,0,b.width,b.height],'hw_dimensions':a.size,'sw_dimensions':b.size}
 
 def read_run(folder):
@@ -48,6 +50,14 @@ def verified_image(folder,run,path,diagnostic=False):
             if diagnostic else run.get('images',{}).get(path.name))
     if digest!=sha(path):raise ValueError('Image disagrees with manifest')
     return Image.open(path)
+
+def captured_rgba(folder,run,path):
+    alpha_path=path.with_name(path.stem+'_alpha.png')
+    if not alpha_path.is_file():raise ValueError('Missing captured alpha sidecar')
+    with verified_image(folder,run,path,True) as rgb, verified_image(folder,run,alpha_path,True) as alpha:
+        if rgb.mode!='RGB' or alpha.mode!='L' or rgb.size!=alpha.size:
+            raise ValueError('Unproven RGB/alpha sidecar identity')
+        return Image.merge('RGBA',(*rgb.split(),alpha))
 
 def invariant(candidate,candidate_run,baseline,baseline_run):
     if (candidate_run['renderer']!=baseline_run['renderer'] or candidate_run['capture']!=baseline_run['capture']):
@@ -66,6 +76,7 @@ def invariant(candidate,candidate_run,baseline,baseline_run):
 def main():
     p=argparse.ArgumentParser()
     for name in ('hw','sw','hw_baseline','sw_baseline','pcsx2','output'):p.add_argument('--'+name.replace('_','-'),required=True,type=Path)
+    p.add_argument('--channels',choices=('RGB','RGBA'),default='RGB')
     a=p.parse_args()
     if subprocess.check_output(['git','-C',str(a.pcsx2),'rev-parse','HEAD'],text=True).strip()!=PIN:
         raise ValueError('PCSX2 coordinate proof revision mismatch')
@@ -74,8 +85,10 @@ def main():
         raise ValueError('Hardware/software capture identity mismatch')
     if hr.get('draw_diagnostic')!=sr.get('draw_diagnostic') or not 1<=hr.get('draw_diagnostic',{}).get('count',0)<=64:
         raise ValueError('Draw windows disagree')
+    if a.channels=='RGBA' and hr['draw_diagnostic'].get('alpha_capture') is not True:
+        raise ValueError('Hash-bound alpha capture metadata required')
     proof_paths=['pcsx2/GS/GSLocalMemory.cpp','pcsx2/GS/GSLocalMemory.h',
-                 'pcsx2/GS/Renderers/Common/GSTexture.cpp','pcsx2/GS/Renderers/SW/GSRendererSW.cpp']
+                 'pcsx2/GS/Renderers/Common/GSTexture.cpp','pcsx2/GS/Renderers/SW/GSRendererSW.cpp','pcsx2/GS/GSPng.cpp']
     # Verify each coordinate proof source is the pinned public source, not a local edit.
     for name in proof_paths:
         original=subprocess.check_output(['git','-C',str(a.pcsx2),'show',PIN+':'+name])
@@ -85,7 +98,9 @@ def main():
             'coordinate_proof_sources':{name:sha(a.pcsx2/name) for name in proof_paths},
             'final_invariance':{'hw':invariant(a.hw,hr,a.hw_baseline,hb),'sw':invariant(a.sw,sr,a.sw_baseline,sb)},
             'final_images_cropped_or_resized':False,'tolerance':'pixel-exact','draws':[],'cause':'UNKNOWN'}
-    report.update(compared_channels='RGB',alpha_validation='NOT_CAPTURED_BY_THIS_DIAGNOSTIC')
+    report.update(compared_channels=a.channels,alpha_validation=('CAPTURED_SEPARATE_ALPHA_PLANES' if a.channels=='RGBA' else 'NOT_VALIDATED_IN_RGB_MODE'))
+    report['comparison_domain']='RAW_CAPTURED_PLANES'
+    report['alpha_representation_equivalence']='UNPROVEN' if a.channels=='RGBA' else 'NOT_COMPARED'
     hd,sd=a.hw/'draws_hw',a.sw/'draws_sw'
     for hc in sorted(hd.glob('*_context.txt')):
         number=int(hc.name.split('_')[0]);sc=sd/hc.name
@@ -96,10 +111,12 @@ def main():
         row={'draw':number,'context_identity_equal':equal,'planes':[]}
         for phase in ('rt0','rt1'):
             hp=list(hd.glob(f'{number:05}_f*_{phase}_*.png'));sp=list(sd.glob(f'{number:05}_f*_{phase}_*.png'))
+            hp=[p for p in hp if not p.name.endswith('_alpha.png')];sp=[p for p in sp if not p.name.endswith('_alpha.png')]
             if len(hp)!=1 or len(sp)!=1:
                 row['planes'].append({'phase':phase,'status':'MISSING_OR_AMBIGUOUS'});continue
-            hi=verified_image(a.hw,hr,hp[0],True);si=verified_image(a.sw,sr,sp[0],True)
-            try:result=compare_plane(hi,si,hp[0].name,sp[0].name,equal)
+            hi=(captured_rgba(a.hw,hr,hp[0]) if a.channels=='RGBA' else verified_image(a.hw,hr,hp[0],True))
+            si=(captured_rgba(a.sw,sr,sp[0]) if a.channels=='RGBA' else verified_image(a.sw,sr,sp[0],True))
+            try:result=compare_plane(hi,si,hp[0].name,sp[0].name,equal,channels=a.channels)
             except ValueError:result={'status':'NOT_COMPARABLE'}
             row['planes'].append(dict(result,phase=phase))
         report['draws'].append(row)

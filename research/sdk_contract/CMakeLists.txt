@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.24)
+project(sdk_rpc_contract LANGUAGES CXX)
+enable_testing()
+set(DW3_RUNTIME_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../../tools/PS2Recomp/ps2xRuntime" CACHE PATH "Host runtime to verify")
+add_executable(sdk_rpc_contract abi_contract.cpp)
+target_compile_features(sdk_rpc_contract PRIVATE cxx_std_20)
+target_include_directories(sdk_rpc_contract PRIVATE "${DW3_RUNTIME_ROOT}/src/lib/Kernel/Syscalls/Helpers")
+add_test(NAME sdk_rpc_contract COMMAND sdk_rpc_contract)

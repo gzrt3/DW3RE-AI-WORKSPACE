@@ -48,14 +48,19 @@ oficiales permanecen intactos. Su generador registra hashes y conserva GPL.
 
 Dos corridas diagnósticas Vulkan/software conservan exactamente sus cuatro
 imágenes finales respecto a las referencias previas. Los primeros 15 contextos
-GS coinciden. El draw 1 coincide antes y después. El draw 2 coincide antes y
+GS coinciden. El RGB del draw 1 coincide antes y después. El draw 2 coincide antes y
 difiere después en RGB, en ambas corridas: la primera divergencia observada.
 
 Las salidas SW guardan un rectángulo desde (0,0); las HW guardan el target
 completo. El comparador diagnóstico verifica contexto, draw, frame, formato
 C_32, misma base de FRAME/backing, 1x y fuentes de coordenadas fijadas antes de
 comparar el mismo rectángulo lógico. No recorta cuadros finales ni cambia
-tolerancias. Alpha no fue capturada por este diagnóstico y sigue pendiente.
+tolerancias. La prueba reversible posterior capturó alpha en archivos separados,
+verificados por hash. Sus valores crudos difieren antes del draw 1; la equivalencia
+de representación HW/SW sigue sin probarse, por las escalas internas de alpha
+de PCSX2. No se atribuyó esa diferencia a un defecto ni se normalizó por conjetura.
+Los ocho cuadros finales conservaron sus hashes. Véase
+`docs/REVERSIBLE_CONTRACT_TESTS.md` y su ledger adicional.
 
 Una comparación exploratoria de las imágenes de textura del draw 2 también
 encuentra diferencias; aún falta probar todos sus detalles de representación

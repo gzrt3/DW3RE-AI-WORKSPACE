@@ -1,0 +1,731 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-10T10:19:20.167189+00:00",
+  "version": "3.1",
+  "verdict": "PARTIAL",
+  "release_allowed": false,
+  "final_criteria_closed": 0,
+  "sdk": {
+    "sdk_commit": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+    "public_reference_hashes": {
+      "libpad.h": "4600e4888e8ac005fb472e59f11a095e4eed136a8bdb69a1f6d2c051357c46d9",
+      "sifcmd-common.h": "c5955f971bf598ab8cd2720a426db1519b4068f3668d18d7bb83182167ed7f55",
+      "sifrpc-common.h": "164383c337815caf82fcd447c0756e31c0dfa3ef3e04f7d029f1094159442c10"
+    },
+    "rpc_layouts": {
+      "t_SifRpcHeader": {
+        "bytes": 16,
+        "fields": [
+          [
+            "pkt_addr",
+            0,
+            4
+          ],
+          [
+            "rpc_id",
+            4,
+            4
+          ],
+          [
+            "sema_id",
+            8,
+            4
+          ],
+          [
+            "mode",
+            12,
+            4
+          ]
+        ]
+      },
+      "t_SifRpcClientData": {
+        "bytes": 40,
+        "fields": [
+          [
+            "hdr",
+            0,
+            16
+          ],
+          [
+            "command",
+            16,
+            4
+          ],
+          [
+            "buf",
+            20,
+            4
+          ],
+          [
+            "cbuf",
+            24,
+            4
+          ],
+          [
+            "end_function",
+            28,
+            4
+          ],
+          [
+            "end_param",
+            32,
+            4
+          ],
+          [
+            "server",
+            36,
+            4
+          ]
+        ]
+      },
+      "t_SifRpcServerData": {
+        "bytes": 68,
+        "fields": [
+          [
+            "sid",
+            0,
+            4
+          ],
+          [
+            "func",
+            4,
+            4
+          ],
+          [
+            "buf",
+            8,
+            4
+          ],
+          [
+            "size",
+            12,
+            4
+          ],
+          [
+            "cfunc",
+            16,
+            4
+          ],
+          [
+            "cbuf",
+            20,
+            4
+          ],
+          [
+            "size2",
+            24,
+            4
+          ],
+          [
+            "client",
+            28,
+            4
+          ],
+          [
+            "pkt_addr",
+            32,
+            4
+          ],
+          [
+            "rpc_number",
+            36,
+            4
+          ],
+          [
+            "recvbuf",
+            40,
+            4
+          ],
+          [
+            "rsize",
+            44,
+            4
+          ],
+          [
+            "rmode",
+            48,
+            4
+          ],
+          [
+            "rid",
+            52,
+            4
+          ],
+          [
+            "link",
+            56,
+            4
+          ],
+          [
+            "next",
+            60,
+            4
+          ],
+          [
+            "base",
+            64,
+            4
+          ]
+        ]
+      },
+      "t_SifRpcDataQueue": {
+        "bytes": 24,
+        "fields": [
+          [
+            "thread_id",
+            0,
+            4
+          ],
+          [
+            "active",
+            4,
+            4
+          ],
+          [
+            "link",
+            8,
+            4
+          ],
+          [
+            "start",
+            12,
+            4
+          ],
+          [
+            "end",
+            16,
+            4
+          ],
+          [
+            "next",
+            20,
+            4
+          ]
+        ]
+      }
+    },
+    "compile_assertions": 109,
+    "pad_masks": 16,
+    "scope": "Numeric layout and kit serialization only; no SDK implementation linked, no game ABI parity claimed",
+    "pad_serialization_cases": 48,
+    "positive": {
+      "sdk_build_release_001": {
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 3.25,
+        "outputs": {
+          "stdout.log": {
+            "bytes": 376,
+            "sha256": "918371117984644297f956b72a10e579d1c4d8e3bf7f4e8339f17dc64cc4829f"
+          },
+          "stderr.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      },
+      "sdk_build_debug_001": {
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 3.094,
+        "outputs": {
+          "stdout.log": {
+            "bytes": 374,
+            "sha256": "9c528f06951fea50b2bc4cedcda84462ddf3ff6859ba1dfd13f6abfd71af516f"
+          },
+          "stderr.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      },
+      "sdk_test_release_001": {
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 0.062,
+        "outputs": {
+          "stdout.log": {
+            "bytes": 224,
+            "sha256": "2fe159f25b03182da1f4ce2080db3999ecef10d7658ee00ea9d4fd03616f0f40"
+          },
+          "stderr.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      },
+      "sdk_test_debug_001": {
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 0.047,
+        "outputs": {
+          "stdout.log": {
+            "bytes": 224,
+            "sha256": "2fe159f25b03182da1f4ce2080db3999ecef10d7658ee00ea9d4fd03616f0f40"
+          },
+          "stderr.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      }
+    },
+    "controls": {
+      "pointer64": {
+        "exit_code": 1,
+        "timed_out": false,
+        "seconds": 3.031,
+        "outputs": {
+          "stdout.log": {
+            "bytes": 2877,
+            "sha256": "00063f61de66087a1bb25766c6ef67e63a2beddf9bf297aee7f4bd5fce6bad43"
+          },
+          "stderr.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "expected_compile_rejection": true
+      },
+      "active_high": {
+        "exit_code": 8,
+        "timed_out": false,
+        "seconds": 0.047,
+        "outputs": {
+          "stdout.log": {
+            "bytes": 338,
+            "sha256": "6791ac4e2d505744fda7b40766e90a862e1d58b1a9775574e0229a146eba016d"
+          },
+          "stderr.log": {
+            "bytes": 27,
+            "sha256": "18e00877dc1071c85cd4f479d451bebeef8309022e46cf8c63b0bed5151984a4"
+          }
+        },
+        "expected_serialization_rejection": true,
+        "failed_comparisons": 144
+      }
+    },
+    "applied_public_rpc_assertions": 72,
+    "applied_public_tests": {
+      "sdk_public_build_release_001": {
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 2.859,
+        "outputs": {
+          "stdout.log": {
+            "bytes": 400,
+            "sha256": "91f9f38354601c0aa9cffec82913d073bb0f5607a1e0e9c957a919242dbb36d6"
+          },
+          "stderr.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      },
+      "sdk_public_test_release_001": {
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 0.063,
+        "outputs": {
+          "stdout.log": {
+            "bytes": 222,
+            "sha256": "b62e5a3b1b15f81682a9ffd9d8e9055fe52ca80d697d10d790153bd29eb409c6"
+          },
+          "stderr.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      },
+      "sdk_public_build_debug_001": {
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 2.906,
+        "outputs": {
+          "stdout.log": {
+            "bytes": 398,
+            "sha256": "484bb4d7edb777e6a9e31274e2457a45296decd1c0406b6d797ce8f953b6c249"
+          },
+          "stderr.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      },
+      "sdk_public_test_debug_001": {
+        "exit_code": 0,
+        "timed_out": false,
+        "seconds": 0.078,
+        "outputs": {
+          "stdout.log": {
+            "bytes": 222,
+            "sha256": "b02b545cd7e83a0e1b1f573723a1a7eeda5517619a80afc7252f4f036a56aa2b"
+          },
+          "stderr.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      }
+    },
+    "sdk_implementations_linked": false,
+    "runtime_structure_changed": false
+  },
+  "graphics": {
+    "capture_sha256": "421803f4f89eea899dde81cbbca864aa2f784cb40cb70bef3476c6699fe1d99f",
+    "pcsx2_commit": "fd9d310ccbb6b8b62c976da8886a3c8fd3a10ff3",
+    "first_rgb_difference": {
+      "draw": 2,
+      "phase": "rt1"
+    },
+    "first_raw_rgba_difference": {
+      "draw": 1,
+      "phase": "rt0"
+    },
+    "comparison_domain": "RAW_CAPTURED_PLANES",
+    "alpha_representation_equivalence": "UNPROVEN",
+    "first_raw_draw": {
+      "draw": 1,
+      "context_identity_equal": true,
+      "planes": [
+        {
+          "status": "DIFFERENT",
+          "different_pixels": 143360,
+          "first_different_pixel": [
+            0,
+            0
+          ],
+          "maximum_rgba_error": [
+            0,
+            0,
+            0,
+            127
+          ],
+          "logical_rectangle": [
+            0,
+            0,
+            640,
+            224
+          ],
+          "hw_dimensions": [
+            640,
+            224
+          ],
+          "sw_dimensions": [
+            640,
+            224
+          ],
+          "phase": "rt0"
+        },
+        {
+          "status": "DIFFERENT",
+          "different_pixels": 143360,
+          "first_different_pixel": [
+            0,
+            0
+          ],
+          "maximum_rgba_error": [
+            0,
+            0,
+            0,
+            127
+          ],
+          "logical_rectangle": [
+            0,
+            0,
+            640,
+            224
+          ],
+          "hw_dimensions": [
+            640,
+            224
+          ],
+          "sw_dimensions": [
+            640,
+            224
+          ],
+          "phase": "rt1"
+        }
+      ]
+    },
+    "first_pre_draw_alpha_values": {
+      "hw": 255,
+      "sw": 128,
+      "pixels_each": 143360
+    },
+    "final_invariance": {
+      "hw": [
+        {
+          "field": 0,
+          "pixel_equal": true,
+          "candidate_sha256": "f969bac99bbb0a764a463a12a5b2028a37b5611b82fc3bf07dc07a7b19242c4b",
+          "baseline_sha256": "f969bac99bbb0a764a463a12a5b2028a37b5611b82fc3bf07dc07a7b19242c4b"
+        },
+        {
+          "field": 1,
+          "pixel_equal": true,
+          "candidate_sha256": "ca6f9b5463703a8808a841ee0c7c97aeaaaf3495589db6a54fa7fdf369b55cd1",
+          "baseline_sha256": "ca6f9b5463703a8808a841ee0c7c97aeaaaf3495589db6a54fa7fdf369b55cd1"
+        },
+        {
+          "field": 2,
+          "pixel_equal": true,
+          "candidate_sha256": "e975ba7da6d43117ca21ddad295e50ae3e9168a4552cc07d6cef90e7a955751a",
+          "baseline_sha256": "e975ba7da6d43117ca21ddad295e50ae3e9168a4552cc07d6cef90e7a955751a"
+        },
+        {
+          "field": 3,
+          "pixel_equal": true,
+          "candidate_sha256": "538239263c660265e3947675e5b508e74b2c5fa49fb480105107be2052c211ab",
+          "baseline_sha256": "538239263c660265e3947675e5b508e74b2c5fa49fb480105107be2052c211ab"
+        }
+      ],
+      "sw": [
+        {
+          "field": 0,
+          "pixel_equal": true,
+          "candidate_sha256": "66e5610ba1c564cbb2874d9f1a6bed4766cbf5b3b873d76620c24d264f2814bb",
+          "baseline_sha256": "66e5610ba1c564cbb2874d9f1a6bed4766cbf5b3b873d76620c24d264f2814bb"
+        },
+        {
+          "field": 1,
+          "pixel_equal": true,
+          "candidate_sha256": "d35c26069a22932dd9d8232fced308065b34cae9273b4b3721bcfd28cf220d02",
+          "baseline_sha256": "d35c26069a22932dd9d8232fced308065b34cae9273b4b3721bcfd28cf220d02"
+        },
+        {
+          "field": 2,
+          "pixel_equal": true,
+          "candidate_sha256": "294654ce992da6f7d93737550f3b6d2ccb6881781fe381acc25588188702691f",
+          "baseline_sha256": "294654ce992da6f7d93737550f3b6d2ccb6881781fe381acc25588188702691f"
+        },
+        {
+          "field": 3,
+          "pixel_equal": true,
+          "candidate_sha256": "1d42ff8f7224661a46f30385caaa8eeefd14a8e245375f810887cd01ee3dacb3",
+          "baseline_sha256": "1d42ff8f7224661a46f30385caaa8eeefd14a8e245375f810887cd01ee3dacb3"
+        }
+      ]
+    },
+    "cause": "UNKNOWN",
+    "tolerances_changed": false,
+    "gs_implementation_changed": false,
+    "native_ee_to_gs_production": "NOT_DEMONSTRATED"
+  },
+  "coverage": {
+    "schema": 1,
+    "elf_sha256": "d26695fa7769cabbddbd89168924279cd1035eeb0bdd3744aec95257f7cfa731",
+    "function_ranges_sha256": "d30470342d07501f6bff8e237143128659b58bd8195d5eaf96a99f6a44df15a0",
+    "discovered_functions": 3058,
+    "known_executable_words": 329348,
+    "executable_words_outside_discovered_bodies": 146140,
+    "historical_static_registry_counts": [
+      7400,
+      8225,
+      1550,
+      16
+    ],
+    "candidate_declared_registry": 16032,
+    "overlays": [
+      {
+        "source": "complete_owner.cpp",
+        "sha256": "fb391c0a96fca085014b46a3d107f4e6ce121c0fd3a997a8a07e107e14e08a7c",
+        "status": "DECLARED_ENTRIES_MATCH_IDENTIFIED_OWNER",
+        "entries": [
+          "0x00236FE0",
+          "0x00236FF8",
+          "0x00237008",
+          "0x00237014"
+        ]
+      },
+      {
+        "source": "scoped_target.cpp",
+        "sha256": "5f67b485625183ad77069a15526fcc06a479d1dea9cd956a39f75c17f015cfd4",
+        "status": "PARSED_STATICALLY",
+        "entries": [
+          "0x001A6968"
+        ]
+      }
+    ],
+    "producer_corpora": {
+      "historical_integrated": {
+        "identified_files": 14236,
+        "identity_rejected_files": 0,
+        "annotated_known_words": 253736,
+        "missing_known_words": 75612,
+        "missing_known_nonzero_words": 56608,
+        "emitted_local_entries": 394711,
+        "unregistered_local_entries": 380020,
+        "missing_nonzero_delay_slots": 7279
+      },
+      "range_complete_producer": {
+        "identified_files": 3518,
+        "identity_rejected_files": 0,
+        "annotated_known_words": 313542,
+        "missing_known_words": 15806,
+        "missing_known_nonzero_words": 0,
+        "emitted_local_entries": 30155,
+        "unregistered_local_entries": 22190,
+        "missing_nonzero_delay_slots": 0
+      }
+    },
+    "control_transfer_census": {
+      "BRANCH": {
+        "events": 31857,
+        "unique_targets": 22314,
+        "targets_outside_discovered_bodies": 0,
+        "targets_unregistered": 17251,
+        "targets_in_delay_slots": 1,
+        "producer_entry_but_unregistered": 3671
+      },
+      "CALL_RETURN": {
+        "events": 17098,
+        "unique_targets": 17098,
+        "targets_outside_discovered_bodies": 0,
+        "targets_unregistered": 12075,
+        "targets_in_delay_slots": 0,
+        "producer_entry_but_unregistered": 12075
+      },
+      "J": {
+        "events": 105,
+        "unique_targets": 68,
+        "targets_outside_discovered_bodies": 0,
+        "targets_unregistered": 8,
+        "targets_in_delay_slots": 0,
+        "producer_entry_but_unregistered": 0
+      },
+      "JAL": {
+        "events": 16649,
+        "unique_targets": 2630,
+        "targets_outside_discovered_bodies": 34,
+        "targets_unregistered": 372,
+        "targets_in_delay_slots": 0,
+        "producer_entry_but_unregistered": 2
+      },
+      "SYSCALL_CONTINUATION": {
+        "events": 78,
+        "unique_targets": 78,
+        "targets_outside_discovered_bodies": 0,
+        "targets_unregistered": 4,
+        "targets_in_delay_slots": 0,
+        "producer_entry_but_unregistered": 4
+      }
+    },
+    "registry_scope": "Source-defined declarations only; local branches and cases do not necessarily require global registration",
+    "observed_missing_targets": [
+      {
+        "probe": "native_owner_release_001",
+        "probe_sha256": "6126b0aaa13cc4f22e358a3a67da0de08874d5ecbac0fdc4c701bfe0843f4c34",
+        "kind": "IndirectCall",
+        "pc": "0x001A73C0",
+        "target": "0x00235CC0",
+        "ra": "0x001A73C8",
+        "source_owners": [
+          "FUN_001a7368"
+        ],
+        "target_owners": [],
+        "target_declared_registered": false,
+        "target_producer_annotation": false,
+        "target_producer_local_entry": false
+      },
+      {
+        "probe": "native_owner_release_002",
+        "probe_sha256": "aee1bc78d7bc7ea335c30b447a66287eadf6fca2fd74d5544709fceabfb32643",
+        "kind": "IndirectCall",
+        "pc": "0x001A73C0",
+        "target": "0x00235CC0",
+        "ra": "0x001A73C8",
+        "source_owners": [
+          "FUN_001a7368"
+        ],
+        "target_owners": [],
+        "target_declared_registered": false,
+        "target_producer_annotation": false,
+        "target_producer_local_entry": false
+      },
+      {
+        "probe": "native_owner_debug_001",
+        "probe_sha256": "b7779b55148fef1f5685208bf32c19e0ef7cbceb98fe4adb85ca3f6d0e7109ac",
+        "kind": "IndirectCall",
+        "pc": "0x001A73C0",
+        "target": "0x00235CC0",
+        "ra": "0x001A73C8",
+        "source_owners": [
+          "FUN_001a7368"
+        ],
+        "target_owners": [],
+        "target_declared_registered": false,
+        "target_producer_annotation": false,
+        "target_producer_local_entry": false
+      }
+    ],
+    "dynamic_reachability": "NOT_PROVEN",
+    "linked_coverage": "PARTIAL: historical imports; source declarations do not prove binary registry",
+    "semantic_parity": "NOT_RUN",
+    "new_guest_code_generated": false,
+    "new_runtime_registration": false
+  },
+  "promotion": {
+    "files": [
+      {
+        "path": "research/pcsx2_bridge/run_replay.py",
+        "before_sha256": "be9aa4147a24cb03411a91f13d756a35997c2b7521075ae9dc6adcb5f955b2cd",
+        "after_sha256": "c11e6242384a425017825d5b33934e91e0b1018a2c15253045a7ae399a729f3d",
+        "rollback_verified": true
+      },
+      {
+        "path": "research/pcsx2_bridge/compare_draws.py",
+        "before_sha256": "5c0a49bdc2a6f1b99285d5e10e9989181042441da4b0ba69642a425580ed9710",
+        "after_sha256": "4d95da06d990cd93c1053404225d5b75bdc9cc5b89e58776780b1875c7863318",
+        "rollback_verified": true
+      },
+      {
+        "path": "research/pcsx2_bridge/alpha_contracts.py",
+        "before_sha256": null,
+        "after_sha256": "5436dcd6e283035f5fb47917fd94d161fd3c0ea736c3fefe92298be1f7e5f0ca",
+        "rollback_verified": true
+      },
+      {
+        "path": "research/sdk_contract/CMakeLists.txt",
+        "before_sha256": null,
+        "after_sha256": "e5bef90bb4e84cdaea0097868a7abd1c7255a2ed0bd285b20e626f7c20f4b715",
+        "rollback_verified": true
+      },
+      {
+        "path": "research/sdk_contract/abi_contract.cpp",
+        "before_sha256": null,
+        "after_sha256": "2ea52864e6929ef27e772cc84213b922d1b84f613a65fbbfa1bcebda28251c03",
+        "rollback_verified": true
+      },
+      {
+        "path": "research/sdk_contract/reference.json",
+        "before_sha256": null,
+        "after_sha256": "5287c700992d1a9c551831993c46a2a6d1bc202c9e745e285084dbe357bdf7a7",
+        "rollback_verified": true
+      }
+    ],
+    "runtime_behavior_changed": false
+  },
+  "preservation": {
+    "kit_verified_files": 31,
+    "freeze_verified_files": 9,
+    "historic_capture_files_verified": 2,
+    "native_candidate_binaries_unchanged": {
+      "Release": true,
+      "Debug": true
+    },
+    "m12_original_release_sha256": "5b60c6a3710f088c2aa3a5b598310eb600e550ae9da6ff25f80bf5f1bdde1f38"
+  },
+  "rejected_trial_outputs": {
+    "sdk_guard_configure_001": "Wrong source project caused by split unquoted path argument; exit zero is not acceptance",
+    "target_ledger_001": "Unparsed owner overlay and positional RA extraction; superseded by labeled field parsing and ledger 002"
+  },
+  "regression_tests": {
+    "capture_comparison": 24,
+    "labeled_event_extraction": 2
+  },
+  "native_next_target": "0x00235CC0",
+  "native_frame": "NOT_DEMONSTRATED",
+  "original_mixjoy_first_causal_write": "NOT_OBSERVED",
+  "new_runtime_adapter": false
+}

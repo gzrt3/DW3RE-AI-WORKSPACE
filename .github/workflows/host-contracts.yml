@@ -17,5 +17,9 @@ jobs:
       - run: cmake -S research/combined_session -B out/contracts -G "Visual Studio 17 2022" -A x64
       - run: cmake --build out/contracts --config ${{ matrix.configuration }} --parallel 4
       - run: ctest --test-dir out/contracts -C ${{ matrix.configuration }} --output-on-failure
+      - run: cmake -S research/sdk_contract -B out/sdk-contracts -G "Visual Studio 17 2022" -A x64
+      - run: cmake --build out/sdk-contracts --config ${{ matrix.configuration }} --parallel 2
+      - run: ctest --test-dir out/sdk-contracts -C ${{ matrix.configuration }} --output-on-failure
       - run: python -m pip --isolated install --index-url https://pypi.org/simple --require-hashes -r research/pcsx2_bridge/requirements.txt
       - run: python -B research/pcsx2_bridge/draw_contracts.py
+      - run: python -B research/pcsx2_bridge/alpha_contracts.py
