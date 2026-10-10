@@ -749,6 +749,48 @@
       }
     }
   },
+  "pinned_image_environment": {
+    "python": "3.12.14",
+    "pillow": "12.3.0",
+    "install": {
+      "started_utc": "2026-10-10T05:31:40.018476+00:00",
+      "timed_out": false,
+      "exit_code": 0,
+      "seconds": 2.359,
+      "outputs": {
+        "stdout.log": {
+          "bytes": 338,
+          "sha256": "9560f8ec28b51a25886572dccfe62643eafb46e4b35f6f4afc5a3d836ccfbf77"
+        },
+        "stderr.log": {
+          "bytes": 189,
+          "sha256": "800ca377bd0be0ae30aa32bb89e74d58a584ea322388236ae85769d66ff0eac1"
+        }
+      }
+    },
+    "comparison": {
+      "started_utc": "2026-10-10T05:33:01.792501+00:00",
+      "timed_out": false,
+      "exit_code": 1,
+      "seconds": 0.562,
+      "outputs": {
+        "stdout.log": {
+          "bytes": 3153,
+          "sha256": "109da54608af61eaea7560dfd92251ae04309607bb303891386a47d4a1c26426"
+        },
+        "stderr.log": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "comparison_identical_to_bundled_environment": true
+  },
+  "github_ci": {
+    "source_commit": "81d7835fbe7c8e57ed6530648e40f638598eb866",
+    "host_contracts": "success",
+    "tooling_contracts": "success"
+  },
   "source_hashes": {
     "research/combined_session/CMakeLists.txt": "642c2f160378a206708974c401eefee0fcaac8e5e0b4bc157250d58d268e3acf",
     "research/combined_session/contracts.cpp": "7d2b8001363282a4b38dab6f1e07a8eea8072dcc2affd33a76835ed977255c41",
