@@ -41,6 +41,8 @@ directamente del asset fijado, sin elegir una versión posterior:
 ```powershell
 $v3Asset = Invoke-RestMethod 'https://api.github.com/repos/PCSX2/pcsx2-windows-dependencies/releases/assets/619873001'
 $v3Archive = 'C:/DW3-tools/pcsx2-dependencies.7z'
+New-Item -ItemType Directory -Path (Split-Path $v3Archive) -Force | Out-Null
+if (Test-Path -LiteralPath $v3Archive) { throw 'Elegir un archivo de descarga nuevo' }
 Invoke-WebRequest $v3Asset.browser_download_url -OutFile $v3Archive
 if ((Get-Item $v3Archive).Length -ne 172750623 -or (Get-FileHash $v3Archive -Algorithm SHA256).Hash -ne 'a3133c7841e8fbdab6f4d1d5ad8efec31fb1ecda95ffed39f4d1f36bb7eb0007') { throw 'Dependencias distintas de la revisión fijada' }
 & 'C:/Program Files/7-Zip/7z.exe' x $v3Archive '-oC:/DW3-tools/dependencies'
@@ -78,7 +80,7 @@ $v3Dump = 'C:/DW3-private/battle.gs'
 $v3VulkanRun = 'C:/DW3-build/new-vulkan-run'
 $v3SwRun = 'C:/DW3-build/new-software-run'
 python -m venv out/image-env
-& out/image-env/Scripts/python.exe -m pip install --require-hashes -r research/pcsx2_bridge/requirements.txt
+& out/image-env/Scripts/python.exe -I -m pip --isolated install --index-url https://pypi.org/simple --require-hashes -r research/pcsx2_bridge/requirements.txt
 python research/pcsx2_bridge/run_replay.py --build $v3Build --pcsx2 $v3Source --dependencies $v3Deps --capture $v3Dump --output $v3VulkanRun --renderer vulkan
 python research/pcsx2_bridge/run_replay.py --build $v3Build --pcsx2 $v3Source --dependencies $v3Deps --capture $v3Dump --output $v3SwRun --reference --renderer sw
 & out/image-env/Scripts/python.exe research/pcsx2_bridge/compare_frames.py "$v3SwRun/frames" "$v3VulkanRun/render" 'C:/DW3-build/new-comparison.json' --reference-run "$v3SwRun/result.json" --bridge-run "$v3VulkanRun/result.json"

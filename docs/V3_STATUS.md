@@ -34,7 +34,7 @@ campos del segundo pase, con esa selección declarada antes de comparar.
 Maximum reduce las diferencias observadas frente a Basic, pero no las elimina
 ni identifica por sí solo su causa. Frente a software, el error máximo por
 canal observado es 90/255; la mayor media por canal es aproximadamente 0,526
-para Vulkan y 0,510 para D3D. Los cuatro campos de cada backend fallan igualdad
+para Vulkan y 0,513 para D3D. Los cuatro campos de cada backend fallan igualdad
 exacta. Se conservan los resultados fallidos y no se amplía la tolerancia.
 
 La referencia es el renderer software del GSRunner oficial fijado, con las
