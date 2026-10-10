@@ -5,14 +5,26 @@ from pairing import validate_runs
 
 def runs():
     capture={'schema':1,'sha256':'a'*64,'vsync_events':4,'last_event_kind':1,'packet_csr_field_mismatches':0}
-    base={'schema':1,'loops':2,'upscale':1,'exit_code':0,'timed_out':False,'capture':capture}
-    reference=dict(base,role='reference')
-    bridge=copy.deepcopy(dict(base,role='direct',replay={'loops':'2','vsync_events':'4',
+    base={'schema':1,'loops':2,'upscale':1,'exit_code':0,'timed_out':False,'capture':capture,'blending_accuracy':'maximum'}
+    reference=dict(base,role='reference',renderer='sw')
+    bridge=copy.deepcopy(dict(base,role='direct',renderer='vulkan',replay={'loops':'2','vsync_events':'4',
         'last_event_kind':'1','packet_csr_field_mismatches':'0','missing_snapshots':'0','presented_fields_last_loop':'4'}))
     return reference,bridge
 
 
 class PairingContracts(unittest.TestCase):
+    def test_renderer_and_blending_contract(self):
+        for role,key,value in [('reference','renderer','unknown'),('direct','renderer','sw'),
+                               ('reference','blending_accuracy','basic'),('direct','blending_accuracy',None)]:
+            reference,bridge=runs()
+            (reference if role=='reference' else bridge)[key]=value
+            with self.subTest(role=role,key=key,value=value):
+                with self.assertRaises(ValueError):validate_runs(reference,bridge)
+
+    def test_same_backend_diagnostic(self):
+        reference,bridge=runs();reference['renderer']='vulkan'
+        validate_runs(reference,bridge)
+
     def test_documented_pairing(self):
         validate_runs(*runs())
 
