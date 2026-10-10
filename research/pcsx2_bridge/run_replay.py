@@ -20,11 +20,14 @@ def main():
     p.add_argument('--renderer', choices=('vulkan', 'dx11', 'dx12', 'sw'), default='vulkan')
     p.add_argument('--draw-start', type=int, default=0)
     p.add_argument('--draw-count', type=int, default=0)
+    p.add_argument('--save-alpha', action='store_true')
     args = p.parse_args()
     if args.renderer == 'sw' and not args.reference:
         p.error('Software renderer is the official reference, not a hardware bridge')
     if args.draw_start < 0 or not 0 <= args.draw_count <= 64 or (args.draw_count and not args.reference):
         p.error('Draw diagnostics require an official reference and a window of 1..64 draws')
+    if args.save_alpha and not args.draw_count:
+        p.error('Alpha capture requires bounded draw diagnostics')
     capture = inspect_file(args.capture)
     args.output.mkdir(parents=True, exist_ok=False)
     if args.reference:
@@ -46,6 +49,8 @@ def main():
             settings += ('DumpGSData=true\nSaveRT=true\nSaveTexture=true\nSaveDepth=true\nSaveInfo=true\nSaveHWConfig=true\n'
                          f'SaveDrawStart={args.draw_start}\nSaveDrawCount={args.draw_count}\n'
                          f'HWDumpDirectory={hw.resolve().as_posix()}\nSWDumpDirectory={sw.resolve().as_posix()}\n')
+            if args.save_alpha:
+                settings += 'SaveAlpha=true\n'
         ini.write_text(settings, encoding='utf-8')
         command = [str(exe.resolve()), '-renderer', args.renderer, '-upscale', '1', '-loop', '2',
                    '-ini', str(ini.resolve()), '-dumpdir', str((args.output / 'frames').resolve()),
@@ -74,6 +79,8 @@ def main():
         result['reference_variant'] = 'derived_snapshot_diagnostic' if args.draw_count else 'unmodified_gsrunner'
     result['draw_diagnostic'] = {'start': args.draw_start, 'count': args.draw_count,
                                  'final_image_invariance': 'NOT_CHECKED'}
+    if args.save_alpha:
+        result['draw_diagnostic']['alpha_capture'] = True
     if args.draw_count:
         result['diagnostic_files'] = {str(path.relative_to(args.output)): {'bytes': path.stat().st_size,
             'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}

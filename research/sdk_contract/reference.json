@@ -1,0 +1,198 @@
+{
+  "sdk_commit": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+  "rpc_layouts": {
+    "t_SifRpcHeader": {
+      "bytes": 16,
+      "fields": [
+        [
+          "pkt_addr",
+          0,
+          4
+        ],
+        [
+          "rpc_id",
+          4,
+          4
+        ],
+        [
+          "sema_id",
+          8,
+          4
+        ],
+        [
+          "mode",
+          12,
+          4
+        ]
+      ]
+    },
+    "t_SifRpcClientData": {
+      "bytes": 40,
+      "fields": [
+        [
+          "hdr",
+          0,
+          16
+        ],
+        [
+          "command",
+          16,
+          4
+        ],
+        [
+          "buf",
+          20,
+          4
+        ],
+        [
+          "cbuf",
+          24,
+          4
+        ],
+        [
+          "end_function",
+          28,
+          4
+        ],
+        [
+          "end_param",
+          32,
+          4
+        ],
+        [
+          "server",
+          36,
+          4
+        ]
+      ]
+    },
+    "t_SifRpcServerData": {
+      "bytes": 68,
+      "fields": [
+        [
+          "sid",
+          0,
+          4
+        ],
+        [
+          "func",
+          4,
+          4
+        ],
+        [
+          "buf",
+          8,
+          4
+        ],
+        [
+          "size",
+          12,
+          4
+        ],
+        [
+          "cfunc",
+          16,
+          4
+        ],
+        [
+          "cbuf",
+          20,
+          4
+        ],
+        [
+          "size2",
+          24,
+          4
+        ],
+        [
+          "client",
+          28,
+          4
+        ],
+        [
+          "pkt_addr",
+          32,
+          4
+        ],
+        [
+          "rpc_number",
+          36,
+          4
+        ],
+        [
+          "recvbuf",
+          40,
+          4
+        ],
+        [
+          "rsize",
+          44,
+          4
+        ],
+        [
+          "rmode",
+          48,
+          4
+        ],
+        [
+          "rid",
+          52,
+          4
+        ],
+        [
+          "link",
+          56,
+          4
+        ],
+        [
+          "next",
+          60,
+          4
+        ],
+        [
+          "base",
+          64,
+          4
+        ]
+      ]
+    },
+    "t_SifRpcDataQueue": {
+      "bytes": 24,
+      "fields": [
+        [
+          "thread_id",
+          0,
+          4
+        ],
+        [
+          "active",
+          4,
+          4
+        ],
+        [
+          "link",
+          8,
+          4
+        ],
+        [
+          "start",
+          12,
+          4
+        ],
+        [
+          "end",
+          16,
+          4
+        ],
+        [
+          "next",
+          20,
+          4
+        ]
+      ]
+    }
+  },
+  "reference_header_sha256": "164383c337815caf82fcd447c0756e31c0dfa3ef3e04f7d029f1094159442c10",
+  "compile_assertions": 72,
+  "scope": "Guest 32-bit wire layout only; no timing, dispatcher, cache, or game semantic parity"
+}
