@@ -69,24 +69,31 @@ outside the usual generated directories; those were subsequently quarantined
 locally and removed from the public index. The expanded gate covers these exact
 paths as well as the original private directories/extensions. No private bodies were read for
 this check; it uses Git filenames only. The source ZIP includes committed public
-files and no Git history. Older commits were not rewritten and may still expose
-previously published material; this is current-tree cleanup, not a history purge.
-Earlier source ZIPs and CI artifacts predating this correction are superseded
-and must not be redistributed. The final deliverable is regenerated after this
-boundary check. The public root recipe may still reference private candidate
-files; only the isolated host/GS contracts are public build targets at present.
-The user explicitly chose to keep seven superseded CI source artifacts after
-automatic review rejected their deletion. No artifact deletion or Git history
-rewrite was performed. These older archives contain the pre-correction public
-source and may expose the quarantined files; they remain an exposure alongside
-retained Git history. Their artifact IDs are 11690281617, 11690141893,
-11690126877, 11690101679, 11689946910, 11689668104 and 11689188499.
-Use only source packages from commit 060897983f3ddf7a18d8fece300de8453fe9243b
-or later, with the expanded boundary check passing.
+files and no Git history. The public root recipe may still reference private
+candidate files; only the isolated host/GS contracts are public build targets
+at present.
 
-Current documentation, file names and development tooling use tool-neutral
-references. Historical commits, merged pull-request snapshots, Actions records
-and previously retained ZIPs are not rewritten by this current-tree cleanup.
+The user subsequently authorized a historical purge. All 39 existing commit
+records were retained in rewritten form across the four public branch histories.
+The cleanup redacted tool references in 53 file versions and excluded the
+14,288 historical paths rejected by the current private-file rules. A complete
+local recovery bundle preserves the original history. Verification found zero
+matching tool references in every reachable rewritten object and zero prohibited
+paths across all rewritten commits. The current main source tree was unchanged
+before this documentation update.
+
+All 99 pre-rewrite Actions records and 16 artifacts were deleted; an API check
+found none of those IDs remaining. Fresh checks and source packages use the
+rewritten history. Use a fresh clone; do not merge or push an older clone's
+history into the cleaned repository.
+
+One server-held historical reference remains: merged PR #1's read-only head
+still points to the original history. Old cached objects may also remain
+accessible. Complete server-side removal is unconfirmed and requires GitHub's
+assistance; its policy does not promise removal of ordinary branding references.
+See [GitHub's cleanup procedure](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#fully-removing-the-data-from-github).
+No support request has been sent. Current documentation, filenames, branch names
+and development tooling use tool-neutral references.
 
 ## Most efficient engineering decision
 

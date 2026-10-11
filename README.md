@@ -34,8 +34,9 @@ Download the **DW3-V3.1-Development-Kit** artifact from a successful
 [Development source package run](https://github.com/gzrt3/DW3RE-AI-WORKSPACE/actions/workflows/development-package.yml).
 The ZIP contains public source, the importer, evidence summaries and instructions.
 It has no prebuilt game and no resolved MixJoy activation.
-Use a run for commit `0608979` or a later descendant; earlier ZIPs were superseded
-after recovered bootstrap files were caught outside the original private-path gate.
+Use the latest successful `main` run. Historical source ZIPs were removed during
+the repository cleanup. After the history rewrite, use a fresh clone and avoid
+merging or pushing an older clone's history.
 
 - [Completion contract](docs/COMPLETION_BRIDGE.md)
 - [Native development continuation instructions](docs/CONTINUE_DEVELOPMENT.md)
