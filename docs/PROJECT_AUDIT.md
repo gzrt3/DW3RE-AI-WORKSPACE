@@ -75,9 +75,14 @@ Earlier source ZIPs and CI artifacts predating this correction are superseded
 and must not be redistributed. The final deliverable is regenerated after this
 boundary check. The public root recipe may still reference private candidate
 files; only the isolated host/GS contracts are public build targets at present.
-Deletion of seven superseded CI source artifacts requires explicit user approval
-after automatic review rejected the deletion. Until that is completed, the
-older artifacts remain an exposure in addition to retained Git history.
+The user explicitly chose to keep seven superseded CI source artifacts after
+automatic review rejected their deletion. No artifact deletion or Git history
+rewrite was performed. These older archives contain the pre-correction public
+source and may expose the quarantined files; they remain an exposure alongside
+retained Git history. Their artifact IDs are 11690281617, 11690141893,
+11690126877, 11690101679, 11689946910, 11689668104 and 11689188499.
+Use only source packages from commit 060897983f3ddf7a18d8fece300de8453fe9243b
+or later, with the expanded boundary check passing.
 
 ## Most efficient engineering decision
 
