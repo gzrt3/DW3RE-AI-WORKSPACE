@@ -88,8 +88,9 @@ rewritten history. Use a fresh clone; do not merge or push an older clone's
 history into the cleaned repository.
 
 One server-held historical reference remains: merged PR #1's read-only head
-still points to the original history. Old cached objects may also remain
-accessible. Complete server-side removal is unconfirmed and requires GitHub's
+still points to the original history. Ten public activity records also retain
+earlier branch labels. Old cached objects may remain accessible. Complete
+server-side removal is unconfirmed and requires GitHub's
 assistance; its policy does not promise removal of ordinary branding references.
 See [GitHub's cleanup procedure](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#fully-removing-the-data-from-github).
 No support request has been sent. Current documentation, filenames, branch names
