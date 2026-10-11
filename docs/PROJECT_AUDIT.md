@@ -75,6 +75,9 @@ Earlier source ZIPs and CI artifacts predating this correction are superseded
 and must not be redistributed. The final deliverable is regenerated after this
 boundary check. The public root recipe may still reference private candidate
 files; only the isolated host/GS contracts are public build targets at present.
+Deletion of seven superseded CI source artifacts requires explicit user approval
+after automatic review rejected the deletion. Until that is completed, the
+older artifacts remain an exposure in addition to retained Git history.
 
 ## Most efficient engineering decision
 
