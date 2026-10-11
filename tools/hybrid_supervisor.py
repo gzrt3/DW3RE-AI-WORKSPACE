@@ -136,7 +136,7 @@ class Supervisor:
         self.mutex=threading.RLock()
         self.tail = None; self.segment = 0
         valid_projections={}
-        self.state = {'version': 1, 'tasks': {}, 'status': 'NEW', 'project_complete': False,
+        self.state = {'version': 2, 'tasks': {}, 'status': 'NEW', 'project_complete': False,
                       'adviser': {'state': 'ADVISER_UNKNOWN', 'session_model': 'NOT_EXPOSED','observed_at':self.clock()},
                       'project_status': 'IN_PROGRESS', 'source_legacy': None,
                       'watch_signature': None, 'events': 0, **a.INVARIANTS}
@@ -148,6 +148,8 @@ class Supervisor:
                     raise h.Failure('FAILED', 'SUPERVISOR_JOURNAL_INTEGRITY_'+path.name)
                 self.tail, self.state = checksum, event['state']
                 valid_projections[checksum]=h.digest(dict(self.state,journal_tail=checksum))
+        if self.state.get('version') != 2:
+            raise h.Failure('FAILED', 'SUPERVISOR_SCHEMA_CHANGED_USE_NEW_OUTPUT')
         self.handlers = handlers or {}
         self.router=h.Router(h.Journal(),adapter=partial(h.invoke,json_output=True))
         legacy_verified=verify_legacy(self.legacy)

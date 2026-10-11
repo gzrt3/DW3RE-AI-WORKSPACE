@@ -11,7 +11,7 @@ y Python 3.12. Comprobado con MSVC 19.44.35228, SDK 10.0.26100.0, CMake 4.4.3
 y Python 3.12.14. En los comandos, `python` debe seleccionar esa instalación.
 
 ```powershell
-git clone --depth 1 --single-branch --branch adviser/v3-consolidation https://github.com/gzrt3/DW3RE-AI-WORKSPACE.git DW3-PC
+git clone --depth 1 --single-branch --branch main https://github.com/gzrt3/DW3RE-AI-WORKSPACE.git DW3-PC
 cd DW3-PC
 python scripts/check_public_tree.py
 cmake -S research/combined_session -B out/contracts -G "Visual Studio 17 2022" -A x64

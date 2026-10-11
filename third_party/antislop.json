@@ -7,8 +7,10 @@
     {
       "path": ".agents/skills/antislop/SKILL.md",
       "source": "skills/antislop/SKILL.md",
-      "bytes": 57827,
-      "sha256": "64a1ff70bafbfb7a105083cdff0026a6f09baf7e19d3aa1bc3e880cf7233f90c"
+      "bytes": 57775,
+      "sha256": "0cc5034e72c68c8d4c4e9e495aaff551c8adcf7af39aa52c6b573413ff7b7932",
+      "upstream_sha256": "64a1ff70bafbfb7a105083cdff0026a6f09baf7e19d3aa1bc3e880cf7233f90c",
+      "upstream_bytes": 57827
     },
     {
       "path": ".agents/skills/antislop/VERSION",
@@ -34,5 +36,8 @@
       "bytes": 1083,
       "sha256": "9fd83fb1fda52ca0094b96e2ed5a3d6c42a81b95a6c6326553f5bbe570f443de"
     }
+  ],
+  "local_adaptations": [
+    "Tool-neutral installation documentation; original license retained."
   ]
 }

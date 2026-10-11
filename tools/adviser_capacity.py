@@ -1,9 +1,10 @@
-"""Official app-server READ operations only. No inference, login or reset.
+"""Configured compatible app-server READ operations only. No inference, login or reset.
 
 Never persist raw RPC replies, notifications, stderr or credential-bearing data.
 Availability is a timestamped hint; model listing is not inference certification.
 """
 import json
+import os
 import queue
 import shutil
 import subprocess
@@ -11,9 +12,23 @@ import threading
 import time
 
 
+def executable():
+    configured = os.environ.get('DW3_ADVISER_EXECUTABLE')
+    return shutil.which(configured) if configured else None
+
+
 def sanitize(result, models):
     windows = []
-    bucket = result.get('rateLimitsByLimitId', {}).get('adviser') or result.get('rateLimits') or {}
+    buckets = result.get('rateLimitsByLimitId') or {}
+    selected = os.environ.get('DW3_ADVISER_RATE_LIMIT_ID')
+    if selected:
+        bucket = buckets.get(selected) or {}
+    elif len(buckets) == 1:
+        bucket = next(iter(buckets.values()))
+    elif buckets:
+        bucket = {}
+    else:
+        bucket = result.get('rateLimits') or {}
     for name in ('primary', 'secondary'):
         w = bucket.get(name)
         if isinstance(w, dict) and isinstance(w.get('usedPercent'), (int, float)):
@@ -36,9 +51,9 @@ def sanitize(result, models):
 
 
 def observe(timeout=20):
-    executable=shutil.which('adviser.exe')
-    if not executable:return sanitize({}, {})
-    proc = subprocess.Popen([executable,'app-server','--stdio'],
+    command=executable()
+    if not command:return sanitize({}, {})
+    proc = subprocess.Popen([command,'app-server','--stdio'],
                             stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
                             creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
     replies = queue.Queue()

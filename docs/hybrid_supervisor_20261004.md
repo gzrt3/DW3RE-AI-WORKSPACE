@@ -72,11 +72,20 @@ earlier missing-price event. Nova Pro was not called.
 
 ## Operations
 
-The supervisor runs with premium Adviser reserved:
+The supervisor runs with premium adviser capacity reserved:
 
 ```powershell
 python tools/hybrid_supervisor.py run --adviser-mode PREMIUM_RESERVED --poll-seconds 30
 ```
+
+Optional adviser transport requires an explicitly configured
+`DW3_ADVISER_EXECUTABLE` implementing the existing `app-server --stdio` read
+protocol and `exec` request contract. There is no automatic executable discovery
+or model substitution. If multiple quota buckets are returned, set
+`DW3_ADVISER_RATE_LIMIT_ID`; otherwise availability remains unknown.
+The tool-neutral supervisor uses state schema 2. Earlier journal schemas are
+rejected without rewriting them; use a new output directory and preserve the
+older ledger. Premium requests remain disabled by default.
 
 `status` classifies idle as a real external barrier, premium-required, or an
 orchestration defect. A zero-ready state without an evidenced blocker writes a

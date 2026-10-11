@@ -47,12 +47,12 @@ puede usar `authorize-budget --window-id IDENTIFICADOR_UNICO`; reutiliza la API
 aditiva existente, con límites existentes, sin crear recursos ni borrar gasto.
 El supervisor jamás invoca esa autorización por su cuenta.
 
-La CLI oficial `adviser-cli 0.160.0` expuso `gpt-6-astra` en `model/list`.
+La CLI configurada (versión 0.160.0) expuso `gpt-6-astra` en `model/list`.
 `account/rateLimits/read` observó disponibilidad sin hacer inferencia.
 Una revisión premium acotada Astra sí terminó: 29,720 input, 882 output,
 122 reasoning output observados; billed/costo desconocidos. No se asume que
 este sea el modelo de la sesión interactiva. Esas interfaces están documentadas
-en [Adviser app-server](https://learn.chatgpt.com/docs/app-server).
+en la documentación del protocolo app-server.
 
 Ollama `qwen2.5-coder:7b` realizó UNA revisión nueva del helper host: 3,620 input,
 48 output observados. Se rechazó por contrato semántico: marcó erróneamente
@@ -133,7 +133,7 @@ suite relevante completa una vez al finalizar, con cloud mockeado:
 python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
-Para reattachment, `adviser resume`: leer state/journal del supervisor y sus tareas
+Para reanudar desde el entorno configurado, leer state/journal del supervisor y sus tareas
 premium bloqueadas; no borrar leases, ledger ni evidencia. `retry-tooling` solo
 admite tareas determinísticas REJECTED con motivo explícito, nunca tareas premium
 inciertas ni una campaña pagada duplicada. El process_alive del comando status

@@ -20,7 +20,7 @@ files, 5,084,888,300 bytes, originals unchanged by SHA256 recheck. It prepares
 private data, not a complete game. The optional Tk UI is not end-to-end verified.
 
 [Audit and upstream research](PROJECT_AUDIT.md), [completion contract](COMPLETION_BRIDGE.md),
-[continuation prompt](CONTINUE_WITH_ADVISER.md), [numeric evidence](evidence/LATEST_AUDIT.json).
+[continuation prompt](CONTINUE_DEVELOPMENT.md), [numeric evidence](evidence/LATEST_AUDIT.json).
 
 Historical ledgers remain unchanged in docs/evidence; their earlier frontier
 claims do not describe the current source candidate. FINAL KIT, historical

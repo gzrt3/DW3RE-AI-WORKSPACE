@@ -107,7 +107,7 @@ def premium_review(supervisor,task,work):
             'Assess CPU savestate ABI layout and bounded HOST translated-prefix capture risks. No invented retail state. '
             'Native Computer Use pipe is unavailable. Existing ELF hash and version 2.8.2 are verified.\n'+json.dumps(context))
     # Constant PowerShell command; dynamic prompt goes through stdin, never shell.
-    executable=shutil.which('adviser.exe')
+    executable=adviser_capacity.executable()
     if not executable:return {'supervisor_outcome':'WAITING_FOR_EXTERNAL_INPUT','reason':'Native Adviser CLI unavailable; no shell wrapper or model substitution.'}
     command=[executable,'exec','--model',model,'--skip-git-repo-check','--sandbox','read-only','--json','--ephemeral','--output-schema',str(schema_path),'-']
     supervisor.emit('premium_request_reserved',adviser=dict(capacity,selected_model=model),

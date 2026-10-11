@@ -84,6 +84,10 @@ retained Git history. Their artifact IDs are 11690281617, 11690141893,
 Use only source packages from commit 060897983f3ddf7a18d8fece300de8453fe9243b
 or later, with the expanded boundary check passing.
 
+Current documentation, file names and development tooling use tool-neutral
+references. Historical commits, merged pull-request snapshots, Actions records
+and previously retained ZIPs are not rewritten by this current-tree cleanup.
+
 ## Most efficient engineering decision
 
 Keep one XL-based runtime with both original data roots. Share a verified resolver

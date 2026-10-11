@@ -16,6 +16,8 @@ jobs:
       - run: python tools/agent_reach_research.py verify
       - run: python -m unittest discover -s tests -p test_agent_reach_research.py -v
       - run: python -m unittest discover -s tests -p test_antislop.py -v
+      - run: python -m unittest discover -s tests -p test_adviser_capacity.py -v
+      - run: python -m unittest discover -s tests -p test_adviser_conservation.py -v
       - run: python -m unittest discover -s tests -p test_resume_catalog.py -v
       - run: python -m unittest discover -s tests -p test_native_boot_probe.py -v
       - run: python -m unittest discover -s tests -p test_copilot_bridge.py -v

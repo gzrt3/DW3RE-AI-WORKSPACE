@@ -39,7 +39,7 @@ If no antislop pointer exists and this file is being read for the first time, ru
    - **2. The agent supplies direction, with an honest warning.** The agent writes the direction itself, stating explicitly that agent-generated style tends toward default AI taste, which is the slop antislop filters, so the result is likely monotonous. If chosen, still ask a minimal brief (product, audience, mood) before building.
    - **3. The user skips direction for now.** Proceed without a `DESIGN.md`. Any UI built this way must be labeled *"draft without direction"* with dials ENERGY 1 / RHYTHM 1 / MOTION 1 (R-37), and is not a shippable deliverable.
 4. **Get the chosen skill(s) in place; the user does the fetching, never the agent.** A `SKILL.md` is instructions the agent will obey, so an agent that downloads one at runtime is fetching its own next prompt: do not do it, and do not ask for network access here. The skills ship as folders in the release (`skills/<name>/SKILL.md`). If a chosen skill folder is missing next to this file, tell the user which ones are missing and that they come with the release matching this core, so a newer skill never mixes with an older one. `antislop-human` also needs `contrast-check.py` from that same folder.
-5. **Append the pointer block at the END of the project's entry file** (the file the running tool reads at session start: `CLAUDE.md` for Claude Code, `AGENTS.md` for Adviser, `GEMINI.md` for Gemini CLI, and so on). If that file does not exist, create it. Never modify existing content:
+5. **Append the pointer block at the END of the project's entry file** (the file the running tool reads at session start: `CLAUDE.md` for Claude Code, `AGENTS.md` for coding agents, `GEMINI.md` for Gemini CLI, and so on). If that file does not exist, create it. Never modify existing content:
    ```md
    <!-- antislop:start -->
    ## antislop
@@ -72,7 +72,6 @@ antislop never updates itself, and nothing announces a new release. Answer from 
 - **A plugin door**: each agent keeps its own copy, and `--update` cannot reach those. The installer names the command for any door it finds installed; without it, these are the seven:
   - **Claude Code**: `claude plugin update antislop@anti-slop`
   - **Antigravity**: `agy plugin install https://github.com/miqdadbadjuber/anti-slop`
-  - **Adviser**: `adviser plugin marketplace upgrade anti-slop`
   - **Cursor**: `agent plugin marketplace update https://github.com/miqdadbadjuber/anti-slop`
   - **Kimi Code**: `/plugins install https://github.com/miqdadbadjuber/anti-slop`
   - **Cline**: `cline plugin install https://github.com/miqdadbadjuber/anti-slop.git --force`

@@ -4,7 +4,9 @@ The user requested [miqdadbadjuber/anti-slop](https://github.com/miqdadbadjuber/
 for ongoing development. The project installs the core and code-comment skill
 from commit `388cbe3b6c37d5175b9f460015bb092ef9e34894`, version 3.2.20, under
 `.agents/skills/`. MIT notices and byte identities are retained in
-`third_party/antislop.json`. The upstream files are unchanged.
+`third_party/antislop.json`. The core installation guide has a documented tool-neutral adaptation;
+the manifest retains its upstream identity and pins the adapted bytes.
+License notices and the remaining upstream files are unchanged.
 
 Anti-slop is an agent rulebook for UI, writing and comments. It contains no
 runtime bug detector, PS2 semantic checker or automatic repair engine. Passing
@@ -46,7 +48,7 @@ instructions. Upstream guidance remains useful within those boundaries.
 
 ## Use in the existing pipeline
 
-Adviser reads the appended block in `AGENTS.md`; GitHub Copilot reads
+Coding agents read the appended block in `AGENTS.md`; GitHub Copilot reads
 `.github/copilot-instructions.md`. Both point here and to the installed skills.
 For the next genuinely new adviser task, the owning agent includes the compact
 review guidance below in its bounded objective before exporting. Do not rewrite

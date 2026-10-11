@@ -1,13 +1,13 @@
-# Continue with Adviser 6.1 Sol
+# Continue native development
 
-Select GPT-6.1 Sol with High reasoning in Adviser, open the existing local workspace
-`D:\dw3-port`, and paste the prompt below. The project requires local private inputs
+Open `D:\dw3-port` in a coding environment with local execution and paste the
+prompt below. The project requires local private inputs
 for execution; a fresh public clone can run host tests and data setup but cannot
 yet reproduce the full native candidate. Do not upload private material.
 
 ```text
 Continue the existing DW3 + Xtreme Legends native project as one continuous task.
-Read AGENTS.md, WORKING_BASE.md, notes/ADVISER_V3_1_OBSERVED_ROOT_HANDOFF.md and
+Read AGENTS.md, WORKING_BASE.md, the latest observed-root handoff under notes/ and
 notes/V31_CALLBACK_ORIGINAL_COMPARISON_20261010.md. Then read the public
 docs/PROJECT_AUDIT.md and docs/COMPLETION_BRIDGE.md in v2_worktree/publish.
 

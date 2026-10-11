@@ -17,7 +17,7 @@ Requires Python 3.12+ and your own NTSC-U discs: DW3 `SLUS_202.77` and XL
 `SLUS_206.17`. No game data, executables, BIOS or private captures are included.
 
 ```powershell
-git clone --depth 1 --single-branch --branch adviser/v3-consolidation https://github.com/gzrt3/DW3RE-AI-WORKSPACE.git DW3-PC
+git clone --depth 1 --single-branch --branch main https://github.com/gzrt3/DW3RE-AI-WORKSPACE.git DW3-PC
 cd DW3-PC
 python installer/setup.py
 ```
@@ -38,7 +38,7 @@ Use a run for commit `0608979` or a later descendant; earlier ZIPs were supersed
 after recovered bootstrap files were caught outside the original private-path gate.
 
 - [Completion contract](docs/COMPLETION_BRIDGE.md)
-- [Copy-paste prompt for Adviser 6.1 Sol](docs/CONTINUE_WITH_ADVISER.md)
+- [Native development continuation instructions](docs/CONTINUE_DEVELOPMENT.md)
 - [Verified tests and graphics build](docs/REPRODUCE.md)
 - [Latest numeric evidence](docs/evidence/LATEST_AUDIT.json)
 

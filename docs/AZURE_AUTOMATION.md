@@ -12,7 +12,7 @@ To charge eligible model inference to an Azure credit subscription:
 4. Track model/token usage separately from actual Azure billed charges. Dollar balance and tokens-per-minute quota are different limits; adding workers does not increase quota.
 5. Use Azure cost monitoring and the project's bounded request policy together. Cost alerts alone are not a guaranteed real-time spending cap.
 
-The Adviser model provider and this project's advisor router are separate sources of usage. The router's token totals do not include all work performed by the main coding agent or other tools.
+The coding agent model provider and this project's advisor router are separate sources of usage. The router's token totals do not include all work performed by the main coding agent or other tools.
 
 References:
 

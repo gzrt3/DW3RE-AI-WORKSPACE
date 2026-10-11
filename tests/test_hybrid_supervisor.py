@@ -31,6 +31,12 @@ class SupervisorTests(unittest.TestCase):
     def test_fresh_import_and_hash_chain(self):
         obj=self.supervisor();self.assertEqual(obj.state['source_legacy'],{'verified':'SYNTHETIC'})
         self.assertEqual(self.supervisor().tail,obj.tail)
+    def test_older_schema_rejected_without_rewriting_history(self):
+        obj=self.supervisor();obj.emit('older_schema_fixture',version=1)
+        before={path.name:path.read_bytes() for path in obj.output.iterdir() if path.is_file()}
+        with self.assertRaisesRegex(h.Failure,'SCHEMA_CHANGED_USE_NEW_OUTPUT'):self.supervisor()
+        after={path.name:path.read_bytes() for path in obj.output.iterdir() if path.is_file()}
+        self.assertEqual(before,after)
     def test_completed_work_never_repeated(self):
         calls=[];handlers={'op':lambda *_: calls.append(1) or {'ok':True}}
         obj=self.supervisor(handlers);obj.add('x','op');obj.execute('x')
