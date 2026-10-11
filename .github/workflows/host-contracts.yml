@@ -14,6 +14,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python scripts/check_public_tree.py
+      - run: python -B -m unittest discover -s scripts -p test_public_tree_gate.py
       - run: python -B -m unittest discover -s installer -p test_import_discs.py
       - run: python -B -m unittest discover -s research/discovery -p test_observed_roots.py
       - run: cmake -S research/combined_session -B out/contracts -G "Visual Studio 17 2022" -A x64

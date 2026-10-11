@@ -64,10 +64,17 @@ binary structures locally; a viewer/plugin does not resolve scheduling or GS rou
 
 The default branch previously retained 14,272 paths rejected by the project's
 private-file rules. Its current tree has been replaced with the tested public
-tree: 756 tracked files, zero rejected paths. No private bodies were read for
+tree. The first path check missed fourteen recovered/bootstrap source boundaries
+outside the usual generated directories; those were subsequently quarantined
+locally and removed from the public index. The expanded gate covers these exact
+paths as well as the original private directories/extensions. No private bodies were read for
 this check; it uses Git filenames only. The source ZIP includes committed public
 files and no Git history. Older commits were not rewritten and may still expose
 previously published material; this is current-tree cleanup, not a history purge.
+Earlier source ZIPs and CI artifacts predating this correction are superseded
+and must not be redistributed. The final deliverable is regenerated after this
+boundary check. The public root recipe may still reference private candidate
+files; only the isolated host/GS contracts are public build targets at present.
 
 ## Most efficient engineering decision
 

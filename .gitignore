@@ -58,3 +58,19 @@ extracted/
 *secrets*
 /tools/PS2Recomp/build/
 CMakeUserPresets.json
+
+# Private recovered/bootstrap boundaries remain local only
+/include/fate/syscall_return_words.hpp
+/include/fate/verified_return_tail.hpp
+/src/boot_continuations.cpp
+/src/boot_syscall_handlers.cpp
+/src/boot_thread_syscalls.cpp
+/src/dma_init_continuation.cpp
+/src/graphics_init_continuation.cpp
+/src/irq_return_continuation.cpp
+/src/native_iop_boot.cpp
+/src/pad_boot_continuation.cpp
+/src/sif_irq_continuations.cpp
+/src/vif_init_continuation.cpp
+/src/waitsema_continuation.cpp
+/tests/integration/boot_continuations_contract.cpp
