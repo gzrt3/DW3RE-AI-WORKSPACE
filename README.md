@@ -1,99 +1,49 @@
 # Dynasty Warriors 3 Recompiled
 
-An unofficial native recompilation and preservation project for **Dynasty
-Warriors 3** and **Dynasty Warriors 3: Xtreme Legends**, with cross-platform
-support as a development goal.
+Native PC recompilation research for **Dynasty Warriors 3 + Xtreme Legends**.
+The goal is one game with both content sets and no disc swapping, preserving
+the original gameplay and visual identity.
 
-Our goal is to bring the original PlayStation 2 experience to modern hardware
-while preserving its gameplay, content, and visual identity, and eventually
-combine both games without disc swapping.
+**Development build — not playable. MixJoy is not yet resolved.**
 
-## Project status
+The current source candidate builds, one original callback matches PCSX2, and
+the modern GS library replays captures with Vulkan, Direct3D 11 and Direct3D 12.
+Native boot, actual GS frames, combined-content activation and complete gameplay
+remain unverified. [Current audit](docs/PROJECT_AUDIT.md).
 
-**Early development — not yet playable.** V3.1 is a development checkpoint,
-not a finished game release.
+## Prepare your discs
 
-The project currently includes:
+Requires Python 3.12+ and your own NTSC-U discs: DW3 `SLUS_202.77` and XL
+`SLUS_206.17`. No game data, executables, BIOS or private captures are included.
 
-- An experimental native C++20 recompilation runtime.
-- A PCSX2-derived GS library with Vulkan, Direct3D 11, and Direct3D 12 backends,
-  tested through capture replay. Connection to the native game is pending.
-- Reproducible rendering comparisons using locally supplied PS2 GS captures.
-- Automated host-side contract tests and continuous integration.
-- Research into combining DW3 and Xtreme Legends without disc swapping.
+```powershell
+git clone --depth 1 --single-branch --branch adviser/v3-consolidation https://github.com/gzrt3/DW3RE-AI-WORKSPACE.git DW3-PC
+cd DW3-PC
+python installer/setup.py
+```
 
-Native boot, gameplay, and full hardware compatibility remain under development.
-Hardware and software rendering still differ in the strict comparison. Passing
-host tests does not establish gameplay compatibility.
+Choose both ISO files and a new output folder outside the checkout. The importer
+checks the disc structure/boot identity and verifies extracted-file hashes.
+The CLI was tested on both real local discs: **180 files, 5.08 GB**. It prepares
+data only; it cannot create or launch a complete playable game today.
+[Instructions and limitations](installer/README.md).
 
-See [V3.1 status and verification results](docs/V3_1_STATUS.md) for the current
-blockers, evidence, and limits of each test.
+## Development package and continuation
 
-## Target platforms
+Download the **DW3-V3.1-Development-Kit** artifact from a successful
+[Development source package run](https://github.com/gzrt3/DW3RE-AI-WORKSPACE/actions/workflows/development-package.yml).
+The ZIP contains public source, the importer, evidence summaries and instructions.
+It has no prebuilt game and no resolved MixJoy activation.
 
-| Platform | Status |
-|---|---|
-| Windows x64 | Primary development target |
-| Linux x64 | Planned |
-| Steam Deck | Planned |
-| Android ARM64 | Research |
-| macOS | Research |
+- [Completion contract](docs/COMPLETION_BRIDGE.md)
+- [Copy-paste prompt for Adviser 6.1 Sol](docs/CONTINUE_WITH_ADVISER.md)
+- [Verified tests and graphics build](docs/REPRODUCE.md)
+- [Latest numeric evidence](docs/evidence/LATEST_AUDIT.json)
 
-Platform support will be announced after native builds and runtime tests have
-been verified.
+PS2Recomp generates code locally; CMake/MSVC build candidates; PCSX2 supplies
+the original reference and GS library; Python validates captures and data.
+Windows x64 is the development target. Other platforms remain unverified.
+The PCSX2-derived components retain GPL-3.0-or-later and their notices.
 
-## Game requirements
-
-The project is designed around legally obtained copies of:
-
-- **Dynasty Warriors 3** — NTSC-U, SLUS-20277 (executable `SLUS_202.77`).
-- **Dynasty Warriors 3: Xtreme Legends** — NTSC-U, SLUS-20617
-  (executable `SLUS_206.17`).
-
-A future installer is planned to verify the user's disc images and extract the
-required game data. Other regional releases require independent identification
-and compatibility validation.
-
-**No copyrighted game assets, disc images, game executables, or BIOS files are
-distributed.** Game captures, saves, and translated game code remain outside
-the public source tree.
-
-## Graphics research
-
-The original PlayStation 2 presentation remains our reference. Optional future
-enhancements may include higher rendering resolutions and modern display
-support.
-
-Experimental neural rendering and AI-assisted image enhancement are long-term
-research areas. [NVIDIA DLSS 5](https://research.nvidia.com/labs/adlr/DLSS5/)
-is a research target, not an implemented feature. These enhancements would be
-optional, disabled by default, independent of the original rendering experience,
-and never required to play.
-
-Integration depends on technical feasibility, platform compatibility, and
-appropriate licensing. No proprietary or unauthorized neural rendering runtimes
-are bundled.
-
-## Development
-
-- [Reproduce the verified tests](docs/REPRODUCE.md)
-- [Current architecture and evidence](docs/V3_1_STATUS.md)
-- [Graphics API and build instructions](research/pcsx2_bridge/README.md)
-- [Combined-content research](research/combined_session/README.md)
-- [Product acceptance criteria](docs/COMPLETE_REMASTERED_PLAN.md)
-- [Earlier V3 checkpoint](docs/V3_STATUS.md)
-
-PS2Recomp generates C++ locally; CMake and MSVC build the Windows candidates;
-PCSX2 GS and GSRunner replay captures and provide rendering references; Python
-checks contracts, file identities, and image differences.
-
-The project draws on the broader PS2 native-port and reverse-engineering
-community. Third-party components retain their respective licenses; the
-PCSX2-derived GS code is **GPL-3.0-or-later**.
-
-## Disclaimer
-
-This is an independent, unofficial fan project. It is not affiliated with or
-endorsed by Koei Tecmo, Omega Force, or Sony Interactive Entertainment.
-
+Unofficial and independent; not affiliated with Koei Tecmo, Omega Force or Sony.
 Dynasty Warriors and related trademarks belong to their respective owners.

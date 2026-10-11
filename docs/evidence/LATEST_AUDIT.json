@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "date": "2026-10-10",
+  "playable": false,
+  "mixjoy_resolved": false,
+  "final_criteria_closed": 0,
+  "final_criteria_total": 8,
+  "original_callback": {
+    "captured_original_input": true,
+    "gpr_registers_compared": 32,
+    "bits_per_gpr": 128,
+    "ram_bytes_compared": 33554432,
+    "gpr_mismatches": 0,
+    "ram_byte_mismatches": 0,
+    "return_pc_matches": true,
+    "native_store_order_observed": false,
+    "whole_boot_parity": false
+  },
+  "synthetic_callback": {
+    "cases": 128,
+    "full_gpr_bits": 128,
+    "ram_bytes_compared_per_case": 33554432,
+    "reference_stores": 256,
+    "mismatches": 0,
+    "exit_code": 0,
+    "binary_sha256": "9607790f03df7d63d8e1a524d8c8557682de5debc84a129065330563cea57910"
+  },
+  "disc_import": {
+    "status": "DATA_PREPARED_NOT_PLAYABLE",
+    "mixjoy": "UNRESOLVED",
+    "originals_unchanged_by_sha256": true,
+    "editions": [
+      {
+        "edition": "dw3",
+        "iso_sha256": "a5026c4c9794c1e56be29d899bd218569068464431fd9c97dc3cd081cb12fc97",
+        "files": 64,
+        "extracted_bytes": 1940771425
+      },
+      {
+        "edition": "dw3xl",
+        "iso_sha256": "40aa0e911396ff0ab28922c0a4750ec8c42d96dab4849e0b87a03cc8ab93f241",
+        "files": 116,
+        "extracted_bytes": 3144116875
+      }
+    ]
+  },
+  "preservation": {
+    "kit_files_verified": 31,
+    "kit_files_total": 31,
+    "frozen_verified": 9,
+    "frozen_total": 9,
+    "baseline_checks": {
+      "m12_original": true,
+      "old_candidate_release": true,
+      "old_candidate_debug": true
+    },
+    "producer_inputs_match": {
+      "elf": true,
+      "ranges": true,
+      "observed_log": true,
+      "boundary_report": true,
+      "base_config": true
+    },
+    "gs_registers_preserved": 19,
+    "swap_sequence_preserved": "XL_TO_DW3_TO_XL",
+    "rollback": "SELECT_PREVIOUS_UNCHANGED_BINARY",
+    "promotion": "NOT_PERFORMED",
+    "status": "PASS"
+  },
+  "native_boot": "NOT_DEMONSTRATED",
+  "native_last_published_pc": "0x001AD660",
+  "native_gs_frames": 0,
+  "graphics": "REPLAY_TESTED_NOT_CONNECTED_TO_NATIVE_GAME; draw2 RGB cause UNKNOWN",
+  "installer_tests": 14,
+  "private_buffers_published": false
+}

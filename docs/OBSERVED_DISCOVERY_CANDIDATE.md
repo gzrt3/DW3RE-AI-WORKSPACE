@@ -44,10 +44,13 @@ historical boot frontier and cannot replace the preserved working base. Exit cod
 2 is the intentional observer deadline result; the generic probe's
 `PROCESS_FAILED` label must not be interpreted as a demonstrated crash.
 
-Live PCSX2 effect capture remains pending. Full debugger screenshots were rejected
-by automatic approval review because they could expose private memory or
-disassembly; filtered controls alone did not prove screenshot safety. No image
-workaround or private screenshot publication is used.
+Update 2026-10-10: original callback entry, both store checkpoints and return
+were captured with private views hidden. A generated-native replay of the actual
+entry matches all 32 GPR128, all 32MiB RAM and return PC. Store 1 changes RAM
+0x002D0468 from 0 to 1; store 2 leaves 0x002D046C at 0. The original returns to
+0x001A73C8. This is one reset context, not a MixJoy swap or timing/whole-boot
+proof. The actual caller PC remains inferred from the captured RA. Private
+snapshots and buffers remain local. See docs/evidence/LATEST_AUDIT.json.
 
 The FINAL KIT files, original map, historical candidates, nineteen GS registers
 and XL→DW3→XL evidence remain preserved by hash. Rollback selects the unchanged

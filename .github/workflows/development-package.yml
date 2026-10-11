@@ -1,0 +1,22 @@
+name: Development source package
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+      - run: python -B -m unittest discover -s installer -p test_import_discs.py
+      - run: python scripts/check_public_tree.py
+      - run: python scripts/package_development.py --output "$RUNNER_TEMP/DW3-V3.1-Development-Kit.zip"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: DW3-V3.1-Development-Kit
+          path: |
+            ${{ runner.temp }}/DW3-V3.1-Development-Kit.zip
+            ${{ runner.temp }}/DW3-V3.1-Development-Kit.json
+          if-no-files-found: error
