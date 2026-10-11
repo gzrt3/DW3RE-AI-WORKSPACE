@@ -60,6 +60,15 @@ requirements. Replacing the working bridge now would add integration uncertainty
 without addressing the observed boot failure. ImHex can help inspect bounded
 binary structures locally; a viewer/plugin does not resolve scheduling or GS routing.
 
+## Public repository boundary
+
+The default branch previously retained 14,272 paths rejected by the project's
+private-file rules. Its current tree has been replaced with the tested public
+tree: 756 tracked files, zero rejected paths. No private bodies were read for
+this check; it uses Git filenames only. The source ZIP includes committed public
+files and no Git history. Older commits were not rewritten and may still expose
+previously published material; this is current-tree cleanup, not a history purge.
+
 ## Most efficient engineering decision
 
 Keep one XL-based runtime with both original data roots. Share a verified resolver

@@ -41,11 +41,14 @@ def package(output):
     with zipfile.ZipFile(output,'x',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as archive:
         for name,data,_ in files:
             info = zipfile.ZipInfo('DW3-Development/'+name, date_time=(2026,10,10,0,0,0))
+            info.create_system = 3
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o100644 << 16
             archive.writestr(info,data)
         info = zipfile.ZipInfo('DW3-Development/PACKAGE_MANIFEST.json',date_time=(2026,10,10,0,0,0))
+        info.create_system = 3
         info.compress_type = zipfile.ZIP_DEFLATED
+        info.external_attr = 0o100644 << 16
         archive.writestr(info,json.dumps(manifest,indent=2)+'\n')
     with zipfile.ZipFile(output) as archive:
         if archive.testzip() is not None:
