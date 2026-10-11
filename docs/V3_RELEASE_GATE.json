@@ -13,7 +13,11 @@
     "clean_release_soak": "OPEN"
   },
   "graphics_comparison": "FAIL_PIXEL_EXACT",
-  "native_next_target": "0x00235CC0",
-  "native_boot": "PARTIAL_ADVANCE",
-  "graphics_first_observed_difference": "draw2 post-target RGB; cause UNKNOWN"
+  "native_next_target": null,
+  "native_boot": "UNRESOLVED_SOURCE_CANDIDATE_REGRESSION",
+  "graphics_first_observed_difference": "draw2 post-target RGB; cause UNKNOWN",
+  "native_last_published_pc": "0x001AD660",
+  "callback_result": "ONE_REAL_INPUT_MATCH; 128_SYNTHETIC_CASES_PASS",
+  "mixjoy": "UNRESOLVED",
+  "installer": "DATA_PREPARATION_ONLY"
 }
