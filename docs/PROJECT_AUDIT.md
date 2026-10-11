@@ -93,8 +93,9 @@ earlier branch labels. Old cached objects may remain accessible. Complete
 server-side removal is unconfirmed and requires GitHub's
 assistance; its policy does not promise removal of ordinary branding references.
 See [GitHub's cleanup procedure](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#fully-removing-the-data-from-github).
-No support request has been sent. Current documentation, filenames, branch names
-and development tooling use tool-neutral references.
+A support request was submitted on 2026-10-10 and verified as open ticket #4845055.
+GitHub's assessment and server-side removal remain pending. Current documentation,
+filenames, branch names and development tooling use tool-neutral references.
 
 ## Most efficient engineering decision
 
